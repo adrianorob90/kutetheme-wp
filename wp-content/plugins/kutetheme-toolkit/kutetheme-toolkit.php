@@ -23,7 +23,7 @@ require_once KUTETHEME_PLUGIN_PATH.'option_post_type.php';
 require_once KUTETHEME_PLUGIN_PATH .'cmb2/admin.php';
 
 // Woocommerce products filter
-require_once KUTETHEME_PLUGIN_PATH.'woocommerce-products-filter/index.php';
+//require_once KUTETHEME_PLUGIN_PATH.'woocommerce-products-filter/index.php';
 
 // Post types
 require_once KUTETHEME_PLUGIN_PATH.'post-types/post-types.php';

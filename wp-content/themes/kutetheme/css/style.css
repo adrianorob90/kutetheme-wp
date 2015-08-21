@@ -2072,6 +2072,9 @@ span.notify-right{
     vertical-align: middle;
     
 }
+.product-list li .add-to-cart a.added{
+    display: none;
+}
 .product-list li .product-name{
     padding-bottom: 5px;
     margin: 0;

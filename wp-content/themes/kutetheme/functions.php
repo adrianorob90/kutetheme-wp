@@ -304,7 +304,6 @@ function kt_fonts_url() {
 	} elseif ( 'vietnamese' == $subset ) {
 		$subsets .= ',vietnamese';
 	}
-
 	if ( $fonts ) {
 		$fonts_url = add_query_arg( array(
 			'family' => urlencode( implode( '|', $fonts ) ),
@@ -479,7 +478,7 @@ function kt_post_nav_background() {
 		';
 	}
 
-	wp_add_inline_style( 'twentyfifteen-style', $css );
+	wp_add_inline_style( 'kutetheme-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'kt_post_nav_background' );
 
