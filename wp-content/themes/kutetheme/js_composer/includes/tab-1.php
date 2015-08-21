@@ -51,7 +51,7 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
-          <div id="elevator-1" class="floor-elevator">
+          <div class="floor-elevator">
                 <a href="#" class="btn-elevator up  fa fa-angle-up"></a>
                 <a href="#" class="btn-elevator down fa fa-angle-down"></a>
           </div>

@@ -1439,7 +1439,10 @@ span.notify-right{
     font-weight: bold;
     line-height: normal;
     color: #999;
-    padding-top: 7px;
+    padding-top: 3px;
+}
+.floor-elevator a{
+  height: 20px;
 }
 .floor-elevator .fa{
     font-weight: bold;

@@ -234,15 +234,20 @@
         /* elevator click*/ 
         $(document).on('click','a.btn-elevator',function(e){
             e.preventDefault();
-            var target = this.hash;
-            if($(document).find(target).length <=0){
-                return false;
+            var target='';
+            if($(this).hasClass('up')){
+              target = $(this).closest('.box-tab-category').prev('.box-tab-category');
+            }else{
+              target = $(this).closest('.box-tab-category').next('.box-tab-category');
+              
             }
             var $target = $(target);
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top-50
-            }, 500);
-            return false;
+            if(typeof($target.offset()) != 'undefined'){
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top-50
+                }, 500);
+                return false;
+            }
         })
         /* scroll top */ 
         $(document).on('click','.scroll_top',function(){
