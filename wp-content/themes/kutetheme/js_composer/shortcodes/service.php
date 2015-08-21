@@ -11,39 +11,20 @@ if( class_exists( 'WPBakeryShortCode' ) ){
         "description" => __( "Display service box", THEME_LANG),
         "params" => array(
             array(
-                "type" => "textfield",
-                "heading" => __( "Title", THEME_LANG ),
-                "param_name" => "title",
-                "admin_label" => true,
-                'description' => __( 'Display title service box, It\'s hidden when empty', THEME_LANG )
+                "type"        => "textfield",
+                "heading"     => __( "Items", THEME_LANG ),
+                "param_name"  => "items",
+                "admin_label" => false,
+                "std"         => 4,
+                'description' => __( 'Display of items', THEME_LANG )
             ),
             array(
-                "type" => "textfield",
-                "heading" => __( "Subtitle", THEME_LANG ),
-                "param_name" => "subtitle",
-                "admin_label" => false,
-                'description' => __( 'Display subtitle service box', THEME_LANG )
+                'type' => 'css_editor',
+                'heading' => __( 'Css', 'js_composer' ),
+                'param_name' => 'css',
+                // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+                'group' => __( 'Design options', 'js_composer' )
             ),
-            array(
-                "type" => "attach_image",
-                "heading" => __( "Icon", THEME_LANG ),
-                "param_name" => "icon",
-                "admin_label" => false,
-                'description' => __( 'Upload icon', THEME_LANG )
-            ),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Link", THEME_LANG ),
-                "param_name" => "href",
-                "admin_label" => false,
-                'description' => __( 'Navigation', THEME_LANG )
-            ),array(
-    			'type' => 'css_editor',
-    			'heading' => __( 'Css', 'js_composer' ),
-    			'param_name' => 'css',
-    			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-    			'group' => __( 'Design options', 'js_composer' )
-    		),
             array(
                 "type" => "textfield",
                 "heading" => __( "Extra class name", THEME_LANG ),
@@ -57,11 +38,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $tab = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'service', $atts ) : $atts;
         $atts = shortcode_atts( array(
-            'title' => '',
-            'subtitle' => '',
-            'icon' => '',
-            'link' => '#',
-            
+            'items' => 4,            
             'css_animation' => '',
             'el_class' => '',
             'css' => '',
@@ -71,41 +48,49 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
         
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'service-item ', $this->settings['base'], $atts ),
-        	'extra' => $this->getExtraClass( $el_class ),
-        	'css_animation' => $this->getCSSAnimation( $css_animation ),
+            'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'service ', $this->settings['base'], $atts ),
+            'extra' => $this->getExtraClass( $el_class ),
+            'css_animation' => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
-        
-        if($title){
-            ob_start();
+        $args = array(
+              'post_type' => 'service',
+              'orderby'   => 'title',
+              'order'     => 'ASC',
+              'post_status' => 'publish',
+              'posts_per_page' => $items,
+            );
+        $service_query = new WP_Query($args);
+        if($service_query->have_posts()){
             ?>
-            <div class="service">
-                <div class="<?php echo esc_attr( $elementClass ); ?>">
-                    <?php if($icon): ?>
-                    
+            <div class="service-wapper">
+            <div class="<?php echo esc_attr( $elementClass ); ?>">
+            <?php
+            while ($service_query->have_posts()) {
+                $service_query->the_post();
+                $meta = get_post_meta( get_the_ID());
+                ?>
+                <div class="col-xs-12 com-sm-6 col-md-3 service-item">
+                    <?php if(has_post_thumbnail()):?>
                     <div class="icon">
-                        <?php 
-                            echo wp_get_attachment_image( $icon, '40x40' );
-                        ?>
+                        <?php the_post_thumbnail(array(40, 40));?>
                     </div>
-                    <?php endif; ?>
+                    <?php endif;?>
                     <div class="info">
-                        <a href="<?php echo esc_attr( $link ); ?>">
-                            <h3><?php echo $title; ?></h3>
-                        </a>
-                        <span><?php echo $subtitle; ?></span>
+                        <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
+                        <?php if(isset($meta['_kt_page_service_sub_title'])):?>
+                        <span><?php echo $meta['_kt_page_service_sub_title'][0];?></span>
+                    <?php endif;?>
                     </div>
                 </div>
+                <?php
+            }
+            ?>
+            </div>
             </div>
             <?php
-            $result = ob_get_contents();
-            ob_end_clean();
-            return $result;
-        }else{
-            return "";
         }
     }
 }

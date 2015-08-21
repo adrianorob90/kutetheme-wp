@@ -95,7 +95,6 @@ add_action( 'customize_register', 'kt_customize_register', 11 );
  * 4. Rate Star color
  * 5. Button Color
  * 6. Link Menu Footer
- * 7. Module border
  *
  * @since Kute Theme 1.0
  *
@@ -106,27 +105,25 @@ function kt_get_color_schemes() {
 		'default' => array(
 			'label'  => __( 'Default', THEME_LANG ),
 			'colors' => array(
-                '#ffffff',//Background Color.
-				'#ff3366',//Main Color
-				'#f6f6f6',//Sidebar and Box Background Color.
-				'#66666',//Main Text and Link Color.
-                '#ff9900',//Rate Star color
-                '#000000',//Button Color
-                '#0066cc',//Link Menu Footer
-                '#eaeaea',//Module Border
+                '#ffffff',
+				'#ff3366',
+				'#eaeaea',
+				'#66666',
+                '#ff9900',
+                '#000000',
+                '#0066cc'
 			),
 		),
 		'brown'    => array(
 			'label'  => __( 'Brown', THEME_LANG ),
 			'colors' => array(
-                '#ffffff',//Background Color.
-				'#958457',//Main Color
-				'#4c311d',//Sidebar and Box Background Color.
-				'#666666',//Main Text and Link Color.
-                '#febf2b',//Rate Star color
-                '#000000',//Button Color
-                '#0066cc',//Link Menu Footer
-                '#eaeaea',//Module Border
+                '#ffffff',
+				'#958457',
+				'#4c311d',
+				'#666666',
+                '#febf2b',
+                '#000000',
+                '#0066cc'
 			),
 		)
 	) );

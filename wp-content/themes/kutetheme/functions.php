@@ -304,6 +304,7 @@ function kt_fonts_url() {
 	} elseif ( 'vietnamese' == $subset ) {
 		$subsets .= ',vietnamese';
 	}
+
 	if ( $fonts ) {
 		$fonts_url = add_query_arg( array(
 			'family' => urlencode( implode( '|', $fonts ) ),
@@ -377,6 +378,7 @@ function kt_scripts() {
 	wp_enqueue_style( 'kutetheme-style', get_stylesheet_uri(),array('kt-style') );
 	wp_enqueue_style( 'custom-woocommerce-style', get_template_directory_uri().'/css/woocommerce.css',array('kt-style') );
 	wp_enqueue_style( 'custom-vc-style', get_template_directory_uri().'/css/vc.css',array('kt-style') );
+	wp_enqueue_style( 'responsive-style', get_template_directory_uri().'/css/responsive.css',array('kt-style') );
             
     //wp_enqueue_style( 'kt-option-6', get_template_directory_uri() . '/css/option6.css', array('kt-style') );
     
@@ -478,7 +480,7 @@ function kt_post_nav_background() {
 		';
 	}
 
-	wp_add_inline_style( 'kutetheme-style', $css );
+	wp_add_inline_style( 'twentyfifteen-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'kt_post_nav_background' );
 

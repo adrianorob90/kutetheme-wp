@@ -206,89 +206,15 @@ function woocommerce_datatime_sale_product_variable( $product = false, $post = f
         wp_cache_delete( $cache_key );
     }
 }
-/**
- * Mini cart
- * */
-add_action( 'kt_mini_cart', 'woocommerce_mini_cart' );
 
-add_action( 'kt_mini_cart_content', 'kt_get_cart_content', 10, 1 );
 // Ensure cart contents update when products are added to the cart via AJAX (place the following in functions.php)
-//add_filter( 'add_to_cart_fragments', 'kt_header_add_to_cart_fragment', 1, 1 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'kt_header_add_to_cart_fragment', 1, 1 );
 
-if( ! function_exists('kt_get_cart_content')){
-    function kt_get_cart_content($check_out_url){
-        if ( ! WC()->cart->is_empty() ) : ?>
-            <div class="cart-block">
-                <div class="cart-block-content">
-                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ), THEME_LANG ); ?></h5>
-                    <div class="cart-block-list">
-                        <ul>
-                            <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
-                                    $bag_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-                                    $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
-                                    
-                                    if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
-                                    
-                                    $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
-                					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x122'), $cart_item, $cart_item_key );
-                					$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
-                                    ?>
-                                        <li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
-                                            <div class="p-left">
-                                                <?php
-                        						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-                        							'<a href="%s" class="remove remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
-                        							esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
-                        							__( 'Remove this item', 'woocommerce' ),
-                        							esc_attr( $product_id ),
-                        							esc_attr( $bag_product->get_sku() )
-                        						), $cart_item_key );
-                        						?>
-                                                
-                                                <a href="<?php echo get_permalink($cart_item['product_id']) ?>">
-                                                    <?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ); ?>
-                                                </a>
-                                            </div>
-                                            <div class="p-right">
-                                                <p class="p-name"><?php echo $product_name; ?></p>
-                                                <p class="p-rice"><?php echo $product_price ?></p>
-                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( __('Qty: ', THEME_LANG).'%s', $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
-                                            </div>
-                                        </li>
-                                    <?php endif; ?>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                    <div class="toal-cart">
-                        <span><?php _e('Total', THEME_LANG) ?></span>
-                        <span class="toal-price pull-right">
-                            <?php echo WC()->cart->get_cart_total() ?>
-                        </span>
-                    </div>
-                    <div class="cart-buttons">
-                        <a href="<?php echo esc_url( $check_out_url ); ?>" class="btn-check-out"><?php echo _e( 'Checkout', THEME_LANG ); ?></a>
-                    </div>
-                </div>
-            </div>
-        <?php endif;
-    }
+function kt_header_add_to_cart_fragment( $fragments ) {
+	$fragments['#cart-block.shopping-cart-box'] = kt_cart_button();
+	
+	return $fragments;
 }
-
-add_filter( 'wc_add_to_cart_message', 'kt_add_to_cart_message', 10 );
-
-function kt_add_to_cart_message(){
-    global $woocommerce;
-	// Output success messages
-	if (get_option('woocommerce_cart_redirect_after_add')=='yes') :
-		$return_to 	= get_permalink( woocommerce_get_page_id('shop') );
-		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, __('Continue Shopping &rarr;', 'woocommerce'), __('Product successfully added to your cart.', 'woocommerce') );
-	else :
-		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), __('View Cart &rarr;', 'woocommerce'), __('Product successfully added to your cart.', 'woocommerce') );
-	endif;
-		return $message;
-}
-
-
 
 add_action( 'kt_woocommerce_single_product', 'kt_woocommerce_single_product' );
 function kt_woocommerce_single_product(){
@@ -486,7 +412,8 @@ if(!function_exists('kt_display_sub_category')){
             'show_option_none' => '',
             'hide_empty' => 0,
             'parent' => $cateID,
-            'taxonomy' => 'product_cat'
+            'taxonomy' => 'product_cat',
+            'number'=>4
         );
         $subcats = get_categories($cf);
         if($subcats){

@@ -330,9 +330,13 @@ a img.aligncenter {
 
 .main-bg{
     background-color: #ff3366;
+    display: none;
 }
 .divider{
     height: 3px;
+}
+.home .main-bg{
+    display: block;
 }
 
 /*BLOG*/
@@ -431,4 +435,3 @@ a img.aligncenter {
 .logged-in .nav-ontop{
     top: 32px;
 }
-.

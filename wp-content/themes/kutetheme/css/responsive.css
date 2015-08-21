@@ -26,12 +26,7 @@
 		float: right;
 		width: 25%;
 	}
-	.box-vertical-megamenus .vertical-menu-content{
-		display: none;
-	}
-	.home .box-vertical-megamenus .vertical-menu-content{
-		display: none;
-	}
+	
 	#home-slider .slider-left{
 		display: none;
 	}
@@ -161,7 +156,7 @@
 		display: none;
 	}
 	.nav-menu .nav > li > a {
-	    padding: 15px 5px;
+	    padding: 15px 10px;
 	}
 	#home-slider .slider-left{
 		height: 3px;
@@ -178,19 +173,13 @@
 	.header-top-right .homeslider .content-slide {
 	    margin-right:0;
 	}
+	.service{
+		padding-top: 0;
+	}
 	.service .service-item{
-		padding: 0 10px;
-	}
-	.service .service-item .icon{
-		width: 100%;
-		text-align: center;
-	}
-	.service .service-item .info{
-		width: 100%;
-		padding-left: 0;
-		text-align: center;
-		margin-left: 0;
-		margin-top: 50px;
+		width: 50%;
+		border: none;
+		margin-top: 20px;
 	}
 	.page-top .page-top-left{
 		width: 100%;
@@ -211,6 +200,7 @@
 	}
 	.show-brand .navbar-brand{
 		padding: 0px 0px 0px 10px;
+		width: 100%;
 	}
 	.header-top-right .homeslider {
 		width: 100%;
@@ -306,6 +296,9 @@
 	}
 	.hot-deals-box .hot-deals-tab-content{
 		padding: 30px;
+	}
+	.latest-deals .latest-deal-title{
+		font-size: 14px;
 	}
 }
 /*--------------------
@@ -686,11 +679,14 @@
 	.top-banner{
 		display: none;
 	}
-	.top-header .nav-top-links,
-	.top-header .user-info,
-	.top-header .support-link{
+	.top-header .nav-top-links{
 		width: 100%;
 		float: left;
+		display: none;
+	}
+	.top-header .user-info,
+	.top-header .support-link{
+
 	}
 	.main-header .logo{
 		text-align: center;
@@ -770,8 +766,14 @@
 		height: 3px;
 	}
 	.service{
-		display: none;
+		padding-top: 0;
+		padding-bottom: 30px;
 	}
+	.service .service-item{
+		border: none;
+		margin-top: 30px;
+	}
+
 	.nav-menu .navbar-brand,
 	.nav-menu .toggle-menu{
 		display: block;
@@ -855,6 +857,7 @@
 	}
 	.latest-deals{
 		padding-bottom: 15px;
+		margin-top: 30px;
 	}
 	.main-header .shopping-cart-box:hover .cart-block {
 	  opacity: 0;
@@ -1152,5 +1155,30 @@
 	}
 	.hot-deals-box .hot-deals-tab-content{
 		padding: 10px;
+	}
+
+	.vertical-menu-list .dropdown-menu{
+		position: relative;
+		visibility: visible;
+	    display: none;
+	    height: auto;
+	    -webkit-transform: translate(0,0);
+	    -moz-transform: translate(0,0);
+	    -o-transform: translate(0,0);
+	    -ms-transform: translate(0,0);
+	    transform: translate(0,0);
+	    opacity: 1;
+	    left: 0;
+	    top: 0;
+	    width: 100%!important;
+	    overflow: hidden;
+	}
+	.vertical-menu-list .megamenu{
+		padding: 15px;
+	}
+	.box-vertical-megamenus .vertical-menu-list li{
+		width: 100%;
+		display: block;
+		overflow: hidden;
 	}
 }
