@@ -359,6 +359,7 @@ a img.aligncenter {
 .nav-links{
     width: 100%;
     float: left;
+    margin-bottom: 20px;
 }
 .nav-links>a,
 .nav-links>span{
@@ -434,4 +435,42 @@ a img.aligncenter {
 
 .logged-in .nav-ontop{
     top: 32px;
+}
+
+
+/** 404 **/
+.error-404.not-found{
+    text-align: center;
+    padding-bottom: 40px;
+}
+.error-404.not-found .page-header,
+.error-404.not-found .page-title,
+.no-results.not-found .page-header{
+    border: none;
+}
+.no-results.not-found .page-header{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.error-404.not-found .search-form span.screen-reader-text,
+.no-results.not-found .search-form span.screen-reader-text{
+    display: none;
+}
+.error-404.not-found .search-form .search-submit,
+.no-results.not-found .search-form .search-submit{
+    height: 38px;
+    background: #666;
+    border: none;
+    padding: 0 10px;
+    color: #fff;
+}
+.error-404.not-found label,
+.no-results.not-found label{
+    font-weight: normal;
+}
+
+/** SEARCH PAGE **/
+.search-page .post-item:first-child{
+    padding-top: 0;
+    border-top: 0;
 }

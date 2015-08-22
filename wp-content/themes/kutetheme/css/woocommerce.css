@@ -133,6 +133,7 @@
 	margin-top: 0;
 	float: right;
 	margin-left: 15px;
+	margin-top: 20px;
 }
 .view-product-list .pagination .screen-reader-text{
 	display: none;
@@ -141,6 +142,7 @@
 	width: auto;
 	margin: 0;
 	border: 1px solid #eaeaea;
+	margin-top: 20px;
 }
 .woocommerce .woocommerce-ordering:before{
 	content: "\f15d";
