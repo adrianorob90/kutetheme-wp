@@ -41,6 +41,21 @@ function kt_register_demo_metabox() {
 		'id'   => $prefix . 'page_breadcrumb',
 		'type' => 'checkbox',
 	) );
+	/**
+	 * Service option
+	 */
+	$service_option = new_cmb2_box( array(
+		'id'            => $prefix . 'service_metabox',
+		'title'         => __( 'Service Option', THEME_LANG ),
+		'object_types'  => array( 'service' )
+	) );
+
+	$service_option->add_field( array(
+		'name' => __( 'Sub Title', THEME_LANG ),
+		'desc' => __( 'Sub title', THEME_LANG ),
+		'id'   => $prefix . 'service_sub_title',
+		'type' => 'text',
+	) );
     
 }
 
@@ -72,6 +87,7 @@ function kt_register_about_page_metabox() {
 		'id'   => $prefix . 'text',
 		'type' => 'text',
 	) );
+
 
 }
 

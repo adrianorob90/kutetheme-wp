@@ -38,7 +38,7 @@ if (is_admin()){
    * Add fields to your meta box
    */
   //Image field
-  $my_meta->addImage($prefix.'category_slider',array('name'=> __('Category slider', THEME_LANG ),'multiple'=>'multiFile'));
+  $my_meta->addImage($prefix.'category_slider',array('name'=> __('Category slider', 'kutetheme' ),'multiple'=>'multiFile'));
   
   //Finish Meta Box Decleration
   $my_meta->Finish();

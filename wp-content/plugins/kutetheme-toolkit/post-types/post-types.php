@@ -35,7 +35,8 @@ function register_post_type_init() {
         'query_var'           => true,
         'can_export'          => true,
         'rewrite'             => false,
-        'capability_type'     => 'page'
+        'capability_type'     => 'page',
+        'menu_icon' => 'dashicons-welcome-widgets-menus',
     );
 
     register_post_type( 'megamenu', $args );
@@ -62,13 +63,46 @@ function register_post_type_init() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'show_in_nav_menus'  => false,
-        'supports' 	         => array( 'title', 'thumbnail', 'editor' ),
+        'supports'           => array( 'title', 'thumbnail', 'editor' ),
         'rewrite'            => false,
         'query_var'          => false,
         'publicly_queryable' => false,
-        'public'             => true
+        'public'             => true,
+        'menu_icon' => 'dashicons-editor-quote',
+        
 
     );
     register_post_type( 'testimonial', $args );
+
+    /* Services */
+    $labels = array(
+        'name'               => __( 'Services', THEME_LANG ),
+        'singular_name'      => __( 'Services', THEME_LANG),
+        'add_new'            => __( 'Add New', THEME_LANG ),
+        'all_items'          => __( 'Services', THEME_LANG ),
+        'add_new_item'       => __( 'Add New Service', THEME_LANG ),
+        'edit_item'          => __( 'Edit Service', THEME_LANG ),
+        'new_item'           => __( 'New Service', THEME_LANG ),
+        'view_item'          => __( 'View Service', THEME_LANG ),
+        'search_items'       => __( 'Search Service', THEME_LANG ),
+        'not_found'          => __( 'No Service found', THEME_LANG ),
+        'not_found_in_trash' => __( 'No Service found in Trash', THEME_LANG ),
+        'parent_item_colon'  => __( 'Parent Service', THEME_LANG ),
+        'menu_name'          => __( 'Services', THEME_LANG )
+    );
+    $args = array(
+        'labels'             => $labels,
+        'hierarchical'       => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => false,
+        'supports'           => array( 'title', 'thumbnail', 'editor' ),
+        'rewrite'            => false,
+        'query_var'          => false,
+        'publicly_queryable' => false,
+        'public'             => true,
+        'menu_icon' => 'dashicons-update'
+    );
+    register_post_type( 'service', $args );
 }
 add_action( 'init', 'register_post_type_init' );
