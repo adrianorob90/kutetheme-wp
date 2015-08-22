@@ -16,7 +16,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
 ?>
-	<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
+	<div id="primary" class="content-area service-single <?php echo esc_attr($sidebar_are_layout);?>">
 		<main id="main" class="site-main" role="main">
         <div class="container">
             <?php breadcrumb_trail();?>
@@ -27,14 +27,9 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                     ?>
                     <header>
     					<h1 class="page-title screen-reader-text"><?php the_title(); ?></h1>
+
     				</header>
                     <article class="entry-detail">
-                        <?php get_template_part( 'templates/post','meta' );?>
-                        <?php if( has_post_thumbnail() ){ ?>
-                            <div class="entry-photo">
-                                <?php the_post_thumbnail('blog-post'); ?>
-                            </div>
-                        <?php } ?>
                         <div class="content-text entry-content clearfix">
                             <?php the_content(); ?>
                             <?php

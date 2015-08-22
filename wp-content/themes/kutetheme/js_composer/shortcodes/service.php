@@ -82,7 +82,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                         <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
                         <?php if(isset($meta['_kt_page_service_sub_title'])):?>
                         <span><?php echo $meta['_kt_page_service_sub_title'][0];?></span>
-                    <?php endif;?>
+                        <?php endif;?>
                     </div>
                 </div>
                 <?php

@@ -13,7 +13,9 @@ Text Domain: kutetheme
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
-
+.site-content{
+    overflow-x:hidden; 
+}
 .sticky {
     
 }
@@ -473,4 +475,13 @@ a img.aligncenter {
 .search-page .post-item:first-child{
     padding-top: 0;
     border-top: 0;
+}
+
+.service-single .entry-detail{
+    margin-top: 30px;
+}
+.service-single .page-title .subtitle{
+    font-size: 14px;
+    text-transform: none;
+    line-height: 20px;
 }

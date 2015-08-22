@@ -2179,6 +2179,8 @@ span.notify-right{
 }
 .latest-deals-product .product-list li .colreduce-percentage .colreduce-lable{
     display: inline-block;
+    width: 100%;
+    float: left;
 }
 
 .product-list li .group-price .product-new{

@@ -97,12 +97,13 @@ function register_post_type_init() {
         'show_in_menu'       => true,
         'show_in_nav_menus'  => false,
         'supports'           => array( 'title', 'thumbnail', 'editor' ),
-        'rewrite'            => false,
-        'query_var'          => false,
-        'publicly_queryable' => false,
+        'rewrite'            => true,
+        'query_var'          => true,
+        'publicly_queryable' => true,
         'public'             => true,
         'menu_icon' => 'dashicons-update'
     );
     register_post_type( 'service', $args );
+    flush_rewrite_rules();
 }
 add_action( 'init', 'register_post_type_init' );

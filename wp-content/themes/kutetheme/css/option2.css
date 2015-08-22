@@ -225,7 +225,7 @@
 .option2 .box-vertical-megamenus .vertical-menu-list {
 	padding-top: 4px;
 }
-.option2 .box-vertical-megamenus .vertical-menu-list li{
+.option2 .box-vertical-megamenus .vertical-menu-list>li{
 	border: none;
 	padding: 0 20px;
 }
@@ -294,7 +294,9 @@
   background: #958457;
   color: #fff;
 }
-
+.option2 .megamenu .widget .widgettitle:before{
+	background-color: #958457;
+}
 .option2 .content-page {
 	background: #eaeaea;
 }
@@ -1201,11 +1203,14 @@
 		background: none;
 	}
 	.option2 #main-menu .navbar-header{
-		background: #f96d10;
+		background: #958457;
 	}
 	.option2 #main-menu .navbar-default .navbar-nav>li>a{
 		background: none;
 		color: #999;
+	}
+	.option2 .box-vertical-megamenus .vertical-menu-list>li:hover{
+		background: transparent;
 	}
 	.option2 #main-menu li.dropdown>a:after {
 	  position: absolute;

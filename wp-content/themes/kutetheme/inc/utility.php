@@ -239,6 +239,23 @@ if( ! function_exists('kt_cart_button')){
                     <span class="notify notify-right"><?php echo $cart_count; ?></span>
                     <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
                 </div>
+            <?php elseif ($kt_used_header==2):?>
+                <div class="col-xs-5 col-sm-2 group-button-header">
+                <?php
+                    if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
+                    <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", THEME_LANG) ?><span>(<?php echo $count ?>)</span></a>
+                <?php endif; ?>
+                <?php if( function_exists( 'YITH_WCWL' ) ):
+                    $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
+                    <a class="btn-heart" href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', THEME_LANG) ?></a>
+                <?php endif; ?>
+                <div class="btn-cart" id="cart-block">
+                    <a title="My cart" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', THEME_LANG );?></a>
+                    <span class="notify notify-right"><?php echo $cart_count; ?></span>
+                    <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
+                </div>
+
+            </div>
             <?php else: ?>
                 <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-2">
                     <a class="cart-link" href="<?php echo $check_out_url; ?>">
@@ -256,6 +273,7 @@ if( ! function_exists('kt_cart_button')){
         return $result;
     }
 }
+
 if( ! function_exists('kt_get_cart_content')){
     function kt_get_cart_content($cart_content, $cart_total, $check_out_url, $option = 1){
         ob_start();
