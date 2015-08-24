@@ -51,6 +51,7 @@ body{
     font-family: 'Arial', sans-serif;
     font-size: 14px;
     overflow-x:hidden; 
+    -webkit-font-smoothing: antialiased;
 }
 body.is-ontop{
     margin-top: 53px;
@@ -1957,6 +1958,7 @@ span.notify-right{
 }
 .product-list li:hover .add-to-cart{
     bottom: 0;
+    margin-bottom: 0;
 }
 .product-list li:hover .quick-view a.heart{
     margin-left: 0;
@@ -2067,6 +2069,7 @@ span.notify-right{
     left: 0;
     right: 0;
     bottom: -50px;
+    margin-bottom: -50px;
     width: 100%;
     background-color: rgba(0,0,0,0.4);
     color: #fff;

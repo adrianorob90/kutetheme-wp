@@ -528,20 +528,20 @@
 	margin-bottom: 20px;
 	font-weight: bold;
 }
-.related.products ul.woof-products,
-.upsells.products ul.woof-products {
+.related.products ul.product-list,
+.upsells.products ul.product-list {
 	margin-top: 0;
 }
-.related.products ul.woof-products li.product,
-.upsells.products ul.woof-products li.product{
+.related.products ul.product-list li.product,
+.upsells.products ul.product-list li.product{
 	width: 100%;
 	margin-top: 0;
 }
 
-.related.products .owl-controls .owl-prev, 
-.related.products .owl-controls .owl-next,
-.upsells.products .owl-controls .owl-prev, 
-.upsells.products .owl-controls .owl-next{
+.related.products .product-list .owl-prev, 
+.related.products .product-list .owl-next,
+.upsells.products .product-list .owl-prev, 
+.upsells.products .product-list .owl-next{
 	top: -30px;
 }
 .related.products .owl-controls .owl-prev,

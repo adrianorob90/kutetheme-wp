@@ -701,6 +701,17 @@
 		display: block;
 		overflow: hidden;
 	}
+	.sidebar{
+		margin-top: 30px;
+	}
+	.nav-links{
+		margin-bottom: 0;
+	}
+	.woocommerce div.product .product_title{
+		margin-top: 20px;
+		width: 100%;
+		float: left;
+	}
 }
 /*--------------------
 [5. Styles for devices(<=480px)]
@@ -895,9 +906,6 @@
 	}
 	.category-featured>.nav-menu>.container{
 		padding-left: 0;
-	}
-	.category-slider{
-		margin-top: 30px;
 	}
 	.category-slider .owl-controls .owl-prev, 
 	.category-slider .owl-controls .owl-next {
@@ -1216,5 +1224,19 @@
 		width: 100%;
 		display: block;
 		overflow: hidden;
+	}
+	.sidebar{
+		margin-top: 30px;
+	}
+	.nav-links{
+		margin-bottom: 0;
+	}
+	.woocommerce div.product .product_title{
+		margin-top: 20px;
+		width: 100%;
+		float: left;
+	}
+	.woocommerce .woocommerce-ordering{
+		margin-top: 0;
 	}
 }
