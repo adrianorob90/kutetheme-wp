@@ -345,12 +345,12 @@ class KT_Admin {
             'options' => array(
     			'1' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v1.jpg',
     			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v2.jpg',
-    			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
-                '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
-                '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
-                '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v1.jpg',
-                '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
-                '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+    			// '3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+       //          '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+       //          '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+       //          '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v1.jpg',
+       //          '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+       //          '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
     		),
     	) );
         

@@ -15,8 +15,6 @@
     	<header class="entry-header">
     		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
     	</header><!-- .entry-header -->
-    <?php else: ?>
-        <div class="divider main-bg"></div>
     <?php endif; ?>
 	<div class="entry-content">
 		<?php the_content(); ?>

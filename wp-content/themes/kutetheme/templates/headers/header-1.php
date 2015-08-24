@@ -95,5 +95,8 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="divider main-bg"></div>
+    </div>
 </div>
 <!-- end header -->
