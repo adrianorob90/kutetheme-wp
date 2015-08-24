@@ -3,136 +3,136 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-     "name" => __( "Blogs", THEME_LANG),
+     "name" => __( "Blogs", 'kutetheme'),
      "base" => "blog_carousel",
-     "category" => __('Kute Theme', THEME_LANG ),
-     "description" => __( "Display blog by carousel", THEME_LANG),
+     "category" => __('Kute Theme', 'kutetheme' ),
+     "description" => __( "Display blog by carousel", 'kutetheme'),
      "params" => array(
         array(
             "type" => "textfield",
-            "heading" => __( "Title", THEME_LANG ),
+            "heading" => __( "Title", 'kutetheme' ),
             "param_name" => "title",
             "admin_label" => true,
         ),
         array(
             "type" => "textfield",
-            "heading" => __( "Number Post", THEME_LANG ),
+            "heading" => __( "Number Post", 'kutetheme' ),
             "param_name" => "per_page",
             'std' => 10,
             "admin_label" => false,
-            'description' => __( 'Number post in a slide', THEME_LANG )
+            'description' => __( 'Number post in a slide', 'kutetheme' )
         ),
         array(
             "type" => "dropdown",
-        	"heading" => __("Order by", THEME_LANG),
+        	"heading" => __("Order by", 'kutetheme'),
         	"param_name" => "orderby",
         	"value" => array(
-        		__('None', THEME_LANG)     => 'none',
-                __('ID', THEME_LANG)       => 'ID',
-                __('Author', THEME_LANG)   => 'author',
-                __('Name', THEME_LANG)     => 'name',
-                __('Date', THEME_LANG)     => 'date',
-                __('Modified', THEME_LANG) => 'modified',
-                __('Rand', THEME_LANG)     => 'rand',
+        		__('None', 'kutetheme')     => 'none',
+                __('ID', 'kutetheme')       => 'ID',
+                __('Author', 'kutetheme')   => 'author',
+                __('Name', 'kutetheme')     => 'name',
+                __('Date', 'kutetheme')     => 'date',
+                __('Modified', 'kutetheme') => 'modified',
+                __('Rand', 'kutetheme')     => 'rand',
         	),
             'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",THEME_LANG),
+        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
         ),
         array(
             "type" => "dropdown",
-        	"heading" => __("Order", THEME_LANG),
+        	"heading" => __("Order", 'kutetheme'),
         	"param_name" => "order",
         	"value" => array(
-                __('ASC', THEME_LANG) => 'ASC',
-                __('DESC', THEME_LANG) => 'DESC'
+                __('ASC', 'kutetheme') => 'ASC',
+                __('DESC', 'kutetheme') => 'DESC'
         	),
             'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",THEME_LANG)
+        	"description" => __("Designates the ascending or descending order.",'kutetheme')
         ),
         // Carousel
         array(
 			'type' => 'checkbox',
-			'heading' => __( 'AutoPlay', THEME_LANG ),
+			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', THEME_LANG ) => 'true' ),
-            'group' => __( 'Carousel settings', THEME_LANG ),
+			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false
 		),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Navigation', THEME_LANG ),
+            'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", THEME_LANG ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", THEME_LANG ),
-            'group' => __( 'Carousel settings', THEME_LANG ),
+			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
+            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Loop', THEME_LANG ),
+            'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", THEME_LANG ) => 'false' ),
-            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", THEME_LANG ),
-            'group' => __( 'Carousel settings', THEME_LANG ),
+			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
 			"type" => "kt_number",
-			"heading" => __("Slide Speed", THEME_LANG),
+			"heading" => __("Slide Speed", 'kutetheme'),
 			"param_name" => "slidespeed",
 			"value" => "250",
-            "suffix" => __("milliseconds", THEME_LANG),
-			"description" => __('Slide speed in milliseconds', THEME_LANG),
-            'group' => __( 'Carousel settings', THEME_LANG ),
+            "suffix" => __("milliseconds", 'kutetheme'),
+			"description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("Margin", THEME_LANG),
+			"heading" => __("Margin", 'kutetheme'),
 			"param_name" => "margin",
 			"value" => "0",
-            "suffix" => __("px", THEME_LANG),
-			"description" => __('Distance( or space) between 2 item', THEME_LANG),
-            'group' => __( 'Carousel settings', THEME_LANG ),
+            "suffix" => __("px", 'kutetheme'),
+			"description" => __('Distance( or space) between 2 item', 'kutetheme'),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', THEME_LANG ),
+            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", THEME_LANG ) => 'false' ),
-            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", THEME_LANG ),
-            'group' => __( 'Carousel responsive', THEME_LANG ),
+			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
+            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on destop (Screen resolution of device >= 992px )", THEME_LANG),
+			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
 			"param_name" => "items_destop",
 			"value" => "4",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The number of items on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG ),
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of items on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", THEME_LANG),
+			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
 			"param_name" => "items_tablet",
 			"value" => "2",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The number of items on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG ),
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of items on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on mobile (Screen resolution of device < 768px)", THEME_LANG),
+			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
 			"param_name" => "items_mobile",
 			"value" => "1",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The numbers of item on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG ),
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The numbers of item on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
@@ -250,14 +250,14 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 <span class="date"><?php the_date();?></span>
                                 <span class="comment">
                                     <?php comments_number(
-                                        __('0 Comment', THEME_LANG),
-                                        __('1 Comment', THEME_LANG),
-                                        __('% Comments', THEME_LANG)
+                                        __('0 Comment', 'kutetheme'),
+                                        __('1 Comment', 'kutetheme'),
+                                        __('% Comments', 'kutetheme')
                                     ); ?>
                                 </span>
                             </div>
                             <div class="readmore">
-                                <a target="_blank" href="<?php the_permalink() ?>"><?php _e( 'Readmore', THEME_LANG ) ?></a>
+                                <a target="_blank" href="<?php the_permalink() ?>"><?php _e( 'Readmore', 'kutetheme' ) ?></a>
                             </div>
                         </div>
                     </li>

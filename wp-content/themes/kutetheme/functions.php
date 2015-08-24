@@ -31,12 +31,6 @@
  * @since Kute Theme 1.0
  */
  
- /**
-  * Define constant
-  * */
-if( ! defined('THEME_LANG')){
-    define('THEME_LANG', 'kutetheme');
-}
 define( 'THEME_DIR', trailingslashit(get_template_directory()));
 define( 'THEME_URL', trailingslashit(get_template_directory_uri()));
 
@@ -69,7 +63,7 @@ function kutetheme_setup() {
 	 * If you're building a theme based on kutetheme, use a find and replace
 	 * to change 'kutetheme' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( THEME_LANG, THEME_DIR . '/languages' );
+	load_theme_textdomain( 'kutetheme', THEME_DIR . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -93,8 +87,8 @@ function kutetheme_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu',      THEME_LANG ),
-		'vertical'  => __( 'Vertical Menu', THEME_LANG ),
+		'primary' => __( 'Primary Menu',      'kutetheme' ),
+		'vertical'  => __( 'Vertical Menu', 'kutetheme' ),
 	) );
 
 	/*
@@ -160,18 +154,18 @@ add_action( 'after_setup_theme', 'kutetheme_setup' );
  */
 function kt_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Widget Area', THEME_LANG ),
+		'name'          => __( 'Widget Area', 'kutetheme' ),
 		'id'            => 'sidebar-primary',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', THEME_LANG ),
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'kutetheme' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
-		'name'          => __( 'Widget Shop Area', THEME_LANG ),
+		'name'          => __( 'Widget Shop Area', 'kutetheme' ),
 		'id'            => 'sidebar-shop',
-		'description'   => __( 'Add widgets here to appear in your sidebar.', THEME_LANG ),
+		'description'   => __( 'Add widgets here to appear in your sidebar.', 'kutetheme' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h2 class="widget-title">',
@@ -179,9 +173,9 @@ function kt_widgets_init() {
 	) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 1', THEME_LANG),
+        'name'          => __( 'Footer Menu 1', 'kutetheme'),
         'id'            => 'footer-menu-1',
-        'description'   => __( 'The footer menu 1 widget area', THEME_LANG),
+        'description'   => __( 'The footer menu 1 widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title introduce-title">',
@@ -189,9 +183,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 2', THEME_LANG),
+        'name'          => __( 'Footer Menu 2', 'kutetheme'),
         'id'            => 'footer-menu-2',
-        'description'   => __( 'The footer menu 2 widget area', THEME_LANG),
+        'description'   => __( 'The footer menu 2 widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title introduce-title">',
@@ -199,9 +193,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu 3', THEME_LANG),
+        'name'          => __( 'Footer Menu 3', 'kutetheme'),
         'id'            => 'footer-menu-3',
-        'description'   => __( 'The footer menu 3 widget area', THEME_LANG),
+        'description'   => __( 'The footer menu 3 widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title introduce-title">',
@@ -209,9 +203,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Social', THEME_LANG),
+        'name'          => __( 'Footer Social', 'kutetheme'),
         'id'            => 'footer-social',
-        'description'   => __( 'The footer social widget area', THEME_LANG),
+        'description'   => __( 'The footer social widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-social %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title introduce-title">',
@@ -219,9 +213,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Payment', THEME_LANG),
+        'name'          => __( 'Footer Payment', 'kutetheme'),
         'id'            => 'footer-payment',
-        'description'   => __( 'The footer payment widget area', THEME_LANG),
+        'description'   => __( 'The footer payment widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-payment %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title introduce-title">',
@@ -229,9 +223,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Bottom', THEME_LANG),
+        'name'          => __( 'Footer Bottom', 'kutetheme'),
         'id'            => 'footer-bottom',
-        'description'   => __( 'The footer bottom widget area', THEME_LANG),
+        'description'   => __( 'The footer bottom widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container widget-footer-bottom %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -239,9 +233,9 @@ function kt_widgets_init() {
     ) );
     
     register_sidebar( array(
-        'name'          => __( 'Footer Menu Bottom', THEME_LANG),
+        'name'          => __( 'Footer Menu Bottom', 'kutetheme'),
         'id'            => 'footer-menu-bottom',
-        'description'   => __( 'The footer menu bottom widget area', THEME_LANG),
+        'description'   => __( 'The footer menu bottom widget area', 'kutetheme'),
         'before_widget' => '<div id="%1$s" class="widget-container footer-menu-list widget-footer-menu-bottom %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title">',
@@ -269,7 +263,7 @@ function kt_fonts_url() {
 	 * Translators: If there are characters in your language that are not supported
 	 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
 	 */
-	if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', THEME_LANG ) ) {
+	if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', 'kutetheme' ) ) {
 		$fonts[] = 'Noto Sans:400italic,700italic,400,700';
 	}
 
@@ -277,7 +271,7 @@ function kt_fonts_url() {
 	 * Translators: If there are characters in your language that are not supported
 	 * by Noto Serif, translate this to 'off'. Do not translate into your own language.
 	 */
-	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', THEME_LANG ) ) {
+	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'kutetheme' ) ) {
 		$fonts[] = 'Noto Serif:400italic,700italic,400,700';
 	}
 
@@ -285,7 +279,7 @@ function kt_fonts_url() {
 	 * Translators: If there are characters in your language that are not supported
 	 * by Inconsolata, translate this to 'off'. Do not translate into your own language.
 	 */
-	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', THEME_LANG ) ) {
+	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'kutetheme' ) ) {
 		$fonts[] = 'Inconsolata:400,700';
 	}
 
@@ -293,7 +287,7 @@ function kt_fonts_url() {
 	 * Translators: To add an additional character subset specific to your language,
 	 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
 	 */
-	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', THEME_LANG );
+	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'kutetheme' );
 
 	if ( 'cyrillic' == $subset ) {
 		$subsets .= ',cyrillic,cyrillic-ext';
@@ -411,8 +405,8 @@ function kt_scripts() {
 	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.0', true );
     
 	wp_localize_script( 'kt-script', 'screenReaderText', array(
-		'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', THEME_LANG ) . '</span>',
-		'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', THEME_LANG ) . '</span>',
+		'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', 'kutetheme' ) . '</span>',
+		'collapse' => '<span class="screen-reader-text">' . __( 'collapse child menu', 'kutetheme' ) . '</span>',
         
         'ajaxurl' => admin_url( 'admin-ajax.php' ),
         'security' => wp_create_nonce( 'screenReaderText' ),
@@ -432,7 +426,7 @@ if( ! function_exists("kt_enqueue_script")){
         wp_enqueue_script( 'kt_image', THEME_URL.'js/kt_image.js', array('jquery'), '1.0.0', true);
         
         wp_localize_script( 'kt_image', 'kt_image_lange', array(
-            'frameTitle' => __( 'Select your image', THEME_LANG )
+            'frameTitle' => __( 'Select your image', 'kutetheme' )
         ));                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
         
         wp_register_script( 'framework-core', THEME_URL.'js/framework-core.js', array('jquery', 'jquery-ui-tabs'), '1.0.0', true);
@@ -590,8 +584,8 @@ function kt_display_result_post(){
     global $wp_query;
     ?>
     <span class="results-count">
-        <?php _e('Showing', THEME_LANG );?> 
-        <?php $num = $wp_query->post_count; if (have_posts()) : echo $num; endif;?> <?php _e('of', THEME_LANG );?> <?php echo $wp_query->found_posts;?> <?php _e('posts', THEME_LANG );?> </h2>
+        <?php _e('Showing', 'kutetheme' );?> 
+        <?php $num = $wp_query->post_count; if (have_posts()) : echo $num; endif;?> <?php _e('of', 'kutetheme' );?> <?php echo $wp_query->found_posts;?> <?php _e('posts', 'kutetheme' );?> </h2>
     </span>
     <?php
 }

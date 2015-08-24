@@ -13,8 +13,8 @@ class Widget_KT_Product_Special extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_product_special', 
-                        'description' => __( 'Box special product on sidebar.', THEME_LANG ) );
-		parent::__construct( 'widget_kt_product_special', __('KT Special Product', THEME_LANG ), $widget_ops );
+                        'description' => __( 'Box special product on sidebar.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_product_special', __('KT Special Product', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -81,25 +81,25 @@ class Widget_KT_Product_Special extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name('orderby'); ?>">
-                <option value="id" <?php selected( 'id', $orderby ) ?>><?php _e( 'ID', THEME_LANG ) ?></option>
-            	<option class="author" value="author" <?php selected( 'author', $orderby ) ?>><?php _e( 'Author', THEME_LANG ) ?></option>
-            	<option class="name" value="name" <?php selected( 'name', $orderby ) ?>><?php _e( 'Name', THEME_LANG ) ?></option>
-            	<option class="date" value="date" <?php selected( 'date', $orderby ) ?>><?php _e( 'Date', THEME_LANG ) ?></option>
-            	<option class="modified" value="modified" <?php selected( 'modified', $orderby ) ?>><?php _e( 'Modified', THEME_LANG ) ?></option>
-            	<option class="rand" value="rand" <?php selected( 'rand', $orderby ) ?>><?php _e( 'Rand', THEME_LANG ) ?></option>
+                <option value="id" <?php selected( 'id', $orderby ) ?>><?php _e( 'ID', 'kutetheme' ) ?></option>
+            	<option class="author" value="author" <?php selected( 'author', $orderby ) ?>><?php _e( 'Author', 'kutetheme' ) ?></option>
+            	<option class="name" value="name" <?php selected( 'name', $orderby ) ?>><?php _e( 'Name', 'kutetheme' ) ?></option>
+            	<option class="date" value="date" <?php selected( 'date', $orderby ) ?>><?php _e( 'Date', 'kutetheme' ) ?></option>
+            	<option class="modified" value="modified" <?php selected( 'modified', $orderby ) ?>><?php _e( 'Modified', 'kutetheme' ) ?></option>
+            	<option class="rand" value="rand" <?php selected( 'rand', $orderby ) ?>><?php _e( 'Rand', 'kutetheme' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name('order'); ?>">
-                <option value="desc" <?php selected( 'desc', $order ) ?>><?php _e( 'DESC', THEME_LANG ) ?></option>
-            	<option value="asc" <?php selected( 'asc', $order ) ?>><?php _e( 'ASC', THEME_LANG ) ?></option>
+                <option value="desc" <?php selected( 'desc', $order ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
+            	<option value="asc" <?php selected( 'asc', $order ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
             </select>
         </p>
         

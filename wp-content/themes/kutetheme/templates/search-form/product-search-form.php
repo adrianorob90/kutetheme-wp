@@ -1,6 +1,6 @@
 <?php 
 $args = array(
-  'show_option_none' => __( 'All Categries', THEME_LANG ),
+  'show_option_none' => __( 'All Categries', 'kutetheme' ),
   'taxonomy'    => 'product_cat',
   'class'      => 'select-category',
   'hide_empty'  => 1,
@@ -16,7 +16,7 @@ $args = array(
       </div>
       <div class="form-group input-serach">
         <input type="hidden" name="post_type" value="product" />
-        <input type="text" name="s"  placeholder="<?php _e('Keyword here...', THEME_LANG) ?>" />
+        <input type="text" name="s"  placeholder="<?php _e('Keyword here...', 'kutetheme') ?>" />
       </div>
       <button type="submit" class="pull-right btn-search"></button>
 </form>

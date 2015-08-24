@@ -23,7 +23,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
             <div class="row">
                 <div class="<?php echo esc_attr($col_class);?>">
                     <?php if ( have_posts() ) : ?>
-            			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', THEME_LANG ), get_search_query() ); ?></h1>
+            			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'kutetheme' ), get_search_query() ); ?></h1>
                         <div class="blog-posts">
             			<?php
             			// Start the loop.

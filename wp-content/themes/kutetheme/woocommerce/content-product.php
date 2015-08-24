@@ -97,7 +97,7 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
         		?>
             </div>
             <div class="info-orther">
-                <p class="availability"><?php _e('Availability', THEME_LANG );?>: <span class="instock"><?php _e('In stock', THEME_LANG );?></span><span class="outofstock"><?php _e('Out of stock', THEME_LANG );?></span></p>
+                <p class="availability"><?php _e('Availability', 'kutetheme' );?>: <span class="instock"><?php _e('In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e('Out of stock', 'kutetheme' );?></span></p>
                 <div class="product-desc"><?php echo apply_filters( 'woocommerce_short_description',$post->post_excerpt ) ?></div>
             </div>
         </div>

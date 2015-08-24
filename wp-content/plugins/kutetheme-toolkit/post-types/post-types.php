@@ -5,24 +5,24 @@ if ( !defined('ABSPATH')) exit;
 function register_post_type_init() {
     
     $labels = array(
-        'name'          => __( 'Mega Menu', THEME_LANG ),
-        'singular_name' => __( 'Mega Menu Item', THEME_LANG ),
-        'add_new'       => __( 'Add New', THEME_LANG ),
-        'add_new_item'  => __( 'Add New Menu Item', THEME_LANG ),
-        'edit_item'     => __( 'Edit Menu Item', THEME_LANG ),
-        'new_item'      => __( 'New Menu Item', THEME_LANG ),
-        'view_item'     => __( 'View Menu Item', THEME_LANG ),
-        'search_items'  => __( 'Search Menu Items', THEME_LANG ),
-        'not_found'     => __( 'No Menu Items found', THEME_LANG ),
-        'not_found_in_trash' => __( 'No Menu Items found in Trash', THEME_LANG ),
-        'parent_item_colon'  => __( 'Parent Menu Item:', THEME_LANG ),
-        'menu_name'     => __( 'Mega Menu', THEME_LANG ),
+        'name'          => __( 'Mega Menu', 'kutetheme' ),
+        'singular_name' => __( 'Mega Menu Item', 'kutetheme' ),
+        'add_new'       => __( 'Add New', 'kutetheme' ),
+        'add_new_item'  => __( 'Add New Menu Item', 'kutetheme' ),
+        'edit_item'     => __( 'Edit Menu Item', 'kutetheme' ),
+        'new_item'      => __( 'New Menu Item', 'kutetheme' ),
+        'view_item'     => __( 'View Menu Item', 'kutetheme' ),
+        'search_items'  => __( 'Search Menu Items', 'kutetheme' ),
+        'not_found'     => __( 'No Menu Items found', 'kutetheme' ),
+        'not_found_in_trash' => __( 'No Menu Items found in Trash', 'kutetheme' ),
+        'parent_item_colon'  => __( 'Parent Menu Item:', 'kutetheme' ),
+        'menu_name'     => __( 'Mega Menu', 'kutetheme' ),
     );
 
     $args = array(
         'labels' => $labels,
         'hierarchical'        => false,
-        'description'         => __('Mega Menus.', THEME_LANG),
+        'description'         => __('Mega Menus.', 'kutetheme'),
         'supports'            => array( 'title', 'editor' ),
         'public'              => true,
         'show_ui'             => true,
@@ -43,19 +43,19 @@ function register_post_type_init() {
     
     /* Testimonials */
     $labels = array(
-        'name'               => __( 'Testimonial', THEME_LANG ),
-        'singular_name'      => __( 'Testimonial', THEME_LANG),
-        'add_new'            => __( 'Add New', THEME_LANG ),
-        'all_items'          => __( 'Testimonials', THEME_LANG ),
-        'add_new_item'       => __( 'Add New Testimonial', THEME_LANG ),
-        'edit_item'          => __( 'Edit Testimonial', THEME_LANG ),
-        'new_item'           => __( 'New Testimonial', THEME_LANG ),
-        'view_item'          => __( 'View Testimonial', THEME_LANG ),
-        'search_items'       => __( 'Search Testimonial', THEME_LANG ),
-        'not_found'          => __( 'No Testimonial found', THEME_LANG ),
-        'not_found_in_trash' => __( 'No Testimonial found in Trash', THEME_LANG ),
-        'parent_item_colon'  => __( 'Parent Testimonial', THEME_LANG ),
-        'menu_name'          => __( 'Testimonials', THEME_LANG )
+        'name'               => __( 'Testimonial', 'kutetheme' ),
+        'singular_name'      => __( 'Testimonial', 'kutetheme'),
+        'add_new'            => __( 'Add New', 'kutetheme' ),
+        'all_items'          => __( 'Testimonials', 'kutetheme' ),
+        'add_new_item'       => __( 'Add New Testimonial', 'kutetheme' ),
+        'edit_item'          => __( 'Edit Testimonial', 'kutetheme' ),
+        'new_item'           => __( 'New Testimonial', 'kutetheme' ),
+        'view_item'          => __( 'View Testimonial', 'kutetheme' ),
+        'search_items'       => __( 'Search Testimonial', 'kutetheme' ),
+        'not_found'          => __( 'No Testimonial found', 'kutetheme' ),
+        'not_found_in_trash' => __( 'No Testimonial found in Trash', 'kutetheme' ),
+        'parent_item_colon'  => __( 'Parent Testimonial', 'kutetheme' ),
+        'menu_name'          => __( 'Testimonials', 'kutetheme' )
     );
     $args = array(
         'labels'             => $labels,
@@ -76,19 +76,19 @@ function register_post_type_init() {
 
     /* Services */
     $labels = array(
-        'name'               => __( 'Services', THEME_LANG ),
-        'singular_name'      => __( 'Services', THEME_LANG),
-        'add_new'            => __( 'Add New', THEME_LANG ),
-        'all_items'          => __( 'Services', THEME_LANG ),
-        'add_new_item'       => __( 'Add New Service', THEME_LANG ),
-        'edit_item'          => __( 'Edit Service', THEME_LANG ),
-        'new_item'           => __( 'New Service', THEME_LANG ),
-        'view_item'          => __( 'View Service', THEME_LANG ),
-        'search_items'       => __( 'Search Service', THEME_LANG ),
-        'not_found'          => __( 'No Service found', THEME_LANG ),
-        'not_found_in_trash' => __( 'No Service found in Trash', THEME_LANG ),
-        'parent_item_colon'  => __( 'Parent Service', THEME_LANG ),
-        'menu_name'          => __( 'Services', THEME_LANG )
+        'name'               => __( 'Services', 'kutetheme' ),
+        'singular_name'      => __( 'Services', 'kutetheme'),
+        'add_new'            => __( 'Add New', 'kutetheme' ),
+        'all_items'          => __( 'Services', 'kutetheme' ),
+        'add_new_item'       => __( 'Add New Service', 'kutetheme' ),
+        'edit_item'          => __( 'Edit Service', 'kutetheme' ),
+        'new_item'           => __( 'New Service', 'kutetheme' ),
+        'view_item'          => __( 'View Service', 'kutetheme' ),
+        'search_items'       => __( 'Search Service', 'kutetheme' ),
+        'not_found'          => __( 'No Service found', 'kutetheme' ),
+        'not_found_in_trash' => __( 'No Service found in Trash', 'kutetheme' ),
+        'parent_item_colon'  => __( 'Parent Service', 'kutetheme' ),
+        'menu_name'          => __( 'Services', 'kutetheme' )
     );
     $args = array(
         'labels'             => $labels,

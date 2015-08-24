@@ -33,8 +33,8 @@ endif;
                         $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
                     endif; 
                     ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', THEME_LANG );  ?>" src="<?php echo $att_icon_url; ?>" />
-                    <?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', THEME_LANG );  ?>
+                    <img alt="<?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo $att_icon_url; ?>" />
+                    <?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
             </div>
             <span class="toggle-menu"></span>
@@ -49,20 +49,20 @@ endif;
                             if(isset( $tab['header'] ) && $tab['header']){
                                 echo $tab['header'];
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'new-arrival' ){
-                                _e( 'New Arrivals', THEME_LANG );
+                                _e( 'New Arrivals', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'most-review' ){
-                                _e( 'Most Reviews', THEME_LANG );
+                                _e( 'Most Reviews', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'on-sales' ){
-                                _e( 'On sales', THEME_LANG );
+                                _e( 'On sales', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'category' && isset( $tab['section_cate'] ) && intval( $tab['section_cate'] ) >0 ){
                                 $child_term = get_term( $tab['section_cate'], 'product_cat' );
                                 if($child_term){
                                     echo $child_term->name;
                                 }else{
-                                    _e( "Best Sellers", THEME_LANG );
+                                    _e( "Best Sellers", 'kutetheme' );
                                 }
                             }else{
-                               _e( "Best Sellers", THEME_LANG );
+                               _e( "Best Sellers", 'kutetheme' );
                             }
                              ?>
                         </a>

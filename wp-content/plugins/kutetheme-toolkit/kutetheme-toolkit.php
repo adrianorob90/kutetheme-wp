@@ -9,9 +9,8 @@
  */
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
-if( ! defined('THEME_LANG')){
-    define('THEME_LANG', 'kutetheme');
-}
+
+
 //Mailchimp
 require_once KUTETHEME_PLUGIN_PATH.'mailchimp/mailchimp.php';
 

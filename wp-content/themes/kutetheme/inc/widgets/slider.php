@@ -13,8 +13,8 @@ class Widget_KT_Slider extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_slider', 
-                        'description' => __( 'Slider Carousel on sidebar.', THEME_LANG ) );
-		parent::__construct( 'widget_kt_slider', __('KT Slider', THEME_LANG ), $widget_ops );
+                        'description' => __( 'Slider Carousel on sidebar.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_slider', __('KT Slider', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -106,14 +106,14 @@ class Widget_KT_Slider extends WP_Widget {
 	?>
         <p>
 			<input class="checkbox" <?php checked( $autoplay, true ); ?> type="checkbox" id="<?php echo $this->get_field_id('autoplay'); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>" /> 
-            <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e('Auto next slide', THEME_LANG) ?></label>
+            <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e('Auto next slide', 'kutetheme') ?></label>
 		</p>
         <p>
 			<input class="checkbox" <?php checked( $loop, true ); ?> type="checkbox" id="<?php echo $this->get_field_id('loop'); ?>" name="<?php echo $this->get_field_name('loop'); ?>" /> 
-            <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e('Inifnity loop. Duplicate last and first items to get loop illusion.', THEME_LANG) ?></label>
+            <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e('Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme') ?></label>
 		</p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'slidespeed' ); ?>"><?php _e( 'Slide Speed:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'slidespeed' ); ?>"><?php _e( 'Slide Speed:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'slidespeed' ); ?>" name="<?php echo $this->get_field_name('slidespeed'); ?>" type="text" value="<?php echo esc_attr($slidespeed); ?>" />
         </p>
         <div class="content multi-item">
@@ -140,25 +140,25 @@ class Widget_KT_Slider extends WP_Widget {
                         <div class="item widget-content">
                             <span class="remove">X</span>
                             <p>
-                                <label><?php _e( 'Title:', THEME_LANG); ?></label> 
+                                <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                                 <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_attr($title); ?>" />
                             </p>
                             <p style="text-align: center;">
-                                <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', THEME_LANG) ?>" />
+                                <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', 'kutetheme') ?>" />
                                 <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image'); ?>" name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" value="<?php echo esc_attr( $image ); ?>" />
                             </p>
                             <p class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
                                 <img src="<?php echo esc_url( $img_preview ); ?>" alt="" class="kt_image_preview_img" />
                             </p>
                             <p>
-                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', THEME_LANG); ?></label> 
+                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
                                 <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_attr( $link ); ?>" />
                             </p>
                             <p>
-                    			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                    			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                     			<select name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat">
-                    				<option value="_blank"<?php selected( $target, '_blank' ); ?>><?php _e('Open New Window', THEME_LANG); ?></option>
-                    				<option value="_self"<?php selected( $target, '_self' ); ?>><?php _e('Stay in Window', THEME_LANG); ?></option>
+                    				<option value="_blank"<?php selected( $target, '_blank' ); ?>><?php _e('Open New Window', 'kutetheme'); ?></option>
+                    				<option value="_self"<?php selected( $target, '_self' ); ?>><?php _e('Stay in Window', 'kutetheme'); ?></option>
                     			</select>
                     		</p>
                         </div>
@@ -167,25 +167,25 @@ class Widget_KT_Slider extends WP_Widget {
                     <div class="item widget-content">
                         <span class="remove">X</span>
                         <p>
-                            <label><?php _e( 'Title:', THEME_LANG); ?></label> 
+                            <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>[]" type="text" />
                         </p>
                         <p style="text-align: center;">
-                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', THEME_LANG ) ?>" />
+                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', 'kutetheme' ) ?>" />
                             <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image' ); ?>" name="<?php echo $this->get_field_name( 'image' ); ?>[]" type="hidden"  />
                         </p>
                         <p class="kt_image_preview">
                             <img src="" alt="" class="kt_image_preview_img" />
                         </p>
                         <p>
-                        <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', THEME_LANG); ?></label> 
+                        <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" />
                         </p>
                         <p>
-                			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                 			<select name="<?php echo $this->get_field_name( 'target' ); ?>[]" id="<?php echo $this->get_field_id( 'target' ); ?>" class="widefat">
-                				<option value="_blank"><?php _e( 'Open New Window', THEME_LANG ); ?></option>
-                				<option value="_self"><?php _e( 'Stay in Window', THEME_LANG ); ?></option>
+                				<option value="_blank"><?php _e( 'Open New Window', 'kutetheme' ); ?></option>
+                				<option value="_self"><?php _e( 'Stay in Window', 'kutetheme' ); ?></option>
                 			</select>
                 		</p>
                     </div>
@@ -197,12 +197,12 @@ class Widget_KT_Slider extends WP_Widget {
                     <div class="item widget-content">
                         <span class="remove">X</span>
                         <p>
-                            <label><?php _e('Title:', THEME_LANG); ?></label> 
+                            <label><?php _e('Title:', 'kutetheme'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo $this->get_field_id('title'); ?>" tpl-name="<?php echo $this->get_field_name('title'); ?>[]" type="text" />
                         </p>
                         
                         <p style="text-align: center;">
-                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', THEME_LANG) ?>" />
+                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', 'kutetheme') ?>" />
                             <input class="widefat widget-name kt_image_attachment" id="<?php echo $this->get_field_id('image'); ?>" tpl-name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" />
                         </p>
                         
@@ -211,15 +211,15 @@ class Widget_KT_Slider extends WP_Widget {
                         </p>
                         
                         <p>
-                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', THEME_LANG); ?></label> 
+                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', 'kutetheme'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo $this->get_field_id('link'); ?>" tpl-name="<?php echo $this->get_field_name('link'); ?>[]" type="text" />
                         </p>
                         
                         <p>
-                			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                 			<select tpl-name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat widget-name">
-                				<option value="_blank"><?php _e('Open New Window', THEME_LANG); ?></option>
-                				<option value="_self"><?php _e('Stay in Window', THEME_LANG); ?></option>
+                				<option value="_blank"><?php _e('Open New Window', 'kutetheme'); ?></option>
+                				<option value="_self"><?php _e('Stay in Window', 'kutetheme'); ?></option>
                 			</select>
                 		</p>
                     </div>

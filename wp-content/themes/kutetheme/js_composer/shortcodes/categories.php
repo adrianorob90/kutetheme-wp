@@ -5,46 +5,46 @@ if ( !defined('ABSPATH')) exit;
 if( class_exists( 'WPBakeryShortCode' ) ){
     // Setting shortcode service
     vc_map( array(
-        "name" => __( "Categories", THEME_LANG),
+        "name" => __( "Categories", 'kutetheme'),
         "base" => "categories",
-        "category" => __('Kute Theme', THEME_LANG ),
-        "description" => __( "Display box categories same hot categories in option 1", THEME_LANG),
+        "category" => __('Kute Theme', 'kutetheme' ),
+        "description" => __( "Display box categories same hot categories in option 1", 'kutetheme'),
         "params" => array(
             array(
                 "type" => "textfield",
-                "heading" => __( "Title", THEME_LANG ),
+                "heading" => __( "Title", 'kutetheme' ),
                 "param_name" => "title",
                 "admin_label" => true,
-                'description' => __( 'Display title box categories', THEME_LANG )
+                'description' => __( 'Display title box categories', 'kutetheme' )
             ),array(
                 "type" => "kt_taxonomy",
                 "taxonomy" => "product_cat",
                 "class" => "",
-                "heading" => __("Category", THEME_LANG),
+                "heading" => __("Category", 'kutetheme'),
                 "param_name" => "taxonomy",
                 "value" => '',
                 'parent' => 0,
                 'multiple' => true,
-                'placeholder' => _('Choose categoy'),
-                "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", THEME_LANG)
+                'placeholder' => __('Choose categoy', 'kutetheme'),
+                "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
             ),
             array(
                 "type" => "kt_number",
-                "heading" => __( "Number", THEME_LANG ),
+                "heading" => __( "Number", 'kutetheme' ),
                 "param_name" => "number",
                 "value" => "3",
                 "admin_label" => true,
-                'description' => __( 'The `number` field is used to display the number of subcategory.', THEME_LANG )
+                'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' )
             ),array(
     			'type' => 'dropdown',
     			'heading' => __( 'Order by', 'js_composer' ),
     			'param_name' => 'orderby',
     			'value' => array(
-                    __( 'Random', THEME_LANG )  => 'rand',
-    				__( 'Date', THEME_LANG )    => 'date',
-    				__( 'ID', THEME_LANG )      => 'id',
-                    __( 'Author', THEME_LANG )  => 'author',
-                    __( 'Title', THEME_LANG )   => 'title',
+                    __( 'Random', 'kutetheme' )  => 'rand',
+    				__( 'Date', 'kutetheme' )    => 'date',
+    				__( 'ID', 'kutetheme' )      => 'id',
+                    __( 'Author', 'kutetheme' )  => 'author',
+                    __( 'Title', 'kutetheme' )   => 'title',
     			)
     		),
             array(
@@ -69,37 +69,37 @@ if( class_exists( 'WPBakeryShortCode' ) ){
             
             array(
     			"type" => "kt_number",
-    			"heading" => __("The items on destop (Screen resolution of device >= 992px )", THEME_LANG),
+    			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
     			"param_name" => "items_destop",
     			"value" => "4",
-                "suffix" => __("item", THEME_LANG),
-    			"description" => __('The number of items on destop', THEME_LANG),
-                'group' => __( 'Carousel responsive', THEME_LANG ),
+                "suffix" => __("item", 'kutetheme'),
+    			"description" => __('The number of items on destop', 'kutetheme'),
+                'group' => __( 'Carousel responsive', 'kutetheme' ),
                 'admin_label' => false,
     	  	),
             array(
     			"type" => "kt_number",
-    			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", THEME_LANG),
+    			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
     			"param_name" => "items_tablet",
     			"value" => "2",
-                "suffix" => __("item", THEME_LANG),
-    			"description" => __('The number of items on destop', THEME_LANG),
-                'group' => __( 'Carousel responsive', THEME_LANG ),
+                "suffix" => __("item", 'kutetheme'),
+    			"description" => __('The number of items on destop', 'kutetheme'),
+                'group' => __( 'Carousel responsive', 'kutetheme' ),
                 'admin_label' => false,
     	  	),
             array(
     			"type" => "kt_number",
-    			"heading" => __("The items on mobile (Screen resolution of device < 768px)", THEME_LANG),
+    			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
     			"param_name" => "items_mobile",
     			"value" => "1",
-                "suffix" => __("item", THEME_LANG),
-    			"description" => __('The numbers of item on destop', THEME_LANG),
-                'group' => __( 'Carousel responsive', THEME_LANG ),
+                "suffix" => __("item", 'kutetheme'),
+    			"description" => __('The numbers of item on destop', 'kutetheme'),
+                'group' => __( 'Carousel responsive', 'kutetheme' ),
                 'admin_label' => false,
     	  	),
             array(
                 "type" => "textfield",
-                "heading" => __( "Extra class name", THEME_LANG ),
+                "heading" => __( "Extra class name", 'kutetheme' ),
                 "param_name" => "el_class",
                 "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             ),array(
@@ -203,7 +203,7 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                                 <div class="cate-name-wrap">
                                     <p class="cate-name"><?php echo esc_attr($term->name) ?></p>
                                 </div>
-                                <a href="<?php echo $term_link; ?>" class="cate-link link-active" data-ac="flipInX" ><span><?php _e('shop now', THEME_LANG) ?></span></a>
+                                <a href="<?php echo $term_link; ?>" class="cate-link link-active" data-ac="flipInX" ><span><?php _e('shop now', 'kutetheme') ?></span></a>
                             </div>
                             <div class="div-2" >
                                 <a href="<?php echo $term_link; ?>">

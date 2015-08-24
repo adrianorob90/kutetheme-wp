@@ -5,22 +5,22 @@ if ( !defined('ABSPATH')) exit;
 if( class_exists( 'WPBakeryShortCode' ) ){
     // Setting shortcode service
     vc_map( array(
-        "name" => __( "Service", THEME_LANG),
+        "name" => __( "Service", 'kutetheme'),
         "base" => "service",
-        "category" => __('Kute Theme', THEME_LANG ),
-        "description" => __( "Display service box", THEME_LANG),
+        "category" => __('Kute Theme', 'kutetheme' ),
+        "description" => __( "Display service box", 'kutetheme'),
         "params" => array(
             array(
                 "type"        => "textfield",
-                "heading"     => __( "Items", THEME_LANG ),
+                "heading"     => __( "Items", 'kutetheme' ),
                 "param_name"  => "items",
                 "admin_label" => false,
                 "std"         => 4,
-                'description' => __( 'Display of items', THEME_LANG )
+                'description' => __( 'Display of items', 'kutetheme' )
             ),
             array(
                 "type"        => "dropdown",
-                "heading"     => __("Display Style"),
+                "heading"     => __("Display Style", 'kutetheme'),
                 "param_name"  => "style",
                 "admin_label" => true,
                 "value"       => array(
@@ -28,7 +28,7 @@ if( class_exists( 'WPBakeryShortCode' ) ){
                     'Style 2'   => '2',
                 ),
                 "std"         => 1,
-                "description" => __("The description")
+                "description" => __("The description", 'kutetheme')
             ),
             array(
                 'type' => 'css_editor',
@@ -39,7 +39,7 @@ if( class_exists( 'WPBakeryShortCode' ) ){
             ),
             array(
                 "type" => "textfield",
-                "heading" => __( "Extra class name", THEME_LANG ),
+                "heading" => __( "Extra class name", 'kutetheme' ),
                 "param_name" => "el_class",
                 "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             )

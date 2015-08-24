@@ -24,20 +24,20 @@ function kt_register_demo_metabox() {
 	 */
 	$page_option = new_cmb2_box( array(
 		'id'            => $prefix . 'metabox',
-		'title'         => __( 'Page Option', THEME_LANG ),
+		'title'         => __( 'Page Option', 'kutetheme' ),
 		'object_types'  => array( 'page', )
 	) );
 
     $page_option->add_field( array(
-		'name' => __( 'Page Title', THEME_LANG ),
-		'desc' => __( 'Show page title', THEME_LANG ),
+		'name' => __( 'Page Title', 'kutetheme' ),
+		'desc' => __( 'Show page title', 'kutetheme' ),
 		'id'   => $prefix . 'page_title',
 		'type' => 'checkbox',
 	) );
     
     $page_option->add_field( array(
-		'name' => __( 'Page breadcrumb', THEME_LANG ),
-		'desc' => __( 'Show page breadcrumb.', THEME_LANG ),
+		'name' => __( 'Page breadcrumb', 'kutetheme' ),
+		'desc' => __( 'Show page breadcrumb.', 'kutetheme' ),
 		'id'   => $prefix . 'page_breadcrumb',
 		'type' => 'checkbox',
 	) );
@@ -46,19 +46,19 @@ function kt_register_demo_metabox() {
 	 */
 	$service_option = new_cmb2_box( array(
 		'id'            => $prefix . 'service_metabox',
-		'title'         => __( 'Service Option', THEME_LANG ),
+		'title'         => __( 'Service Option', 'kutetheme' ),
 		'object_types'  => array( 'service' )
 	) );
 
 	$service_option->add_field( array(
-		'name' => __( 'Sub Title', THEME_LANG ),
-		'desc' => __( 'Sub title', THEME_LANG ),
+		'name' => __( 'Sub Title', 'kutetheme' ),
+		'desc' => __( 'Sub title', 'kutetheme' ),
 		'id'   => $prefix . 'service_sub_title',
 		'type' => 'text',
 	) );
 	$service_option->add_field( array(
-		'name' => __( 'Description', THEME_LANG ),
-		'desc' => __( 'Short description', THEME_LANG ),
+		'name' => __( 'Description', 'kutetheme' ),
+		'desc' => __( 'Short description', 'kutetheme' ),
 		'id'   => $prefix . 'service_desc',
 		'type' => 'text',
 	) );
@@ -79,7 +79,7 @@ function kt_register_about_page_metabox() {
 	 */
 	$cmb_about_page = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'About Page Metabox', THEME_LANG ),
+		'title'        => __( 'About Page Metabox', 'kutetheme' ),
 		'object_types' => array( 'page', ), // Post type
 		'context'      => 'normal',
 		'priority'     => 'high',
@@ -88,8 +88,8 @@ function kt_register_about_page_metabox() {
 	) );
 
 	$cmb_about_page->add_field( array(
-		'name' => __( 'Test Text', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'Test Text', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'text',
 		'type' => 'text',
 	) );
@@ -111,7 +111,7 @@ function kt_register_repeatable_group_field_metabox() {
 	 */
 	$cmb_group = new_cmb2_box( array(
 		'id'           => $prefix . 'metabox',
-		'title'        => __( 'Repeating Field Group', THEME_LANG ),
+		'title'        => __( 'Repeating Field Group', 'kutetheme' ),
 		'object_types' => array( 'page', ),
 	) );
 
@@ -119,11 +119,11 @@ function kt_register_repeatable_group_field_metabox() {
 	$group_field_id = $cmb_group->add_field( array(
 		'id'          => $prefix . 'demo',
 		'type'        => 'group',
-		'description' => __( 'Generates reusable form entries', THEME_LANG ),
+		'description' => __( 'Generates reusable form entries', 'kutetheme' ),
 		'options'     => array(
-			'group_title'   => __( 'Entry {#}', THEME_LANG ), // {#} gets replaced by row number
-			'add_button'    => __( 'Add Another Entry', THEME_LANG ),
-			'remove_button' => __( 'Remove Entry', THEME_LANG ),
+			'group_title'   => __( 'Entry {#}', 'kutetheme' ), // {#} gets replaced by row number
+			'add_button'    => __( 'Add Another Entry', 'kutetheme' ),
+			'remove_button' => __( 'Remove Entry', 'kutetheme' ),
 			'sortable'      => true, // beta
 		),
 	) );
@@ -135,27 +135,27 @@ function kt_register_repeatable_group_field_metabox() {
 	 * The parent field's id needs to be passed as the first argument.
 	 */
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'       => __( 'Entry Title', THEME_LANG ),
+		'name'       => __( 'Entry Title', 'kutetheme' ),
 		'id'         => 'title',
 		'type'       => 'text',
 		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name'        => __( 'Description', THEME_LANG ),
-		'description' => __( 'Write a short description for this entry', THEME_LANG ),
+		'name'        => __( 'Description', 'kutetheme' ),
+		'description' => __( 'Write a short description for this entry', 'kutetheme' ),
 		'id'          => 'description',
 		'type'        => 'textarea_small',
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name' => __( 'Entry Image', THEME_LANG ),
+		'name' => __( 'Entry Image', 'kutetheme' ),
 		'id'   => 'image',
 		'type' => 'file',
 	) );
 
 	$cmb_group->add_group_field( $group_field_id, array(
-		'name' => __( 'Image Caption', THEME_LANG ),
+		'name' => __( 'Image Caption', 'kutetheme' ),
 		'id'   => 'image_caption',
 		'type' => 'text',
 	) );
@@ -176,58 +176,58 @@ function kt_register_user_profile_metabox() {
 	 */
 	$cmb_user = new_cmb2_box( array(
 		'id'               => $prefix . 'edit',
-		'title'            => __( 'User Profile Metabox', THEME_LANG ),
+		'title'            => __( 'User Profile Metabox', 'kutetheme' ),
 		'object_types'     => array( 'user' ), // Tells CMB2 to use user_meta vs post_meta
 		'show_names'       => true,
 		'new_user_section' => 'add-new-user', // where form will show on new user page. 'add-existing-user' is only other valid option.
 	) );
 
 	$cmb_user->add_field( array(
-		'name'     => __( 'Extra Info', THEME_LANG ),
-		'desc'     => __( 'field description (optional)', THEME_LANG ),
+		'name'     => __( 'Extra Info', 'kutetheme' ),
+		'desc'     => __( 'field description (optional)', 'kutetheme' ),
 		'id'       => $prefix . 'extra_info',
 		'type'     => 'title',
 		'on_front' => false,
 	) );
 
 	$cmb_user->add_field( array(
-		'name'    => __( 'Avatar', THEME_LANG ),
-		'desc'    => __( 'field description (optional)', THEME_LANG ),
+		'name'    => __( 'Avatar', 'kutetheme' ),
+		'desc'    => __( 'field description (optional)', 'kutetheme' ),
 		'id'      => $prefix . 'avatar',
 		'type'    => 'file',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Facebook URL', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'Facebook URL', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'facebookurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Twitter URL', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'Twitter URL', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'twitterurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Google+ URL', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'Google+ URL', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'googleplusurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'Linkedin URL', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'Linkedin URL', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'linkedinurl',
 		'type' => 'text_url',
 	) );
 
 	$cmb_user->add_field( array(
-		'name' => __( 'User Field', THEME_LANG ),
-		'desc' => __( 'field description (optional)', THEME_LANG ),
+		'name' => __( 'User Field', 'kutetheme' ),
+		'desc' => __( 'field description (optional)', 'kutetheme' ),
 		'id'   => $prefix . 'user_text_field',
 		'type' => 'text',
 	) );
@@ -249,7 +249,7 @@ function kt_register_theme_options_metabox() {
 	 */
 	$cmb_options = new_cmb2_box( array(
 		'id'      => $option_key . 'page',
-		'title'   => __( 'Theme Options Metabox', THEME_LANG ),
+		'title'   => __( 'Theme Options Metabox', 'kutetheme' ),
 		'hookup'  => false, // Do not need the normal user/post hookup
 		'show_on' => array(
 			// These are important, don't remove
@@ -264,8 +264,8 @@ function kt_register_theme_options_metabox() {
 	 * Prefix is not needed.
 	 */
 	$cmb_options->add_field( array(
-		'name'    => __( 'Site Background Color', THEME_LANG ),
-		'desc'    => __( 'field description (optional)', THEME_LANG ),
+		'name'    => __( 'Site Background Color', 'kutetheme' ),
+		'desc'    => __( 'field description (optional)', 'kutetheme' ),
 		'id'      => 'bg_color',
 		'type'    => 'colorpicker',
 		'default' => '#ffffff',

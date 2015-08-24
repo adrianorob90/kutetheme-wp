@@ -13,8 +13,8 @@ class Widget_KT_ListProduct extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_list_products', 
-                        'description' => __( 'Showing list product.', THEME_LANG ) );
-		parent::__construct('widget_kt_list_products', __('KT List Product', THEME_LANG ), $widget_ops);
+                        'description' => __( 'Showing list product.', 'kutetheme' ) );
+		parent::__construct('widget_kt_list_products', __('KT List Product', 'kutetheme' ), $widget_ops);
 	}
 
 	public function widget( $args, $instance ) {
@@ -104,12 +104,12 @@ class Widget_KT_ListProduct extends WP_Widget {
 
 	public function form( $instance ) {
 	   $terms = get_terms( 'product_cat' , array('hide_empty' => false)); 
-       $title = ( isset($instance['title']) && $instance['title'] ) ? $instance['title'] : __('New Products', THEME_LANG);
+       $title = ( isset($instance['title']) && $instance['title'] ) ? $instance['title'] : __('New Products', 'kutetheme');
        $cat = ( isset($instance['cate']) && intval($instance['cate']) > 0 ) ? intval($instance['cate']) : 0;
        $number = ( isset($instance['number']) && intval($instance['number']) > 1 && intval($instance['number']) < 21) ? intval($instance['number']) : 2;
 	   $types = ( isset($instance['types']) && $instance['types'] && in_array($instance['types'], array('sale', 'arrival', 'review'))) ? $instance['types'] : 'sale';
        $args = array(
-              'show_option_none' => __( 'All Categries', THEME_LANG ),
+              'show_option_none' => __( 'All Categries', 'kutetheme' ),
               'taxonomy'    => 'product_cat',
               'id'          => $this->get_field_id('cat'),
               'class'      => 'widefat',
@@ -122,11 +122,11 @@ class Widget_KT_ListProduct extends WP_Widget {
         );
 		?>
         <p>
-            <label><?php _e('Title:', THEME_LANG); ?></label> 
+            <label><?php _e('Title:', 'kutetheme'); ?></label> 
             <input value="<?php echo $title ?>" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" />
         </p>
         <p>
-			<label><?php _e( 'Type:', THEME_LANG); ?></label>
+			<label><?php _e( 'Type:', 'kutetheme'); ?></label>
 			<select name="<?php echo $this->get_field_name('types'); ?>" id="<?php echo $this->get_field_id('types'); ?>" class="widefat">
                 <option <?php selected('sale', $types) ?> value='sale'>Best saler</option>
                 <option <?php selected('arrival', $types) ?> value='arrival'>New arrivals</option>
@@ -134,11 +134,11 @@ class Widget_KT_ListProduct extends WP_Widget {
 			</select>
 		</p>
         <p>
-			<label><?php _e( 'Category:', THEME_LANG); ?></label>
+			<label><?php _e( 'Category:', 'kutetheme'); ?></label>
 			<?php wp_dropdown_categories( $args ); ?>
 		</p>
         <p>
-            <label><?php _e( 'Number:', THEME_LANG); ?></label>
+            <label><?php _e( 'Number:', 'kutetheme'); ?></label>
             
             <select name="<?php echo $this->get_field_name('number'); ?>" id="<?php echo $this->get_field_id('number'); ?>" class="widefat">
                 <option <?php selected(2, $number) ?> value='2'>2</option>

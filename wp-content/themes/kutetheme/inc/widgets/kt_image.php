@@ -13,8 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WP_Widget_KT_Image extends WP_Widget {
 
 	public function __construct() {
-		$widget_ops = array( 'classname' => 'widget_kt_image', 'description' => __( 'Image for widget.', THEME_LANG ) );
-		parent::__construct( 'kt_image', __('KT image', THEME_LANG ), $widget_ops);
+		$widget_ops = array( 'classname' => 'widget_kt_image', 'description' => __( 'Image for widget.', 'kutetheme' ) );
+		parent::__construct( 'kt_image', __('KT image', 'kutetheme' ), $widget_ops);
 	}
 
 	public function widget( $args, $instance ) {
@@ -64,25 +64,25 @@ class WP_Widget_KT_Image extends WP_Widget {
 	?>
         
         <p style="text-align: center;">
-            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', THEME_LANG) ?>" />
+            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', 'kutetheme') ?>" />
             <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'attachment' ); ?>" name="<?php echo $this->get_field_name( 'attachment' ); ?>" type="hidden" value="<?php echo esc_attr( $attachment ); ?>" />
         </p>
         <p class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
             <img src="<?php echo esc_url( $img_preview ); ?>" alt="" class="kt_image_preview_img" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'capture' ); ?>"><?php _e( 'Capture:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'capture' ); ?>"><?php _e( 'Capture:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'capture' ); ?>" name="<?php echo $this->get_field_name( 'capture' ); ?>" type="text" value="<?php echo esc_attr( $capture ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_attr( $link ); ?>" />
         </p>
         <p>
-			<label for="<?php echo $this->get_field_id( 'target' ); ?>"><?php _e( 'Target:', THEME_LANG); ?></label>
+			<label for="<?php echo $this->get_field_id( 'target' ); ?>"><?php _e( 'Target:', 'kutetheme'); ?></label>
 			<select name="<?php echo $this->get_field_name( 'target' ); ?>" id="<?php echo $this->get_field_id('target'); ?>" class="widefat">
-				<option value="_self"<?php selected( $instance[ 'target' ], '_self' ); ?>><?php _e( 'Stay in Window', THEME_LANG ); ?></option>
-				<option value="_blank"<?php selected( $instance[ 'target' ], '_blank' ); ?>><?php _e( 'Open New Window', THEME_LANG ); ?></option>
+				<option value="_self"<?php selected( $instance[ 'target' ], '_self' ); ?>><?php _e( 'Stay in Window', 'kutetheme' ); ?></option>
+				<option value="_blank"<?php selected( $instance[ 'target' ], '_blank' ); ?>><?php _e( 'Open New Window', 'kutetheme' ); ?></option>
 			</select>
 		</p>
     <?php

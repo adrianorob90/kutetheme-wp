@@ -33,7 +33,7 @@ if( ! function_exists( 'kt_get_hotline' )){
                 <?php if( $email ) : ?>
                     <a href="mailto:<?php echo $email;?>" title="<?php echo $email;?>">
                         <img alt="<?php echo $email;?>" src="<?php $email_icon = THEME_URL.'/images/email.png'; echo $email_icon; ?>" />
-                        <span><?php _e('Contact us today !', THEME_LANG) ?></span>
+                        <span><?php _e('Contact us today !', 'kutetheme') ?></span>
                     </a>
                 <?php endif; ?>
             </div>
@@ -153,28 +153,28 @@ if( ! function_exists('kt_menu_my_account')){
         <div id="user-info-top" class="user-info pull-right">
             <div class="dropdown">
                 <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                    <span><?php _e( 'My Account', THEME_LANG ) ?></span>
+                    <span><?php _e( 'My Account', 'kutetheme' ) ?></span>
                 </a>
                 <ul class="dropdown-menu mega_dropdown" role="menu">
                     <?php if ( ! is_user_logged_in() ):  ?>
                         <?php if( kt_is_wc() ): $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
-                            <li><a href="<?php echo $url; ?>" title="<?php _e( 'Login / Register', THEME_LANG ) ?>"><?php _e('Login / Register', THEME_LANG); ?></a></li>
+                            <li><a href="<?php echo $url; ?>" title="<?php _e( 'Login / Register', 'kutetheme' ) ?>"><?php _e('Login / Register', 'kutetheme'); ?></a></li>
                         <?php else: 
                             $url = wp_login_url();
                             $url_register = wp_registration_url(); ?>
-                            <li><a href="<?php echo $url; ?>" title="<?php _e('Login', THEME_LANG) ?>"><?php _e('Login', THEME_LANG) ?></a></li>
-                            <li><a href="<?php echo $url_register; ?>" title="<?php _e('Register', THEME_LANG); ?>"><?php _e('Register', THEME_LANG); ?></a></li>
+                            <li><a href="<?php echo $url; ?>" title="<?php _e('Login', 'kutetheme') ?>"><?php _e('Login', 'kutetheme') ?></a></li>
+                            <li><a href="<?php echo $url_register; ?>" title="<?php _e('Register', 'kutetheme'); ?>"><?php _e('Register', 'kutetheme'); ?></a></li>
                         <?php endif; ?>
                     <?php else: ?>
-                        <li><a href="<?php echo wp_logout_url(); ?>"><?php _e('Logout', THEME_LANG) ?></a></li>
+                        <li><a href="<?php echo wp_logout_url(); ?>"><?php _e('Logout', 'kutetheme') ?></a></li>
                         <?php if( function_exists( 'YITH_WCWL' ) ):
                             $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                            <li><a href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', THEME_LANG) ?></a></li>
+                            <li><a href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a></li>
                         <?php endif; ?>
                     <?php endif; ?>
                     <?php 
                     if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                        <li><a href="#" class="yith-woocompare-open"><?php _e( "Compare", THEME_LANG) ?><span>(<?php echo $count ?>)</span></a></li>
+                        <li><a href="#" class="yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -235,7 +235,7 @@ if( ! function_exists('kt_cart_button')){
         
             <?php if( $kt_used_header == 6 ): ?>
                 <div class="btn-cart" id="cart-block">
-                    <a href="<?php echo $check_out_url; ?>" title="<?php _e( 'My cart', THEME_LANG ) ?>" ><?php _e( 'Cart', THEME_LANG ) ?></a>
+                    <a href="<?php echo $check_out_url; ?>" title="<?php _e( 'My cart', 'kutetheme' ) ?>" ><?php _e( 'Cart', 'kutetheme' ) ?></a>
                     <span class="notify notify-right"><?php echo $cart_count; ?></span>
                     <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
                 </div>
@@ -243,14 +243,14 @@ if( ! function_exists('kt_cart_button')){
                 <div class="col-xs-5 col-sm-2 group-button-header">
                 <?php
                     if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                    <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", THEME_LANG) ?><span>(<?php echo $count ?>)</span></a>
+                    <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>
                 <?php endif; ?>
                 <?php if( function_exists( 'YITH_WCWL' ) ):
                     $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                    <a class="btn-heart" href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', THEME_LANG) ?></a>
+                    <a class="btn-heart" href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
                 <?php endif; ?>
                 <div class="btn-cart" id="cart-block">
-                    <a title="My cart" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', THEME_LANG );?></a>
+                    <a title="My cart" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
                     <span class="notify notify-right"><?php echo $cart_count; ?></span>
                     <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
                 </div>
@@ -259,8 +259,8 @@ if( ! function_exists('kt_cart_button')){
             <?php else: ?>
                 <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-2">
                     <a class="cart-link" href="<?php echo $check_out_url; ?>">
-                        <span class="title"><?php _e('Shopping cart', THEME_LANG) ?></span>
-                        <span class="total"><?php echo sprintf (_n( '%d item', '%d items', $cart_count ), $cart_count ); ?> <?php _e('-', THEME_LANG) ?> <?php echo $cart_total ?></span>
+                        <span class="title"><?php _e('Shopping cart', 'kutetheme') ?></span>
+                        <span class="total"><?php echo sprintf (_n( '%d item', '%d items', $cart_count ), $cart_count, 'kutetheme' ); ?> <?php _e('-', 'kutetheme') ?> <?php echo $cart_total ?></span>
                         <span class="notify notify-left"><?php echo $cart_count; ?></span>
                     </a>
                     <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
@@ -280,7 +280,7 @@ if( ! function_exists('kt_get_cart_content')){
         if ( sizeof($cart_content) > 0 ): ?>
             <div class="cart-block">
                 <div class="cart-block-content">
-                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ), THEME_LANG ); ?></h5>
+                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
                     <div class="cart-block-list">
                         <ul>
                             <?php foreach ( $cart_content as $cart_item_key => $cart_item ):
@@ -297,7 +297,7 @@ if( ! function_exists('kt_get_cart_content')){
                                             <div class="p-right">
                                                 <p class="p-name"><?php echo $bag_product->get_title(); ?></p>
                                                 <p class="p-rice"><?php echo wc_price($bag_product->get_price()) ?></p>
-                                                <p><?php _e('Qty', THEME_LANG) ?><?php _e(':', THEME_LANG) ?> <?php echo $cart_item['quantity']; ?></p>
+                                                <p><?php _e('Qty', 'kutetheme') ?><?php _e(':', 'kutetheme') ?> <?php echo $cart_item['quantity']; ?></p>
                                             </div>
                                         </li>
                                     <?php endif; ?>
@@ -305,13 +305,13 @@ if( ! function_exists('kt_get_cart_content')){
                         </ul>
                     </div>
                     <div class="toal-cart">
-                        <span><?php _e('Total', THEME_LANG) ?></span>
+                        <span><?php _e('Total', 'kutetheme') ?></span>
                         <span class="toal-price pull-right">
                             <?php echo $cart_total; ?>
                         </span>
                     </div>
                     <div class="cart-buttons">
-                        <a href="<?php echo $check_out_url; ?>" class="btn-check-out"><?php echo _e('Checkout', THEME_LANG ); ?></a>
+                        <a href="<?php echo $check_out_url; ?>" class="btn-check-out"><?php echo _e('Checkout', 'kutetheme' ); ?></a>
                     </div>
                 </div>
             </div>
@@ -384,8 +384,8 @@ function kt_paging_nav() {
 	}
     
     echo get_the_posts_pagination( array(
-        'prev_text'          => __( '<i class="fa fa-angle-double-left"></i> Previous', THEME_LANG ),
-        'next_text'          => __( 'Next <i class="fa fa-angle-double-right"></i>', THEME_LANG ),
+        'prev_text'          => __( '<i class="fa fa-angle-double-left"></i> Previous', 'kutetheme' ),
+        'next_text'          => __( 'Next <i class="fa fa-angle-double-right"></i>', 'kutetheme' ),
         'screen_reader_text' => ' ',
         'before_page_number' => '',
     ) );
@@ -404,14 +404,14 @@ if ( ! function_exists( 'kt_comment_nav' ) ) :
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
             ?>
             <nav class="navigation comment-navigation" role="navigation">
-                <h2 class="screen-reader-text"><?php _e( 'Comment navigation', THEME_LANG ); ?></h2>
+                <h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'kutetheme' ); ?></h2>
                 <div class="nav-links">
                     <?php
-                    if ( $prev_link = get_previous_comments_link( __( 'Older Comments', THEME_LANG ) ) ) :
+                    if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'kutetheme' ) ) ) :
                         printf( '<div class="nav-previous">%s</div>', $prev_link );
                     endif;
 
-                    if ( $next_link = get_next_comments_link( __( 'Newer Comments',  THEME_LANG ) ) ) :
+                    if ( $next_link = get_next_comments_link( __( 'Newer Comments',  'kutetheme' ) ) ) :
                         printf( '<div class="nav-next">%s</div>', $next_link );
                     endif;
                     ?>
@@ -447,15 +447,15 @@ function kt_comments($comment, $args, $depth) {
             <div class="comment-entry entry-content">
                 <?php comment_text() ?>
                 <?php if ( $comment->comment_approved == '0' ) : ?>
-                    <em><?php _e( 'Your comment is awaiting moderation.', THEME_LANG ) ?></em>
+                    <em><?php _e( 'Your comment is awaiting moderation.', 'kutetheme' ) ?></em>
                 <?php endif; ?>
             </div>
             <div class="comment-actions clear">
-                <?php edit_comment_link( __( '(Edit)', THEME_LANG),'  ','' ) ?>
+                <?php edit_comment_link( __( '(Edit)', 'kutetheme'),'  ','' ) ?>
                 <?php comment_reply_link( array_merge( $args,
                     array('depth' => $depth,
                         'max_depth' => $args['max_depth'],
-                        'reply_text' =>'<i class="fa fa-share"></i> '.__('Reply')
+                        'reply_text' =>'<i class="fa fa-share"></i> '.__('Reply', 'kutetheme')
                     ))) ?>
             </div>
         </div>

@@ -5,65 +5,65 @@ if ( !defined('ABSPATH')) exit;
 
 if( ! kt_is_wc() ) return;
 vc_map( array(
-    "name" => __( "List Products", THEME_LANG),
+    "name" => __( "List Products", 'kutetheme'),
     "base" => "list_product",
-    "category" => __('Kute Theme', THEME_LANG ),
-    "description" => __( 'Show product in tab best sellers, on sales, new products on option 1', THEME_LANG ),
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( 'Show product in tab best sellers, on sales, new products on option 1', 'kutetheme' ),
     "params" => array(
         array(
 			'type' => 'textfield',
-			'heading' => __( 'Title', THEME_LANG ),
-			'value' => __( 'Special Products', THEME_LANG ),
+			'heading' => __( 'Title', 'kutetheme' ),
+			'value' => __( 'Special Products', 'kutetheme' ),
 			'param_name' => 'title',
-			'description' => __( 'The "per_page" shortcode determines how many products to show on the page', THEME_LANG ),
+			'description' => __( 'The "per_page" shortcode determines how many products to show on the page', 'kutetheme' ),
             'admin_label' => false,
 		),
         
         array(
             "type" => "kt_categories",
-        	"heading" => __("Choose Category", THEME_LANG),
+        	"heading" => __("Choose Category", 'kutetheme'),
         	"param_name" => "cat",
             "admin_label" => true,
         ),
         array(
         	'type' => 'dropdown',
-        	'heading' => __( 'Number Product', THEME_LANG ),
+        	'heading' => __( 'Number Product', 'kutetheme' ),
         	'param_name' => 'number',
         	'admin_label' => false,
         	'value' => array(
-        		__( '2 Products', THEME_LANG ) => '2',
-        		__( '3 Products', THEME_LANG ) => '3',
-        		__( '4 Products', THEME_LANG ) => '4',
-        		__( '6 Products', THEME_LANG ) => '6',
+        		__( '2 Products', 'kutetheme' ) => '2',
+        		__( '3 Products', 'kutetheme' ) => '3',
+        		__( '4 Products', 'kutetheme' ) => '4',
+        		__( '6 Products', 'kutetheme' ) => '6',
         	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', THEME_LANG )
+        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
         ),
         array(
         	'type' => 'dropdown',
-        	'heading' => __( 'Type', THEME_LANG ),
+        	'heading' => __( 'Type', 'kutetheme' ),
         	'param_name' => 'types',
         	'admin_label' => false,
         	'value' => array(
-        		__( 'Best saler', THEME_LANG )   => 'sale',
-        		__( 'New arrivals', THEME_LANG ) => 'arrival',
-        		__( 'Most Reviews', THEME_LANG ) => 'review'
+        		__( 'Best saler', 'kutetheme' )   => 'sale',
+        		__( 'New arrivals', 'kutetheme' ) => 'arrival',
+        		__( 'Most Reviews', 'kutetheme' ) => 'review'
         	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', THEME_LANG )
+        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
         ),
         array(
         	'type' => 'dropdown',
-        	'heading' => __( 'CSS Animation', THEME_LANG ),
+        	'heading' => __( 'CSS Animation', 'kutetheme' ),
         	'param_name' => 'css_animation',
         	'admin_label' => false,
         	'value' => array(
-        		__( 'No', THEME_LANG ) => '',
-        		__( 'Top to bottom', THEME_LANG ) => 'top-to-bottom',
-        		__( 'Bottom to top', THEME_LANG ) => 'bottom-to-top',
-        		__( 'Left to right', THEME_LANG ) => 'left-to-right',
-        		__( 'Right to left', THEME_LANG ) => 'right-to-left',
-        		__( 'Appear from center', THEME_LANG ) => "appear"
+        		__( 'No', 'kutetheme' ) => '',
+        		__( 'Top to bottom', 'kutetheme' ) => 'top-to-bottom',
+        		__( 'Bottom to top', 'kutetheme' ) => 'bottom-to-top',
+        		__( 'Left to right', 'kutetheme' ) => 'left-to-right',
+        		__( 'Right to left', 'kutetheme' ) => 'right-to-left',
+        		__( 'Appear from center', 'kutetheme' ) => "appear"
         	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', THEME_LANG )
+        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
         ),
         array(
             "type" => "textfield",
@@ -74,10 +74,10 @@ vc_map( array(
         ),
         array(
 			'type' => 'css_editor',
-			'heading' => __( 'Css', THEME_LANG ),
+			'heading' => __( 'Css', 'kutetheme' ),
 			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', THEME_LANG ),
-			'group' => __( 'Design options', THEME_LANG ),
+			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'kutetheme' ),
+			'group' => __( 'Design options', 'kutetheme' ),
             'admin_label' => false,
 		),
     ),

@@ -6,8 +6,8 @@
             <?php echo kt_get_wpml(); ?>
             
             <div class="support-link">
-                <a href="<?php kt_service_link(); ?>"><?php _e( 'Services', THEME_LANG ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php _e( 'Support', THEME_LANG ) ?></a>
+                <a href="<?php kt_service_link(); ?>"><?php _e( 'Services', 'kutetheme' ) ?></a>
+                <a href="<?php kt_support_link(); ?>"><?php _e( 'Support', 'kutetheme' ) ?></a>
             </div>
             <?php echo kt_menu_my_account(); ?>
         </div>

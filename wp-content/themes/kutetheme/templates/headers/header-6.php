@@ -10,8 +10,8 @@
                 <a href="#"><i class="fa fa-google-plus"></i></a>
             </div>
             <div class="support-link">
-                <a href="<?php kt_about_us_link(); ?>"><?php _e( 'Abount Us', THEME_LANG ); ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php _e( 'Support', THEME_LANG ) ?></a>
+                <a href="<?php kt_about_us_link(); ?>"><?php _e( 'Abount Us', 'kutetheme' ); ?></a>
+                <a href="<?php kt_support_link(); ?>"><?php _e( 'Support', 'kutetheme' ) ?></a>
             </div>
             <?php echo kt_menu_my_account(); ?>
         </div>
@@ -35,8 +35,8 @@
                 </div>
             </div>
             <div class="col-xs-5 col-sm-3 col-md-2 group-button-header">
-                <a title="<?php _e('Compare', THEME_LANG) ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e('compare', THEME_LANG) ?></a>
-                <a title="<?php _e( 'My wishlist', THEME_LANG ) ?>" href="<?php echo get_wishlist_url(); ?>" class="btn-heart"><?php _e( 'wishlist', THEME_LANG ) ?></a>
+                <a title="<?php _e('Compare', 'kutetheme') ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e('compare', 'kutetheme') ?></a>
+                <a title="<?php _e( 'My wishlist', 'kutetheme' ) ?>" href="<?php echo get_wishlist_url(); ?>" class="btn-heart"><?php _e( 'wishlist', 'kutetheme' ) ?></a>
                 <div class="widget_shopping_cart_content">
                     <?php 
                         do_action('kt_mini_cart');

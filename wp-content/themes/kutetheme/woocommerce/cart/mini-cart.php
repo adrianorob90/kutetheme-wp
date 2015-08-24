@@ -23,9 +23,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-2">
     <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>" target="_blank">
-        <span class="title"><?php _e( 'Shopping cart', THEME_LANG ); ?></span>
-        <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ) ), esc_attr( $cart_count ) ) ?></span>
-        <span><?php _e( '-', THEME_LANG ); ?></span> 
+        <span class="title"><?php _e( 'Shopping cart', 'kutetheme' ); ?></span>
+        <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ), 'kutetheme' ), esc_attr( $cart_count ) ) ?></span>
+        <span><?php _e( '-', 'kutetheme' ); ?></span> 
         <?php echo WC()->cart->get_cart_total() ?>
         <span class="notify notify-left"><?php echo esc_attr( $cart_count ); ?></span>
     </a>

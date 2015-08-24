@@ -29,17 +29,17 @@
                         ?>
                         <div id="address-list">
                             <?php if( $address ): ?>
-                                <div class="tit-name"><?php _e( 'Address:', THEME_LANG ) ?></div>
+                                <div class="tit-name"><?php _e( 'Address:', 'kutetheme' ) ?></div>
                                 <div class="tit-contain"><?php echo $address;  ?></div>
                             <?php endif; ?>
                             
                             <?php if( $hotline ): ?>
-                                <div class="tit-name"><?php _e( 'Phone:', THEME_LANG ) ?></div>
+                                <div class="tit-name"><?php _e( 'Phone:', 'kutetheme' ) ?></div>
                                 <div class="tit-contain"><?php echo $hotline; ?></div>
                             <?php endif; ?>
                             
                             <?php if( $email ): ?>
-                                <div class="tit-name"><?php _e( 'Email:', THEME_LANG ) ?></div>
+                                <div class="tit-name"><?php _e( 'Email:', 'kutetheme' ) ?></div>
                                 <div class="tit-contain"><?php echo $email; ?></div>
                             <?php endif; ?>
                         </div>

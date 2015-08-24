@@ -8,7 +8,7 @@
                     <?php the_excerpt(); ?>
                 </div>
                 <div class="entry-more">
-                    <a href="<?php the_permalink();?>"><?php _e('Read more', THEME_LANG );?></a>
+                    <a href="<?php the_permalink();?>"><?php _e('Read more', 'kutetheme' );?></a>
                 </div>
             </div>
         </div>

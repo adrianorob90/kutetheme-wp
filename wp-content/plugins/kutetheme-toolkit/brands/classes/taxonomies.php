@@ -27,16 +27,16 @@ class KT_Product_Brand_Taxonomies {
         $capabilities = version_compare( WOOCOMMERCE_VERSION, '2.0', '<' ) ? 'manage_woocommerce_products' : 'edit_products';
         
         $labels = array(
-			'name'              => __( 'Product Brands', THEME_LANG ),
-			'singular_name'     => __( 'Product Brand', THEME_LANG ),
-			'search_items'      => __( 'Search Genres', THEME_LANG ),
-			'all_items'         => __( 'All Brands', THEME_LANG ),
-			'parent_item'       => __( 'Parent Brands', THEME_LANG ),
-			'parent_item_colon' => __( 'Parent Brands:', THEME_LANG ),
-			'edit_item'         => __( 'Edit Product Brand', THEME_LANG ),
-			'update_item'       => __( 'Update Product Brand', THEME_LANG ),
-			'add_new_item'      => __( 'Add New Product Brand', THEME_LANG ),
-			'new_item_name'     => __( 'New Brand Name', THEME_LANG),
+			'name'              => __( 'Product Brands', 'kutetheme' ),
+			'singular_name'     => __( 'Product Brand', 'kutetheme' ),
+			'search_items'      => __( 'Search Genres', 'kutetheme' ),
+			'all_items'         => __( 'All Brands', 'kutetheme' ),
+			'parent_item'       => __( 'Parent Brands', 'kutetheme' ),
+			'parent_item_colon' => __( 'Parent Brands:', 'kutetheme' ),
+			'edit_item'         => __( 'Edit Product Brand', 'kutetheme' ),
+			'update_item'       => __( 'Update Product Brand', 'kutetheme' ),
+			'add_new_item'      => __( 'Add New Product Brand', 'kutetheme' ),
+			'new_item_name'     => __( 'New Brand Name', 'kutetheme'),
 			'menu_name'         => 'Brands',
 		);
         

@@ -28,7 +28,7 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( 'color_scheme', array(
-		'label'    => __( 'Base Color Scheme', THEME_LANG ),
+		'label'    => __( 'Base Color Scheme', 'kutetheme' ),
 		'section'  => 'colors',
 		'type'     => 'select',
 		'choices'  => kt_get_color_scheme_choices(),
@@ -43,8 +43,8 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color', array(
-		'label'       => __( 'Theme Color', THEME_LANG ),
-		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', THEME_LANG ),
+		'label'       => __( 'Theme Color', 'kutetheme' ),
+		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
 
@@ -59,8 +59,8 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'box_background_color', array(
-		'label'       => __( 'Box and Sidebar Background Color', THEME_LANG ),
-		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', THEME_LANG ),
+		'label'       => __( 'Box and Sidebar Background Color', 'kutetheme' ),
+		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
     
@@ -72,13 +72,13 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'textcolor', array(
-		'label'       => __( 'Text Color', THEME_LANG ),
-		'description' => __( 'Applied to the header on small screens and the text on wide screens.', THEME_LANG ),
+		'label'       => __( 'Text Color', 'kutetheme' ),
+		'description' => __( 'Applied to the header on small screens and the text on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
 
 	// Add an additional description to the header image section.
-	$wp_customize->get_section( 'header_image' )->description = __( 'Applied to the header on small screens and the sidebar on wide screens.', THEME_LANG );
+	$wp_customize->get_section( 'header_image' )->description = __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' );
 }
 add_action( 'customize_register', 'kt_customize_register', 11 );
 
@@ -103,7 +103,7 @@ add_action( 'customize_register', 'kt_customize_register', 11 );
 function kt_get_color_schemes() {
 	return apply_filters( 'kt_color_schemes', array(
 		'default' => array(
-			'label'  => __( 'Default', THEME_LANG ),
+			'label'  => __( 'Default', 'kutetheme' ),
 			'colors' => array(
                 '#ffffff',
 				'#ff3366',
@@ -115,7 +115,7 @@ function kt_get_color_schemes() {
 			),
 		),
 		'brown'    => array(
-			'label'  => __( 'Brown', THEME_LANG ),
+			'label'  => __( 'Brown', 'kutetheme' ),
 			'colors' => array(
                 '#ffffff',
 				'#958457',
@@ -271,18 +271,20 @@ function kt_get_color_scheme_css( $colors ) {
 		'button_color_rgb'     => '',
         'color_main_rgb'       => ''
 	) );
-	$css = <<<CSS
+	ob_start();
+    ?>
+    <style type="text/css">
 	/* Color Scheme */
 
 	/* Background Color */
 	body {
-		background-color: {$colors['background_color']};
+		background-color: <?php echo $colors['background_color'] ?>;
 	}
     
     /* Box Color */
     .nav-top-menu, .service,
     .top-header{
-        background-color: {$colors['box_background_color']};
+        background-color: <?php echo $colors['box_background_color'] ?>;
     }
     
     /* Main Color */
@@ -296,51 +298,52 @@ function kt_get_color_scheme_css( $colors ) {
     .main-header .shopping-cart-box a.cart-link:after,
     .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     .owl-controls .owl-prev:hover, .owl-controls .owl-next:hover{
-        background-color: {$colors['main_color']};
+        background-color: <?php echo $colors['main_color'] ?>;
     }
     .popular-tabs .nav-tab li:hover, 
     .popular-tabs .nav-tab li.active,
     .brand-showcase .brand-showcase-title,
     .group-title span{
-        border-bottom-color:{$colors['main_color']};
+        border-bottom-color: <?php echo $colors['main_color'] ?>;
     }
     .latest-deals .latest-deal-content{
-        border-color:{$colors['main_color']};
+        border-color: <?php echo $colors['main_color'] ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
-        border-top-color:{$colors['main_color']};
+        border-top-color: <?php echo $colors['main_color'] ?>;
     }
     a:hover,
     .product-list li .content_price ins,
     .product-list li .content_price,
     .cart-block .cart-block-content .product-info .p-right .p-rice{
-        color: {$colors['main_color']};
+        color: <?php echo $colors['main_color'] ?>;
     }
     /* Text Color */
     a,
     .product-list li .content_price del{
-        color: {$colors['textcolor']};
+        color: <?php echo $colors['textcolor'] ?>;
     }
     /* Rate Color */
     .product-list li .product-star{
-        color: {$colors['rate_color']};
+        color: <?php echo $colors['rate_color'] ?>;
     }
     
     /* Color Main RGB */
     .product-list li .add-to-cart:hover{
-        background-color: {$colors['color_main_rgb']}
+        background-color: <?php echo $colors['color_main_rgb'] ?>
     }
     
     /* Button Color RGB*/
     .product-list li .add-to-cart{
-        background-color: {$colors['button_color_rgb']}
+        background-color: <?php echo $colors['button_color_rgb'] ?>
     }
     /* Footer Menu Link*/
     .footer-menu-list li a{
-        color:{$colors['menu_link_footer']}
+        color: <?php echo $colors['menu_link_footer'] ?>
     }
-CSS;
-
+    </style>
+    <?php
+    $css = ob_get_clean();
 	return $css;
 }
 

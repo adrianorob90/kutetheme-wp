@@ -27,7 +27,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                 }
             ?>
             <label for="menu-item-image-<?php echo $item_id; ?>">
-                <?php _e( 'Image Icon', THEME_LANG); ?><br />
+                <?php _e( 'Image Icon', 'kutetheme'); ?><br />
                 <input type="hidden" value="<?php echo esc_attr( $item->img_icon ); ?>" name="menu-item-megamenu-img_icon[<?php echo $item_id; ?>]" id="menu-item-imgicon-<?php echo $item_id; ?>" class="widefat edit-menu-item-image" />
             </label>
             <span class="clearfix"></span>
@@ -36,7 +36,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                 <i class="fa fa-times">X</i>
             </span>
             <span class="clearfix"></span>
-            <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', THEME_LANG); ?>" />
+            <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', 'kutetheme'); ?>" />
         </p>
         <?php if(post_type_exists('megamenu')){
             $post_type = 'megamenu';
@@ -50,14 +50,14 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
             <p class="field-enable description description-wide">
                 <label for="menu-item-enable-<?php echo $item_id; ?>">
                     <input type="checkbox" <?php checked($item->enable, 'enabled'); ?> data-id="<?php echo $item_id; ?>" id="menu-item-enable-<?php echo $item_id; ?>" name="menu-item-megamenu-enable[<?php echo $item_id; ?>]" value="enabled" class="edit-menu-item-enable"/>
-                    <b><?php _e( 'Enable Mega Menu (only for main menu)', THEME_LANG); ?></b>
+                    <b><?php _e( 'Enable Mega Menu (only for main menu)', 'kutetheme'); ?></b>
                 </label>
             </p>
             <div id="content-megamenu-<?php echo $item_id; ?>" class="megamenu-layout clearfix">
                 <div class="megamenu-layout-depth-1">
                     <p class="field-menu_page description description-wide">
                         <label for="menu-item-menu_page-<?php echo $item_id; ?>">
-                            <?php _e('Menu Page', THEME_LANG); ?><br />
+                            <?php _e('Menu Page', 'kutetheme'); ?><br />
                             <select class="widefat"  id="menu-item-menu_page-<?php echo $item_id; ?>" name="menu-item-megamenu-menu_page[<?php echo $item_id; ?>]">
                                 <option value="0">Choose Menu Page</option>
                                 <?php

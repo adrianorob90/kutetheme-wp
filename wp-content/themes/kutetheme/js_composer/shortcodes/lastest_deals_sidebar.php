@@ -5,51 +5,51 @@ if ( !defined('ABSPATH')) exit;
 if( class_exists( 'WPBakeryShortCode' ) ){
     // Setting shortcode lastest
     vc_map( array(
-        "name" => __( "Lastest Deals", THEME_LANG),
+        "name" => __( "Lastest Deals", 'kutetheme'),
         "base" => "lastest_deals_sidebar",
-        "category" => __('Kute Theme', THEME_LANG ),
-        "description" => __( "Show lastest deal products in sidebar", THEME_LANG),
+        "category" => __('Kute Theme', 'kutetheme' ),
+        "description" => __( "Show lastest deal products in sidebar", 'kutetheme'),
         "params" => array(
             array(
                 "type" => "textfield",
-                "heading" => __( "Title", THEME_LANG ),
+                "heading" => __( "Title", 'kutetheme' ),
                 "param_name" => "title",
                 "admin_label" => true,
-                'description' => __( 'Display title lastest deal box, It\'s hidden when empty', THEME_LANG )
+                'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
             ),
             array(
                 "type" => "kt_number",
-                "heading" => __("Number Product", THEME_LANG),
+                "heading" => __("Number Product", 'kutetheme'),
                 "param_name" => "number",
                 "value" => 12,
-                "description" => __("Enter number of Product", THEME_LANG)
+                "description" => __("Enter number of Product", 'kutetheme')
             ),
             array(
                 "type" => "dropdown",
-            	"heading" => __("Order by", THEME_LANG),
+            	"heading" => __("Order by", 'kutetheme'),
             	"param_name" => "orderby",
             	"value" => array(
-            		__('None', THEME_LANG)     => 'none',
-                    __('ID', THEME_LANG)       => 'ID',
-                    __('Author', THEME_LANG)   => 'author',
-                    __('Name', THEME_LANG)     => 'name',
-                    __('Date', THEME_LANG)     => 'date',
-                    __('Modified', THEME_LANG) => 'modified',
-                    __('Rand', THEME_LANG)     => 'rand',
+            		__('None', 'kutetheme')     => 'none',
+                    __('ID', 'kutetheme')       => 'ID',
+                    __('Author', 'kutetheme')   => 'author',
+                    __('Name', 'kutetheme')     => 'name',
+                    __('Date', 'kutetheme')     => 'date',
+                    __('Modified', 'kutetheme') => 'modified',
+                    __('Rand', 'kutetheme')     => 'rand',
             	),
                 'std' => 'date',
-            	"description" => __("Select how to sort retrieved posts.",THEME_LANG)
+            	"description" => __("Select how to sort retrieved posts.",'kutetheme')
             ),
             array(
                 "type" => "dropdown",
-            	"heading" => __("Order", THEME_LANG),
+            	"heading" => __("Order", 'kutetheme'),
             	"param_name" => "order",
             	"value" => array(
-                    __('ASC', THEME_LANG) => 'ASC',
-                    __('DESC', THEME_LANG) => 'DESC'
+                    __('ASC', 'kutetheme') => 'ASC',
+                    __('DESC', 'kutetheme') => 'DESC'
             	),
                 'std' => 'DESC',
-            	"description" => __("Designates the ascending or descending order.",THEME_LANG)
+            	"description" => __("Designates the ascending or descending order.",'kutetheme')
             ),
             array(
     			'type' => 'css_editor',
@@ -62,43 +62,43 @@ if( class_exists( 'WPBakeryShortCode' ) ){
             // Carousel
             array(
     			'type' => 'checkbox',
-    			'heading' => __( 'AutoPlay', THEME_LANG ),
+    			'heading' => __( 'AutoPlay', 'kutetheme' ),
     			'param_name' => 'autoplay',
-    			'value' => array( __( 'Yes, please', THEME_LANG ) => 'true' ),
-                'group' => __( 'Carousel settings', THEME_LANG ),
+    			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
+                'group' => __( 'Carousel settings', 'kutetheme' ),
                 'admin_label' => false,
     		),
             array(
     			'type' => 'checkbox',
-                'heading' => __( 'Navigation', THEME_LANG ),
+                'heading' => __( 'Navigation', 'kutetheme' ),
     			'param_name' => 'navigation',
-    			'value' => array( __( "Don't use Navigation", THEME_LANG ) => 'false' ),
-                'description' => __( "Don't display 'next' and 'prev' buttons.", THEME_LANG ),
-                'group' => __( 'Carousel settings', THEME_LANG ),
+    			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
+                'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+                'group' => __( 'Carousel settings', 'kutetheme' ),
                 'admin_label' => false,
     		),
             array(
     			'type' => 'checkbox',
-                'heading' => __( 'Loop', THEME_LANG ),
+                'heading' => __( 'Loop', 'kutetheme' ),
     			'param_name' => 'loop',
-    			'value' => array( __( "Loop", THEME_LANG ) => 'false' ),
-                'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", THEME_LANG ),
-                'group' => __( 'Carousel settings', THEME_LANG ),
+    			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
+                'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+                'group' => __( 'Carousel settings', 'kutetheme' ),
                 'admin_label' => false,
     		),
             array(
     			"type" => "kt_number",
-    			"heading" => __("Slide Speed", THEME_LANG),
+    			"heading" => __("Slide Speed", 'kutetheme'),
     			"param_name" => "slidespeed",
     			"value" => "200",
-                "suffix" => __("milliseconds", THEME_LANG),
-    			"description" => __('Slide speed in milliseconds', THEME_LANG),
-                'group' => __( 'Carousel settings', THEME_LANG ),
+                "suffix" => __("milliseconds", 'kutetheme'),
+    			"description" => __('Slide speed in milliseconds', 'kutetheme'),
+                'group' => __( 'Carousel settings', 'kutetheme' ),
                 'admin_label' => false,
     	  	),
             array(
                 "type" => "textfield",
-                "heading" => __( "Extra class name", THEME_LANG ),
+                "heading" => __( "Extra class name", 'kutetheme' ),
                 "param_name" => "el_class",
                 "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             )

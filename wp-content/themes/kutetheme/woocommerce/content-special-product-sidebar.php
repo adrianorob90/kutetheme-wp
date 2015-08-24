@@ -33,7 +33,7 @@
     </ul>
     <div class="products-block">
         <div class="products-block-bottom">
-            <a class="link-all" href="<?php echo the_permalink(); ?>"><?php _e( 'All Products', THEME_LANG ) ?></a>
+            <a class="link-all" href="<?php echo the_permalink(); ?>"><?php _e( 'All Products', 'kutetheme' ) ?></a>
         </div>
     </div>
 </div>

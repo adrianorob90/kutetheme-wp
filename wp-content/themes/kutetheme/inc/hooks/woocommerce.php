@@ -17,7 +17,7 @@ add_action( "kt_after_loop_item_title", "woocommerce_template_loop_price", 5 );
 
 function woocommerce_custom_sales_price( $price, $product ) {
 	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
-	return $price . sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', THEME_LANG ), $percentage . '%', __( 'OFF', THEME_LANG ) );
+	return $price . sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', 'kutetheme' ), $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
 }
 
 /**
@@ -47,7 +47,7 @@ if( ! function_exists("kt_get_price_html_from_to")){
             
             if($pr != $sale){
                 $percentage = round( ( ( $sale - $pr  ) / $sale ) * 100 );
-                $price .= sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', THEME_LANG ), $html_sale . $percentage . '%', __( 'OFF', THEME_LANG ) );
+                $price .= sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', 'kutetheme' ), $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
             }
         }
         return $price;
@@ -61,7 +61,7 @@ function kt_get_rating_html($rating_html, $rating){
     if ( ! is_numeric( $rating ) ) {
         $rating = $product->get_average_rating();
     }
-    $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', THEME_LANG ), $rating > 0 ? $rating : 0  ) . '">';
+    $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
     for($i = 1;$i <= 5 ;$i++){
         if($rating >= $i){
             if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
@@ -110,7 +110,7 @@ if( ! function_exists('kt_get_tool_wishlish') ){
 }
 if( ! function_exists('kt_get_tool_quickview') ){
     function kt_get_tool_quickview(){
-        echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', __('Quick view', THEME_LANG), get_the_ID() );
+        echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', __('Quick view', 'kutetheme'), get_the_ID() );
     }
 }
 if( ! function_exists( 'kt_template_loop_product_thumbnail' ) ){
@@ -221,7 +221,7 @@ if( ! function_exists('kt_get_cart_content')){
         if ( ! WC()->cart->is_empty() ) : ?>
             <div class="cart-block">
                 <div class="cart-block-content">
-                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count ), WC()->cart->cart_contents_count ), THEME_LANG ); ?></h5>
+                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
                     <div class="cart-block-list">
                         <ul>
                             <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
@@ -253,7 +253,7 @@ if( ! function_exists('kt_get_cart_content')){
                                             <div class="p-right">
                                                 <p class="p-name"><?php echo $product_name; ?></p>
                                                 <p class="p-rice"><?php echo $product_price ?></p>
-                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( __('Qty: ', THEME_LANG).'%s', $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
+                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( __('Qty: ', 'kutetheme').__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
                                             </div>
                                         </li>
                                     <?php endif; ?>
@@ -261,13 +261,13 @@ if( ! function_exists('kt_get_cart_content')){
                         </ul>
                     </div>
                     <div class="toal-cart">
-                        <span><?php _e('Total', THEME_LANG) ?></span>
+                        <span><?php _e('Total', 'kutetheme') ?></span>
                         <span class="toal-price pull-right">
                             <?php echo WC()->cart->get_cart_total() ?>
                         </span>
                     </div>
                     <div class="cart-buttons">
-                        <a href="<?php echo esc_url( $check_out_url ); ?>" class="btn-check-out"><?php echo _e( 'Checkout', THEME_LANG ); ?></a>
+                        <a href="<?php echo esc_url( $check_out_url ); ?>" class="btn-check-out"><?php echo _e( 'Checkout', 'kutetheme' ); ?></a>
                     </div>
                 </div>
             </div>
@@ -306,7 +306,7 @@ function kt_woocommerce_single_product(){
                 woocommerce_template_single_add_to_cart();
             ?>
             <div class="group-product-price">
-                <label><?php _e( 'Price', THEME_LANG );?></label>
+                <label><?php _e( 'Price', 'kutetheme' );?></label>
                 <?php woocommerce_template_single_price();?>
             </div>
         </div>
@@ -379,10 +379,10 @@ if(!function_exists('kt_custom_display_view')){
         ?>
         <ul class="display-product-option">
             <li class="view-as-grid <?php if($shop_products_layout == "grid" ) echo esc_attr('selected');?>">
-                <span><?php _e('grid',THEME_LANG);?></span>
+                <span><?php _e('grid','kutetheme');?></span>
             </li>
             <li class="view-as-list <?php if($shop_products_layout == "list" ) echo esc_attr('selected');?>">
-                <span><?php _e('list', THEME_LANG );?></span>
+                <span><?php _e('list', 'kutetheme' );?></span>
             </li>
         </ul>
         <?php
@@ -552,15 +552,15 @@ if(!function_exists('kt_show_product_meta')){
         global $product;
         $sku          = $product->get_sku();
         $availability ="";
-        if ( $product->is_in_stock() ) $availability = __('In stock', THEME_LANG);
-        if ( !$product->is_in_stock() ) $availability = __('Out of stock', THEME_LANG);
+        if ( $product->is_in_stock() ) $availability = __('In stock', 'kutetheme');
+        if ( !$product->is_in_stock() ) $availability = __('Out of stock', 'kutetheme');
         ?>
         <div class="product-meta">
             <?php if($sku!=""):?>
-                <p><?php _e('Item Code', THEME_LANG );?>: #<?php echo $sku;?></p>
+                <p><?php _e('Item Code', 'kutetheme' );?>: #<?php echo $sku;?></p>
             <?php endif;?>
             <?php if($availability!=""):?>
-                <p><?php _e('Availability', THEME_LANG );?>: <?php echo $availability;?></p>
+                <p><?php _e('Availability', 'kutetheme' );?>: <?php echo $availability;?></p>
             <?php endif;?>
         </div>
         <?php
@@ -575,7 +575,7 @@ if(!function_exists('kt_available_options')){
         if( $product->is_type( 'variable' ) ){
             ?>
                 <div class="available-options">
-                    <h3 class="available-title"><?php echo _e('Available Options', THEME_LANG );?>:</h3>
+                    <h3 class="available-title"><?php echo _e('Available Options', 'kutetheme' );?>:</h3>
                 </div>
             <?php     
         }
@@ -599,8 +599,8 @@ if(!function_exists('kt_utilities_single_product')){
         ?>
         <div class="utilities">
             <ul>
-                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e('Print', THEME_LANG);?></a></li>
-                <li><a href="<?php echo esc_url('mailto:?subject='.get_the_title());?>"><i class="fa fa-envelope-o"></i> <?php _e('Send to a friend', THEME_LANG);?></a></li>
+                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e('Print', 'kutetheme');?></a></li>
+                <li><a href="<?php echo esc_url('mailto:?subject='.get_the_title());?>"><i class="fa fa-envelope-o"></i> <?php _e('Send to a friend', 'kutetheme');?></a></li>
             </ul>
         </div>
         <?php

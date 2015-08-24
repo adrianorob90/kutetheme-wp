@@ -13,8 +13,8 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_trademark_payment', 
-                        'description' => __( 'Accepted trademark payment.', THEME_LANG ) );
-		parent::__construct( 'widget_kt_trademark_payment', __('KT Trademark Payment', THEME_LANG ), $widget_ops );
+                        'description' => __( 'Accepted trademark payment.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_trademark_payment', __('KT Trademark Payment', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -85,7 +85,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
 	?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', THEME_LANG); ?></label> 
+            <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_attr($wtitle); ?>" />
         </p>
         <div class="content multi-item">
@@ -107,25 +107,25 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                         <div class="item widget-content">
                             <span class="remove">X</span>
                             <p>
-                                <label><?php _e( 'Title:', THEME_LANG); ?></label> 
+                                <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                                 <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_attr($title); ?>" />
                             </p>
                             <p style="text-align: center;">
-                                <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', THEME_LANG) ?>" />
+                                <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', 'kutetheme') ?>" />
                                 <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image'); ?>" name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" value="<?php echo esc_attr( $image ); ?>" />
                             </p>
                             <p class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
                                 <img src="<?php echo esc_url( $img_preview ); ?>" alt="" class="kt_image_preview_img" />
                             </p>
                             <p>
-                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', THEME_LANG); ?></label> 
+                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
                                 <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_attr( $link ); ?>" />
                             </p>
                             <p>
-                    			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                    			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                     			<select name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat">
-                    				<option value="_blank"<?php selected( $target, '_blank' ); ?>><?php _e('Open New Window', THEME_LANG); ?></option>
-                    				<option value="_self"<?php selected( $target, '_self' ); ?>><?php _e('Stay in Window', THEME_LANG); ?></option>
+                    				<option value="_blank"<?php selected( $target, '_blank' ); ?>><?php _e('Open New Window', 'kutetheme'); ?></option>
+                    				<option value="_self"<?php selected( $target, '_self' ); ?>><?php _e('Stay in Window', 'kutetheme'); ?></option>
                     			</select>
                     		</p>
                         </div>
@@ -134,25 +134,25 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     <div class="item widget-content">
                         <span class="remove">X</span>
                         <p>
-                            <label><?php _e( 'Title:', THEME_LANG); ?></label> 
+                            <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>[]" type="text" />
                         </p>
                         <p style="text-align: center;">
-                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', THEME_LANG ) ?>" />
+                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', 'kutetheme' ) ?>" />
                             <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image' ); ?>" name="<?php echo $this->get_field_name( 'image' ); ?>[]" type="hidden"  />
                         </p>
                         <p class="kt_image_preview">
                             <img src="" alt="" class="kt_image_preview_img" />
                         </p>
                         <p>
-                        <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', THEME_LANG); ?></label> 
+                        <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" />
                         </p>
                         <p>
-                			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                 			<select name="<?php echo $this->get_field_name( 'target' ); ?>[]" id="<?php echo $this->get_field_id( 'target' ); ?>" class="widefat">
-                				<option value="_blank"><?php _e( 'Open New Window', THEME_LANG ); ?></option>
-                				<option value="_self"><?php _e( 'Stay in Window', THEME_LANG ); ?></option>
+                				<option value="_blank"><?php _e( 'Open New Window', 'kutetheme' ); ?></option>
+                				<option value="_self"><?php _e( 'Stay in Window', 'kutetheme' ); ?></option>
                 			</select>
                 		</p>
                     </div>
@@ -164,12 +164,12 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     <div class="item widget-content">
                         <span class="remove">X</span>
                         <p>
-                            <label><?php _e('Title:', THEME_LANG); ?></label> 
+                            <label><?php _e('Title:', 'kutetheme'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo $this->get_field_id('title'); ?>" tpl-name="<?php echo $this->get_field_name('title'); ?>[]" type="text" />
                         </p>
                         
                         <p style="text-align: center;">
-                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', THEME_LANG) ?>" />
+                            <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', 'kutetheme') ?>" />
                             <input class="widefat widget-name kt_image_attachment" id="<?php echo $this->get_field_id('image'); ?>" tpl-name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" />
                         </p>
                         
@@ -178,15 +178,15 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                         </p>
                         
                         <p>
-                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', THEME_LANG); ?></label> 
+                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', 'kutetheme'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo $this->get_field_id('link'); ?>" tpl-name="<?php echo $this->get_field_name('link'); ?>[]" type="text" />
                         </p>
                         
                         <p>
-                			<label><?php _e( 'Target:', THEME_LANG); ?></label>
+                			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                 			<select tpl-name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat widget-name">
-                				<option value="_blank"><?php _e('Open New Window', THEME_LANG); ?></option>
-                				<option value="_self"><?php _e('Stay in Window', THEME_LANG); ?></option>
+                				<option value="_blank"><?php _e('Open New Window', 'kutetheme'); ?></option>
+                				<option value="_self"><?php _e('Stay in Window', 'kutetheme'); ?></option>
                 			</select>
                 		</p>
                     </div>

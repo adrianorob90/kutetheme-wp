@@ -30,7 +30,7 @@ class KT_Admin {
 	 */
 	public function __construct() {
 		// Set our title
-		$this->title = __( 'Theme Options', THEME_LANG );
+		$this->title = __( 'Theme Options', 'kutetheme' );
 	}
 	/**
 	 * Initiate our hooks
@@ -150,53 +150,53 @@ class KT_Admin {
     	 * Theme color
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Theme Color', THEME_LANG ),
+    		'name'    => __( 'Theme Color', 'kutetheme' ),
     		'id'      => 'kt_theme_color',
     		'type'    => 'colorpicker',
     		'default' => '#ff3366',
-            'desc'    => __( 'Setting main color for your site', THEME_LANG ),
+            'desc'    => __( 'Setting main color for your site', 'kutetheme' ),
     	) );
         
         /**
     	 * Font color
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Color', THEME_LANG ),
+    		'name'    => __( 'Color', 'kutetheme' ),
     		'id'      => 'kt_font_color',
     		'type'    => 'colorpicker',
     		'default' => '#666666',
-            'desc'    => __( 'Setting font color for your site', THEME_LANG ),
+            'desc'    => __( 'Setting font color for your site', 'kutetheme' ),
     	) );
         
         /**
     	 * Font color hover 
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Color Hover', THEME_LANG ),
+    		'name'    => __( 'Color Hover', 'kutetheme' ),
     		'id'      => 'kt_font_color_hover',
     		'type'    => 'colorpicker',
     		'default' => '#ff3366',
-            'desc'    => __( 'When you hover on text in your site, It will tranfer the color', THEME_LANG ),
+            'desc'    => __( 'When you hover on text in your site, It will tranfer the color', 'kutetheme' ),
     	) );
         
         /**
     	 * Background
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Background', THEME_LANG ),
+    		'name'    => __( 'Background', 'kutetheme' ),
     		'id'      => 'kt_bg',
     		'type'    => 'select',
     		'default' => 'color',
             'options'          => array(
-    			'color' => __( 'Color', THEME_LANG ),
-    			'image' => __( 'Image', THEME_LANG ),
+    			'color' => __( 'Color', 'kutetheme' ),
+    			'image' => __( 'Image', 'kutetheme' ),
     		),
-            'desc'    => __( 'Setting background for your site image or color(default)', THEME_LANG ),
+            'desc'    => __( 'Setting background for your site image or color(default)', 'kutetheme' ),
     	) );
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'Background Color', THEME_LANG ),
-    		'desc'    => __( 'Setting background color for your site', THEME_LANG ),
+    		'name'    => __( 'Background Color', 'kutetheme' ),
+    		'desc'    => __( 'Setting background color for your site', 'kutetheme' ),
     		'id'      => 'kt_bg_color',
     		'type'    => 'colorpicker',
     		'default' => '#ffffff',
@@ -204,8 +204,8 @@ class KT_Admin {
         
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'Background Image', THEME_LANG ),
-    		'desc'    => __( 'Setting background image for your site', THEME_LANG ),
+    		'name'    => __( 'Background Image', 'kutetheme' ),
+    		'desc'    => __( 'Setting background image for your site', 'kutetheme' ),
     		'id'      => 'kt_bg_image',
     		'type'    => 'file'
     	) );
@@ -214,15 +214,15 @@ class KT_Admin {
     	 * Page Layout
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Layout', THEME_LANG ),
+    		'name'    => __( 'Page Layout', 'kutetheme' ),
     		'id'      => 'kt_layout',
     		'type'    => 'select',
     		'default' => 'full',
             'options'          => array(
-    			'full' => __( 'Full', THEME_LANG ),
-    			'box'  => __( 'Boxed', THEME_LANG ),
+    			'full' => __( 'Full', 'kutetheme' ),
+    			'box'  => __( 'Boxed', 'kutetheme' ),
     		),
-            'desc'    => __( 'Setting background for your site image or color(default)', THEME_LANG ),
+            'desc'    => __( 'Setting background for your site image or color(default)', 'kutetheme' ),
     	) );
         
         global $wp_registered_sidebars;
@@ -237,7 +237,7 @@ class KT_Admin {
     	 * Site bar
     	 */
     	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Sidebar Area', THEME_LANG ),
+    		'name'    => __( 'Sidebar Area', 'kutetheme' ),
     		'id'      => 'kt_sidebar_are',
     		'type'    => 'select',
     		'default' => 'full',
@@ -246,37 +246,37 @@ class KT_Admin {
                 'left'  => 'Left',
                 'right' => 'Right'
             ),
-            'desc'    => __( 'Setting Sidebar Area', THEME_LANG ),
+            'desc'    => __( 'Setting Sidebar Area', 'kutetheme' ),
     	) );
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'Choose sidebar', THEME_LANG ),
+    		'name'    => __( 'Choose sidebar', 'kutetheme' ),
     		'id'      => 'kt_used_sidebar',
     		'type'    => 'select',
     		'default' => 'sidebar-primary',
             'options' => $sidebars,
-            'desc'    => __( 'Setting sidebar in the area sidebar', THEME_LANG ),
+            'desc'    => __( 'Setting sidebar in the area sidebar', 'kutetheme' ),
     	) );
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Service', THEME_LANG ),
+    		'name'    => __( 'Page Service', 'kutetheme' ),
     		'id'      => 'kt_page_service',
     		'type'    => 'page',
-            'desc'    => __( 'Setting page service', THEME_LANG ),
+            'desc'    => __( 'Setting page service', 'kutetheme' ),
     	) );
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Support', THEME_LANG ),
+    		'name'    => __( 'Page Support', 'kutetheme' ),
     		'id'      => 'kt_page_support',
     		'type'    => 'page',
-            'desc'    => __( 'Setting page support ', THEME_LANG ),
+            'desc'    => __( 'Setting page support ', 'kutetheme' ),
     	) );
         
         $cmb_options_general->add_field( array(
-    		'name'    => __( 'About Us', THEME_LANG ),
+    		'name'    => __( 'About Us', 'kutetheme' ),
     		'id'      => 'kt_page_about_us',
     		'type'    => 'page',
-            'desc'    => __( 'Setting page about us', THEME_LANG ),
+            'desc'    => __( 'Setting page about us', 'kutetheme' ),
     	) );
         
         
@@ -295,30 +295,30 @@ class KT_Admin {
     	 * Logo
     	 */
     	$cmb_options_logo->add_field( array(
-    		'name'    => __( 'Logo', THEME_LANG ),
+    		'name'    => __( 'Logo', 'kutetheme' ),
     		'id'      => 'kt_logo',
     		'type'    => 'file',
-            'desc'    => __( 'Setting your site\'s logo', THEME_LANG ),
+            'desc'    => __( 'Setting your site\'s logo', 'kutetheme' ),
     	) );
         
         /**
     	 * Logo Footer
     	 */
     	$cmb_options_logo->add_field( array(
-    		'name'    => __( 'Logo Footer', THEME_LANG ),
+    		'name'    => __( 'Logo Footer', 'kutetheme' ),
     		'id'      => 'kt_logo_footer',
     		'type'    => 'file',
-            'desc'    => __( 'Setting your site\'s logo in footer', THEME_LANG ),
+            'desc'    => __( 'Setting your site\'s logo in footer', 'kutetheme' ),
     	) );
         
         /**
     	 * Favicon
     	 */
     	$cmb_options_logo->add_field( array(
-    		'name'    => __( 'Favicon', THEME_LANG ),
+    		'name'    => __( 'Favicon', 'kutetheme' ),
     		'id'      => 'kt_favicon',
     		'type'    => 'file',
-            'desc'    => __( 'Setting your site\'s favicon', THEME_LANG ),
+            'desc'    => __( 'Setting your site\'s favicon', 'kutetheme' ),
     	) );
         
         
@@ -337,10 +337,10 @@ class KT_Admin {
 		) );
         
     	$cmb_options_header->add_field( array(
-    		'name'    => __( 'Header', THEME_LANG ),
+    		'name'    => __( 'Header', 'kutetheme' ),
     		'id'      => 'kt_used_header',
     		'type'    => 'header',
-            'desc'    => __( 'Setting User Menu', THEME_LANG ),
+            'desc'    => __( 'Setting User Menu', 'kutetheme' ),
             'default' => 'header_1',
             'options' => array(
     			'1' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v1.jpg',
@@ -369,8 +369,8 @@ class KT_Admin {
 		) );
         
         $cmb_options_footer->add_field( array(
-    		'name' => __( 'Copyrights', THEME_LANG ),
-    		'desc' => __( 'Copyrights your site', THEME_LANG ),
+    		'name' => __( 'Copyrights', 'kutetheme' ),
+    		'desc' => __( 'Copyrights your site', 'kutetheme' ),
     		'id'   => 'kt_copyrights',
     		'type' => 'textarea',
     	) );
@@ -408,7 +408,7 @@ class KT_Admin {
     	 * Woo Site bar
     	 */
     	$cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Shop Sidebar Area', THEME_LANG ),
+    		'name'    => __( 'Shop Sidebar Area', 'kutetheme' ),
     		'id'      => 'kt_woo_shop_sidebar_are',
     		'type'    => 'select',
     		'default' => 'full',
@@ -417,44 +417,44 @@ class KT_Admin {
                 'left'  => 'Left',
                 'right' => 'Right'
             ),
-            'desc'    => __( 'Setting Sidebar Area on shop page', THEME_LANG ),
+            'desc'    => __( 'Setting Sidebar Area on shop page', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Shop page sidebar', THEME_LANG ),
+    		'name'    => __( 'Shop page sidebar', 'kutetheme' ),
     		'id'      => 'kt_woowoo_shop_used_sidebar',
     		'type'    => 'select',
     		'default' => 'sidebar-shop',
             'options' => $sidebars,
-            'desc'    => __( 'Setting sidebar in the area sidebar on shop page', THEME_LANG ),
+            'desc'    => __( 'Setting sidebar in the area sidebar on shop page', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Products perpage', THEME_LANG ),
+    		'name'    => __( 'Products perpage', 'kutetheme' ),
     		'id'      => 'kt_woo_products_perpage',
     		'type'    => 'text',
     		'default' => '10',
-            'desc'    => __( 'Number of products on shop page', THEME_LANG ),
+            'desc'    => __( 'Number of products on shop page', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Grid column', THEME_LANG ),
+    		'name'    => __( 'Grid column', 'kutetheme' ),
     		'id'      => 'kt_woo_grid_column',
     		'type'    => 'text',
     		'default' => '3',
-            'desc'    => __( 'Number column to display width gird mod', THEME_LANG ),
+            'desc'    => __( 'Number column to display width gird mod', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Number of days newness', THEME_LANG ),
+    		'name'    => __( 'Number of days newness', 'kutetheme' ),
     		'id'      => 'kt_woo_newness',
     		'type'    => 'text',
     		'default' => '7',
-            'desc'    => __( 'Number of days to treat as new product', THEME_LANG ),
+            'desc'    => __( 'Number of days to treat as new product', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Single Sidebar Area', THEME_LANG ),
+    		'name'    => __( 'Single Sidebar Area', 'kutetheme' ),
     		'id'      => 'kt_woo_single_sidebar_are',
     		'type'    => 'select',
     		'default' => 'full',
@@ -463,16 +463,16 @@ class KT_Admin {
                 'left'  => 'Left',
                 'right' => 'Right'
             ),
-            'desc'    => __( 'Setting Sidebar Area on single page', THEME_LANG ),
+            'desc'    => __( 'Setting Sidebar Area on single page', 'kutetheme' ),
     	) );
         
         $cmb_options_woocommerce->add_field( array(
-    		'name'    => __( 'Single page sidebar', THEME_LANG ),
+    		'name'    => __( 'Single page sidebar', 'kutetheme' ),
     		'id'      => 'kt_woo_single_used_sidebar',
     		'type'    => 'select',
     		'default' => 'full',
             'options' => $sidebars,
-            'desc'    => __( 'Setting sidebar in the area sidebar on single page', THEME_LANG ),
+            'desc'    => __( 'Setting sidebar in the area sidebar on single page', 'kutetheme' ),
     	) );
         
         /**
@@ -493,11 +493,11 @@ class KT_Admin {
     	$group_field_id = $cmb_options_socials->add_field( array(
     		'id'          => 'kt_group_sidebar',
     		'type'        => 'group',
-            'description' => __( 'Manager custome sidebars', THEME_LANG ),
+            'description' => __( 'Manager custome sidebars', 'kutetheme' ),
     		'options'     => array(
-    			'group_title'   => __( 'Sidebar {#}', THEME_LANG ), // {#} gets replaced by row number
-    			'add_button'    => __( 'Add new sidebar', THEME_LANG ),
-    			'remove_button' => __( 'Remove sidebar', THEME_LANG ),
+    			'group_title'   => __( 'Sidebar {#}', 'kutetheme' ), // {#} gets replaced by row number
+    			'add_button'    => __( 'Add new sidebar', 'kutetheme' ),
+    			'remove_button' => __( 'Remove sidebar', 'kutetheme' ),
     			'sortable'      => true, // beta
     		),
     	) );
@@ -509,15 +509,15 @@ class KT_Admin {
     	 * The parent field's id needs to be passed as the first argument.
     	 */
     	$cmb_options_socials->add_group_field( $group_field_id, array(
-    		'name'       => __( 'Sidebar Title', THEME_LANG ),
+    		'name'       => __( 'Sidebar Title', 'kutetheme' ),
     		'id'         => 'title',
     		'type'       => 'text',
     		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
     	) );
     
     	$cmb_options_socials->add_group_field( $group_field_id, array(
-    		'name'        => __( 'Description', THEME_LANG ),
-    		'description' => __( 'sidebar desc', THEME_LANG ),
+    		'name'        => __( 'Description', 'kutetheme' ),
+    		'description' => __( 'sidebar desc', 'kutetheme' ),
     		'id'          => 'description',
     		'type'        => 'textarea_small',
     	) );
@@ -537,8 +537,8 @@ class KT_Admin {
 		) );
         
         $cmb_options_socials->add_field( array(
-    		'name' => __( 'Addthis ID', THEME_LANG ),
-    		'desc' => __( 'Setting id addthis', THEME_LANG ),
+    		'name' => __( 'Addthis ID', 'kutetheme' ),
+    		'desc' => __( 'Setting id addthis', 'kutetheme' ),
     		'id'   => 'kt_addthis_id',
     		'type' => 'text',
     	) );
@@ -557,8 +557,8 @@ class KT_Admin {
 		) );
         
         $cmb_options_css->add_field( array(
-    		'name' => __( 'Code CSS', THEME_LANG ),
-    		'desc' => __( 'Add css in your site', THEME_LANG ),
+    		'name' => __( 'Code CSS', 'kutetheme' ),
+    		'desc' => __( 'Add css in your site', 'kutetheme' ),
     		'id'   => 'kt_add_css',
     		'type' => 'textarea',
     	) );
@@ -577,8 +577,8 @@ class KT_Admin {
 		) );
         
         $cmb_options_js->add_field( array(
-    		'name' => __( 'Code JS', THEME_LANG ),
-    		'desc' => __( 'Add js in your site', THEME_LANG ),
+    		'name' => __( 'Code JS', 'kutetheme' ),
+    		'desc' => __( 'Add js in your site', 'kutetheme' ),
     		'id'   => 'kt_add_js',
     		'type' => 'textarea',
     	) );
@@ -589,7 +589,7 @@ class KT_Admin {
        $cmb_options_info = new_cmb2_box( array(
 			'id'      => 'kt_info',
 			'hookup'  => false,
-            'title'   => __('Info', THEME_LANG ),
+            'title'   => __('Info', 'kutetheme' ),
 			'show_on' => array(
 				// These are important, don't remove
 				'key'   => 'options-page',
@@ -597,22 +597,22 @@ class KT_Admin {
 			),
 		) );
         $cmb_options_info->add_field( array(
-    		'name' => __( 'Address', THEME_LANG ),
-    		'desc' => __( 'Setting address for your site', THEME_LANG ),
+    		'name' => __( 'Address', 'kutetheme' ),
+    		'desc' => __( 'Setting address for your site', 'kutetheme' ),
     		'id'   => 'kt_address',
     		'type' => 'text',
     	) );
         
         $cmb_options_info->add_field( array(
-    		'name' => __( 'Phone', THEME_LANG ),
-    		'desc' => __( 'Setting hotline for your site', THEME_LANG ),
+    		'name' => __( 'Phone', 'kutetheme' ),
+    		'desc' => __( 'Setting hotline for your site', 'kutetheme' ),
     		'id'   => 'kt_phone',
     		'type' => 'text',
     	) );
         
         $cmb_options_info->add_field( array(
-    		'name' => __( 'Email', THEME_LANG ),
-    		'desc' => __( 'Setting email for your site', THEME_LANG ),
+    		'name' => __( 'Email', 'kutetheme' ),
+    		'desc' => __( 'Setting email for your site', 'kutetheme' ),
     		'id'   => 'kt_email',
     		'type' => 'text',
     	) );

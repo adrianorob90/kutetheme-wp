@@ -4,162 +4,162 @@ if ( !defined('ABSPATH')) exit;
 if( ! kt_is_wc() ) return;
 // Setting shortcode service
 vc_map( array(
-    "name" => __( "Lastest Deal Products Carousel", THEME_LANG),
+    "name" => __( "Lastest Deal Products Carousel", 'kutetheme'),
     "base" => "lastest_deal_products",
-    "category" => __('Kute Theme', THEME_LANG ),
-    "description" => __( "List lastest deal product are display by owl carousel", THEME_LANG),
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( "List lastest deal product are display by owl carousel", 'kutetheme'),
     "params" => array(
         array(
             "type" => "textfield",
-            "heading" => __( "Title", THEME_LANG ),
+            "heading" => __( "Title", 'kutetheme' ),
             "param_name" => "title",
             "admin_label" => true,
-            'description' => __( 'It displays title list product', THEME_LANG )
+            'description' => __( 'It displays title list product', 'kutetheme' )
         ),
         array(
             "type"      => 'kt_product_taxonomy',
             'taxonomy'  => 'product_cat',
             'class'     => '',
-            "heading" => __("Category", THEME_LANG),
+            "heading" => __("Category", 'kutetheme'),
             "param_name" => "taxonomy",
             "value" => '',
             'multiple' => false,
             "placeholder" => 'Please select your category',
-            "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", THEME_LANG)
+            "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Number Product", THEME_LANG),
+            "heading" => __("Number Product", 'kutetheme'),
             "param_name" => "number",
             "value" => 12,
-            "description" => __("Enter number of Product", THEME_LANG)
+            "description" => __("Enter number of Product", 'kutetheme')
         ),
         array(
             "type" => "textfield",
-            "heading" => __("Product per columns", THEME_LANG),
+            "heading" => __("Product per columns", 'kutetheme'),
             "param_name" => "product_column",
             "value" => 3,
-            "description" => __("Enter number product on columns", THEME_LANG)
+            "description" => __("Enter number product on columns", 'kutetheme')
         ),
         array(
             "type" => "dropdown",
-        	"heading" => __("Order by", THEME_LANG),
+        	"heading" => __("Order by", 'kutetheme'),
         	"param_name" => "orderby",
         	"value" => array(
-        		__('None', THEME_LANG) => 'none',
-                __('ID', THEME_LANG) => 'ID',
-                __('Author', THEME_LANG) => 'author',
-                __('Name', THEME_LANG) => 'name',
-                __('Date', THEME_LANG) => 'date',
-                __('Modified', THEME_LANG) => 'modified',
-                __('Rand', THEME_LANG) => 'rand',/*
-                __('Regular Price', THEME_LANG) => '_regular_price',
-                __('Sale Price', THEME_LANG) => '_sale_price',*/
+        		__('None', 'kutetheme') => 'none',
+                __('ID', 'kutetheme') => 'ID',
+                __('Author', 'kutetheme') => 'author',
+                __('Name', 'kutetheme') => 'name',
+                __('Date', 'kutetheme') => 'date',
+                __('Modified', 'kutetheme') => 'modified',
+                __('Rand', 'kutetheme') => 'rand',/*
+                __('Regular Price', 'kutetheme') => '_regular_price',
+                __('Sale Price', 'kutetheme') => '_sale_price',*/
         	),
             'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",THEME_LANG),
+        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
         ),
         array(
             "type" => "dropdown",
-        	"heading" => __("Order", THEME_LANG),
+        	"heading" => __("Order", 'kutetheme'),
         	"param_name" => "order",
         	"value" => array(
-                __('ASC', THEME_LANG) => 'ASC',
-                __('DESC', THEME_LANG) => 'DESC'
+                __('ASC', 'kutetheme') => 'ASC',
+                __('DESC', 'kutetheme') => 'DESC'
         	),
             'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",THEME_LANG),
+        	"description" => __("Designates the ascending or descending order.",'kutetheme'),
         ),
         array(
             "type" => "textfield",
-            "heading" => __( "Extra class name", THEME_LANG ),
+            "heading" => __( "Extra class name", 'kutetheme' ),
             "param_name" => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         ),
         // Carousel
         array(
 			'type' => 'checkbox',
-			'heading' => __( 'AutoPlay', THEME_LANG ),
+			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', THEME_LANG ) => 'true' ),
-            'group' => __( 'Carousel settings', THEME_LANG )
+			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
+            'group' => __( 'Carousel settings', 'kutetheme' )
 		),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Navigation', THEME_LANG ),
+            'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", THEME_LANG ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", THEME_LANG ),
-            'group' => __( 'Carousel settings', THEME_LANG )
+			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
+            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' )
 		),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Loop', THEME_LANG ),
+            'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", THEME_LANG ) => 'false' ),
-            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", THEME_LANG ),
-            'group' => __( 'Carousel settings', THEME_LANG )
+			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' )
 		),
         array(
 			"type" => "kt_number",
-			"heading" => __("Slide Speed", THEME_LANG),
+			"heading" => __("Slide Speed", 'kutetheme'),
 			"param_name" => "slidespeed",
 			"value" => "200",
-            "suffix" => __("milliseconds", THEME_LANG),
-			"description" => __('Slide speed in milliseconds', THEME_LANG),
-            'group' => __( 'Carousel settings', THEME_LANG )
+            "suffix" => __("milliseconds", 'kutetheme'),
+			"description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group' => __( 'Carousel settings', 'kutetheme' )
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("Margin", THEME_LANG),
+			"heading" => __("Margin", 'kutetheme'),
 			"param_name" => "margin",
 			"value" => "30",
-            "suffix" => __("px", THEME_LANG),
-			"description" => __('Distance( or space) between 2 item', THEME_LANG),
-            'group' => __( 'Carousel settings', THEME_LANG )
+            "suffix" => __("px", 'kutetheme'),
+			"description" => __('Distance( or space) between 2 item', 'kutetheme'),
+            'group' => __( 'Carousel settings', 'kutetheme' )
 	  	),
         array(
 			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', THEME_LANG ),
+            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", THEME_LANG ) => 'false' ),
-            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", THEME_LANG ),
-            'group' => __( 'Carousel responsive', THEME_LANG )
+			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
+            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
+            'group' => __( 'Carousel responsive', 'kutetheme' )
 		),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on destop (Screen resolution of device >= 992px )", THEME_LANG),
+			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
 			"param_name" => "items_destop",
 			"value" => "3",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The number of item on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG )
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of item on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' )
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", THEME_LANG),
+			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
 			"param_name" => "items_tablet",
 			"value" => "2",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The number of item on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG )
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of item on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' )
 	  	),
         array(
 			"type" => "kt_number",
-			"heading" => __("The items on mobile (Screen resolution of device < 768px)", THEME_LANG),
+			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
 			"param_name" => "items_mobile",
 			"value" => "1",
-            "suffix" => __("item", THEME_LANG),
-			"description" => __('The number of item on destop', THEME_LANG),
-            'group' => __( 'Carousel responsive', THEME_LANG )
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of item on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' )
 	  	),
         
         array(
 			'type' => 'css_editor',
-			'heading' => __( 'Css', THEME_LANG ),
+			'heading' => __( 'Css', 'kutetheme' ),
 			'param_name' => 'css',
 			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-			'group' => __( 'Design options', THEME_LANG )
+			'group' => __( 'Design options', 'kutetheme' )
 		)
     )
 ));
@@ -258,7 +258,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             <div class="latest-deals-product container-data-time">
                 <span class="count-down-time2">
                     <span class="icon-clock"></span>
-                    <span><?php _e( 'end in', THEME_LANG ); ?></span>
+                    <span><?php _e( 'end in', 'kutetheme' ); ?></span>
                     <span class="countdown-lastest stick-countdown"></span>
                 </span>
                 <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>

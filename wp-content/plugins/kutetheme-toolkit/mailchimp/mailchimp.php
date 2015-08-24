@@ -505,8 +505,8 @@ class Widget_KT_Mailchimp extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_mailchimp', 
-                        'description' => __( 'Mailchimp.', THEME_LANG ) );
-		parent::__construct('widget_kt_mailchimp', __('KT Mailchimp', THEME_LANG ), $widget_ops);
+                        'description' => __( 'Mailchimp.', 'kutetheme' ) );
+		parent::__construct('widget_kt_mailchimp', __('KT Mailchimp', 'kutetheme' ), $widget_ops);
 	}
 
 	public function widget( $args, $instance ) {
@@ -572,69 +572,69 @@ class Widget_KT_Mailchimp extends WP_Widget {
         	$lists = $mcapi->lists();
             if($lists['data']){
                 foreach ($lists['data'] as $item) {
-                    $html .= '<option value="'.$item['id'].'" '.selected( $list, $item['name'] ).'>'._e($item['name'], THEME_LANG).'</option>';
+                    $html .= '<option value="'.$item['id'].'" '.selected( $list, $item['name'] ).'>'._e($item['name'], 'kutetheme').'</option>';
                 }
             }
         }
 	?>
     <div class="widget-content">
         <p>
-            <label><?php _e('Title:', THEME_LANG); ?></label> 
+            <label><?php _e('Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
         </p>
         
         <p>
-            <label><?php _e('Newsletter layout:', THEME_LANG); ?></label> 
+            <label><?php _e('Newsletter layout:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo $this->get_field_id('layout'); ?>" name="<?php echo $this->get_field_name('layout'); ?>">
-                <option value="one"<?php selected( $layout, 'one' ); ?>><?php _e('One line', THEME_LANG); ?></option>
-                <option value="two"<?php selected( $layout, 'two' ); ?>><?php _e('Two line', THEME_LANG); ?></option>
+                <option value="one"<?php selected( $layout, 'one' ); ?>><?php _e('One line', 'kutetheme'); ?></option>
+                <option value="two"<?php selected( $layout, 'two' ); ?>><?php _e('Two line', 'kutetheme'); ?></option>
             </select>
         </p>
         
         <p>
-            <label><?php _e('List:', THEME_LANG); ?></label> 
+            <label><?php _e('List:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo $this->get_field_id('list'); ?>" name="<?php echo $this->get_field_name('list'); ?>">
                 <?php echo $html; ?>
             </select>
         </p>
         
         <p>
-            <label><?php _e('Double opt-in:', THEME_LANG); ?></label> 
+            <label><?php _e('Double opt-in:', 'kutetheme'); ?></label> 
             <input <?php checked($opt_in, "yes")  ?> value="Yes, please" class="widefat" id="<?php echo $this->get_field_id('opt_in'); ?>" name="<?php echo $this->get_field_name('opt_in'); ?>" type="checkbox" />
         </p>
         
         <p>
-            <label><?php _e('Text before form:', THEME_LANG); ?></label>
+            <label><?php _e('Text before form:', 'kutetheme'); ?></label>
             <textarea class="widefat" rows="3" id="<?php echo $this->get_field_id('text_before'); ?>" name="<?php echo $this->get_field_name('text_before'); ?>"><?php echo ($text_before); ?></textarea>
         </p>
         
         <p>
-            <label><?php _e('Text after form:', THEME_LANG); ?></label>
+            <label><?php _e('Text after form:', 'kutetheme'); ?></label>
             <textarea class="widefat" rows="3" id="<?php echo $this->get_field_id('text_after'); ?>" name="<?php echo $this->get_field_name('text_after'); ?>"><?php echo ($text_after); ?></textarea>
         </p>
         
         
         <p>
-            <label><?php _e('Success Message:', THEME_LANG); ?></label>
+            <label><?php _e('Success Message:', 'kutetheme'); ?></label>
             <textarea class="widefat" rows="3" id="<?php echo $this->get_field_id('content'); ?>" name="<?php echo $this->get_field_name('content'); ?>"><?php echo ($content); ?></textarea>
         </p>
         
         <p>
-            <label><?php _e('Extra class name:', THEME_LANG); ?></label> 
+            <label><?php _e('Extra class name:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('css'); ?>" name="<?php echo $this->get_field_name('css'); ?>" type="text" value="<?php echo $css; ?>" />
         </p>
         <p>
-            <label><?php _e('Min Height On Desktop:', THEME_LANG); ?></label> 
+            <label><?php _e('Min Height On Desktop:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('height_desktop'); ?>" name="<?php echo $this->get_field_name('height_desktop'); ?>" type="text" value="<?php echo $height_desktop; ?>" />
         </p>
         
         <p>
-            <label><?php _e('Min Height On Tablet:', THEME_LANG); ?></label> 
+            <label><?php _e('Min Height On Tablet:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('height_tablet'); ?>" name="<?php echo $this->get_field_name('height_tablet'); ?>" type="text" value="<?php echo $height_tablet; ?>" />
         </p>
         
         <p>
-            <label><?php _e('Min Height On Mobile:', THEME_LANG); ?></label> 
+            <label><?php _e('Min Height On Mobile:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('height_mobile'); ?>" name="<?php echo $this->get_field_name('height_mobile'); ?>" type="text" value="<?php echo $height_mobile; ?>" />
         </p>
         
