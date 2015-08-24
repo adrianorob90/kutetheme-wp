@@ -37,7 +37,11 @@
             <div class="col-xs-5 col-sm-3 col-md-2 group-button-header">
                 <a title="<?php _e('Compare', THEME_LANG) ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e('compare', THEME_LANG) ?></a>
                 <a title="<?php _e( 'My wishlist', THEME_LANG ) ?>" href="<?php echo get_wishlist_url(); ?>" class="btn-heart"><?php _e( 'wishlist', THEME_LANG ) ?></a>
-                <?php echo kt_cart_button();?>
+                <div class="widget_shopping_cart_content">
+                    <?php 
+                        do_action('kt_mini_cart');
+                    ?>
+                </div>
             </div>
         </div>
         

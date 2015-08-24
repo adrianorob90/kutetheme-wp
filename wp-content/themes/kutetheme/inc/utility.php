@@ -221,7 +221,7 @@ if( ! function_exists('kt_search_form') ){
         }
     }
 }
-
+/*
 if( ! function_exists('kt_cart_button')){
     function kt_cart_button(){
         if( kt_is_wc() ):
@@ -321,6 +321,7 @@ if( ! function_exists('kt_get_cart_content')){
         return $result;
     }
 }
+*/
 if( ! function_exists('get_wishlist_url') ){
     function get_wishlist_url(){
         if( function_exists( 'YITH_WCWL' ) ):
