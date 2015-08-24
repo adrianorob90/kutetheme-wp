@@ -43,7 +43,7 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
         }else{
             $post_type = 'page';
         }
-        $pages = new WP_Query( array( 'post_type' => $post_type ));
+        $pages = new WP_Query( array( 'post_type' => $post_type, 'posts_per_page' => -1 ));
         if($pages->have_posts()):
         ?>
         <div class="wrapper-megamenu">
