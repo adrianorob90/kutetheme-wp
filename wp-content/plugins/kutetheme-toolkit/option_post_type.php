@@ -56,6 +56,12 @@ function kt_register_demo_metabox() {
 		'id'   => $prefix . 'service_sub_title',
 		'type' => 'text',
 	) );
+	$service_option->add_field( array(
+		'name' => __( 'Description', THEME_LANG ),
+		'desc' => __( 'Short description', THEME_LANG ),
+		'id'   => $prefix . 'service_desc',
+		'type' => 'text',
+	) );
     
 }
 

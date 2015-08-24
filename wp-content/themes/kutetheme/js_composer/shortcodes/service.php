@@ -19,6 +19,18 @@ if( class_exists( 'WPBakeryShortCode' ) ){
                 'description' => __( 'Display of items', THEME_LANG )
             ),
             array(
+                "type"        => "dropdown",
+                "heading"     => __("Display Style"),
+                "param_name"  => "style",
+                "admin_label" => true,
+                "value"       => array(
+                    'Style 1'   => '1',
+                    'Style 2'   => '2',
+                ),
+                "std"         => 1,
+                "description" => __("The description")
+            ),
+            array(
                 'type' => 'css_editor',
                 'heading' => __( 'Css', 'js_composer' ),
                 'param_name' => 'css',
@@ -42,10 +54,10 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             'css_animation' => '',
             'el_class' => '',
             'css' => '',
+            'style'=>1
             
         ), $atts );
         extract($atts);
-        
         
         $elementClass = array(
             'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'service ', $this->settings['base'], $atts ),
@@ -64,6 +76,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             );
         $service_query = new WP_Query($args);
         if($service_query->have_posts()){
+            if($style==1):
             ?>
             <div class="service-wapper">
             <div class="<?php echo esc_attr( $elementClass ); ?>">
@@ -90,6 +103,40 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             ?>
             </div>
             </div>
+        <?php elseif($style==2):?>
+            <!-- Show display style 2 -->
+            <div class="services2">
+                <ul>
+                    <?php
+                    while ($service_query->have_posts()) {
+                        $service_query->the_post();
+                        $meta = get_post_meta( get_the_ID());
+                        ?>
+                        <li class="col-xs-12 col-sm-6 col-md-4 services2-item">
+                            <div class="service-wapper">
+                                <div class="row">
+                                    <div class="col-sm-6 image">
+                                        <?php if(has_post_thumbnail()):?>
+                                        <div class="icon">
+                                            <?php the_post_thumbnail(array(64, 64));?>
+                                        </div>
+                                    <?php endif;?>
+                                        <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+                                    </div>
+                                    <div class="col-sm-6 text">
+                                        <?php if(isset($meta['_kt_page_service_desc'])):?>
+                                        <?php echo $meta['_kt_page_service_desc'][0];?>
+                                        <?php endif;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
+        <?php endif;?>
             <?php
         }
     }
