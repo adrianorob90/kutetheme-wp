@@ -72,9 +72,9 @@ endif;
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
-          <div id="elevator-6" class="floor-elevator">
-            <a href="#elevator-5" class="btn-elevator up fa disabled fa-angle-up"></a>
-            <a href="#" class="btn-elevator disabled down fa disabled fa-angle-down"></a>
+          <div class="floor-elevator">
+            <a href="#" class="btn-elevator up fa fa-angle-up"></a>
+            <a href="#" class="btn-elevator disabled down fa fa-angle-down"></a>
           </div>
         </nav>
        <div class="product-featured clearfix">

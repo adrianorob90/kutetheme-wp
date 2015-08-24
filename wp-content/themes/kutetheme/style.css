@@ -329,6 +329,28 @@ a img.aligncenter {
 .widget_tag_cloud .tagcloud a{
     
 }
+.widget_kt_slider{
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+.widget_kt_slider .owl-controls .owl-dots{
+    position: absolute;
+    bottom: 5px;
+}
+.widget_kt_product_special .price{
+    font-size: 18px;
+    color: #ff3366;
+}
+.widget_kt_product_special ins{
+    text-decoration: none;
+    float: left;
+}
+.widget_kt_product_special del{
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+}
 
 .main-bg{
     background-color: #ff3366;

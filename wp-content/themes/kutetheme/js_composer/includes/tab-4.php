@@ -51,9 +51,9 @@
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
-          <div id="elevator-4" class="floor-elevator">
-                <a href="#elevator-3" class="btn-elevator up fa fa-angle-up"></a>
-                <a href="#elevator-5" class="btn-elevator down fa fa-angle-down"></a>
+          <div class="floor-elevator">
+                <a href="#" class="btn-elevator up fa fa-angle-up"></a>
+                <a href="#" class="btn-elevator down fa fa-angle-down"></a>
           </div>
         </nav>
        <div class="product-featured clearfix">

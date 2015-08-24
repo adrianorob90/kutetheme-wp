@@ -223,7 +223,7 @@
 }
 
 .option2 .box-vertical-megamenus .vertical-menu-list {
-	padding-top: 4px;
+	padding-top: 2px;
 }
 .option2 .box-vertical-megamenus .vertical-menu-list>li{
 	border: none;
@@ -246,7 +246,7 @@
 	border:none;
 	padding-left: 0;
 	border-bottom: 1px dotted #eaeaea;
-	line-height: 36px;
+	line-height: 37px;
 }
 .option2 .box-vertical-megamenus .vertical-menu-list li:hover{
 	border-left: none;
@@ -318,6 +318,7 @@
 }
 .option2 .show-brand .navbar-brand img{
 	margin-right: 10px;
+	margin-top: -7px;
 }
 .option2 .show-brand .navbar-brand>a:hover{
 	color: #fff;
@@ -392,7 +393,7 @@
 .option2 .nav-menu .nav>li:hover a:after,
 .option2 .nav-menu .nav>li.active a:after{
 	color: #fa8334;
-	bottom: -6px;
+	bottom: -7px;
 	opacity: 1;
 	visibility: inherit;
 }
@@ -405,6 +406,11 @@
 	padding: 20px 30px;
 	line-height: 30px;
 	background: #fff;
+	margin: 0;
+	padding-right: 0;
+}
+.option2 .product-featured .sub-category-list li{
+	list-style: none;
 }
 .option2 .product-featured .product-featured-tab-content{
 }
@@ -491,6 +497,7 @@
 	border-right: 1px solid #eaeaea;
 	overflow: hidden;
 	padding-bottom: 23px;
+	min-height: 286px;
 }
 .option2 .product-featured .deal-product .deal-product-head{
 	text-align: center;

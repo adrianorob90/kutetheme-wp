@@ -110,9 +110,9 @@ if( $deal_product->have_posts() ){
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
-          <div id="elevator-2" class="floor-elevator">
-            <a href="#elevator-1" class="btn-elevator up disabled  fa fa-angle-up"></a>
-            <a href="#elevator-3" class="btn-elevator down disabled  fa fa-angle-down"></a>
+          <div class="floor-elevator">
+            <a href="#" class="btn-elevator up  fa fa-angle-up"></a>
+            <a href="#" class="btn-elevator down  fa fa-angle-down"></a>
           </div>
         </nav>
        <div class="product-featured clearfix">

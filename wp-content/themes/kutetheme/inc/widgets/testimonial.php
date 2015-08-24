@@ -47,7 +47,7 @@ class Widget_KT_Testimonial extends WP_Widget {
                     <ul class="testimonials owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                         <?php while($pages->have_posts()): $pages->the_post(); ?>
                         <li>
-                            <div class="client-mane"><a target="_blank" href="<?php the_permalink() ?>"><?php the_title(); ?></a></div>
+                            <div class="client-mane"><?php the_title(); ?></div>
                             <div class="client-avarta">
                                 <?php the_post_thumbnail('110x110'); ?>
                             </div>
