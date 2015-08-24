@@ -36,12 +36,15 @@ class Widget_KT_Product_Special extends WP_Widget {
             'orderby'               => $orderby,
             'order'	                => $order
 		);
-        
+        if($title!=""){
+            echo $args['before_title'];
+            echo $title;
+            echo $args['after_title'];
+        }
         $product = new WP_Query( $params );
         ?>
         <!-- SPECIAL -->
         <div class="block left-module">
-            <p class="title_block"><?php echo $title ?></p>
             <?php
             if ( $product->have_posts() ):
             ?>
