@@ -1,14 +1,5 @@
 <?php
-/*
-Plugin Name: Demo Tax meta class
-Plugin URI: http://en.bainternet.info
-Description: Tax meta class usage demo
-Version: 2.0.2
-Author: Bainternet, Ohad Raz
-Author URI: http://en.bainternet.info
-*/
 
-//include the main class file
 require_once("Tax-meta-class/Tax-meta-class.php");
 if (is_admin()){
   /* 
