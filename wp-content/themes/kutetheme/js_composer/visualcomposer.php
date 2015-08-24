@@ -8,3 +8,4 @@ require THEME_DIR . '/js_composer/shortcodes/categories.php';
 require THEME_DIR . '/js_composer/shortcodes/lastest_deals.php';
 require THEME_DIR . '/js_composer/shortcodes/blog.php';
 require THEME_DIR . '/js_composer/shortcodes/box_service.php';
+require THEME_DIR . '/js_composer/shortcodes/list_product.php';
