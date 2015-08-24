@@ -1,32 +1,4 @@
 <?php 
-/**
- * Tax Meta Class
- *
- * The Tax Meta Class is used by including it in your plugin r theme files and using its methods to 
- * Add meta fields for WordPress Taxonomies (categories,tags and custom taxonomies). It is meant to be very simple and 
- * straightforward.
- *
- * This class is derived from My-Meta-Box (https://github.com/bainternet/My-Meta-Box script) which is 
- * a class for creating custom meta boxes for WordPress. 
- * 
- * @version 2.0.2
- * @copyright 2012-2014 Ohad Raz 
- * @author Ohad Raz (email: admin@bainternet.info)
- * @link http://en.bainternet.info
- * 
- * @license GNU General Public LIcense v3.0 - license.txt
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * @package Tax Meta Class
- * @deprecated replace_insert_to_post_text() @since 1.8.3
- * 
- */
 
 if ( ! class_exists( 'Tax_Meta_Class') ) :
 

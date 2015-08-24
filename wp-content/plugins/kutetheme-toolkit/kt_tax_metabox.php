@@ -1,6 +1,5 @@
 <?php
 
-//include the main class file
 require_once("Tax-meta-class/Tax-meta-class.php");
 if (is_admin()){
   /* 
