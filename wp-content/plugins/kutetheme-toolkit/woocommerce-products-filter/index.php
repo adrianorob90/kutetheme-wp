@@ -1,7 +1,7 @@
 <?php
 /*
   Description: WooCommerce Products Filter. Easy & Quick!
-  Author: realmag777: http://woocommerce-filter.com/. Moded by SaT(shrimp2t@gmail.com)
+  Author: angelsIT: http://woocommerce-filter.com/. Moded by AngeslIT(shrimp2t@gmail.com)
   Version: 2.0
   Author URI: http://www.pluginus.net/
  */
@@ -686,10 +686,10 @@ class WOOF_Widget extends WP_Widget
     function __construct()
     {
 //Basic settings
-        $settings = array('classname' => __CLASS__, 'description' => __('WooCommerce Products Filter by realmag777', 'woocommerce-products-filter'));
+        $settings = array('classname' => __CLASS__, 'description' => __('KT WooCommerce Products Filter by angelsIT', 'woocommerce-products-filter'));
 
 //Creation
-        $this->WP_Widget(__CLASS__, __('WooCommerce Products Filter', 'woocommerce-products-filter'), $settings);
+        $this->WP_Widget(__CLASS__, __('KT WooCommerce Products Filter', 'woocommerce-products-filter'), $settings);
     }
 
 //Widget view

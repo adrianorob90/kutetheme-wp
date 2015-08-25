@@ -17,7 +17,7 @@ vc_map( array(
             'description' => __( 'It displays title list product', 'kutetheme' )
         ),
         array(
-            "type"      => 'kt_product_taxonomy',
+            "type"      => 'kt_categories',
             'taxonomy'  => 'product_cat',
             'class'     => '',
             "heading" => __("Category", 'kutetheme'),
