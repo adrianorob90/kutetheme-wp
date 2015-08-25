@@ -47,5 +47,6 @@ if ( ! defined( 'ABSPATH' ) ) {
         <span class="notify notify-right"><?php echo $cart_count; ?></span>
         <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
     </div>
+    </div>
 <?php endif;?>
 <?php do_action( 'woocommerce_after_mini_cart' ); ?>
