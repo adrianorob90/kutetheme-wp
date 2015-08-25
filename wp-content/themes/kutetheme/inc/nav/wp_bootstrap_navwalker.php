@@ -165,7 +165,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
                     wp_reset_query();
                     wp_reset_postdata();
                 endif;
-                $item_output .'</div>';
+                $item_output .='</div><!--End Mega-->';
             }
             
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

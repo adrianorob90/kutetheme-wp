@@ -131,8 +131,9 @@ class KT_Mailchimp{
 
         }else{
             $output .= sprintf(
-                            "Please enter your mailchimp API key in <a href='%s'>here</a>",
-                            admin_url( 'options-general.php?page=kt-mailchimp-settings')
+                            "Please enter your mailchimp API key in <a href='%s'>%s</a>",
+                            admin_url( 'options-general.php?page=kt-mailchimp-settings'),
+                             __('here', 'kutetheme')
                         );
         }
         
@@ -393,7 +394,7 @@ if ( class_exists( 'Vc_Manager', false ) ) {
     vc_map( array(
         "name" => __( "Mailchimp", 'kt_mailchimp'),
         "base" => "mailchimp",
-        "category" => __('by Theme', 'kt_mailchimp' ),
+        "category" => __('Kute Theme', 'kt_mailchimp' ),
         "description" => __( "Mailchimp", 'kt_mailchimp'),
         "wrapper_class" => "clearfix",
         "params" => array(
