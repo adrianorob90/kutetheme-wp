@@ -609,3 +609,13 @@ if(!function_exists('kt_utilities_single_product')){
 //Tab category Deal
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_loop_rating', 5);
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_single_excerpt', 10);
+
+add_action('single_product_large_thumbnail_size','kt_shop_single' );
+function kt_shop_single($shop_single){
+    return 'kt_shop_single';
+}
+
+add_action('single_product_small_thumbnail_size','kt_shop_thumbnail_image_size');
+function kt_shop_thumbnail_image_size($shop_thumbnail){
+    return 'kt_shop_thumbnail_image_size';
+}
