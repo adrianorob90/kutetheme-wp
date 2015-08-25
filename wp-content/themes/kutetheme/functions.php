@@ -139,10 +139,8 @@ function kutetheme_setup() {
     add_image_size ( '175x214', 175, 214, true );
     add_image_size ( '131x160', 131, 160, true );
     add_image_size ( '204x249', 204, 249, true );
-    add_image_size( '268x255', 268, 255, true );
+    add_image_size ( '268x255', 268, 255, true );
     add_image_size ('shop_catalog_image_size', 300, 366, true );
-    add_image_size('kt_shop_thumbnail_image_size',100,122,true );
-    add_image_size('kt_shop_single',420,512,false);
 }
 endif; // kt_setup
 add_action( 'after_setup_theme', 'kutetheme_setup' );
@@ -359,6 +357,7 @@ function kt_scripts() {
     wp_enqueue_style( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.css' );
     
     wp_enqueue_style( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.css' );
+    wp_enqueue_style( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.css' );
     
     wp_enqueue_style( 'kt-style', get_template_directory_uri() . '/css/style.css', 
         array( 
@@ -401,7 +400,7 @@ function kt_scripts() {
     wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
     
     wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
-    
+    wp_enqueue_script( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );
     
 	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.0', true );

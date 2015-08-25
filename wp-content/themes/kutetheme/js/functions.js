@@ -470,6 +470,29 @@
 
             }
         );
+        // Zoom
+        if($('.easyzoom').length >0){
+            // Instantiate EasyZoom instances
+            var $easyzoom = $('.easyzoom').easyZoom();
+
+            // Get an instance API
+            var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
+
+            // Setup thumbnails example
+            $('.thumbnails').on('click', 'a', function(e) {
+                $(this).closest('.product-list-thumb').find('a').each(function(){
+                    $(this).removeClass('selected');
+                })
+                
+                $(this).addClass('selected');
+
+                var $this = $(this);
+                e.preventDefault();
+                // Use EasyZoom's `swap` method
+                api1.swap($this.data('standard'), $this.attr('href'));
+
+            });
+          }
     });
     /* ---------------------------------------------
      Scripts resize

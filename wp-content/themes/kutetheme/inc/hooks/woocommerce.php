@@ -619,3 +619,106 @@ add_action('single_product_small_thumbnail_size','kt_shop_thumbnail_image_size')
 function kt_shop_thumbnail_image_size($shop_thumbnail){
     return 'kt_shop_thumbnail_image_size';
 }
+
+
+// Custom single product images
+
+if(!function_exists('kt_show_product_images')){
+    $kt_woo_style_image_product = kt_option('kt_woo_style_image_product','popup');
+    if( $kt_woo_style_image_product =='zoom' ){
+        remove_action( 'woocommerce_before_single_product_summary' , 'woocommerce_show_product_images',20);
+        add_action( 'woocommerce_before_single_product_summary' ,'kt_show_product_images', 21 );
+    }
+    function kt_show_product_images(){
+        global $post, $woocommerce, $product;
+        ?>
+        <div class="images single-product-image">
+            <?php
+            if( has_post_thumbnail() ){
+                $image_title    = esc_attr( get_the_title( get_post_thumbnail_id() ) );
+                $image_caption  = get_post( get_post_thumbnail_id() )->post_excerpt;
+                $image_link     = wp_get_attachment_url( get_post_thumbnail_id() );
+                $image          = get_the_post_thumbnail( $post->ID,array(417,510), array(
+                    'title' => $image_title,
+                    'alt'   => $image_title
+                    ) );
+                ?>
+                <div class="product-image easyzoom easyzoom--overlay easyzoom--with-thumbnails">
+                    <a href="<?php echo esc_url( $image_link );?>">
+                        <?php
+                        echo $image;
+                        ?>
+                    </a>
+                </div>
+                <?php
+            }
+
+            $attachment_ids = $product->get_gallery_attachment_ids();
+            if( $attachment_ids ){
+                ?>
+                <div class="product-list-thumb">
+                    <ul class="thumbnails kt-owl-carousel" data-margin="10" data-nav="true" data-responsive='{"0":{"items":2},"600":{"items":2},"1000":{"items":3}}'>
+                            <?php foreach ($attachment_ids as $attachment_id) {
+                            $image_link = wp_get_attachment_url( $attachment_id );
+                            if(!$image_link)
+                                continue;
+
+                            $image_title    = esc_attr( get_the_title( $attachment_id ) );
+
+                            $image       = wp_get_attachment_image( $attachment_id,array(100,122), 0, $attr = array(
+                                'title' => $image_title,
+                                'alt'   => $image_title
+                                ) );
+                            $standard_link = wp_get_attachment_url( $attachment_id);
+                            ?>
+                            <li>
+                                <a href="<?php echo esc_url( $image_link );?>" data-standard="<?php echo esc_url( $standard_link );?>">
+                                    <?php echo $image ;?>
+                                </a>
+                            </li>
+                            <?php
+                        } 
+                        ?>
+                    </ul>
+                </div>
+                <?php
+            }
+        ?>
+        </div>
+        <?php
+    }
+}
+
+/*
+ * Hook in on activation
+ *
+ */
+add_action( 'init', 'yourtheme_woocommerce_image_dimensions', 1 );
+
+/**
+ * Define image sizes
+ */
+function yourtheme_woocommerce_image_dimensions() {
+    $catalog = array(
+        'width'     => '300',   // px
+        'height'    => '366',   // px
+        'crop'      => 0        // true
+    );
+
+    $single = array(
+        'width'     => '420',   // px
+        'height'    => '512',   // px
+        'crop'      => 0        // true
+    );
+
+    $thumbnail = array(
+        'width'     => '100',   // px
+        'height'    => '122',   // px
+        'crop'      => 0        // false
+    );
+
+    // Image sizes
+    update_option( 'shop_catalog_image_size', $catalog );       // Product category thumbs
+    update_option( 'shop_single_image_size', $single );         // Single product image
+    update_option( 'shop_thumbnail_image_size', $thumbnail );   // Image gallery thumbs
+}
