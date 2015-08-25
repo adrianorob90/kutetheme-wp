@@ -72,7 +72,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                 <?php foreach( $tabs as $k => $v ): ?>
                     <li <?php echo ( $i == 0 ) ? 'class="active"': '' ?> >
                         <a data-toggle="tab" href="#tab-<?php echo $k . $uniqeID  ?>"><?php echo $v; ?></a>
-                        </li>
+                    </li>
                     <?php $i++; ?>
                 <?php endforeach; ?>
             </ul>

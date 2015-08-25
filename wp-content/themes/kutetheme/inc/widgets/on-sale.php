@@ -8,74 +8,68 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
-class Widget_KT_Product_Special extends WP_Widget {
+class Widget_KT_On_Sale extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
-                        'classname' => 'widget_kt_product_special', 
-                        'description' => __( 'Box special product on sidebar.', 'kutetheme' ) );
-		parent::__construct( 'widget_kt_product_special', __('KT Special Product', 'kutetheme' ), $widget_ops );
+                        'classname' => 'widget_kt_on_sale', 
+                        'description' => __( 'Box On Sale.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_on_sale', __('KT On Sale', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
         $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
-        
+        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
         $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
         $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
         
         $meta_query = WC()->query->get_meta_query();
+        $product_ids_on_sale = wc_get_product_ids_on_sale();
         $params = array(
 			'post_type'				=> 'product',
 			'post_status'			=> 'publish',
 			'ignore_sticky_posts'	=> 1,
-			'posts_per_page' 		=> 1,
+			'posts_per_page' 		=> $number,
 			'meta_query' 			=> $meta_query,
             'suppress_filter'       => true,
             'orderby'               => $orderby,
-            'order'	                => $order
+            'order'	                => $order,
+            'post__in'              => array_merge( array( 0 ), $product_ids_on_sale )
 		);
-        if( $title ){
-            echo $args['before_title'];
-            echo $title;
-            echo $args['after_title'];
-        }
         $product = new WP_Query( $params );
+        if( $product->have_posts() ):
         ?>
-        <!-- SPECIAL -->
+        <!-- block best sellers -->
         <div class="block left-module">
-            <div class="block_content">        
-                <?php
-                if ( $product->have_posts() ):
-                ?>
+            <?php 
+                if( $title ){
+                    echo $args['before_title'];
+                    echo $title;
+                    echo $args['after_title'];
+                }
+            ?>
+            <div class="block_content product-onsale">
+                <ul class="product-list owl-carousel" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
                     <?php while($product->have_posts()): $product->the_post(); ?>
-                        <ul class="products-block">
-                            <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
-                        </ul>
+                        <li>
+                            <?php wc_get_template_part( 'content', 'on-sale-sidebar' ); ?>
+                        </li>
                     <?php endwhile; ?>
-                <?php
-                endif;
-                wp_reset_query();
-                wp_reset_postdata();
-                $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );            
-                ?>
-                <div class="products-block">
-                    <div class="products-block-bottom">
-                        <a class="link-all" href="<?php echo $shop_page_url; ?>"><?php _e( 'All Products', 'kutetheme' ) ?></a>
-                    </div>
-                </div>
-            </div>                            
+                </ul>
+            </div>
         </div>
-        <!-- ./SPECIAL -->
+        <!-- ./block best sellers  -->
         <?php
+        endif;
         echo $args[ 'after_widget' ];
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
         $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
-        
+        $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] :6;
         $instance[ 'orderby' ]  = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
         $instance[ 'order' ]    = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
         
@@ -85,7 +79,7 @@ class Widget_KT_Product_Special extends WP_Widget {
 	public function form( $instance ) {
 		//Defaults
         $title      = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
-        
+        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
         $orderby    = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
         $order      = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
 	?>
@@ -93,6 +87,10 @@ class Widget_KT_Product_Special extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
@@ -118,5 +116,5 @@ class Widget_KT_Product_Special extends WP_Widget {
 
 }
 add_action( 'widgets_init', function(){
-    register_widget( 'Widget_KT_Product_Special' );
+    register_widget( 'Widget_KT_On_Sale' );
 } );
