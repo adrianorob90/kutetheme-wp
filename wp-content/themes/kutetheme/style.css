@@ -362,7 +362,29 @@ a img.aligncenter {
 .home .main-bg{
     display: block;
 }
-
+.popular-posts .wpp-list li{
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.popular-posts .wpp_featured_def{
+    width: 80px;
+    float: left;
+    border: 1px solid #eaeaea;
+    padding: 4px;
+    background: #fcfcfc;
+}
+.popular-posts .post-stats{
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+}
+.popular-posts .post-stats:before{
+    font-family: 'FontAwesome';
+    content: "\f073";
+    margin-right: 5px;
+}
 /*BLOG*/
 .page-title{
     font-size: 24px;

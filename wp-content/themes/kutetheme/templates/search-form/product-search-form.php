@@ -10,7 +10,7 @@ $args = array(
   'hierarchical' => true
 );
 ?>
-<form class="form-inline woo-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ) ?>">
+<form class="form-inline woo-search" method="get" action="<?php echo esc_url( home_url( '/' ) ) ?>">
       <div class="form-group form-category">
         <?php wp_dropdown_categories( $args ); ?>
       </div>

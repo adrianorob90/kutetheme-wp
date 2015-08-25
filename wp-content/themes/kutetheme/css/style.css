@@ -924,6 +924,12 @@ img.alignright{
     position: absolute;
     left: 0;
     top: 0;
+    background: transparent;
+    color: #333;
+    width: 9px;
+    height: 9px;
+    float: left;
+    display: inline-block;
 }
 .cart-block .cart-block-content  .product-info .p-left .remove_link:after{
   content: '';
@@ -1961,6 +1967,9 @@ span.notify-right{
     bottom: 0;
     margin-bottom: 0;
 }
+ .product-list li .add-to-cart a.added{
+  display: none;
+ }
 .product-list li:hover .quick-view a.heart{
     margin-left: 0;
 }

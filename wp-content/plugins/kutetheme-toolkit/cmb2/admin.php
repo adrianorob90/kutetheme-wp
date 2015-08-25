@@ -475,17 +475,17 @@ class KT_Admin {
             'desc'    => __( 'Setting sidebar in the area sidebar on single page', 'kutetheme' ),
     	) );
 
-        $cmb_options_woocommerce->add_field( array(
-            'name'    => __( 'Select display style of the image product', 'kutetheme' ),
-            'id'      => 'kt_woo_style_image_product',
-            'type'    => 'select',
-            'default' => 'popup',
-            'options' => array(
-                'popup'=>'Default',
-                'zoom'=>'Zoom'
-            ),
-            'desc'    => __( 'Choose either popup or zoom style of the image product', 'kutetheme' ),
-        ) );
+        // $cmb_options_woocommerce->add_field( array(
+        //     'name'    => __( 'Select display style of the image product', 'kutetheme' ),
+        //     'id'      => 'kt_woo_style_image_product',
+        //     'type'    => 'select',
+        //     'default' => 'popup',
+        //     'options' => array(
+        //         'popup'=>'Default',
+        //         'zoom'=>'Zoom'
+        //     ),
+        //     'desc'    => __( 'Choose either popup or zoom style of the image product', 'kutetheme' ),
+        // ) );
         
         /**
          * Sidebar
