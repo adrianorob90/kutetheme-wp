@@ -606,6 +606,18 @@ if(!function_exists('kt_utilities_single_product')){
         <?php
     }   
 }
+// size chart 
+if(!function_exists('kt_product_size_chart')){
+    add_filter( 'woocommerce_single_product_summary', 'kt_product_size_chart',21);
+    function kt_product_size_chart(){
+        $option_product = get_post_meta( get_the_ID()) ;
+        if(isset($option_product['kt_product_size_chart'])){
+            ?>
+            <a id="size_chart" class="fancybox" href="<?php echo esc_url( $option_product['kt_product_size_chart'][0]);?>"><?php _e('Size Chart','kutetheme')?></a>
+            <?php
+        }
+    }
+}
 //Tab category Deal
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_loop_rating', 5);
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_single_excerpt', 10);

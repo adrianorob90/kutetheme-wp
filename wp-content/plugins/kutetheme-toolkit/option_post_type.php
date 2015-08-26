@@ -62,6 +62,23 @@ function kt_register_demo_metabox() {
 		'id'   => $prefix . 'service_desc',
 		'type' => 'text',
 	) );
+
+
+	/**
+	 * Product
+	 */
+	$product_option = new_cmb2_box( array(
+		'id'            => 'kt_product_metabox',
+		'title'         => __( 'Product Option', 'kutetheme' ),
+		'object_types'  => array( 'product' )
+	) );
+
+	$product_option->add_field( array(
+		'name' => __( 'Size Chart', 'kutetheme' ),
+		'desc' => __( 'Select an image', 'kutetheme' ),
+		'id'   => 'kt_product_size_chart',
+		'type' => 'file',
+	) );
     
 }
 

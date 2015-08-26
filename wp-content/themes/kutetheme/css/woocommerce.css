@@ -168,6 +168,48 @@
 /*-----------------
 [Widget product]
 ------------------*/
+.widget_kt_image{
+	padding: 0;
+	border: none;
+}
+.widget_kt_on_sale{
+	overflow: hidden;
+}
+.widget_kt_on_sale .product-container{
+	border: none;
+}
+.widget_kt_best_seller .best-sell li{
+	overflow: hidden;
+}
+.widget_kt_best_seller .content_price{
+	margin-top: 5px;
+}
+.widget_kt_best_seller .product-name{
+	margin-bottom: 0;
+	line-height: 16px;
+}
+.widget_kt_best_seller .price{
+	font-size: 18px;
+	margin-top: 10px;
+	width: 100%;
+	overflow: hidden;
+}
+.widget_kt_best_seller ins{
+	color: #ff3366;
+	text-decoration: none;
+	float: left;
+}
+.widget_kt_best_seller .owl-best-sell{
+	padding-bottom: 0;
+}
+.widget_kt_best_seller .owl-dots{
+	margin-top: 15px;
+}
+.widget_kt_best_seller del{
+	font-size: 14px;
+	margin-left: 10px;
+}
+
 .widget_product_categories ul>li>a:before {
     content: "\f105";
     font-size: 14px;
@@ -768,6 +810,12 @@
 }
 .woocommerce div.product .variation_form_section .variations-table .swatch-anchor{
 	
+}
+.variations-table select{
+	max-width: 170px;
+	height: 30px;
+	background: #fafafa;
+	padding: 0 15px;
 }
 
 .woocommerce #content div.product div.thumbnails a, 
