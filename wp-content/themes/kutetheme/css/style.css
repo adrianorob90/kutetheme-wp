@@ -2115,7 +2115,6 @@ span.notify-right{
 .product-list li .product-name{
     padding-bottom: 5px;
     margin: 0;
-    text-align:  center;
 }
 .product-list li .product-info{
     padding: 0 5px;
@@ -2124,15 +2123,12 @@ span.notify-right{
     font-size: 18px;
     color: #ff3366;
     line-height: 24px;
-    display: table;
-    margin: 0 auto;
 }
 .product-list li .content_price>.price>.amount{
   display: inline-block;
-  float: left;
 }
 .product-list li .content_price .price{
-  display: table;
+  display: inline-block;
   margin: 0 auto;
 }
 .latest-deal-content .product-list li .content_price .price{
@@ -2238,7 +2234,6 @@ span.notify-right{
   text-align: right;
   display: inline-block;
   font-size: 13px;
-  display: none;
 }
 
 /*------------------
@@ -3536,18 +3531,7 @@ span.notify-right{
 .view-product-list{
   position: relative;
 }
-.view-product-list .product-list li .right-block{
-  height: 80px;
-}
-.view-product-list  .product-list li .product-star{
-  width: 100%;
-  float: left;
-  text-align: center;
-  display: block;
-}
-.view-product-list  .product-list li .product-star .fa{
-  line-height: inherit;
-}
+
 .page-heading{
   height: 41px;
   border-bottom: 1px solid #eaeaea;
