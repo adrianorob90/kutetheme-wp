@@ -4,6 +4,7 @@
 if ( !defined('ABSPATH')) exit;
 
 if( ! kt_is_wc() ) return;
+
 vc_map( array(
     "name" => __( "List Products", 'kutetheme'),
     "base" => "list_product",
@@ -172,6 +173,3 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
         return '248x303';
     }
 }
-
-
-

@@ -8,6 +8,7 @@ if( ! kt_is_wc() ) return;
 class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
 
     protected function content($atts, $content = null) {
+        $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'tab_producs', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'per_page' => 12,
             'columns' => 4,

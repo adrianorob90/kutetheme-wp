@@ -2,53 +2,51 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( class_exists( 'WPBakeryShortCode' ) ){
-    // Setting shortcode service
-    vc_map( array(
-        "name" => __( "Service", 'kutetheme'),
-        "base" => "service",
-        "category" => __('Kute Theme', 'kutetheme' ),
-        "description" => __( "Display service box", 'kutetheme'),
-        "params" => array(
-            array(
-                "type"        => "textfield",
-                "heading"     => __( "Items", 'kutetheme' ),
-                "param_name"  => "items",
-                "admin_label" => false,
-                "std"         => 4,
-                'description' => __( 'Display of items', 'kutetheme' )
+// Setting shortcode service
+vc_map( array(
+    "name" => __( "Service", 'kutetheme'),
+    "base" => "service",
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( "Display service box", 'kutetheme'),
+    "params" => array(
+        array(
+            "type"        => "textfield",
+            "heading"     => __( "Items", 'kutetheme' ),
+            "param_name"  => "items",
+            "admin_label" => false,
+            "std"         => 4,
+            'description' => __( 'Display of items', 'kutetheme' )
+        ),
+        array(
+            "type"        => "dropdown",
+            "heading"     => __("Display Style", 'kutetheme'),
+            "param_name"  => "style",
+            "admin_label" => true,
+            "value"       => array(
+                'Style 1'   => '1',
+                'Style 2'   => '2',
             ),
-            array(
-                "type"        => "dropdown",
-                "heading"     => __("Display Style", 'kutetheme'),
-                "param_name"  => "style",
-                "admin_label" => true,
-                "value"       => array(
-                    'Style 1'   => '1',
-                    'Style 2'   => '2',
-                ),
-                "std"         => 1,
-                "description" => __("The description", 'kutetheme')
-            ),
-            array(
-                'type' => 'css_editor',
-                'heading' => __( 'Css', 'js_composer' ),
-                'param_name' => 'css',
-                // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-                'group' => __( 'Design options', 'js_composer' )
-            ),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Extra class name", 'kutetheme' ),
-                "param_name" => "el_class",
-                "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
-            )
+            "std"         => 1,
+            "description" => __("The description", 'kutetheme')
+        ),
+        array(
+            'type' => 'css_editor',
+            'heading' => __( 'Css', 'js_composer' ),
+            'param_name' => 'css',
+            // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+            'group' => __( 'Design options', 'js_composer' )
+        ),
+        array(
+            "type" => "textfield",
+            "heading" => __( "Extra class name", 'kutetheme' ),
+            "param_name" => "el_class",
+            "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         )
-    ));
-}
+    )
+));
 class WPBakeryShortCode_Service extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
-        $tab = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'service', $atts ) : $atts;
+        $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'service', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'items' => 4,            
             'css_animation' => '',

@@ -47,8 +47,8 @@ vc_map( array(
                 __( 'Tab 3', 'kutetheme' ) => 'tab-3',
                 __( 'Tab 4', 'kutetheme' ) => 'tab-4',
                 __( 'Tab 5', 'kutetheme' ) => 'tab-5',
-                __( 'Tab 6', 'kutetheme' ) => 'tab-6',
-                __( 'Tab 7', 'kutetheme' ) => 'tab-7',
+                /*__( 'Tab 6', 'kutetheme' ) => 'tab-6',
+                __( 'Tab 7', 'kutetheme' ) => 'tab-7',*/
         	),
         ),
         
@@ -71,6 +71,14 @@ vc_map( array(
     		'param_name' => 'icon',
             "dependency" => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
     		'description' => __( 'Setup icon for the tab', 'kutetheme' )
+    	),
+        
+        array(
+    		'type' => 'attach_image',
+    		'heading' => __( 'Background Image', 'kutetheme' ),
+    		'param_name' => 'bg_cate',
+            "dependency" => array("element" => "tabs_type", "value" => array( 'tab-2', 'tab-3', 'tab-4', 'tab-5' )),
+    		'description' => __( 'Setup background for box', 'kutetheme' )
     	),
         array(
     		'type' => 'attach_images',
@@ -306,6 +314,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             'category'   => 0,
             'main_color' => '#ff3366',
             'icon'       => '',
+            'bg_cate'    => '',
             'banner_top' => '',
             'banner_left'=> '',
             "featured"   => false,
@@ -352,6 +361,14 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
         $id = uniqid($category);
         
         $term = get_term( $category, 'product_cat' );
+        
+        if( isset( $bg_cate ) && $bg_cate ): 
+            $att_bg = wp_get_attachment_image_src( $bg_cate , 'full' );  
+            $att_bg_url =  is_array($att_bg) ? esc_url($att_bg[0]) : ""; 
+            if( $att_bg_url ){
+                $style = "style='background: #fff url(".$att_bg_url.") no-repeat left bottom;'";
+            }
+        endif; 
         
         if( count( $tabs ) >0 && $term ):
             $term_link = get_term_link($term);

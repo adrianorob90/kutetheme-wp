@@ -2,119 +2,116 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( class_exists( 'WPBakeryShortCode' ) ){
-    // Setting shortcode service
-    vc_map( array(
-        "name" => __( "Categories", 'kutetheme'),
-        "base" => "categories",
-        "category" => __('Kute Theme', 'kutetheme' ),
-        "description" => __( "Display box categories same hot categories in option 1", 'kutetheme'),
-        "params" => array(
-            array(
-                "type" => "textfield",
-                "heading" => __( "Title", 'kutetheme' ),
-                "param_name" => "title",
-                "admin_label" => true,
-                'description' => __( 'Display title box categories', 'kutetheme' )
-            ),array(
-                "type" => "kt_taxonomy",
-                "taxonomy" => "product_cat",
-                "class" => "",
-                "heading" => __("Category", 'kutetheme'),
-                "param_name" => "taxonomy",
-                "value" => '',
-                'parent' => 0,
-                'multiple' => true,
-                'placeholder' => __('Choose categoy', 'kutetheme'),
-                "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
-            ),
-            array(
-                "type" => "kt_number",
-                "heading" => __( "Number", 'kutetheme' ),
-                "param_name" => "number",
-                "value" => "3",
-                "admin_label" => true,
-                'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' )
-            ),array(
-    			'type' => 'dropdown',
-    			'heading' => __( 'Order by', 'js_composer' ),
-    			'param_name' => 'orderby',
-    			'value' => array(
-                    __( 'Random', 'kutetheme' )  => 'rand',
-    				__( 'Date', 'kutetheme' )    => 'date',
-    				__( 'ID', 'kutetheme' )      => 'id',
-                    __( 'Author', 'kutetheme' )  => 'author',
-                    __( 'Title', 'kutetheme' )   => 'title',
-    			)
-    		),
-            array(
-    			'type' => 'dropdown',
-    			'heading' => __( 'Order Way', 'js_composer' ),
-    			'param_name' => 'order',
-    			'value' => array(
-    				__( 'Descending', 'js_composer' ) => 'desc',
-    				__( 'Ascending', 'js_composer' ) => 'asc'
-    			)
-    		),
-            
-            array(
-    			'type' => 'dropdown',
-    			'heading' => __( 'Hide Empty', 'js_composer' ),
-    			'param_name' => 'hide',
-    			'value' => array(
-    				__( 'Yes', 'js_composer' ) => '0',
-    				__( 'No', 'js_composer' ) => '1'
-    			)
-    		),
-            
-            array(
-    			"type" => "kt_number",
-    			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
-    			"param_name" => "items_destop",
-    			"value" => "4",
-                "suffix" => __("item", 'kutetheme'),
-    			"description" => __('The number of items on destop', 'kutetheme'),
-                'group' => __( 'Carousel responsive', 'kutetheme' ),
-                'admin_label' => false,
-    	  	),
-            array(
-    			"type" => "kt_number",
-    			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
-    			"param_name" => "items_tablet",
-    			"value" => "2",
-                "suffix" => __("item", 'kutetheme'),
-    			"description" => __('The number of items on destop', 'kutetheme'),
-                'group' => __( 'Carousel responsive', 'kutetheme' ),
-                'admin_label' => false,
-    	  	),
-            array(
-    			"type" => "kt_number",
-    			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
-    			"param_name" => "items_mobile",
-    			"value" => "1",
-                "suffix" => __("item", 'kutetheme'),
-    			"description" => __('The numbers of item on destop', 'kutetheme'),
-                'group' => __( 'Carousel responsive', 'kutetheme' ),
-                'admin_label' => false,
-    	  	),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Extra class name", 'kutetheme' ),
-                "param_name" => "el_class",
-                "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
-            ),array(
-    			'type' => 'css_editor',
-    			'heading' => __( 'Css', 'js_composer' ),
-    			'param_name' => 'css',
-    			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-    			'group' => __( 'Design options', 'js_composer' )
-    		),
-        )
-    ));
-}
+vc_map( array(
+    "name" => __( "Categories", 'kutetheme'),
+    "base" => "categories",
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( "Display box categories same hot categories in option 1", 'kutetheme'),
+    "params" => array(
+        array(
+            "type" => "textfield",
+            "heading" => __( "Title", 'kutetheme' ),
+            "param_name" => "title",
+            "admin_label" => true,
+            'description' => __( 'Display title box categories', 'kutetheme' )
+        ),array(
+            "type" => "kt_taxonomy",
+            "taxonomy" => "product_cat",
+            "class" => "",
+            "heading" => __("Category", 'kutetheme'),
+            "param_name" => "taxonomy",
+            "value" => '',
+            'parent' => 0,
+            'multiple' => true,
+            'placeholder' => __('Choose categoy', 'kutetheme'),
+            "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
+        ),
+        array(
+            "type" => "kt_number",
+            "heading" => __( "Number", 'kutetheme' ),
+            "param_name" => "number",
+            "value" => "3",
+            "admin_label" => true,
+            'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' )
+        ),array(
+			'type' => 'dropdown',
+			'heading' => __( 'Order by', 'js_composer' ),
+			'param_name' => 'orderby',
+			'value' => array(
+                __( 'Random', 'kutetheme' )  => 'rand',
+				__( 'Date', 'kutetheme' )    => 'date',
+				__( 'ID', 'kutetheme' )      => 'id',
+                __( 'Author', 'kutetheme' )  => 'author',
+                __( 'Title', 'kutetheme' )   => 'title',
+			)
+		),
+        array(
+			'type' => 'dropdown',
+			'heading' => __( 'Order Way', 'js_composer' ),
+			'param_name' => 'order',
+			'value' => array(
+				__( 'Descending', 'js_composer' ) => 'desc',
+				__( 'Ascending', 'js_composer' ) => 'asc'
+			)
+		),
+        
+        array(
+			'type' => 'dropdown',
+			'heading' => __( 'Hide Empty', 'js_composer' ),
+			'param_name' => 'hide',
+			'value' => array(
+				__( 'Yes', 'js_composer' ) => '0',
+				__( 'No', 'js_composer' ) => '1'
+			)
+		),
+        
+        array(
+			"type" => "kt_number",
+			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
+			"param_name" => "items_destop",
+			"value" => "4",
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of items on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+			"type" => "kt_number",
+			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
+			"param_name" => "items_tablet",
+			"value" => "2",
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The number of items on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+			"type" => "kt_number",
+			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
+			"param_name" => "items_mobile",
+			"value" => "1",
+            "suffix" => __("item", 'kutetheme'),
+			"description" => __('The numbers of item on destop', 'kutetheme'),
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            "type" => "textfield",
+            "heading" => __( "Extra class name", 'kutetheme' ),
+            "param_name" => "el_class",
+            "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
+        ),array(
+			'type' => 'css_editor',
+			'heading' => __( 'Css', 'js_composer' ),
+			'param_name' => 'css',
+			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+			'group' => __( 'Design options', 'js_composer' )
+		),
+    )
+));
 class WPBakeryShortCode_Categories extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
-        $tab = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories', $atts ) : $atts;
+        $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
             'title' => 'Hot Categories',

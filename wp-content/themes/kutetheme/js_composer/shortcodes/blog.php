@@ -147,7 +147,6 @@ vc_map( array(
     )
 ));
 
-
 class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'blog_carousel', $atts ) : $atts;
@@ -273,4 +272,3 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         return $result;
     }
 }
-?>

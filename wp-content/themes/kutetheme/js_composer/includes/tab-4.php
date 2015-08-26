@@ -56,7 +56,7 @@
                 <a href="#" class="btn-elevator down fa fa-angle-down"></a>
           </div>
         </nav>
-       <div class="product-featured clearfix">
+       <div class="product-featured clearfix" <?php echo isset($style) ? $style : '';  ?>>
             <div class="row">
                 <div class="col-sm-2 sub-category-wapper">
                     <ul class="sub-category-list">

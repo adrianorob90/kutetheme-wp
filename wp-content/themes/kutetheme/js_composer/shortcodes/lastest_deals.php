@@ -2,7 +2,7 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 if( ! kt_is_wc() ) return;
-// Setting shortcode service
+
 vc_map( array(
     "name" => __( "Lastest Deal Products Carousel", 'kutetheme'),
     "base" => "lastest_deal_products",

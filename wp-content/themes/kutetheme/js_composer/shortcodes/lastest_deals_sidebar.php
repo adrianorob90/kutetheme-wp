@@ -2,111 +2,110 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( class_exists( 'WPBakeryShortCode' ) ){
-    // Setting shortcode lastest
-    vc_map( array(
-        "name" => __( "Lastest Deals", 'kutetheme'),
-        "base" => "lastest_deals_sidebar",
-        "category" => __('Kute Theme', 'kutetheme' ),
-        "description" => __( "Show lastest deal products in sidebar", 'kutetheme'),
-        "params" => array(
-            array(
-                "type" => "textfield",
-                "heading" => __( "Title", 'kutetheme' ),
-                "param_name" => "title",
-                "admin_label" => true,
-                'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
-            ),
-            array(
-                "type" => "kt_number",
-                "heading" => __("Number Product", 'kutetheme'),
-                "param_name" => "number",
-                "value" => 12,
-                "description" => __("Enter number of Product", 'kutetheme')
-            ),
-            array(
-                "type" => "dropdown",
-            	"heading" => __("Order by", 'kutetheme'),
-            	"param_name" => "orderby",
-            	"value" => array(
-            		__('None', 'kutetheme')     => 'none',
-                    __('ID', 'kutetheme')       => 'ID',
-                    __('Author', 'kutetheme')   => 'author',
-                    __('Name', 'kutetheme')     => 'name',
-                    __('Date', 'kutetheme')     => 'date',
-                    __('Modified', 'kutetheme') => 'modified',
-                    __('Rand', 'kutetheme')     => 'rand',
-            	),
-                'std' => 'date',
-            	"description" => __("Select how to sort retrieved posts.",'kutetheme')
-            ),
-            array(
-                "type" => "dropdown",
-            	"heading" => __("Order", 'kutetheme'),
-            	"param_name" => "order",
-            	"value" => array(
-                    __('ASC', 'kutetheme') => 'ASC',
-                    __('DESC', 'kutetheme') => 'DESC'
-            	),
-                'std' => 'DESC',
-            	"description" => __("Designates the ascending or descending order.",'kutetheme')
-            ),
-            array(
-    			'type' => 'css_editor',
-    			'heading' => __( 'Css', 'js_composer' ),
-    			'param_name' => 'css',
-    			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-    			'group' => __( 'Design options', 'js_composer' )
-    		),
-            
-            // Carousel
-            array(
-    			'type' => 'checkbox',
-    			'heading' => __( 'AutoPlay', 'kutetheme' ),
-    			'param_name' => 'autoplay',
-    			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
-                'group' => __( 'Carousel settings', 'kutetheme' ),
-                'admin_label' => false,
-    		),
-            array(
-    			'type' => 'checkbox',
-                'heading' => __( 'Navigation', 'kutetheme' ),
-    			'param_name' => 'navigation',
-    			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
-                'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
-                'group' => __( 'Carousel settings', 'kutetheme' ),
-                'admin_label' => false,
-    		),
-            array(
-    			'type' => 'checkbox',
-                'heading' => __( 'Loop', 'kutetheme' ),
-    			'param_name' => 'loop',
-    			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
-                'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
-                'group' => __( 'Carousel settings', 'kutetheme' ),
-                'admin_label' => false,
-    		),
-            array(
-    			"type" => "kt_number",
-    			"heading" => __("Slide Speed", 'kutetheme'),
-    			"param_name" => "slidespeed",
-    			"value" => "200",
-                "suffix" => __("milliseconds", 'kutetheme'),
-    			"description" => __('Slide speed in milliseconds', 'kutetheme'),
-                'group' => __( 'Carousel settings', 'kutetheme' ),
-                'admin_label' => false,
-    	  	),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Extra class name", 'kutetheme' ),
-                "param_name" => "el_class",
-                "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
-            )
+// Setting shortcode lastest
+vc_map( array(
+    "name" => __( "Lastest Deals", 'kutetheme'),
+    "base" => "lastest_deals_sidebar",
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( "Show lastest deal products in sidebar", 'kutetheme'),
+    "params" => array(
+        array(
+            "type" => "textfield",
+            "heading" => __( "Title", 'kutetheme' ),
+            "param_name" => "title",
+            "admin_label" => true,
+            'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
+        ),
+        array(
+            "type" => "kt_number",
+            "heading" => __("Number Product", 'kutetheme'),
+            "param_name" => "number",
+            "value" => 12,
+            "description" => __("Enter number of Product", 'kutetheme')
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order by", 'kutetheme'),
+        	"param_name" => "orderby",
+        	"value" => array(
+        		__('None', 'kutetheme')     => 'none',
+                __('ID', 'kutetheme')       => 'ID',
+                __('Author', 'kutetheme')   => 'author',
+                __('Name', 'kutetheme')     => 'name',
+                __('Date', 'kutetheme')     => 'date',
+                __('Modified', 'kutetheme') => 'modified',
+                __('Rand', 'kutetheme')     => 'rand',
+        	),
+            'std' => 'date',
+        	"description" => __("Select how to sort retrieved posts.",'kutetheme')
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order", 'kutetheme'),
+        	"param_name" => "order",
+        	"value" => array(
+                __('ASC', 'kutetheme') => 'ASC',
+                __('DESC', 'kutetheme') => 'DESC'
+        	),
+            'std' => 'DESC',
+        	"description" => __("Designates the ascending or descending order.",'kutetheme')
+        ),
+        array(
+			'type' => 'css_editor',
+			'heading' => __( 'Css', 'js_composer' ),
+			'param_name' => 'css',
+			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+			'group' => __( 'Design options', 'js_composer' )
+		),
+        
+        // Carousel
+        array(
+			'type' => 'checkbox',
+			'heading' => __( 'AutoPlay', 'kutetheme' ),
+			'param_name' => 'autoplay',
+			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+			'type' => 'checkbox',
+            'heading' => __( 'Navigation', 'kutetheme' ),
+			'param_name' => 'navigation',
+			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
+            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+			'type' => 'checkbox',
+            'heading' => __( 'Loop', 'kutetheme' ),
+			'param_name' => 'loop',
+			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+			"type" => "kt_number",
+			"heading" => __("Slide Speed", 'kutetheme'),
+			"param_name" => "slidespeed",
+			"value" => "200",
+            "suffix" => __("milliseconds", 'kutetheme'),
+			"description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            "type" => "textfield",
+            "heading" => __( "Extra class name", 'kutetheme' ),
+            "param_name" => "el_class",
+            "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         )
-    ));
-}
+    )
+));
 class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
+        $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'lastest_deals_sidebar', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'title'      => '',
             'number'     => 12,
@@ -167,7 +166,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
                 "navigation" => $navigation,
                 "slidespeed" => $slidespeed,
                 "autoheight" => "false",
-                'loop'       => "false",
+                "loop"       => "false",
                 "dots"       => "false",
                 'nav'        => "true",
                 "autoplayTimeout" => 1000,

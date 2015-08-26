@@ -312,7 +312,8 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_kt_mailchimp .mailchimp-submit,
     .nav-links a:hover, .nav-links .current,
     .blog-posts .post-item .entry-more a:hover,
-    .site-content .main-header .header-search-box .form-inline .btn-search{
+    .site-content .main-header .header-search-box .form-inline .btn-search,
+    .widget_kt_on_sale .product-list li .product-bottom .add-to-cart{
         background-color: <?php echo $colors['main_color'] ?>;
     }
     .popular-tabs .nav-tab li:hover, 
@@ -337,7 +338,8 @@ function kt_get_color_scheme_css( $colors ) {
     .cart-block .cart-block-content .product-info .p-right .p-rice,
     .trademark-product .info-product .content_price .price,
     .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
-    .widget_kt_product_special .price{
+    .widget_kt_product_special .price,
+    .widget_kt_best_seller .price ins{
         color: <?php echo $colors['main_color'] ?>;
     }
     /* Text Color */

@@ -2,67 +2,64 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( class_exists( 'WPBakeryShortCode' ) ){
-    // Setting shortcode service
-    vc_map( array(
-        "name" => __( "Brands", 'kutetheme'),
-        "base" => "brand",
-        "category" => __('Kute Theme', 'kutetheme' ),
-        "description" => __( "Display brand showcase", 'kutetheme'),
-        "params" => array(
-            array(
-                "type" => "textfield",
-                "heading" => __( "Title", 'kutetheme' ),
-                "param_name" => "title",
-                "admin_label" => true,
-                'description' => __( 'Display title brand showcase', 'kutetheme' )
-            ),
-            array(
-                "type" => "dropdown",
-            	"heading" => __("Order by", 'kutetheme'),
-            	"param_name" => "orderby",
-            	"value" => array(
-            		__('None', 'kutetheme')     => 'none',
-                    __('ID', 'kutetheme')       => 'ID',
-                    __('Author', 'kutetheme')   => 'author',
-                    __('Name', 'kutetheme')     => 'name',
-                    __('Date', 'kutetheme')     => 'date',
-                    __('Modified', 'kutetheme') => 'modified',
-                    __('Rand', 'kutetheme')     => 'rand',
-            	),
-                'std' => 'date',
-            	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
-            ),
-            array(
-                "type" => "dropdown",
-            	"heading" => __("Order", 'kutetheme'),
-            	"param_name" => "order",
-            	"value" => array(
-                    __('ASC', 'kutetheme')  => 'ASC',
-                    __('DESC', 'kutetheme') => 'DESC'
-            	),
-                'std' => 'DESC',
-            	"description" => __("Designates the ascending or descending order.",'kutetheme')
-            ),
-            array(
-    			'type' => 'css_editor',
-    			'heading' => __( 'Css', 'js_composer' ),
-    			'param_name' => 'css',
-    			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-    			'group' => __( 'Design options', 'js_composer' )
-    		),
-            array(
-                "type" => "textfield",
-                "heading" => __( "Extra class name", 'kutetheme' ),
-                "param_name" => "el_class",
-                "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
-            )
+vc_map( array(
+    "name" => __( "Brands", 'kutetheme'),
+    "base" => "brand",
+    "category" => __('Kute Theme', 'kutetheme' ),
+    "description" => __( "Display brand showcase", 'kutetheme'),
+    "params" => array(
+        array(
+            "type" => "textfield",
+            "heading" => __( "Title", 'kutetheme' ),
+            "param_name" => "title",
+            "admin_label" => true,
+            'description' => __( 'Display title brand showcase', 'kutetheme' )
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order by", 'kutetheme'),
+        	"param_name" => "orderby",
+        	"value" => array(
+        		__('None', 'kutetheme')     => 'none',
+                __('ID', 'kutetheme')       => 'ID',
+                __('Author', 'kutetheme')   => 'author',
+                __('Name', 'kutetheme')     => 'name',
+                __('Date', 'kutetheme')     => 'date',
+                __('Modified', 'kutetheme') => 'modified',
+                __('Rand', 'kutetheme')     => 'rand',
+        	),
+            'std' => 'date',
+        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
+        ),
+        array(
+            "type" => "dropdown",
+        	"heading" => __("Order", 'kutetheme'),
+        	"param_name" => "order",
+        	"value" => array(
+                __('ASC', 'kutetheme')  => 'ASC',
+                __('DESC', 'kutetheme') => 'DESC'
+        	),
+            'std' => 'DESC',
+        	"description" => __("Designates the ascending or descending order.",'kutetheme')
+        ),
+        array(
+			'type' => 'css_editor',
+			'heading' => __( 'Css', 'js_composer' ),
+			'param_name' => 'css',
+			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+			'group' => __( 'Design options', 'js_composer' )
+		),
+        array(
+            "type" => "textfield",
+            "heading" => __( "Extra class name", 'kutetheme' ),
+            "param_name" => "el_class",
+            "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         )
-    ));
-}
+    )
+));
 class WPBakeryShortCode_Brand extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
-        $tab = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'brand', $atts ) : $atts;
+        $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'brand', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
             'title'     => '',
