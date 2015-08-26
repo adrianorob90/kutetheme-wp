@@ -62,6 +62,10 @@
 	.latest-deals .count-down-time span{
 		font-size: 12px;
 	}
+	.product-list li .content_price .price{
+		float: left;
+		width: 100%;
+	}
 	.product-list.grid li{
 		width: 50%;
 	}

@@ -158,6 +158,11 @@ a img.aligncenter {
 /*----------------
 [Widget]
 ------------------*/
+.widget_kt_social .introduce-title{
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+
 .sidebar .widget{
     line-height: 24px;
     margin-bottom: 30px;

@@ -2052,8 +2052,14 @@ span.notify-right{
     margin-left: 200px;
 }
 .product-list li .quick-view a.compare:before{
-    font: normal normal normal 14px/1 FontAwesome;
     content: "\f012";
+    font-family: 'FontAwesome';
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    float: left;
+
 }
 
 .product-list li .quick-view a.search{
@@ -2109,6 +2115,7 @@ span.notify-right{
 .product-list li .product-name{
     padding-bottom: 5px;
     margin: 0;
+    text-align:  center;
 }
 .product-list li .product-info{
     padding: 0 5px;
@@ -2117,21 +2124,26 @@ span.notify-right{
     font-size: 18px;
     color: #ff3366;
     line-height: 24px;
+    display: table;
+    margin: 0 auto;
 }
 .product-list li .content_price>.price>.amount{
   display: inline-block;
   float: left;
 }
 .product-list li .content_price .price{
-  display: inline-block;
+  display: table;
+  margin: 0 auto;
 }
 .latest-deal-content .product-list li .content_price .price{
   width: 100%;
 }
 .product-list li .content_price del{
-  margin-left: 11px;
+  margin-left: 10px;
   color: #666;
   font-size: 14px;
+  display: inline-block;
+  width: auto;
   float: right;
 }
 .latest-deal-content .product-list li .content_price del{
@@ -2226,6 +2238,7 @@ span.notify-right{
   text-align: right;
   display: inline-block;
   font-size: 13px;
+  display: none;
 }
 
 /*------------------
@@ -2889,22 +2902,52 @@ span.notify-right{
     line-height: 30px;
     text-align: center;
 }
-.social-link .fa-facebook{
+.social-link .fa-dribbble{
+  background-color: #F26798;
+}
+.social-link .fa-tumblr{
+  background-color: #304D6B;
+}
+.social-link .fa-skype{
+  background-color: #00AFF0;
+}
+.social-link .fa-linkedin{
+  background-color: #0077B4;
+}
+.social-link .fa-youtube{
+  background-color: #E12B28;
+}
+.social-link .fa-instagram{
+  background-color: #E7DDD3;
+}
+.social-link{
+  margin-left: -2px;
+  margin-right: -2px;
+  margin-top: 5px;
+}
+.social-link a{
+  float: left;
+  padding: 0 2px;
+  margin-top: 4px;
+}
+.social-link a .fa-facebook{
     background: #415a99;
 }
-
-.social-link .fa-pinterest-p{
+.social-link .fa-vimeo-square{
+  background-color: #1AB7EA;
+}
+.social-link a .fa-pinterest-p{
     background: #cb222a;
 }
-.social-link .fa-vk{
+.social-link a .fa-vk{
     background: #5b7fa6;
 }
 
-.social-link .fa-twitter{
+.social-link a .fa-twitter{
     background: #00caff;
 }
 
-.social-link .fa-google-plus{
+.social-link a .fa-google-plus{
     background: #da4735;
 }
 
@@ -3493,6 +3536,18 @@ span.notify-right{
 .view-product-list{
   position: relative;
 }
+.view-product-list .product-list li .right-block{
+  height: 80px;
+}
+.view-product-list  .product-list li .product-star{
+  width: 100%;
+  float: left;
+  text-align: center;
+  display: block;
+}
+.view-product-list  .product-list li .product-star .fa{
+  line-height: inherit;
+}
 .page-heading{
   height: 41px;
   border-bottom: 1px solid #eaeaea;
@@ -3563,6 +3618,7 @@ span.notify-right{
 }
 .view-product-list .product-list.grid{
   margin-top: -10px;
+  width: 100%;
 }
 .product-list .product-container{
   border: 1px solid #eaeaea;
@@ -5548,7 +5604,9 @@ span.notify-right{
   margin-top: 15px;
   color: #333;
   line-height: 32px;
-  position: relative
+  position: relative;
+  margin:0;
+  margin-bottom: 20px;
 }
 .vertical-menu-list .mega-group-header span{
   border-bottom: 1px solid #ff3366;

@@ -74,6 +74,7 @@
 	line-height: 32px;
 	margin-top: 5px;
 	margin-left: 200px;
+	text-align: center;
 }
 .product-list li .quick-view a.compare:hover{
 	color: #fff;
@@ -1093,4 +1094,8 @@ Cart
 .woocommerce .cart-collaterals .cross-sells, 
 .woocommerce-page .cart-collaterals .cross-sells{
 	width: 62%;
+}
+.woocommerce div.product div.images, 
+.woocommerce div.product div.summary{
+	margin-bottom: 0;
 }

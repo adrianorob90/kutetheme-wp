@@ -47,7 +47,7 @@ class Widget_KT_Social extends WP_Widget {
             $social_icons .= '<a href="http://www.dribbble.com/'.esc_attr($dribbble).'" title ="Dribbble" ><i class="fa fa-dribbble"></i></a>';
         }
         if ($vimeo) {
-            $social_icons .= '<a href="http://www.vimeo.com/'.esc_attr($vimeo).'" title ="Vimeo" ><i class="fa fa-vimeo"></i></a>';
+            $social_icons .= '<a href="http://www.vimeo.com/'.esc_attr($vimeo).'" title ="Vimeo" ><i class="fa fa-vimeo-square"></i></a>';
         }
         if ($tumblr) {
             $social_icons .= '<a href="http://'.esc_attr($tumblr).'.tumblr.com/" title ="Tumblr" ><i class="fa fa-tumblr"></i></a>';

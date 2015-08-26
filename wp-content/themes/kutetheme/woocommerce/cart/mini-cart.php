@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php if( $kt_used_header == 1 ):?>
 <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-2">
-    <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>" target="_blank">
+    <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
         <span class="title"><?php _e( 'Shopping cart', 'kutetheme' ); ?></span>
         <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ), 'kutetheme' ), esc_attr( $cart_count ) ) ?></span>
         <span><?php _e( '-', 'kutetheme' ); ?></span> 
