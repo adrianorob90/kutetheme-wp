@@ -510,7 +510,15 @@
 /*--------------------
 [ Product page]
 --------------------*/
-
+.product-size-chart{
+	border-top: 1px solid #eaeaea;
+	padding-top: 10px;
+	margin-top: 10px;
+}
+.product-size-chart a{
+	color: #ff3366;
+    text-decoration: underline;
+}
 /*Tab*/
 .woocommerce .woocommerce-tabs{
 	

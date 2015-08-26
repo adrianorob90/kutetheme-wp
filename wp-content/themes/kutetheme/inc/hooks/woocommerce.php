@@ -569,7 +569,7 @@ if(!function_exists('kt_show_product_meta')){
 //Available Options
 
 if(!function_exists('kt_available_options')){
-    add_filter('woocommerce_single_product_summary','kt_available_options',21);
+    add_filter('woocommerce_single_product_summary','kt_available_options',22);
     function kt_available_options(){
         global $product;
         if( $product->is_type( 'variable' ) ){
@@ -613,7 +613,9 @@ if(!function_exists('kt_product_size_chart')){
         $option_product = get_post_meta( get_the_ID()) ;
         if(isset($option_product['kt_product_size_chart'])){
             ?>
+            <div class="product-size-chart">
             <a id="size_chart" class="fancybox" href="<?php echo esc_url( $option_product['kt_product_size_chart'][0]);?>"><?php _e('Size Chart','kutetheme')?></a>
+            </div>
             <?php
         }
     }
