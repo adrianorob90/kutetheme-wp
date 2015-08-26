@@ -1095,7 +1095,3 @@ Cart
 .woocommerce-page .cart-collaterals .cross-sells{
 	width: 62%;
 }
-.woocommerce div.product div.images, 
-.woocommerce div.product div.summary{
-	margin-bottom: 0;
-}

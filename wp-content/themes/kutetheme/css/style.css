@@ -5498,7 +5498,7 @@ span.notify-right{
     display: inline-block;
 }
 .product-list li .content_price{
-    
+    height: 24px;
 }
 
 .option2 .deal-product .deal-product-content .content_price del{
