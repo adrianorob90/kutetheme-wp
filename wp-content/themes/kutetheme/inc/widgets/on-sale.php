@@ -21,7 +21,7 @@ class Widget_KT_On_Sale extends WP_Widget {
         echo $args['before_widget'];
         
         $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
-        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
+        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 3;
         $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
         $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
         
@@ -49,9 +49,11 @@ class Widget_KT_On_Sale extends WP_Widget {
                     echo $title;
                     echo $args['after_title'];
                 }
+                add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
             ?>
             <div class="block_content product-onsale">
-                <ul class="product-list owl-carousel" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="true">
+                <ul class="product-list owl-carousel" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="false">
                     <?php while($product->have_posts()): $product->the_post(); ?>
                         <li>
                             <?php wc_get_template_part( 'content', 'on-sale-sidebar' ); ?>
@@ -59,6 +61,10 @@ class Widget_KT_On_Sale extends WP_Widget {
                     <?php endwhile; ?>
                 </ul>
             </div>
+            <?php 
+            remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+            remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+            ?>
         </div>
         <!-- ./block best sellers  -->
         <?php
@@ -69,7 +75,7 @@ class Widget_KT_On_Sale extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
         $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
-        $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] :6;
+        $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] : 3;
         $instance[ 'orderby' ]  = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
         $instance[ 'order' ]    = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
         
@@ -79,7 +85,7 @@ class Widget_KT_On_Sale extends WP_Widget {
 	public function form( $instance ) {
 		//Defaults
         $title      = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
-        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
+        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 3;
         $orderby    = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
         $order      = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
 	?>

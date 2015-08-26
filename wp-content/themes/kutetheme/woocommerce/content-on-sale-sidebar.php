@@ -10,27 +10,17 @@
     			do_action( 'kt_loop_product_thumbnail' );
     		?>
         </a>
-        <div class="price-percent-reduction2">-30% OFF</div>
     </div>
     <div class="right-block">
         <h5 class="product-name"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-        <?php 
-            /**
-			 * kt_loop_product_after_countdown hook
-		     *
-			 * @hooked woocommerce_template_loop_rating - 10
-			 */
-            do_action( 'kt_loop_product_after_countdown' ); 
-        
-        ?>
         <div class="content_price">
             <?php
     			/**
     			 * woocommerce_after_shop_loop_item_title hook
-			     *
-    			 * @hooked woocommerce_template_loop_price - 10
+    			 * @hooked woocommerce_template_loop_price - 5
+    			 * @hooked woocommerce_template_loop_rating - 10
     			 */
-    			do_action( 'kt_after_loop_item_title' );
+    			do_action( 'kt_after_shop_loop_item_title' );
     		?>
         </div>
     </div>

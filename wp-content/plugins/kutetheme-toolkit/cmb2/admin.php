@@ -490,7 +490,7 @@ class KT_Admin {
         /**
          * Sidebar
          * */
-       $cmb_options_socials = new_cmb2_box( array(
+       $cmb_options_sidebars = new_cmb2_box( array(
 			'id'      => 'kt_sidebars',
 			'hookup'  => false,
             'title'   => 'Sidebar',
@@ -502,7 +502,7 @@ class KT_Admin {
         ));
     
     	// $group_field_id is the field id string, so in this case: $prefix . 'demo'
-    	$group_field_id = $cmb_options_socials->add_field( array(
+    	$group_field_id = $cmb_options_sidebars->add_field( array(
     		'id'          => 'kt_group_sidebar',
     		'type'        => 'group',
             'description' => __( 'Manager custome sidebars', 'kutetheme' ),
@@ -520,14 +520,14 @@ class KT_Admin {
     	 *
     	 * The parent field's id needs to be passed as the first argument.
     	 */
-    	$cmb_options_socials->add_group_field( $group_field_id, array(
+    	$cmb_options_sidebars->add_group_field( $group_field_id, array(
     		'name'       => __( 'Sidebar Title', 'kutetheme' ),
     		'id'         => 'title',
     		'type'       => 'text',
     		// 'repeatable' => true, // Repeatable fields are supported w/in repeatable groups (for most types)
     	) );
     
-    	$cmb_options_socials->add_group_field( $group_field_id, array(
+    	$cmb_options_sidebars->add_group_field( $group_field_id, array(
     		'name'        => __( 'Description', 'kutetheme' ),
     		'description' => __( 'sidebar desc', 'kutetheme' ),
     		'id'          => 'description',
@@ -554,6 +554,102 @@ class KT_Admin {
     		'id'   => 'kt_addthis_id',
     		'type' => 'text',
     	) );
+        
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Facebook Link', 'kutetheme' ),
+    		'desc' => __( 'Setting id facebook link', 'kutetheme' ),
+    		'id'   => 'kt_facebook_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Twitter', 'kutetheme' ),
+    		'desc' => __( 'Your twitter username', 'kutetheme' ),
+    		'id'   => 'kt_twitter_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Pinterest', 'kutetheme' ),
+    		'desc' => __( 'Your pinterest username', 'kutetheme' ),
+    		'id'   => 'kt_pinterest_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Dribbble', 'kutetheme' ),
+    		'desc' => __( 'Your dribbble username', 'kutetheme' ),
+    		'id'   => 'kt_dribbble_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Vimeo', 'kutetheme' ),
+    		'desc' => __( 'Your vimeo username', 'kutetheme' ),
+    		'id'   => 'kt_vimeo_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Tumblr Link', 'kutetheme' ),
+    		'desc' => __( 'Your tumblr username', 'kutetheme' ),
+    		'id'   => 'kt_tumblr_link_id',
+    		'type' => 'text',
+    	) );
+        
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Skype', 'kutetheme' ),
+    		'desc' => __( 'Your skype username', 'kutetheme' ),
+    		'id'   => 'kt_skype_link_id',
+    		'type' => 'text',
+    	) );
+        
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'LinkedIn Link', 'kutetheme' ),
+    		'desc' => __( 'Setting id linkedIn link', 'kutetheme' ),
+    		'id'   => 'kt_linkedIn_link_id',
+    		'type' => 'text',
+    	) );
+        
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Vk', 'kutetheme' ),
+    		'desc' => __( 'Your vk id', 'kutetheme' ),
+    		'id'   => 'kt_vk_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Google+ Link', 'kutetheme' ),
+    		'desc' => __( 'Setting id Google+ link', 'kutetheme' ),
+    		'id'   => 'kt_google_plus_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Google+ Link', 'kutetheme' ),
+    		'desc' => __( 'Setting id Google+ link', 'kutetheme' ),
+    		'id'   => 'kt_google_plus_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Youtube', 'kutetheme' ),
+    		'desc' => __( 'Your youtube username', 'kutetheme' ),
+    		'id'   => 'kt_youtube_link_id',
+    		'type' => 'text',
+    	) );
+        
+        $cmb_options_socials->add_field( array(
+    		'name' => __( 'Instagram', 'kutetheme' ),
+    		'desc' => __( 'Your instagram username', 'kutetheme' ),
+    		'id'   => 'kt_instagram_link_id',
+    		'type' => 'text',
+    	) );
+        
         /**
          * CSS
          * */
