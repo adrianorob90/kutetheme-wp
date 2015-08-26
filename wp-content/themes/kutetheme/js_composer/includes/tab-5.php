@@ -90,8 +90,8 @@ endif;
                 <div class="col-sm-10 col-right-tab">
                     <div class="product-featured-tab-content">
                         <div class="tab-container">
-                            
                             <?php 
+                            $meta_query = WC()->query->get_meta_query();
                             $args = array(
                     			'post_type'				=> 'product',
                     			'post_status'			=> 'publish',
@@ -130,6 +130,7 @@ endif;
                                 $newargs['orderby'] = 'date';
                                 $newargs['order'] 	 = 'DESC';
                             }elseif( $key == 'on-sales' ){
+                                $product_ids_on_sale = wc_get_product_ids_on_sale();
                                 $newargs['post__in'] = array_merge( array( 0 ), $product_ids_on_sale );
                                 
                                 if( $orderby == '_sale_price' ){
