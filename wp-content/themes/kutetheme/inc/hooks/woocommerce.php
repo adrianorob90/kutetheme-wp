@@ -17,7 +17,7 @@ add_action( "kt_after_loop_item_title", "woocommerce_template_loop_price", 5 );
 
 function woocommerce_custom_sales_price( $price, $product ) {
 	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
-	return $price . sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', 'kutetheme' ), $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
+	return $price . sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
 }
 
 /**
@@ -47,7 +47,7 @@ if( ! function_exists("kt_get_price_html_from_to")){
             
             if($pr != $sale){
                 $percentage = round( ( ( $sale - $pr  ) / $sale ) * 100 );
-                $price .= sprintf( __('<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', 'kutetheme' ), $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
+                $price .= sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
             }
         }
         return $price;

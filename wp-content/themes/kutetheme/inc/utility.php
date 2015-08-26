@@ -441,7 +441,7 @@ function kt_comments($comment, $args, $depth) {
         </div>
         <div class="comment-content">
             <div class="comment-meta">
-                <a class="comment-author" href="#"><?php printf(__('<b class="author_name">%s </b>'), get_comment_author_link()) ?></a>
+                <a class="comment-author" href="#"><?php printf( '<b class="author_name">%s </b>', get_comment_author_link()) ?></a>
                 <span class="comment-date"><?php printf( '%1$s' , get_comment_date( 'F j, Y \a\t g:i a' )); ?></span>
             </div>
             <div class="comment-entry entry-content">

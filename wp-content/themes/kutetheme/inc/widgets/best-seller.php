@@ -20,7 +20,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-        $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : __( 'Best Sellers' );
+        $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : __( 'Best Sellers', 'kutetheme' );
         $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
         $perpage = ( isset( $instance[ 'perpage' ] ) && intval( $instance[ 'perpage' ] ) ) ? $instance[ 'perpage' ] : 3;
         
@@ -74,7 +74,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-        $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : __( 'Best Sellers' );
+        $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : __( 'Best Sellers', 'kutetheme' );
         $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] :6;
         $instance[ 'perpage' ] = ( isset( $new_instance[ 'perpage' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'perpage' ] : 3;
         
@@ -83,7 +83,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 
 	public function form( $instance ) {
 		//Defaults
-        $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Best Sellers' );
+        $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Best Sellers', 'kutetheme' );
         $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
         $perpage = ( isset( $instance[ 'perpage' ] ) && intval( $instance[ 'perpage' ] ) ) ? $instance[ 'perpage' ] : 3;
 	?>

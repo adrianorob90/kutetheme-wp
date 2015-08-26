@@ -81,7 +81,6 @@ function kt_customize_register( $wp_customize ) {
 	$wp_customize->get_section( 'header_image' )->description = __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' );
 }
 add_action( 'customize_register', 'kt_customize_register', 11 );
-
 /**
  * Register color schemes for Kute Theme.
  *
@@ -95,6 +94,7 @@ add_action( 'customize_register', 'kt_customize_register', 11 );
  * 4. Rate Star color
  * 5. Button Color
  * 6. Link Menu Footer
+ * 7. Module border
  *
  * @since Kute Theme 1.0
  *
@@ -105,25 +105,27 @@ function kt_get_color_schemes() {
 		'default' => array(
 			'label'  => __( 'Default', 'kutetheme' ),
 			'colors' => array(
-                '#ffffff',
-				'#ff3366',
-				'#eaeaea',
-				'#66666',
-                '#ff9900',
-                '#000000',
-                '#0066cc'
+                '#ffffff',//Background Color.
+				'#ff3366',//Main Color
+				'#f6f6f6',//Sidebar and Box Background Color.
+				'#66666',//Main Text and Link Color.
+                '#ff9900',//Rate Star color
+                '#000000',//Button Color
+                '#0066cc',//Link Menu Footer
+                '#eaeaea',//Module Border
 			),
 		),
 		'brown'    => array(
 			'label'  => __( 'Brown', 'kutetheme' ),
 			'colors' => array(
-                '#ffffff',
-				'#958457',
-				'#4c311d',
-				'#666666',
-                '#febf2b',
-                '#000000',
-                '#0066cc'
+                '#ffffff',//Background Color.
+				'#958457',//Main Color
+				'#4c311d',//Sidebar and Box Background Color.
+				'#666666',//Main Text and Link Color.
+                '#febf2b',//Rate Star color
+                '#000000',//Button Color
+                '#0066cc',//Link Menu Footer
+                '#eaeaea',//Module Border
 			),
 		)
 	) );
@@ -203,18 +205,22 @@ function kt_color_scheme_css() {
 	if ( 'default' === $color_scheme_option ) {
 		return;
 	}
-
-	$color_scheme = kt_get_color_scheme();
-
+    
+    $color_scheme = kt_get_color_scheme();
+    
 	// Convert main and sidebar text hex color to rgba.
 	$color_button_rgb  = kt_hex2rgb( $color_scheme[5] );
     $color_main_rgb    = kt_hex2rgb( $color_scheme[1] );
     
+    $main_color           = get_theme_mod( 'main_color', $color_scheme[1] );
+    $box_background_color = get_theme_mod( 'box_background_color', $color_scheme[2] );
+    $textcolor            = get_theme_mod( 'textcolor', $color_scheme[3] );
+    
 	$colors = array(
 		'background_color'     => $color_scheme[0],
-        'main_color'           => $color_scheme[1],
-		'box_background_color' => $color_scheme[2],
-		'textcolor'            => $color_scheme[3],
+        'main_color'           => $main_color,
+		'box_background_color' => $box_background_color,
+		'textcolor'            => $textcolor,
 		'rate_color'           => $color_scheme[4],
 		'button_color'         => $color_scheme[5],
         'menu_link_footer'     => $color_scheme[6],
@@ -273,7 +279,6 @@ function kt_get_color_scheme_css( $colors ) {
 	) );
 	ob_start();
     ?>
-    <style type="text/css">
 	/* Color Scheme */
 
 	/* Background Color */
@@ -282,8 +287,7 @@ function kt_get_color_scheme_css( $colors ) {
 	}
     
     /* Box Color */
-    .nav-top-menu, .service,
-    .top-header{
+    .site-content .box-vertical-megamenus .title, .service{
         background-color: <?php echo $colors['box_background_color'] ?>;
     }
     
@@ -297,16 +301,31 @@ function kt_get_color_scheme_css( $colors ) {
     .main-header .header-search-box .form-inline .btn-search,
     .main-header .shopping-cart-box a.cart-link:after,
     .cart-block .cart-block-content .cart-buttons a.btn-check-out,
-    .owl-controls .owl-prev:hover, .owl-controls .owl-next:hover{
+    .owl-controls .owl-prev:hover, .owl-controls .owl-next:hover,
+    
+    .display-product-option li.selected span, .display-product-option li:hover span,
+    .owl-controls .owl-dots .owl-dot.active,
+    .woocommerce .content div.product form.cart .button,
+    .woocommerce .content .summary .yith-wcwl-add-to-wishlist .show a:hover,
+    .woocommerce .content #respond input#submit:hover, .woocommerce .content a.button:hover, .woocommerce .content button.button:hover, .woocommerce .content input.button:hover,
+    .products-block .link-all,
+    .widget_kt_mailchimp .mailchimp-submit,
+    .nav-links a:hover, .nav-links .current,
+    .blog-posts .post-item .entry-more a:hover,
+    .site-content .main-header .header-search-box .form-inline .btn-search{
         background-color: <?php echo $colors['main_color'] ?>;
     }
     .popular-tabs .nav-tab li:hover, 
     .popular-tabs .nav-tab li.active,
     .brand-showcase .brand-showcase-title,
-    .group-title span{
+    .group-title span,
+    .content .view-product-list .page-title span{
         border-bottom-color: <?php echo $colors['main_color'] ?>;
     }
-    .latest-deals .latest-deal-content{
+    .latest-deals .latest-deal-content,
+    .woocommerce .content div.product .variation_form_section .variations-table .selected,
+    .products-block .link-all,
+    blockquote{
         border-color: <?php echo $colors['main_color'] ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
@@ -315,7 +334,10 @@ function kt_get_color_scheme_css( $colors ) {
     a:hover,
     .product-list li .content_price ins,
     .product-list li .content_price,
-    .cart-block .cart-block-content .product-info .p-right .p-rice{
+    .cart-block .cart-block-content .product-info .p-right .p-rice,
+    .trademark-product .info-product .content_price .price,
+    .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
+    .widget_kt_product_special .price{
         color: <?php echo $colors['main_color'] ?>;
     }
     /* Text Color */
@@ -324,7 +346,8 @@ function kt_get_color_scheme_css( $colors ) {
         color: <?php echo $colors['textcolor'] ?>;
     }
     /* Rate Color */
-    .product-list li .product-star{
+    .content .product-list li .product-star,
+    .content .products-block .product-star{
         color: <?php echo $colors['rate_color'] ?>;
     }
     
@@ -341,7 +364,6 @@ function kt_get_color_scheme_css( $colors ) {
     .footer-menu-list li a{
         color: <?php echo $colors['menu_link_footer'] ?>
     }
-    </style>
     <?php
     $css = ob_get_clean();
 	return $css;
