@@ -24,7 +24,7 @@ class Widget_KT_Slider extends WP_Widget {
             "autoplay"   => $instance[ 'autoplay' ],
             "slidespeed" => $instance[ 'slidespeed' ],
             "theme"      => 'style-navigation-bottom',
-            'nav'        => "true",
+            'nav'        => "false",
             'loop'       => $instance[ 'loop' ],
             'items'      => 1
         );

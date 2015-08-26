@@ -178,6 +178,54 @@
 .widget_kt_on_sale .product-container{
 	border: none;
 }
+.widget_kt_on_sale  .product-list li .add-to-cart{
+    height: 35px;
+    width: auto;
+    line-height: 35px;
+    font-size: 14px;
+    color: #fff;
+    display: inline-block;
+    margin: 0px auto;
+    text-align: center;
+    clear: both;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #F36;
+    position: relative;
+    bottom: 0;
+    left: inherit;
+    right: inherit;
+}
+.widget_kt_on_sale .product-list li .add-to-cart a{
+	background: none;
+	padding: 0;
+}
+.widget_kt_on_sale  .product-list li .add-to-cart:before{
+	width: 16px;
+    height: 100%;
+    float: left;
+    background: url("../images/cart.png") no-repeat scroll left center;
+    content: " ";
+    margin-right: 15px;
+}
+.widget_kt_on_sale .product-list li .colreduce-percentage {
+    width: 52px;
+    height: 44px;
+    background: url("../images/price-percent-br.png") no-repeat center center;
+    color: #fff;
+    line-height: normal;
+    text-align: center;
+    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    padding-left: 5px;
+    padding-top: 4px;
+}
+.widget_kt_on_sale .colreduce-lable{
+	display: block;
+}
 .widget_kt_best_seller .best-sell li{
 	overflow: hidden;
 }
