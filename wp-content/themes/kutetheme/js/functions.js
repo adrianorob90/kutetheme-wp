@@ -654,7 +654,8 @@
     }
     $(function() {
         $("img.lazy").lazyload({
-            effect: "fadeIn"
+            effect: "fadeIn",
+            threshold : 200
         });
     });
 })(jQuery); // End of use strict
