@@ -24,7 +24,7 @@ vc_map( array(
             'parent' => 0,
             'multiple' => true,
             'placeholder' => __('Choose categoy', 'kutetheme'),
-            "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
+            "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
         array(
             "type" => "kt_number",

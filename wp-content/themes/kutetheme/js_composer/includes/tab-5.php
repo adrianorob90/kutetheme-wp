@@ -7,6 +7,7 @@ if( isset( $banner_left ) && $banner_left ):
     );
     $list_banner_left = get_posts( $banner_left_args );
     ob_start();
+    $count_banner_left = 1;
     foreach($list_banner_left as $l):
     ?>
         <div class="banner-left">
@@ -15,6 +16,7 @@ if( isset( $banner_left ) && $banner_left ):
             </a>
         </div>
     <?php
+    $count_banner_left ++ ;
     endforeach;
     $banner_carousel = ob_get_clean();
 endif;
@@ -212,11 +214,15 @@ endif;
                             <!-- tab product -->
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
                                 <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
-                                <div class="box-left">
-                                    <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
+                                    <?php if ( $count_banner_left > 1 ): ?>
+                                        <div class="box-left">
+                                            <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
+                                                <?php echo $banner_carousel; ?>
+                                            </ul>
+                                        </div>
+                                    <?php else: ?>
                                         <?php echo $banner_carousel; ?>
-                                    </ul>
-                                </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
                                 <div class="box-right">
                                     <ul class="product-list row">

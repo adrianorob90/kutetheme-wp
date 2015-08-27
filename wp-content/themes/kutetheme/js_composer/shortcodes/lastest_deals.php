@@ -17,15 +17,16 @@ vc_map( array(
             'description' => __( 'It displays title list product', 'kutetheme' )
         ),
         array(
-            "type"      => 'kt_categories',
-            'taxonomy'  => 'product_cat',
-            'class'     => '',
+            "type" => "kt_taxonomy",
+            "taxonomy" => "product_cat",
+            "class" => "",
             "heading" => __("Category", 'kutetheme'),
             "param_name" => "taxonomy",
             "value" => '',
-            'multiple' => false,
-            "placeholder" => 'Please select your category',
-            "description" => __("Note: By default, all your catrgory will be displayed. <br>If you want to narrow output, select category(s) above. Only selected categories will be displayed. if nothing selected will show all of categories.", 'kutetheme')
+            'parent' => 0,
+            'multiple' => true,
+            'placeholder' => __('Choose categoy', 'kutetheme'),
+            "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
         array(
             "type" => "textfield",

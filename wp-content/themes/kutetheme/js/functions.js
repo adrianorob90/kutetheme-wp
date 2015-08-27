@@ -121,6 +121,7 @@
         $(".owl-carousel").each(function(index, el) {
           var config = $(this).data();
           config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
+          config.lazyLoad = "true";
           config.smartSpeed="300";
           if($(this).hasClass('owl-style2')){
             config.animateOut="fadeOut";
@@ -134,6 +135,7 @@
           config.smartSpeed="900";
           config.animateOut="";
             config.animateIn="fadeInUp";
+            config.lazyLoad = "true";
           $(this).owlCarousel(config);
         });
         /** COUNT DOWN **/
@@ -439,8 +441,8 @@
                   1000 : {
                       items : 3,
                   }
-              }
-
+              },
+              lazyLoad : true
             }
         );
 
@@ -466,8 +468,8 @@
                   1000 : {
                       items : 3,
                   }
-              }
-
+              },
+              lazyLoad : true
             }
         );
         // Zoom
