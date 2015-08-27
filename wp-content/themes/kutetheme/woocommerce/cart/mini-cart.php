@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endif; ?>
     <?php if( function_exists( 'YITH_WCWL' ) ):
         $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-        <a class="btn-heart" href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
+        <a class="btn-heart" href="<?php echo esc_url( $wishlist_url );; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
     <?php endif; ?>
     <div class="btn-cart" id="cart-block">
         <a title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>

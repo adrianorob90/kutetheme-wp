@@ -638,7 +638,21 @@ if( ! function_exists('kt_product_size_chart') ){
 }
 //Tab category Deal
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_loop_rating', 5);
-add_action('kt_loop_product_after_countdown', 'woocommerce_template_single_excerpt', 10);
+add_action('kt_loop_product_after_countdown', 'kt_template_single_excerpt', 10);
+if(!function_exists('kt_template_single_excerpt')){
+    function kt_template_single_excerpt(){
+        global $post;
+        if ( ! $post->post_excerpt ) {
+            return;
+        }
+
+        ?>
+        <div class="product-description">
+            <?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?>
+        </div>
+        <?php
+    }
+}
 
 add_action('single_product_large_thumbnail_size','kt_shop_single' );
 if( ! function_exists( 'kt_shop_single' ) ){
@@ -808,4 +822,24 @@ if ( ! function_exists( 'kt_template_loop_product_thumbnail' ) ) {
 	function kt_template_loop_product_thumbnail() {
 		echo kt_get_product_thumbnail();
 	}
+}
+
+
+if(!function_exists('kt_short_tring')){
+    function kt_short_tring($str,$words=10,$after='...'){
+        echo $str = preg_replace('!\s+!', ' ', $str);
+        $output="";
+        if($str!=""){
+            $atrr = explode(' ',$str);
+            if(count($atrr) <= $words){
+                return $str;
+            }
+            for($i=0;$i<= $words; $i++){
+                $output.=$atrr[$i]." ";
+            }
+            $output = trim($output).$after;
+
+        }
+        return $output;
+    }
 }

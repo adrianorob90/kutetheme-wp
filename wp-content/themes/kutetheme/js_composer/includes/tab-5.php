@@ -217,9 +217,9 @@ endif;
                                     
                                         <div class="box-left">
                                             <?php if ( $count_banner_left > 1 ): ?>
-                                            <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
+                                            <div class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
                                                 <?php echo $banner_carousel; ?>
-                                            </ul>
+                                            </div>
                                             <?php else: ?>
                                                 <?php echo $banner_carousel; ?>
                                             <?php endif; ?>
