@@ -620,6 +620,7 @@ img.alignright{
   margin-top: 10px;
   border: 1px solid transparent;
   padding-right: 10px;
+  overflow: hidden;
 }
 
 #form-search-opntop .btn-search{
@@ -639,6 +640,9 @@ img.alignright{
 #form-search-opntop .input-serach{
   height: 30px;
   padding: 5px 5px 0 15px;
+  display: inline-block;
+  width: auto;
+  float: left;
 }
 #form-search-opntop .input-serach input{
   width: 0px;
@@ -3418,11 +3422,18 @@ span.notify-right{
 .testimonials .client-avarta {
   margin-top: 10px;
   text-align: center;
-}
-.testimonials .client-avarta img{
   width: 110px;
   height: 110px;
-  border: 3px solid #eaeaea;
+  background: #eaeaea;
+  padding: 3px;
+  border-radius: 90%;
+  display: table;
+  margin: 0 auto;
+
+}
+.testimonials .client-avarta img{
+  width: 100%;
+  height: 100%;
   border-radius: 90%;
   margin: 0 auto;
 }
@@ -5465,9 +5476,7 @@ span.notify-right{
 * Deal Of The Day In option 2
 */
 
-.option2 .product-list li .content_price{
-    line-height: 22px;
-}
+
 .option2 .deal-product p{
     margin: 0;
 }
@@ -5498,7 +5507,7 @@ span.notify-right{
     display: inline-block;
 }
 .product-list li .content_price{
-    height: 24px;
+    height: 23px;
 }
 
 .option2 .deal-product .deal-product-content .content_price del{
