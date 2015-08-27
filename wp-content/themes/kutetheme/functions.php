@@ -399,6 +399,8 @@ function kt_scripts() {
     
     wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
     
+    wp_enqueue_script( 'kt-lazy-load', get_template_directory_uri() . '/libs/lazy/jquery.lazyload.min.js', array( 'jquery' ) );
+    
     wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );

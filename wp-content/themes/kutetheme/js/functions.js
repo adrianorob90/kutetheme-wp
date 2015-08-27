@@ -652,4 +652,9 @@
           })
       }
     }
+    $(function() {
+        $("img.lazy").lazyload({
+            effect: "fadeIn"
+        });
+    });
 })(jQuery); // End of use strict
