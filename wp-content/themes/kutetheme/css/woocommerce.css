@@ -567,6 +567,8 @@
 .product-size-chart a{
 	color: #ff3366;
     text-decoration: underline;
+    background: url('../images/size_chart.png') no-repeat left center;
+    padding-left: 20px;
 }
 /*Tab*/
 .woocommerce .woocommerce-tabs{
