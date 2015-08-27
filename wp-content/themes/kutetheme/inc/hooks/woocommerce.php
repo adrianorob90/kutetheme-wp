@@ -78,7 +78,7 @@ function kt_get_rating_html($rating_html, $rating){
 }
 
 //content-product-tab.php
-add_action('kt_loop_product_thumbnail', 'kt_template_loop_product_thumbnail', 10);
+add_action('kt_loop_product_thumbnail', 'woocommerce_template_loop_product_thumbnail', 10);
 
 add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
 
@@ -707,22 +707,22 @@ if(!function_exists('kt_show_product_images')){
  * Hook in on activation
  *
  */
-add_action( 'init', 'yourtheme_woocommerce_image_dimensions', 1 );
+add_action( 'init', 'kt_woocommerce_image_dimensions', 1 );
 
 /**
  * Define image sizes
  */
-function yourtheme_woocommerce_image_dimensions() {
+function kt_woocommerce_image_dimensions() {
     $catalog = array(
         'width'     => '300',   // px
         'height'    => '366',   // px
-        'crop'      => 0        // true
+        'crop'      => 1        // true
     );
 
     $single = array(
         'width'     => '420',   // px
         'height'    => '512',   // px
-        'crop'      => 0        // true
+        'crop'      => 1        // true
     );
 
     $thumbnail = array(

@@ -426,6 +426,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
     
     	return $args;
     }
+    /*
     public function kt_thumbnail_size173x211(){
         return '173x211';
     }
@@ -434,5 +435,5 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
     }
     public function kt_thumbnail_size175x214(){
         return '175x214';
-    }
+    }*/
 }

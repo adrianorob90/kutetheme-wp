@@ -287,7 +287,7 @@ function kt_get_color_scheme_css( $colors ) {
 	}
     
     /* Box Color */
-    .site-content .box-vertical-megamenus .title, .service{
+    .service{
         background-color: <?php echo $colors['box_background_color'] ?>;
     }
     

@@ -102,7 +102,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     </ul>
                     <div class="brand-showcase-content">
                         <?php $i = 1; ?>
-                        <?php add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) ); ?>
+                        <?php //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) ); ?>
                         <?php foreach($terms as $term): ?>
                             <div class="brand-showcase-content-tab<?php echo ( $i ==1 ) ? ' active' : '' ?>" id="showcase-<?php echo $term->term_id ?>">
                                 <?php 
@@ -195,7 +195,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             </div>
                         <?php $i ++ ; ?>
                         <?php endforeach; ?>
-                        <?php remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) ); ?>
+                        <?php //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) ); ?>
                     </div>
                 </div>
             </div>
@@ -205,8 +205,5 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
-    }
-    public function kt_thumbnail_size(){
-        return '142x173';
     }
 }

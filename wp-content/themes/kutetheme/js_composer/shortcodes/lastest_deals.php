@@ -263,7 +263,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 </span>
                 <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                      <?php
-                        add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
+                        //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
         				add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                         while ( $query_product->have_posts() ) : $query_product->the_post(); $id = get_the_ID(); global $post;  ?>
@@ -273,7 +273,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                             </li>
                         <?php
         				endwhile; // end of the loop.
-                        remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
+                        //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
                         remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                      ?>

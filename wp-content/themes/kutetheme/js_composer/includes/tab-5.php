@@ -205,7 +205,7 @@ endif;
                             if( $key == 'most-review'){
                                 remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
                             }
-                            add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) );
+                            //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) );
                             //$woocommerce_loop['columns'] = $atts['columns'];
                     
                             if ( $products->have_posts() ) :?>
@@ -253,7 +253,7 @@ endif;
                             </div>
                             <?php $i++; ?>
                             <?php endif; ?>
-                            <?php remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) ); ?>
+                            <?php //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) ); ?>
                             <?php wp_reset_query();?>
                             <?php wp_reset_postdata(); ?>
                             <?php endforeach; ?>

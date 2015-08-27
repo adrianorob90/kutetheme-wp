@@ -44,7 +44,7 @@ $deal_args = array(
 );
 $deal_product = new WP_Query( $deal_args );
 if( $deal_product->have_posts() ){
-    add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
+    //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
     add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
     add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
     ob_start();
@@ -52,7 +52,7 @@ if( $deal_product->have_posts() ){
         wc_get_template_part( 'content', 'tab-category-deal' );
     endwhile;
     $deal_product_tmp = ob_get_clean();
-    remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
+    //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
     remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
     remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
 }
@@ -241,7 +241,7 @@ if( $deal_product->have_posts() ){
                             if( $key == 'most-review'){
                                 remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
                             }
-                            add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) );
+                            //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) );
                             //$woocommerce_loop['columns'] = $atts['columns'];
                     
                             if ( $products->have_posts() ) :?>
@@ -301,7 +301,7 @@ if( $deal_product->have_posts() ){
                             </div>
                             <?php $i++; ?>
                             <?php endif; ?>
-                            <?php remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) ); ?>
+                            <?php //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size173x211' ) ); ?>
                             <?php wp_reset_query();?>
                             <?php wp_reset_postdata(); ?>
                             <?php endforeach; ?>

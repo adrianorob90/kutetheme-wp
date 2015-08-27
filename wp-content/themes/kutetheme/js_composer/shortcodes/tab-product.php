@@ -122,7 +122,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                         if( $product_column > 0 )
                             $data_carousel['items'] =  $product_column;
                     }
-                    add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
+                    //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     ?>
                     <div id="tab-<?php echo $k . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
                         <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
@@ -132,7 +132,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                         </ul>
                     </div>
                     <?php 
-                    remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
+                    //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     endif; 
                     ?>
                     <?php 
@@ -146,9 +146,10 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         <?php
         return ob_get_clean();
     }
+    /*
     function kt_thumbnail_size(){
         return '248x303';
-    }
+    }*/
 }
 
 
