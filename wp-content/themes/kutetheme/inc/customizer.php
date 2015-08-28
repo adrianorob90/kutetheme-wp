@@ -352,11 +352,7 @@ function kt_get_color_scheme_css( $colors ) {
         border-top-color: <?php echo $colors['main_color'] ?>;
     }
     a:hover,
-    .cart-block .cart-block-content .product-info .p-right .p-rice,
-    .trademark-product .info-product .content_price .price,
-    .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
-    .widget_kt_product_special .price,
-    .widget_kt_best_seller .price ins{
+    .cart-block .cart-block-content .product-info .p-right .p-rice{
         color: <?php echo $colors['main_color'] ?>;
     }
     /* Text Color */
@@ -386,7 +382,11 @@ function kt_get_color_scheme_css( $colors ) {
     /* Price Color */
     
     .product-list li .content_price ins,
-    .product-list li .content_price{
+    .product-list li .content_price,
+    .trademark-product .info-product .content_price .price,
+    .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
+    .widget_kt_product_special .price,
+    .widget_kt_best_seller .price ins{
         color: <?php echo $colors['price_color'] ?>
     }
     <?php
