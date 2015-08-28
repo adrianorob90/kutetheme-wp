@@ -390,7 +390,7 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_kt_product_special .price,
     .widget_kt_best_seller .price ins,
     .option2 .deal-product .content_price,
-    .option2 .product-list li .product-price{
+    .option2 .product-list li .content_price .product-price{
         color: <?php echo $colors['price_color'] ?>
     }
     <?php
