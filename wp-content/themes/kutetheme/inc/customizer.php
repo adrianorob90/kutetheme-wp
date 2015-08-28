@@ -336,6 +336,7 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_kt_on_sale .product-list li .product-bottom .add-to-cart{
         background-color: <?php echo $colors['main_color'] ?>;
     }
+    .page-heading span.page-heading-title,
     .popular-tabs .nav-tab li:hover, 
     .popular-tabs .nav-tab li.active,
     .brand-showcase .brand-showcase-title,
@@ -387,7 +388,9 @@ function kt_get_color_scheme_css( $colors ) {
     .trademark-product .info-product .content_price .price,
     .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
     .widget_kt_product_special .price,
-    .widget_kt_best_seller .price ins{
+    .widget_kt_best_seller .price ins,
+    .option2 .deal-product .content_price,
+    .option2 .product-list li .product-price{
         color: <?php echo $colors['price_color'] ?>
     }
     <?php

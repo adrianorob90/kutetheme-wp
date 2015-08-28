@@ -246,7 +246,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 <a target="_blank" href="<?php the_permalink() ?>"><?php the_title() ?></a>
                             </h5>
                             <div class="post-meta">
-                                <span class="date"><?php the_date();?></span>
+                                <span class="date"><?php echo get_the_date('F j, Y');?></span>
                                 <span class="comment">
                                     <?php comments_number(
                                         __('0 Comment', 'kutetheme'),
@@ -267,8 +267,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         <!-- ./blog list -->
         <?php
         endif;
-        $result = ob_get_contents();
-        ob_end_clean();
+        $result = ob_get_clean();
         wp_reset_query();
         wp_reset_postdata();
         return $result;
