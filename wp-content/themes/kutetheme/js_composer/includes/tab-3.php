@@ -204,7 +204,7 @@ if( $deal_product->have_posts() ){
                                 add_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
                             }
                             if($key == 'category' && intval( $tab['section_cate'] ) > 0 ){
-                                $chil_term = get_term( $category, 'product_cat' );
+                                $chil_term = get_term( $section_cate, 'product_cat' );
                                 if( $chil_term ){
                                     $newargs['tax_query'] = array(
                                         array(
