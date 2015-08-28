@@ -76,6 +76,19 @@ function kt_customize_register( $wp_customize ) {
 		'description' => __( 'Applied to the header on small screens and the text on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
+    
+    // Add custom header and sidebar background color setting and control.
+	$wp_customize->add_setting( 'price_color', array(
+		'default'           => $color_scheme[8],
+		'sanitize_callback' => 'sanitize_hex_color',
+		'transport'         => 'postMessage',
+	) );
+
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'price_color', array(
+		'label'       => __( 'Text Color', 'kutetheme' ),
+		'description' => __( 'Applied to the price on wide screens.', 'kutetheme' ),
+		'section'     => 'colors',
+	) ) );
 
 	// Add an additional description to the header image section.
 	$wp_customize->get_section( 'header_image' )->description = __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' );
@@ -95,6 +108,7 @@ add_action( 'customize_register', 'kt_customize_register', 11 );
  * 5. Button Color
  * 6. Link Menu Footer
  * 7. Module border
+ * 8. Price Color
  *
  * @since Kute Theme 1.0
  *
@@ -113,6 +127,7 @@ function kt_get_color_schemes() {
                 '#000000',//Button Color
                 '#0066cc',//Link Menu Footer
                 '#eaeaea',//Module Border
+                '#ff3366' // Price Color
 			),
 		),
 		'brown'    => array(
@@ -126,6 +141,7 @@ function kt_get_color_schemes() {
                 '#000000',//Button Color
                 '#0066cc',//Link Menu Footer
                 '#eaeaea',//Module Border
+                '#f96d10' // Price Color
 			),
 		)
 	) );
@@ -224,6 +240,8 @@ function kt_color_scheme_css() {
 		'rate_color'           => $color_scheme[4],
 		'button_color'         => $color_scheme[5],
         'menu_link_footer'     => $color_scheme[6],
+        'module_bored'         => $color_scheme[7],
+        'price_color'          => $color_scheme[8],
         'button_color_rgb'     => vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.4)', $color_button_rgb ),
         'color_main_rgb'       => vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.5)', $color_main_rgb ),
 	);
@@ -275,7 +293,8 @@ function kt_get_color_scheme_css( $colors ) {
 		'button_color'         => '',
 		'menu_link_footer'     => '',
 		'button_color_rgb'     => '',
-        'color_main_rgb'       => ''
+        'color_main_rgb'       => '',
+        'price_color'          => ''
 	) );
 	ob_start();
     ?>
@@ -333,8 +352,6 @@ function kt_get_color_scheme_css( $colors ) {
         border-top-color: <?php echo $colors['main_color'] ?>;
     }
     a:hover,
-    .product-list li .content_price ins,
-    .product-list li .content_price,
     .cart-block .cart-block-content .product-info .p-right .p-rice,
     .trademark-product .info-product .content_price .price,
     .woocommerce .content div.product p.price, .woocommerce .content div.product span.price,
@@ -365,6 +382,12 @@ function kt_get_color_scheme_css( $colors ) {
     /* Footer Menu Link*/
     .footer-menu-list li a{
         color: <?php echo $colors['menu_link_footer'] ?>
+    }
+    /* Price Color */
+    
+    .product-list li .content_price ins,
+    .product-list li .content_price{
+        color: <?php echo $colors['price_color'] ?>
     }
     <?php
     $css = ob_get_clean();

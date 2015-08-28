@@ -533,7 +533,7 @@ require THEME_DIR . '/inc/breadcrumbs.php';
  *
  * @since Kute Theme 1.0
  */
-require THEME_DIR . '/inc/template-tags.php';
+//require THEME_DIR . '/inc/template-tags.php';
 
 /**
  * Customizer additions.
