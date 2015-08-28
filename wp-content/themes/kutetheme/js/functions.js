@@ -45,7 +45,10 @@
       var $container = $this.closest('.container-tab');
       var $href = $this.attr('href');
       var $tab_active = $container.find($href);
-      $tab_active.find('.owl-item.active').each(function($i){
+      alert('ádasdasd');
+      var $item_active = $tab_active.find('.owl-item.active');
+      $item_active.find('img.lazy').trigger('load_lazy');
+      $item_active.each(function($i){
             var $item = jQuery(this);
             var $style = $item.attr("style");
             var delay = $i * 300;
@@ -119,15 +122,25 @@
         }
         /** OWL CAROUSEL**/
         $(".owl-carousel").each(function(index, el) {
-          var config = $(this).data();
-          config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
-          config.lazyLoad = "true";
-          config.smartSpeed="300";
-          if($(this).hasClass('owl-style2')){
-            config.animateOut="fadeOut";
-            config.animateIn="fadeIn";    
-          }
-          $(this).owlCarousel(config);
+            var $this = $(this);
+            var config = $this.data();
+            config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
+            config.smartSpeed="300";
+            if( $this.hasClass('owl-style2') ){
+                config.animateOut="fadeOut";
+                config.animateIn="fadeIn";    
+            }
+            config.onDrag = function(){
+                var $active_item = $this.find( '.owl-item.active');
+                $active_item.find('img.lazy').trigger('load_lazy');
+            };
+            $this.owlCarousel(config);
+            
+        });
+        jQuery(document).on('click', '.owl-next, .owl-prev', function(){
+            var $carousel_container = jQuery(this).closest('.owl-loaded');
+            $carousel_container.find('.owl-item.active img.lazy').trigger('load_lazy');
+            
         });
         $(".owl-carousel-vertical").each(function(index, el) {
           var config = $(this).data();
@@ -135,7 +148,6 @@
           config.smartSpeed="900";
           config.animateOut="";
             config.animateIn="fadeInUp";
-            config.lazyLoad = "true";
           $(this).owlCarousel(config);
         });
         /** COUNT DOWN **/
@@ -265,8 +277,10 @@
             $(this).closest('li').addClass('active');
             $('.brand-showcase-content').find('.brand-showcase-content-tab').each(function(){
                 $(this).removeClass('active');
-            })
-            $('#'+id).addClass('active');
+            });
+            var tab_active = $('#'+id);
+            tab_active.addClass('active');
+            tab_active.find('img.lazy').trigger('load_lazy');
             return false;
         })
         // CATEGORY FILTER 
@@ -441,8 +455,7 @@
                   1000 : {
                       items : 3,
                   }
-              },
-              lazyLoad : true
+              }
             }
         );
 
@@ -468,8 +481,7 @@
                   1000 : {
                       items : 3,
                   }
-              },
-              lazyLoad : true
+              }
             }
         );
         // Zoom
@@ -652,10 +664,11 @@
           })
       }
     }
-    $(function() {
-        $("img.lazy").lazyload({
-            effect: "fadeIn",
-            threshold : 200
-        });
+    
+    $("img.lazy").lazyload({
+        effect: "fadeIn",
+        skip_invisible: false,
+        failure_limit : 200,
+        event: 'scroll load_lazy'
     });
 })(jQuery); // End of use strict

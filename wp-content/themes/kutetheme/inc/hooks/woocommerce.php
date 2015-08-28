@@ -792,10 +792,17 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
 		global $post;
         
         $dimensions = wc_get_image_size( $size );
-        if( wc_placeholder_img_src() ){
-            $placeholder = wc_placeholder_img_src();
+        
+        $placeholder = 'images/placeholder-'.$size.'.png';
+        
+        if( ! file_exists( THEME_DIR . $placeholder ) ){
+            if( wc_placeholder_img_src() ){
+                $placeholder = wc_placeholder_img_src();
+            }else{
+                $placeholder = THEME_URL . 'images/placeholder-shop_catalog.png';
+            }
         }else{
-            $placeholder = THEME_URL . 'images/placeholder.png';
+            $placeholder = THEME_URL . $placeholder;
         }
         
         $title = $post->post_title;
@@ -803,7 +810,7 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
 		    $id = get_post_thumbnail_id();
 			$thumbnail_src = wp_get_attachment_image_src( $id, $size );
             
-            $thumbnail = '<img class="lazy attachment-' . $size . ' wp-post-image owl-lazy" src="' . $placeholder . '"  data-src="' . $thumbnail_src[0] . '" data-original="' . $thumbnail_src[0] . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
+            $thumbnail = '<img class="lazy attachment-' . $size . ' wp-post-image" src="' . $placeholder . '"  data-original="' . $thumbnail_src[0] . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
             return $thumbnail;
 		}else{
 		    $thumbnail = '<img class="attachment-' . $size . '" src="' . $placeholder . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';

@@ -25,7 +25,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
             'css' => '',
             'el_class' => '',
             'nav' => 'true',
-            'loop'  => 'true',
+            'loop'  => 'false',
             //Default
             'use_responsive' => 0,
             'items_destop' => 3,
@@ -109,11 +109,10 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                         "autoheight" => 'false',
                         'nav' => 'true',
                         'dots' => 'false',
-                        'loop' => 'true',
+                        'loop' => $loop,
                         'autoplayTimeout' => 1000,
                         'autoplayHoverPause' => 'true'
                     );
-                    
                     if( ! $use_responsive){
                         $arr = array('0' => array("items" => $items_mobile), '768' => array("items" => $items_tablet), '992' => array("items" => $items_destop));
                         $data_responsive = json_encode($arr);
@@ -222,7 +221,7 @@ vc_map( array(
 			'type' => 'checkbox',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
+			'value' => array( __( "Loop", 'kutetheme' ) => 'true' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
