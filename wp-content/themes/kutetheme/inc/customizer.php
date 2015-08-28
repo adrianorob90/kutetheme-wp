@@ -85,7 +85,7 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'price_color', array(
-		'label'       => __( 'Text Color', 'kutetheme' ),
+		'label'       => __( 'Price Color', 'kutetheme' ),
 		'description' => __( 'Applied to the price on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
@@ -231,6 +231,7 @@ function kt_color_scheme_css() {
     $main_color           = get_theme_mod( 'main_color', $color_scheme[1] );
     $box_background_color = get_theme_mod( 'box_background_color', $color_scheme[2] );
     $textcolor            = get_theme_mod( 'textcolor', $color_scheme[3] );
+    $price_color          = get_theme_mod( 'price_color', $color_scheme[8] );
     
 	$colors = array(
 		'background_color'     => $color_scheme[0],
@@ -241,7 +242,7 @@ function kt_color_scheme_css() {
 		'button_color'         => $color_scheme[5],
         'menu_link_footer'     => $color_scheme[6],
         'module_bored'         => $color_scheme[7],
-        'price_color'          => $color_scheme[8],
+        'price_color'          => $price_color,
         'button_color_rgb'     => vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.4)', $color_button_rgb ),
         'color_main_rgb'       => vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.5)', $color_main_rgb ),
 	);
@@ -305,11 +306,11 @@ function kt_get_color_scheme_css( $colors ) {
 		background-color: <?php echo $colors['background_color'] ?>;
 	}
     
-    /* Box Color */
+    /* Box Color 
     .service{
         background-color: <?php echo $colors['box_background_color'] ?>;
     }
-    
+    */
     /* Main Color */
     #main-menu .navbar .navbar-nav>li:hover, 
     #main-menu .navbar .navbar-nav>li.active,
@@ -412,6 +413,8 @@ function kt_color_scheme_css_template() {
 		'button_color'         => '{{ data.button_color }}',
 		'menu_link_footer'     => '{{ data.menu_link_footer }}',
 		'button_color_rgb'     => '{{ data.button_color_rgb }}',
+        'module_bored'         => '{{ data.module_bored }}',
+        'price_color'          => '{{ data.price_color }}',
 	);
 	?>
 	<script type="text/html" id="tmpl-kutetheme-color-scheme">

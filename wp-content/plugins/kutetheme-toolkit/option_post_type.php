@@ -60,7 +60,7 @@ function kt_register_demo_metabox() {
 		'name' => __( 'Description', 'kutetheme' ),
 		'desc' => __( 'Short description', 'kutetheme' ),
 		'id'   => $prefix . 'service_desc',
-		'type' => 'text',
+		'type' => 'textarea_small',
 	) );
 
 

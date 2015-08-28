@@ -269,6 +269,8 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         endif;
         $result = ob_get_contents();
         ob_end_clean();
+        wp_reset_query();
+        wp_reset_postdata();
         return $result;
     }
 }

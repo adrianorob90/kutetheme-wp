@@ -11,6 +11,7 @@
 			'main_color',
 			'box_background_color',
 			'textcolor',
+            'price_color',
 			'rate_color',
 			'button_color',
             'menu_link_footer',
@@ -21,7 +22,8 @@
 			'background_color',
 			'main_color',
 			'box_background_color',
-            'textcolor'
+            'textcolor',
+            'price_color'
 		];
 
 	api.controlConstructor.select = api.Control.extend( {
@@ -50,7 +52,14 @@
 					api( 'textcolor' ).set( colorScheme[value].colors[3] );
 					api.control( 'textcolor' ).container.find( '.color-picker-hex' )
 						.data( 'data-default-color', colorScheme[value].colors[3] )
-						.wpColorPicker( 'defaultColor', colorScheme[value].colors[3] );    
+						.wpColorPicker( 'defaultColor', colorScheme[value].colors[3] );
+                        
+                    // Update Text Color.
+					api( 'price_color' ).set( colorScheme[value].colors[4] );
+					api.control( 'price_color' ).container.find( '.color-picker-hex' )
+						.data( 'data-default-color', colorScheme[value].colors[4] )
+						.wpColorPicker( 'defaultColor', colorScheme[value].colors[4] );
+                            
 				} );
 			}
 		}
@@ -58,8 +67,6 @@
 
 	// Generate the CSS for the current Color Scheme.
 	function updateCSS() {
-	   console.log(colorScheme);
-       console.log(api( 'color_scheme' )());
 		var scheme = api( 'color_scheme' )(), css,
 			colors = _.object( colorSchemeKeys, colorScheme[ scheme ].colors );
 

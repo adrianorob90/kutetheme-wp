@@ -107,3 +107,35 @@ function register_post_type_init() {
     flush_rewrite_rules();
 }
 add_action( 'init', 'register_post_type_init' );
+
+// hook into the init action and call create_service_taxonomies when it fires
+add_action( 'init', 'create_service_taxonomies', 0 );
+
+// create two taxonomies, service and writers for the post type "book"
+function create_service_taxonomies() {
+	// Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name'              => _x( 'Categories', 'kutetheme' ),
+		'singular_name'     => _x( 'Categories', 'kutetheme' ),
+		'search_items'      => __( 'Search Categories', 'kutetheme' ),
+		'all_items'         => __( 'All Categories', 'kutetheme' ),
+		'parent_item'       => __( 'Parent Categories', 'kutetheme' ),
+		'parent_item_colon' => __( 'Parent Categories:', 'kutetheme' ),
+		'edit_item'         => __( 'Edit Categories', 'kutetheme' ),
+		'update_item'       => __( 'Update Categories', 'kutetheme' ),
+		'add_new_item'      => __( 'Add New Categories', 'kutetheme' ),
+		'new_item_name'     => __( 'New Categories Name', 'kutetheme' ),
+		'menu_name'         => __( 'Categories', 'kutetheme' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'service_cat' ),
+	);
+
+	register_taxonomy( 'service_cat', 'service', $args );
+}
