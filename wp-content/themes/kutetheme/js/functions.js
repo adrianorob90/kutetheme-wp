@@ -45,7 +45,6 @@
       var $container = $this.closest('.container-tab');
       var $href = $this.attr('href');
       var $tab_active = $container.find($href);
-      alert('ádasdasd');
       var $item_active = $tab_active.find('.owl-item.active');
       $item_active.find('img.lazy').trigger('load_lazy');
       $item_active.each(function($i){
