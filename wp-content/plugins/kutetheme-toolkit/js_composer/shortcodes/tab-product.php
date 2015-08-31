@@ -3,7 +3,6 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( ! kt_is_wc() ) return;
 
 class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
 

@@ -11,6 +11,18 @@ define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
 
 
+if( ! function_exists('kt_check_active_plugin') ){
+    function kt_check_active_plugin( $key ){
+        $active_plugins = (array) get_option( 'active_plugins', array() );
+
+		if ( is_multisite() ){
+		  $active_plugins = array_merge( $active_plugins, get_site_option( 'active_sitewide_plugins', array() ) ); 
+		}
+        return in_array( $key, $active_plugins ) || array_key_exists( $key, $active_plugins );
+    }
+}
+
+
 //Mailchimp
 require_once KUTETHEME_PLUGIN_PATH.'mailchimp/mailchimp.php';
 
@@ -41,7 +53,7 @@ if ( class_exists( 'Vc_Manager', false ) ) {
     add_action( 'admin_enqueue_scripts', 'js_composer_bridge_admin', 15 );
 
 
-    require_once KUTETHEME_PLUGIN_PATH.'js_composer/custom-fields.php';
+    require_once KUTETHEME_PLUGIN_PATH.'js_composer/visualcomposer.php';
 }
 
 //Shortcodes

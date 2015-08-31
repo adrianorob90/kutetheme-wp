@@ -2,8 +2,6 @@
 // Exit if accessed directly
 if ( !defined('ABSPATH')) exit;
 
-if( ! kt_is_wc() ) return;
-
 vc_map( array(
     "name" => __( "Categories Tab", 'kutetheme'),
     "base" => "categories_tab",
@@ -381,7 +379,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             );
             $subcats = get_categories($args);
             
-            if( file_exists( THEME_DIR.'js_composer/includes/'.$tabs_type.'.php' ) ){
+            if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/includes/'.$tabs_type.'.php' ) ){
                 if( $tabs_type == 'tab-1' ){
                     $elementClass .= ' option1 tab-1';
                 }elseif( $tabs_type == 'tab-2' ){
@@ -397,7 +395,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 }elseif( $tabs_type == 'tab-7' ){
                     $elementClass .= ' option7 tab-7';
                 }
-                @include( locate_template( 'js_composer/includes/'.$tabs_type.'.php' ) );
+                @include( KUTETHEME_PLUGIN_PATH . 'js_composer/includes/'.$tabs_type.'.php' );
             }
         endif;
     }

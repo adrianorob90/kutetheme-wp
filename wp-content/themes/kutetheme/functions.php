@@ -558,9 +558,9 @@ if( kt_is_wc() ){
     require THEME_DIR . '/inc/hooks/woocommerce.php';
 }
 
-if( kt_is_vc() ){
+/*if( kt_is_vc() ){
     require THEME_DIR . '/js_composer/visualcomposer.php';
-}
+}*/
 if( ! class_exists( 'wp_bootstrap_navwalker' ) && file_exists( THEME_DIR. 'inc/nav/wp_bootstrap_navwalker.php' ) ){
     require_once( THEME_DIR. 'inc/nav/wp_bootstrap_navwalker.php' );
 }
