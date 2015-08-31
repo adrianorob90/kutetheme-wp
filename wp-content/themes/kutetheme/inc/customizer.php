@@ -333,7 +333,8 @@ function kt_get_color_scheme_css( $colors ) {
     .nav-links a:hover, .nav-links .current,
     .blog-posts .post-item .entry-more a:hover,
     .site-content .main-header .header-search-box .form-inline .btn-search,
-    .widget_kt_on_sale .product-list li .product-bottom .add-to-cart{
+    .widget_kt_on_sale .product-list li .product-bottom .add-to-cart,
+    .product-list.list .add-to-cart{
         background-color: <?php echo $colors['main_color'] ?>;
     }
     .page-heading span.page-heading-title,

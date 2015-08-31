@@ -155,6 +155,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             </div>
         <?php elseif($style==2):?>
             <!-- Show display style 2 -->
+        <div class="col-sm-12">            
             <div class="services2">
                 <ul>
                     <?php
@@ -186,6 +187,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                     ?>
                 </ul>
             </div>
+        </div>            
         <?php endif;?>
             <?php
         }
