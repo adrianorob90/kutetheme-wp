@@ -11,12 +11,12 @@ $args = array(
 );
 ?>
 <form class="form-inline woo-search" method="get" action="<?php echo esc_url( home_url( '/' ) ) ?>">
-      <div class="form-group form-category">
-        <?php wp_dropdown_categories( $args ); ?>
-      </div>
-      <div class="form-group input-serach">
-        <input type="hidden" name="post_type" value="product" />
-        <input type="text" name="s"  placeholder="<?php _e('Keyword here...', 'kutetheme') ?>" />
-      </div>
-      <button type="submit" class="pull-right btn-search"></button>
+  <div class="form-group form-category">
+    <?php wp_dropdown_categories( $args ); ?>
+  </div>
+  <div class="form-group input-serach">
+    <input type="hidden" name="post_type" value="product" />
+    <input type="text" name="s"  placeholder="<?php _e('Keyword here...', 'kutetheme') ?>" />
+  </div>
+  <button type="submit" class="pull-right btn-search"></button>
 </form>

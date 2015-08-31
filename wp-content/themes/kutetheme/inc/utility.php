@@ -107,6 +107,17 @@ if( ! function_exists('kt_get_info_copyrights') ){
         return kt_option( 'kt_copyrights', false );
     }
 }
+if( ! function_exists( 'kt_get_inline_css' ) ){
+    function kt_get_inline_css(){
+        return kt_option( 'kt_add_css', '' );
+    }
+}
+
+if( ! function_exists( 'kt_get_customize_js' ) ){
+    function kt_get_customize_js(){
+        return kt_option( 'kt_add_js', '' );
+    }
+}
 /**
  * Display dropdown choose language
  * */

@@ -19,14 +19,16 @@
             <div class="col-xs-12 col-sm-3 logo">
                 <?php echo kt_get_logo(); ?>
             </div>
-            <div class="header-search-box <?php echo kt_is_wc() ? 'col-xs-7 col-sm-7' : 'col-xs-12'; ?>">
+            <div class="header-search-box <?php echo kt_is_wc() ? 'col-xs-7 col-sm-7' : 'col-xs-9'; ?>">
                 <?php kt_search_form();  ?>
             </div>
+            <?php if( kt_is_wc() ): ?>
             <div class="widget_shopping_cart_content">
                 <?php 
                     do_action('kt_mini_cart');
                 ?>
             </div>
+            <?php endif; ?>
         </div>
         
     </div>

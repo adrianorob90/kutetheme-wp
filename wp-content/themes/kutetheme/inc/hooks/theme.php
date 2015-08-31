@@ -107,10 +107,32 @@ function kt_register_required_plugins() {
 	tgmpa( $plugins, $config );
 }
 
-
-function kt_init_session_start(){
-    if(!session_id()) {
-        session_start();
+if( ! function_exists( 'kt_init_session_start' ) ){
+    function kt_init_session_start(){
+        if(!session_id()) {
+            session_start();
+        }
     }
 }
+
 add_action('init', 'kt_init_session_start', 1);
+
+if( ! function_exists( 'kt_custom_inline_style' ) ){
+    function kt_custom_inline_style(){
+        $color_scheme_css = kt_get_inline_css();
+        wp_add_inline_style( 'kutetheme-style', $color_scheme_css );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'kt_custom_inline_style' );
+
+if( ! function_exists( 'kt_custom_js' ) ){
+    function kt_custom_js(){
+        $js = kt_get_customize_js();
+        ?>
+        <script type="text/javascript">
+    		<?php echo $js; ?>
+    	</script>
+        <?php
+    }
+}
+add_action( 'wp_footer', 'kt_custom_js' );

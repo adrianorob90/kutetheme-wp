@@ -20,8 +20,8 @@
  * For more information on hooks, actions, and filters,
  * {@link https://codex.wordpress.org/Plugin_API}
  *
- * @package WordPress
- * @subpackage Twenty_Fifteen
+ * @package KuteTheme
+ * @subpackage KuteTheme
  * @since Kute Theme 1.0
  */
 
@@ -87,7 +87,7 @@ function kutetheme_setup() {
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu',      'kutetheme' ),
+		'primary'   => __( 'Primary Menu', 'kutetheme' ),
 		'vertical'  => __( 'Vertical Menu', 'kutetheme' ),
 	) );
 
@@ -123,7 +123,7 @@ function kutetheme_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	//add_editor_style( array( 'css/editor-style.css', 'genericons/genericons.css', kt_fonts_url() ) );
+	add_editor_style( THEME_URL . 'css/editor-style.css' );
     
     //add_image_size ( '100x122', 100, 122, true );
     add_image_size ( '585x65', 585, 66, true );
@@ -357,6 +357,7 @@ function kt_scripts() {
     wp_enqueue_style( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.css' );
     
     wp_enqueue_style( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.css' );
+    
     wp_enqueue_style( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.css' );
     
     wp_enqueue_style( 'kt-style', get_template_directory_uri() . '/css/style.css', 
