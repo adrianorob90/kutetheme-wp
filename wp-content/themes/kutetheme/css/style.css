@@ -5640,3 +5640,16 @@ span.notify-right{
       color: #ff9900;
       font-size: 13px;
 }
+.band-logo.no-product h3{
+  background: #eaeaea;
+  cursor: pointer;
+  height: 66px;
+  text-align: center;
+  text-transform: uppercase;
+  line-height: 64px;
+  margin: 0;
+  border: 1px solid #eaeaea;
+}
+.band-logo.no-product h3:hover{
+  background-color: #fff;
+}
