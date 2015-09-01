@@ -145,20 +145,6 @@ class KT_Admin {
 				'value' => array( $this->key, )
 			),
 		) );
-        /**
-    	 * Page Layout
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'Page Layout', 'kutetheme' ),
-    		'id'      => 'kt_layout',
-    		'type'    => 'select',
-    		'default' => 'full',
-            'options'          => array(
-    			'full' => __( 'Full', 'kutetheme' ),
-    			'box'  => __( 'Boxed', 'kutetheme' ),
-    		),
-            'desc'    => __( 'Setting background for your site image or color(default)', 'kutetheme' ),
-    	) );
         
         global $wp_registered_sidebars;
         $sidebars = array();
@@ -310,19 +296,6 @@ class KT_Admin {
     		'type' => 'textarea',
     	) );
         
-        /**
-         * Typography
-         * */
-       $cmb_options_typography = new_cmb2_box( array(
-			'id'      => 'kt_typography',
-			'hookup'  => false,
-            'title'   => 'Typography',
-			'show_on' => array(
-				// These are important, don't remove
-				'key'   => 'options-page',
-				'value' => array( $this->key, )
-			),
-		) );
         
         /**
          * Woocommerce
