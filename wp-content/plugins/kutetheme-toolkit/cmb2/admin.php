@@ -368,7 +368,7 @@ class KT_Admin {
     		'name'    => __( 'Products perpage', 'kutetheme' ),
     		'id'      => 'kt_woo_products_perpage',
     		'type'    => 'text',
-    		'default' => '10',
+    		'default' => '12',
             'desc'    => __( 'Number of products on shop page', 'kutetheme' ),
     	) );
         
