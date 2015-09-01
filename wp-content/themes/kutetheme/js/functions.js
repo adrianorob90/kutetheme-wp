@@ -209,40 +209,6 @@
 
             );
         }
-        /** Custom page sider**/
-        if($('#home-slider').length >0 && $('#contenhomeslider-customPage').length >0){
-            var slider = $('#contenhomeslider-customPage').bxSlider(
-                {
-                    nextText:'<i class="fa fa-angle-right"></i>',
-                    prevText:'<i class="fa fa-angle-left"></i>',
-                    auto: true,
-                    pagerCustom: '#bx-pager',
-                    nextSelector: '#bx-next',
-                    prevSelector: '#bx-prev',
-                }
-
-            );
-        }
-
-        if($('#home-slider').length >0 && $('#slide-background').length >0){
-            var slider = $('#slide-background').bxSlider(
-                {
-                    nextText:'<i class="fa fa-angle-right"></i>',
-                    prevText:'<i class="fa fa-angle-left"></i>',
-                    auto: true,
-                    onSlideNext: function ($slideElement, oldIndex, newIndex) {
-                       var corlor = $($slideElement).data('background');   
-                       $('#home-slider').css('background',corlor);     
-                    },
-                    onSlidePrev: function ($slideElement, oldIndex, newIndex) {
-                       var corlor = $($slideElement).data('background');   
-                       $('#home-slider').css('background',corlor);     
-                    }
-                }
-
-            );
-            //slider.goToNextSlide();
-        }
         
         /* elevator click*/ 
         $(document).on('click','a.btn-elevator',function(e){
@@ -281,27 +247,6 @@
             tab_active.addClass('active');
             tab_active.find('img.lazy').trigger('load_lazy');
             return false;
-        })
-        // CATEGORY FILTER 
-        $('.slider-range-price').each(function(){
-            var min             = $(this).data('min');
-            var max             = $(this).data('max');
-            var unit            = $(this).data('unit');
-            var value_min       = $(this).data('value-min');
-            var value_max       = $(this).data('value-max');
-            var label_reasult   = $(this).data('label-reasult');
-            var t               = $(this);
-            $( this ).slider({
-              range: true,
-              min: min,
-              max: max,
-              values: [ value_min, value_max ],
-              slide: function( event, ui ) {
-                var result = label_reasult +" "+ unit + ui.values[ 0 ] +' - '+ unit +ui.values[ 1 ];
-                console.log(t);
-                t.closest('.slider-range').find('.amount-range-price').html(result);
-              }
-            });
         })
         /** ALL CAT **/
         $(document).on('click','.open-cate',function(){
@@ -368,7 +313,8 @@
             var width = $(window).width();
             if(width >1024){
                 if($('body').hasClass('home')){
-                    if($('#nav-top-menu').hasClass('nav-ontop')){
+                    if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6')){
+
                     }else{
                         return false;
                     }

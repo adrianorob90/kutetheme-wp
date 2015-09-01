@@ -16,7 +16,6 @@
  */
 function kt_customize_register( $wp_customize ) {
 	$color_scheme = kt_get_color_scheme();
-
 	$wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
 
@@ -142,6 +141,20 @@ function kt_get_color_schemes() {
                 '#0066cc',//Link Menu Footer
                 '#eaeaea',//Module Border
                 '#f96d10' // Price Color
+			),
+		),
+		'blue'    => array(
+			'label'  => __( 'Blue', 'kutetheme' ),
+			'colors' => array(
+                '#ffffff',//Background Color.
+				'#007176',//Main Color
+				'#008a90',//Sidebar and Box Background Color.
+				'#666666',//Main Text and Link Color.
+                '#febf2b',//Rate Star color
+                '#000000',//Button Color
+                '#0066cc',//Link Menu Footer
+                '#eaeaea',//Module Border
+                '#000000' // Price Color
 			),
 		)
 	) );
@@ -306,11 +319,11 @@ function kt_get_color_scheme_css( $colors ) {
 		background-color: <?php echo $colors['background_color'] ?>;
 	}
     
-    /* Box Color 
-    .service{
+    /* Box Color */
+    div.option6.header{
         background-color: <?php echo $colors['box_background_color'] ?>;
     }
-    */
+    
     /* Main Color */
     #main-menu .navbar .navbar-nav>li:hover, 
     #main-menu .navbar .navbar-nav>li.active,
@@ -334,7 +347,11 @@ function kt_get_color_scheme_css( $colors ) {
     .blog-posts .post-item .entry-more a:hover,
     .site-content .main-header .header-search-box .form-inline .btn-search,
     .widget_kt_on_sale .product-list li .product-bottom .add-to-cart,
-    .product-list.list .add-to-cart{
+    .product-list.list .add-to-cart,
+    .option6 div.top-header,
+    div.option6 #main-menu .navbar,
+    .block-popular-cat a.more
+    {
         background-color: <?php echo $colors['main_color'] ?>;
     }
     .page-heading span.page-heading-title,
@@ -394,6 +411,7 @@ function kt_get_color_scheme_css( $colors ) {
     .option2 .product-list li .content_price .product-price{
         color: <?php echo $colors['price_color'] ?>
     }
+
     <?php
     $css = ob_get_clean();
 	return $css;

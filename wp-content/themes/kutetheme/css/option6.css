@@ -108,8 +108,8 @@
 /*
 [4. Header ]
 */
-.option6 .header{
-	background: #008a90;
+.option6.header{
+	background-color: #008a90;
 }
 .option6 .nav-top-menu{
 	background: transparent;
@@ -169,6 +169,7 @@
 	padding-top: 9px;
 }.option6 .header-search-box form .input-serach input{
 	color: #fff;
+	background: none;
 }
 .option6 .header-search-box form .input-serach input::-webkit-input-placeholder { color:#fff; }
 .option6 .header-search-box form .input-serach input::-webkit-input-placeholder { color:#fff;  }
@@ -191,6 +192,7 @@
 	color: #fff;
 	display: inline-block;
 	min-width: 470px;
+	float: left;
 }
 .option6 .main-header .header-search-box .keyword{
 	display: inline-block;
@@ -198,6 +200,12 @@
 	font-size: 13px;
 	line-height: 21px;
 	float: right;
+	margin: 0;
+	padding-left: 15px;
+	min-width: 175px;
+}
+.option6 .main-header .header-search-box .keyword p{
+	margin: 0;
 }
 .option6 .main-header .header-search-box .keyword a{
 	color: #fff;
@@ -279,10 +287,11 @@
 .option6 .box-vertical-megamenus .title{
 	background: #000;
 }
-.option6 .box-vertical-megamenus .vertical-menu-content{
+.header.option6 .box-vertical-megamenus .vertical-menu-content{
 	border-top: none;
 	min-width: 270px;
 	border-right: 1px solid #eaeaea;
+	display: none;
 }
 .option6 #main-menu{
 	width: 100%;
@@ -1249,6 +1258,25 @@
 	width: auto;
 	display: inline-block;
 	float: left;
+}
+
+/** CUSTOM CSS VC**/
+.home-slider-6{
+	padding-right: 0!important;
+}
+
+.group-banner-slider1{
+	padding-left: 0!important;
+}
+.group-banner-slider2{
+	padding: 0!important;
+	margin-left: -15px;
+}
+.group-banner-slider1 .wpb_single_image,
+.group-banner-slider2 .wpb_single_image {
+	margin: 0;
+	margin-left: 2px;
+	margin-bottom: 2px;
 }
 /** REPONSIVE **/
 /*----------------

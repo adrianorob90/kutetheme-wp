@@ -5447,6 +5447,12 @@ span.notify-right{
   display: inline-block;
   line-height: 30px;
 }
+.block-popular-cat .sub-categories ul{
+  padding: 0;
+}
+.block-popular-cat .sub-categories>ul>li{
+  list-style: none;
+}
 .block-popular-cat .sub-categories>ul>li>a:before{
   content: '';
   background: #008a90;
