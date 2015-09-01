@@ -390,6 +390,9 @@ a img.aligncenter {
     float: left;
     margin-bottom: 20px;
 }
+.blog-paging.top .nav-links {
+    margin-bottom: 0;
+}
 .nav-links>a,
 .nav-links>span{
     position: relative;
