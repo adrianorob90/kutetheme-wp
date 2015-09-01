@@ -7,6 +7,7 @@
   Version: 1.0.0
   Author URI: http://kutethemes.com/demo/kuteshop/
  */
+
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
 
@@ -22,6 +23,7 @@ if( ! function_exists('kt_check_active_plugin') ){
     }
 }
 
+load_plugin_textdomain( 'kutetheme', false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
 
 //Mailchimp
 require_once KUTETHEME_PLUGIN_PATH.'mailchimp/mailchimp.php';

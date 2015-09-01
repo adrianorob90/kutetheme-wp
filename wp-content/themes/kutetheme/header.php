@@ -21,7 +21,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class('option6'); ?>>
+<body <?php body_class(); ?>>
 <div class="site">
     <div class="site-content">
         <?php kt_get_header(); ?>

@@ -151,7 +151,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'blog_carousel', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'      => 'From the blog',
+            'title'      => __( 'From the blog', 'kutetheme' ),
             'per_page'   => 10,
             'orderby'    => 'date',
             'order'      => 'desc',
