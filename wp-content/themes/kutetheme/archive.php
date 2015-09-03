@@ -65,7 +65,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
             		?>
                 </div>
                 <?php
-                if($kt_sidebar_are!='full'){
+                if( $kt_sidebar_are != 'full' ){
                     ?>
                     <div class="col-xs-12 col-sm-4 col-md-3">
                         <div class="sidebar">
