@@ -5674,3 +5674,8 @@ span.notify-right{
 .band-logo.no-product h3:hover{
   background-color: #fff;
 }
+.lazy{
+    background-image:url('../images/ajax-loader.gif');
+    background-repeat:no-repeat;
+    background-position:center;
+}
