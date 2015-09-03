@@ -12,7 +12,7 @@
         __('1', 'kutetheme'),
         __('%', 'kutetheme')
     ); ?></span>
-    <span class="date"><i class="fa fa-calendar"></i> <?php the_date();?></span>
+    <span class="date"><i class="fa fa-calendar"></i> <?php echo get_the_date('F j, Y');?></span>
 </div>
 <!--
 <div class="post-star">

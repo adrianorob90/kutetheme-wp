@@ -31,6 +31,7 @@
 			if ( 'color_scheme' === this.id ) {
 				this.setting.bind( 'change', function( value ) {
 					// Update Background Color.
+                    console.log(colorScheme[value]);
 					api( 'background_color' ).set( colorScheme[value].colors[0] );
 					api.control( 'background_color' ).container.find( '.color-picker-hex' )
 						.data( 'data-default-color', colorScheme[value].colors[0] )
@@ -55,10 +56,10 @@
 						.wpColorPicker( 'defaultColor', colorScheme[value].colors[3] );
                         
                     // Update Text Color.
-					api( 'price_color' ).set( colorScheme[value].colors[4] );
+					api( 'price_color' ).set( colorScheme[value].colors[8] );
 					api.control( 'price_color' ).container.find( '.color-picker-hex' )
-						.data( 'data-default-color', colorScheme[value].colors[4] )
-						.wpColorPicker( 'defaultColor', colorScheme[value].colors[4] );
+						.data( 'data-default-color', colorScheme[value].colors[8] )
+						.wpColorPicker( 'defaultColor', colorScheme[value].colors[8] );
                             
 				} );
 			}
