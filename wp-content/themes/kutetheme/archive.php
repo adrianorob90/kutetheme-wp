@@ -16,8 +16,11 @@
  * @since Kuteshop 1.0
  */
 get_header(); 
-$kt_sidebar_are = kt_option('kt_sidebar_are','full');
+
+$kt_sidebar_are = kt_option( 'kt_sidebar_are', 'full' );
+
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
+
 if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-8 col-md-9"; 
 }else{
