@@ -154,7 +154,7 @@ function kt_get_color_schemes() {
                 '#000000',//Button Color
                 '#0066cc',//Link Menu Footer
                 '#eaeaea',//Module Border
-                '#000000' // Price Color
+                '#f96d10' // Price Color
 			),
 		)
 	) );
@@ -359,7 +359,7 @@ function kt_get_color_scheme_css( $colors ) {
     .popular-tabs .nav-tab li.active,
     .brand-showcase .brand-showcase-title,
     .group-title span,
-    .content .view-product-list .page-title span{
+    .content .view-product-list .page-title span,{
         border-bottom-color: <?php echo $colors['main_color'] ?>;
     }
     .latest-deals .latest-deal-content,
@@ -411,7 +411,10 @@ function kt_get_color_scheme_css( $colors ) {
     .option2 .product-list li .content_price .product-price{
         color: <?php echo $colors['price_color'] ?>
     }
-
+	/* Color*/
+	.blog-list .blog-list-wapper ul li .readmore a{
+		color: <?php echo $colors['main_color'] ?>
+	}
     <?php
     $css = ob_get_clean();
 	return $css;

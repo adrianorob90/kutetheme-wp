@@ -18,6 +18,9 @@
 15. Styles for devices(<=480px)
 
 -------------------------------------------------------------------*/
+.option6 .box-vertical-megamenus .title .title-menu{
+	display: none;
+}
 .option6 span.notify-right{
 	background: url('../images/notify-right-6.png') no-repeat;
 }
