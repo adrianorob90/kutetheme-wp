@@ -20,6 +20,10 @@
 .woocommerce .woocommerce-message {
     border-top-color: #8fae1b;
     line-height: 34px;
+    border: none;
+}
+.woocommerce .woocommerce-info{
+	border: none;
 }
 /*----------------
 [Wishlist, compare button]
