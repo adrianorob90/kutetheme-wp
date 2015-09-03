@@ -24,13 +24,11 @@ class Widget_KT_Testimonial extends WP_Widget {
         $number  = isset( $instance[ 'number' ] )  ? $instance[ 'number' ]  : 3;
         $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
         $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
-        
         $data_carousel    = array(
             "autoplay"   => $instance[ 'autoplay' ],
             "slidespeed" => $instance[ 'slidespeed' ],
             "theme"      => 'style-navigation-bottom',
             'nav'        => false,
-            'loop'       => $instance[ 'loop' ],
             'items'      => 1
         );
         if($title!=""){
@@ -40,6 +38,7 @@ class Widget_KT_Testimonial extends WP_Widget {
         }
         $pages = new WP_Query( array( 'post_type' => 'testimonial', 'numbe' => $number ));
         if($pages->have_posts()):
+            if(count($pages->have_posts())>1) $data_carousel['loop'] = $instance['loop'];
            ?>
            <!-- Testimonials -->
             <div class="block left-module container-testimonials">

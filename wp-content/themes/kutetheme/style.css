@@ -158,6 +158,19 @@ a img.aligncenter {
 /*----------------
 [Widget]
 ------------------*/
+.popular-posts li{
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.popular-posts li:last-child{
+    border: none;
+    padding-bottom: 0;
+}
+.popular-posts img{
+    border: 1px solid #eaeaea;
+    padding: 4px;
+}
 .widget_kt_social .introduce-title{
     margin-top: 20px;
     margin-bottom: 0;
