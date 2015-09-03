@@ -26,6 +26,9 @@
   margin-top: 20px;
   position: relative;
 }
+.latest-deals-product .colreduce-percentage{
+	right: 0;
+}
 .latest-deals-product .count-down-time2{
   position: absolute;
   top: -61px;
