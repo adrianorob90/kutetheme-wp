@@ -4513,6 +4513,9 @@ span.notify-right{
   padding: 10px 0;
   color: #666;
 }
+.entry-detail .entry-photo{
+  margin-bottom: 15px;
+}
 .entry-detail .entry-meta-data .fa{
   line-height: inherit;
 }
