@@ -452,6 +452,18 @@
 
             });
           }
+
+          // Category product
+          $(document).on('click','.widget_product_categories a',function(){
+            var paerent = $(this).closest('li');
+            if(paerent.children('ul').length > 0){
+                $('.widget_product_categories').find('.children').hide();
+                $(this).toggleClass('open');
+                $(this).closest('li').children('ul').slideToggle();
+                return false;
+            }
+            
+          })
     });
     /* ---------------------------------------------
      Scripts resize

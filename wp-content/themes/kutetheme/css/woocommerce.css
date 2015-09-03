@@ -263,6 +263,9 @@
 	margin-left: 10px;
 }
 
+.widget_product_categories ul>li.current-cat>a{
+	color: #ff3366 ;
+}
 .widget_product_categories ul>li>a:before {
     content: "\f105";
     font-size: 14px;
@@ -270,6 +273,9 @@
     text-align: right;
     font-family: "FontAwesome";
     padding-right: 12px;
+}
+.widget_product_categories ul>li>a.open:before{
+	content: "\f107";
 }
 .yith-woo-ajax-navigation .count,
 .widget_product_categories .count,
@@ -288,6 +294,7 @@
 }
 .widget_product_categories ul li .children {
     padding-left: 20px;
+    display: none;
 }
 .widget_product_categories .children li a:before {
     content: "\f0da";

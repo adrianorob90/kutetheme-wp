@@ -350,7 +350,17 @@ function kt_get_color_scheme_css( $colors ) {
     .product-list.list .add-to-cart,
     .option6 div.top-header,
     div.option6 #main-menu .navbar,
-    .block-popular-cat a.more
+    .block-popular-cat a.more,
+    .megamenu .widget h2.widgettitle:before,
+    .widget_product_tag_cloud div.tagcloud a:hover,
+    div.woocommerce #respond input#submit:hover, 
+    div.woocommerce a.button:hover, 
+    div.woocommerce button.button:hover, 
+    div.woocommerce input.button:hover,
+    div.woocommerce #respond input#submit.alt, 
+    div.woocommerce a.button.alt, 
+    div.woocommerce button.button.alt, 
+    div.woocommerce input.button.alt
     {
         background-color: <?php echo $colors['main_color'] ?>;
     }
@@ -365,7 +375,12 @@ function kt_get_color_scheme_css( $colors ) {
     .latest-deals .latest-deal-content,
     .woocommerce .content div.product .variation_form_section .variations-table .selected,
     .products-block .link-all,
-    blockquote{
+    blockquote,
+    .view-product-list h1.page-title span,
+    .vertical-menu-list .mega-group .mega-group-header span,
+    .widget_product_tag_cloud div.tagcloud a:hover,
+    div.popular-tabs .nav-tab li:hover, 
+    div.popular-tabs .nav-tab li.active{
         border-color: <?php echo $colors['main_color'] ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{

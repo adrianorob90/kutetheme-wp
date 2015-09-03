@@ -9,6 +9,9 @@
 ?>
 <?php
 $kt_woowoo_shop_used_sidebar = kt_option('kt_woowoo_shop_used_sidebar','sidebar-shop');
+if(is_product()){
+	$kt_woowoo_shop_used_sidebar = kt_option('kt_woo_single_used_sidebar','sidebar-shop');
+}
 ?>
 <div id="secondary" class="secondary">
 	<?php if ( is_active_sidebar( $kt_woowoo_shop_used_sidebar ) ) : ?>
