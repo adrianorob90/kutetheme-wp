@@ -182,6 +182,7 @@
 }
 .option2 .box-vertical-megamenus .vertical-menu-content{
 	border-top: none;
+	padding-bottom: 1px;
 }
 
 .option2 .nav-ontop #box-vertical-megamenus .title{
@@ -249,7 +250,7 @@
 	border:none;
 	padding-left: 0;
 	border-bottom: 1px dotted #eaeaea;
-	line-height: 37px;
+	line-height: 36px;
 }
 .option2 .box-vertical-megamenus .vertical-menu-list li:hover{
 	border-left: none;

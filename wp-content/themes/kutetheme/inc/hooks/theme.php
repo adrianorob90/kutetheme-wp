@@ -81,6 +81,11 @@ function kt_register_required_plugins() {
             'slug' => 'yith-woocommerce-wishlist', // The plugin slug (typically the folder name)
             'required' => false, // If false, the plugin is only 'recommended' instead of required
         ),
+        array(
+            'name' => 'YITH WooCommerce Ajax Product Filter', // The plugin name
+            'slug' => 'yith-woocommerce-ajax-navigation', // The plugin slug (typically the folder name)
+            'required' => false, // If false, the plugin is only 'recommended' instead of required
+        ),
 		array(
 			'name'     				=> 'Contact Form 7', // The plugin name
 			'slug'     				=> 'contact-form-7', // The plugin slug (typically the folder name)

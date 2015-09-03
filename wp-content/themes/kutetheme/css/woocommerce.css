@@ -271,10 +271,20 @@
     font-family: "FontAwesome";
     padding-right: 12px;
 }
-.widget_product_categories span.count,
-.widget_layered_nav span.count{
+.yith-woo-ajax-navigation .count,
+.widget_product_categories .count,
+.widget_layered_nav .count{
 	color: #a4a4a4;
 	margin-left: 5px;
+}
+.yith-woo-ajax-navigation .count:before{
+	content: '(';
+}
+.yith-woo-ajax-navigation .count:after{
+	content: ')';
+}
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li.chosen a{
+	border-color: #ff3366;
 }
 .widget_product_categories ul li .children {
     padding-left: 20px;
