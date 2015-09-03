@@ -151,7 +151,7 @@
 }
 .option6 .main-header .header-search-box{
 	padding: 0 15px;
-	padding-left: 40px;
+	padding-left: 15px;
 }
 .option6 .main-header .header-search-box .form-inline .form-category{
 	float: right;
@@ -1338,9 +1338,6 @@
 	.option6 .group-button-header{
 		float: right;
 	}
-	.option6 .main-header .logo{
-		margin-top: 15px;
-	}
 	.option6 .nav-menu .nav>li>a{
 		padding: 14px 10px;
 		margin-left: 0;
@@ -1393,6 +1390,9 @@
 	}
 	.option6 .main-header .header-search-box .keyword{
 		display: none;
+	}
+	.option6 #main-menu .navbar .navbar-nav>li>a{
+		padding: 0 10px;
 	}
 	
 }
@@ -1533,6 +1533,9 @@
 	.group-banner-slider2{
 		display: none;
 	}
+	.banner-custom.wpb_column {
+		padding: 0 15px!important;
+	}
 }
 /*--------------------
 [15. Styles for devices(<=480px)]
@@ -1669,6 +1672,9 @@
 	.group-banner-slider1,
 	.group-banner-slider2{
 		display: none;
+	}
+	.banner-custom.wpb_column {
+		padding: 0 15px!important;
 	}
 
 }

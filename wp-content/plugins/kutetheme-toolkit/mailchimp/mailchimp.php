@@ -112,7 +112,7 @@ class KT_Mailchimp{
             
             $output .= '<form class="mailchimp-form clearfix mailchimp-layout-'.esc_attr($layout).'" action="#" method="post">';
                 $email = '<input name="email" class="form-control" required="" type="email" placeholder="'.__('E-mail address', 'kt_mailchimp').'"/>';
-                $button = '<button class="btn btn-default mailchimp-submit" data-loading="'.__('Loading ...', 'kt_mailchimp').'" data-text="'.__('Subscribe', 'kt_mailchimp').'"  type="submit">'.__('Subscribe', 'kt_mailchimp').'</button>';
+                $button = '<button class="btn btn-default mailchimp-submit" data-loading="'.__('Loading ...', 'kt_mailchimp').'" data-text="'.__('OK', 'kt_mailchimp').'"  type="submit">'.__('OK', 'kt_mailchimp').'</button>';
                 if($layout == 'one'){
                     $text_repate = '<div class="input-group">%s<div class="input-group-btn">%s</div></div>'; 
                 }else{

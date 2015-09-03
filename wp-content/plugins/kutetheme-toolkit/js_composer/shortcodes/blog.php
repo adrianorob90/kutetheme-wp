@@ -239,11 +239,11 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                     <?php while( $posts->have_posts() ): $posts->the_post(); ?>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a target="_blank" href="<?php the_permalink() ?>"><?php the_post_thumbnail('268x255') ?></a>
+                            <a href="<?php the_permalink() ?>"><?php the_post_thumbnail('268x255') ?></a>
                         </div>
                         <div class="post-desc">
                             <h5 class="post-title">
-                                <a target="_blank" href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                                <a  href="<?php the_permalink() ?>"><?php the_title() ?></a>
                             </h5>
                             <div class="post-meta">
                                 <span class="date"><?php echo get_the_date('F j, Y');?></span>
@@ -256,7 +256,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 </span>
                             </div>
                             <div class="readmore">
-                                <a target="_blank" href="<?php the_permalink() ?>"><?php _e( 'Readmore', 'kutetheme' ) ?></a>
+                                <a href="<?php the_permalink() ?>"><?php _e( 'Readmore', 'kutetheme' ) ?></a>
                             </div>
                         </div>
                     </li>

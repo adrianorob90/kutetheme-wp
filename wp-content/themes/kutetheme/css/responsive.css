@@ -304,6 +304,9 @@
 	.latest-deals .latest-deal-title{
 		font-size: 14px;
 	}
+	#introduce-box .introduce-title{
+		margin-top: 30px;
+	}
 }
 /*--------------------
 [4. Styles for devices(>=481px and <=767px)]
@@ -715,6 +718,9 @@
 		margin-top: 20px;
 		width: 100%;
 		float: left;
+	}
+	#introduce-box .introduce-title{
+		margin-top: 30px;
 	}
 }
 /*--------------------

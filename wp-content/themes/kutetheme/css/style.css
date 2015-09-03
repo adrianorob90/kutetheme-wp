@@ -4369,6 +4369,9 @@ span.notify-right{
     line-height: 24px;
     margin-top: 20px;
  }
+.blog-posts .entry-thumb{
+  margin-bottom: 15px;
+ }
 .blog-posts .entry-title{
   margin: 0;
   -ms-word-wrap: break-word;
@@ -4930,6 +4933,10 @@ span.notify-right{
 .blog-list .blog-list-wapper ul li{
   border: 1px solid #eaeaea;
   line-height: 30px;
+}
+.blog-list .blog-list-wapper ul li img{
+  width: 100%!important;
+  height: auto;
 }
 .blog-list .blog-list-wapper ul li .post-desc{
   padding: 15px;
