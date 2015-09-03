@@ -114,20 +114,20 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
-            'title' => 'Hot Categories',
-            'taxonomy' => '',
-            'number' => 3,
-            'orderby' => 'date',
-            'order' => 'desc',
-            'hide' => 0,
+            'title'     => __('Hot Categories', 'kutetheme'),
+            'taxonomy'  => '',
+            'number'    => 3,
+            'orderby'   => 'date',
+            'order'     => 'desc',
+            'hide'      => 0,
             
             'items_destop' => 4,
             'items_tablet' => 2,
             'items_mobile' => 1,
             
             'css_animation' => '',
-            'el_class' => '',
-            'css' => '',
+            'el_class'      => '',
+            'css'           => '',
             
         ), $atts );
         extract($atts);
@@ -195,7 +195,7 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                     $children = get_terms( 'product_cat', $arg_child );
                 ?>
                     <div class="<?php echo esc_attr($classes) ?> cate-box">
-                        <div class="cate-tit" >
+                        <div class="cate-tit">
                             <div class="div-1" style="width: 46%;">
                                 <div class="cate-name-wrap">
                                     <p class="cate-name"><?php echo esc_attr($term->name) ?></p>

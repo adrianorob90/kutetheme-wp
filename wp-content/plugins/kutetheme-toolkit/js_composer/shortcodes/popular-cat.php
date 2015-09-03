@@ -114,11 +114,12 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
 		}
         
         $args = array(
-           'hierarchical' => 1,
+           'hierarchical'     => 1,
            'show_option_none' => '',
-           'hide_empty' => 0,
-           'parent' => $term->term_id,
-           'taxonomy' => 'product_cat',
+           'hide_empty'       => 1,
+           'parent'           => $term->term_id,
+           'taxonomy'         => 'product_cat',
+           'number'           => $per_page
         );
         $subcats = get_categories($args);
         ?>
