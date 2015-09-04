@@ -1122,3 +1122,9 @@ Cart
 	padding: 15px;
 	border: 1px solid #eaeaea;
 }
+.woocommerce .widget_layered_nav ul.yith-wcan-color li a, 
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li a, 
+.woocommerce .widget_layered_nav ul.yith-wcan-color li span, 
+.woocommerce-page .widget_layered_nav ul.yith-wcan-color li span{
+	margin: 5px 10px 5px 0;
+}
