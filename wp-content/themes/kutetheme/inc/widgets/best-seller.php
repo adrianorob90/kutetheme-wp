@@ -37,6 +37,10 @@ class Widget_KT_Best_Seller extends WP_Widget {
 		);
         $product = new WP_Query( $params );
         if( $product->have_posts() ):
+        
+        $speed = ( isset( $instance[ 'speed' ] ) && ( $instance[ 'speed' ] ) ) ? $instance[ 'speed' ] : 250;
+        $autoplay = ( isset( $instance[ 'autoplay' ] ) && ( $instance[ 'autoplay' ] ) ) ? $instance[ 'autoplay' ] : 'false';
+        $loop = ( isset( $instance[ 'loop' ] ) && ( $instance[ 'loop' ] ) ) ? $instance[ 'loop' ] : 'false';
         ?>
         <!-- block best sellers -->
         <div class="block left-module">
@@ -48,19 +52,23 @@ class Widget_KT_Best_Seller extends WP_Widget {
         }
         $i = 1;
         $endtag = $perpage + 1;
+        ob_start();
         ?>
+        <?php while($product->have_posts()): $product->the_post(); ?>
+            <?php if( $i==1 ): ?>
+            <ul class="products-block best-sell">
+            <?php endif; ?>
+                <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
+            <?php $i++; ?>
+            <?php if( $i == $endtag ): $i = 1; ?>
+            </ul>
+            <?php endif; ?>
+        <?php endwhile; ?>
+        <?php $html = ob_get_clean(); ?>
+        <?php if( $i < 2 ){ $loop = 'false'; } ?>
             <div class="block_content">
-                <div class="owl-carousel owl-best-sell" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="true" data-autoplayHoverPause = "true" data-items="1">
-                    <?php while($product->have_posts()): $product->the_post(); ?>
-                        <?php if( $i==1 ): ?>
-                        <ul class="products-block best-sell">
-                        <?php endif; ?>
-                            <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
-                        <?php $i++; ?>
-                        <?php if( $i == $endtag ): $i = 1; ?>
-                        </ul>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
+                <div class="owl-carousel owl-best-sell" data-slidespeed="<?php echo $speed; ?>" data-loop="<?php echo $loop; ?>" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="<?php echo $autoplay; ?>" data-autoplayHoverPause = "true" data-items="1">
+                    <?php echo $html; ?>
                 </div>
             </div>
         </div>
@@ -78,6 +86,9 @@ class Widget_KT_Best_Seller extends WP_Widget {
         $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] :6;
         $instance[ 'perpage' ] = ( isset( $new_instance[ 'perpage' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'perpage' ] : 3;
         
+        $instance[ 'speed' ] = ( isset( $new_instance[ 'speed' ] ) && intval( $new_instance[ 'speed' ] ) ) ? $new_instance[ 'speed' ] : 250;
+        $instance[ 'autoplay' ] = ( isset( $new_instance[ 'autoplay' ] ) && ( $new_instance[ 'autoplay' ] ) ) ? 'true' : 'false';
+        $instance[ 'loop' ] = ( isset( $new_instance[ 'loop' ] ) && ( $new_instance[ 'loop' ] ) ) ? 'true' : 'false';
 		return $instance;
 	}
 
@@ -86,6 +97,10 @@ class Widget_KT_Best_Seller extends WP_Widget {
         $title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : __( 'Best Sellers', 'kutetheme' );
         $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 6;
         $perpage = ( isset( $instance[ 'perpage' ] ) && intval( $instance[ 'perpage' ] ) ) ? $instance[ 'perpage' ] : 3;
+        
+        $speed = ( isset( $instance[ 'speed' ] ) && ( $instance[ 'speed' ] ) ) ? $instance[ 'speed' ] : 250;
+        $autoplay = ( isset( $instance[ 'autoplay' ] ) && ( $instance[ 'autoplay' ] ) ) ? $instance[ 'autoplay' ] : 'false';
+        $loop = ( isset( $instance[ 'loop' ] ) && ( $instance[ 'loop' ] ) ) ? $instance[ 'loop' ] : 'false';
 	?>
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
@@ -98,6 +113,18 @@ class Widget_KT_Best_Seller extends WP_Widget {
         <p>
             <label for="<?php echo $this->get_field_id( 'perpage' ); ?>"><?php _e( 'Perpage:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id( 'perpage' ); ?>" name="<?php echo $this->get_field_name('perpage'); ?>" type="text" value="<?php echo esc_attr($perpage); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'speed' ); ?>"><?php _e( 'Speed Carousel:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'speed' ); ?>" name="<?php echo $this->get_field_name('speed'); ?>" type="text" value="<?php echo esc_attr($speed); ?>" />
+        </p>
+        
+        <p>
+            <input type="checkbox" <?php checked( $autoplay, "true" ) ?> class="checkbox" id="<?php echo $this->get_field_id( 'autoplay' ); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>" />
+            <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto play', 'kutetheme' ) ?></label><br />
+            
+            <input type="checkbox" <?php checked( $loop, "true" ) ?> class="checkbox" id="<?php echo $this->get_field_id( 'loop' ); ?>" name="<?php echo $this->get_field_name('loop'); ?>" />
+            <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e( 'Loop', 'kutetheme' ); ?></label><br />
         </p>
     <?php
 	}
