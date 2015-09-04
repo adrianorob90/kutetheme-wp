@@ -52,19 +52,23 @@ class Widget_KT_Best_Seller extends WP_Widget {
         }
         $i = 1;
         $endtag = $perpage + 1;
+        ob_start();
         ?>
-        <div class="block_content">
+        <?php while($product->have_posts()): $product->the_post(); ?>
+            <?php if( $i==1 ): ?>
+            <ul class="products-block best-sell">
+            <?php endif; ?>
+                <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
+            <?php $i++; ?>
+            <?php if( $i == $endtag ): $i = 1; ?>
+            </ul>
+            <?php endif; ?>
+        <?php endwhile; ?>
+        <?php $html = ob_get_clean(); ?>
+        <?php if( $i < 2 ){ $loop = 'false'; } ?>
+            <div class="block_content">
                 <div class="owl-carousel owl-best-sell" data-slidespeed="<?php echo $speed; ?>" data-loop="<?php echo $loop; ?>" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="<?php echo $autoplay; ?>" data-autoplayHoverPause = "true" data-items="1">
-                    <?php while($product->have_posts()): $product->the_post(); ?>
-                        <?php if( $i==1 ): ?>
-                        <ul class="products-block best-sell">
-                        <?php endif; ?>
-                            <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
-                        <?php $i++; ?>
-                        <?php if( $i == $endtag ): $i = 1; ?>
-                        </ul>
-                        <?php endif; ?>
-                    <?php endwhile; ?>
+                    <?php echo $html; ?>
                 </div>
             </div>
         </div>
