@@ -49,8 +49,8 @@ class Widget_KT_Best_Seller extends WP_Widget {
         $i = 1;
         $endtag = $perpage + 1;
         ?>
-            <div class="block_content">
-                <div class="owl-carousel owl-best-sell" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="true" data-autoplayHoverPause = "true" data-items="1">
+        <div class="block_content">
+                <div class="owl-carousel owl-best-sell" data-loop="false" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="false" data-autoplayHoverPause = "true" data-items="1">
                     <?php while($product->have_posts()): $product->the_post(); ?>
                         <?php if( $i==1 ): ?>
                         <ul class="products-block best-sell">
