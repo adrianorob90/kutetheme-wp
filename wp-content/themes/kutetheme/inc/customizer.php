@@ -360,7 +360,10 @@ function kt_get_color_scheme_css( $colors ) {
     div.woocommerce #respond input#submit.alt, 
     div.woocommerce a.button.alt, 
     div.woocommerce button.button.alt, 
-    div.woocommerce input.button.alt
+    div.woocommerce input.button.alt,
+    .category-slider .owl-controls .owl-prev:hover, 
+    .category-slider .owl-controls .owl-next:hover,
+    .woocommerce .widget_price_filter .price_slider_wrapper div.ui-widget-content
     {
         background-color: <?php echo $colors['main_color'] ?>;
     }
@@ -369,7 +372,7 @@ function kt_get_color_scheme_css( $colors ) {
     .popular-tabs .nav-tab li.active,
     .brand-showcase .brand-showcase-title,
     .group-title span,
-    .content .view-product-list .page-title span,{
+    .content .view-product-list .page-title span{
         border-bottom-color: <?php echo $colors['main_color'] ?>;
     }
     .latest-deals .latest-deal-content,
@@ -387,7 +390,8 @@ function kt_get_color_scheme_css( $colors ) {
         border-top-color: <?php echo $colors['main_color'] ?>;
     }
     a:hover,
-    .cart-block .cart-block-content .product-info .p-right .p-rice{
+    .cart-block .cart-block-content .product-info .p-right .p-rice,
+    .widget.widget_product_categories ul>li.current-cat>a{
         color: <?php echo $colors['main_color'] ?>;
     }
     /* Text Color */
@@ -411,7 +415,8 @@ function kt_get_color_scheme_css( $colors ) {
         background-color: <?php echo $colors['button_color_rgb'] ?>
     }
     /* Footer Menu Link*/
-    .footer-menu-list li a{
+    .footer-menu-list li a,
+    .woocommerce .wishlist_table ins{
         color: <?php echo $colors['menu_link_footer'] ?>
     }
     /* Price Color */
@@ -423,7 +428,8 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_kt_product_special .price,
     .widget_kt_best_seller .price ins,
     .option2 .deal-product .content_price,
-    .option2 .product-list li .content_price .product-price{
+    .option2 .product-list li .content_price .product-price,
+    .woocommerce .wishlist_table span.amount{
         color: <?php echo $colors['price_color'] ?>
     }
 	/* Color*/

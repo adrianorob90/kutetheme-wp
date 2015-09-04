@@ -276,6 +276,7 @@
 }
 .widget_product_categories ul>li>a.open:before{
 	content: "\f107";
+	padding-right: 8px;
 }
 .yith-woo-ajax-navigation .count,
 .widget_product_categories .count,
@@ -586,10 +587,8 @@
 	margin-top: 10px;
 }
 .product-size-chart a{
-	color: #ff3366;
-    text-decoration: underline;
-    background: url('../images/size_chart.png') no-repeat left center;
-    padding-left: 20px;
+    background: url('../images/size_chart.png') no-repeat right center;
+    padding-right: 20px;
 }
 /*Tab*/
 .woocommerce .woocommerce-tabs{

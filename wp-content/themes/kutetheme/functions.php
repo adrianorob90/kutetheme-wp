@@ -251,10 +251,27 @@ function kt_widgets_init() {
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ) );
-    
+    // Custom widget
+    $kt_group_sidebar = kt_option('kt_group_sidebar');
+	if($kt_group_sidebar){
+		$i=0;
+		foreach($kt_group_sidebar as $sidebar){
+			$i++;
+			register_sidebar( array(
+		        'name'          => $sidebar['title'],
+		        'id'            => 'kt-custom-sidebar-'.$i,
+		        'description'   => $sidebar['description'],
+		        'before_widget' => '<div id="%1$s" class="widget-container footer-menu-list widget-footer-menu-bottom %2$s">',
+		        'after_widget'  => '</div>',
+		        'before_title'  => '<h3 class="widget-title">',
+		        'after_title'   => '</h3>',
+		    ) );
+		}
+	}
     
 }
 add_action( 'widgets_init', 'kt_widgets_init' );
+
 
 if ( ! function_exists( 'kt_fonts_url' ) ) :
 /**
