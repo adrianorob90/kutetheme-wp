@@ -129,10 +129,11 @@
                 config.animateOut="fadeOut";
                 config.animateIn="fadeIn";    
             }
-            config.onDrag = function(){
+            
+            config.onTranslate = function(){
                 var $active_item = $this.find( '.owl-item.active');
                 $active_item.find('img.lazy').trigger('load_lazy');
-            };
+            }
             $this.owlCarousel(config);
             
         });
@@ -144,9 +145,13 @@
         $(".owl-carousel-vertical").each(function(index, el) {
           var config = $(this).data();
           config.navText = ['<span class="icon-up"></spam>','<span class="icon-down"></span>'];
+          
           config.smartSpeed="900";
+          
           config.animateOut="";
-            config.animateIn="fadeInUp";
+          
+          config.animateIn="fadeInUp";
+          
           $(this).owlCarousel(config);
         });
         /** COUNT DOWN **/
