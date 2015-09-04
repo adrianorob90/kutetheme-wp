@@ -307,6 +307,9 @@
 	#introduce-box .introduce-title{
 		margin-top: 30px;
 	}
+	.box-tab-category{
+	  padding: 0 10px;
+	}
 }
 /*--------------------
 [4. Styles for devices(>=481px and <=767px)]

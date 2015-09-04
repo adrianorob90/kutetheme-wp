@@ -25,7 +25,7 @@ endif;
     <!-- featured category jewelry -->
     <div class="category-featured jewelry">
         <nav class="navbar nav-menu show-brand">
-          <div class="container">
+          <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
                 <a href="<?php echo $term_link ? $term_link : ''; ?>">

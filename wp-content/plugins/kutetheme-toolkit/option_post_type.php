@@ -31,16 +31,36 @@ function kt_register_demo_metabox() {
     $page_option->add_field( array(
 		'name' => __( 'Page Title', 'kutetheme' ),
 		'desc' => __( 'Show page title', 'kutetheme' ),
-		'id'   => $prefix . 'page_title',
+		'id'   =>'kt_show_page_title',
 		'type' => 'checkbox',
+		'default'=>'on'
 	) );
     
     $page_option->add_field( array(
 		'name' => __( 'Page breadcrumb', 'kutetheme' ),
 		'desc' => __( 'Show page breadcrumb.', 'kutetheme' ),
-		'id'   => $prefix . 'page_breadcrumb',
+		'id'   => 'kt_show_page_breadcrumb',
 		'type' => 'checkbox',
+		'default'=>'on'
 	) );
+	$page_option->add_field( array(
+	    'name'             => __('Page layout','kutetheme'),
+	    'desc'             => __("Please choose this page's layout.",'kutetheme'),
+	    'id'               => 'kt_page_layout',
+	    'type'             => 'select',
+	    'show_option_none' => true,
+	    'default'          => 'none',
+	    'options'          => array(
+	        'full'   => __( 'Full width layout', 'kutetheme' ),
+	    ),
+	) );
+	$page_option->add_field( array(
+		'name' => __( 'Extra page class', 'kutetheme' ),
+		'desc' => __( 'If you wish to add extra classes to the body class of the page (for custom css use), then please add the class(es) here.', 'kutetheme' ),
+		'id'   => 'kt_page_extra_class',
+		'type' => 'text',
+	) );
+
 	/**
 	 * Service option
 	 */
@@ -114,7 +134,7 @@ function kt_register_about_page_metabox() {
 
 }
 
-add_action( 'cmb2_init', 'kt_register_repeatable_group_field_metabox' );
+//add_action( 'cmb2_init', 'kt_register_repeatable_group_field_metabox' );
 /**
  * Hook in and add a metabox to demonstrate repeatable grouped fields
  */

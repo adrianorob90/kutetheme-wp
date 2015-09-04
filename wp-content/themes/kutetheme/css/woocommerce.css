@@ -1133,3 +1133,6 @@ Cart
 .woocommerce div.product span.price ins{
 	font-weight: normal;
 }
+.woocommerce .myaccount_user{
+	margin-top: 15px;
+}

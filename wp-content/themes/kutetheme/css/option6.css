@@ -1335,6 +1335,12 @@
 	.option6 .group-banner-slide{
 		display: none;
 	}
+	.group-banner-slider1 .wpb_single_image:last-child img{
+		height: 135px;
+	}
+	.group-banner-slider2 .wpb_single_image:last-child img{
+		height: 155px;
+	}
 }
 /*--------------------
 [13. Styles for devices(>=768px and <=992px)]
@@ -1399,6 +1405,16 @@
 	.option6 #main-menu .navbar .navbar-nav>li>a{
 		padding: 0 10px;
 	}
+	.group-banner-slider1 .wpb_single_image img{
+		height: 101px;
+	}
+	.group-banner-slider1 .wpb_single_image:last-child img{
+		height: 102px;
+	}
+	.group-banner-slider2 .wpb_single_image:last-child img{
+		height: 119px;
+	}
+
 	
 }
 /*--------------------
@@ -1534,9 +1550,27 @@
 	.home-slider-6{
 		padding: 0!important;
 	}
-	.group-banner-slider1,
+	.group-banner-slider1{
+		width: 49%;
+		float: left;
+		padding-left: 15px!important;
+		padding-right: 0;
+		margin-top: 30px;
+	}
 	.group-banner-slider2{
-		display: none;
+		width: 46.2%;
+		float: left;
+		padding-right: 15px;
+		margin-top: 30px;
+	}
+	.group-banner-slider2 .wpb_single_image .vc_single_image-wrapper,
+	.group-banner-slider1 .wpb_single_image .vc_single_image-wrapper{
+		width: 100%;
+	}
+	.group-banner-slider2 img,
+	.group-banner-slider1 img{
+		width: 100%;
+		height: auto;
 	}
 	.banner-custom.wpb_column {
 		padding: 0 15px!important;
@@ -1674,9 +1708,18 @@
 	.home-slider-6{
 		padding: 0!important;
 	}
-	.group-banner-slider1,
+	.group-banner-slider1{
+		width: 52%;
+		float: left;
+		padding-left: 15px!important;
+		padding-right: 0;
+		margin-top: 30px;
+	}
 	.group-banner-slider2{
-		display: none;
+		width: 46.1%;
+		float: left;
+		padding-right: 15px;
+		margin-top: 30px;
 	}
 	.banner-custom.wpb_column {
 		padding: 0 15px!important;
