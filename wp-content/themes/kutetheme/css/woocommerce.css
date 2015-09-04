@@ -148,6 +148,7 @@
 	margin: 0;
 	border: 1px solid #eaeaea;
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .woocommerce .woocommerce-ordering:before{
 	content: "\f15d";
@@ -1127,4 +1128,8 @@ Cart
 .woocommerce .widget_layered_nav ul.yith-wcan-color li span, 
 .woocommerce-page .widget_layered_nav ul.yith-wcan-color li span{
 	margin: 5px 10px 5px 0;
+}
+.woocommerce div.product p.price ins, 
+.woocommerce div.product span.price ins{
+	font-weight: normal;
 }

@@ -1987,7 +1987,7 @@ span.notify-right{
 .product-list li .left-block{
     position: relative;
     overflow: hidden;
-    padding: 10px 10px 0;
+    padding: 10px 9px 0;
 }
 .product-list li .left-block a{
   display: block;
@@ -2135,6 +2135,10 @@ span.notify-right{
 .product-list li .content_price .price{
   display: inline-block;
   margin: 0 auto;
+  height: 20px;
+}
+.product-list li .content_price .price>.amount{
+  line-height: 20px;
 }
 .latest-deal-content .product-list li .content_price .price{
   width: 100%;
@@ -3587,7 +3591,7 @@ span.notify-right{
 .display-product-option li.view-as-grid span{
   width: 30px;
   height: 30px;
-  display: block;
+  display: inline-block;
   float: left;
   cursor: pointer;
   text-indent: -9999px;
@@ -3598,7 +3602,7 @@ span.notify-right{
 .display-product-option li.view-as-list span{
   width: 30px;
   height: 30px;
-  display: block;
+  display: inline-block;
   float: left;
   cursor: pointer;
   text-indent: -9999px;

@@ -140,7 +140,7 @@ function kutetheme_setup() {
     //add_image_size ( '131x160', 131, 160, true );
     //add_image_size ( '204x249', 204, 249, true );
     add_image_size ( '268x255', 268, 255, true );
-    //add_image_size ('shop_catalog_image_size', 300, 366, true );
+    add_image_size ('shop_catalog_image_size', 300, 366, true );
 }
 endif; // kt_setup
 add_action( 'after_setup_theme', 'kutetheme_setup' );
