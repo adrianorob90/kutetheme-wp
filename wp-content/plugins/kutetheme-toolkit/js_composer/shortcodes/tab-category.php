@@ -338,7 +338,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
          global $woocommerce_loop;
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'box-tab-category ', $this->settings['base'], $atts ),
+        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
         	'extra' => $this->getExtraClass( $el_class ),
         	'css_animation' => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )

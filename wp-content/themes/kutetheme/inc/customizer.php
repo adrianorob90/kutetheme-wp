@@ -363,7 +363,8 @@ function kt_get_color_scheme_css( $colors ) {
     div.woocommerce input.button.alt,
     .category-slider .owl-controls .owl-prev:hover, 
     .category-slider .owl-controls .owl-next:hover,
-    .woocommerce .widget_price_filter .price_slider_wrapper div.ui-widget-content
+    .woocommerce .widget_price_filter .price_slider_wrapper div.ui-widget-content,
+    .scroll_top:hover
     {
         background-color: <?php echo $colors['main_color'] ?>;
     }

@@ -8,7 +8,13 @@
  */
 ?>
 <?php
-$kt_used_sidebar = kt_option('kt_used_sidebar','sidebar-shop')
+$kt_used_sidebar = kt_option('kt_used_sidebar','sidebar-shop');
+if(is_page()){
+	$kt_page_used_sidebar = kt_get_post_meta(get_the_ID(),'kt_page_used_sidebar','none');
+	if($kt_page_used_sidebar!="none"){
+		$kt_used_sidebar = $kt_page_used_sidebar;
+	}
+}
 ?>
 <div id="secondary" class="secondary">
 	<?php if ( is_active_sidebar( $kt_used_sidebar ) ) : ?>

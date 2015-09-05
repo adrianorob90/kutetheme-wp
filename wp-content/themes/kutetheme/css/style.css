@@ -1432,6 +1432,7 @@ span.notify-right{
     float: right;
     line-height: 49px;
     max-height: 50px;
+    padding-right: 15px;
 }
 
 .nav-menu .toggle-menu:before{
@@ -3557,7 +3558,7 @@ span.notify-right{
   line-height: 40px;
   position: relative;
   font-size: 24px;
-  margin: 0;
+  margin-top: 0;
 }
 .page-heading span.page-heading-title{
   border-bottom: 3px solid #ff3366;

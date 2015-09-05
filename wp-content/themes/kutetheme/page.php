@@ -16,9 +16,11 @@ get_header();
 $kt_sidebar_are = kt_option('kt_sidebar_are','full');
 
 // Page option
-$option_page = get_post_meta( get_the_ID()) ;
-if(isset($option_page['kt_page_layout'])){
-	$kt_sidebar_are = $option_page['kt_page_layout'][0];
+$kt_page_layout = kt_get_post_meta(get_the_ID(),'kt_page_layout','none');
+$kt_show_page_breadcrumb = kt_get_post_meta(get_the_ID(),'kt_show_page_breadcrumb','show');
+
+if($kt_page_layout!="none"){
+	$kt_sidebar_are = $kt_page_layout;
 }
 
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
@@ -28,13 +30,12 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content page-full-width col-sm-12";
 }
 
-
 ?>
 	<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
 		<main id="main" class="site-main" role="main">
 	        <div class="container">
 	        	<?php
-	        	if(isset($option_page['kt_show_page_breadcrumb'])){
+	        	if($kt_show_page_breadcrumb=='show'){
 	        		breadcrumb_trail();
 	        	}
 	        	?>

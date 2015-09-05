@@ -536,3 +536,13 @@ function _data_carousel( $data ){
     }
     return $output;
 }
+
+if(!function_exists('kt_get_post_meta')){
+    function kt_get_post_meta($post_id,$key,$default=""){
+        $meta = get_post_meta( $post_id,$key,true);
+        if($meta){
+            return $meta;
+        }
+        return $default;
+    }
+}

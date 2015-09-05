@@ -1252,4 +1252,7 @@
 	.woocommerce .woocommerce-ordering{
 		margin-top: 0;
 	}
+	.page-full-width{
+		padding: 0;
+	}
 }

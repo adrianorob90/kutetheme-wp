@@ -15,7 +15,14 @@ add_action( 'cmb2_init', 'kt_register_demo_metabox' );
  * Hook in and add a demo metabox. Can only happen on the 'cmb2_init' hook.
  */
 function kt_register_demo_metabox() {
+	global $wp_registered_sidebars;
+    $sidebars = array();
+    
 
+    foreach ( $wp_registered_sidebars as $sidebar ){
+        $sidebars[  $sidebar['id'] ] =   $sidebar['name'];
+    }
+    
 	// Start with an underscore to hide fields from custom fields list
 	$prefix = '_kt_page_';
 
@@ -27,21 +34,27 @@ function kt_register_demo_metabox() {
 		'title'         => __( 'Page Option', 'kutetheme' ),
 		'object_types'  => array( 'page', )
 	) );
-
-    $page_option->add_field( array(
-		'name' => __( 'Page Title', 'kutetheme' ),
-		'desc' => __( 'Show page title', 'kutetheme' ),
-		'id'   =>'kt_show_page_title',
-		'type' => 'checkbox',
-		'default'=>'on'
+	$page_option->add_field( array(
+	    'name'             => __('Page Title','kutetheme'),
+	    'desc'             => __("Display of title.",'kutetheme'),
+	    'id'               => 'kt_show_page_title',
+	    'type'             => 'select',
+	    'default'          => 'show',
+	    'options'          => array(
+	    	'show'=>__('Show','kutetheme'),
+	        'hide'   => __( 'Hide', 'kutetheme' ),
+	    ),
 	) );
-    
-    $page_option->add_field( array(
-		'name' => __( 'Page breadcrumb', 'kutetheme' ),
-		'desc' => __( 'Show page breadcrumb.', 'kutetheme' ),
-		'id'   => 'kt_show_page_breadcrumb',
-		'type' => 'checkbox',
-		'default'=>'on'
+	$page_option->add_field( array(
+	    'name'             => __('Page breadcrumb','kutetheme'),
+	    'desc'             => __("Display Page breadcrumb.",'kutetheme'),
+	    'id'               => 'kt_show_page_breadcrumb',
+	    'type'             => 'select',
+	    'default'          => 'show',
+	    'options'          => array(
+	    	'show'=>__('Show','kutetheme'),
+	        'hide'   => __( 'Hide', 'kutetheme' ),
+	    ),
 	) );
 	$page_option->add_field( array(
 	    'name'             => __('Page layout','kutetheme'),
@@ -49,11 +62,21 @@ function kt_register_demo_metabox() {
 	    'id'               => 'kt_page_layout',
 	    'type'             => 'select',
 	    'show_option_none' => true,
-	    'default'          => 'none',
 	    'options'          => array(
+	    	'left'=>__('Left Sidebar','kutetheme'),
+	    	'right'=>__('Right Sidebar','kutetheme'),
 	        'full'   => __( 'Full width layout', 'kutetheme' ),
 	    ),
 	) );
+	$page_option->add_field( array(
+		'name'    => __( 'Sidebar for page layout', 'kutetheme' ),
+		'id'      => 'kt_page_used_sidebar',
+		'type'    => 'select',
+		'show_option_none' => true,
+        'options' => $sidebars,
+        'desc'    => __( 'Setting sidebar in the area sidebar', 'kutetheme' ),
+	) );
+        
 	$page_option->add_field( array(
 		'name' => __( 'Extra page class', 'kutetheme' ),
 		'desc' => __( 'If you wish to add extra classes to the body class of the page (for custom css use), then please add the class(es) here.', 'kutetheme' ),

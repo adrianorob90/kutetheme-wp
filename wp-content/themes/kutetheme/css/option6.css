@@ -1724,5 +1724,8 @@
 	.banner-custom.wpb_column {
 		padding: 0 15px!important;
 	}
+	.option6 .top-bar-social{
+		display: none;
+	}
 
 }

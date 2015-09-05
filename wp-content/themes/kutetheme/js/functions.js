@@ -6,7 +6,7 @@
     ===============================**/
     var $style = jQuery('head style').first();
     
-    jQuery('.container[data-target="change-color"]').each(function(){
+    jQuery('div[data-target="change-color"]').each(function(){
        var $this  = jQuery(this);
        var $color = $this.data("color");
        var $rgb   = $this.data('rgb');
@@ -217,6 +217,11 @@
         
         /* elevator click*/ 
         $(document).on('click','a.btn-elevator',function(e){
+            var top_menu_height = 50;
+            if($('body').hasClass('logged-in')){
+                var wpadminbar_height = $('#wpadminbar').height();
+                top_menu_height = top_menu_height + wpadminbar_height;
+            }
             e.preventDefault();
             var target='';
             if($(this).hasClass('up')){
@@ -228,7 +233,7 @@
             var $target = $(target);
             if(typeof($target.offset()) != 'undefined'){
                 $('html, body').stop().animate({
-                    'scrollTop': $target.offset().top-50
+                    'scrollTop': $target.offset().top-top_menu_height
                 }, 500);
                 return false;
             }

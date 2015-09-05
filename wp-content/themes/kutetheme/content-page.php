@@ -8,14 +8,11 @@
  */
 ?>
 <?php 
-    $option_page = get_post_meta( get_the_ID()) ;
-    $page_class="";
-    if(isset($option_page['kt_page_extra_class'])){
-    	$page_class= $option_page['kt_page_extra_class'][0];
-    }
+    $kt_show_page_title = kt_get_post_meta(get_the_ID(),'kt_show_page_title','show');
+    $kt_page_extra_class = kt_get_post_meta(get_the_ID(),'kt_page_extra_class','show');
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class($page_class); ?>>
-    <?php if( isset( $option_page[ 'kt_show_page_title' ] ) ): ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class($kt_page_extra_class); ?>>
+    <?php if( $kt_show_page_title=='show'): ?>
     	<header class="entry-header">
     	<h1 class="page-heading">
             <span class="page-heading-title2"><?php the_title();?></span>

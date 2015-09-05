@@ -114,7 +114,7 @@
     <!--end footer-->
     </div><!--.content-->
 </div><!-- .site -->
-
+<a href="#" class="scroll_top" title="Scroll to Top">Scroll</a>
 <?php wp_footer(); ?>
 
 </body>
