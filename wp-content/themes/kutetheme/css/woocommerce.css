@@ -817,9 +817,10 @@
 .woocommerce div.product div.images div.thumbnails{
 	padding: 0 40px;
 	margin-top: 15px;
-	float: left;
-	width: 100%;
-	overflow: hidden;
+	display: inline-block;
+}
+.woocommerce div.product div.images div.thumbnails .owl-item{
+	padding-right: 1px;
 }
 
 .woocommerce div.product form.cart .variations{
@@ -894,8 +895,9 @@
 .variations-table select{
 	max-width: 170px;
 	height: 30px;
-	background: #fafafa;
-	padding: 0 15px;
+	background-color: #fafafa;
+	padding: 0 5px;
+	border: 1px solid #eaeaea;
 }
 
 .woocommerce #content div.product div.thumbnails a, 
@@ -1135,4 +1137,21 @@ Cart
 }
 .woocommerce .myaccount_user{
 	margin-top: 15px;
+}
+.quantity-plus,
+.quantity-minus{
+	text-align: center;
+	height: 30px;
+	width: 30px;
+	line-height: 28px;
+	border: 1px solid #eaeaea;
+	display: inline-block;
+	font-size: 16px;
+	background: #fafafa;
+	color: #ccc;
+	cursor: pointer;
+}
+.quantity-plus:hover,
+.quantity-minus:hover{
+	color: #333;
 }

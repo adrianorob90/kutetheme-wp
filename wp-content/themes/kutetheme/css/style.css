@@ -47,6 +47,16 @@
 /* ----------------
  [1. Common styles]
  */
+ select {
+    -webkit-appearance: none;  /*Removes default chrome and safari style*/
+    -moz-appearance: none; /* Removes Default Firefox style*/
+    background:url(../images/select-arrow.png) no-repeat 95% center;
+    width: 100px; /*Width of select dropdown to give space for arrow image*/
+    text-indent: 0.01px; /* Removes default arrow from firefox*/
+    text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
+    padding-right: 25px!important;
+    border: 1px solid #eaeaea;
+}
 .box-tab-category{
   padding: 0 15px;
 }
@@ -152,9 +162,9 @@ img.alignright{
 }
 
 .container{
-        padding-left: 0;
-        padding-right: 0;
-    }
+    padding-left: 0;
+    padding-right: 0;
+}
 .loader {
   position: fixed;
   left: 0px;
@@ -1918,6 +1928,7 @@ span.notify-right{
       border: 1px solid #eaeaea;
       padding-bottom: 10px;
       overflow: hidden;
+      margin-bottom: 1px;
 }
 /*--------------------
 [7. Services]
@@ -1991,7 +2002,7 @@ span.notify-right{
 .product-list li .left-block{
     position: relative;
     overflow: hidden;
-    padding: 10px 9px 0;
+    padding: 10px 10px 0;
 }
 .product-list li .left-block a{
   display: block;
@@ -3529,17 +3540,15 @@ span.notify-right{
     position: relative;
 }
 .subcategories li.current-categorie:after{
-
-    font: normal normal normal 14px/1 FontAwesome;
-      content: "\f0da";
-      position: absolute;
-      right: -5px;
-      top: 50%;
-      -ms-transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      color: #000;
-
+  font: normal normal normal 14px/1 FontAwesome;
+  content: "\f0da";
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #000;
 }
 .subcategories li.current-categorie a{
   background: #000;

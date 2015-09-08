@@ -36,6 +36,7 @@
             
        }
     });
+
     
     /**==============================
     ***  Effect tab category
@@ -62,7 +63,32 @@
             }); 
         });
     });
-    
+    /* ---------------------------------------------
+     Woocommercer Quantily
+     --------------------------------------------- */
+     function woo_quantily(){
+        $('body').on('click','.quantity .quantity-plus',function(){
+            var obj_qty = $(this).closest('.quantity').find('input.qty'),
+                val_qty = parseInt(obj_qty.val()),
+                min_qty = parseInt(obj_qty.attr('min')),
+                max_qty = parseInt(obj_qty.attr('max')),
+                step_qty = parseInt(obj_qty.attr('step'));
+            val_qty = val_qty + step_qty;
+            if(max_qty && val_qty > max_qty){ val_qty = max_qty; }
+            obj_qty.val(val_qty);
+        });
+        $('body').on('click','.quantity .quantity-minus',function(){
+            var obj_qty = $(this).closest('.quantity').find('input.qty'), 
+                val_qty = parseInt(obj_qty.val()),
+                min_qty = parseInt(obj_qty.attr('min')),
+                max_qty = parseInt(obj_qty.attr('max')),
+                step_qty = parseInt(obj_qty.attr('step'));
+            val_qty = val_qty - step_qty;
+            if(min_qty && val_qty < min_qty){ val_qty = min_qty; }
+            if(!min_qty && val_qty < 0){ val_qty = 0; }
+            obj_qty.val(val_qty);
+        });
+      }
     /* ---------------------------------------------
      Quick view
      ---------------------------------------------*/
@@ -102,6 +128,7 @@
      Scripts ready
      --------------------------------------------- */
     $(document).ready(function() {
+        woo_quantily();
         show_other_item_vertical_menu();
         /* Resize top menu*/
         resizeTopmenu();
@@ -393,7 +420,7 @@
                 dots:false,
                 nav:true,
                 navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-                margin:19,
+                margin:20,
                 responsive : {
                   // breakpoint from 0 up
                   0 : {
@@ -466,13 +493,17 @@
           // Category product
           $(document).on('click','.widget_product_categories a',function(){
             var paerent = $(this).closest('li');
+            var t = $(this);
+            $('.widget_product_categories li ul').removeClass('open');
+            $('.widget_product_categories a').removeClass('open');
+            paerent.find('ul').addClass('open');
             if(paerent.children('ul').length > 0){
-                $('.widget_product_categories').find('.children').hide();
+                //$('.widget_product_categories').find('.children').hide();
                 $(this).toggleClass('open');
+                $('.widget_product_categories li ul').not('.open').slideUp();
                 $(this).closest('li').children('ul').slideToggle();
                 return false;
             }
-            
           })
     });
     /* ---------------------------------------------
