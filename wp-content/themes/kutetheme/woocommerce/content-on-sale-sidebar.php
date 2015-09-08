@@ -3,11 +3,11 @@
         <a href="<?php echo the_permalink(); ?>">
             <?php
     			/**
-    			 * kt_loop_product_thumbnail hook
+    			 * woocommerce_template_loop_product_thumbnail hook
     			 *
     			 * @hooked woocommerce_template_loop_product_thumbnail - 10
     			 */
-    			do_action( 'kt_loop_product_thumbnail' );
+                do_action( 'woocommerce_template_loop_product_thumbnail' );
     		?>
         </a>
     </div>

@@ -90,6 +90,8 @@ if( $deal_product->have_posts() ){
                                 _e( 'New Arrivals', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'most-review' ){
                                 _e( 'Most Reviews', 'kutetheme' );
+                            }elseif( isset($tab['section_type']) && $tab['section_type'] == 'by-ids' ){
+                                _e( 'Tab', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'on-sales' ){
                                 _e( 'On sales', 'kutetheme' );
                             }elseif( isset($tab['section_type']) && $tab['section_type'] == 'category' && isset( $tab['section_cate'] ) && intval( $tab['section_cate'] ) >0 ){
@@ -155,10 +157,11 @@ if( $deal_product->have_posts() ){
                                 'section_type' => 'best-seller',
                                 'section_cate' => 0,
                                 'orderby'      => 'date',
-                                'order'        => 'DESC'
+                                'order'        => 'DESC',
+                                'ids'          => ''
                             ), $tab ) );
-                            ?>
-                            <?php 
+                            
+                            $ids = explode( ',', $ids );
                             
                             $key = isset( $tab['section_type'] ) ? $tab['section_type'] : 'best-seller';
                             
@@ -167,6 +170,7 @@ if( $deal_product->have_posts() ){
                                 $newargs['orderby'] = 'date';
                                 $newargs['order'] 	 = 'DESC';
                             }elseif( $key == 'on-sales' ){
+                                $product_ids_on_sale = wc_get_product_ids_on_sale();
                                 $newargs['post__in'] = array_merge( array( 0 ), $product_ids_on_sale );
                                 
                                 if( $orderby == '_sale_price' ){
@@ -196,14 +200,9 @@ if( $deal_product->have_posts() ){
                                     $newargs['orderby'] = $orderby;
                                     $newargs['order'] 	= $order;
                                 }
-                            }
-                            elseif( $key == 'best-sellers' ){
-                                $newargs['meta_key'] = 'total_sales';
-                                $newargs['orderby']  = 'meta_value_num';
                             }elseif( $key == 'most-review'){
                                 add_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
-                            }
-                            if($key == 'category' && intval( $tab['section_cate'] ) > 0 ){
+                            }elseif($key == 'category' && intval( $tab['section_cate'] ) > 0 ){
                                 $chil_term = get_term( $section_cate, 'product_cat' );
                                 if( $chil_term ){
                                     $newargs['tax_query'] = array(
@@ -235,6 +234,12 @@ if( $deal_product->have_posts() ){
                                     $newargs['orderby'] = $orderby;
                                     $newargs['order'] 	= $order;
                                 }
+                            }elseif( $key == 'by-ids' && count( $ids ) > 0 ){
+                                $newargs['post__in'] = $ids;
+                                $newargs['orderby'] = 'post__in';
+                            }else{
+                                $newargs['meta_key'] = 'total_sales';
+                                $newargs['orderby']  = 'meta_value_num';
                             }
                             $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $newargs, $atts ) );
                             

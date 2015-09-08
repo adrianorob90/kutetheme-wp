@@ -80,6 +80,8 @@ function kt_get_rating_html($rating_html, $rating){
 //content-product-tab.php
 add_action('kt_loop_product_thumbnail', 'kt_template_loop_product_thumbnail', 10);
 
+add_action( 'woocommerce_template_loop_product_thumbnail', 'woocommerce_template_loop_product_thumbnail', 10 );
+
 add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
 
 add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);

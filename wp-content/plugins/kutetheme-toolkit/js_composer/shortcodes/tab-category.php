@@ -250,8 +250,9 @@ vc_map( array(
                 __( 'Most Reviews', 'kutetheme' ) => 'most-review',
                 __( 'New Arrivals', 'kutetheme' ) => 'new-arrival',
                 __( 'On Sales', 'kutetheme' )     => 'on-sales',
+                __( 'By Ids', 'kutetheme' )       => 'by-ids',
                 __( 'Category', 'kutetheme' )     => 'category',
-                __( 'Custom', 'kutetheme' )     => 'custom'
+                __( 'Custom', 'kutetheme' )       => 'custom'
         	),
         ),
         
@@ -279,6 +280,14 @@ vc_map( array(
             'std' => 'date',
         	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
             "dependency"  => array("element" => "section_type", "value" => array('custom', 'on-sales', 'category')),
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __( "Ids", 'kutetheme' ),
+            "param_name"  => "ids",
+            "admin_label" => true,
+            "description" => __("Get product by list ids.( Input IDs which separated by a comma ',' )",'kutetheme'),
+            "dependency"  => array("element" => "section_type", "value" => array( 'by-ids' ) ),
         ),
         array(
             "type" => "dropdown",
