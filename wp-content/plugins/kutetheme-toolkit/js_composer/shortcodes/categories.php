@@ -60,8 +60,8 @@ vc_map( array(
 			'heading' => __( 'Hide Empty', 'js_composer' ),
 			'param_name' => 'hide',
 			'value' => array(
-				__( 'Yes', 'js_composer' ) => '0',
-				__( 'No', 'js_composer' ) => '1'
+				__( 'Yes', 'js_composer' ) => '1',
+				__( 'No', 'js_composer' ) => '0'
 			)
 		),
         

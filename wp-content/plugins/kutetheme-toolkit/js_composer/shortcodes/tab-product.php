@@ -117,8 +117,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                         $data_responsive = json_encode($arr);
                         $data_carousel["responsive"] = $data_responsive;
                     }else{
-                        if( $product_column > 0 )
-                            $data_carousel['items'] =  $product_column;
+                        $data_carousel['items'] =  3;
                     }
                     //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     ?>
