@@ -171,6 +171,7 @@ function kt_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	
 	register_sidebar( array(
 		'name'          => __( 'Widget Shop single Area', 'kutetheme' ),
 		'id'            => 'sidebar-shop-single',
