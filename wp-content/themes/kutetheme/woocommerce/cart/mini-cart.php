@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 
 <?php do_action( 'woocommerce_before_mini_cart' ); ?>
-
+<div class="widget_shopping_cart_content">
 <?php  
     $cart_count =  WC()->cart->cart_contents_count ;
     $check_out_url = WC()->cart->get_cart_url();
@@ -67,3 +67,4 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 <?php endif;?>
 <?php do_action( 'woocommerce_after_mini_cart' ); ?>
+</div>

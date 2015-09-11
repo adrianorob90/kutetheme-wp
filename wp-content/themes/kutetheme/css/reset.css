@@ -35,6 +35,8 @@ ul.owl-carousel{
     padding: 0;
     list-style: none;
 }
-.colreduce-lable{
+.colreduce-lable,
+.colreduce-parenthesis-close,
+.colreduce-parenthesis-open{
     display: none;
 }

@@ -2,6 +2,7 @@
 <div id="header" class="header option6">
     <div class="top-header">
         <div class="container">
+            <?php echo kt_get_hotline(); ?>
             <?php echo kt_get_wpml(); ?>
             <?php kt_get_social_header();?>
             <div class="support-link">
@@ -23,13 +24,11 @@
                     <?php kt_search_form();  ?>
                     <?php kt_get_hot_product_tags(3);?>
                 </div>
-                <?php if( kt_is_wc() ): ?>
-                <div class="widget_shopping_cart_content">
-                    <?php 
+                <?php 
+                    if( kt_is_wc() ): 
                         do_action('kt_mini_cart');
-                    ?>
-                </div>
-                <?php endif; ?>
+                     endif; 
+                 ?>
             </div>
         </div>
     </div>

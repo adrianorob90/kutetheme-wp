@@ -125,20 +125,11 @@ function kutetheme_setup() {
 	 */
 	add_editor_style( THEME_URL . 'css/editor-style.css' );
     
-    //add_image_size ( '100x122', 100, 122, true );
     add_image_size ( '585x65', 585, 66, true );
     add_image_size ( '1170x66', 1170, 66, true );
-    //add_image_size ( '234x350', 234, 350, true );
     add_image_size ( '30x30', 30, 30, true );
-    //add_image_size ( 'shop_catalog', 213, 260, true );
-    //add_image_size ( '248x303', 248, 303, true );
     add_image_size ( 'post-thumb', 345, 244, true );
     add_image_size ( 'post-thumb-small', 70, 49, true );
-    //add_image_size ( '142x173', 142, 173, true );
-    //add_image_size ( '173x211', 173, 211, true );
-    //add_image_size ( '175x214', 175, 214, true );
-    //add_image_size ( '131x160', 131, 160, true );
-    //add_image_size ( '204x249', 204, 249, true );
     add_image_size ( '268x255', 268, 255, true );
     add_image_size ('shop_catalog_image_size', 300, 366, true );
 }

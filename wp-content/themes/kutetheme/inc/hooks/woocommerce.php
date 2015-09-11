@@ -17,7 +17,7 @@ add_action( "kt_after_loop_item_title", "woocommerce_template_loop_price", 5 );
 
 function woocommerce_custom_sales_price( $price, $product ) {
 	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
-	return $price . sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
+	return $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $percentage . __('%', 'kutetheme'), __( ' OFF', 'kutetheme' ), __( '(', 'kutetheme' ), __( ')', 'kutetheme' ) );
 }
 
 /**
@@ -47,7 +47,8 @@ if( ! function_exists("kt_get_price_html_from_to")){
             
             if($pr != $sale){
                 $percentage = round( ( ( $sale - $pr  ) / $sale ) * 100 );
-                $price .= sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
+                $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( ' OFF', 'kutetheme' ), __( '(', 'kutetheme' ), __( ')', 'kutetheme' ) );
+                //$price .= sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
             }
         }
         return $price;
@@ -61,6 +62,7 @@ function kt_get_rating_html($rating_html, $rating){
     if ( ! is_numeric( $rating ) ) {
         $rating = $product->get_average_rating();
     }
+    if($rating <=0) return'';
     $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
     for($i = 1;$i <= 5 ;$i++){
         if($rating >= $i){
@@ -246,7 +248,7 @@ if( ! function_exists('kt_get_cart_content') ){
                                     if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
                                     
                                     $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
-                					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('100x122'), $cart_item, $cart_item_key );
+                					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image(), $cart_item, $cart_item_key );
                 					$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
                                     ?>
                                         <li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
@@ -960,5 +962,28 @@ if(!function_exists('kt_get_social_header')){
         </div>
         <?php endif;?>
         <?php
+    }
+}
+
+// Custom rating review
+
+if( !function_exists( 'kt_review_rating_html' ) ){
+    function kt_review_rating_html( $rating ){
+        $rating_html = '';
+        if($rating <=0) return '';
+        $rating_html  = '<div class="review-rating" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+        for($i = 1;$i <= 5 ;$i++){
+            if($rating >= $i){
+                if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
+                    $rating_html .= '<i class="fa fa-star-half-o"></i>';    
+                }else{
+                    $rating_html .= '<i class="fa fa-star"></i>';
+                }
+            }else{
+                $rating_html .= '<i class="fa fa-star-o"></i>';
+            }
+        }
+        $rating_html .= '</div>';
+        return $rating_html;
     }
 }

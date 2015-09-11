@@ -681,6 +681,9 @@ img.alignright{
 .top-header{
     background: #f6f6f6;
 }
+.top-header .link-contact-us .fa{
+  font-size: 14px;
+}
 .top-header .nav-top-links,
 .top-header .language ,
 .top-header .currency,
@@ -1760,6 +1763,10 @@ span.notify-right{
   width: 100%;
   float: left;
 }
+.latest-deals .colreduce-parenthesis-close,
+.latest-deals .colreduce-parenthesis-open{
+  display: inline-block;
+}
 
 .latest-deals .latest-deal-title{
     height: 54px;
@@ -1780,7 +1787,7 @@ span.notify-right{
 }
 .latest-deals .latest-deal-content{
     border: 3px solid #ff3366;
-    padding: 20px 15px 10px 15px;
+    padding: 20px 15px 11px 15px;
     overflow: hidden
 }
 .latest-deals .count-down-time{
@@ -2259,6 +2266,12 @@ span.notify-right{
   display: inline-block;
   font-size: 13px;
 }
+.product-list li .product-star .fa{
+  margin-right: 4px;
+}
+.product-list li .product-star .fa:last-child{
+  margin-right: 0;
+}
 
 /*------------------
 [9. Owl carousel]
@@ -2612,6 +2625,7 @@ span.notify-right{
     padding-top: 20px;
 
 }
+
 .trademark-product .info-product .price{
     font-size: 18px;
     color: #F36;
@@ -2632,6 +2646,9 @@ span.notify-right{
     color: #ff9900;
     font-size: 13px;
 }
+.trademark-product .info-product .product-star .fa{
+  margin-right: 4px;
+}
 .trademark-product .info-product .quick-view a{
   width: 25px;
   height: 25px;
@@ -2647,6 +2664,7 @@ span.notify-right{
   padding: 0 15px;
   display: inline-block;
   border:  1px solid #eaeaea;
+  margin-top: 7px;
 }
 .trademark-product .info-product .btn-view-more:hover{
   background: #ff3366;
@@ -2710,7 +2728,7 @@ span.notify-right{
     text-decoration: none;
     color: #fff;
     height: 23px;
-    padding: 0 4px 0 7px;
+    padding: 0 4px 0 9px;
     display: block;
 }
 .cate-box .cate-link:hover {
@@ -3057,7 +3075,8 @@ span.notify-right{
   padding: 0 15px;
 }
 .breadcrumb .navigation-pipe{
-    font-size: 0;
+    font-size: 0px;
+    text-indent: -9999px;
 }
 
 /*------------------

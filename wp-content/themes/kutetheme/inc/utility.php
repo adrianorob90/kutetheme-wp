@@ -26,14 +26,14 @@ if( ! function_exists( 'kt_get_hotline' )){
             <div class="nav-top-links link-contact-us">
                 <?php if( $hotline ) : ?>
                     <a title="<?php echo $hotline;?>">
-                        <img alt="<?php echo $hotline;?>" src="<?php $phone_icon = THEME_URL.'/images/phone.png'; echo $phone_icon; ?>" />
-                        <span><?php echo $hotline;?></span>
+                        <!--<img alt="<?php echo $hotline;?>" src="<?php $phone_icon = THEME_URL.'/images/phone.png'; echo $phone_icon; ?>" />-->
+                        <span><i class="fa fa-phone"></i> <?php echo $hotline;?></span>
                     </a>
                 <?php endif; ?>
                 <?php if( $email ) : ?>
                     <a href="mailto:<?php echo $email;?>" title="<?php echo $email;?>">
-                        <img alt="<?php echo $email;?>" src="<?php $email_icon = THEME_URL.'/images/email.png'; echo $email_icon; ?>" />
-                        <span><?php _e('Contact us today !', 'kutetheme') ?></span>
+                        <!--<img alt="<?php echo $email;?>" src="<?php $email_icon = THEME_URL.'/images/email.png'; echo $email_icon; ?>" />-->
+                        <span><i class="fa fa-envelope"></i> <?php _e('Contact us today !', 'kutetheme') ?></span>
                     </a>
                 <?php endif; ?>
             </div>

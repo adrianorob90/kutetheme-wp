@@ -22,13 +22,11 @@
             <div class="header-search-box <?php echo kt_is_wc() ? 'col-xs-7 col-sm-7' : 'col-xs-9'; ?>">
                 <?php kt_search_form();  ?>
             </div>
-            <?php if( kt_is_wc() ): ?>
-            <div class="widget_shopping_cart_content">
-                <?php 
+            <?php 
+                if( kt_is_wc() ): 
                     do_action('kt_mini_cart');
-                ?>
-            </div>
-            <?php endif; ?>
+                 endif; 
+             ?>
         </div>
         
     </div>

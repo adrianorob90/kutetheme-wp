@@ -43,6 +43,9 @@ input[type="tel"]{
 	width: 100%;
     border: 1px solid #eaeaea;
 }
+textarea{
+    max-width: 100%;
+}
 blockquote{
     border-color: #ff3366;
 }
