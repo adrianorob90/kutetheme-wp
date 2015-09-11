@@ -9,10 +9,11 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'tab_producs', $atts ) : $atts;
         $atts = shortcode_atts( array(
+            'taxonomy' => '',
             'per_page' => 12,
-            'columns' => 4,
+            'columns'  => 4,
             'border_heading' => '',
-            'css_animation' => '',
+            'css_animation'  => '',
             'el_class' => '',
             'css' => '',   
             
@@ -63,6 +64,16 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
             'suppress_filter'       => true,
 		);
         
+        if( $taxonomy ){
+            $args['tax_query'] = 
+                array(
+            		array(
+            			'taxonomy' => 'product_cat',
+            			'field' => 'id',
+            			'terms' => explode( ",", $taxonomy )
+            	)
+            );
+        }
         $uniqeID = uniqid();
         ob_start();
         ?>
@@ -81,6 +92,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                 <?php foreach( $tabs as $k => $v ): ?>
                     <?php 
                     $newargs = $args;
+                    
                     if( $k == 'best-sellers' ){
                         $newargs['meta_key'] = 'total_sales';
                         $newargs['orderby']  = 'meta_value_num';
@@ -94,7 +106,8 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     }else{
                         $newargs['orderby'] = 'date';
                         $newargs['order'] 	 = 'DESC';
-                    } 
+                    }
+                     
                     $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $newargs, $atts ) );
                     
                     if ( $products->have_posts() ) :
@@ -143,10 +156,6 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         <?php
         return ob_get_clean();
     }
-    /*
-    function kt_thumbnail_size(){
-        return '248x303';
-    }*/
 }
 
 
@@ -157,6 +166,18 @@ vc_map( array(
     "category" => __('Kute Theme', 'kutetheme' ),
     "description" => __( 'Show product in tab best sellers, on sales, new products on option 1', 'js_composer' ),
     "params" => array(
+        array(
+            "type" => "kt_taxonomy",
+            "taxonomy" => "product_cat",
+            "class" => "",
+            "heading" => __("Category", 'kutetheme'),
+            "param_name" => "taxonomy",
+            "value" => '',
+            'parent' => 0,
+            'multiple' => true,
+            'placeholder' => __('Choose categoy', 'kutetheme'),
+            "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
+        ),
         array(
 			'type' => 'textfield',
 			'heading' => __( 'Per page', 'js_composer' ),
