@@ -33,18 +33,20 @@ vc_map( array(
             "value" => "3",
             "admin_label" => true,
             'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' )
-        ),array(
-			'type' => 'dropdown',
-			'heading' => __( 'Order by', 'js_composer' ),
-			'param_name' => 'orderby',
-			'value' => array(
-                __( 'Random', 'kutetheme' )  => 'rand',
-				__( 'Date', 'kutetheme' )    => 'date',
-				__( 'ID', 'kutetheme' )      => 'id',
-                __( 'Author', 'kutetheme' )  => 'author',
-                __( 'Title', 'kutetheme' )   => 'title',
-			)
-		),
+        ),
+        array(
+            'type' => 'dropdown',
+            'heading' => __( 'Order by', 'js_composer' ),
+            'param_name' => 'orderby',
+            'value' => array(
+                __( 'Id', 'kutetheme' )    => 'id',
+                __( 'Count', 'kutetheme' ) => 'count',
+                __( 'Name', 'kutetheme' )  => 'name',
+                __( 'Slug', 'kutetheme' )  => 'slug',
+                __( 'Term Group ', 'kutetheme' )  => 'term_group',
+                __( 'None', 'kutetheme' )  => 'none',
+            )
+        ),
         array(
 			'type' => 'dropdown',
 			'heading' => __( 'Order Way', 'js_composer' ),
@@ -117,7 +119,7 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
             'title'     => __('Hot Categories', 'kutetheme'),
             'taxonomy'  => '',
             'number'    => 3,
-            'orderby'   => 'date',
+            'orderby'   => 'id',
             'order'     => 'desc',
             'hide'      => 0,
             

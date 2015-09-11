@@ -92,13 +92,7 @@ function kt_register_demo_metabox() {
 		'title'         => __( 'Service Option', 'kutetheme' ),
 		'object_types'  => array( 'service' )
 	) );
-
-	$service_option->add_field( array(
-		'name' => __( 'Sub Title', 'kutetheme' ),
-		'desc' => __( 'Sub title', 'kutetheme' ),
-		'id'   => $prefix . 'service_sub_title',
-		'type' => 'text',
-	) );
+    
 	$service_option->add_field( array(
 		'name' => __( 'Description', 'kutetheme' ),
 		'desc' => __( 'Short description', 'kutetheme' ),

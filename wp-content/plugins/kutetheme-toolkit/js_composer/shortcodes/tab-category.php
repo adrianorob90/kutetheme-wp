@@ -38,7 +38,7 @@ vc_map( array(
         	"heading" => __("Tabs Type", 'kutetheme'),
         	"param_name" => "tabs_type",
             "admin_label" => true,
-            'std' => 'tabs1',
+            'std' => 'tab-1',
             'value' => array(
         		__( 'Tab 1', 'kutetheme' ) => 'tab-1',
                 __( 'Tab 2', 'kutetheme' ) => 'tab-2',

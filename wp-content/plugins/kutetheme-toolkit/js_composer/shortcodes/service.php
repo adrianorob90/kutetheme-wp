@@ -143,8 +143,8 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                                 <?php endif;?>
                                 <div class="info">
                                     <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
-                                    <?php if( isset( $meta['_kt_page_service_sub_title'] ) ):?>
-                                        <span><?php echo $meta['_kt_page_service_sub_title'][0];?></span>
+                                    <?php if( isset( $meta['_kt_page_service_desc'] ) ):?>
+                                        <span><?php echo $meta['_kt_page_service_desc'][0];?></span>
                                     <?php endif;?>
                                 </div>
                             </div>
@@ -176,7 +176,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                                     </div>
                                     <div class="col-sm-6 text">
                                         <?php if(isset($meta['_kt_page_service_desc'])):?>
-                                        <?php echo $meta['_kt_page_service_desc'][0];?>
+                                            <?php echo $meta['_kt_page_service_desc'][0];?>
                                         <?php endif;?>
                                     </div>
                                 </div>
