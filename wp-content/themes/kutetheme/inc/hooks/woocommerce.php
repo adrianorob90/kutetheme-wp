@@ -77,6 +77,24 @@ function kt_get_rating_html($rating_html, $rating){
     return $rating_html;
 }
 
+if ( ! function_exists( 'kt_template_single_price' ) ) {
+
+	/**
+	 * Output the product price.
+	 *
+	 * @subpackage	Product
+	 */
+	function kt_template_single_price() {
+	    add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+        add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+		wc_get_template( 'single-product/price.php' );
+        remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+        remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+	}
+}
+remove_action ( 'woocommerce_single_product_summary', 'woocommerce_template_single_price');
+add_action( 'woocommerce_single_product_summary', 'kt_template_single_price', 15 );
+
 //content-product-tab.php
 add_action('kt_loop_product_thumbnail', 'kt_template_loop_product_thumbnail', 10);
 
