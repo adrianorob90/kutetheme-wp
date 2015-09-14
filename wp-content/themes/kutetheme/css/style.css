@@ -1299,6 +1299,11 @@ span.notify-right{
   padding: 0 25px;
   background: transparent;
 }
+#main-menu .navbar .navbar-nav>li>a>img{
+  position: absolute;
+  left: 45%;
+  top: -21px;
+}
 #main-menu .navbar .navbar-nav>li:last-child>a{
   border-right: none;
 }

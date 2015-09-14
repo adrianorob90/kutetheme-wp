@@ -348,7 +348,7 @@ add_action( 'wp_head', 'kt_javascript_detection', 0 );
  */
 function kt_scripts() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'kt-fonts', kt_fonts_url(), array(), null );
+	//wp_enqueue_style( 'kt-fonts', kt_fonts_url(), array(), null );
     
 	
 

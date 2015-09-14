@@ -1262,3 +1262,17 @@ Cart
 .woocommerce #reviews #comments ol.commentlist li .comment-text{
 	margin-left: 70px;
 }
+
+/*---------------
+[Compare popup]
+----------------*/
+#cboxBottomLeft,
+#cboxBottomCenter,
+#cboxBottomRight,
+#cboxTopLeft,
+#cboxTopCenter,
+#cboxTopRight,
+#cboxMiddleLeft,
+#cboxMiddleRight{
+	display: none;
+}
