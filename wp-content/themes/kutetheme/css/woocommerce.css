@@ -1243,6 +1243,12 @@ Cart
     padding: 7px 10px;
     display: inline-block;
 }
+.woo-quickview .variation_form_section .variations-table td:first-child {
+    width: 36px;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 10px;
+}
 
 .easyzoom-flyout img {
     vertical-align: bottom;

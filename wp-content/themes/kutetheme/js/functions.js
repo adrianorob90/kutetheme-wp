@@ -147,6 +147,9 @@
         $(this).closest('.woo-quickview').find('.woocommerce-main-image img').attr('src',image);
         return false;
     })
+     $(document).on('click','.woo-quickview .woocommerce-main-image',function(){
+        return false;
+    })
     
     /* ---------------------------------------------
      Scripts initialization
