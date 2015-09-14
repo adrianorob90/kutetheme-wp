@@ -189,7 +189,7 @@
 				'run': $.proxy(worker.run, this)
 			});
 		}, this));
-
+		
 		this.setup();
 		this.initialize();
 	}
@@ -459,7 +459,7 @@
 					match = Number(breakpoint);
 				}
 			});
-
+			
 			settings = $.extend({}, this.options, overwrites[match]);
 			delete settings.responsive;
 
@@ -478,6 +478,7 @@
 			this.invalidate('settings');
 			this.trigger('changed', { property: { name: 'settings', value: this.settings } });
 		}
+		
 	};
 
 	/**
@@ -563,7 +564,48 @@
 		if (this._items.length === 0) {
 			return false;
 		}
+		/*
+		var viewport = this.viewport(),
+			overwrites = this.options.responsive,
+			match = -1,
+			settings = null;
 
+		if (!overwrites) {
+			settings = $.extend({}, this.options);
+		} else {
+			$.each(overwrites, function(breakpoint) {
+				if (breakpoint <= viewport && breakpoint > match) {
+					match = Number(breakpoint);
+				}
+			});
+			
+			settings = $.extend({}, this.options, overwrites[match]);
+			delete settings.responsive;
+
+			// responsive class
+			if (settings.responsiveClass) {
+				this.$element.attr('class', function(i, c) {
+					return c.replace(/\b owl-responsive-\S+/g, '');
+				}).addClass('owl-responsive-' + match);
+			}
+		}
+		
+		if(settings.items >= this._items.length){
+			settings.nav = false;
+			this.settings = settings;
+			this.settings.loop = false;
+			
+			//this.$element.find('.owl-controls').remove();			
+		}else{
+			settings.nav = true;
+			this.settings = settings;
+			this.settings.loop = false;
+			
+		}
+		*/
+		
+		//this.trigger('destroy');
+		//this.destroy();
 		var start = new Date().getTime();
 
 		this.trigger('refresh');
@@ -583,8 +625,9 @@
 		this.state.orientation = window.orientation;
 
 		this.watchVisibility();
-
+		
 		this.trigger('refreshed');
+		this.trigger('refresh', null, 'navigation');
 	};
 
 	/**
@@ -1856,12 +1899,27 @@
 						n = (settings.center && Math.ceil(settings.items / 2) || settings.items),
 						i = ((settings.center && n * -1) || 0),
 						position = ((e.property && e.property.value) || this._core.current()) + i,
-						clones = this._core.clones().length,
+						clones = this._core.clones().length,						
 						load = $.proxy(function(i, v) { this.load(v) }, this);
-
+						
+						
+						if(clones == 0){
+							n = this._core._items.length;
+							
+						}
+						
 					while (i++ < n) {
-						this.load(clones / 2 + this._core.relative(position));
-						clones && $.each(this._core.clones(this._core.relative(position++)), load);
+						
+						//alert(clones / 2 + this._core.relative(position));
+						if(clones >0){
+							this.load(clones / 2 + this._core.relative(position));
+							clones && $.each(this._core.clones(this._core.relative(position++)), load);
+						}else{
+							this.load(position);
+							position++;
+						}
+						
+						//alert(clones);
 					}
 				}
 			}, this)
@@ -1894,7 +1952,7 @@
 		if (!$elements || $.inArray($item.get(0), this._loaded) > -1) {
 			return;
 		}
-
+        //console.log($elements.length);
 		$elements.each($.proxy(function(index, element) {
 			var $element = $(element), image,
 				url = (window.devicePixelRatio > 1 && $element.attr('data-src-retina')) || $element.attr('data-src');

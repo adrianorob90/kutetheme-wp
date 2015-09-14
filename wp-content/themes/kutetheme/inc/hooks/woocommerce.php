@@ -832,7 +832,7 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
 		    $id = get_post_thumbnail_id();
 			$thumbnail_src = wp_get_attachment_image_src( $id, $size );
             
-            $thumbnail = '<img class="lazy attachment-' . $size . ' wp-post-image" src="' . $placeholder . '"  data-original="' . $thumbnail_src[0] . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
+            $thumbnail = '<img class="owl-lazy attachment-' . $size . ' wp-post-image" src="' . $placeholder . '"  data-src="' . $thumbnail_src[0] . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
             return $thumbnail;
 		}else{
 		    $thumbnail = '<img class="attachment-' . $size . '" src="' . $placeholder . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';

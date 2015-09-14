@@ -47,7 +47,7 @@
       var $href = $this.attr('href');
       var $tab_active = $container.find($href);
       var $item_active = $tab_active.find('.owl-item.active');
-      $item_active.find('img.lazy').trigger('load_lazy');
+      //$item_active.find('img.lazy').trigger('load_lazy');
       $item_active.each(function($i){
             var $item = jQuery(this);
             var $style = $item.attr("style");
@@ -152,6 +152,7 @@
             var config = $this.data();
             config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
             config.smartSpeed="300";
+            config.lazyLoad = true;
             if( $this.hasClass('owl-style2') ){
                 config.animateOut="fadeOut";
                 config.animateIn="fadeIn";    
@@ -229,18 +230,7 @@
         $(document).on('click','.toggle-menu',function(){
             $(this).closest('.nav-menu').find('.navbar-collapse').toggle();
             return false;
-        })
-        /** HOME SLIDE**/
-        if($('#home-slider').length >0 && $('#contenhomeslider').length >0){
-            var slider = $('#contenhomeslider').bxSlider(
-                {
-                    nextText:'<i class="fa fa-angle-right"></i>',
-                    prevText:'<i class="fa fa-angle-left"></i>',
-                    auto: true,
-                }
-
-            );
-        }
+        });
         
         /* elevator click*/ 
         $(document).on('click','a.btn-elevator',function(e){
@@ -282,7 +272,7 @@
             });
             var tab_active = $('#'+id);
             tab_active.addClass('active');
-            tab_active.find('img.lazy').trigger('load_lazy');
+            //tab_active.find('img.lazy').trigger('load_lazy');
             return false;
         })
         /** ALL CAT **/
@@ -376,8 +366,9 @@
             $('#option-product-qty').val(value);
             return false;
         })
-        /* Close vertical */
+        /* Close vertical 
         $(document).on('click','*',function(e){
+            alert('ádasdasd');
             var container = $("#box-vertical-megamenus");
             if (!container.is(e.target) && container.has(e.target).length === 0){
                 if($('body').hasClass('home')){
@@ -390,6 +381,7 @@
                 container.find('.title').removeClass('active');
             }
         })
+        */
         /* Send conttact*/
         $(document).on('click','#btn-send-contact',function(){
             var subject = $('#subject').val(),
@@ -663,10 +655,10 @@
       }
     }
     
-    $("img.lazy").lazyload({
+    /*$("img.lazy").lazyload({
         effect: "fadeIn",
         skip_invisible: false,
         failure_limit : 200,
         event: 'scroll load_lazy'
-    });
+    });*/
 })(jQuery); // End of use strict
