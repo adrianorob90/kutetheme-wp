@@ -110,11 +110,43 @@
               autoSize: false,
               closeClick: false,
               openEffect: 'none',
-              closeEffect: 'none'
+              closeEffect: 'none',
             }); // fancybox
+            $('.woo-quickview .thumbnails').owlCarousel(
+                {
+                    dots:false,
+                    nav:true,
+                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                    margin:20,
+                    responsive : {
+                      // breakpoint from 0 up
+                      0 : {
+                          items : 1,
+                      },
+                      // breakpoint from 480 up
+                      480 : {
+                          items : 2,
+                      },
+                      // breakpoint from 768 up
+                      768 : {
+                          items : 2,
+                      },
+                      1000 : {
+                          items : 2,
+                      }
+                  }
+                }
+            );
         })
         return false;
      });
+
+    // Quick view view image
+    $(document).on('click','.woo-quickview .thumbnails a',function(){
+        var image = $(this).attr('href');
+        $(this).closest('.woo-quickview').find('.woocommerce-main-image img').attr('src',image);
+        return false;
+    })
     
     /* ---------------------------------------------
      Scripts initialization
@@ -497,6 +529,11 @@
                 return false;
             }
           })
+          // 
+          if( $('#cart-block .cart-block').length > 0 ){
+            $('#cart-block .cart-block').scrollbar();
+          }
+          
     });
     /* ---------------------------------------------
      Scripts resize

@@ -339,8 +339,8 @@ function kt_get_color_scheme_css( $colors ) {
     .display-product-option li.selected span, .display-product-option li:hover span,
     .owl-controls .owl-dots .owl-dot.active,
     .woocommerce .content div.product form.cart .button,
-    .woocommerce .content .summary .yith-wcwl-add-to-wishlist .show a:hover,
-    .woocommerce .content #respond input#submit:hover, .woocommerce .content a.button:hover, .woocommerce .content button.button:hover, .woocommerce .content input.button:hover,
+    .woocommerce .content #respond input#submit:hover,
+     .woocommerce .content button.button:hover, .woocommerce .content input.button:hover,
     .products-block .link-all,
     .widget_kt_mailchimp .mailchimp-submit,
     .nav-links a:hover, .nav-links .current,
@@ -368,7 +368,9 @@ function kt_get_color_scheme_css( $colors ) {
     .woocommerce #respond input#submit.alt:hover, 
 	.woocommerce a.button.alt:hover, 
 	.woocommerce button.button.alt:hover, 
-	.woocommerce input.button.alt:hover
+	.woocommerce input.button.alt:hover,
+	.woocommerce div.summary  .yith-wcwl-add-to-wishlist .show a:hover:before,
+	.woocommerce div.summary .compare:hover:before
     {
         background-color: <?php echo $colors['main_color'] ?>;
     }
@@ -439,7 +441,9 @@ function kt_get_color_scheme_css( $colors ) {
     }
 	/* Color*/
 	.blog-list .blog-list-wapper ul li .readmore a,
-	#main-menu .dropdown-menu>li>a:hover{
+	#main-menu .dropdown-menu>li>a:hover,
+	.woocommerce div.summary  .yith-wcwl-add-to-wishlist .show a:hover,
+	.woocommerce div.summary .compare:hover{
 		color: <?php echo $colors['main_color'] ?>
 	}
     <?php
