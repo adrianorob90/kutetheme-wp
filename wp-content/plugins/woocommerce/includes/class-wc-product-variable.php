@@ -316,7 +316,6 @@ class WC_Product_Variable extends WC_Product {
 	 */
 	public function get_price_html( $price = '' ) {
 		$prices = $this->get_variation_prices( true );
-
 		// No variations, or no active variation prices
 		if ( $this->get_price() === '' || empty( $prices['price'] ) ) {
 			$price = apply_filters( 'woocommerce_variable_empty_price_html', '', $this );

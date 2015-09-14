@@ -933,7 +933,6 @@ class WC_Product {
 	 * @return string
 	 */
 	public function get_price_html( $price = '' ) {
-
 		$display_price         = $this->get_display_price();
 		$display_regular_price = $this->get_display_price( $this->get_regular_price() );
 

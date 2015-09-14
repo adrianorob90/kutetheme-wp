@@ -95,7 +95,7 @@ if ( ! function_exists( 'kt_template_single_price' ) ) {
 	}
 }
 remove_action ( 'woocommerce_single_product_summary', 'woocommerce_template_single_price');
-add_action( 'woocommerce_single_product_summary', 'kt_template_single_price', 15 );
+add_action( 'woocommerce_single_product_summary', 'kt_template_single_price', 10 );
 
 //content-product-tab.php
 add_action('kt_loop_product_thumbnail', 'kt_template_loop_product_thumbnail', 10);
