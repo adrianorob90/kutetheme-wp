@@ -378,7 +378,7 @@ function kt_scripts() {
     wp_enqueue_style( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.css' );
     
     wp_enqueue_style( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.css' );
-    
+    wp_enqueue_style( 'kt-scrollbar', get_template_directory_uri() . '/libs/jquery.scrollbar/jquery.scrollbar.css' );
     wp_enqueue_style( 'kt-style', get_template_directory_uri() . '/css/style.css', 
         array( 
             'kt-bootstrap', 
@@ -423,6 +423,7 @@ function kt_scripts() {
     
     wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.js', array( 'jquery' ) );
+    wp_enqueue_script( 'kt-jquery.scrollbar.min', get_template_directory_uri() . '/libs/jquery.scrollbar/jquery.scrollbar.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );
     
 	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.0', true );

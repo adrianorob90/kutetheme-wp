@@ -13,7 +13,7 @@
 .megamenu ul.wpb_thumbnails-fluid > li, 
 .megamenu .last_toggle_el_margin, 
 .megamenu .wpb_button{
-	margin: 0;
+	margin-bottom: 0;
 }
 .megamenu .widget{
 	border: none;

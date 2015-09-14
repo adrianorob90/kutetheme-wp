@@ -446,7 +446,7 @@
 .option6 .box-vertical-megamenus .vertical-menu-list {
 	padding-top: 4px;
 }
-.option6 .box-vertical-megamenus .vertical-menu-list li{
+.option6 .box-vertical-megamenus .vertical-menu-list>li{
 	border: none;
 	padding: 0 20px;
 }

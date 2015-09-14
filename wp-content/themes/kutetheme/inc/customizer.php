@@ -438,7 +438,8 @@ function kt_get_color_scheme_css( $colors ) {
         color: <?php echo $colors['price_color'] ?>
     }
 	/* Color*/
-	.blog-list .blog-list-wapper ul li .readmore a{
+	.blog-list .blog-list-wapper ul li .readmore a,
+	#main-menu .dropdown-menu>li>a:hover{
 		color: <?php echo $colors['main_color'] ?>
 	}
     <?php

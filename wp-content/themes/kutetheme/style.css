@@ -321,6 +321,7 @@ a img.aligncenter {
 .widget_nav_menu ul{
     padding: 0;
     line-height: 24px;
+    margin: 0;
 }
 .widget_nav_menu ul li .sub-menu{
     padding-left: 20px;

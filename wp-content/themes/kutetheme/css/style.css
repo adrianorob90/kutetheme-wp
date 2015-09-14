@@ -1341,6 +1341,20 @@ span.notify-right{
   opacity: 0;
   background: #fff;
 }
+#main-menu ul.dropdown-menu{
+  padding: 15px 30px;
+}
+
+#main-menu .dropdown-menu>li>a{
+  padding: 0;
+  line-height: 32px;
+}
+#main-menu .dropdown-menu>li>a:hover{
+  color: #ff3366;
+}
+#main-menu .dropdown-menu>li{
+  line-height: 32px;
+}
 #main-menu .dropdown-menu.container-fluid{
   padding: 15px 30px;
 }
@@ -2885,6 +2899,7 @@ span.notify-right{
 /** #trademark-box **/
 #trademark-text-box {
     font-size: 13px;
+    margin-bottom: 30px;
 }
 #trademark-list  {
   list-style: outside none none;
