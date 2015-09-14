@@ -3473,7 +3473,12 @@ span.notify-right{
   border-radius: 90%;
   display: table;
   margin: 0 auto;
+  margin-top: 10px;
 
+}
+.testimonials .testimonial{
+  margin-top: 5px;
+  line-height: 24px;
 }
 .testimonials .client-avarta img{
   width: 100%;
@@ -3619,6 +3624,7 @@ span.notify-right{
   list-style: none;
   display: inline;
   float: left;
+  margin-left: 3px;
 }
 .display-product-option{
     height: 30px;

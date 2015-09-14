@@ -149,12 +149,14 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
             $item_output .= $args->after;
             
             if($this->megamenu_enable && $this->megamenu_menu_page){
+            	$menu_with = kt_get_post_meta($this->megamenu_menu_page,'kt_megamenu_width',830);
+
                 if( post_type_exists('megamenu') ){
                     $pages = new WP_Query( array( 'post_type' => 'megamenu', 'p' => $this->megamenu_menu_page ));
                 }else{
                     $pages = new WP_Query( array( 'post_type' => 'page', 'page' => $this->megamenu_menu_page ));
                 }
-                $item_output .= '<div class="dropdown-menu megamenu menu_page mega-menu-'.$depth.' p-'.$this->megamenu_menu_page.'">';
+                $item_output .= '<div style="width:'.$menu_with.'px" class="dropdown-menu megamenu menu_page mega-menu-'.$depth.' p-'.$this->megamenu_menu_page.'">';
                 if($pages->have_posts()):
                     ob_start();
                     while($pages->have_posts()): $pages->the_post();

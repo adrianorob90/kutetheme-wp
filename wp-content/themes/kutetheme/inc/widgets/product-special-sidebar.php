@@ -20,17 +20,17 @@ class Widget_KT_Product_Special extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-        $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
+        $title          = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
         
-        $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
-        $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
-        
+        $orderby        = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
+        $order          = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
+        $posts_per_page = isset( $instance[ 'posts_per_page' ] )   ? $instance[ 'posts_per_page' ]   : '3';
         $meta_query = WC()->query->get_meta_query();
         $params = array(
 			'post_type'				=> 'product',
 			'post_status'			=> 'publish',
 			'ignore_sticky_posts'	=> 1,
-			'posts_per_page' 		=> 1,
+			'posts_per_page' 		=> $posts_per_page,
 			'meta_query' 			=> $meta_query,
             'suppress_filter'       => true,
             'orderby'               => $orderby,
@@ -45,14 +45,13 @@ class Widget_KT_Product_Special extends WP_Widget {
         ?>
         <!-- SPECIAL -->
         <div class="block left-module">
-            <div class="block_content">        
+            <div class="block_content">
+                <ul class="products-block">
                 <?php
                 if ( $product->have_posts() ):
                 ?>
                     <?php while($product->have_posts()): $product->the_post(); ?>
-                        <ul class="products-block">
-                            <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
-                        </ul>
+                        <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
                     <?php endwhile; ?>
                 <?php
                 endif;
@@ -60,6 +59,7 @@ class Widget_KT_Product_Special extends WP_Widget {
                 wp_reset_postdata();
                 $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );            
                 ?>
+                </ul>
                 <div class="products-block">
                     <div class="products-block-bottom">
                         <a class="link-all" href="<?php echo $shop_page_url; ?>"><?php _e( 'All Products', 'kutetheme' ) ?></a>
@@ -73,21 +73,23 @@ class Widget_KT_Product_Special extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-		$instance = $new_instance;
-        $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
+        $instance                     = $new_instance;
+        $instance[ 'title' ]          = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
         
-        $instance[ 'orderby' ]  = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
-        $instance[ 'order' ]    = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
+        $instance[ 'orderby' ]        = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
+        $instance[ 'order' ]          = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
+        $instance[ 'posts_per_page' ] = $new_instance[ 'posts_per_page' ]   ? $new_instance[ 'posts_per_page' ] : '3';
         
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		//Defaults
-        $title      = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
+        $title          = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
         
-        $orderby    = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
-        $order      = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
+        $orderby        = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
+        $order          = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
+        $posts_per_page = isset( $instance[ 'posts_per_page' ] )      ? $instance[ 'posts_per_page' ] : '3';
 	?>
         
         <p>
@@ -111,6 +113,10 @@ class Widget_KT_Product_Special extends WP_Widget {
                 <option value="desc" <?php selected( 'desc', $order ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
             	<option value="asc" <?php selected( 'asc', $order ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
             </select>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'posts_per_page' ); ?>"><?php _e( 'Products per page:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'posts_per_page' ); ?>" name="<?php echo $this->get_field_name('posts_per_page'); ?>" type="text" value="<?php echo esc_attr($posts_per_page); ?>" />
         </p>
         
     <?php

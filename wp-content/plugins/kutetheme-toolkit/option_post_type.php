@@ -83,6 +83,22 @@ function kt_register_demo_metabox() {
 		'id'   => 'kt_page_extra_class',
 		'type' => 'text',
 	) );
+	/**
+	 * Mega meno
+	 */
+	$megamenu_option = new_cmb2_box( array(
+		'id'            => 'kt_megamenu_metabox',
+		'title'         => __( 'Menu Option', 'kutetheme' ),
+		'object_types'  => array( 'megamenu' )
+	) );
+    
+	$megamenu_option->add_field( array(
+		'name'    => __( 'Menu width', 'kutetheme' ),
+		'desc'    => __( 'Setting menu with (Unit px)', 'kutetheme' ),
+		'id'      => 'kt_megamenu_width',
+		'default' =>830,
+		'type'    => 'text',
+	) );
 
 	/**
 	 * Service option

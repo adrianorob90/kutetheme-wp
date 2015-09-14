@@ -626,7 +626,7 @@
     function resizeTopmenu(){
         if($(window).width() + scrollCompensate() >= 768){
             var main_menu_w = $('#main-menu .navbar').innerWidth();
-            $("#main-menu ul.mega_dropdown").each(function(){
+            $("#main-menu .megamenu").each(function(){
                 var menu_width = $(this).innerWidth();
                 var offset_left = $(this).position().left;
 
