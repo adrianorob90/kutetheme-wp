@@ -159,6 +159,12 @@
 	padding: 0 15px;
 	padding-left: 40px;
 }
+.option6 .form-category .ui-selectmenu-button span.ui-selectmenu-text{
+	color: #fff;
+}
+.option6 .form-category .ui-selectmenu-button span.ui-icon{
+	border-color: #fff transparent transparent transparent;
+}
 .option6 .main-header .header-search-box .form-inline .form-category{
 	float: right;
 	margin-right: 40px;

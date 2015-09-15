@@ -370,7 +370,14 @@ function kt_get_color_scheme_css( $colors ) {
 	.woocommerce button.button.alt:hover, 
 	.woocommerce input.button.alt:hover,
 	.woocommerce div.summary  .yith-wcwl-add-to-wishlist .show a:hover:before,
-	.woocommerce div.summary .compare:hover:before
+	.woocommerce div.summary .compare:hover:before,
+	div.ui-selectmenu-menu .ui-state-hover, 
+	div.ui-selectmenu-menu .ui-state-hover, 
+	div.ui-selectmenu-menu .ui-widget-header, 
+ 	div.ui-selectmenu-menu .ui-state-hover,
+ 	 .ui-selectmenu-menu .ui-state-focus, 
+ 	div.ui-selectmenu-menu .ui-widget-content .ui-state-focus, 
+ 	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus
     {
         background-color: <?php echo $colors['main_color'] ?>;
     }

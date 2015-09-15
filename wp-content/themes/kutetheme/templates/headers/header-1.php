@@ -25,7 +25,7 @@
             <?php 
                 if( kt_is_wc() ): 
                     do_action('kt_mini_cart');
-                 endif; 
+                endif; 
              ?>
         </div>
         
@@ -90,11 +90,14 @@
             <!-- userinfo on top-->
             <div id="user-info-opntop">
             </div>
+            <?php if( kt_is_wc() ):  ?>
             <!-- CART ICON ON MMENU -->
             <div id="shopping-cart-box-ontop">
                 <i class="fa fa-shopping-cart"></i>
-                <div class="shopping-cart-box-ontop-content"></div>
+                <div class="shopping-cart-box-ontop-content">
+                </div>
             </div>
+            <?php endif;?>
         </div>
     </div>
     <div class="container">

@@ -291,7 +291,13 @@ if( ! function_exists('kt_get_cart_content') ){
         <?php endif;
     }
 }
-
+// Minicart ontop
+if(!function_exists('kt_display_mini_cart_on_top')){
+    function kt_display_mini_cart_on_top(){
+        $check_out_url = WC()->cart->get_cart_url();
+        kt_get_cart_content($check_out_url);
+    }
+}
 //Cart messsage
 
 if( ! function_exists( 'kt_add_to_cart_message' ) ){

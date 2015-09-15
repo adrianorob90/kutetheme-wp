@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <a class="btn-heart" href="<?php echo esc_url( $wishlist_url );; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
     <?php endif; ?>
     <div class="btn-cart" id="cart-block">
-        <a title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
+        <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
         <span class="notify notify-right"><?php echo $cart_count; ?></span>
         <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
     </div>
@@ -59,7 +59,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <a class="btn-heart" href="<?php echo esc_url( $wishlist_url );; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
         <?php endif; ?>
         <div class="btn-cart" id="cart-block">
-            <a title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
+            <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
             <span class="notify notify-right"><?php echo $cart_count; ?></span>
             <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
         </div>

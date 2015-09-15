@@ -158,6 +158,10 @@
         // auto width megamenu
         auto_width_megamenu();
         resizeTopmenu();
+        // scrollbar
+        // if( $('.cart-block').length > 0 ){
+        //   $('.cart-block').scrollbar();
+        // }
     });
     /* ---------------------------------------------
      Scripts ready
@@ -260,7 +264,8 @@
             return false;
         })
         /** SELECT CATEGORY **/
-        $('.select-category').select2();
+        //$('.select-category').select2();
+        $( ".select-category" ).selectmenu();
         /* Toggle nav menu*/
         $(document).on('click','.toggle-menu',function(){
             $(this).closest('.nav-menu').find('.navbar-collapse').toggle();
@@ -532,10 +537,7 @@
                 return false;
             }
           })
-          // 
-          if( $('#cart-block .cart-block').length > 0 ){
-            $('#cart-block .cart-block').scrollbar();
-          }
+          
           
     });
     /* ---------------------------------------------
