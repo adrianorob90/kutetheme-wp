@@ -1951,13 +1951,14 @@
 		if (!$elements || $.inArray($item.get(0), this._loaded) > -1) {
 			return;
 		}
+        
 		$elements.each($.proxy(function(index, element) {
 			var $element = $(element), image,
 				url = (window.devicePixelRatio > 1 && $element.attr('data-src-retina')) || $element.attr('data-src');
 
 			this._core.trigger('load', { element: $element, url: url }, 'lazy');
-
-			if ($element.is('img')) {
+            
+            if ($element.is('img')) {
 				$element.one('load.owl.lazy', $.proxy(function() {
 					$element.css('opacity', 1);
                     
@@ -1975,20 +1976,20 @@
 				image.src = url;
 			}
             $item = $element.closest( '.owl-item' );
-            
-            var $style = $item.attr("style");
-            var delay = this._activate_item * 300;
-            $item.attr("style",$style +
-                      "-webkit-animation-delay:" + delay + "ms;"
-                    + "-moz-animation-delay:" + delay + "ms;"
-                    + "-o-animation-delay:" + delay + "ms;"
-                    + "animation-delay:" + delay + "ms;"
-            ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $item.removeClass('slideInTop animated');
-                $item.attr("style", $style);
-            });
-            
             if( $item.hasClass( 'active' ) ){
+                var $style = $item.attr("style");
+                
+                var delay = this._activate_item * 300;
+                
+                $item.attr("style",$style +
+                          "-webkit-animation-delay:" + delay + "ms;"
+                        + "-moz-animation-delay:" + delay + "ms;"
+                        + "-o-animation-delay:" + delay + "ms;"
+                        + "animation-delay:" + delay + "ms;"
+                ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $item.removeClass('slideInTop animated');
+                    $item.attr("style", $style);
+                });
                 this._activate_item ++ ;
             }else{
                 this._activate_item = 1;
