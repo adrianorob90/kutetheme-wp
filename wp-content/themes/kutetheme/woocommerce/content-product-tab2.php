@@ -13,7 +13,7 @@
         </span>
     </div>
 </div>
-<div class="left-block">
+<div class="left-block kt-template-loop">
     <a href="<?php the_permalink() ?>">
         <?php
 			/**
@@ -21,7 +21,7 @@
 			 *
 			 * @hooked woocommerce_template_loop_product_thumbnail - 10
 			 */
-			echo woocommerce_get_product_thumbnail();
+			do_action( 'kt_loop_product_thumbnail' );
 		?>
     </a>
     <div class="quick-view">

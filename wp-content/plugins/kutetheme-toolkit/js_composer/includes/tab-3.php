@@ -59,7 +59,7 @@ if( $deal_product->have_posts() ){
 ?>
 <div class="<?php echo $elementClass; ?>" id="change-color-<?php echo $id; ?>" data-target="change-color" data-color="<?php echo $main_color; ?>" data-rgb="<?php echo implode( ',', $main_color_rgb ) ;  ?>">
     <!-- featured category sports -->
-    <div class="category-featured sports">
+    <div class="category-featured sports container-tab">
         <nav class="navbar nav-menu show-brand">
           <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->

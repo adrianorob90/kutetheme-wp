@@ -36,7 +36,7 @@ vc_map( array(
         		__( '4 Products', 'kutetheme' ) => '4',
         		__( '6 Products', 'kutetheme' ) => '6',
         	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
+        	'description' => __( 'The total number of pages.', 'kutetheme' )
         ),
         array(
         	'type' => 'dropdown',
@@ -48,7 +48,7 @@ vc_map( array(
         		__( 'New arrivals', 'kutetheme' ) => 'arrival',
         		__( 'Most Reviews', 'kutetheme' ) => 'review'
         	),
-        	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
+        	'description' => __( 'Select type query of product', 'kutetheme' )
         ),
         array(
         	'type' => 'dropdown',
@@ -145,13 +145,13 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
         }
         
         if( $types  == 'review' ) {
-            add_filter( 'posts_clauses', array( __CLASS__, 'order_by_rating_post_clauses' ) );
+            add_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
         }
         
         $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $query, $atts ));
         
         if($types == 'review'){
-            remove_filter( 'posts_clauses', array( __CLASS__, 'order_by_rating_post_clauses' ) );
+            remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
         }
         
         if ( $products->have_posts() ) :
@@ -168,7 +168,30 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
         endif;
         return ob_get_clean();
     }
-    function kt_thumbnail_size(){
-        return '248x303';
-    }
+    /**
+	 * order_by_rating_post_clauses function.
+	 *
+	 * @access public
+	 * @param array $args
+	 * @return array
+	 */
+	public function order_by_rating_post_clauses( $args ) {
+		global $wpdb;
+
+		$args['fields'] .= ", AVG( $wpdb->commentmeta.meta_value ) as average_rating ";
+
+		$args['where'] .= " AND ( $wpdb->commentmeta.meta_key = 'rating' OR $wpdb->commentmeta.meta_key IS null ) ";
+
+		$args['join'] .= "
+			LEFT OUTER JOIN $wpdb->comments ON($wpdb->posts.ID = $wpdb->comments.comment_post_ID)
+			LEFT JOIN $wpdb->commentmeta ON($wpdb->comments.comment_ID = $wpdb->commentmeta.comment_id)
+		";
+
+		$args['orderby'] = "average_rating DESC, $wpdb->posts.post_date DESC";
+
+		$args['groupby'] = "$wpdb->posts.ID";
+
+		return $args;
+	}
+
 }

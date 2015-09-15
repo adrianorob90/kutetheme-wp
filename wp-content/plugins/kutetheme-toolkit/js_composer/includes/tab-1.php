@@ -259,7 +259,7 @@
                         ?>
                         <!-- tab product -->
                         <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
-                            <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                            <ul class="product-list tab-owl owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php 
                                 while ( $products->have_posts() ) : $products->the_post();
                                     wc_get_template_part( 'content', 'product-tab' );

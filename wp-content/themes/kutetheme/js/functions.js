@@ -49,36 +49,75 @@
         
         $this.owlCarousel(config);
     }
+    
+    function kt_lazy( $lazy ){
+        $lazy.each( function($index, $element){
+            $element = jQuery( $element);
+            var $item = $element.closest( 'li' );
+            var $style = $item.attr("style");
+            var delay = $index * 300;
+            $item.attr("style",$style +
+                      "-webkit-animation-delay:" + delay + "ms;"
+                    + "-moz-animation-delay:" + delay + "ms;"
+                    + "-o-animation-delay:" + delay + "ms;"
+                    + "animation-delay:" + delay + "ms;"
+            ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $item.removeClass('slideInTop animated');
+                $item.attr("style", $style);
+            }); 
+            
+            if( $element.is( 'img' ) ){
+                var $url = $element.data('src');
+                $element.attr( 'src', $url );
+            }else{
+                var $url = $element.data('src');
+                $element.addClass( 'kt-lazy-background' );
+                $element.css( 'background', 'url("'+ $url+'")' );
+            }
+        } );
+    }
+    jQuery(document).ready(function(){
+        var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
+        kt_lazy( first_lazy ); 
+    });
+    
     /**==============================
     ***  Effect tab category
     ===============================**/
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      var $this = jQuery(this);
-      var $container = $this.closest('.container-tab');
-      var $href = $this.attr('href');
-      var $tab_active = $container.find($href);
-      var $item_active = $tab_active.find( '.owl-item.active' );
-      var $carousel_active = $tab_active.find('.owl-carousel');
-      
-        if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
-          settingCarousel($carousel_active);
-        }else{
-            $item_active.each(function($i){
-                var $item = jQuery(this);
-                var $style = $item.attr("style");
-                var delay = $i * 300;
-                $item.attr("style",$style +
-                          "-webkit-animation-delay:" + delay + "ms;"
-                        + "-moz-animation-delay:" + delay + "ms;"
-                        + "-o-animation-delay:" + delay + "ms;"
-                        + "animation-delay:" + delay + "ms;"
-                ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                    $item.removeClass('slideInTop animated');
-                    $item.attr("style", $style);
-                }); 
-            });
+        var $this = jQuery(this);
+        var $container = $this.closest('.container-tab');
+        var $href = $this.attr('href');
+        var $tab_active = $container.find($href);
+        var $item_active = $tab_active.find( '.owl-item.active' );
+        var $carousel_active = $tab_active.find('.owl-carousel');
+        
+        if( $carousel_active.length > 0 ){
+            if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
+              settingCarousel( $carousel_active );
+            }else{
+                $item_active.each(function($i){
+                    var $item = jQuery(this);
+                    var $style = $item.attr("style");
+                    var delay = $i * 300;
+                    $item.attr("style",$style +
+                              "-webkit-animation-delay:" + delay + "ms;"
+                            + "-moz-animation-delay:" + delay + "ms;"
+                            + "-o-animation-delay:" + delay + "ms;"
+                            + "animation-delay:" + delay + "ms;"
+                    ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $item.removeClass('slideInTop animated');
+                        $item.attr("style", $style);
+                    }); 
+                });
+            }
         }
+        
+        var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
+        
+        kt_lazy( $lazy );
     });
+    
     
     /* ---------------------------------------------
      Woocommercer Quantily
@@ -203,9 +242,16 @@
             $('#size_chart').fancybox();
         }
         /** OWL CAROUSEL**/
-        $( ".active .owl-carousel, .latest-deal-content .owl-carousel, .brand-showcase-box .owl-carousel, .latest-deals-product .owl-carousel, .blog-list-wapper .owl-carousel, .container-testimonials .owl-carousel").each(function(index, el) {
+        $( ".owl-carousel").each(function(index, el) {
             var $this = $(this);
-            settingCarousel($this);
+            if( $this.hasClass( 'tab-owl' ) ){
+                var $tab_panel = $this.closest( '.tab-panel' );
+                if( $tab_panel.hasClass( 'active' ) ){
+                    settingCarousel($this);
+                }
+            }else{
+                settingCarousel($this);
+            }
         });
         
         /*
