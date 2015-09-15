@@ -37,7 +37,18 @@
        }
     });
 
-    
+    function settingCarousel($this){
+        var config = $this.data();
+        config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
+        config.smartSpeed="300";
+        config.lazyLoad = true;
+        if( $this.hasClass('owl-style2') ){
+            config.animateOut="fadeOut";
+            config.animateIn="fadeIn";    
+        }
+        
+        $this.owlCarousel(config);
+    }
     /**==============================
     ***  Effect tab category
     ===============================**/
@@ -46,23 +57,29 @@
       var $container = $this.closest('.container-tab');
       var $href = $this.attr('href');
       var $tab_active = $container.find($href);
-      var $item_active = $tab_active.find('.owl-item.active');
-      //$item_active.find('img.lazy').trigger('load_lazy');
-      $item_active.each(function($i){
-            var $item = jQuery(this);
-            var $style = $item.attr("style");
-            var delay = $i * 300;
-            $item.attr("style",$style +
-                      "-webkit-animation-delay:" + delay + "ms;"
-                    + "-moz-animation-delay:" + delay + "ms;"
-                    + "-o-animation-delay:" + delay + "ms;"
-                    + "animation-delay:" + delay + "ms;"
-            ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                $item.removeClass('slideInTop animated');
-                $item.attr("style", $style);
-            }); 
-        });
+      var $item_active = $tab_active.find( '.owl-item.active' );
+      var $carousel_active = $tab_active.find('.owl-carousel');
+      
+        if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
+          settingCarousel($carousel_active);
+        }else{
+            $item_active.each(function($i){
+                var $item = jQuery(this);
+                var $style = $item.attr("style");
+                var delay = $i * 300;
+                $item.attr("style",$style +
+                          "-webkit-animation-delay:" + delay + "ms;"
+                        + "-moz-animation-delay:" + delay + "ms;"
+                        + "-o-animation-delay:" + delay + "ms;"
+                        + "animation-delay:" + delay + "ms;"
+                ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $item.removeClass('slideInTop animated');
+                    $item.attr("style", $style);
+                }); 
+            });
+        }
     });
+    
     /* ---------------------------------------------
      Woocommercer Quantily
      --------------------------------------------- */
@@ -186,29 +203,18 @@
             $('#size_chart').fancybox();
         }
         /** OWL CAROUSEL**/
-        $(".owl-carousel").each(function(index, el) {
+        $(".active .owl-carousel, .latest-deal-content .owl-carousel, .brand-showcase-box .owl-carousel").each(function(index, el) {
             var $this = $(this);
-            var config = $this.data();
-            config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
-            config.smartSpeed="300";
-            config.lazyLoad = true;
-            if( $this.hasClass('owl-style2') ){
-                config.animateOut="fadeOut";
-                config.animateIn="fadeIn";    
-            }
-            
-            config.onTranslate = function(){
-                var $active_item = $this.find( '.owl-item.active');
-                $active_item.find('img.lazy').trigger('load_lazy');
-            }
-            $this.owlCarousel(config);
-            
+            settingCarousel($this);
         });
+        
+        /*
         jQuery(document).on('click', '.owl-next, .owl-prev', function(){
             var $carousel_container = jQuery(this).closest('.owl-loaded');
             $carousel_container.find('.owl-item.active img.lazy').trigger('load_lazy');
             
         });
+        */
         $(".owl-carousel-vertical").each(function(index, el) {
           var config = $(this).data();
           config.navText = ['<span class="icon-up"></spam>','<span class="icon-down"></span>'];

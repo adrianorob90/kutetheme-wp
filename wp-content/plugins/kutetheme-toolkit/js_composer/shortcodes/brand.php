@@ -283,7 +283,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                                         			 *
                                                         			 * @hooked woocommerce_template_loop_product_thumbnail - 10
                                                         			 */
-                                                        			do_action( 'kt_loop_product_thumbnail' );
+                                                        			echo woocommerce_get_product_thumbnail();
                                                         		?>
                                                             </a>
                                                         </div>
