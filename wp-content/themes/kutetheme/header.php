@@ -19,11 +19,6 @@
 	<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
-	<script type="text/javascript">
-		jQuery(document).ready(function(){
-		    jQuery('.cart-block').scrollbar();
-		});
-	</script>
 </head>
 
 <body <?php body_class(); ?>>
