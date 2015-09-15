@@ -788,7 +788,7 @@ if ( ! function_exists( 'kt_woocommerce_image_dimensions' ) ) {
         $thumbnail = array(
             'width'     => '100',   // px
             'height'    => '122',   // px
-            'crop'      => 0        // false
+            'crop'      => 1        // false
         );
     
         // Image sizes
