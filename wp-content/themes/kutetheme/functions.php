@@ -265,69 +265,6 @@ function kt_widgets_init() {
 add_action( 'widgets_init', 'kt_widgets_init' );
 
 
-if ( ! function_exists( 'kt_fonts_url' ) ) :
-/**
- * Register Google fonts for Kute Theme.
- *
- * @since Kute Theme 1.0
- *
- * @return string Google fonts URL for the theme.
- */
-function kt_fonts_url() {
-	$fonts_url = '';
-	$fonts     = array();
-	$subsets   = 'latin,latin-ext';
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Noto Sans, translate this to 'off'. Do not translate into your own language.
-	 */
-	if ( 'off' !== _x( 'on', 'Noto Sans font: on or off', 'kutetheme' ) ) {
-		$fonts[] = 'Noto Sans:400italic,700italic,400,700';
-	}
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Noto Serif, translate this to 'off'. Do not translate into your own language.
-	 */
-	if ( 'off' !== _x( 'on', 'Noto Serif font: on or off', 'kutetheme' ) ) {
-		$fonts[] = 'Noto Serif:400italic,700italic,400,700';
-	}
-
-	/*
-	 * Translators: If there are characters in your language that are not supported
-	 * by Inconsolata, translate this to 'off'. Do not translate into your own language.
-	 */
-	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'kutetheme' ) ) {
-		$fonts[] = 'Inconsolata:400,700';
-	}
-
-	/*
-	 * Translators: To add an additional character subset specific to your language,
-	 * translate this to 'greek', 'cyrillic', 'devanagari' or 'vietnamese'. Do not translate into your own language.
-	 */
-	$subset = _x( 'no-subset', 'Add new subset (greek, cyrillic, devanagari, vietnamese)', 'kutetheme' );
-
-	if ( 'cyrillic' == $subset ) {
-		$subsets .= ',cyrillic,cyrillic-ext';
-	} elseif ( 'greek' == $subset ) {
-		$subsets .= ',greek,greek-ext';
-	} elseif ( 'devanagari' == $subset ) {
-		$subsets .= ',devanagari';
-	} elseif ( 'vietnamese' == $subset ) {
-		$subsets .= ',vietnamese';
-	}
-
-	if ( $fonts ) {
-		$fonts_url = add_query_arg( array(
-			'family' => urlencode( implode( '|', $fonts ) ),
-			'subset' => urlencode( $subsets ),
-		), '//fonts.googleapis.com/css' );
-	}
-
-	return $fonts_url;
-}
-endif;
 
 /**
  * JavaScript Detection.
@@ -348,9 +285,7 @@ add_action( 'wp_head', 'kt_javascript_detection', 0 );
  */
 function kt_scripts() {
 	// Add custom fonts, used in the main stylesheet.
-	//wp_enqueue_style( 'kt-fonts', kt_fonts_url(), array(), null );
     
-	
 
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'kt-ie', get_template_directory_uri() . '/css/ie.css', array( 'kt-style' ), '1.0' );
@@ -367,22 +302,14 @@ function kt_scripts() {
     
     wp_enqueue_style( 'kt-font-awesome', get_template_directory_uri() . '/libs/font-awesome/css/font-awesome.min.css' );
     
-    wp_enqueue_style( 'kt-select2', get_template_directory_uri() . '/libs/select2/css/select2.min.css' );
-    
-    wp_enqueue_style( 'kt-bxslider', get_template_directory_uri() . '/libs/jquery.bxslider/jquery.bxslider.css' );
-    
     wp_enqueue_style( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.css' );
     
     wp_enqueue_style( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.css' );
     
     wp_enqueue_style( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.css' );
-    
-    wp_enqueue_style( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.css' );
-    wp_enqueue_style( 'kt-scrollbar', get_template_directory_uri() . '/libs/jquery.scrollbar/jquery.scrollbar.css' );
     wp_enqueue_style( 'kt-style', get_template_directory_uri() . '/css/style.css', 
         array( 
             'kt-bootstrap', 
-            'kt-select2', 
             'kt-reset', 
             'kt-responsive', 
             'kt-animate',
@@ -411,19 +338,11 @@ function kt_scripts() {
     
     wp_enqueue_script( 'kt-bootstrap', get_template_directory_uri() . '/libs/bootstrap/js/bootstrap.min.js', array( 'jquery' ) );
     
-    wp_enqueue_script( 'kt-select2', get_template_directory_uri() . '/libs/select2/js/select2.min.js', array( 'jquery' ) );
-    
-    wp_enqueue_script( 'kt-bxslider', get_template_directory_uri() . '/libs/jquery.bxslider/jquery.bxslider.min.js', array( 'jquery' ) );
-    
     wp_enqueue_script( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.js', array( 'jquery' ) );
     
     wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
     
-    //wp_enqueue_script( 'kt-lazy-load', get_template_directory_uri() . '/libs/lazy/jquery.lazyload.min.js', array( 'jquery' ) );
-    
     wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
-    wp_enqueue_script( 'kt-easyzoom', get_template_directory_uri() . '/libs/easyzoom/easyzoom.js', array( 'jquery' ) );
-    wp_enqueue_script( 'kt-jquery.scrollbar.min', get_template_directory_uri() . '/libs/jquery.scrollbar/jquery.scrollbar.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );
     
