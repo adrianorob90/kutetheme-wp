@@ -203,7 +203,7 @@
             $('#size_chart').fancybox();
         }
         /** OWL CAROUSEL**/
-        $(".active .owl-carousel, .latest-deal-content .owl-carousel, .brand-showcase-box .owl-carousel").each(function(index, el) {
+        $( ".active .owl-carousel, .latest-deal-content .owl-carousel, .brand-showcase-box .owl-carousel, .latest-deals-product .owl-carousel, .blog-list-wapper .owl-carousel, .container-testimonials .owl-carousel").each(function(index, el) {
             var $this = $(this);
             settingCarousel($this);
         });
