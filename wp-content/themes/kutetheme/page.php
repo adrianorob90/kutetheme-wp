@@ -32,7 +32,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
 
 ?>
 	<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
-		<main id="main" class="site-main" role="main">
+		<main id="main" class="site-main">
 	        <div class="container">
 	        	<?php
 	        	if($kt_show_page_breadcrumb=='show'){

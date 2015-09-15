@@ -1314,6 +1314,12 @@ span.notify-right{
 /*-----------------
  [ 3.4.2 Main menu]
  */
+ #main-menu .dropdown-menu>.active>a, 
+ #main-menu .dropdown-menu>.active>a:focus, 
+ #main-menu .dropdown-menu>.active>a:hover{
+  background: none;
+  color: #ff3366;
+ }
 #main-menu{
   padding: 0;
   margin-left: -15px;
@@ -1392,6 +1398,7 @@ span.notify-right{
 }
 #main-menu .dropdown-menu>li>a:hover{
   color: #ff3366;
+  background: none;
 }
 #main-menu .dropdown-menu>li{
   line-height: 32px;
@@ -2325,6 +2332,8 @@ span.notify-right{
   text-align: right;
   display: inline-block;
   font-size: 13px;
+  line-height: 18px;
+  margin-top: 3px;
 }
 .product-list li .product-star .fa{
   margin-right: 4px;
@@ -5768,6 +5777,12 @@ span.notify-right{
 .vertical-menu-list .mega-product .product-star{
       color: #ff9900;
       font-size: 13px;
+}
+.vertical-menu-list .mega-product .product-star .fa{
+  margin-right: 4px;
+}
+.vertical-menu-list .mega-product .product-star .fa:last-child{
+  margin-right: 0;
 }
 .band-logo.no-product h3{
   background: #eaeaea;

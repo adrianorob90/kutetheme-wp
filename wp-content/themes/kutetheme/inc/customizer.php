@@ -450,7 +450,10 @@ function kt_get_color_scheme_css( $colors ) {
 	.blog-list .blog-list-wapper ul li .readmore a,
 	#main-menu .dropdown-menu>li>a:hover,
 	.woocommerce div.summary  .yith-wcwl-add-to-wishlist .show a:hover,
-	.woocommerce div.summary .compare:hover{
+	.woocommerce div.summary .compare:hover,
+	#main-menu .dropdown-menu>.active>a, 
+ 	#main-menu .dropdown-menu>.active>a:focus, 
+ 	#main-menu .dropdown-menu>.active>a:hover{
 		color: <?php echo $colors['main_color'] ?>
 	}
     <?php

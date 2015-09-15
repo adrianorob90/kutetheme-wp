@@ -1135,8 +1135,8 @@ Cart
 	background: #fff;
 }
 .woocommerce.woo-quickview span.onsale{
-	top: 27px;
-    left: 11px;
+	top: 10px;
+    left: 10px;
 }
 .woo-quickview .images{
 	width: 40%;
