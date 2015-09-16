@@ -62,7 +62,7 @@ function kt_get_rating_html($rating_html, $rating){
     if ( ! is_numeric( $rating ) ) {
         $rating = $product->get_average_rating();
     }
-    if($rating <=0) return'';
+    //if($rating <=0) return'';
     $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
     for($i = 1;$i <= 5 ;$i++){
         if($rating >= $i){

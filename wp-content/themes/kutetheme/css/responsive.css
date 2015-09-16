@@ -56,16 +56,10 @@
 		margin: 0;
 		text-align: center;
 	}
-	.product-list li .product-star{
-		float: left;
-	}
 	.latest-deals .count-down-time span{
 		font-size: 12px;
 	}
-	.product-list li .content_price .price{
-		float: left;
-		width: 100%;
-	}
+	
 	.product-list.grid li{
 		width: 50%;
 	}
@@ -124,6 +118,12 @@
 	.box-products .box-product-content .box-product-list .product-list li{
 		padding-bottom: 5px;
 	}
+	.product-featured .banner-featured {
+		display: none;
+	}
+	.product-featured .product-featured-content .product-featured-list{
+		margin-left: 0;
+	}
 }
 /*--------------------
 [3. Styles for devices(>=768px and <=992px)]
@@ -145,12 +145,13 @@
 		text-align: center;
 	}
 	.main-header .header-search-box{
-		padding-left: 30px;
+		padding-left: 15px;
 		padding-right: 15px;
 	}
 	.main-header .shopping-cart-box{
+		padding: 0 15px;
 		margin-left: 0;
-		width: 37.667%;
+		margin-right: 0;
 	}
 	.box-vertical-megamenus{
 		padding-bottom: 0;
@@ -259,6 +260,8 @@
 	}
 	.product-list li .product-star{
 		float: left;
+		width: 100%;
+		text-align: left;
 	}
 	.product-tab .nav-tab>li{
 		width: 100%;
@@ -309,6 +312,9 @@
 	}
 	.box-tab-category{
 	  padding: 0 10px;
+	}
+	.popular-tabs .product-list li .product-star{
+		display: none;
 	}
 }
 /*--------------------
@@ -724,6 +730,10 @@
 	}
 	#introduce-box .introduce-title{
 		margin-top: 30px;
+	}
+	.home1-slider{
+		padding: 0 15px!important;
+		margin: 0!important;
 	}
 }
 /*--------------------
