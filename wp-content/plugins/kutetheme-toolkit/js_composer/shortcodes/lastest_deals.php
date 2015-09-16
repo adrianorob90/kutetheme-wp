@@ -78,27 +78,42 @@ vc_map( array(
         ),
         // Carousel
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
 			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
-            'group' => __( 'Carousel settings', 'kutetheme' )
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' )
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' )
+            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
 		),
         array(
 			"type" => "kt_number",
@@ -119,12 +134,17 @@ vc_map( array(
             'group' => __( 'Carousel settings', 'kutetheme' )
 	  	),
         array(
-			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'std' => 1,
+            'heading' => __( 'Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
-            'group' => __( 'Carousel responsive', 'kutetheme' )
+            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
 		),
         array(
 			"type" => "kt_number",
@@ -184,7 +204,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             'nav' => "true",
             'loop'  => "true",
             //Default
-            'use_responsive' => 0,
+            'use_responsive' => 1,
             'items_destop' => 5,
             'items_tablet' => 3,
             'items_mobile' => 1,
@@ -235,8 +255,18 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 'nav'           => "true",
                 'dots'          => "false"
             );
-            if(!$use_responsive){
-                $arr = array('0' => array("items" => $items_mobile), '768' => array("items" => $items_tablet), '992' => array("items" => $items_destop));
+            if( $use_responsive ){
+                $arr = array(
+                    '0' => array(
+                        "items" => $items_mobile
+                    ), 
+                    '768' => array(
+                        "items" => $items_tablet
+                    ), 
+                    '992' => array(
+                        "items" => $items_destop
+                    )
+                );
                 $data_responsive = json_encode($arr);
                 $data_carousel["responsive"] = $data_responsive;
             }else{
@@ -263,8 +293,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 </span>
                 <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                      <?php
-                        //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
-        				add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                        add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                         while ( $query_product->have_posts() ) : $query_product->the_post(); $id = get_the_ID(); global $post;  ?>
                             <li>
@@ -273,7 +302,6 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                             </li>
                         <?php
         				endwhile; // end of the loop.
-                        //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_204x249' ) );
                         remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                      ?>
@@ -285,8 +313,5 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
-    }
-    public function kt_thumbnail_size_204x249(){
-        return '204x249';
     }
 }

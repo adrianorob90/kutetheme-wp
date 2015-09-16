@@ -242,13 +242,23 @@
                                 "autoheight" => 'false',
                                 'nav' => 'true',
                                 'dots' => 'false',
-                                'loop' => 'false',
+                                'loop' => $loop,
                                 'autoplayTimeout' => 1000,
                                 'autoplayHoverPause' => 'true'
                             );
                             
-                            if( ! $use_responsive){
-                                $arr = array('0' => array("items" => $items_mobile), '768' => array("items" => $items_tablet), '992' => array("items" => $items_destop));
+                            if( $use_responsive){
+                                $arr = array(
+                                    '0' => array(
+                                        "items" => $items_mobile
+                                    ), 
+                                    '768' => array(
+                                        "items" => $items_tablet
+                                    ), 
+                                    '992' => array(
+                                        "items" => $items_destop
+                                    )
+                                );
                                 $data_responsive = json_encode($arr);
                                 $data_carousel["responsive"] = $data_responsive;
                             }else{

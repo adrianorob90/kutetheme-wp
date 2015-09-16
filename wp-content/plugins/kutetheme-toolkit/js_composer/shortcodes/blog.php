@@ -51,27 +51,39 @@ vc_map( array(
         ),
         // Carousel
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
 			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
@@ -97,10 +109,14 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'std' => 1,
+            'heading' => __( 'Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
@@ -167,7 +183,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'nav' => 'true',
             'loop'  => 'true',
             //Default
-            'use_responsive' => 0,
+            'use_responsive' => 1,
             'items_destop' => 4,
             'items_tablet' => 2,
             'items_mobile' => 1,
@@ -193,12 +209,12 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             "autoheight" => 'false',
             'nav'        => 'true',
             'dots'       => 'false',
-            'loop'       => 'false',
+            'loop'       => $loop,
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
         
-        if( ! $use_responsive){
+        if( $use_responsive ){
             $arr = array( 
                 '0'   => array( 
                     "items" => $items_mobile 
@@ -267,9 +283,10 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         <!-- ./blog list -->
         <?php
         endif;
-        $result = ob_get_clean();
         wp_reset_query();
         wp_reset_postdata();
+        
+        $result = ob_get_clean();
         return $result;
     }
 }

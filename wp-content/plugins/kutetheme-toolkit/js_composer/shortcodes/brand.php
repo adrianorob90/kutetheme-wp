@@ -16,12 +16,16 @@ vc_map( array(
             'description' => __( 'Show tittle when "show product" is not checked', 'kutetheme' )
         ),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'true',
 			'heading' => __( 'Show product', 'kutetheme' ),
 			'param_name' => 'show_product',
-			'value' => array( __( 'Yes, Box product will show by brand. If It\'s checked then Null value title is not allow', 'kutetheme' ) => 'true' ),
             'admin_label' => false,
-            'std' => 'true'
+            'description' => __( 'Yes, Box product will show by brand. If It\'s checked then Null value title is not allow', 'kutetheme' )
 		),
         array(
             "type" => "dropdown",
@@ -51,27 +55,39 @@ vc_map( array(
         	"description" => __("Designates the ascending or descending order.",'kutetheme')
         ),// Carousel
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
 			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
@@ -97,10 +113,14 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'std' => 1,
+            'heading' => __( 'Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
@@ -109,7 +129,7 @@ vc_map( array(
 			"type" => "kt_number",
 			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
 			"param_name" => "items_destop",
-			"value" => "4",
+			"value" => "8",
             "suffix" => __("item", 'kutetheme'),
 			"description" => __('The number of items on destop', 'kutetheme'),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
@@ -119,7 +139,7 @@ vc_map( array(
 			"type" => "kt_number",
 			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
 			"param_name" => "items_tablet",
-			"value" => "2",
+			"value" => "6",
             "suffix" => __("item", 'kutetheme'),
 			"description" => __('The number of items on destop', 'kutetheme'),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
@@ -129,7 +149,7 @@ vc_map( array(
 			"type" => "kt_number",
 			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
 			"param_name" => "items_mobile",
-			"value" => "1",
+			"value" => "4",
             "suffix" => __("item", 'kutetheme'),
 			"description" => __('The numbers of item on destop', 'kutetheme'),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
@@ -174,6 +194,12 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'nav' => 'true',
             'loop'  => 'true',
             
+            //Default
+            'use_responsive' => 1,
+            'items_destop' => 8,
+            'items_tablet' => 6,
+            'items_mobile' => 4,
+            
         ), $atts );
         extract($atts);
         
@@ -192,10 +218,28 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             "autoheight" => 'false',
             'nav'        => 'true',
             'dots'       => 'false',
-            'loop'       => 'false',
+            'loop'       => $loop,
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
+        
+        if( $use_responsive){
+            $arr = array( 
+                '0'   => array( 
+                    "items" => $items_mobile 
+                ), 
+                '768' => array( 
+                    "items" => $items_tablet 
+                ), 
+                '992' => array(
+                    "items" => $items_destop
+                )
+            );
+            $data_responsive = json_encode($arr);
+            $data_carousel["responsive"] = $data_responsive;
+        }else{
+            $data_carousel['items'] = 8;
+        }
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         ob_start();
         //Set up the taxonomy object and get terms

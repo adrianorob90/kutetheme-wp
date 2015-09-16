@@ -121,29 +121,39 @@ vc_map( array(
         
         // Carousel
         array(
-			'type' => 'checkbox',
-			'heading' => __( 'AutoPlay', 'kutetheme' ),
-			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'heading' => __( 'AutoPlay', 'kutetheme' ),
+            'param_name' => 'autoplay',
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
             "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
             'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
             'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
             "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
@@ -172,14 +182,20 @@ vc_map( array(
             "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			'type' => 'checkbox',
-            'heading' => __( 'Don\'t Use Carousel Responsive', 'kutetheme' ),
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'heading' => __( 'Use Carousel Responsive', 'kutetheme' ),
 			'param_name' => 'use_responsive',
-			'value' => array( __( "Don't use Responsive", 'kutetheme' ) => 'false' ),
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
             'group' => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency" => array(
+                "element" => "tabs_type",
+                "value" => array( 'tab-1')
+            ),
 		),
         array(
 			"type" => "kt_number",
@@ -218,7 +234,6 @@ vc_map( array(
 			'type' => 'css_editor',
 			'heading' => __( 'Css', 'js_composer' ),
 			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
 			'group' => __( 'Design options', 'js_composer' ),
             'admin_label' => false,
 		),
@@ -336,9 +351,9 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             'css_animation' => '',
             'el_class' => '',
             'nav' => 'true',
-            'loop'  => 'true',
+            'loop'  => 'false',
             //Default
-            'use_responsive' => 0,
+            'use_responsive' => 1,
             'items_destop' => 4,
             'items_tablet' => 2,
             'items_mobile' => 1,

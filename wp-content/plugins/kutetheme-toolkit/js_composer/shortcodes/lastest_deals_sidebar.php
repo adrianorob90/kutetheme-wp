@@ -58,29 +58,41 @@ vc_map( array(
 			'group' => __( 'Design options', 'js_composer' )
 		),
         
-        // Carousel
+        // Carouse
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
 			'heading' => __( 'AutoPlay', 'kutetheme' ),
 			'param_name' => 'autoplay',
-			'value' => array( __( 'Yes, please', 'kutetheme' ) => 'true' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
-            'admin_label' => false,
+            'admin_label' => false
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Navigation', 'kutetheme' ),
 			'param_name' => 'navigation',
-			'value' => array( __( "Don't use Navigation", 'kutetheme' ) => 'false' ),
-            'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
-			'type' => 'checkbox',
+			'type' => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std' => 'false',
             'heading' => __( 'Loop', 'kutetheme' ),
 			'param_name' => 'loop',
-			'value' => array( __( "Loop", 'kutetheme' ) => 'false' ),
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group' => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
@@ -166,7 +178,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
                 "navigation" => $navigation,
                 "slidespeed" => $slidespeed,
                 "autoheight" => "false",
-                "loop"       => "false",
+                "loop"       => $loop,
                 "dots"       => "false",
                 'nav'        => "true",
                 "autoplayTimeout" => 1000,
