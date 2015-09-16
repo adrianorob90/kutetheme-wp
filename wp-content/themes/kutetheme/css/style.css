@@ -5651,9 +5651,6 @@ span.notify-right{
     float: left;
     display: inline-block;
 }
-.product-list li .content_price{
-    height: 23px;
-}
 
 .option2 .deal-product .deal-product-content .content_price del{
     float: none;

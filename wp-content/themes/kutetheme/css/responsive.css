@@ -316,6 +316,10 @@
 	.popular-tabs .product-list li .product-star{
 		display: none;
 	}
+	div.home1-slider{
+		padding: 0 15px!important;
+		margin: 0!important;
+	}
 }
 /*--------------------
 [4. Styles for devices(>=481px and <=767px)]
@@ -731,7 +735,7 @@
 	#introduce-box .introduce-title{
 		margin-top: 30px;
 	}
-	.home1-slider{
+	div.home1-slider{
 		padding: 0 15px!important;
 		margin: 0!important;
 	}

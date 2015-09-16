@@ -777,7 +777,7 @@
 	padding: 0;
 	background: #fafafa;
 	float: left;
-	margin-left: 10px;
+	margin-right: 10px;
 }
 .woocommerce div.product form.cart div.quantity table{
 	width: 100%;
@@ -818,6 +818,7 @@
 	width: auto;
 	height: auto;
 	background: transparent;
+	float: left;
 }
 .woocommerce .summary  .yith-wcwl-add-to-wishlist .show a{
 	margin-left: 0;
@@ -869,6 +870,7 @@
 	line-height: 24px;
 	margin-left: 10px;
 	display: inline-block;
+	float: left;
 }
 .woocommerce .summary .compare:before{
 	font-family: 'FontAwesome';
@@ -1005,6 +1007,8 @@
 	border-top: 1px solid #eaeaea;
 	margin-top: 15px;
 	padding-top: 15px;
+	width: 100%;
+	float: left;
 }
 .woocommerce div.product .utilities .fa{
 	font-size: 18px;
@@ -1328,9 +1332,10 @@ Cart
 	color: #ccc;
 	cursor: pointer;
 	float: left;
+	margin-right: 10px;
 }
 .quantity-plus{
-	margin-left: 10px;
+	margin-right: 0;
 }
 .quantity-plus:hover,
 .quantity-minus:hover{
@@ -1444,4 +1449,10 @@ del span.amount{
 
 .widget_layered_nav_filters a{
 	margin-right: 10px;
+}
+.woocommerce div.product {
+    margin-bottom: 0;
+    position: relative;
+    float: left;
+    width: 100%;
 }
