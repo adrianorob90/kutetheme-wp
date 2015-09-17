@@ -129,6 +129,19 @@
 [3. Styles for devices(>=768px and <=992px)]
 */
 @media (min-width: 768px) and (max-width: 992px) {
+	.latest-deals .count-down-time span{
+		font-size: 12px;
+		height: 20px;
+		line-height: 22px;
+	}
+	.latest-deals .count-down-time span:after{
+		height: 20px;
+		left: 19px;
+	}
+	.latest-deals .count-down-time{
+		padding-bottom: 20px;
+	}
+
 	.home .box-vertical-megamenus .vertical-menu-content{
 		display: none;
 	}
@@ -312,6 +325,9 @@
 	}
 	.box-tab-category{
 	  padding: 0 10px;
+	}
+	.box-tab-category .category-featured .product-featured{
+		background: #fff!important;
 	}
 	.popular-tabs .product-list li .product-star{
 		display: none;

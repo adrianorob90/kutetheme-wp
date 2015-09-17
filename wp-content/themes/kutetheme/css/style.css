@@ -57,6 +57,9 @@
     padding-right: 25px!important;
     border: 1px solid #eaeaea;
 }
+select::-ms-expand {
+    display: none;
+}
 .box-tab-category{
   padding: 0 15px;
 }
