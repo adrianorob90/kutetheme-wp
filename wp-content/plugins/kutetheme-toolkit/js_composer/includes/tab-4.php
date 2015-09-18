@@ -60,54 +60,56 @@
         </nav>
        <div class="product-featured clearfix" <?php echo isset($style) ? $style : '';  ?>>
             <div class="row">
-                <div class="col-sm-2 sub-category-wapper">
-                    <ul class="sub-category-list">
-                        <?php foreach( $subcats as $cate ): ?>
-                            <?php $cate_link = get_term_link($cate); ?>
-                            <li><a href="<?php echo $cate_link; ?>"><?php echo $cate->name ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                <?php
-                    $banner_left_args = array(
-                        'post_type' => 'attachment',
-                        'include'   => $banner_left,
-                        'orderby'   => 'post__in'
-                    );
-                    $list_banner_left = get_posts( $banner_left_args );
-                 ?>  
-                <?php if( is_array( $list_banner_left ) && $list_banner_left ): ?>
-                <?php $number_per_slide = 8; ?>
-                <?php 
-                    $count_banner_left = count( $list_banner_left ); 
-                    if( $count_banner_left % $number_per_slide == 0 ){
-                        $loop_time = $count_banner_left / $number_per_slide;
-                    }else{
-                        $loop_time = $count_banner_left / $number_per_slide + 1;
-                    }
-                ?>
-                <div class="col-sm-2 manufacture-list">
-                    <div class="manufacture-waper">
-                        <div class="owl-carousel-vertical" data-items="1" data-autoplay="false" data-nav="true" data-dots="false" data-loop="false">
-                            <?php for( $i = 0; $i < $loop_time; $i++ ): ?>
-                                <?php $index = $i * $number_per_slide; $next_index = ( $i + 1 ) * $number_per_slide; ?>
-                                <div class="item">
-                                    <ul>
-                                        <?php for( $index; $index < $next_index ; $index++ ): ?>
-                                            <?php if( isset( $list_banner_left[$index] ) ): $l = $list_banner_left[$index]; ?>
-                                                <li>
-                                                    <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                                                        <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
-                                                    </a>
-                                                </li>
-                                            <?php endif; ?>
-                                        <?php endfor; ?>
-                                    </ul>
-                                </div>
-                            <?php endfor; ?>
-                        </div>
+                <?php if( ! $is_phone ): ?>
+                    <div class="col-sm-2 sub-category-wapper">
+                        <ul class="sub-category-list">
+                            <?php foreach( $subcats as $cate ): ?>
+                                <?php $cate_link = get_term_link($cate); ?>
+                                <li><a href="<?php echo $cate_link; ?>"><?php echo $cate->name ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
-                </div>
+                    <?php
+                        $banner_left_args = array(
+                            'post_type' => 'attachment',
+                            'include'   => $banner_left,
+                            'orderby'   => 'post__in'
+                        );
+                        $list_banner_left = get_posts( $banner_left_args );
+                     ?>  
+                    <?php if( is_array( $list_banner_left ) && $list_banner_left ): ?>
+                        <?php $number_per_slide = 8; ?>
+                        <?php 
+                            $count_banner_left = count( $list_banner_left ); 
+                            if( $count_banner_left % $number_per_slide == 0 ){
+                                $loop_time = $count_banner_left / $number_per_slide;
+                            }else{
+                                $loop_time = $count_banner_left / $number_per_slide + 1;
+                            }
+                        ?>
+                        <div class="col-sm-2 manufacture-list">
+                            <div class="manufacture-waper">
+                                <div class="owl-carousel-vertical" data-items="1" data-autoplay="false" data-nav="true" data-dots="false" data-loop="false">
+                                    <?php for( $i = 0; $i < $loop_time; $i++ ): ?>
+                                        <?php $index = $i * $number_per_slide; $next_index = ( $i + 1 ) * $number_per_slide; ?>
+                                        <div class="item">
+                                            <ul>
+                                                <?php for( $index; $index < $next_index ; $index++ ): ?>
+                                                    <?php if( isset( $list_banner_left[$index] ) ): $l = $list_banner_left[$index]; ?>
+                                                        <li>
+                                                            <a href="<?php echo $term_link ? $term_link : ''; ?>">
+                                                                <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
+                                                            </a>
+                                                        </li>
+                                                    <?php endif; ?>
+                                                <?php endfor; ?>
+                                            </ul>
+                                        </div>
+                                    <?php endfor; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
                 <div class="col-sm-8 col-right-tab">
                     <div class="product-featured-tab-content">
@@ -238,7 +240,11 @@
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
                                <div class="row">
                                     <div class="col-sm-12 category-list-product">
-                                        <ul class="product-list row">
+                                        <? if( $is_phone ): ?>
+                                            <ul class="product-list owl-carousel" data-autoplay="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
+                                        <?php else: ?>
+                                            <ul class="product-list row">                                    
+                                        <?php endif; ?>  
                                             <?php 
                                                 while ( $products->have_posts() ) : $products->the_post();
                                                     ?>

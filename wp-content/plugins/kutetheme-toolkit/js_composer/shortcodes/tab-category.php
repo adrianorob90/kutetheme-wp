@@ -360,6 +360,11 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
         ), $atts ) );
         
          global $woocommerce_loop;
+        $is_phone = false;
+        
+        if( function_exists( 'edo_is_phone' ) && edo_is_phone() ){
+            $is_phone = true;
+        }
         
         $elementClass = array(
         	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
@@ -394,14 +399,17 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
         
         if( count( $tabs ) >0 && $term ):
             $term_link = get_term_link($term);
-            $args = array(
-               'hierarchical' => 1,
-               'show_option_none' => '',
-               'hide_empty' => 0,
-               'parent' => $term->term_id,
-               'taxonomy' => 'product_cat'
-            );
-            $subcats = get_categories($args);
+            if( ! $is_phone ){
+                $args = array(
+                   'hierarchical' => 1,
+                   'show_option_none' => '',
+                   'hide_empty' => 0,
+                   'parent' => $term->term_id,
+                   'taxonomy' => 'product_cat'
+                );
+                $subcats = get_categories($args);
+            }
+            
             
             if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/includes/'.$tabs_type.'.php' ) ){
                 if( $tabs_type == 'tab-1' ){
@@ -448,14 +456,4 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
     
     	return $args;
     }
-    /*
-    public function kt_thumbnail_size173x211(){
-        return '173x211';
-    }
-    public function kt_thumbnail_size_131x160(){
-        return '131x160';
-    }
-    public function kt_thumbnail_size175x214(){
-        return '175x214';
-    }*/
 }

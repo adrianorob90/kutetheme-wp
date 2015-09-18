@@ -1,61 +1,65 @@
 <?php
-if( isset( $banner_left ) && $banner_left ): 
-    $banner_left_args = array(
-        'post_type' => 'attachment',
-        'include'   => $banner_left,
-        'orderby'   => 'post__in'
-    );
-    $list_banner_left = get_posts( $banner_left_args );
-    ob_start();
-    foreach($list_banner_left as $l):
-    ?>
-        <li>
-            <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
-            </a>
-        </li>
-    <?php
-    endforeach;
-    $banner_carousel = ob_get_clean();
-endif;
-
 // Get products on sale
 $product_ids_on_sale = wc_get_product_ids_on_sale();
 
-$meta_query = WC()->query->get_meta_query();
-
-$deal_args = array(
-	'posts_per_page'    => 5,
-    'post_type'         => 'product',
-    'orderby'           => 'date',
-    'order'             => 'DESC',
-    'no_found_rows' 	=> 1,
-	'post_status' 		=> 'publish',
-	'meta_query' 		=> $meta_query,
-	'post__in'			=> array_merge( array( 0 ), $product_ids_on_sale ),
-    'tax_query'         => array(
-        array(
-            'taxonomy' => 'product_cat',
-            'field'    => 'id',
-            'terms'    => $term->term_id,
-            'operator' => 'IN'
-        ),
-    )
-);
-$deal_product = new WP_Query( $deal_args );
-if( $deal_product->have_posts() ){
-    //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
-    add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-    add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-    ob_start();
-    while($deal_product->have_posts()): $deal_product->the_post();
-        wc_get_template_part( 'content', 'tab-category-deal' );
-    endwhile;
-    $deal_product_tmp = ob_get_clean();
-    //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
-    remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-}
+if( ! $is_phone ):
+    if( isset( $banner_left ) && $banner_left ): 
+        $banner_left_args = array(
+            'post_type' => 'attachment',
+            'include'   => $banner_left,
+            'orderby'   => 'post__in'
+        );
+        $list_banner_left = get_posts( $banner_left_args );
+        ob_start();
+        foreach($list_banner_left as $l):
+        ?>
+            <li>
+                <a href="<?php echo $term_link ? $term_link : ''; ?>">
+                    <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
+                </a>
+            </li>
+        <?php
+        endforeach;
+        $banner_carousel = ob_get_clean();
+    endif;
+    
+    
+    
+    $meta_query = WC()->query->get_meta_query();
+    
+    $deal_args = array(
+    	'posts_per_page'    => 5,
+        'post_type'         => 'product',
+        'orderby'           => 'date',
+        'order'             => 'DESC',
+        'no_found_rows' 	=> 1,
+    	'post_status' 		=> 'publish',
+    	'meta_query' 		=> $meta_query,
+    	'post__in'			=> array_merge( array( 0 ), $product_ids_on_sale ),
+        'tax_query'         => array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'id',
+                'terms'    => $term->term_id,
+                'operator' => 'IN'
+            ),
+        )
+    );
+    $deal_product = new WP_Query( $deal_args );
+    if( $deal_product->have_posts() ){
+        //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
+        add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+        add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+        ob_start();
+        while($deal_product->have_posts()): $deal_product->the_post();
+            wc_get_template_part( 'content', 'tab-category-deal' );
+        endwhile;
+        $deal_product_tmp = ob_get_clean();
+        //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
+        remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+        remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+    }
+endif;
 ?>
 <div class="<?php echo $elementClass; ?>" id="change-color-<?php echo $id; ?>" data-target="change-color" data-color="<?php echo $main_color; ?>" data-rgb="<?php echo implode( ',', $main_color_rgb ) ;  ?>">
     <!-- featured category sports -->
@@ -252,6 +256,7 @@ if( $deal_product->have_posts() ){
                             if ( $products->have_posts() ) :?>
                             <!-- tab product -->
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
+                                <?php if( ! $is_phone ): ?>
                                 <div class="box-left">
                                     <?php if( $i % 2 ==0 ): ?>
                                         <?php if( isset( $deal_product_tmp ) && $deal_product_tmp ): ?>
@@ -288,8 +293,13 @@ if( $deal_product->have_posts() ){
                                         <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
+                                <?php endif; ?>
                                 <div class="box-right">
-                                    <ul class="product-list row">
+                                <? if( $is_phone ): ?>
+                                    <ul class="product-list owl-carousel" data-autoplay="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
+                                <?php else: ?>
+                                    <ul class="product-list row">                                    
+                                <?php endif; ?>  
                                         <?php 
                                         while ( $products->have_posts() ) : $products->the_post();
                                             ?>

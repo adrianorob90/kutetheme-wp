@@ -61,12 +61,14 @@
        <div class="product-featured clearfix" <?php echo isset($style) ? $style : '';  ?> >
             <div class="row">
                 <div class="col-sm-2 sub-category-wapper">
-                    <ul class="sub-category-list">
-                        <?php foreach( $subcats as $cate ): ?>
-                            <?php $cate_link = get_term_link($cate); ?>
-                            <li><a href="<?php echo $cate_link; ?>"><?php echo $cate->name ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
+                    <?php if( ! $is_phone ): ?>
+                        <ul class="sub-category-list">
+                            <?php foreach( $subcats as $cate ): ?>
+                                <?php $cate_link = get_term_link($cate); ?>
+                                <li><a href="<?php echo $cate_link; ?>"><?php echo $cate->name ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
                 </div>
                 <?php 
                 $current = 0;
@@ -208,25 +210,31 @@
                             if ( $products->have_posts() ) :?>
                             <!-- tab product -->
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
-                               <?php 
+                               <?php
+                               if( ! $is_phone ): 
                                     if( isset( $list_banner_left[$i] ) && $list_banner_left[$i] ){
                                         $current = $list_banner_left[$i];
                                     }
-                               ?>
-                               <?php if( $current ): ?>
-                               <?php  
-                               $att_banner_left = wp_get_attachment_image_src( $current->ID, '386x572' );  
-                               $att_banner_left_url =  is_array($att_banner_left) ? esc_url($att_banner_left[0]) : "";    ?> 
-                               <div class="box-left">
-                                   <div class="banner-img">
-                                        <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                                            <img alt="<?php  echo esc_attr($current->post_title) ?>" src="<?php echo ($att_banner_left_url); ?>" />
-                                        </a>
-                                    </div>
-                               </div>
-                               <?php endif; ?>
+                                   ?>
+                                   <?php if( $current ): ?>
+                                       <?php  
+                                       $att_banner_left = wp_get_attachment_image_src( $current->ID, '386x572' );  
+                                       $att_banner_left_url =  is_array($att_banner_left) ? esc_url($att_banner_left[0]) : "";    ?> 
+                                       <div class="box-left">
+                                           <div class="banner-img">
+                                                <a href="<?php echo $term_link ? $term_link : ''; ?>">
+                                                    <img alt="<?php  echo esc_attr($current->post_title) ?>" src="<?php echo ($att_banner_left_url); ?>" />
+                                                </a>
+                                            </div>
+                                       </div>
+                                   <?php endif; ?>
+                                <?php endif; ?>
                                <div class="box-right">
-                                   <ul class="product-list row">
+                                    <? if( $is_phone ): ?>
+                                        <ul class="product-list owl-carousel" data-autoplay="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
+                                    <?php else: ?>
+                                        <ul class="product-list row">                                    
+                                    <?php endif; ?>                                   
                                         <?php 
                                         while ( $products->have_posts() ) : $products->the_post();
                                             ?>

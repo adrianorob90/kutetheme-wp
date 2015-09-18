@@ -217,49 +217,72 @@ endif;
                             if ( $products->have_posts() ) :?>
                             <!-- tab product -->
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
-                                <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
-                                    
-                                        <div class="box-left">
-                                            <?php if ( $count_banner_left > 1 ): ?>
-                                            <div class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
-                                                <?php echo $banner_carousel; ?>
+                                <?php if( ! $is_phone ): ?>
+                                    <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
+                                            <div class="box-left">
+                                                <?php if ( $count_banner_left > 1 ): ?>
+                                                <div class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
+                                                    <?php echo $banner_carousel; ?>
+                                                </div>
+                                                <?php else: ?>
+                                                    <?php echo $banner_carousel; ?>
+                                                <?php endif; ?>
                                             </div>
-                                            <?php else: ?>
-                                                <?php echo $banner_carousel; ?>
-                                            <?php endif; ?>
-                                        </div>
+                                    <?php endif; ?>
                                 <?php endif; ?>
-                                <div class="box-right">
-                                    <ul class="product-list row">
-                                        <?php 
-                                        $j = 0;
-                                        $fullbox = "";
-                                        while ( $products->have_posts() ) : $products->the_post();
-                                            ob_start();   
+                                <?php if( ! $is_phone ): ?>
+                                    <div class="box-right">
+                                        <ul class="product-list row">
+                                            <?php 
+                                            $j = 0;
+                                            $fullbox = "";
+                                            while ( $products->have_posts() ) : $products->the_post();
+                                                ob_start();   
+                                                ?>
+                                                    <li class="col-sm-4">
+                                                    <?php
+                                                        wc_get_template_part( 'content', 'product-tab2' );
+                                                    ?>
+                                                    </li>
+                                                <?php
+                                                $html = ob_get_clean();
+                                                if( $j > 2 ){
+                                                    $fullbox .= $html;
+                                                }else{
+                                                    echo $html;
+                                                }
+                                                $j++;
+                                            endwhile; // end of the loop.
                                             ?>
+                                        </ul>
+                                    </div>
+                                    <?php if( isset( $fullbox )): ?>
+                                        <div class="box-full clearfix">
+                                            <ul class="product-list">
+                                                <?php echo $fullbox; ?>
+                                           </ul>
+                                        </div>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <div class="box-right">
+                                        <? if( $is_phone ): ?>
+                                            <ul class="product-list owl-carousel" data-autoplay="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
+                                        <?php else: ?>
+                                            <ul class="product-list row">                                    
+                                        <?php endif; ?>                                   
+                                            <?php 
+                                            while ( $products->have_posts() ) : $products->the_post();
+                                                ?>
                                                 <li class="col-sm-4">
                                                 <?php
                                                     wc_get_template_part( 'content', 'product-tab2' );
                                                 ?>
                                                 </li>
-                                            <?php
-                                            $html = ob_get_clean();
-                                            if( $j > 2 ){
-                                                $fullbox .= $html;
-                                            }else{
-                                                echo $html;
-                                            }
-                                            $j++;
-                                        endwhile; // end of the loop.
-                                        ?>
-                                    </ul>
-                                </div>
-                                <?php if( isset( $fullbox )): ?>
-                                <div class="box-full clearfix">
-                                    <ul class="product-list">
-                                        <?php echo $fullbox; ?>
-                                   </ul>
-                                </div>
+                                                <?php
+                                            endwhile; // end of the loop.
+                                            ?>
+                                       </ul>
+                                   </div>
                                 <?php endif; ?>
                             </div>
                             <?php $i++; ?>
