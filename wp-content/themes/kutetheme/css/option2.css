@@ -38,6 +38,7 @@
   border: 1px solid #eaeaea;
   overflow: hidden;
   padding-bottom: 5px;
+  margin-bottom: 1px;
 }
 .latest-deals-product .product-list li:hover{
   border: 1px solid #958457;
@@ -1081,10 +1082,13 @@
 		width: 100%;
 	}
 	.option2 .show-brand .navbar-brand{
-		width: 21%;
+		width: 25%;
 		padding-right: 30px;
 		font-size: 14px;
 		font-weight: bold;
+	}
+	.option2 .show-brand .navbar-brand img{
+		margin-right: 5px;
 	}
 	.option2 .product-featured .sub-category-list{
 		padding: 10px;

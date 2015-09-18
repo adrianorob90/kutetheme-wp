@@ -410,7 +410,7 @@ function kt_get_color_scheme_css( $colors ) {
     }
     /* Text Color */
     a,
-    .product-list li .content_price del{
+    .product-list li .content_price del,{
         color: <?php echo $colors['textcolor'] ?>;
     }
     /* Rate Color */
@@ -443,7 +443,8 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_kt_best_seller .price ins,
     .option2 .deal-product .content_price,
     .option2 .product-list li .content_price .product-price,
-    .woocommerce .wishlist_table span.amount{
+    .woocommerce .wishlist_table span.amount,
+    .widget.widget_kt_best_seller .price{
         color: <?php echo $colors['price_color'] ?>
     }
 	/* Color*/

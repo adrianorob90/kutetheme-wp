@@ -2107,6 +2107,7 @@ span.notify-right{
 .product-list li .right-block{
     padding: 0 15px;
     margin-top: 15px;
+    min-height: 46px;
 }
 .product-list li .quick-view{
     position: absolute;
@@ -2220,6 +2221,8 @@ span.notify-right{
     font-size: 18px;
     color: #ff3366;
     line-height: 24px;
+    width: 100%;
+    float: left;
 }
 .product-list li .content_price>.price>.amount{
   display: inline-block;
@@ -2227,7 +2230,8 @@ span.notify-right{
 .product-list li .content_price .price{
   display: inline-block;
   margin: 0 auto;
-  height: 20px;
+  overflow: hidden;
+  float: left;
 }
 .product-list li .content_price .price>.amount{
   line-height: 20px;
@@ -5583,6 +5587,7 @@ span.notify-right{
 .block-popular-cat .image{
   width: auto;
   display: inline-block;
+  float: left;
 }
 .block-popular-cat .sub-categories{
   width: auto;

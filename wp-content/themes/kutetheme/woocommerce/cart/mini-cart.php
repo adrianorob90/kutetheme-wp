@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
 </div>
 <?php elseif( $kt_used_header == 2 ):?>
-    <div class="col-xs-5 col-sm-2 group-button-header">
+    <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
     <?php
         if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
         <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     </div>
 <?php elseif($kt_used_header==6):?>
-     <div class="col-xs-5 col-sm-3 col-md-2 group-button-header">
+     <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
         <?php
             if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
             <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>

@@ -760,6 +760,9 @@
 [5. Styles for devices(<=480px)]
 */
 @media (max-width: 480px) {
+	.box-tab-category .category-featured .product-featured {
+	    background: #fff!important;
+	}
 	.top-banner{
 		display: none;
 	}

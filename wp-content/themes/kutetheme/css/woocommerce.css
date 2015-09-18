@@ -123,6 +123,9 @@
 	display: inline-block;
 	float: left;
 }
+.product-list.list li .quick-view .compare-button{
+	width: auto;
+}
 .product-list.list li .quick-view .clear{
 	display: none;
 }
@@ -256,6 +259,7 @@
 	margin-top: 10px;
 	width: 100%;
 	overflow: hidden;
+	color: #ff3366;
 }
 .widget_kt_best_seller ins{
 	color: #ff3366;
@@ -271,6 +275,7 @@
 .widget_kt_best_seller del{
 	font-size: 14px;
 	margin-left: 10px;
+	color: #666;
 }
 
 .widget_product_categories ul>li.current-cat>a{
@@ -772,7 +777,7 @@
 	margin-bottom: 15px;
 }
 .woocommerce .quantity .qty{
-	width: 100px;
+	width: 70px;
 	height: 30px;
 	padding: 0;
 	background: #fafafa;
@@ -974,6 +979,7 @@
 }
 .woocommerce div.product .variation_form_section .variations-table .swatch-wrapper{
 	padding: 0;
+	margin: 0 10px 10px 0;
 }
 .woocommerce div.product .variation_form_section .variations-table .selected{
 	border: 1px solid #ff3366;
@@ -982,7 +988,7 @@
 	
 }
 .variations-table select{
-	max-width: 170px;
+	max-width: 151px;
 	height: 30px;
 	background-color: #fafafa;
 	padding: 0 5px;
