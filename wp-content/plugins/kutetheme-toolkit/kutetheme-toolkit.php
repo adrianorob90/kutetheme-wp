@@ -25,6 +25,7 @@ if( ! function_exists('kt_check_active_plugin') ){
 
 load_plugin_textdomain( 'kutetheme', false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
 
+require_once KUTETHEME_PLUGIN_PATH.'mobile-detect/edo-mobile-detect.php';
 //Mailchimp
 require_once KUTETHEME_PLUGIN_PATH.'mailchimp/mailchimp.php';
 

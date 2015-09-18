@@ -35,7 +35,7 @@ define( 'THEME_DIR', trailingslashit(get_template_directory()));
 define( 'THEME_URL', trailingslashit(get_template_directory_uri()));
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 660;
+	$content_width = 1170;
 }
 
 /**
