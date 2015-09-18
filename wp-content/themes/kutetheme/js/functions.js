@@ -550,45 +550,22 @@
               }
             }
         );
-        // Zoom
-        if($('.easyzoom').length >0){
-            // Instantiate EasyZoom instances
-            var $easyzoom = $('.easyzoom').easyZoom();
 
-            // Get an instance API
-            var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
-
-            // Setup thumbnails example
-            $('.thumbnails').on('click', 'a', function(e) {
-                $(this).closest('.product-list-thumb').find('a').each(function(){
-                    $(this).removeClass('selected');
-                })
-                
-                $(this).addClass('selected');
-
-                var $this = $(this);
-                e.preventDefault();
-                // Use EasyZoom's `swap` method
-                api1.swap($this.data('standard'), $this.attr('href'));
-
-            });
-          }
-
-          // Category product
-          $(document).on('click','.widget_product_categories a',function(){
-            var paerent = $(this).closest('li');
-            var t = $(this);
-            $('.widget_product_categories li ul').removeClass('open');
-            $('.widget_product_categories a').removeClass('open');
-            paerent.find('ul').addClass('open');
-            if(paerent.children('ul').length > 0){
-                //$('.widget_product_categories').find('.children').hide();
-                $(this).toggleClass('open');
-                $('.widget_product_categories li ul').not('.open').slideUp();
-                $(this).closest('li').children('ul').slideToggle();
-                return false;
-            }
-          })
+      // Category product
+      $(document).on('click','.widget_product_categories a',function(){
+        var paerent = $(this).closest('li');
+        var t = $(this);
+        $('.widget_product_categories li ul').removeClass('open');
+        $('.widget_product_categories a').removeClass('open');
+        paerent.find('ul').addClass('open');
+        if(paerent.children('ul').length > 0){
+            //$('.widget_product_categories').find('.children').hide();
+            $(this).toggleClass('open');
+            $('.widget_product_categories li ul').not('.open').slideUp();
+            $(this).closest('li').children('ul').slideToggle();
+            return false;
+        }
+      })
           
           
     });
