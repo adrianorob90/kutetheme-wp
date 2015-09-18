@@ -546,6 +546,9 @@
                   },
                   1000 : {
                       items : 3,
+                  },
+                  1025 : {
+                      items : 3,
                   }
               }
             }
@@ -717,9 +720,16 @@
     function show_other_item_vertical_menu(){
       if($('.box-vertical-megamenus').length >0){
           var all_item = 0;
+          var limit_item = 10;
+          if($('.box-vertical-megamenus').hasClass('style2')){
+            if($(window).width() <=1024){
+              limit_item = 8;
+            }
+            
+          }
           $('.box-vertical-megamenus').find('.vertical-menu-list>li').each(function(i){
-              all_item = all_item +1;
-              if(i>10){
+              all_item = all_item + 1;
+              if(i > limit_item){
                 $(this).addClass('cat-link-orther');
               }
           })

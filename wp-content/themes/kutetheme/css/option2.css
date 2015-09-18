@@ -1055,6 +1055,9 @@
 	.option2 .product-featured .product-featured-tab-content .category-list-product .product-list{
 		border-left: 1px solid #eaeaea;
 	}
+	.option2 .box-vertical-megamenus .vertical-menu-list>li{
+		padding: 0 10px;
+	}
 }
 /*--------------------
 [13. Styles for devices(>=768px and <=992px)]
@@ -1119,7 +1122,16 @@
 	.option2 .product-featured .product-featured-tab-content .category-list-product .product-list li{
 		width: 33.3333%;
 	}
-	
+	.option2 .product-featured .deal-product{
+		width: 50%;
+		float: left;
+		border:none;
+		padding-bottom: 0;
+	}
+	.option2 .product-featured .owl-intab{
+		width: 50%;
+		float: left;
+	}
 }
 /*--------------------
 [14. Styles for devices(>=481px and <=767px)]

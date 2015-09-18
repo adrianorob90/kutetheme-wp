@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3" id="box-vertical-megamenus">
-                    <div class="box-vertical-megamenus">
+                    <div class="box-vertical-megamenus style2">
                         <h4 class="title">
                             <span class="title-menu">Categories</span>
                             <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>

@@ -210,6 +210,7 @@ a img.aligncenter {
 .widget img{
     max-width: 100%;
     height: auto;
+    width: 100%;
 }
 .widget_calendar table th,
 .widget_calendar table td{

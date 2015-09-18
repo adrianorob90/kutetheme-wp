@@ -124,6 +124,9 @@
 	.product-featured .product-featured-content .product-featured-list{
 		margin-left: 0;
 	}
+	.popular-tabs .product-list li .product-star{
+		display: none;
+	}
 }
 /*--------------------
 [3. Styles for devices(>=768px and <=992px)]
@@ -1003,6 +1006,8 @@
 	}
 	.nav-menu .nav>li>a {
 		padding: 5px 15px;
+		background: #fff;
+		color: #333;
 	}
 	.popular-tabs .owl-controls .owl-next,
 	.popular-tabs .owl-controls .owl-prev{
@@ -1287,5 +1292,8 @@
 	}
 	.page-full-width{
 		padding: 0;
+	}
+	.block-popular-cat .image{
+		width: 100%;
 	}
 }
