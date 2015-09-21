@@ -246,14 +246,16 @@
                                             <ul class="product-list row">                                    
                                         <?php endif; ?>  
                                             <?php 
+                                                $index = 1;
                                                 while ( $products->have_posts() ) : $products->the_post();
                                                     ?>
-                                                    <li class="col-sm-3">
+                                                    <li class="col-sm-3 item-<?php echo $index; ?><?php echo ( $index > 6 ) ? ' item-gt-6' : '' ?>">
                                                     <?php
                                                         wc_get_template_part( 'content', 'product-tab2' );
                                                     ?>
                                                     </li>
                                                     <?php
+                                                    $index ++;
                                                 endwhile; // end of the loop.
                                             ?>
                                         </ul>

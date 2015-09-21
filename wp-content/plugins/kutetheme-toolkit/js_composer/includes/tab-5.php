@@ -12,7 +12,7 @@ if( isset( $banner_left ) && $banner_left ):
     ?>
         <div class="banner-left">
             <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
+                <img class="owl-lazy" alt="<?php echo esc_attr($l->post_title) ?>" data-src="<?php echo wp_get_attachment_url($l->ID) ?>" />
             </a>
         </div>
     <?php
@@ -239,7 +239,7 @@ endif;
                                             while ( $products->have_posts() ) : $products->the_post();
                                                 ob_start();   
                                                 ?>
-                                                    <li class="col-sm-4">
+                                                    <li class="col-sm-4 item-<?php echo $j + 1; ?><?php echo ( $j > 5 ) ? ' item-gt-6' : '' ?>">
                                                     <?php
                                                         wc_get_template_part( 'content', 'product-tab2' );
                                                     ?>

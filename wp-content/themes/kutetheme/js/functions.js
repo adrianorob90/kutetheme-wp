@@ -55,9 +55,10 @@
             $element = jQuery( $element);
             var $item = $element.closest( 'li' );
             var $style = $item.attr("style");
+            $style    = ( $style == undefined ) ? '' : $style;
             var delay = $index * 300;
-            $item.attr("style",$style +
-                      "-webkit-animation-delay:" + delay + "ms;"
+            $item.attr("style", $style +
+                      ";-webkit-animation-delay:" + delay + "ms;"
                     + "-moz-animation-delay:" + delay + "ms;"
                     + "-o-animation-delay:" + delay + "ms;"
                     + "animation-delay:" + delay + "ms;"
@@ -76,9 +77,24 @@
             }
         } );
     }
+    function kt_banner_lazy( ){
+        jQuery( '.container-tab .active .banner-img .owl-lazy' ).each( function($index, $element){
+            $element = jQuery( $element);
+            if( $element.is( 'img' ) ){
+                var $url = $element.data('src');
+                $element.attr( 'src', $url );
+            }else{
+                var $url = $element.data('src');
+                $element.addClass( 'kt-lazy-background' );
+                $element.css( 'background', 'url("'+ $url+'")' );
+            }
+        } );
+    }
     jQuery(document).ready(function(){
         var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
+        
         kt_lazy( first_lazy ); 
+        kt_banner_lazy( );
     });
     
     /**==============================
@@ -99,15 +115,17 @@
                 $item_active.each(function($i){
                     var $item = jQuery(this);
                     var $style = $item.attr("style");
+                    $style    = ( $style == undefined ) ? '' : $style;
                     var delay = $i * 300;
-                    $item.attr("style",$style +
-                              "-webkit-animation-delay:" + delay + "ms;"
+                    $item.attr("style", $style +
+                              ";-webkit-animation-delay:" + delay + "ms;"
                             + "-moz-animation-delay:" + delay + "ms;"
                             + "-o-animation-delay:" + delay + "ms;"
                             + "animation-delay:" + delay + "ms;"
                     ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                         $item.removeClass('slideInTop animated');
-                        $item.attr("style", $style);
+                        if ( $style )
+                            $item.attr("style", $style);
                     }); 
                 });
             }
@@ -116,6 +134,8 @@
         var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
         
         kt_lazy( $lazy );
+        
+        kt_banner_lazy();
     });
     
     

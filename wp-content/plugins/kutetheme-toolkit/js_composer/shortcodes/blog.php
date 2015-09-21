@@ -241,6 +241,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'order'                 => $order
 		);
         $posts = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+        $temping_post_thumbnail = KUTETHEME_PLUGIN_URL . '/js_composer/assets/imgs/post-thumbnail.png';
         
         ob_start();
         if( $posts->have_posts() ):                    
@@ -255,7 +256,17 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                     <?php while( $posts->have_posts() ): $posts->the_post(); ?>
                     <li>
                         <div class="post-thumb image-hover2">
-                            <a href="<?php the_permalink() ?>"><?php the_post_thumbnail('268x255') ?></a>
+                                                  
+                            <a href="<?php the_permalink() ?>">
+                            <?php
+                                $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "268x255" );
+                                if( $thumbnail_src ):
+                             ?>
+                                <img class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" data-src="<?php echo $thumbnail_src[0] ?>" />
+                                <?php else: ?>
+                                    <img class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" />
+                                <?php endif; ?>
+                             </a>
                         </div>
                         <div class="post-desc">
                             <h5 class="post-title">

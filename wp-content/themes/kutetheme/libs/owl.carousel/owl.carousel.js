@@ -1978,17 +1978,18 @@
             $item = $element.closest( '.owl-item' );
             if( $item.hasClass( 'active' ) ){
                 var $style = $item.attr("style");
-                
+                $style    = ( $style == undefined ) ? '' : $style;
                 var delay = this._activate_item * 300;
                 
-                $item.attr("style",$style +
+                $item.attr("style", $style +
                           "-webkit-animation-delay:" + delay + "ms;"
                         + "-moz-animation-delay:" + delay + "ms;"
                         + "-o-animation-delay:" + delay + "ms;"
                         + "animation-delay:" + delay + "ms;"
                 ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                     $item.removeClass('slideInTop animated');
-                    $item.attr("style", $style);
+                    if( $style )
+                        $item.attr("style", $style);
                 });
                 this._activate_item ++ ;
             }else{

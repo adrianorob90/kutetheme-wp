@@ -223,7 +223,7 @@
                                        <div class="box-left">
                                            <div class="banner-img">
                                                 <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                                                    <img alt="<?php  echo esc_attr($current->post_title) ?>" src="<?php echo ($att_banner_left_url); ?>" />
+                                                    <img class="owl-lazy"  alt="<?php  echo esc_attr($current->post_title) ?>" data-src="<?php echo ($att_banner_left_url); ?>" />
                                                 </a>
                                             </div>
                                        </div>
