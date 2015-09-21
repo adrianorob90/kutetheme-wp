@@ -568,6 +568,12 @@
 	color: #febf2b;
 	margin-top: 15px;
 }
+.option2 .product-featured .deal-product .product-star .fa{
+	margin-right: 4px;
+}
+.option2 .product-featured .deal-product .product-star .fa:last-child{
+	margin-right: 0;
+}
 .option2 .product-featured .deal-product .product-desc{
 	margin-top: -3px;
 }
