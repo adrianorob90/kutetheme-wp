@@ -204,16 +204,28 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
             " );
     
             if( $sale_price_dates_to !='' ){
-                $sale_price_dates_to = date('Y-m-d', $sale_price_dates_to);
+                //$sale_price_dates_to = date('Y-m-d', $sale_price_dates_to);
+                $y = date('Y',$sale_price_dates_to);
+                $m = date('m',$sale_price_dates_to);
+                $d = date('d',$sale_price_dates_to);
             }
         }
     
         if( !$sale_price_dates_to ){
-            $sale_price_dates_to 	= ( $date = get_post_meta( $product_id, '_sale_price_dates_to', true ) ) ? date_i18n( 'Y-m-d', $date ) : '';
+            $sale_price_dates_to = get_post_meta( $product_id, '_sale_price_dates_to', true );
+            if($sale_price_dates_to == ''){
+                $sale_price_dates_to = '0000-00-00';
+            }
+
+            $y = date('Y',$sale_price_dates_to);
+            $m = date('m',$sale_price_dates_to);
+            $d = date('d',$sale_price_dates_to);
         }
     
         if($sale_price_dates_to){
-            $cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
+            //$cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
+            $cache = 'data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'.strtotime(date('Y-m-d', $sale_price_dates_to)).'"';
+            
             wp_cache_add( $cache_key, $cache );
             echo $cache;
         }else{

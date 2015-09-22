@@ -57,7 +57,7 @@
 		text-align: center;
 	}
 	.latest-deals .count-down-time span{
-		font-size: 12px;
+		font-size: 14px;
 	}
 	
 	.product-list.grid li{
@@ -133,16 +133,9 @@
 */
 @media (min-width: 768px) and (max-width: 992px) {
 	.latest-deals .count-down-time span{
-		font-size: 12px;
+		font-size: 14px;
 		height: 20px;
-		line-height: 22px;
-	}
-	.latest-deals .count-down-time span:after{
-		height: 20px;
-		left: 19px;
-	}
-	.latest-deals .count-down-time{
-		padding-bottom: 20px;
+		line-height: 20px;
 	}
 
 	.home .box-vertical-megamenus .vertical-menu-content{
@@ -868,6 +861,9 @@
 	.nav-menu .toggle-menu{
 		display: block;
 	}
+	.nav-menu .toggle-menu{
+		margin-right: 15px;
+	}
 	.nav-menu .navbar-collapse{
 		position: absolute;
 		right: 0px;
@@ -1288,7 +1284,11 @@
 		float: left;
 	}
 	.woocommerce .woocommerce-ordering{
-		margin-top: 0;
+		margin-top: 20px;
+		margin-bottom: 0;
+	}
+	.view-product-list .pagination{
+		margin-bottom: 0;
 	}
 	.page-full-width{
 		padding: 0;

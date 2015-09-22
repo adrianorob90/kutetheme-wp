@@ -286,6 +286,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             </h2>
             <?php endif; ?>
             <div class="latest-deals-product container-data-time">
+
                 <span class="count-down-time2">
                     <span class="icon-clock"></span>
                     <span><?php _e( 'end in', 'kutetheme' ); ?></span>

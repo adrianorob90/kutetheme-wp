@@ -345,13 +345,18 @@ function kt_scripts() {
     
     wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
     
-    wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
+    //wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
     
     wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ) );
     
     wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );
     
 	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.0', true );
+
+
+	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ) );
+	wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ) );
+
     
 	wp_localize_script( 'kt-script', 'screenReaderText', array(
 		'expand'   => '<span class="screen-reader-text">' . __( 'expand child menu', 'kutetheme' ) . '</span>',

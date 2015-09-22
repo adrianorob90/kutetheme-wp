@@ -482,6 +482,9 @@ img.alignright{
   z-index: 101;
   box-shadow: 0 1px 1px 0 rgba(50, 50, 50, 0.1);
 }
+.nav-top-menu.nav-ontop #main-menu .navbar .navbar-nav>li>a>img{
+  top: -15px;
+}
 .nav-ontop span.notify-right{
   top: 2px;
 }
@@ -1856,7 +1859,7 @@ span.notify-right{
 }
 .latest-deals .latest-deal-content{
     border: 3px solid #ff3366;
-    padding: 20px 15px 11px 15px;
+    padding: 18px 15px 11px 15px;
     overflow: hidden
 }
 .latest-deals .count-down-time{
@@ -1864,50 +1867,24 @@ span.notify-right{
     padding-bottom: 15px;
    
 }
-.latest-deals .count-down-time span{
-    height: 24px;
-    background: #999;
-    color: #fff; 
-    width: auto;
-    display: inline-block;
-    line-height: 24px;
-    margin: 0 3px;
-    font-size: 18px;
-    letter-spacing: 17px;
-    padding-left: 7px;
-    position: relative;
+.latest-deals .count-down-time .box-count{
+  height: 24px;
+  background: #999;
+  color: #fff; 
+  width: auto;
+  display: inline-block;
+  line-height: 24px;
+  font-size: 18px;
+  padding: 0 5px;
 }
-.latest-deals .count-down-time span:after{
-    content: '';
-    height: 24px;
-    width: 2px;
-    position: absolute;
-    left: 25px;
-    top: 0;
-    background: #fff;
+.latest-deals .count-down-time .dot{
+  margin: 0 2px;
+  font-weight: bold;
 }
-.latest-deals .count-down-time span:before{
-    content: '';
-    height: 24px;
-    width: 11px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background: #fff;
+.latest-deals .count-down-time .box-count .text{
+  display: none;
 }
-.latest-deals .count-down-time span:first-child{
-    margin-left: 10px;
-}
-.latest-deals .count-down-time b{
-    margin-left: -8px;
-    position: relative;
-}
-.latest-deals .count-down-time b:after{
-    position: absolute;
-    right: -1px;
-    top: 0;
-    content: ':';
-}
+
 
 .latest-deals .product-list .owl-controls{
     width: 100%;
@@ -3702,15 +3679,17 @@ span.notify-right{
 /** botton view option **/
 .display-product-option li{
   list-style: none;
-  display: inline;
+  display: inline-block;
   float: left;
   margin-left: 3px;
+  width: auto;
 }
 .display-product-option{
     height: 30px;
     padding: 0;
     margin: 0;
     display: table;
+    width: 66px;
 }
 .display-product-option li.view-as-grid span{
   width: 30px;

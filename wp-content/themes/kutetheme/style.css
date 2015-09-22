@@ -170,9 +170,10 @@ a img.aligncenter {
     border: none;
     padding-bottom: 0;
 }
-.popular-posts img{
+.popular-posts li img{
     border: 1px solid #eaeaea;
     padding: 4px;
+    width: 70px;
 }
 .widget_kt_social .introduce-title{
     margin-top: 20px;
@@ -483,7 +484,7 @@ a img.aligncenter {
     width: 10%;
 }
 
-.logged-in .nav-ontop{
+.logged-in.admin-bar .nav-ontop{
     top: 32px;
 }
 
