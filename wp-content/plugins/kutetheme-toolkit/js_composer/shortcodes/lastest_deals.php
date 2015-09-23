@@ -286,7 +286,6 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             </h2>
             <?php endif; ?>
             <div class="latest-deals-product container-data-time">
-
                 <span class="count-down-time2">
                     <span class="icon-clock"></span>
                     <span><?php _e( 'end in', 'kutetheme' ); ?></span>
@@ -296,9 +295,16 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                      <?php
                         add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                        $max = 0;
                         while ( $query_product->have_posts() ) : $query_product->the_post(); $id = get_the_ID(); global $post;  ?>
+                            <?php
+                            $time = kt_get_max_date_sale( $id );
+                            if( $time > $max){
+                                $max = $time;
+                            }
+                            ?>
                             <li>
-                                <input class="data-time" type="hidden" <?php do_action('woocommerce_datatime_sale_product', $id, $post) ?> />
+                               <!--<input class="data-time" type="hidden" <?php do_action('woocommerce_datatime_sale_product', $id, $post) ?> />-->
         					   <?php wc_get_template_part( 'content', 'product-lastest-deal' );?>
                             </li>
                         <?php
@@ -307,6 +313,12 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                         remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                      ?>
                 </ul>
+                <?php
+                $y = date('Y',$max);
+                $m = date('m',$max);
+                $d = date('d',$max);
+                ?>
+                <input class="max-time" type="hidden" value="" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>">
             </div>
         </div>
         <?php

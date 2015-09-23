@@ -307,25 +307,16 @@
         });
         
         $('.stick-countdown').each(function() {
-
+          
            var parent = $(this).closest('.container-data-time');
-           var time =0;
-           var max = 0;
-           var y = 0;
-           var m = 0;
-           var d = 0;
-           parent.find('.data-time').each(function(){
-              
-              time = $(this).data('strtotime');
-              if(time >  max){
-                y = $(this).data('y');
-                m = $(this).data('m');
-                d = $(this).data('d');
-              }
+           var time_max = parent.find('.max-time');
 
-           })
+           var y = time_max.data('y');
+           var m = time_max.data('m');
+           var d = time_max.data('d');
+
            var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
-            var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
+           var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
            var austDay = new Date( y , m - 1 , d ,'00','00','00');
             $(this).countdown({
                 until: austDay,

@@ -1005,3 +1005,54 @@ if( !function_exists( 'kt_review_rating_html' ) ){
         return $rating_html;
     }
 }
+
+
+// Get max date sale 
+if( !function_exists( 'kt_get_max_date_sale')){
+    function kt_get_max_date_sale( $product_id ){
+        $time = 0;
+        // Get variations
+        $args = array(
+            'post_type'     => 'product_variation',
+            'post_status'   => array( 'private', 'publish' ),
+            'numberposts'   => -1,
+            'orderby'       => 'menu_order',
+            'order'         => 'asc',
+            'post_parent'   => $product_id
+        );
+        $variations = get_posts( $args );
+        $variation_ids = array();
+        if( $variations ){
+            foreach ( $variations as $variation ) {
+                $variation_ids[]  = $variation->ID;
+            }
+        }
+        $sale_price_dates_to = false;
+    
+        if( !empty(  $variation_ids )   ){
+            global $wpdb;
+            $sale_price_dates_to = $wpdb->get_var( "
+                SELECT
+                meta_value
+                FROM $wpdb->postmeta
+                WHERE meta_key = '_sale_price_dates_to' and post_id IN(".join(',',$variation_ids).")
+                ORDER BY meta_value DESC
+                LIMIT 1
+            " );
+    
+            if( $sale_price_dates_to !='' ){
+                return $sale_price_dates_to;
+            }
+        }
+    
+        if( !$sale_price_dates_to ){
+            $sale_price_dates_to = get_post_meta( $product_id, '_sale_price_dates_to', true );
+
+            if($sale_price_dates_to == ''){
+                $sale_price_dates_to = '0';
+            }
+
+            return $sale_price_dates_to;
+        }
+    }
+}
