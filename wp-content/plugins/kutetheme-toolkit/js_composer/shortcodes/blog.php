@@ -262,9 +262,9 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "268x255" );
                                 if( $thumbnail_src ):
                              ?>
-                                <img class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" data-src="<?php echo $thumbnail_src[0] ?>" />
+                                <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" data-src="<?php echo $thumbnail_src[0] ?>" />
                                 <?php else: ?>
-                                    <img class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" />
+                                    <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" />
                                 <?php endif; ?>
                              </a>
                         </div>

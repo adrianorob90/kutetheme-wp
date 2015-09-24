@@ -1,42 +1,13 @@
 (function($){
     "use strict"; // Start of use strict
     
+    
+    var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
     /**==============================
     ***  Change Color tab Category
     ===============================**/
     var $style = jQuery('head style').first();
     
-    jQuery('div[data-target="change-color"]').each(function(){
-       var $this  = jQuery(this);
-       var $color = $this.data("color");
-       var $rgb   = $this.data('rgb');
-       var $id = $this.attr("id");
-       if( $this.hasClass('option1') ){
-            $style.append('#'+$id+'.option1 .nav-menu-red li a:hover,#'+$id+' .nav-menu-red li.active a,#'+$id+' .nav-menu-red li.selected a,#'+$id+' .nav-menu-red,#'+$id+'.option2 .product-list li .add-to-cart:hover,#'+$id+'.option1 .product-list li .add-to-cart:hover, #'+$id+'.option1 .product-list li .quick-view a:hover,#'+$id+'.option1 .owl-controls .owl-prev:hover,#'+$id+'.option1 .owl-controls .owl-next:hover {background: '+$color+';}');
-            $style.append( '#'+$id+'.option1 .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.5 )}' );
-            $style.append( '#'+$id+'{color: '+$color+'}')
-       }else if( $this.hasClass('option2') ){
-            if( $this.hasClass( 'tab-2' ) ){
-                $style.append( '#'+$id+'.option2 .show-brand .navbar-brand,#'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before,#'+$id+'.option2 .product-list li .add-to-cart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover, #'+$id+'.option2 .product-list li .quick-view a:hover {background-color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li.active a,#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a,#'+$id+'.option2 .category-featured .sub-category-list a:hover, #'+$id+'.option2 .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .nav-menu .nav>li.active a:after {color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
-                $style.append( '#'+$id+'.option2 .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
-            }else if( $this.hasClass( 'tab-3' ) ){
-                $style.append( '#'+$id+'.option2 .category-featured .navbar-brand, #'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before, #'+$id+'.option2 .category-featured .product-list li .add-to-cart:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.search:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.compare:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.heart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover{background-color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a, #'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a:after, #'+$id+'.option2 .category-featured .sub-category-list a:hover {color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
-                $style.append( '#'+$id+'.option2 .category-featured .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
-            }else if( $this.hasClass( 'tab-4' ) ){
-                $style.append( '#'+$id+'.option2 .category-featured .navbar-brand, #'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before,#'+$id+'.option2 .category-featured .product-list li .add-to-cart:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.search:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.compare:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.heart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover{background-color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a, #'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a:after, #'+$id+'.option2 .category-featured .sub-category-list a:hover{color: '+$color+';}' );
-                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
-                $style.append( '#'+$id+'.option2 .category-featured .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
-            }
-       }else if( $this.hasClass('option3') ){
-            
-       }
-    });
-
     function settingCarousel($this){
         var config = $this.data();
         config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
@@ -77,67 +48,6 @@
             }
         } );
     }
-    function kt_banner_lazy( ){
-        jQuery( '.container-tab .active .banner-img .owl-lazy' ).each( function($index, $element){
-            $element = jQuery( $element);
-            if( $element.is( 'img' ) ){
-                var $url = $element.data('src');
-                $element.attr( 'src', $url );
-            }else{
-                var $url = $element.data('src');
-                $element.addClass( 'kt-lazy-background' );
-                $element.css( 'background', 'url("'+ $url+'")' );
-            }
-        } );
-    }
-    jQuery(document).ready(function(){
-        var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
-        
-        kt_lazy( first_lazy ); 
-        kt_banner_lazy( );
-    });
-    
-    /**==============================
-    ***  Effect tab category
-    ===============================**/
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-        var $this = jQuery(this);
-        var $container = $this.closest('.container-tab');
-        var $href = $this.attr('href');
-        var $tab_active = $container.find($href);
-        var $item_active = $tab_active.find( '.owl-item.active' );
-        var $carousel_active = $tab_active.find('.owl-carousel');
-        
-        if( $carousel_active.length > 0 ){
-            if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
-              settingCarousel( $carousel_active );
-            }else{
-                $item_active.each(function($i){
-                    var $item = jQuery(this);
-                    var $style = $item.attr("style");
-                    $style    = ( $style == undefined ) ? '' : $style;
-                    var delay = $i * 300;
-                    $item.attr("style", $style +
-                              ";-webkit-animation-delay:" + delay + "ms;"
-                            + "-moz-animation-delay:" + delay + "ms;"
-                            + "-o-animation-delay:" + delay + "ms;"
-                            + "animation-delay:" + delay + "ms;"
-                    ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                        $item.removeClass('slideInTop animated');
-                        if ( $style )
-                            $item.attr("style", $style);
-                    }); 
-                });
-            }
-        }
-        
-        var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
-        
-        kt_lazy( $lazy );
-        
-        kt_banner_lazy();
-    });
-    
     
     /* ---------------------------------------------
      Woocommercer Quantily
@@ -270,13 +180,6 @@
             }
         });
         
-        /*
-        jQuery(document).on('click', '.owl-next, .owl-prev', function(){
-            var $carousel_container = jQuery(this).closest('.owl-loaded');
-            $carousel_container.find('.owl-item.active img.lazy').trigger('load_lazy');
-            
-        });
-        */
         $(".owl-carousel-vertical").each(function(index, el) {
           var config = $(this).data();
           config.navText = ['<span class="icon-up"></spam>','<span class="icon-down"></span>'];
@@ -289,6 +192,7 @@
           
           $(this).owlCarousel(config);
         });
+        
         /** COUNT DOWN **/
         $('.count-down-time[data-countdown]').each(function() { 
            var $this = $(this), finalDate = $(this).data('countdown');
@@ -572,6 +476,81 @@
               });
           });
       }
+        
+    /**************CHANGE COLOR *******************/
+    /**************TAB CATEGORY ******************/
+        
+    jQuery('div[data-target="change-color"]').each(function(){
+        var $this  = jQuery(this);
+        var $color = $this.data("color");
+        var $rgb   = $this.data('rgb');
+        var $id = $this.attr("id");
+        if( $this.hasClass('option1') ){
+            $style.append('#'+$id+'.option1 .nav-menu-red li a:hover,#'+$id+' .nav-menu-red li.active a,#'+$id+' .nav-menu-red li.selected a,#'+$id+' .nav-menu-red,#'+$id+'.option2 .product-list li .add-to-cart:hover,#'+$id+'.option1 .product-list li .add-to-cart:hover, #'+$id+'.option1 .product-list li .quick-view a:hover,#'+$id+'.option1 .owl-controls .owl-prev:hover,#'+$id+'.option1 .owl-controls .owl-next:hover {background: '+$color+';}');
+            $style.append( '#'+$id+'.option1 .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.5 )}' );
+            $style.append( '#'+$id+'{color: '+$color+'}')
+        }else if( $this.hasClass('option2') ){
+            if( $this.hasClass( 'tab-2' ) ){
+                $style.append( '#'+$id+'.option2 .show-brand .navbar-brand,#'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before,#'+$id+'.option2 .product-list li .add-to-cart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover, #'+$id+'.option2 .product-list li .quick-view a:hover {background-color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li.active a,#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a,#'+$id+'.option2 .category-featured .sub-category-list a:hover, #'+$id+'.option2 .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .nav-menu .nav>li.active a:after {color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
+                $style.append( '#'+$id+'.option2 .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
+            }else if( $this.hasClass( 'tab-3' ) ){
+                $style.append( '#'+$id+'.option2 .category-featured .navbar-brand, #'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before, #'+$id+'.option2 .category-featured .product-list li .add-to-cart:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.search:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.compare:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.heart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover{background-color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a, #'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a:after, #'+$id+'.option2 .category-featured .sub-category-list a:hover {color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
+                $style.append( '#'+$id+'.option2 .category-featured .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
+            }else if( $this.hasClass( 'tab-4' ) ){
+                $style.append( '#'+$id+'.option2 .category-featured .navbar-brand, #'+$id+'.option2 .category-featured .nav-menu .nav>li>a:before,#'+$id+'.option2 .category-featured .product-list li .add-to-cart:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.search:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.compare:hover, #'+$id+'.option2 .category-featured .product-list li .quick-view a.heart:hover, #'+$id+'.option2 .product-list li .quick-view a:hover{background-color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a, #'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a:after, #'+$id+'.option2 .category-featured .sub-category-list a:hover{color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
+                $style.append( '#'+$id+'.option2 .category-featured .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
+            }
+        }else if( $this.hasClass('option3') ){
+            
+        }
+    });
+        /**==============================
+        ***  Effect tab category
+        ===============================**/
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var $this = jQuery(this);
+        var $container = $this.closest('.container-tab');
+        var $href = $this.attr('href');
+        var $tab_active = $container.find($href);
+        var $item_active = $tab_active.find( '.owl-item.active' );
+        var $carousel_active = $tab_active.find('.owl-carousel');
+        
+        if( $carousel_active.length > 0 ){
+            if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
+              settingCarousel( $carousel_active );
+            }else{
+                $item_active.each(function($i){
+                    var $item = jQuery(this);
+                    var $style = $item.attr("style");
+                    $style    = ( $style == undefined ) ? '' : $style;
+                    var delay = $i * 300;
+                    $item.attr("style", $style +
+                              ";-webkit-animation-delay:" + delay + "ms;"
+                            + "-moz-animation-delay:" + delay + "ms;"
+                            + "-o-animation-delay:" + delay + "ms;"
+                            + "animation-delay:" + delay + "ms;"
+                    ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $item.removeClass('slideInTop animated');
+                        if ( $style )
+                            $item.attr("style", $style);
+                    }); 
+                });
+            }
+        }
+        
+        var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
+        
+        kt_lazy( $lazy );
+    });
+        
+        
+        kt_lazy( first_lazy ); 
           
     });
     /* ---------------------------------------------

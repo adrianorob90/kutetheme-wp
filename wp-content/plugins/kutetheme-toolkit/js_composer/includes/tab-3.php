@@ -15,7 +15,7 @@ if( ! $is_phone ):
         ?>
             <li>
                 <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                    <img class="owl-lazy" alt="<?php echo esc_attr($l->post_title) ?>" data-src="<?php echo wp_get_attachment_url($l->ID) ?>" />
+                    <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
                 </a>
             </li>
         <?php

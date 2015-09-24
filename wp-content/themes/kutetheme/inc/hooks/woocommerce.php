@@ -174,57 +174,25 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
             echo $cache;
             return;
         }
-        // Get variations
-        $args = array(
-            'post_type'     => 'product_variation',
-            'post_status'   => array( 'private', 'publish' ),
-            'numberposts'   => -1,
-            'orderby'       => 'menu_order',
-            'order'         => 'asc',
-            'post_parent'   => $product_id
-        );
-        $variations = get_posts( $args );
-        $variation_ids = array();
-        if( $variations ){
-            foreach ( $variations as $variation ) {
-                $variation_ids[]  = $variation->ID;
-            }
-        }
         $sale_price_dates_to = false;
-    
-        if( !empty(  $variation_ids )   ){
-            global $wpdb;
-            $sale_price_dates_to = $wpdb->get_var( "
-                SELECT
-                meta_value
-                FROM $wpdb->postmeta
-                WHERE meta_key = '_sale_price_dates_to' and post_id IN(".join(',',$variation_ids).")
-                ORDER BY meta_value DESC
-                LIMIT 1
-            " );
-    
-            if( $sale_price_dates_to !='' ){
-                //$sale_price_dates_to = date('Y-m-d', $sale_price_dates_to);
-                $y = date('Y',$sale_price_dates_to);
-                $m = date('m',$sale_price_dates_to);
-                $d = date('d',$sale_price_dates_to);
-            }
+        
+        $date = get_post_meta( $product_id, '_sale_price_dates_to', true );
+        
+        $sale_price_dates_to    = ( $date ) ? date_i18n( 'Y-m-d', $date ) : false;
+        
+        if( ! $sale_price_dates_to ){
+            $sale_price_dates_to = date( 'Y-m-d' );
         }
-    
-        if( !$sale_price_dates_to ){
-            $sale_price_dates_to = get_post_meta( $product_id, '_sale_price_dates_to', true );
-            if($sale_price_dates_to == ''){
-                $sale_price_dates_to = '0000-00-00';
-            }
-
-            $y = date('Y',$sale_price_dates_to);
-            $m = date('m',$sale_price_dates_to);
-            $d = date('d',$sale_price_dates_to);
-        }
+        
+        $strtotime = strtotime( $sale_price_dates_to );
+        
+        $y = date( 'Y', $strtotime );
+        $m = date( 'm', $strtotime );
+        $d = date( 'd', $strtotime );
     
         if($sale_price_dates_to){
             //$cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
-            $cache = 'data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'.strtotime(date('Y-m-d', $sale_price_dates_to)).'"';
+            $cache = 'data-time="' .$sale_price_dates_to. '" data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'. $strtotime .'"';
             
             wp_cache_add( $cache_key, $cache );
             echo $cache;
