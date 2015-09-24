@@ -17,11 +17,29 @@
             config.animateOut="fadeOut";
             config.animateIn="fadeIn";    
         }
-        
+        config.onInitialized = function( event ){
+            var $item_active = $this.find( '.owl-item.active' );
+            $item_active.each( function ( $i ) {
+                var $item = jQuery(this);
+                var $style = $item.attr("style");
+                $style    = ( $style == undefined ) ? '' : $style;
+                var delay = $i * 300;
+                $item.attr("style", $style +
+                          ";-webkit-animation-delay:" + delay + "ms;"
+                        + "-moz-animation-delay:" + delay + "ms;"
+                        + "-o-animation-delay:" + delay + "ms;"
+                        + "animation-delay:" + delay + "ms;"
+                ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $item.removeClass('slideInTop animated');
+                    if ( $style )
+                        $item.attr("style", $style);
+                }); 
+            });
+        }
         $this.owlCarousel(config);
     }
     
-    function kt_lazy( $lazy ){
+    function edo_lazy( $lazy ){
         $lazy.each( function($index, $element){
             $element = jQuery( $element);
             var $item = $element.closest( 'li' );
@@ -525,7 +543,7 @@
                 if( ! $carousel_active.hasClass( 'owl-loaded' ) ){
                   settingCarousel( $carousel_active );
                 }else{
-                    $item_active.each(function($i){
+                    $item_active.each( function ( $i ) {
                         var $item = jQuery(this);
                         var $style = $item.attr("style");
                         $style    = ( $style == undefined ) ? '' : $style;
@@ -546,11 +564,11 @@
             
             var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
             
-            kt_lazy( $lazy );
+            edo_lazy( $lazy );
         });
         
         
-        kt_lazy( first_lazy ); 
+        edo_lazy( first_lazy ); 
           
     });
     /* ---------------------------------------------

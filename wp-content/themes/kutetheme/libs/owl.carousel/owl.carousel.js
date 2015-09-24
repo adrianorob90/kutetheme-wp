@@ -1885,7 +1885,6 @@
 		 * @type {Object}
 		 */
          
-        this._activate_item = 1;
 		this._handlers = {
 			'initialized.owl.carousel change.owl.carousel': $.proxy(function(e) {
 				if (!e.namespace) {
@@ -1905,10 +1904,10 @@
 						load = $.proxy(function(i, v) { this.load(v) }, this);
 						
 						
-						if(clones == 0){
-							n = this._core._items.length;
-							
-						}
+					if(clones == 0){
+						n = this._core._items.length;
+						
+					}
 						
 					while (i++ < n) {
 						
@@ -1975,26 +1974,6 @@
 				}, this);
 				image.src = url;
 			}
-            $item = $element.closest( '.owl-item' );
-            if( $item.hasClass( 'active' ) ){
-                var $style = $item.attr("style");
-                $style    = ( $style == undefined ) ? '' : $style;
-                var delay = this._activate_item * 300;
-                
-                $item.attr("style", $style +
-                          "-webkit-animation-delay:" + delay + "ms;"
-                        + "-moz-animation-delay:" + delay + "ms;"
-                        + "-o-animation-delay:" + delay + "ms;"
-                        + "animation-delay:" + delay + "ms;"
-                ).addClass('slideInTop animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                    $item.removeClass('slideInTop animated');
-                    if( $style )
-                        $item.attr("style", $style);
-                });
-                this._activate_item ++ ;
-            }else{
-                this._activate_item = 1;
-            }
 		}, this));
 
 		this._loaded.push($item.get(0));
