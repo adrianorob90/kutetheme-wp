@@ -13,11 +13,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
-global $product, $woocommerce_loop,$post;
+global $product, $woocommerce_loop, $post;
+$id = get_the_ID();
 
 ?>
 <li>
-    <div class="count-down-time" <?php do_action('woocommerce_datatime_sale_product', $product, $post) ?> ></div>
+    <?php
+    $time = kt_get_max_date_sale( $id );
+    $y = date('Y',$time);
+    $m = date('m',$time);
+    $d = date('d',$time);
+    ?>
+    <div class="count-down-time" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" data-h="00" data-i="00" data-s="00" ></div>
     <div class="left-block">
         <a href="<?php echo get_permalink(); ?>">
             <?php

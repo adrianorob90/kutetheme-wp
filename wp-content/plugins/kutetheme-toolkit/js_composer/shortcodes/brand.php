@@ -365,7 +365,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     <?php
                     else:
                     ?>
-                    <div class="<?php echo $elementClass; ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?> data-responsive='{"0":{"items":3},"600":{"items":5},"1000":{"items":8}}'>
+                    <div class="<?php echo $elementClass; ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                         <?php foreach($terms as $term): ?>
                             <h3><?php echo $term->name ?></h3>
                         <?php endforeach; ?>

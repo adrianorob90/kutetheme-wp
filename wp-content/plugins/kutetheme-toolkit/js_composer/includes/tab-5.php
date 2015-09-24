@@ -239,7 +239,7 @@ endif;
                                             while ( $products->have_posts() ) : $products->the_post();
                                                 ob_start();   
                                                 ?>
-                                                    <li class="col-sm-4 item-<?php echo $j + 1; ?><?php echo ( $j > 5 ) ? ' item-gt-6' : '' ?>">
+                                                    <li class="col-sm-4 item-<?php echo $j + 1; ?><?php echo ( $j > 5 ) ? ' hidden-tablet' : '' ?>">
                                                     <?php
                                                         wc_get_template_part( 'content', 'product-tab2' );
                                                     ?>
