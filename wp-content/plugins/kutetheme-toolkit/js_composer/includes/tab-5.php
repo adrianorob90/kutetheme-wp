@@ -219,7 +219,7 @@ endif;
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
                                 <?php if( ! $is_phone ): ?>
                                     <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
-                                            <div class="box-left">
+                                            <div class="box-left hidden-tablet">
                                                 <?php if ( $count_banner_left > 1 ): ?>
                                                 <div class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
                                                     <?php echo $banner_carousel; ?>

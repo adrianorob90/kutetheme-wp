@@ -1105,6 +1105,9 @@
 	    float: left;
 	    width: 100%;
 	}
+	.option2.tab-3 .product-featured .sub-category-list{
+		border-bottom: 1px solid #eaeaea;
+	}
 	.option2 .product-featured .sub-category-list li{
 		width: 33.333333%;
 		display: inline;

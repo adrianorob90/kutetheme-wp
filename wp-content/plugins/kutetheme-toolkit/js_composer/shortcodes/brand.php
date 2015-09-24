@@ -254,7 +254,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             <h2 class="brand-showcase-title"><?php echo esc_attr( $title ) ; ?></h2>
                         <?php endif; ?>
                         <div class="brand-showcase-box">
-                            <ul class="brand-showcase-logo owl-carousel" <?php echo _data_carousel($data_carousel); ?> data-responsive='{"0":{"items":2},"600":{"items":5},"1000":{"items":8}}'>
+                            <ul class="brand-showcase-logo owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php $i = 1; ?>
                                 <?php foreach($terms as $term): ?>
                                 <li data-tab="showcase-<?php echo $term->term_id ?>" class="item<?php echo ( $i ==1 ) ? ' active' : '' ?>">
