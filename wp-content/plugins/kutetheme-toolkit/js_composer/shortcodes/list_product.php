@@ -10,32 +10,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 vc_map( array(
-    "name" => __( "List Products", 'kutetheme'),
-    "base" => "list_product",
-    "category" => __('Kute Theme', 'kutetheme' ),
+    "name"        => __( "List Products", 'kutetheme'),
+    "base"        => "list_product",
+    "category"    => __('Kute Theme', 'kutetheme' ),
     "description" => __( 'Show product in tab best sellers, on sales, new products on option 1', 'kutetheme' ),
-    "params" => array(
+    "params"      => array(
         array(
-			'type' => 'textfield',
-			'heading' => __( 'Title', 'kutetheme' ),
-			'value' => __( 'Special Products', 'kutetheme' ),
-			'param_name' => 'title',
-			'description' => __( 'The "per_page" shortcode determines how many products to show on the page', 'kutetheme' ),
+            'type'        => 'textfield',
+            'heading'     => __( 'Title', 'kutetheme' ),
+            'value'       => __( 'Special Products', 'kutetheme' ),
+            'param_name'  => 'title',
+            'description' => __( 'The "per_page" shortcode determines how many products to show on the page', 'kutetheme' ),
             'admin_label' => false,
 		),
         
         array(
-            "type" => "kt_categories",
-        	"heading" => __("Choose Category", 'kutetheme'),
-        	"param_name" => "cat",
+            "type"        => "kt_categories",
+            "heading"     => __("Choose Category", 'kutetheme'),
+            "param_name"  => "cat",
             "admin_label" => true,
         ),
         array(
-        	'type' => 'dropdown',
-        	'heading' => __( 'Number Product', 'kutetheme' ),
-        	'param_name' => 'number',
-        	'admin_label' => false,
-        	'value' => array(
+            'type'        => 'dropdown',
+            'heading'     => __( 'Number Product', 'kutetheme' ),
+            'param_name'  => 'number',
+            'admin_label' => false,
+            'value'       => array(
         		__( '2 Products', 'kutetheme' ) => '2',
         		__( '3 Products', 'kutetheme' ) => '3',
         		__( '4 Products', 'kutetheme' ) => '4',
@@ -44,11 +44,11 @@ vc_map( array(
         	'description' => __( 'The total number of pages.', 'kutetheme' )
         ),
         array(
-        	'type' => 'dropdown',
-        	'heading' => __( 'Type', 'kutetheme' ),
-        	'param_name' => 'types',
-        	'admin_label' => false,
-        	'value' => array(
+            'type'        => 'dropdown',
+            'heading'     => __( 'Type', 'kutetheme' ),
+            'param_name'  => 'types',
+            'admin_label' => false,
+            'value'       => array(
         		__( 'Best saler', 'kutetheme' )   => 'sale',
         		__( 'New arrivals', 'kutetheme' ) => 'arrival',
         		__( 'Most Reviews', 'kutetheme' ) => 'review'
@@ -56,34 +56,34 @@ vc_map( array(
         	'description' => __( 'Select type query of product', 'kutetheme' )
         ),
         array(
-        	'type' => 'dropdown',
-        	'heading' => __( 'CSS Animation', 'kutetheme' ),
-        	'param_name' => 'css_animation',
-        	'admin_label' => false,
-        	'value' => array(
-        		__( 'No', 'kutetheme' ) => '',
-        		__( 'Top to bottom', 'kutetheme' ) => 'top-to-bottom',
-        		__( 'Bottom to top', 'kutetheme' ) => 'bottom-to-top',
-        		__( 'Left to right', 'kutetheme' ) => 'left-to-right',
-        		__( 'Right to left', 'kutetheme' ) => 'right-to-left',
-        		__( 'Appear from center', 'kutetheme' ) => "appear"
+            'type'        => 'dropdown',
+            'heading'     => __( 'CSS Animation', 'kutetheme' ),
+            'param_name'  => 'css_animation',
+            'admin_label' => false,
+            'value'       => array(
+                __( 'No', 'kutetheme' )                 => '',
+                __( 'Top to bottom', 'kutetheme' )      => 'top-to-bottom',
+                __( 'Bottom to top', 'kutetheme' )      => 'bottom-to-top',
+                __( 'Left to right', 'kutetheme' )      => 'left-to-right',
+                __( 'Right to left', 'kutetheme' )      => 'right-to-left',
+                __( 'Appear from center', 'kutetheme' ) => "appear"
         	),
         	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'kutetheme' )
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Extra class name", "js_composer" ),
-            "param_name" => "el_class",
+            "type"        => "textfield",
+            "heading"     => __( "Extra class name", "js_composer" ),
+            "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             'admin_label' => false,
         ),
         array(
-			'type' => 'css_editor',
-			'heading' => __( 'Css', 'kutetheme' ),
-			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'kutetheme' ),
-			'group' => __( 'Design options', 'kutetheme' ),
-            'admin_label' => false,
+            'type'           => 'css_editor',
+            'heading'        => __( 'Css', 'kutetheme' ),
+            'param_name'     => 'css',
+            // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'kutetheme' ),
+            'group'          => __( 'Design options', 'kutetheme' ),
+            'admin_label'    => false,
 		),
     ),
 ));
@@ -93,13 +93,13 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'list_product', $atts ) : $atts;
         $atts = shortcode_atts( array(
-            'title'  => '',
-            'cat'    => 0,
-            'number' => 4,
-            'types'  => 'sale',
+            'title'         => '',
+            'cat'           => 0,
+            'number'        => 4,
+            'types'         => 'sale',
             'css_animation' => '',
-            'el_class' => '',
-            'css' => ''
+            'el_class'      => '',
+            'css'           => ''
             
         ), $atts );
         extract($atts);
@@ -107,9 +107,9 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
         global $woocommerce_loop;
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'popular-tabs ', $this->settings['base'], $atts ),
-        	'extra' => $this->getExtraClass( $el_class ),
-        	'css_animation' => $this->getCSSAnimation( $css_animation ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'popular-tabs ', $this->settings['base'], $atts ),
+            'extra'            => $this->getExtraClass( $el_class ),
+            'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         

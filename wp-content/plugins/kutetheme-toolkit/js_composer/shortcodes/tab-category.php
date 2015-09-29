@@ -3,43 +3,43 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name" => __( "Categories Tab", 'kutetheme'),
-    "base" => "categories_tab",
-    "category" => __('Kute Theme', 'kutetheme' ),
-    "description" => __( "Show tab categories", 'kutetheme'),
-    "as_parent" => array('only' => 'tab_section'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
-    "content_element" => true,
+    "name"                    => __( "Categories Tab", 'kutetheme'),
+    "base"                    => "categories_tab",
+    "category"                => __('Kute Theme', 'kutetheme' ),
+    "description"             => __( "Show tab categories", 'kutetheme'),
+    "as_parent"               => array('only' => 'tab_section'), // Use only|except attributes to limit child shortcodes (separate multiple values with comma)
+    "content_element"         => true,
     "show_settings_on_create" => true,
-    "params" => array(
+    "params"                  => array(
         array(
-            "type" => "textfield",
-            "heading" => __( "Title", 'kutetheme' ),
-            "param_name" => "title",
+            "type"        => "textfield",
+            "heading"     => __( "Title", 'kutetheme' ),
+            "param_name"  => "title",
             "admin_label" => true,
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Number Post", 'kutetheme' ),
-            "param_name" => "per_page",
-            'std' => 10,
+            "type"        => "textfield",
+            "heading"     => __( "Number Post", 'kutetheme' ),
+            "param_name"  => "per_page",
+            'std'         => 10,
             "admin_label" => false,
             'description' => __( 'Number post in a slide', 'kutetheme' )
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Column", 'kutetheme' ),
-            "param_name" => "number_column",
+            "type"        => "textfield",
+            "heading"     => __( "Column", 'kutetheme' ),
+            "param_name"  => "number_column",
             "admin_label" => false,
-            'std' => 4,
+            'std'         => 4,
             'description' => __( 'Number column display', 'kutetheme' )
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Tabs Type", 'kutetheme'),
-        	"param_name" => "tabs_type",
+            "type"        => "dropdown",
+            "heading"     => __("Tabs Type", 'kutetheme'),
+            "param_name"  => "tabs_type",
             "admin_label" => true,
-            'std' => 'tab-1',
-            'value' => array(
+            'std'         => 'tab-1',
+            'value'       => array(
         		__( 'Tab 1', 'kutetheme' ) => 'tab-1',
                 __( 'Tab 2', 'kutetheme' ) => 'tab-2',
                 __( 'Tab 3', 'kutetheme' ) => 'tab-3',
@@ -51,190 +51,190 @@ vc_map( array(
         ),
         
         array(
-            "type" => "kt_categories",
-        	"heading" => __("Choose Category", 'kutetheme'),
-        	"param_name" => "category",
+            "type"        => "kt_categories",
+            "heading"     => __("Choose Category", 'kutetheme'),
+            "param_name"  => "category",
             "admin_label" => true,
         ),
         array(
-            "type" => "colorpicker",
-        	"heading" => __("Main Color", 'kutetheme'),
-        	"param_name" => "main_color",
+            "type"        => "colorpicker",
+            "heading"     => __("Main Color", 'kutetheme'),
+            "param_name"  => "main_color",
             "admin_label" => true,
         ),
         
         array(
-    		'type' => 'attach_image',
-    		'heading' => __( 'Icon', 'kutetheme' ),
-    		'param_name' => 'icon',
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
-    		'description' => __( 'Setup icon for the tab', 'kutetheme' )
+            'type'        => 'attach_image',
+            'heading'     => __( 'Icon', 'kutetheme' ),
+            'param_name'  => 'icon',
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
+            'description' => __( 'Setup icon for the tab', 'kutetheme' )
     	),
         
         array(
-    		'type' => 'attach_image',
-    		'heading' => __( 'Background Image', 'kutetheme' ),
-    		'param_name' => 'bg_cate',
-            "dependency" => array("element" => "tabs_type", "value" => array( 'tab-2', 'tab-3', 'tab-4', 'tab-5' )),
-    		'description' => __( 'Setup background for box', 'kutetheme' )
+            'type'        => 'attach_image',
+            'heading'     => __( 'Background Image', 'kutetheme' ),
+            'param_name'  => 'bg_cate',
+            "dependency"  => array("element" => "tabs_type", "value" => array( 'tab-2', 'tab-3', 'tab-4', 'tab-5' )),
+            'description' => __( 'Setup background for box', 'kutetheme' )
     	),
         array(
-    		'type' => 'attach_images',
-    		'heading' => __( 'Banner top', 'kutetheme' ),
-    		'param_name' => 'banner_top',
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
-    		'description' => __( 'Setup image on  top of the tab', 'kutetheme' )
-    	),
-        
-        array(
-    		'type' => 'attach_images',
-    		'heading' => __( 'Banner left', 'kutetheme' ),
-    		'param_name' => 'banner_left',
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
-    		'description' => __( 'Setup image on  left of the tab', 'kutetheme' )
+            'type'        => 'attach_images',
+            'heading'     => __( 'Banner top', 'kutetheme' ),
+            'param_name'  => 'banner_top',
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
+            'description' => __( 'Setup image on  top of the tab', 'kutetheme' )
     	),
         
         array(
-    		'type' => 'checkbox',
-    		'heading' => __( 'Featured', 'kutetheme' ),
-    		'param_name' => 'featured',
-            "dependency" => array("element" => "tabs_type", "value" => array('tab-1')),
-    		'description' => __( 'Setup image on  left of the tab', 'kutetheme' ),
-            'value' => array( __( 'Yes', 'kutetheme' ) => 'yes' )
+            'type'        => 'attach_images',
+            'heading'     => __( 'Banner left', 'kutetheme' ),
+            'param_name'  => 'banner_left',
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
+            'description' => __( 'Setup image on  left of the tab', 'kutetheme' )
     	),
         
         array(
-        	'type' => 'dropdown',
-        	'heading' => __( 'CSS Animation', 'js_composer' ),
-        	'param_name' => 'css_animation',
-        	'admin_label' => false,
-        	'value' => array(
-        		__( 'No', 'js_composer' ) => '',
-        		__( 'Top to bottom', 'js_composer' ) => 'top-to-bottom',
-        		__( 'Bottom to top', 'js_composer' ) => 'bottom-to-top',
-        		__( 'Left to right', 'js_composer' ) => 'left-to-right',
-        		__( 'Right to left', 'js_composer' ) => 'right-to-left',
-        		__( 'Appear from center', 'js_composer' ) => "appear"
+            'type'        => 'checkbox',
+            'heading'     => __( 'Featured', 'kutetheme' ),
+            'param_name'  => 'featured',
+            "dependency"  => array("element" => "tabs_type", "value" => array('tab-1')),
+            'description' => __( 'Setup image on  left of the tab', 'kutetheme' ),
+            'value'       => array( __( 'Yes', 'kutetheme' ) => 'yes' )
+    	),
+        
+        array(
+            'type'        => 'dropdown',
+            'heading'     => __( 'CSS Animation', 'js_composer' ),
+            'param_name'  => 'css_animation',
+            'admin_label' => false,
+            'value'       => array(
+                __( 'No', 'js_composer' )                 => '',
+                __( 'Top to bottom', 'js_composer' )      => 'top-to-bottom',
+                __( 'Bottom to top', 'js_composer' )      => 'bottom-to-top',
+                __( 'Left to right', 'js_composer' )      => 'left-to-right',
+                __( 'Right to left', 'js_composer' )      => 'right-to-left',
+                __( 'Appear from center', 'js_composer' ) => "appear"
         	),
         	'description' => __( 'Select type of animation if you want this element to be animated when it enters into the browsers viewport. Note: Works only in modern browsers.', 'js_composer' )
         ),
         
         // Carousel
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'heading' => __( 'AutoPlay', 'kutetheme' ),
-            'param_name' => 'autoplay',
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'heading'     => __( 'AutoPlay', 'kutetheme' ),
+            'param_name'  => 'autoplay',
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'heading' => __( 'Navigation', 'kutetheme' ),
-			'param_name' => 'navigation',
+            'heading'     => __( 'Navigation', 'kutetheme' ),
+            'param_name'  => 'navigation',
             'description' => __( "Don't display 'next' and 'prev' buttons.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'std' => 'false',
-            'heading' => __( 'Loop', 'kutetheme' ),
-			'param_name' => 'loop',
+            'std'         => 'false',
+            'heading'     => __( 'Loop', 'kutetheme' ),
+            'param_name'  => 'loop',
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 		),
         array(
-			"type" => "kt_number",
-			"heading" => __("Slide Speed", 'kutetheme'),
-			"param_name" => "slidespeed",
-			"value" => "250",
-            "suffix" => __("milliseconds", 'kutetheme'),
-			"description" => __('Slide speed in milliseconds', 'kutetheme'),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("Slide Speed", 'kutetheme'),
+            "param_name"  => "slidespeed",
+            "value"       => "250",
+            "suffix"      => __("milliseconds", 'kutetheme'),
+            "description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			"type" => "kt_number",
-			"heading" => __("Margin", 'kutetheme'),
-			"param_name" => "margin",
-			"value" => "0",
-            "suffix" => __("px", 'kutetheme'),
-			"description" => __('Distance( or space) between 2 item', 'kutetheme'),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("Margin", 'kutetheme'),
+            "param_name"  => "margin",
+            "value"       => "0",
+            "suffix"      => __("px", 'kutetheme'),
+            "description" => __('Distance( or space) between 2 item', 'kutetheme'),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 1,
                 __( 'No', 'js_composer' )  => 0
             ),
-            'heading' => __( 'Use Carousel Responsive', 'kutetheme' ),
-			'param_name' => 'use_responsive',
+            'heading'     => __( 'Use Carousel Responsive', 'kutetheme' ),
+            'param_name'  => 'use_responsive',
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
-            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array(
+            "dependency"  => array(
                 "element" => "tabs_type",
-                "value" => array( 'tab-1')
+                "value"   => array( 'tab-1')
             ),
 		),
         array(
-			"type" => "kt_number",
-			"heading" => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
-			"param_name" => "items_destop",
-			"value" => "4",
-            "suffix" => __("item", 'kutetheme'),
-			"description" => __('The number of items on destop', 'kutetheme'),
-            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
+            "param_name"  => "items_destop",
+            "value"       => "4",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			"type" => "kt_number",
-			"heading" => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
-			"param_name" => "items_tablet",
-			"value" => "2",
-            "suffix" => __("item", 'kutetheme'),
-			"description" => __('The number of items on destop', 'kutetheme'),
-            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
+            "param_name"  => "items_tablet",
+            "value"       => "2",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			"type" => "kt_number",
-			"heading" => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
-			"param_name" => "items_mobile",
-			"value" => "1",
-            "suffix" => __("item", 'kutetheme'),
-			"description" => __('The numbers of item on destop', 'kutetheme'),
-            'group' => __( 'Carousel responsive', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
+            "param_name"  => "items_mobile",
+            "value"       => "1",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The numbers of item on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
-            "dependency" => array("element" => "tabs_type","value" => array('tab-1')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1')),
 	  	),
         array(
-			'type' => 'css_editor',
-			'heading' => __( 'Css', 'js_composer' ),
-			'param_name' => 'css',
-			'group' => __( 'Design options', 'js_composer' ),
+            'type'        => 'css_editor',
+            'heading'     => __( 'Css', 'js_composer' ),
+            'param_name'  => 'css',
+            'group'       => __( 'Design options', 'js_composer' ),
             'admin_label' => false,
 		),
         
@@ -242,25 +242,25 @@ vc_map( array(
     "js_view" => 'VcColumnView'
 ));
 vc_map( array(
-    "name" => __("Section Tab", 'kutetheme'),
-    "base" => "tab_section",
+    "name"            => __("Section Tab", 'kutetheme'),
+    "base"            => "tab_section",
     "content_element" => true,
-    "as_child" => array('only' => 'categories_tab'), // Use only|except attributes to limit parent (separate multiple values with comma)
-    "params" => array(
+    "as_child"        => array('only' => 'categories_tab'), // Use only|except attributes to limit parent (separate multiple values with comma)
+    "params"          => array(
         // add params same as with any other content element
         array(
-            "type" => "textfield",
-            "heading" => __( "Header", 'kutetheme' ),
-            "param_name" => "header",
+            "type"        => "textfield",
+            "heading"     => __( "Header", 'kutetheme' ),
+            "param_name"  => "header",
             "admin_label" => true,
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Section Type", 'kutetheme'),
-        	"param_name" => "section_type",
+            "type"        => "dropdown",
+            "heading"     => __("Section Type", 'kutetheme'),
+            "param_name"  => "section_type",
             "admin_label" => true,
-            'std' => 'best-seller',
-            'value' => array(
+            'std'         => 'best-seller',
+            'value'       => array(
         		__( 'Best Sellers', 'kutetheme' ) => 'best-seller',
                 __( 'Most Reviews', 'kutetheme' ) => 'most-review',
                 __( 'New Arrivals', 'kutetheme' ) => 'new-arrival',
@@ -272,28 +272,28 @@ vc_map( array(
         ),
         
         array(
-            "type" => "kt_categories",
-        	"heading" => __("Choose Category", 'kutetheme'),
-        	"param_name" => "section_cate",
+            "type"        => "kt_categories",
+            "heading"     => __("Choose Category", 'kutetheme'),
+            "param_name"  => "section_cate",
             "admin_label" => false,
-            "dependency" => array("element" => "section_type", "value" => array('category')),
+            "dependency"  => array("element" => "section_type", "value" => array('category')),
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'kutetheme'),
-        	"param_name" => "orderby",
-        	"value" => array(
-        		__('None', 'kutetheme')     => 'none',
-                __('ID', 'kutetheme')       => 'ID',
-                __('Author', 'kutetheme')   => 'author',
-                __('Name', 'kutetheme')     => 'name',
-                __('Date', 'kutetheme')     => 'date',
-                __('Modified', 'kutetheme') => 'modified',
-                __('Rand', 'kutetheme')     => 'rand',
+            "type"       => "dropdown",
+            "heading"    => __("Order by", 'kutetheme'),
+            "param_name" => "orderby",
+            "value"      => array(
+                __('None', 'kutetheme')       => 'none',
+                __('ID', 'kutetheme')         => 'ID',
+                __('Author', 'kutetheme')     => 'author',
+                __('Name', 'kutetheme')       => 'name',
+                __('Date', 'kutetheme')       => 'date',
+                __('Modified', 'kutetheme')   => 'modified',
+                __('Rand', 'kutetheme')       => 'rand',
                 __('Sale Price', 'kutetheme') => '_sale_price'
         	),
-            'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
+            'std'         => 'date',
+            "description" => __("Select how to sort retrieved posts.",'kutetheme'),
             "dependency"  => array("element" => "section_type", "value" => array('custom', 'on-sales', 'category')),
         ),
         array(
@@ -305,21 +305,21 @@ vc_map( array(
             "dependency"  => array("element" => "section_type", "value" => array( 'by-ids' ) ),
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order", 'kutetheme'),
-        	"param_name" => "order",
-        	"value" => array(
-                __('ASC', 'kutetheme') => 'ASC',
+            "type"       => "dropdown",
+            "heading"    => __("Order", 'kutetheme'),
+            "param_name" => "order",
+            "value"      => array(
+                __('ASC', 'kutetheme')  => 'ASC',
                 __('DESC', 'kutetheme') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",'kutetheme'),
-            "dependency" => array("element" => "section_type", "value" => array('custom', 'on-sales', 'category')),
+            'std'         => 'DESC',
+            "description" => __("Designates the ascending or descending order.",'kutetheme'),
+            "dependency"  => array("element" => "section_type", "value" => array('custom', 'on-sales', 'category')),
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Extra class name", "js_composer" ),
-            "param_name" => "el_class",
+            "type"        => "textfield",
+            "heading"     => __( "Extra class name", "js_composer" ),
+            "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             'admin_label' => false,
         ),
@@ -329,34 +329,34 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories_tab', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'      => 'Tabs Name',
-            'tabs_type'  => 'tab-1',
-            'per_page'   => 10,
-            'column'     => 4,
-            'category'   => 0,
-            'main_color' => '#ff3366',
-            'icon'       => '',
-            'bg_cate'    => '',
-            'banner_top' => '',
-            'banner_left'=> '',
-            "featured"   => false,
+            'title'          => 'Tabs Name',
+            'tabs_type'      => 'tab-1',
+            'per_page'       => 10,
+            'column'         => 4,
+            'category'       => 0,
+            'main_color'     => '#ff3366',
+            'icon'           => '',
+            'bg_cate'        => '',
+            'banner_top'     => '',
+            'banner_left'    => '',
+            "featured"       => false,
             
             
             //Carousel            
-            'autoplay' => 'false', 
-            'navigation' => 'false',
-            'margin'    => 0,
-            'slidespeed' => 250,
-            'css' => '',
-            'css_animation' => '',
-            'el_class' => '',
-            'nav' => 'true',
-            'loop'  => 'false',
+            'autoplay'       => 'false', 
+            'navigation'     => 'false',
+            'margin'         => 0,
+            'slidespeed'     => 250,
+            'css'            => '',
+            'css_animation'  => '',
+            'el_class'       => '',
+            'nav'            => 'true',
+            'loop'           => 'false',
             //Default
             'use_responsive' => 1,
-            'items_destop' => 4,
-            'items_tablet' => 2,
-            'items_mobile' => 1,
+            'items_destop'   => 4,
+            'items_tablet'   => 2,
+            'items_mobile'   => 1,
         ), $atts ) );
         
          global $woocommerce_loop;

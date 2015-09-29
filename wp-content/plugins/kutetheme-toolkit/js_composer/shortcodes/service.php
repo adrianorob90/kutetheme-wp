@@ -11,20 +11,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Setting shortcode service
 vc_map( array(
-    "name" => __( "Service", 'kutetheme'),
-    "base" => "service",
-    "category" => __('Kute Theme', 'kutetheme' ),
+    "name"        => __( "Service", 'kutetheme'),
+    "base"        => "service",
+    "category"    => __('Kute Theme', 'kutetheme' ),
     "description" => __( "Display service box", 'kutetheme'),
-    "params" => array(
+    "params"      => array(
         array(
-            "type" => "kt_taxonomy",
-            "taxonomy" => "service_cat",
-            "class" => "",
-            "heading" => __("Category", 'kutetheme'),
-            "param_name" => "taxonomy",
-            "value" => '',
-            'parent' => 0,
-            'multiple' => true,
+            "type"        => "kt_taxonomy",
+            "taxonomy"    => "service_cat",
+            "class"       => "",
+            "heading"     => __("Category", 'kutetheme'),
+            "param_name"  => "taxonomy",
+            "value"       => '',
+            'parent'      => 0,
+            'multiple'    => true,
             'placeholder' => __('Choose categoy', 'kutetheme'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
@@ -37,10 +37,10 @@ vc_map( array(
             'description' => __( 'Display of items', 'kutetheme' )
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'kutetheme'),
-        	"param_name" => "orderby",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order by", 'kutetheme'),
+            "param_name" => "orderby",
+            "value"      => array(
         		__('None', 'kutetheme')     => 'none',
                 __('ID', 'kutetheme')       => 'ID',
                 __('Author', 'kutetheme')   => 'author',
@@ -49,19 +49,19 @@ vc_map( array(
                 __('Modified', 'kutetheme') => 'modified',
                 __('Rand', 'kutetheme')     => 'rand',
         	),
-            'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
+            'std'         => 'date',
+            "description" => __("Select how to sort retrieved posts.",'kutetheme'),
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order", 'kutetheme'),
-        	"param_name" => "order",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order", 'kutetheme'),
+            "param_name" => "order",
+            "value"      => array(
                 __('ASC', 'kutetheme')  => 'ASC',
                 __('DESC', 'kutetheme') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",'kutetheme')
+            'std'         => 'DESC',
+            "description" => __("Designates the ascending or descending order.",'kutetheme')
         ),
         array(
             "type"        => "dropdown",
@@ -76,16 +76,16 @@ vc_map( array(
             "description" => __("The description", 'kutetheme')
         ),
         array(
-            'type' => 'css_editor',
-            'heading' => __( 'Css', 'js_composer' ),
-            'param_name' => 'css',
+            'type'           => 'css_editor',
+            'heading'        => __( 'Css', 'js_composer' ),
+            'param_name'     => 'css',
             // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-            'group' => __( 'Design options', 'js_composer' )
+            'group'          => __( 'Design options', 'js_composer' )
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Extra class name", 'kutetheme' ),
-            "param_name" => "el_class",
+            "type"        => "textfield",
+            "heading"     => __( "Extra class name", 'kutetheme' ),
+            "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         )
     )
@@ -94,10 +94,10 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'service', $atts ) : $atts;
         $atts = shortcode_atts( array(
-            'items'     => 4,
-            'taxonomy'  => '',
-            'orderby'   => 'date',
-            'order'     => 'desc',            
+            'items'         => 4,
+            'taxonomy'      => '',
+            'orderby'       => 'date',
+            'order'         => 'desc',            
             'css_animation' => '',
             'el_class'      => '',
             'css'           => '',
@@ -115,19 +115,19 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
         
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         $args = array(
-              'post_type' => 'service',
-              'orderby'   => $orderby,
-              'order'     => $order,
-              'post_status' => 'publish',
+              'post_type'      => 'service',
+              'orderby'        => $orderby,
+              'order'          => $order,
+              'post_status'    => 'publish',
               'posts_per_page' => $items,
         );
         if( $taxonomy ){
             $args['tax_query'] = 
                 array(
             		array(
-            			'taxonomy' => 'service_cat',
-            			'field' => 'id',
-            			'terms' => explode( ",", $taxonomy )
+                        'taxonomy' => 'service_cat',
+                        'field'    => 'id',
+                        'terms'    => explode( ",", $taxonomy )
             	)
             );
         }
