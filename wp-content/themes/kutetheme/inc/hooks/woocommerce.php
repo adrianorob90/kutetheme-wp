@@ -228,7 +228,7 @@ if( ! function_exists('kt_get_cart_content') ){
                                     if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
                                     
                                     $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
-                					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image(), $cart_item, $cart_item_key );
+                					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('shop_thumbnail'), $cart_item, $cart_item_key );
                 					$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
                                     ?>
                                         <li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">

@@ -12,8 +12,9 @@ class Widget_KT_Best_Seller extends WP_Widget {
 
 	public function __construct() {
 		$widget_ops = array(
-                        'classname' => 'widget_kt_best_seller', 
-                        'description' => __( 'Box best seller product on sidebar.', 'kutetheme' ) );
+                        'classname'   => 'widget_kt_best_seller', 
+                        'description' => __( 'Box best seller product on sidebar.', 'kutetheme' )
+                         );
 		parent::__construct( 'widget_kt_best_seller', __('KT Best Seller', 'kutetheme' ), $widget_ops );
 	}
 

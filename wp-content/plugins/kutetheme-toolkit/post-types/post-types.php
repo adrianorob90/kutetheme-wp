@@ -5,22 +5,22 @@ if ( !defined('ABSPATH')) exit;
 function register_post_type_init() {
     
     $labels = array(
-        'name'          => __( 'Mega Menu', 'kutetheme' ),
-        'singular_name' => __( 'Mega Menu Item', 'kutetheme' ),
-        'add_new'       => __( 'Add New', 'kutetheme' ),
-        'add_new_item'  => __( 'Add New Menu Item', 'kutetheme' ),
-        'edit_item'     => __( 'Edit Menu Item', 'kutetheme' ),
-        'new_item'      => __( 'New Menu Item', 'kutetheme' ),
-        'view_item'     => __( 'View Menu Item', 'kutetheme' ),
-        'search_items'  => __( 'Search Menu Items', 'kutetheme' ),
-        'not_found'     => __( 'No Menu Items found', 'kutetheme' ),
+        'name'               => __( 'Mega Menu', 'kutetheme' ),
+        'singular_name'      => __( 'Mega Menu Item', 'kutetheme' ),
+        'add_new'            => __( 'Add New', 'kutetheme' ),
+        'add_new_item'       => __( 'Add New Menu Item', 'kutetheme' ),
+        'edit_item'          => __( 'Edit Menu Item', 'kutetheme' ),
+        'new_item'           => __( 'New Menu Item', 'kutetheme' ),
+        'view_item'          => __( 'View Menu Item', 'kutetheme' ),
+        'search_items'       => __( 'Search Menu Items', 'kutetheme' ),
+        'not_found'          => __( 'No Menu Items found', 'kutetheme' ),
         'not_found_in_trash' => __( 'No Menu Items found in Trash', 'kutetheme' ),
         'parent_item_colon'  => __( 'Parent Menu Item:', 'kutetheme' ),
-        'menu_name'     => __( 'Mega Menu', 'kutetheme' ),
+        'menu_name'          => __( 'Mega Menu', 'kutetheme' ),
     );
 
     $args = array(
-        'labels' => $labels,
+        'labels'              => $labels,
         'hierarchical'        => false,
         'description'         => __('Mega Menus.', 'kutetheme'),
         'supports'            => array( 'title', 'editor' ),
@@ -36,7 +36,7 @@ function register_post_type_init() {
         'can_export'          => true,
         'rewrite'             => false,
         'capability_type'     => 'page',
-        'menu_icon' => 'dashicons-welcome-widgets-menus',
+        'menu_icon'           => 'dashicons-welcome-widgets-menus',
     );
 
     register_post_type( 'megamenu', $args );
@@ -68,7 +68,7 @@ function register_post_type_init() {
         'query_var'          => false,
         'publicly_queryable' => false,
         'public'             => true,
-        'menu_icon' => 'dashicons-editor-quote',
+        'menu_icon'          => 'dashicons-editor-quote',
         
 
     );
@@ -101,11 +101,12 @@ function register_post_type_init() {
         'query_var'          => true,
         'publicly_queryable' => true,
         'public'             => true,
-        'menu_icon' => 'dashicons-update'
+        'menu_icon'          => 'dashicons-update'
     );
     register_post_type( 'service', $args );
     flush_rewrite_rules();
 }
+
 add_action( 'init', 'register_post_type_init' );
 
 // hook into the init action and call create_service_taxonomies when it fires
@@ -115,8 +116,8 @@ add_action( 'init', 'create_service_taxonomies', 0 );
 function create_service_taxonomies() {
 	// Add new taxonomy, make it hierarchical (like categories)
 	$labels = array(
-		'name'              => _x( 'Categories', 'kutetheme' ),
-		'singular_name'     => _x( 'Categories', 'kutetheme' ),
+		'name'              => __( 'Categories', 'kutetheme' ),
+		'singular_name'     => __( 'Categories', 'kutetheme' ),
 		'search_items'      => __( 'Search Categories', 'kutetheme' ),
 		'all_items'         => __( 'All Categories', 'kutetheme' ),
 		'parent_item'       => __( 'Parent Categories', 'kutetheme' ),

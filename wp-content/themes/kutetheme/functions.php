@@ -313,11 +313,11 @@ function kt_scripts() {
         // Load our main stylesheet.
 	wp_enqueue_style( 'kutetheme-style', get_stylesheet_uri(),array('kt-style') );
     
-	wp_enqueue_style( 'custom-woocommerce-style', get_template_directory_uri().'/css/woocommerce.css',array('kt-style') );
+	wp_enqueue_style( 'kt-custom-woocommerce-style', get_template_directory_uri().'/css/woocommerce.css',array('kt-style') );
 	
-    wp_enqueue_style( 'custom-vc-style', get_template_directory_uri().'/css/vc.css',array('kt-style') );
+    wp_enqueue_style( 'kt-custom-vc-style', get_template_directory_uri().'/css/vc.css',array('kt-style') );
 	
-    wp_enqueue_style( 'responsive-style', get_template_directory_uri().'/css/responsive.css',array('kt-style') );
+    wp_enqueue_style( 'kt-responsive-style', get_template_directory_uri().'/css/responsive.css',array('kt-style') );
             
     wp_enqueue_style( 'kt-option-6', get_template_directory_uri() . '/css/option6.css', array('kt-style') );
     
