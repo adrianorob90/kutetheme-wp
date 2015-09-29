@@ -91,6 +91,7 @@ a:hover{
 }
 a:focus{
     text-decoration: none;
+    color: #ff3366;
 }
 img{
   max-width: 100%;
@@ -840,14 +841,15 @@ img.alignright{
 .select2-container .select2-selection--single .select2-selection__rendered {
     padding-left: 15px;
 }
-.main-header .header-search-box .form-inline .input-serach{
-    
+.main-header .header-search-box .blog-search-form.form-inline .input-serach{
+    width: 100%;
 }
 .main-header .header-search-box .form-inline .input-serach input{
     border: none;
     padding: 0;
     padding-left: 15px;
     width: 100%;
+    height: 38px;
 }
 .main-header .header-search-box .form-inline .btn-search{
     width: 41px;
@@ -2858,7 +2860,7 @@ span.notify-right{
   list-style: none;
 }
 
-#introduce-box .widget-footer-menu ul li{
+#introduce-box .widget-footer-menu ul>li{
   list-style: inside;
 }
 #introduce-box .widget-footer-menu ul>li>a:before {
@@ -2889,11 +2891,12 @@ span.notify-right{
   margin-bottom: 8px;
   margin-top: 0;
 }
-.widget_kt_mailchimp .input-group input{
+#footer .widget_kt_mailchimp .input-group input{
   border: none;
   border-radius: 0;
   height: 30px;
   padding: 0 10px;
+  border: none;
 }
 .widget_kt_mailchimp .mailchimp-submit{
   font-weight: bold;
@@ -4491,36 +4494,88 @@ span.notify-right{
     line-height: 24px;
     margin-top: 20px;
  }
-.blog-posts .entry-thumb{
-  margin-bottom: 15px;
- }
 .blog-posts .entry-title{
   margin: 0;
   -ms-word-wrap: break-word;
-    word-wrap: break-word;
+  word-wrap: break-word;
  }
   .blog-posts .post-item{
-    padding-bottom: 20px;
-    padding-top: 20px;
-    border-bottom: 1px solid #eaeaea;
-    border-top: 1px solid #eaeaea;
     margin-top: -1px;
+    margin-bottom: 30px;
  }
-  .blog-posts .post-item.sticky .entry{
-    background: #fafafa;
-    padding: 20px;
-    overflow: hidden;
-    -webkit-box-shadow: 1px 1px 5px 0px rgba(117,117,117,0.64);
-    -moz-box-shadow: 1px 1px 5px 0px rgba(117,117,117,0.64);
-    box-shadow: 1px 1px 5px 0px rgba(117,117,117,0.64);
-  }
+.blog-posts .post-item.sticky .entry{
+  padding: 30px;
+  overflow: hidden;
+  background-color: #fcf8e3;
+  border:1px solid #f4dcab;
+  position: relative;
+}
+.blog-posts .post-item .entry .entry-tags{
+  color: #999;
+}
+.blog-posts .post-item .entry .entry-title{
+   font-size: 30px;
+   color: #333;
+}
+.blog-posts .post-item .entry .entry-meta-data{
+  padding: 8px 0;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+  margin-top: 13px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data{
+  border-top: 1px solid #f0e5cf;
+  border-bottom: 1px solid #f0e5cf;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data span{
+  margin-right: 40px;
+}
+.blog-posts .post-item.sticky .entry-more{
+  float: right;
+}
+.blog-posts .post-item.sticky .entry-more a{
+  background-color: #ff3366;
+  color: #fff;
+  height: 38px;
+  padding: 0 15px;
+  display: inline-block;
+  line-height: 38px;
+  overflow: hidden;
+  border: none;
+}
+.blog-posts .post-item.sticky .entry-more a:before{
+  content: '';
+  width: 16px;
+  height: 38px;
+  background: url('../images/icon-reamore.png') no-repeat left center;
+  display: inline-block;
+  margin-right: 10px;
+  float: left;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data .author a{
+  color: #3366cc;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data .cat a{
+  color: #ff3366;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data .comment-count{
+  color: #669933;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data .date{
+  color: #999999;
+}
+.blog-posts .post-item.sticky .entry .entry-meta-data .fa{
+  color: #999;
+}
 .blog-posts .post-item .entry-meta-data{
-    padding: 5px 0;
-    color: #666;
-    font-size: 13px;
+  padding: 5px 0;
+  color: #666;
+  font-size: 13px;
 }
 .blog-posts .post-item .entry-meta-data span{
-  margin-right: 5px;
+  margin-right: 40px;
 }
 .blog-posts .post-item .entry-meta-data .author .fa{
   opacity: 0.7;
@@ -4617,6 +4672,9 @@ span.notify-right{
   border: 1px solid #eaeaea;
   height: auto;
 }
+.entry-detail iframe{
+  max-width: 100%;
+}
 .entry-detail .entry-meta-data{
   padding: 10px 0;
   color: #666;
@@ -4653,7 +4711,7 @@ span.notify-right{
 .comment-list{
   margin-top: 20px;
 }
-.comment-list li{
+.comment-list .comment{
   list-style: none;
 }
 .comment-list .children{

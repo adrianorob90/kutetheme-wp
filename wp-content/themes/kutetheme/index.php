@@ -15,7 +15,7 @@
  */
 get_header(); 
 
-$kt_sidebar_are = kt_option('kt_sidebar_are','full');
+$kt_sidebar_are = kt_option('kt_sidebar_are','left');
 
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
 

@@ -13,7 +13,7 @@
 
 get_header();
 // Default option
-$kt_sidebar_are = kt_option('kt_sidebar_are','full');
+$kt_sidebar_are = kt_option('kt_sidebar_are','left');
 
 // Page option
 $kt_page_layout = kt_get_post_meta(get_the_ID(),'kt_page_layout','none');
