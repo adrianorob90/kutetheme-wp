@@ -21,7 +21,9 @@ class Widget_KT_Slider extends WP_Widget {
 	   echo $args['before_widget'];
        
 		$autoplay   = ( isset( $instance[ 'autoplay' ] ) && $instance[ 'autoplay' ] )  ? "true" : "false";
+        
         $loop       = ( isset( $instance[ 'loop' ] ) &&  $instance[ 'loop' ] ) ? "true" : "false";
+        
         $slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
        
        $data_carousel    = array(
@@ -81,7 +83,9 @@ class Widget_KT_Slider extends WP_Widget {
 		$instance = $new_instance;
         
 		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] ) && $new_instance[ 'autoplay' ] ) ? esc_attr( $new_instance[ 'autoplay' ] )  : '';
+        
         $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] ) && $new_instance[ 'loop' ] ) ? esc_attr( $new_instance[ 'loop' ] )  : '';
+        
         $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] ) && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
         
         if( isset( $new_instance[ 'image' ] ) && $new_instance[ 'image' ] && count( $new_instance[ 'image' ] ) > 0 ){

@@ -30,7 +30,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                 
                     $title  = ( isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i] )   ? esc_html( $instance[ 'title' ][$i] ) : '';
                     $image  = ( isset($instance[ 'image' ][$i])   && intval( $instance[ 'image' ][$i] ) ) ? intval( $instance[ 'image' ][$i] ) : '';
-                    $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] ): '#';
+                    $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] ) : '#';
                     $target = ( isset($instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ) ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
                     
                     $img_preview = "";

@@ -1,3 +1,17 @@
+<?php
+/**
+ * The template Header
+ *
+ *
+ * @author 		KuteTheme
+ * @package 	THEME/WooCommerce
+ * @version     KuteTheme 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
 <!-- HEADER -->
 <div id="header" class="header option6">
     <div class="top-header">
@@ -56,7 +70,7 @@
                                 'walker'            => new wp_bootstrap_navwalker())
                             );
                         ?><!--/.nav-collapse -->
-                        <div class="all-category"><span class="open-cate">All Categories</span></div>
+                        <div class="all-category"><span class="open-cate"><?php _e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
                 </div>
@@ -67,7 +81,7 @@
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                     <i class="fa fa-bars"></i>
                                 </button>
-                                <a class="navbar-brand" href="#">MENU</a>
+                                <a class="navbar-brand" href="#"><?php _e( 'Menu', 'kutetheme' ) ?></a>
                             </div>
                             <?php
                                 wp_nav_menu( array(

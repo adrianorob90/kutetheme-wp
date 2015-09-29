@@ -1,3 +1,18 @@
+<?php
+/**
+ * The template post meta
+ *
+ *
+ * @author 		KuteTheme
+ * @package 	THEME/WooCommerce
+ * @version     KuteTheme 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
+
 <div class="entry-meta-data">
     <?php
     printf( '<span class="author vcard"><i class="fa fa-user"></i> '.__('by:', 'kutetheme' ).'  <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',

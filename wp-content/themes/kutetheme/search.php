@@ -4,38 +4,39 @@
  *
  * @package WordPress
  * @subpackage Kute theme
- * @since kutetheme 1.0
+ * @since KuteTheme 1.0
  */
 
 get_header(); 
-$kt_sidebar_are = kt_option('kt_sidebar_are','full');
+$kt_sidebar_are = kt_option( 'kt_sidebar_are', 'full' );
+
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
+
 if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-8 col-md-9"; 
 }else{
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
 ?>
-	<div id="primary" class="search-page content-area <?php echo esc_attr($sidebar_are_layout);?>">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="search-page content-area <?php echo esc_attr( $sidebar_are_layout );?>">
+	<main id="main" class="site-main" role="main">
         <div class="container">
             <?php breadcrumb_trail();?>
             <div class="row">
-                <div class="<?php echo esc_attr($col_class);?>">
+                <div class="<?php echo esc_attr( $col_class );?>">
                     <?php if ( have_posts() ) : ?>
             			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'kutetheme' ), get_search_query() ); ?></h1>
                         <div class="blog-posts">
-            			<?php
-            			// Start the loop.
-            			while ( have_posts() ) : the_post();
-            				/*
-            				 * Get template loop
-            				 */
-            			     get_template_part( 'templates/loop-search' );
-            
-            			// End the loop.
-            			endwhile;
-                        ?>
+                			<?php
+                    			// Start the loop.
+                    			while ( have_posts() ) : the_post();
+                    				/*
+                    				 * Get template loop
+                    				 */
+                    			     get_template_part( 'templates/loop-search' );
+                    			// End the loop.
+                    			endwhile;
+                            ?>
                         </div>
                         <div class="blog-paging clearfix">
                             <?php kt_paging_nav();?>
@@ -47,20 +48,16 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
             		endif;
             		?>
                 </div>
-                <?php
-                if($kt_sidebar_are!='full'){
-                ?>
-                <div class="col-xs-12 col-sm-4 col-md-3">
-                    <div class="sidebar">
-                        <?php get_sidebar();?>
+                <?php if( $kt_sidebar_are != 'full' ) { ?>
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <div class="sidebar">
+                            <?php get_sidebar();?>
+                        </div>
                     </div>
-                </div>
-                <?php
-                }
-                ?>
+                <?php } ?>
             </div>
         </div>
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+	</main><!-- .site-main -->
+</div><!-- .content-area -->
 
 <?php get_footer(); ?>

@@ -4,19 +4,20 @@
  *
  * @package WordPress
  * @subpackage Kute Theme
- * @since Kute Theme 1.0
+ * @since KuteTheme 1.0
  */
 ?>
 <?php 
-    $kt_show_page_title = kt_get_post_meta(get_the_ID(),'kt_show_page_title','show');
-    $kt_page_extra_class = kt_get_post_meta(get_the_ID(),'kt_page_extra_class','show');
+    $kt_show_page_title = kt_get_post_meta( get_the_ID(), 'kt_show_page_title', 'show');
+
+    $kt_page_extra_class = kt_get_post_meta( get_the_ID(), 'kt_page_extra_class', 'show');
 ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class($kt_page_extra_class); ?>>
-    <?php if( $kt_show_page_title=='show'): ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $kt_page_extra_class ); ?>>
+    <?php if( $kt_show_page_title == 'show'): ?>
     	<header class="entry-header">
-    	<h1 class="page-heading">
-            <span class="page-heading-title2"><?php the_title();?></span>
-        </h1>
+        	<h1 class="page-heading">
+                <span class="page-heading-title2"><?php the_title();?></span>
+            </h1>
         </header>
     <?php endif; ?>
 	<div class="entry-content">

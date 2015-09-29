@@ -272,10 +272,11 @@ if( ! function_exists('kt_get_cart_content') ){
     }
 }
 // Minicart ontop
-if(!function_exists('kt_display_mini_cart_on_top')){
+if( ! function_exists('kt_display_mini_cart_on_top')){
+    
     function kt_display_mini_cart_on_top(){
         $check_out_url = WC()->cart->get_cart_url();
-        kt_get_cart_content($check_out_url);
+        kt_get_cart_content( esc_url( $check_out_url )  );
     }
 }
 //Cart messsage
@@ -286,9 +287,9 @@ if( ! function_exists( 'kt_add_to_cart_message' ) ){
     	// Output success messages
     	if (get_option('woocommerce_cart_redirect_after_add')=='yes') :
     		$return_to 	= get_permalink( woocommerce_get_page_id('shop') );
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, __('Continue Shopping &rarr;', 'woocommerce'), __('Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, __( 'Continue Shopping &rarr;', 'woocommerce'), __( 'Product successfully added to your cart.', 'woocommerce') );
     	else :
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), __('View Cart &rarr;', 'woocommerce'), __('Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), __( 'View Cart &rarr;', 'woocommerce'), __( 'Product successfully added to your cart.', 'woocommerce') );
     	endif;
     		return $message;
     }
@@ -647,7 +648,7 @@ if( ! function_exists( 'kt_utilities_single_product' ) ){
         ?>
         <div class="utilities">
             <ul>
-                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e('Print', 'kutetheme');?></a></li>
+                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e( 'Print', 'kutetheme' );?></a></li>
                 <li><a href="<?php echo esc_url('mailto:?subject='.get_the_title());?>"><i class="fa fa-envelope-o"></i> <?php _e( 'Send to a friend', 'kutetheme' );?></a></li>
             </ul>
         </div>

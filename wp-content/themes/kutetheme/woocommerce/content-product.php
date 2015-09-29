@@ -2,7 +2,7 @@
 /**
  * The template for displaying product content within loops.
  *
- * Override this template by copying it to yourtheme/woocommerce/content-product.php
+ * Override this template by copying it to kutetheme/woocommerce/content-product.php
  *
  * @author  WooThemes
  * @package WooCommerce/Templates
@@ -87,12 +87,12 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
         <div class="right-block">
             <?php
             $product_name = get_the_title();
-            if(strlen($product_name)>25){
-                $product_name = substr($product_name, 0,25);
-                $product_name = trim($product_name)."...";
+            if( strlen( $product_name ) > 25 ) {
+                $product_name = substr( $product_name, 0, 25);
+                $product_name = trim( $product_name ) ."...";
             }
             ?>
-            <h5 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php echo $product_name; ?></a></h5>
+            <h5 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php echo esc_html( $product_name ) ; ?></a></h5>
             <div class="content_price">
                 <?php
         			/**
@@ -104,7 +104,7 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
         		?>
             </div>
             <div class="info-orther">
-                <p class="availability"><?php _e( 'Availability', 'kutetheme' );?>: <span class="instock"><?php _e('In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e('Out of stock', 'kutetheme' );?></span></p>
+                <p class="availability"><?php _e( 'Availability', 'kutetheme' );?>: <span class="instock"><?php _e( 'In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e( 'Out of stock', 'kutetheme' );?></span></p>
                 <div class="product-desc"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
             </div>
         </div>

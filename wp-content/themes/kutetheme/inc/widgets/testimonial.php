@@ -61,7 +61,7 @@ class Widget_KT_Testimonial extends WP_Widget {
                         <li>
                             <div class="client-mane"><?php the_title(); ?></div>
                             <div class="client-avarta">
-                                <?php the_post_thumbnail('110x110'); ?>
+                                <?php the_post_thumbnail( '110x110' ); ?>
                             </div>
                             <div class="testimonial">
                                 <?php the_content();  ?>
@@ -81,13 +81,14 @@ class Widget_KT_Testimonial extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
+        
         $instance[ 'title' ] = ( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] ) ? esc_html( $new_instance[ 'title' ] ) : '';
         
 		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )   && $new_instance[ 'autoplay' ] == "true" )   ? esc_attr( $new_instance[ 'autoplay' ] ) : "";
         
         $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )       && $new_instance[ 'loop' ] == "true"  )      ? esc_attr( $new_instance[ 'loop' ] ) : "";
         
-        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] ) && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : '250';
+        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] ) && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
         
         $instance[ 'number' ]   = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )  : 3;
         

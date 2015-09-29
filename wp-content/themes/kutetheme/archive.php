@@ -13,7 +13,7 @@
  *
  * @package WordPress
  * @subpackage Kutetheme
- * @since Kuteshop 1.0
+ * @since KuteTheme 1.0
  */
 get_header(); 
 
@@ -27,8 +27,8 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
 ?>
-	<div id="primary" class="content-area <?php echo esc_attr( $sidebar_are_layout );?>">
-		<main id="main" class="site-main" role="main">
+<div id="primary" class="content-area <?php echo esc_attr( $sidebar_are_layout );?>">
+	<main id="main" class="site-main" role="main">
         <div class="container">
             <?php breadcrumb_trail();?>
             <div class="row">
@@ -80,7 +80,7 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
                 ?>
             </div>
         </div>
-		</main><!-- .site-main -->
-	</div><!-- .content-area -->
+	</main><!-- .site-main -->
+</div><!-- .content-area -->
 
 <?php get_footer(); ?>

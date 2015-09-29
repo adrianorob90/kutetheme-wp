@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage Kutetheme
- * @since kutetheme 1.0
+ * @since KuteTheme 1.0
  */
 ?>
 
@@ -19,7 +19,7 @@
 
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
 
-			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'kutetheme' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
+			<p><?php printf( '%2$s <a href="%1$s">%3$s</a>.', esc_url( admin_url( 'post-new.php' ) ), __( 'Ready to publish your first post?', 'kutetheme' ), __( 'Get started here', 'kutetheme' ) ); ?></p>
 
 		<?php elseif ( is_search() ) : ?>
 

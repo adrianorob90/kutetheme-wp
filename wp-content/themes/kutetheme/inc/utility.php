@@ -6,6 +6,7 @@
 * @return string
 */
 $kt_used_header = 1;
+
 if( ! function_exists( 'kt_get_header' )){
     function kt_get_header(){
         global $kt_used_header;
@@ -46,7 +47,9 @@ if ( ! function_exists( 'kt_option' ) ){
         if($option === FALSE){
             return FALSE;
         }
+        
         $option_name = apply_filters('theme_option_name', 'kt_options' );
+        
         $kt_options  = wp_cache_get( $option_name );
         if(  ! $kt_options ){
             $kt_options = get_option( $option_name );
@@ -156,7 +159,7 @@ if( ! function_exists( "kt_get_wpml" )){
     }
 }
 if( ! function_exists('kt_menu_my_account')){
-    function kt_menu_my_account($output = ''){
+    function kt_menu_my_account( $output = '' ){
         ob_start();
         ?>
         <div id="user-info-top" class="user-info pull-right">
@@ -294,8 +297,8 @@ function kt_paging_nav() {
 	}
     
     echo get_the_posts_pagination( array(
-        'prev_text'          => __( '<i class="fa fa-angle-double-left"></i> Previous', 'kutetheme' ),
-        'next_text'          => __( 'Next <i class="fa fa-angle-double-right"></i>', 'kutetheme' ),
+        'prev_text'          => sprintf( '<i class="fa fa-angle-double-left"></i> %1$s', __( 'Previous', 'kutetheme' ) ),
+        'next_text'          => sprintf( '%1$s <i class="fa fa-angle-double-right"></i>', __( 'Next', 'kutetheme' ) ),
         'screen_reader_text' => '&nbsp;',
         'before_page_number' => '',
     ) );
@@ -340,7 +343,7 @@ endif;
  * @param $args
  * @param $depth
  */
-function kt_comments($comment, $args, $depth) {
+function kt_comments( $comment, $args, $depth ) {
     $GLOBALS[ 'comment' ] = $comment; ?>
 
 <li <?php comment_class('comment'); ?> id="li-comment-<?php comment_ID() ?>">
@@ -366,7 +369,7 @@ function kt_comments($comment, $args, $depth) {
                     array(
                         'depth'      => $depth,
                         'max_depth'  => $args['max_depth'],
-                        'reply_text' =>'<i class="fa fa-share"></i> '.__('Reply', 'kutetheme')
+                        'reply_text' =>'<i class="fa fa-share"></i> '.__( 'Reply', 'kutetheme' )
                     ))) ?>
             </div>
         </div>
@@ -414,7 +417,7 @@ if ( ! function_exists( 'kt_sidebars' ) ){
  * */
 if( ! function_exists( "kt_get_menu" ) ){
     function kt_get_menu($setting = array( 'theme_location' => 'primary', 'container' => 'nav', 'container_id' => 'main-nav-mobile', 'menu_class' => 'menu navigation-mobile' )){
-        if( ! isset($setting["walker"])){
+        if( ! isset( $setting["walker"] ) ) {
             $setting[ "walker" ] = new KTMegaWalker();
         }
         wp_nav_menu( $setting );
@@ -437,7 +440,7 @@ function _data_carousel( $data ){
     return $output;
 }
 
-if(!function_exists('kt_get_post_meta')){
+if( ! function_exists( 'kt_get_post_meta' ) ) {
     function kt_get_post_meta( $post_id, $key, $default = "" ){
         $meta = get_post_meta( $post_id, $key, true );
         if($meta){

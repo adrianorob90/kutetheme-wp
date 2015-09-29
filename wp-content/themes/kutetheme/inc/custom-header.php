@@ -351,6 +351,6 @@ function kt_sidebar_text_color_css() {
 		}
 	';
 
-	wp_add_inline_style( 'twentyfifteen-style', sprintf( $css, $sidebar_link_color, $sidebar_text_color, $sidebar_border_color, $sidebar_border_focus_color ) );
+	wp_add_inline_style( 'kt-style', sprintf( $css, $sidebar_link_color, $sidebar_text_color, $sidebar_border_color, $sidebar_border_focus_color ) );
 }
 add_action( 'wp_enqueue_scripts', 'kt_sidebar_text_color_css', 11 );

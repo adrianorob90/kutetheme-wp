@@ -51,18 +51,16 @@ class Widget_KT_Product_Special extends WP_Widget {
         <div class="block left-module">
             <div class="block_content">
                 <ul class="products-block">
-                <?php
-                if ( $product->have_posts() ):
-                ?>
-                    <?php while($product->have_posts()): $product->the_post(); ?>
-                        <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
-                    <?php endwhile; ?>
-                <?php
-                endif;
-                wp_reset_query();
-                wp_reset_postdata();
-                $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );            
-                ?>
+                    <?php if ( $product->have_posts() ):?>
+                            <?php while($product->have_posts()): $product->the_post(); ?>
+                                <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
+                            <?php endwhile; ?>
+                    <?php
+                        endif;
+                        wp_reset_query();
+                        wp_reset_postdata();
+                        $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );            
+                    ?>
                 </ul>
                 <div class="products-block">
                     <div class="products-block-bottom">

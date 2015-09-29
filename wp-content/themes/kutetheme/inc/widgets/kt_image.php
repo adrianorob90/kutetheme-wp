@@ -1,9 +1,8 @@
 <?php
-
-
 if ( ! defined( 'ABSPATH' ) ) {
-
+    die;
 }
+
 
 /**
  * Pages widget class
@@ -22,8 +21,11 @@ class WP_Widget_KT_Image extends WP_Widget {
         
         if($attachment && isset( $attachment[ 0 ] ) && $attachment[ 0 ] ){
     		echo $args[ 'before_widget' ];
+            
             $capture = ( isset( $instance[ 'capture' ] ) ) ? esc_attr( $instance[ 'capture' ] ) : '';
+            
             $link = ( isset( $instance [ 'link' ] ) )      ? esc_url( $instance[ 'link' ] ) : '#';
+            
             $target = ( isset( $instance[ 'target' ] ) )   ? esc_attr( $instance[ 'target' ] ) : '_blank';
             
             ?>

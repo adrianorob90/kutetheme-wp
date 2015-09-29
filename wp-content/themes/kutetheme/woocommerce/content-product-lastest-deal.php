@@ -1,3 +1,17 @@
+<?php
+/**
+ * The template for displaying product content within loops.
+ *
+ *
+ * @author 		KuteTheme
+ * @package 	THEME/WooCommerce
+ * @version     KuteTheme 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
 <div class="left-block">
     <a href="<?php echo esc_url( get_permalink() ) ; ?>">
         <?php
@@ -34,7 +48,10 @@
     </div>
 </div>
 <div class="right-block">
-    <h5 class="product-name"><a href="<?php echo esc_url( get_permalink() ) ; ?>"><?php echo esc_html( get_the_title() ) ; ?></a></h5>
+    <h5 class="product-name">
+        <a href="<?php echo esc_url( get_permalink() ) ; ?>">
+        <?php echo esc_html( get_the_title() ) ; ?></a>
+    </h5>
     <div class="content_price">
         <?php
 			/**

@@ -13,17 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 get_header(); 
 
-$kt_sidebar_are = kt_option('kt_woo_shop_sidebar_are','left');
+$kt_sidebar_are = kt_option( 'kt_woo_shop_sidebar_are', 'left' );
+
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
+
 if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-8 col-md-9"; 
 }else{
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
 
-add_filter('kt_loop_product_thumbnail',function(){
-
-});
 ?>
 
     <?php
@@ -35,7 +34,7 @@ add_filter('kt_loop_product_thumbnail',function(){
          */
         do_action( 'woocommerce_before_main_content' );
     ?>
-    <div class="row <?php echo esc_attr($sidebar_are_layout);?>">
+    <div class="row <?php echo esc_attr( $sidebar_are_layout );?>">
         <div class="view-product-list <?php echo esc_attr( $col_class );?>">
             <?php
             /**
@@ -53,7 +52,7 @@ add_filter('kt_loop_product_thumbnail',function(){
             <?php woocommerce_content(); ?>
         </div>
         <?php
-        if($kt_sidebar_are!='full'){
+        if( $kt_sidebar_are != 'full' ){
             ?>
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <div class="sidebar">

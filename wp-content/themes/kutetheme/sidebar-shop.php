@@ -3,14 +3,14 @@
  * The sidebar containing the main widget area
  *
  * @package WordPress
- * @subpackage Kutetheme
- * @since kuteshop 1.0
+ * @subpackage Kute theme
+ * @since KuteTheme 1.0
  */
 ?>
 <?php
-$kt_woowoo_shop_used_sidebar = kt_option('kt_woowoo_shop_used_sidebar','sidebar-shop');
+$kt_woowoo_shop_used_sidebar = kt_option( 'kt_woowoo_shop_used_sidebar', 'sidebar-shop' );
 if(is_product()){
-	$kt_woowoo_shop_used_sidebar = kt_option('kt_woo_single_used_sidebar','sidebar-shop');
+	$kt_woowoo_shop_used_sidebar = kt_option( 'kt_woo_single_used_sidebar', 'sidebar-shop' );
 }
 ?>
 <div id="secondary" class="secondary">
@@ -19,5 +19,4 @@ if(is_product()){
 			<?php dynamic_sidebar( $kt_woowoo_shop_used_sidebar ); ?>
 		</div><!-- .widget-area -->
 	<?php endif; ?>
-
 </div><!-- .secondary -->

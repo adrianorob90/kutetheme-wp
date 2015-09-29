@@ -7,7 +7,7 @@
  *
  * @package KuteTheme
  * @subpackage KuteTheme
- * @since Kute Theme 1.0.0
+ * @since KuteTheme 1.0
  */
 
 /*

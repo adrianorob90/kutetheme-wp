@@ -109,7 +109,8 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                     			</select>
                     		</p>
                         </div>
-                    <?php }}
+                    <?php }
+                    }
                 }else{?>
                     <div class="item widget-content">
                         <span class="remove">X</span>

@@ -6,7 +6,7 @@
  *
  * @package KuteTheme
  * @subpackage KuteTheme
- * @since Kute Shop  1.0.0
+ * @since KuteTheme 1.0
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">

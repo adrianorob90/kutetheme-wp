@@ -6,7 +6,7 @@
  *
  * @package WordPress
  * @subpackage KuteTheme
- * @since Kute Theme 1.0.0
+ * @since KuteTheme 1.0
  */
 ?>
 
@@ -116,6 +116,5 @@
 </div><!-- .site -->
 <a href="#" class="scroll_top" title="<?php _e( 'Scroll to Top', 'kutetheme' ) ?>"><?php _e( 'Scroll', 'kutetheme' ) ?></a>
 <?php wp_footer(); ?>
-
 </body>
 </html>

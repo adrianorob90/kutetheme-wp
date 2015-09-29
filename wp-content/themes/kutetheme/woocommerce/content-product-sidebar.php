@@ -2,11 +2,10 @@
 /**
  * The template for displaying product content within loops.
  *
- * Override this template by copying it to yourtheme/woocommerce/content-product-sale.php
  *
- * @author 		AngelsIT
- * @package 	KuteTheme
- * @version     1.0.0
+ * @author 		KuteTheme
+ * @package 	Kute Theme
+ * @version     KuteTheme 1.0
  */
  
 if ( ! defined( 'ABSPATH' ) ) {
@@ -20,9 +19,9 @@ $id = get_the_ID();
 <li>
     <?php
     $time = kt_get_max_date_sale( $id );
-    $y = date('Y',$time);
-    $m = date('m',$time);
-    $d = date('d',$time);
+    $y = date( 'Y', $time );
+    $m = date( 'm', $time );
+    $d = date( 'd', $time );
     ?>
     <div class="count-down-time" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" data-h="00" data-i="00" data-s="00" ></div>
     <div class="left-block">
@@ -59,7 +58,9 @@ $id = get_the_ID();
     	?>
     </div>
     <div class="right-block">
-        <h5 class="product-name"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ) ; ?></a></h5>
+        <h5 class="product-name">
+            <a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ) ; ?></a>
+        </h5>
         <div class="content_price">
             <?php
     			/**

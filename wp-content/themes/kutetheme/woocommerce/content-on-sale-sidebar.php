@@ -1,3 +1,17 @@
+<?php
+/**
+ * The template for displaying product content within loops.
+ *
+ *
+ * @author 		KuteTheme
+ * @package 	THEME/WooCommerce
+ * @version     KuteTheme 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
 <div class="product-container">
     <div class="left-block">
         <a href="<?php the_permalink(); ?>">
