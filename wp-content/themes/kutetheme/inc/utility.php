@@ -25,15 +25,13 @@ if( ! function_exists( 'kt_get_hotline' )){
         ?>
             <div class="nav-top-links link-contact-us">
                 <?php if( $hotline ) : ?>
-                    <a title="<?php echo $hotline;?>">
-                        <!--<img alt="<?php echo $hotline;?>" src="<?php $phone_icon = THEME_URL.'/images/phone.png'; echo $phone_icon; ?>" />-->
-                        <span><i class="fa fa-phone"></i> <?php echo $hotline;?></span>
+                    <a title="<?php echo esc_attr( $hotline ); ?>">
+                        <span><i class="fa fa-phone"></i> <?php echo esc_attr( $hotline );?></span>
                     </a>
                 <?php endif; ?>
-                <?php if( $email ) : ?>
-                    <a href="mailto:<?php echo $email;?>" title="<?php echo $email;?>">
-                        <!--<img alt="<?php echo $email;?>" src="<?php $email_icon = THEME_URL.'/images/email.png'; echo $email_icon; ?>" />-->
-                        <span><i class="fa fa-envelope"></i> <?php _e('Contact us today !', 'kutetheme') ?></span>
+                <?php if( $email && is_email( $email ) ) : ?>
+                    <a href="mailto:<?php echo esc_attr( $email );?>" title="<?php echo esc_attr( $email );?>">
+                        <span><i class="fa fa-envelope"></i> <?php _e( 'Contact us today !', 'kutetheme' ) ?></span>
                     </a>
                 <?php endif; ?>
             </div>
@@ -82,7 +80,7 @@ if( ! function_exists( "kt_get_logo_footer" ) ){
     function kt_get_logo_footer(){
         $default = kt_option("kt_logo_footer" , THEME_URL . '/images/logo.png');
         
-        $html = '<a href="'.get_home_url().'"><img alt="'.get_bloginfo('name').'" src="'.esc_url($default).'" /></a>';
+        $html = '<a href="' . get_home_url() . '"><img alt="' . get_bloginfo('name') . '" src="' . esc_url($default) . '" /></a>';
         return $html;
     }
 }
@@ -168,24 +166,26 @@ if( ! function_exists('kt_menu_my_account')){
                 </a>
                 <ul class="dropdown-menu mega_dropdown" role="menu">
                     <?php if ( ! is_user_logged_in() ):  ?>
-                        <?php if( kt_is_wc() ): $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
-                            <li><a href="<?php echo $url; ?>" title="<?php _e( 'Login / Register', 'kutetheme' ) ?>"><?php _e('Login / Register', 'kutetheme'); ?></a></li>
+                        <?php if( kt_is_wc() ): 
+                                $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
+                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php _e( 'Login / Register', 'kutetheme' ) ?>"><?php _e('Login / Register', 'kutetheme'); ?></a></li>
                         <?php else: 
                             $url = wp_login_url();
                             $url_register = wp_registration_url(); ?>
-                            <li><a href="<?php echo $url; ?>" title="<?php _e('Login', 'kutetheme') ?>"><?php _e('Login', 'kutetheme') ?></a></li>
-                            <li><a href="<?php echo $url_register; ?>" title="<?php _e('Register', 'kutetheme'); ?>"><?php _e('Register', 'kutetheme'); ?></a></li>
+                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php _e( 'Login', 'kutetheme' ) ?>"><?php _e( 'Login', 'kutetheme' ) ?></a></li>
+                            <li><a href="<?php echo esc_url( $url_register ); ?>" title="<?php _e( 'Register', 'kutetheme' ); ?>"><?php _e( 'Register', 'kutetheme' ); ?></a></li>
                         <?php endif; ?>
                     <?php else: ?>
-                        <li><a href="<?php echo wp_logout_url(); ?>"><?php _e('Logout', 'kutetheme') ?></a></li>
+                        <li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e( 'Logout', 'kutetheme' ) ?></a></li>
                         <?php if( function_exists( 'YITH_WCWL' ) ):
                             $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                            <li><a href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a></li>
+                            <li><a href="<?php echo esc_url( $wishlist_url ); ?>"><?php _e( 'Wishlists', 'kutetheme' ) ?></a></li>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <?php 
-                    if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                        <li><a href="#" class="yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a></li>
+                    <?php if(defined( 'YITH_WOOCOMPARE' )): 
+                            global $yith_woocompare; 
+                            $count = count($yith_woocompare->obj->products_list); ?>
+                        <li><a href="#" class="yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo esc_attr( $count ); ?>)</span></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -200,7 +200,7 @@ if( ! function_exists( 'kt_service_link' ) ){
     function kt_service_link(){
         $kt_page_service = kt_option( 'kt_page_service', false );
         if( $kt_page_service ){
-            echo get_page_link( $kt_page_service );
+            echo esc_url( get_page_link( $kt_page_service ) );
         }
     }
 }
@@ -209,7 +209,7 @@ if( ! function_exists( 'kt_support_link' ) ){
     function kt_support_link(){
         $kt_page_support = kt_option( 'kt_page_support', false );
         if( $kt_page_support ){
-            echo get_page_link( $kt_page_support );
+            echo esc_url( get_page_link( $kt_page_support ) );
         }
     }
 }
@@ -218,7 +218,7 @@ if( ! function_exists('kt_about_us_link')){
     function kt_about_us_link(){
         $kt_page_about_us = kt_option( 'kt_page_about_us', false );
         if( $kt_page_about_us ){
-            echo get_page_link( $kt_page_about_us );
+            echo esc_url( get_page_link( $kt_page_about_us ) );
         }
     }
 }
@@ -232,119 +232,18 @@ if( ! function_exists('kt_search_form') ){
         }
     }
 }
-/*
-if( ! function_exists('kt_cart_button')){
-    function kt_cart_button(){
-        if( kt_is_wc() ):
-        ob_start();
-        $cart_count =  WC()->cart->cart_contents_count ;
-        $cart_total = WC()->cart->get_cart_total() ;
-        $check_out_url = WC()->cart->get_cart_url();
-        $cart_content = WC()->cart->cart_contents;
-        global $kt_used_header;
-        ?>
-        
-            <?php if( $kt_used_header == 6 ): ?>
-                <div class="btn-cart" id="cart-block">
-                    <a href="<?php echo $check_out_url; ?>" title="<?php _e( 'My cart', 'kutetheme' ) ?>" ><?php _e( 'Cart', 'kutetheme' ) ?></a>
-                    <span class="notify notify-right"><?php echo $cart_count; ?></span>
-                    <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
-                </div>
-            <?php elseif ($kt_used_header==2):?>
-                <div class="col-xs-5 col-sm-2 group-button-header">
-                <?php
-                    if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                    <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>
-                <?php endif; ?>
-                <?php if( function_exists( 'YITH_WCWL' ) ):
-                    $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                    <a class="btn-heart" href="<?php echo $wishlist_url; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
-                <?php endif; ?>
-                <div class="btn-cart" id="cart-block">
-                    <a title="My cart" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
-                    <span class="notify notify-right"><?php echo $cart_count; ?></span>
-                    <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
-                </div>
 
-            </div>
-            <?php else: ?>
-                <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-2">
-                    <a class="cart-link" href="<?php echo $check_out_url; ?>">
-                        <span class="title"><?php _e('Shopping cart', 'kutetheme') ?></span>
-                        <span class="total"><?php echo sprintf (_n( '%d item', '%d items', $cart_count ), $cart_count, 'kutetheme' ); ?> <?php _e('-', 'kutetheme') ?> <?php echo $cart_total ?></span>
-                        <span class="notify notify-left"><?php echo $cart_count; ?></span>
-                    </a>
-                    <?php echo kt_get_cart_content($cart_content, $cart_total, $check_out_url); ?>
-                </div>
-            <?php endif; ?>
-        <?php
-        endif;
-        $result = ob_get_contents();
-        ob_clean();
-        return $result;
-    }
-}
-
-if( ! function_exists('kt_get_cart_content')){
-    function kt_get_cart_content($cart_content, $cart_total, $check_out_url, $option = 1){
-        ob_start();
-        if ( sizeof($cart_content) > 0 ): ?>
-            <div class="cart-block">
-                <div class="cart-block-content">
-                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
-                    <div class="cart-block-list">
-                        <ul>
-                            <?php foreach ( $cart_content as $cart_item_key => $cart_item ):
-                                    $bag_product = $cart_item['data']; 
-                                    
-                                    if ( $bag_product->exists() && $cart_item['quantity'] > 0 ): ?>
-                                        <li class="product-info">
-                                            <div class="p-left">
-                                                <a href="<?php echo esc_url( WC()->cart->get_remove_url( $cart_item_key ) ); ?>" class="remove_link"></a>
-                                                <a href="<?php echo get_permalink($cart_item['product_id']) ?>">
-                                                    <?php echo $bag_product->get_image('100x122'); ?>
-                                                </a>
-                                            </div>
-                                            <div class="p-right">
-                                                <p class="p-name"><?php echo $bag_product->get_title(); ?></p>
-                                                <p class="p-rice"><?php echo wc_price($bag_product->get_price()) ?></p>
-                                                <p><?php _e('Qty', 'kutetheme') ?><?php _e(':', 'kutetheme') ?> <?php echo $cart_item['quantity']; ?></p>
-                                            </div>
-                                        </li>
-                                    <?php endif; ?>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                    <div class="toal-cart">
-                        <span><?php _e('Total', 'kutetheme') ?></span>
-                        <span class="toal-price pull-right">
-                            <?php echo $cart_total; ?>
-                        </span>
-                    </div>
-                    <div class="cart-buttons">
-                        <a href="<?php echo $check_out_url; ?>" class="btn-check-out"><?php echo _e('Checkout', 'kutetheme' ); ?></a>
-                    </div>
-                </div>
-            </div>
-        <?php endif;//if ( sizeof(WC()->cart->cart_contents)>0 ) {
-        $result = ob_get_contents();
-        ob_clean();
-        return $result;
-    }
-}
-*/
 if( ! function_exists('get_wishlist_url') ){
     function get_wishlist_url(){
         if( function_exists( 'YITH_WCWL' ) ):
             $wishlist_url = YITH_WCWL()->get_wishlist_url();
-            return $wishlist_url;
+            return esc_url( $wishlist_url );
         endif;
     }
 }
 
 if( ! function_exists('kt_get_all_attributes') ){
-    function kt_get_all_attributes( $tag, $text )
-    {
+    function kt_get_all_attributes( $tag, $text ) {
         preg_match_all( '/' . get_shortcode_regex() . '/s', $text, $matches );
         $out = array();
         if( isset( $matches[2] ) )
@@ -419,11 +318,11 @@ if ( ! function_exists( 'kt_comment_nav' ) ) :
                 <div class="nav-links">
                     <?php
                     if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'kutetheme' ) ) ) :
-                        printf( '<div class="nav-previous">%s</div>', $prev_link );
+                        printf( '<div class="nav-previous">%s</div>', esc_url( $prev_link ) );
                     endif;
 
                     if ( $next_link = get_next_comments_link( __( 'Newer Comments',  'kutetheme' ) ) ) :
-                        printf( '<div class="nav-next">%s</div>', $next_link );
+                        printf( '<div class="nav-next">%s</div>', esc_url( $next_link ) );
                     endif;
                     ?>
                 </div><!-- .nav-links -->
@@ -464,8 +363,9 @@ function kt_comments($comment, $args, $depth) {
             <div class="comment-actions clear">
                 <?php edit_comment_link( __( '(Edit)', 'kutetheme'),'  ','' ) ?>
                 <?php comment_reply_link( array_merge( $args,
-                    array('depth' => $depth,
-                        'max_depth' => $args['max_depth'],
+                    array(
+                        'depth'      => $depth,
+                        'max_depth'  => $args['max_depth'],
                         'reply_text' =>'<i class="fa fa-share"></i> '.__('Reply', 'kutetheme')
                     ))) ?>
             </div>
@@ -498,7 +398,7 @@ function kt_get_all_revSlider( ){
 * @return array
 */
 
-if ( ! function_exists('kt_sidebars') ){
+if ( ! function_exists( 'kt_sidebars' ) ){
     function kt_sidebars( ){
         $sidebars = array();
         foreach ( $GLOBALS[ 'wp_registered_sidebars' ] as $item ) {
@@ -531,15 +431,15 @@ function _data_carousel( $data ){
     $output = "";
     foreach($data as $key => $val){
         if($val){
-            $output .= ' data-'.$key.'="'.esc_attr($val).'"';
+            $output .= ' data-'.$key.'="'.esc_attr( $val ).'"';
         }
     }
     return $output;
 }
 
 if(!function_exists('kt_get_post_meta')){
-    function kt_get_post_meta($post_id,$key,$default=""){
-        $meta = get_post_meta( $post_id,$key,true);
+    function kt_get_post_meta( $post_id, $key, $default = "" ){
+        $meta = get_post_meta( $post_id, $key, true );
         if($meta){
             return $meta;
         }

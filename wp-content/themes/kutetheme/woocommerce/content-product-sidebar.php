@@ -26,7 +26,7 @@ $id = get_the_ID();
     ?>
     <div class="count-down-time" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" data-h="00" data-i="00" data-s="00" ></div>
     <div class="left-block">
-        <a href="<?php echo get_permalink(); ?>">
+        <a href="<?php echo esc_url( get_permalink() ) ; ?>">
             <?php
     			/**
     			 * kt_loop_product_thumbnail hook
@@ -59,7 +59,7 @@ $id = get_the_ID();
     	?>
     </div>
     <div class="right-block">
-        <h5 class="product-name"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></h5>
+        <h5 class="product-name"><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ) ; ?></a></h5>
         <div class="content_price">
             <?php
     			/**

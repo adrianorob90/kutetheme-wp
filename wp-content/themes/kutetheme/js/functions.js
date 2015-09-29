@@ -17,6 +17,7 @@
             config.animateOut="fadeOut";
             config.animateIn="fadeIn";    
         }
+        
         config.onInitialized = function( event ){
             var $item_active = $this.find( '.owl-item.active' );
             $item_active.each( function ( $i ) {

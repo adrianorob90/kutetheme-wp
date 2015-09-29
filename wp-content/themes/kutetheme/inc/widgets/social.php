@@ -20,7 +20,7 @@ class Widget_KT_Social extends WP_Widget {
 	public function widget( $args, $instance ) {
 	   echo $args['before_widget'];
        //Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
         
         $facebook   = kt_option('kt_facebook_link_id');
         $twitter    = kt_option('kt_twitter_link_id');
@@ -85,13 +85,13 @@ class Widget_KT_Social extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-		$instance[ 'wtitle' ] = $new_instance[ 'wtitle' ] ? $new_instance[ 'wtitle' ] : '';
+		$instance[ 'wtitle' ] = $new_instance[ 'wtitle' ] ? esc_html( $new_instance[ 'wtitle' ] ) : '';
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		//Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
 	?>
         <p>
             <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 

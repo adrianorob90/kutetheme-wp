@@ -1,19 +1,29 @@
-<div class="<?php echo $elementClass; ?>" id="change-color-<?php echo $id; ?>" data-target="change-color" data-color="<?php echo $main_color; ?>" data-rgb="<?php echo implode( ',', $main_color_rgb ) ;  ?>">
+<?php 
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
+<div class="<?php echo esc_attr( $elementClass ); ?>" id="change-color-<?php echo esc_attr( $id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr( implode( ',', $main_color_rgb ) );  ?>">
     <!-- featured category fashion -->
     <div class="category-featured container-tab">
         <nav class="navbar nav-menu nav-menu-red show-brand">
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
-                <a href="<?php echo $term_link ? $term_link : ''; ?>">
+                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                         if( isset( $icon ) && $icon ): 
                             $att_icon = wp_get_attachment_image_src( $icon, '30x30' );  
                             $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
                         endif; 
                     ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo $att_icon_url; ?>" />
-                    <?php  echo ( isset( $title ) && $title ) ? $title : __( 'Tabs Name', 'kutetheme' );  ?>
+                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ); ?>" />
+                    <?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
             </div>
             <span class="toggle-menu"></span>
@@ -23,10 +33,10 @@
                     <?php $i = 0; ?>
                     <?php foreach( $tabs as $tab ): ?>
                         <li <?php echo $i == 0 ? 'class="active"': '' ?> >
-                            <a data-toggle="tab" href="<?php echo '#tab-'.$id.'-'.$i; ?>">
+                            <a data-toggle="tab" href="<?php echo '#tab-' . $id . '-' . $i; ?>">
                                 <?php
                                 if(isset( $tab['header'] ) && $tab['header']){
-                                    echo $tab['header'];
+                                    echo esc_html( $tab['header'] );
                                 }elseif( isset($tab['section_type']) && $tab['section_type'] == 'new-arrival' ){
                                     _e( 'New Arrivals', 'kutetheme' );
                                 }elseif( isset($tab['section_type']) && $tab['section_type'] == 'most-review' ){
@@ -38,7 +48,7 @@
                                 }elseif( isset($tab['section_type']) && $tab['section_type'] == 'category' && isset( $tab['section_cate'] ) && intval( $tab['section_cate'] ) >0 ){
                                     $child_term = get_term( $tab['section_cate'], 'product_cat' );
                                     if($child_term){
-                                        echo $child_term->name;
+                                        echo esc_html( $child_term->name );
                                     }else{
                                         _e( "Best Sellers", 'kutetheme' );
                                     }
@@ -71,9 +81,9 @@
             ?>
             <div class="category-banner">
                 <?php foreach($list_banner_top as $b): ?>
-                <div class="col-sm-<?php echo $class ?> banner">
-                    <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                        <img alt="<?php echo $b->post_title ?>" class="img-responsive" src="<?php echo wp_get_attachment_url($b->ID) ?>" />
+                <div class="col-sm-<?php echo esc_attr( $class ) ?> banner">
+                    <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                        <img alt="<?php echo esc_attr( $b->post_title ); ?>" class="img-responsive" src="<?php echo esc_url( wp_get_attachment_url($b->ID) ) ?>" />
                     </a>
                 </div>
                 <?php endforeach; ?>
@@ -101,8 +111,8 @@
                     ?>
                     <?php foreach($list_banner_left as $l): ?>
                         <div class="banner-img">
-                            <a href="<?php echo $term_link ? $term_link : ''; ?>">
-                                <img alt="<?php echo esc_attr($l->post_title) ?>" src="<?php echo wp_get_attachment_url($l->ID) ?>" />
+                            <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                                <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url($l->ID) ) ?>" />
                             </a>
                         </div>
                     <?php endforeach; ?>
@@ -268,7 +278,7 @@
                         
                         ?>
                         <!-- tab product -->
-                        <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-'.$id.'-'.$i; ?>">
+                        <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-' . $id . '-' . $i; ?>">
                             <ul class="product-list tab-owl owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php 
                                 while ( $products->have_posts() ) : $products->the_post();

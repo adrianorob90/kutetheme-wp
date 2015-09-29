@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 // Setting shortcode lastest
 vc_map( array(
@@ -187,8 +194,8 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
             );
             add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
             ?>
-            <div class="<?php echo $elementClass; ?>">
-                <h2 class="latest-deal-title"><?php echo $title; ?></h2>
+            <div class="<?php echo esc_attr( $elementClass ); ?>">
+                <h2 class="latest-deal-title"><?php echo esc_html( $title ); ?></h2>
                 <div class="latest-deal-content">
                     <ul class="product-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
                         <?php

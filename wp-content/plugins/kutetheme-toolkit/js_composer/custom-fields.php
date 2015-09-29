@@ -1,4 +1,14 @@
 <?php
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 add_action('after_setup_theme', 'kt_init_vc_global', 1);
 
 function kt_init_vc_global(){
@@ -36,9 +46,9 @@ function vc_kt_select_image_settings_field($settings, $value) {
     ?>
     <div class="container-kt-select-image">
         <?php foreach( $settings['value'] as $k => $v ): ?>
-        <label class="kt-image-select kt-image-select " for="kt-select-image-<?php echo $v ?>">
-            <input name="kt-select-image-<?php echo $settings['param_name']; ?>" value="<?php echo $v ?>" <?php checked($v, $value, 1) ?> id="kt-select-image-<?php echo $v ?>"  style="display: none;" type="radio" class="wpb_vc_param_value" />
-            <img src="<?php echo $k ?>" alt="<?php echo $v ?>" />
+        <label class="kt-image-select kt-image-select " for="kt-select-image-<?php echo esc_attr( $v ) ?>">
+            <input name="kt-select-image-<?php echo esc_attr( $settings['param_name'] ); ?>" value="<?php echo esc_attr( $v ) ?>" <?php checked($v, $value, 1) ?> id="kt-select-image-<?php echo esc_attr( $v ) ?>"  style="display: none;" type="radio" class="wpb_vc_param_value" />
+            <img src="<?php echo esc_attr( $k ) ?>" alt="<?php echo esc_attr( $v ) ?>" />
         </label>
         <?php endforeach; ?>
         <img />

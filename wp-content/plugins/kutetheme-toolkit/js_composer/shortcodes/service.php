@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 // Setting shortcode service
 vc_map( array(
@@ -131,25 +138,27 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             <div class="service-wapper">
                 <div class="<?php echo esc_attr( $elementClass ); ?>">
                     <?php
-                        while ($service_query->have_posts()) {
-                            $service_query->the_post();
-                            $meta = get_post_meta( get_the_ID());
-                            ?>
-                            <div class="col-xs-12 com-sm-6 col-md-3 service-item">
-                                <?php if(has_post_thumbnail()):?>
-                                <div class="icon">
-                                    <?php the_post_thumbnail(array(40, 40));?>
-                                </div>
-                                <?php endif;?>
-                                <div class="info">
-                                    <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
-                                    <?php if( isset( $meta['_kt_page_service_desc'] ) ):?>
-                                        <span><?php echo $meta['_kt_page_service_desc'][0];?></span>
-                                    <?php endif;?>
-                                </div>
+                    while( $service_query->have_posts() ):
+                        $service_query->the_post();
+                        
+                        $meta = get_post_meta( get_the_ID());
+                        ?>
+                        <div class="col-xs-12 com-sm-6 col-md-3 service-item">
+                            <?php if(has_post_thumbnail()):?>
+                            <div class="icon">
+                                <?php the_post_thumbnail(array(40, 40));?>
                             </div>
-                            <?php
-                        }
+                            
+                            <?php endif;?>
+                            <div class="info">
+                                <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
+                                <?php if( isset( $meta['_kt_page_service_desc'] ) ):?>
+                                    <span><?php echo esc_html( $meta['_kt_page_service_desc'][0] );?></span>
+                                <?php endif;?>
+                            </div>
+                        </div>
+                    <?php
+                    endwhile;
                     ?>
                 </div>
             </div>
@@ -175,8 +184,8 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                                         <h3 class="title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
                                     </div>
                                     <div class="col-sm-6 text">
-                                        <?php if(isset($meta['_kt_page_service_desc'])):?>
-                                            <?php echo $meta['_kt_page_service_desc'][0];?>
+                                        <?php if( isset( $meta['_kt_page_service_desc'] ) ):?>
+                                            <?php echo esc_html( $meta['_kt_page_service_desc'][0] );?>
                                         <?php endif;?>
                                     </div>
                                 </div>

@@ -46,9 +46,9 @@ $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
 $classes[] = ' col-md-' . $bootstrapColumn;
 
 ?>
-<div class="mega-product <?php echo implode( ' ', $classes ) ?>">
+<div class="mega-product <?php echo esc_attr( implode( ' ', $classes ) )  ?>">
     <div class="product-avatar">
-        <a href="<?php echo get_permalink(); ?>">
+        <a href="<?php echo esc_url( get_permalink() ) ; ?>">
             <?php
     			/**
     			 * woocommerce_template_loop_product_thumbnail hook
@@ -60,7 +60,7 @@ $classes[] = ' col-md-' . $bootstrapColumn;
         </a>
     </div>
     <div class="product-name">
-        <a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a>
+        <a href="<?php echo esc_url( get_permalink() ) ; ?>"><?php echo esc_html( get_the_title() ) ; ?></a>
     </div>
     <?php
 		/**

@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
      "name" => __( "Popular Category", 'kutetheme'),
@@ -123,22 +130,22 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         );
         $subcats = get_categories($args);
         ?>
-        <div class="<?php echo $elementClass; ?>">
-            <div class="parent-categories"><?php echo $title ? esc_attr( $title ) : esc_attr( $term->name ) ?></div>
+        <div class="<?php echo esc_attr( $elementClass ); ?>">
+            <div class="parent-categories"><?php echo $title ? esc_html( $title ) : esc_html( $term->name ) ?></div>
             <div class="block-popular-inner">
                 <div class="image banner-boder-zoom2">
-                    <a href="<?php echo esc_attr($link); ?>">
-                        <img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($term->name) ?>" class="popular-cate-img" />
+                    <a href="<?php echo esc_url( $link ); ?>">
+                        <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" class="popular-cate-img" />
                     </a>
                 </div>
                 <div class="sub-categories">
                     <ul>
                         <?php foreach( $subcats as $cate ): ?>
                             <?php $cate_link = get_term_link($cate); ?>
-                            <li><a href="<?php echo $cate_link; ?>"><?php echo $cate->name ?></a></li>
+                            <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ) ?></a></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="<?php echo esc_attr($link); ?>" class="more"><?php _e( 'More', 'kutetheme' ) ?></a>
+                    <a href="<?php echo esc_url( $link ); ?>" class="more"><?php _e( 'More', 'kutetheme' ) ?></a>
                 </div>
             </div>
         </div>

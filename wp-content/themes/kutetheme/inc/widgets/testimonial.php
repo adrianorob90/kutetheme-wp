@@ -20,25 +20,38 @@ class Widget_KT_Testimonial extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-        $title   = isset( $instance[ 'title' ] )   ? $instance[ 'title' ]   : '';
-        $number  = isset( $instance[ 'number' ] )  ? $instance[ 'number' ]  : 3;
-        $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
-        $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
+        $title   = ( isset( $instance[ 'title' ] ) && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] ) : '';
+        $number  = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) > 0 )  ? intval( $instance[ 'number' ] )  : 3;
+        $orderby = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        $order   = ( isset( $instance[ 'order' ] ) && $instance[ 'order' ] ) ? esc_attr( $instance[ 'order' ] )   : 'desc';
+        
+        
+        $autoplay   = ( isset( $instance[ 'autoplay' ] ) && $instance[ 'autoplay' ] == "true" ) ? "true" : "false";
+        $loop       = ( isset( $instance[ 'loop' ] ) && $instance[ 'loop' ] == "true" ) ? "true" : "false";
+		$slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $instance[ 'slidespeed' ] ) : '250';
+        
         $data_carousel    = array(
-            "autoplay"   => $instance[ 'autoplay' ],
-            "slidespeed" => $instance[ 'slidespeed' ],
+            "autoplay"   => $autoplay,
+            "slidespeed" => $slidespeed,
             "theme"      => 'style-navigation-bottom',
             'nav'        => false,
             'items'      => 1
         );
-        if($title!=""){
+        
+        if( $title ){
             echo $args['before_title'];
             echo $title;
             echo $args['after_title'];
         }
-        $pages = new WP_Query( array( 'post_type' => 'testimonial', 'numbe' => $number ));
+        $query = array( 
+            'post_type' => 'testimonial', 
+            'numbe'     => $number,
+            'orderby'   => $orderby,
+            'order'     => $order
+        );
+        $pages = new WP_Query( $query );
         if($pages->have_posts()):
-            if(count($pages->have_posts())>1) $data_carousel['loop'] = $instance['loop'];
+            if( $pages->have_posts() ) $data_carousel['loop'] = $loop;
            ?>
            <!-- Testimonials -->
             <div class="block left-module container-testimonials">
@@ -68,29 +81,38 @@ class Widget_KT_Testimonial extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-        $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
+        $instance[ 'title' ] = ( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] ) ? esc_html( $new_instance[ 'title' ] ) : '';
         
-		$instance[ 'autoplay' ]   = $new_instance[ 'autoplay' ]   ? true : false;
-        $instance[ 'loop' ]       = $new_instance[ 'loop' ]       ? true : false;
-        $instance[ 'slidespeed' ] = $new_instance[ 'slidespeed' ] ? $new_instance[ 'slidespeed' ] : 200;
+		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )   && $new_instance[ 'autoplay' ] == "true" )   ? esc_attr( $new_instance[ 'autoplay' ] ) : "";
         
-        $instance[ 'number' ]   = $new_instance[ 'number' ]  ? $new_instance[ 'number' ] : 3;
-        $instance[ 'orderby' ]  = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
-        $instance[ 'order' ]    = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
+        $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )       && $new_instance[ 'loop' ] == "true"  )      ? esc_attr( $new_instance[ 'loop' ] ) : "";
+        
+        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] ) && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : '250';
+        
+        $instance[ 'number' ]   = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )  : 3;
+        
+        $instance[ 'orderby' ]  = ( isset( $new_instance[ 'orderby' ] )      && $new_instance[ 'orderby' ] )              ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
+        
+        $instance[ 'order' ]    = ( isset( $new_instance[ 'order' ] )        && $new_instance[ 'order' ] )                ? esc_attr( $new_instance[ 'order' ] )   : 'desc';
         
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		//Defaults
-        $title      = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
-        $autoplay   = isset( $instance[ 'autoplay' ] )   ? true : false;
-        $loop       = isset( $instance[ 'loop' ] )       ? true : false;
-		$slidespeed = isset( $instance[ 'slidespeed' ] ) ? $instance[ 'slidespeed' ] : '200';
+        $title      = ( isset( $instance[ 'title' ] ) && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] ) : '';
         
-        $number     = isset( $instance[ 'number' ] )     ? $instance[ 'number' ] : 3;
-        $orderby    = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
-        $order      = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
+        $autoplay   = ( isset( $instance[ 'autoplay' ] ) && $instance[ 'autoplay' ] ) ? "true" : "false";
+        
+        $loop       = ( isset( $instance[ 'loop' ] ) && $instance[ 'loop' ] ) ? "true" : "false";
+		
+        $slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $instance[ 'slidespeed' ] ) : '250';
+        
+        $number  = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) > 0 )  ? intval( $instance[ 'number' ] )  : 3;
+        
+        $orderby = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        
+        $order   = ( isset( $instance[ 'order' ] ) && $instance[ 'order' ] ) ? esc_attr( $instance[ 'order' ] )   : 'desc';
 	?>
         
         <p>
@@ -98,11 +120,11 @@ class Widget_KT_Testimonial extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-			<input class="checkbox" <?php checked( $autoplay, true ); ?> type="checkbox" id="<?php echo $this->get_field_id('autoplay'); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>" /> 
+			<input class="checkbox" <?php checked( $autoplay, "true" ); ?> type="checkbox" id="<?php echo $this->get_field_id('autoplay'); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>" /> 
             <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e('Auto next slide', 'kutetheme') ?></label>
 		</p>
         <p>
-			<input class="checkbox" <?php checked( $loop, true ); ?> type="checkbox" id="<?php echo $this->get_field_id('loop'); ?>" name="<?php echo $this->get_field_name('loop'); ?>" /> 
+			<input class="checkbox" <?php checked( $loop, "true" ); ?> type="checkbox" id="<?php echo $this->get_field_id('loop'); ?>" name="<?php echo $this->get_field_name('loop'); ?>" /> 
             <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e('Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme') ?></label>
 		</p>
         <p>

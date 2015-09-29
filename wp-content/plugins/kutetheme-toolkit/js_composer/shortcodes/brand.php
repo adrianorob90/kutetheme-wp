@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
     "name" => __( "Brands", 'kutetheme'),
@@ -249,16 +256,16 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             if( ! is_wp_error($terms) ) :
                 if( $show_product == "true" ) :
                     ?>
-                    <div class="brand-showcase <?php echo $elementClass; ?>">
+                    <div class="brand-showcase <?php echo esc_attr( $elementClass ); ?>">
                         <?php if( $title ): ?>
-                            <h2 class="brand-showcase-title"><?php echo esc_attr( $title ) ; ?></h2>
+                            <h2 class="brand-showcase-title"><?php echo esc_html( $title ) ; ?></h2>
                         <?php endif; ?>
                         <div class="brand-showcase-box">
                             <ul class="brand-showcase-logo owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php $i = 1; ?>
                                 <?php foreach($terms as $term): ?>
-                                <li data-tab="showcase-<?php echo $term->term_id ?>" class="item<?php echo ( $i ==1 ) ? ' active' : '' ?>">
-                                    <h3><?php echo $term->name ?></h3>
+                                <li data-tab="showcase-<?php echo esc_attr( $term->term_id ); ?>" class="item<?php echo ( $i ==1 ) ? ' active' : '' ?>">
+                                    <h3><?php echo esc_html( $term->name ); ?></h3>
                                 </li>
                                 <?php $i ++ ; ?>
                                 <?php endforeach; ?>
@@ -267,7 +274,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                 <?php $i = 1; ?>
                                 <?php //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) ); ?>
                                 <?php foreach($terms as $term): ?>
-                                    <div class="brand-showcase-content-tab<?php echo ( $i ==1 ) ? ' active' : '' ?>" id="showcase-<?php echo $term->term_id ?>">
+                                    <div class="brand-showcase-content-tab<?php echo ( $i ==1 ) ? ' active' : '' ?>" id="showcase-<?php echo esc_attr( $term->term_id ) ?>">
                                         <?php 
                                         $term_link = get_term_link( $term );
                                         
@@ -306,12 +313,12 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-4 trademark-info">
                                                 <div class="trademark-logo">
-                                                    <a href="<?php echo $term_link; ?>"><img src="<?php echo esc_url( $image ); ?>" alt="<?php echo $term->name ?>" /></a>
+                                                    <a href="<?php echo esc_url( $term_link ); ?>"><img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $term->name ); ?>" /></a>
                                                 </div>
                                                 <div class="trademark-desc">
-                                                    <?php echo $term->description ?>
+                                                    <?php echo esc_html( $term->description ) ?>
                                                 </div>
-                                                <a href="<?php echo $term_link; ?>" class="trademark-link"><?php _e( 'shop this brand', 'kutetheme' ) ?></a>
+                                                <a href="<?php echo esc_url( $term_link ); ?>" class="trademark-link"><?php _e( 'shop this brand', 'kutetheme' ) ?></a>
                                             </div>
                                             <div class="col-xs-12 col-sm-8 trademark-product">
                                                 <div class="row">
@@ -320,7 +327,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                                     ?>
                                                     <div class="col-xs-12 col-sm-6 product-item">
                                                         <div class="image-product hover-zoom">
-                                                            <a href="<?php echo $link ?>">
+                                                            <a href="<?php echo esc_url( $link ); ?>">
                                                                 <?php
                                                         			/**
                                                         			 * kt_loop_product_thumbnail hook
@@ -332,8 +339,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                                             </a>
                                                         </div>
                                                         <div class="info-product">
-                                                            <a href="<?php echo $link; ?>">
-                                                                <h5><?php echo get_the_title() ?></h5>
+                                                            <a href="<?php echo esc_url( $link ); ?>">
+                                                                <h5><?php echo esc_html( get_the_title() ); ?></h5>
                                                             </a>
                                                             <div class="content_price">
                                                                 <?php
@@ -345,7 +352,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                                         			do_action( 'kt_after_shop_loop_item_title' );
                                                         		?>
                                                             </div>
-                                                            <a class="btn-view-more" title="<?php _e( 'View More', 'kutetheme' ) ?>" href="<?php echo $link; ?>"><?php _e( 'View More', 'kutetheme' ) ?></a>
+                                                            <a class="btn-view-more" title="<?php _e( 'View More', 'kutetheme' ) ?>" href="<?php echo esc_url( $link ); ?>"><?php _e( 'View More', 'kutetheme' ) ?></a>
                                                         </div>
                                                     </div>
                                                     <?php endwhile; ?>
@@ -365,9 +372,9 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     <?php
                     else:
                     ?>
-                    <div class="<?php echo $elementClass; ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                    <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                         <?php foreach($terms as $term): ?>
-                            <h3><?php echo $term->name ?></h3>
+                            <h3><?php echo esc_html( $term->name ); ?></h3>
                         <?php endforeach; ?>
                     </div>
                     <?php

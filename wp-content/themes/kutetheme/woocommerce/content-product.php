@@ -53,7 +53,7 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
     <div class="product-container">
 	<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>
     	<div class="left-block">
-            <a href="<?php echo get_permalink(); ?>">
+            <a href="<?php echo esc_url( get_permalink() ) ; ?>">
                 <?php
         			/**
         			 * kt_loop_product_thumbnail hook
@@ -104,8 +104,8 @@ $classes[] = 'col-xs-12 col-sm-'. $bootstrapColumn .' col-md-' . $bootstrapColum
         		?>
             </div>
             <div class="info-orther">
-                <p class="availability"><?php _e('Availability', 'kutetheme' );?>: <span class="instock"><?php _e('In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e('Out of stock', 'kutetheme' );?></span></p>
-                <div class="product-desc"><?php echo apply_filters( 'woocommerce_short_description',$post->post_excerpt ) ?></div>
+                <p class="availability"><?php _e( 'Availability', 'kutetheme' );?>: <span class="instock"><?php _e('In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e('Out of stock', 'kutetheme' );?></span></p>
+                <div class="product-desc"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
             </div>
         </div>
     </div>

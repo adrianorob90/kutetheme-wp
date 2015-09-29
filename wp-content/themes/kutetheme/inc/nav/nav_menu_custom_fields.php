@@ -16,7 +16,7 @@ add_action( 'walker_nav_menu_custom_fields', 'kt_add_custom_fields', 10, 4 );
 function kt_add_custom_fields( $item_id, $item, $depth, $args ) { 
     ?>
     <div class="clearfix"></div>
-    <div class="container-megamenu container-<?php echo $depth; ?>">
+    <div class="container-megamenu container-<?php echo esc_attr( $depth ); ?>">
         <p class="field-image description description-wide">
             <?php
                 $preview = false;
@@ -26,17 +26,17 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                     $preview = true;
                 }
             ?>
-            <label for="menu-item-image-<?php echo $item_id; ?>">
+            <label for="menu-item-image-<?php echo esc_attr( $item_id ); ?>">
                 <?php _e( 'Image Icon', 'kutetheme'); ?><br />
-                <input type="hidden" value="<?php echo esc_attr( $item->img_icon ); ?>" name="menu-item-megamenu-img_icon[<?php echo $item_id; ?>]" id="menu-item-imgicon-<?php echo $item_id; ?>" class="widefat edit-menu-item-image" />
+                <input type="hidden" value="<?php echo esc_attr( $item->img_icon ); ?>" name="menu-item-megamenu-img_icon[<?php echo esc_attr( $item_id ); ?>]" id="menu-item-imgicon-<?php echo esc_attr( $item_id ); ?>" class="widefat edit-menu-item-image" />
             </label>
             <span class="clearfix"></span>
-            <span class="kt_image_preview" style="<?php if($preview){ echo "display: block;";} ?>">
-                <img src="<?php echo esc_url($img_preview); ?>" alt="" title="" />
+            <span class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
+                <img src="<?php echo esc_url( $img_preview ); ?>" alt="Image preview" title="Image preview" />
                 <i class="fa fa-times">X</i>
             </span>
             <span class="clearfix"></span>
-            <input type="button" class="button-secondary kt_image_menu" value="<?php _e('Upload image', 'kutetheme'); ?>" />
+            <input type="button" class="button-secondary kt_image_menu" value="<?php _e( 'Upload image', 'kutetheme' ); ?>" />
         </p>
         <?php if(post_type_exists('megamenu')){
             $post_type = 'megamenu';
@@ -48,29 +48,29 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
         ?>
         <div class="wrapper-megamenu">
             <p class="field-enable description description-wide">
-                <label for="menu-item-enable-<?php echo $item_id; ?>">
-                    <input type="checkbox" <?php checked($item->enable, 'enabled'); ?> data-id="<?php echo $item_id; ?>" id="menu-item-enable-<?php echo $item_id; ?>" name="menu-item-megamenu-enable[<?php echo $item_id; ?>]" value="enabled" class="edit-menu-item-enable"/>
+                <label for="menu-item-enable-<?php echo esc_attr( $item_id ); ?>">
+                    <input type="checkbox" <?php checked( esc_attr( $item->enable ), 'enabled'); ?> data-id="<?php echo esc_attr( $item_id ); ?>" id="menu-item-enable-<?php echo esc_attr( $item_id ); ?>" name="menu-item-megamenu-enable[<?php echo esc_attr( $item_id ); ?>]" value="enabled" class="edit-menu-item-enable"/>
                     <b><?php _e( 'Enable Mega Menu (only for main menu)', 'kutetheme'); ?></b>
                 </label>
             </p>
-            <div id="content-megamenu-<?php echo $item_id; ?>" class="megamenu-layout clearfix">
+            <div id="content-megamenu-<?php echo esc_attr( $item_id ); ?>" class="megamenu-layout clearfix">
                 <div class="megamenu-layout-depth-1">
                     <p class="field-menu_page description description-wide">
-                        <label for="menu-item-menu_page-<?php echo $item_id; ?>">
-                            <?php _e('Menu Page', 'kutetheme'); ?><br />
-                            <select class="widefat"  id="menu-item-menu_page-<?php echo $item_id; ?>" name="menu-item-megamenu-menu_page[<?php echo $item_id; ?>]">
-                                <option value="0">Choose Menu Page</option>
+                        <label for="menu-item-menu_page-<?php echo esc_attr( $item_id ); ?>">
+                            <?php _e( 'Menu Page', 'kutetheme' ); ?><br />
+                            <select class="widefat"  id="menu-item-menu_page-<?php echo esc_attr( $item_id ); ?>" name="menu-item-megamenu-menu_page[<?php echo esc_attr( $item_id ); ?>]">
+                                <option value="0"><?php _e( 'Choose Menu Page', 'kutetheme' ) ?></option>
                                 <?php
-                                while($pages->have_posts()): $pages->the_post();
-                                    $id = get_the_ID();
-                                    echo '<option '.selected($id, $item->menu_page, false).' value="'.$id.'">'.get_the_title().'</option>';
-                                endwhile;
+                                    while($pages->have_posts()): $pages->the_post();
+                                        $id = get_the_ID();
+                                        echo '<option ' . selected( esc_attr( $id ), esc_attr( $item->menu_page ), false) . ' value="' . esc_attr( $id ) . '">' . esc_html( get_the_title() ) . '</option>';
+                                    endwhile;
                                 ?>
                             </select>
                         </label>
                     </p>
                 </div>
-            </div><!-- #content-megamenu-<?php echo $item_id; ?> -->
+            </div><!-- #content-megamenu-->
         </div><!-- .wrapper-megamenu -->
         <?php endif; 
         wp_reset_query();

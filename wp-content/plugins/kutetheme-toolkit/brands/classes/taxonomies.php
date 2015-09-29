@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -59,7 +65,9 @@ class KT_Product_Brand_Taxonomies {
         ?>
 		<div class="form-field">
 			<label><?php _e( 'Thumbnail', 'woocommerce' ); ?></label>
-			<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;"><img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" width="60px" height="60px" /></div>
+			<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;">
+                <img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" width="60px" height="60px" />
+            </div>
 			<div style="line-height: 60px;">
 				<input type="hidden" id="product_brand_thumbnail_id" name="product_brand_thumbnail_id" />
 				<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'woocommerce' ); ?></button>
@@ -136,9 +144,11 @@ class KT_Product_Brand_Taxonomies {
 		<tr class="form-field">
 			<th scope="row" valign="top"><label><?php _e( 'Thumbnail', 'woocommerce' ); ?></label></th>
 			<td>
-				<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;"><img src="<?php echo esc_url( $image ); ?>" width="60px" height="60px" /></div>
+				<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;">
+                    <img src="<?php echo esc_url( $image ); ?>" width="60px" height="60px" />
+                </div>
 				<div style="line-height: 60px;">
-					<input type="hidden" id="product_brand_thumbnail_id" name="product_brand_thumbnail_id" value="<?php echo $thumbnail_id; ?>" />
+					<input type="hidden" id="product_brand_thumbnail_id" name="product_brand_thumbnail_id" value="<?php echo esc_attr( $thumbnail_id ); ?>" />
 					<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'woocommerce' ); ?></button>
 					<button type="button" class="remove_image_button button"><?php _e( 'Remove image', 'woocommerce' ); ?></button>
 				</div>
@@ -281,38 +291,42 @@ class KT_Product_Brand_Taxonomies {
 		$current = ($current ? $current->term_id : 0);
 		?>
 	 
-		<div id="taxonomy-<?php echo $taxonomy; ?>" class="categorydiv">
+		<div id="taxonomy-<?php echo esc_attr( $taxonomy ); ?>" class="categorydiv">
 	 
 			<!-- Display tabs-->
-			<ul id="<?php echo $taxonomy; ?>-tabs" class="category-tabs">
-				<li class="tabs"><a href="#<?php echo $taxonomy; ?>-all" tabindex="3"><?php echo $tax->labels->all_items; ?></a></li>
-				<li class="hide-if-no-js"><a href="#<?php echo $taxonomy; ?>-pop" tabindex="3"><?php _e( 'Most Used','woocommerce-brands' ); ?></a></li>
+			<ul id="<?php echo esc_attr( $taxonomy ); ?>-tabs" class="category-tabs">
+				<li class="tabs"><a href="#<?php echo esc_attr( $taxonomy ); ?>-all" tabindex="3"><?php echo esc_attr( $tax->labels->all_items ); ?></a></li>
+				<li class="hide-if-no-js"><a href="#<?php echo esc_attr( $taxonomy ); ?>-pop" tabindex="3"><?php _e( 'Most Used','woocommerce-brands' ); ?></a></li>
 			</ul>
 	 
 			<!-- Display taxonomy terms -->
-			<div id="<?php echo $taxonomy; ?>-all" class="tabs-panel">
-				<ul id="<?php echo $taxonomy; ?>checklist" class="list:<?php echo $taxonomy?> categorychecklist form-no-clear">
-					<?php   foreach($terms as $term){
+			<div id="<?php echo esc_attr( $taxonomy ); ?>-all" class="tabs-panel">
+				<ul id="<?php echo esc_attr( $taxonomy ); ?>checklist" class="list:<?php echo esc_attr( $taxonomy )?> categorychecklist form-no-clear">
+					<?php   
+                    foreach($terms as $term):
 						$id = $taxonomy.'-'.$term->term_id;
-						echo "<li id='$id'><label class='selectit'>";
-						echo "<input type='radio' id='in-$id' name='{$name}'".checked($current,$term->term_id,false)."value='$term->term_id' />$term->name<br />";
+						echo "<li id='$id'>
+                                <label class='selectit'>";
+						   echo "<input type='radio' id='in-$id' name='{$name}'" . checked( $current, $term->term_id, false )."value='$term->term_id' />$term->name<br />";
 					   echo "</label></li>";
-					}?>
+					endforeach;
+                    ?>
 			   </ul>
 			</div>
 	 
 			<!-- Display popular taxonomy terms -->
-			<div id="<?php echo $taxonomy; ?>-pop" class="tabs-panel" style="display: none;">
-				<ul id="<?php echo $taxonomy; ?>checklist-pop" class="categorychecklist form-no-clear" >
-					<?php   foreach($popular as $term){
+			<div id="<?php echo esc_attr( $taxonomy ); ?>-pop" class="tabs-panel" style="display: none;">
+				<ul id="<?php echo esc_attr( $taxonomy ); ?>checklist-pop" class="categorychecklist form-no-clear" >
+					<?php   
+                    foreach($popular as $term) :
 						$id = 'popular-'.$taxonomy.'-'.$term->term_id;
 						echo "<li id='$id'><label class='selectit'>";
-						echo "<input type='radio' id='in-$id'".checked($current,$term->term_id,false)."value='$term->term_id' />$term->name<br />";
+						echo "<input type='radio' id='in-$id'" . checked( $current, $term->term_id, false )."value='$term->term_id' />$term->name<br />";
 						echo "</label></li>";
-					}?>
+					endforeach;
+                    ?>
 			   </ul>
 		   </div>
-	 
 		</div>
 		<?php
 	}    

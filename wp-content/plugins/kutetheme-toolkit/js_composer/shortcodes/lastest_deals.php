@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
     "name" => __( "Lastest Deal Products Carousel", 'kutetheme'),
@@ -279,11 +286,11 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             );
             $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         ?>
-        <div class="<?php  echo esc_attr($el_class); ?>">
+        <div class="<?php  echo esc_attr( $el_class ); ?>">
             <?php if( $title ): ?>
-            <h2 class="page-heading">
-                <span class="page-heading-title"><?php echo esc_html($title); ?></span>
-            </h2>
+                <h2 class="page-heading">
+                    <span class="page-heading-title"><?php echo esc_html( $title ); ?></span>
+                </h2>
             <?php endif; ?>
             <div class="latest-deals-product container-data-time">
                 <span class="count-down-time2">
@@ -291,7 +298,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                     <span><?php _e( 'end in', 'kutetheme' ); ?></span>
                     <span class="countdown-lastest stick-countdown"></span>
                 </span>
-                <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                <ul class="product-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
                      <?php
                         add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
@@ -314,11 +321,11 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                      ?>
                 </ul>
                 <?php
-                $y = date('Y',$max);
-                $m = date('m',$max);
-                $d = date('d',$max);
+                    $y = date('Y',$max);
+                    $m = date('m',$max);
+                    $d = date('d',$max);
                 ?>
-                <input class="max-time" type="hidden" value="" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>">
+                <input class="max-time" type="hidden" value="" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" />
             </div>
         </div>
         <?php

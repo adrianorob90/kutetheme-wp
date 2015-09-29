@@ -20,28 +20,29 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
 	public function widget( $args, $instance ) {
 	   echo $args['before_widget'];
        //Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
        ?>
        <ul id="trademark-list">
-            <li id="payment-methods"><?php echo $wtitle; ?><?php echo ":"; ?></li>
+            <li id="payment-methods"><?php echo esc_attr( $wtitle ) ; ?><?php echo ":"; ?></li>
             <?php 
-             if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ):
+             if(isset( $instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ):
                 for( $i = 0; $i < count($instance['title']); $i++ ):
-                    $title = isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
-                    $image = isset($instance[ 'image' ][$i])   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
-                    $link  = isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
-                    $target = isset($instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
+                
+                    $title  = ( isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i] )   ? esc_html( $instance[ 'title' ][$i] ) : '';
+                    $image  = ( isset($instance[ 'image' ][$i])   && intval( $instance[ 'image' ][$i] ) ) ? intval( $instance[ 'image' ][$i] ) : '';
+                    $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] ): '#';
+                    $target = ( isset($instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ) ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
                     
                     $img_preview = "";
                     if($image){
                         $img_preview = wp_get_attachment_url($image);
                         $preview = true;
                     }
-                    if($title):
+                    if( $title ):
                         ?>
                         <li>
-                            <a target="<?php echo esc_attr( $target ) ?>" href="<?php echo esc_attr($link) ?>">
-                                <img src="<?php echo $img_preview; ?>" alt="<?php echo esc_attr($title) ?>" />
+                            <a target="<?php echo esc_attr( $target ) ?>" href="<?php echo $link ?>">
+                                <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr( $title )  ?>" />
                             </a>
                         </li>
                     <?php endif; ?>
@@ -60,16 +61,19 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
             $tmp = array();
             for( $i = 0; $i < count($new_instance['title']); $i++ ){
                 
-                $title  = isset($new_instance[ 'title' ][$i]) ? $new_instance[ 'title' ][$i] : '';
-                $image  = isset($new_instance[ 'image' ][$i]) ? $new_instance[ 'image' ][$i] : '';
-                $link   = isset($new_instance[ 'link' ][$i]) ? $new_instance[ 'link' ][$i] : '#';
-                $target = isset($new_instance[ 'target' ][$i]) ? $new_instance[ 'target' ][$i] : '_blank';
+                $title  = ( isset($new_instance[ 'title' ][$i])  && $new_instance[ 'title' ][$i] )   ? esc_html( $new_instance[ 'title' ][$i] ) : '';
+                
+                $image  = ( isset($new_instance[ 'image' ][$i])  && intval( $new_instance[ 'image' ][$i] ) ) ? intval( $new_instance[ 'image' ][$i] ) : '';
+                
+                $link   = ( isset($new_instance[ 'link' ][$i])   && $new_instance[ 'link' ][$i] )    ? esc_url( $new_instance[ 'link' ][$i] ): '#';
+                
+                $target = ( isset($new_instance[ 'target' ][$i]) && $new_instance[ 'target' ][$i]  ) ? esc_attr( $new_instance[ 'target' ][$i] ) : '_blank';
                 
                 if($title){
-                    $tmp[ 'title' ][]   = esc_html(trim($title)) ?  esc_html(trim($title)) : '';
-                    $tmp[ 'image' ][]   = esc_html(trim($image)) ? esc_html(trim($image)) : '';
-                    $tmp[ 'link' ][]    = esc_html(trim($link)) ? esc_html(trim($link)) : '#';
-                    $tmp[ 'target '][]  = esc_html(trim($target)) ? esc_html(trim($target)) : '_blank';
+                    $tmp[ 'title' ][]   = $title ? $title : '';
+                    $tmp[ 'image' ][]   = $image > 0 ? $image : '';
+                    $tmp[ 'link' ][]    = $link ? $link : '#';
+                    $tmp[ 'target '][]  = $target ? $target : '_blank';
                 }
             }
             $instance[ 'title' ] = $tmp[ 'title' ];
@@ -82,7 +86,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
 
 	public function form( $instance ) {
 		//Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] )  : '';
 	?>
         <p>
             <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
@@ -93,33 +97,36 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                 if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ){
                     for( $i = 0; $i < count($instance['title']); $i++ ){
                         
-                        $title = isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
-                        $image = isset($instance[ 'image' ][$i])   && $instance[ 'image' ][$i]   ? $instance[ 'image' ][$i] : '';
-                        $link  = isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
-                        $target = isset($instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
+                        $title  = ( isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i] )   ? esc_html( $instance[ 'title' ][$i] ) : '';
+                        
+                        $image  = ( isset($instance[ 'image' ][$i])   && intval( $instance[ 'image' ][$i] ) ) ? intval( $instance[ 'image' ][$i] ) : '';
+                        
+                        $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] ): '#';
+                        
+                        $target = ( isset($instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ) ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
                         
                         $img_preview = "";
                         if($image){
                             $img_preview = wp_get_attachment_url($image);
                             $preview = true;
                         }
-                        if($title){?>
+                        if( $title ){?>
                         <div class="item widget-content">
                             <span class="remove">X</span>
                             <p>
                                 <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_attr($title); ?>" />
+                                <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo ($title); ?>" />
                             </p>
                             <p style="text-align: center;">
                                 <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e('Select your image', 'kutetheme') ?>" />
-                                <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image'); ?>" name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" value="<?php echo esc_attr( $image ); ?>" />
+                                <input class="widefat kt_image_attachment" id="<?php echo $this->get_field_id( 'image'); ?>" name="<?php echo $this->get_field_name('image'); ?>[]" type="hidden" value="<?php echo ( $image ); ?>" />
                             </p>
                             <p class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
                                 <img src="<?php echo esc_url( $img_preview ); ?>" alt="" class="kt_image_preview_img" />
                             </p>
                             <p>
                             <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_attr( $link ); ?>" />
+                                <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo ( $link ); ?>" />
                             </p>
                             <p>
                     			<label><?php _e( 'Target:', 'kutetheme'); ?></label>

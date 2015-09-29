@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
      "name" => __( "Blogs", 'kutetheme'),
@@ -247,7 +254,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         if( $posts->have_posts() ):                    
         ?>
         <!-- blog list -->
-        <div class="<?php echo $elementClass; ?>">
+        <div class="<?php echo esc_attr( $elementClass ); ?>">
             <h2 class="page-heading">
                 <span class="page-heading-title"><?php echo esc_html( $title ) ?></span>
             </h2>
@@ -262,9 +269,9 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "268x255" );
                                 if( $thumbnail_src ):
                              ?>
-                                <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" data-src="<?php echo $thumbnail_src[0] ?>" />
+                                <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
                                 <?php else: ?>
-                                    <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo $temping_post_thumbnail ?>" />
+                                    <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
                                 <?php endif; ?>
                              </a>
                         </div>

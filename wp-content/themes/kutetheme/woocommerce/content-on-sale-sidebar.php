@@ -1,6 +1,6 @@
 <div class="product-container">
     <div class="left-block">
-        <a href="<?php echo the_permalink(); ?>">
+        <a href="<?php the_permalink(); ?>">
             <?php
     			/**
     			 * woocommerce_template_loop_product_thumbnail hook

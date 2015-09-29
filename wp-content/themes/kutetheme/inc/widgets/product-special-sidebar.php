@@ -20,12 +20,16 @@ class Widget_KT_Product_Special extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-        $title          = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
+        $title          = ( isset( $instance[ 'title' ] ) && $instance[ 'title' ]  ) ? esc_html( $instance[ 'title' ] )   : '';
         
-        $orderby        = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
-        $order          = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
-        $posts_per_page = isset( $instance[ 'posts_per_page' ] )   ? $instance[ 'posts_per_page' ]   : '3';
+        $orderby        = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        
+        $order          = ( isset( $instance[ 'order' ] ) && $instance[ 'order' ] )   ? esc_attr( $instance[ 'order' ] )   : 'desc';
+        
+        $posts_per_page = ( isset( $instance[ 'posts_per_page' ] ) && $instance[ 'posts_per_page' ] ) ? intval( $instance[ 'posts_per_page' ] )   : '3';
+        
         $meta_query = WC()->query->get_meta_query();
+        
         $params = array(
 			'post_type'				=> 'product',
 			'post_status'			=> 'publish',
@@ -62,7 +66,7 @@ class Widget_KT_Product_Special extends WP_Widget {
                 </ul>
                 <div class="products-block">
                     <div class="products-block-bottom">
-                        <a class="link-all" href="<?php echo $shop_page_url; ?>"><?php _e( 'All Products', 'kutetheme' ) ?></a>
+                        <a class="link-all" href="<?php echo esc_url( $shop_page_url ) ; ?>"><?php _e( 'All Products', 'kutetheme' ) ?></a>
                     </div>
                 </div>
             </div>                            
@@ -73,23 +77,28 @@ class Widget_KT_Product_Special extends WP_Widget {
 	}
 
 	public function update( $new_instance, $old_instance ) {
-        $instance                     = $new_instance;
-        $instance[ 'title' ]          = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
+        $instance                     = $new_instance; 
         
-        $instance[ 'orderby' ]        = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
-        $instance[ 'order' ]          = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
-        $instance[ 'posts_per_page' ] = $new_instance[ 'posts_per_page' ]   ? $new_instance[ 'posts_per_page' ] : '3';
+        $instance[ 'title' ]          = ( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] ) ? esc_html( $new_instance[ 'title' ] ) : '';
+        
+        $instance[ 'orderby' ]        = ( isset( $new_instance[ 'orderby' ] ) && $new_instance[ 'orderby' ] ) ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
+        
+        $instance[ 'order' ]          = ( isset( $new_instance[ 'order' ] ) && $new_instance[ 'order' ] )   ? esc_attr( $new_instance[ 'order' ] ) : 'desc';
+        
+        $instance[ 'posts_per_page' ] = ( isset( $new_instance[ 'posts_per_page' ] ) && $new_instance[ 'posts_per_page' ] )   ? intval( $new_instance[ 'posts_per_page' ] ) : '3';
         
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		//Defaults
-        $title          = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
+        $title          = ( isset( $instance[ 'title' ] ) && $instance[ 'title' ]  ) ? esc_html( $instance[ 'title' ] )   : '';
         
-        $orderby        = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
-        $order          = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
-        $posts_per_page = isset( $instance[ 'posts_per_page' ] )      ? $instance[ 'posts_per_page' ] : '3';
+        $orderby        = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        
+        $order          = ( isset( $instance[ 'order' ] ) && $instance[ 'order' ] )   ? esc_attr( $instance[ 'order' ] )   : 'desc';
+        
+        $posts_per_page = ( isset( $instance[ 'posts_per_page' ] ) && $instance[ 'posts_per_page' ] ) ? intval( $instance[ 'posts_per_page' ] )   : '3';
 	?>
         
         <p>

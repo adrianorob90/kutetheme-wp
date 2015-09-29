@@ -30,17 +30,17 @@
                         <div id="address-list">
                             <?php if( $address ): ?>
                                 <div class="tit-name"><?php _e( 'Address:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php echo $address;  ?></div>
+                                <div class="tit-contain"><?php echo esc_html( $address );  ?></div>
                             <?php endif; ?>
                             
                             <?php if( $hotline ): ?>
                                 <div class="tit-name"><?php _e( 'Phone:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php echo $hotline; ?></div>
+                                <div class="tit-contain"><?php echo esc_html( $hotline ); ?></div>
                             <?php endif; ?>
                             
-                            <?php if( $email ): ?>
+                            <?php if( $email && is_email( $email ) ): ?>
                                 <div class="tit-name"><?php _e( 'Email:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php echo $email; ?></div>
+                                <div class="tit-contain"><?php echo ( $email ); ?></div>
                             <?php endif; ?>
                         </div>
                     </div> 
@@ -114,7 +114,7 @@
     <!--end footer-->
     </div><!--.content-->
 </div><!-- .site -->
-<a href="#" class="scroll_top" title="Scroll to Top">Scroll</a>
+<a href="#" class="scroll_top" title="<?php _e( 'Scroll to Top', 'kutetheme' ) ?>"><?php _e( 'Scroll', 'kutetheme' ) ?></a>
 <?php wp_footer(); ?>
 
 </body>

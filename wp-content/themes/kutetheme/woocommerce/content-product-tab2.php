@@ -1,9 +1,10 @@
 <div class="right-block">
 	<?php
     $product_name = get_the_title();
-    if(strlen($product_name)>18){
+    
+    if( strlen($product_name) > 18 ){
         $product_name = substr($product_name, 0,18);
-        $product_name = trim($product_name)."...";
+        $product_name = trim($product_name) . "...";
     }
     ?>
     <h5 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php echo $product_name; ?></a></h5>

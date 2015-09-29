@@ -1,7 +1,13 @@
 <?php
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
 
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 
 class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
@@ -77,12 +83,12 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         $uniqeID = uniqid();
         ob_start();
         ?>
-        <div class="<?php echo $elementClass; ?> container-tab">
+        <div class="<?php echo esc_attr( $elementClass ); ?> container-tab">
             <ul class="nav-tab">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $k => $v ): ?>
                     <li <?php echo ( $i == 0 ) ? 'class="active"': '' ?> >
-                        <a data-toggle="tab" href="#tab-<?php echo $k . $uniqeID  ?>"><?php echo $v; ?></a>
+                        <a data-toggle="tab" href="#tab-<?php echo $k . $uniqeID  ?>"><?php echo esc_html( $v ); ?></a>
                     </li>
                     <?php $i++; ?>
                 <?php endforeach; ?>
@@ -145,7 +151,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     ?>
                     <div id="tab-<?php echo $k . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
-                        <ul class="product-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                        <ul class="product-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
                             <?php while( $products->have_posts() ): $products->the_post(); ?>
                                 <?php wc_get_template_part( 'content', 'product-tab' ); ?>
                             <?php endwhile; ?>

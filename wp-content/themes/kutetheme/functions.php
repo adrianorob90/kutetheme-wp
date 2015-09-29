@@ -539,20 +539,24 @@ function kt_display_result_post(){
     ?>
     <span class="results-count">
         <?php _e('Showing', 'kutetheme' );?> 
-        <?php $num = $wp_query->post_count; if (have_posts()) : echo $num; endif;?> <?php _e('of', 'kutetheme' );?> <?php echo $wp_query->found_posts;?> <?php _e('posts', 'kutetheme' );?> </h2>
+        <?php $num = $wp_query->post_count; if ( have_posts()) : echo intval($num); endif;?> <?php _e( 'of', 'kutetheme' );?> <?php echo $wp_query->found_posts;?> <?php _e('posts', 'kutetheme' );?> </h2>
     </span>
     <?php
 }
 
-function kt_list_cats($num){
-	$temp=get_the_category();
-	$cat_string ="";
-	$count=count($temp);// Getting the total number of categories the post is filed in.
-	for( $i=0; $i<$num && $i < $count; $i++){
-	//Formatting our output.
-	$cat_string.='<a href="'.get_category_link( $temp[$i]->cat_ID ).'">'.$temp[$i]->cat_name.'</a>';
-	if($i!=$num-1&&$i+1<$count)
-		$cat_string.=', ';
+function kt_list_cats( $num ){
+	$temp       = get_the_category();
+    
+	$cat_string = "";
+    
+	$count      = count( $temp );// Getting the total number of categories the post is filed in.
+    
+	for( $i = 0; $i < $num && $i < $count; $i++ ){
+	   //Formatting our output.
+    	$cat_string .= '<a href="' . esc_url( get_category_link( $temp[$i]->cat_ID ) ) . '">' . esc_html( $temp[$i]->cat_name ) . '</a>';
+    	
+        if( $i != $num-1 && $i+1 < $count)
+    		$cat_string .= ', ';
 	}
 	echo $cat_string;
 }

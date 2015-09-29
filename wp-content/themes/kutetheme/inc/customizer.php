@@ -316,12 +316,12 @@ function kt_get_color_scheme_css( $colors ) {
 
 	/* Background Color */
 	body {
-		background-color: <?php echo $colors['background_color'] ?>;
+		background-color: <?php echo esc_attr( $colors['background_color'] ); ?>;
 	}
     
     /* Box Color */
     div.option6.header{
-        background-color: <?php echo $colors['box_background_color'] ?>;
+        background-color: <?php echo esc_attr( $colors['box_background_color'] ); ?>;
     }
     
     /* Main Color */
@@ -379,7 +379,7 @@ function kt_get_color_scheme_css( $colors ) {
  	div.ui-selectmenu-menu .ui-widget-content .ui-state-focus, 
  	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus
     {
-        background-color: <?php echo $colors['main_color'] ?>;
+        background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .page-heading span.page-heading-title,
     .popular-tabs .nav-tab li:hover, 
@@ -387,7 +387,7 @@ function kt_get_color_scheme_css( $colors ) {
     .brand-showcase .brand-showcase-title,
     .group-title span,
     .content .view-product-list .page-title span{
-        border-bottom-color: <?php echo $colors['main_color'] ?>;
+        border-bottom-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .latest-deals .latest-deal-content,
     .woocommerce .content div.product .variation_form_section .variations-table .selected,
@@ -398,40 +398,40 @@ function kt_get_color_scheme_css( $colors ) {
     .widget_product_tag_cloud div.tagcloud a:hover,
     div.popular-tabs .nav-tab li:hover, 
     div.popular-tabs .nav-tab li.active{
-        border-color: <?php echo $colors['main_color'] ?>;
+        border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
-        border-top-color: <?php echo $colors['main_color'] ?>;
+        border-top-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     a:hover,
     .cart-block .cart-block-content .product-info .p-right .p-rice,
     .widget.widget_product_categories ul>li.current-cat>a{
-        color: <?php echo $colors['main_color'] ?>;
+        color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     /* Text Color */
     a,
     .product-list li .content_price del,{
-        color: <?php echo $colors['textcolor'] ?>;
+        color: <?php echo esc_attr( $colors['textcolor'] ); ?>;
     }
     /* Rate Color */
     .content .product-list li .product-star,
     .content .products-block .product-star{
-        color: <?php echo $colors['rate_color'] ?>;
+        color: <?php echo esc_attr( $colors['rate_color'] ); ?>;
     }
     
     /* Color Main RGB */
     .product-list li .add-to-cart:hover{
-        background-color: <?php echo $colors['color_main_rgb'] ?>
+        background-color: <?php echo esc_attr( $colors['color_main_rgb'] ); ?>
     }
     
     /* Button Color RGB*/
     .product-list li .add-to-cart{
-        background-color: <?php echo $colors['button_color_rgb'] ?>
+        background-color: <?php echo esc_attr( $colors['button_color_rgb'] ); ?>
     }
     /* Footer Menu Link*/
     .footer-menu-list li a,
     .woocommerce .wishlist_table ins{
-        color: <?php echo $colors['menu_link_footer'] ?>
+        color: <?php echo esc_attr( $colors['menu_link_footer'] ); ?>
     }
     /* Price Color */
     
@@ -445,7 +445,7 @@ function kt_get_color_scheme_css( $colors ) {
     .option2 .product-list li .content_price .product-price,
     .woocommerce .wishlist_table span.amount,
     .widget.widget_kt_best_seller .price{
-        color: <?php echo $colors['price_color'] ?>
+        color: <?php  echo esc_attr( $colors['price_color'] ); ?>
     }
 	/* Color*/
 	.blog-list .blog-list-wapper ul li .readmore a,
@@ -455,7 +455,7 @@ function kt_get_color_scheme_css( $colors ) {
 	#main-menu .dropdown-menu>.active>a, 
  	#main-menu .dropdown-menu>.active>a:focus, 
  	#main-menu .dropdown-menu>.active>a:hover{
-		color: <?php echo $colors['main_color'] ?>
+		color: <?php echo esc_attr( $colors['main_color'] ); ?>
 	}
     <?php
     $css = ob_get_clean();

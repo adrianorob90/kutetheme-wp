@@ -27,12 +27,12 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
     $col_class = "main-content col-xs-12 col-sm-12 col-md-12";
 }
 ?>
-	<div id="primary" class="content-area <?php echo esc_attr($sidebar_are_layout);?>">
+	<div id="primary" class="content-area <?php echo esc_attr( $sidebar_are_layout );?>">
 		<main id="main" class="site-main" role="main">
         <div class="container">
             <?php breadcrumb_trail();?>
             <div class="row">
-                <div class="<?php echo esc_attr($col_class);?>">
+                <div class="<?php echo esc_attr( $col_class );?>">
                     <?php if ( have_posts() ) : ?>
             			<header>
             				<?php

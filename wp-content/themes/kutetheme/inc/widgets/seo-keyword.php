@@ -20,20 +20,22 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
 	public function widget( $args, $instance ) {
 	   echo $args['before_widget'];
        //Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] ) : '';
        ?>
        <ul class="trademark-list">
-            <li class="trademark-text-tit"><?php echo $wtitle; ?><?php echo ":"; ?></li>
+            <li class="trademark-text-tit"><?php echo esc_html( $wtitle ) ; ?><?php _e( ":", 'kutetheme' ) ; ?></li>
             <?php 
-             if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ):
+             if( isset( $instance[ 'title' ] ) && $instance[ 'title' ] && count( $instance[ 'title' ] ) > 0 ):
                 for( $i = 0; $i < count($instance['title']); $i++ ):
-                    $title = isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
-                    $link  = isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
-                    $target = isset($instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
+                
+                    $title  = isset( $instance[ 'title' ][ $i ] )  && $instance[ 'title' ][$i]   ? esc_attr( $instance[ 'title' ][$i] ) : '';
                     
-                    if($title):
-                    ?>
-                        <li><a target="<?php echo esc_attr( $target ) ?>" href="<?php echo esc_attr($link) ?>"><?php echo esc_html($title) ?></a></li>
+                    $link   = isset( $instance[ 'link' ][ $i ] )   && $instance[ 'link' ][$i]    ? esc_url( $instance[ 'link' ][$i] ) : '#';
+                    
+                    $target = isset( $instance[ 'target' ][ $i ] ) && $instance[ 'target' ][$i]  ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
+                    
+                    if($title): ?>
+                        <li><a target="<?php echo $target  ?>" href="<?php echo $link; ?>"><?php echo esc_html( $title ) ?></a></li>
                     <?php endif; ?>
                 <?php endfor; ?>
             <?php endif; ?>
@@ -44,24 +46,26 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-		$instance[ 'wtitle' ] = $new_instance[ 'wtitle' ] ? $new_instance[ 'wtitle' ] : '';
+		$instance[ 'wtitle' ] = isset( $new_instance[ 'wtitle' ] ) && $new_instance[ 'wtitle' ] ? esc_html( $new_instance[ 'wtitle' ] ) : '';
         
         if( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] && count( $new_instance[ 'title' ] ) > 0 ){
             $tmp = array();
-            for( $i = 0; $i < count($new_instance['title']); $i++ ){
+            for( $i = 0; $i < count( $new_instance['title'] ); $i++ ) {
                 
-                $title  = isset($new_instance[ 'title' ][$i]) ? $new_instance[ 'title' ][$i] : '';
-                $link   = isset($new_instance[ 'link' ][$i]) ? $new_instance[ 'link' ][$i] : '#';
-                $target = isset($new_instance[ 'target' ][$i]) ? $new_instance[ 'target' ][$i] : '_blank';
+                $title  = isset( $new_instance[ 'title' ][ $i ] )  && $new_instance[ 'title' ][$i]   ? esc_attr( $new_instance[ 'title' ][$i] ) : '';
+                    
+                $link   = isset( $new_instance[ 'link' ][ $i ] )   && $new_instance[ 'link' ][$i]    ? esc_url( $new_instance[ 'link' ][$i] ) : '#';
+                    
+                $target = isset( $new_instance[ 'target' ][ $i ] ) && $new_instance[ 'target' ][$i]  ? esc_attr( $new_instance[ 'target' ][$i] ) : '_blank';
                 
-                if($title){
-                    $tmp[ 'title' ][]   = esc_html(trim($title)) ?  esc_html(trim($title)) : '';
-                    $tmp[ 'link' ][]    = esc_html(trim($link)) ? esc_html(trim($link)) : '#';
-                    $tmp[ 'target '][]  = esc_html(trim($target)) ? esc_html(trim($target)) : '_blank';
+                if( $title ){
+                    $tmp[ 'title' ][]   = esc_html( $title ) ?  esc_html( $title ) : '';
+                    $tmp[ 'link' ][]    = $link ? $link : '#';
+                    $tmp[ 'target '][]  = $target ? $target : '_blank';
                 }
             }
-            $instance[ 'title' ] = $tmp[ 'title' ];
-            $instance[ 'link' ] = $tmp[ 'link' ];
+            $instance[ 'title' ]  = $tmp[ 'title' ];
+            $instance[ 'link' ]   = $tmp[ 'link' ];
             $instance[ 'target' ] = $tmp[ 'target' ];
         }
 		return $instance;
@@ -69,31 +73,33 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
 
 	public function form( $instance ) {
 		//Defaults
-        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? $instance[ 'wtitle' ] : '';
+        $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] )  : '';
 	?>
         <p>
             <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_attr($wtitle); ?>" />
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_html( $wtitle ); ?>" />
         </p>
         <div class="content multi-item">
             <?php
                 if(isset($instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ){
-                    for( $i = 0; $i < count($instance['title']); $i++ ){
+                    for( $i = 0; $i < count( $instance['title'] ); $i++ ){
                         
-                        $title = isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i]   ? $instance[ 'title' ][$i] : '';
-                        $link  = isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i]    ? $instance[ 'link' ][$i] : '#';
-                        $target = isset($instance[ 'target' ][$i]) && $instance[ 'target' ][$i]  ? $instance[ 'target' ][$i] : '_blank';
+                        $title  = isset( $instance[ 'title' ][ $i ] )  && $instance[ 'title' ][$i]  ? esc_attr( $instance[ 'title' ][$i] ) : '';
+                    
+                        $link   = isset( $instance[ 'link' ][ $i ] )   && $instance[ 'link' ][$i]   ? esc_url( $instance[ 'link' ][$i] ) : '#';
+                            
+                        $target = isset( $instance[ 'target' ][ $i ] ) && $instance[ 'target' ][$i] ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
 
                         if($title){?>
                         <div class="item widget-content">
                             <span class="remove">X</span>
                             <p>
                                 <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_attr($title); ?>" />
+                                <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_html( $title ); ?>" />
                             </p>
                             <p>
-                            <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_attr( $link ); ?>" />
+                                <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
+                                <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo $link ; ?>" />
                             </p>
                             <p>
                     			<label><?php _e( 'Target:', 'kutetheme'); ?></label>

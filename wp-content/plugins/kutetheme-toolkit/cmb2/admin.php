@@ -117,7 +117,7 @@ class KT_Admin {
             $tab  = key( $boxes );
         }
         ?>
-        <div class="wrap cmb2-options-page <?php echo $this->key; ?> <?php echo esc_attr( $tab ) ?>">
+        <div class="wrap cmb2-options-page <?php echo esc_attr( $this->key ); ?> <?php echo esc_attr( $tab ) ?>">
             <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
             <?php  if ( count( $boxes ) > 1 ) { ?>
             <h2 class="nav-tab-wrapper">

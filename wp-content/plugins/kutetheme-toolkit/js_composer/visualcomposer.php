@@ -1,4 +1,14 @@
 <?php
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/service.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';

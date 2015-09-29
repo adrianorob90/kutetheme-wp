@@ -1,8 +1,13 @@
 <?php
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
 
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
-
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
     "name" => __( "List Products", 'kutetheme'),
@@ -157,7 +162,7 @@ class WPBakeryShortCode_List_Product extends WPBakeryShortCode {
         if ( $products->have_posts() ) :
         ?>
         <div class="mega-group">
-            <h4 class="mega-group-header"><span><?php echo esc_attr( $title ); ?></span></h4>
+            <h4 class="mega-group-header"><span><?php echo esc_html( $title ); ?></span></h4>
             <div class="mega-products">
                 <?php while ( $products->have_posts() ) : $products->the_post();?>
                     <?php wc_get_template_part( 'content', 'product-verticalmenu' ); ?>

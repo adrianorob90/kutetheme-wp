@@ -1,6 +1,13 @@
 <?php
-// Exit if accessed directly
-if ( !defined('ABSPATH')) exit;
+/**
+ * @author  AngelsIT
+ * @package KUTE TOOLKIT
+ * @version 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 
 vc_map( array(
     "name" => __( "Categories", 'kutetheme'),
@@ -169,10 +176,10 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
 		);
         
         ?>
-        <div id="hot-categories" class="<?php echo $elementClass; ?>">
+        <div id="hot-categories" class="<?php echo esc_attr( $elementClass ); ?>">
             <div class="col-sm-12 group-title-box">
                 <h2 class="group-title ">
-                    <span><?php echo $title; ?></span>
+                    <span><?php echo esc_html( $title ); ?></span>
                 </h2>
             </div>
             <?php if( $product_categories ): ?>
@@ -200,13 +207,13 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                         <div class="cate-tit">
                             <div class="div-1" style="width: 46%;">
                                 <div class="cate-name-wrap">
-                                    <p class="cate-name"><?php echo esc_attr($term->name) ?></p>
+                                    <p class="cate-name"><?php echo esc_html($term->name) ?></p>
                                 </div>
-                                <a href="<?php echo $term_link; ?>" class="cate-link link-active" data-ac="flipInX" ><span><?php _e('shop now', 'kutetheme') ?></span></a>
+                                <a href="<?php echo esc_url( $term_link ); ?>" class="cate-link link-active" data-ac="flipInX" ><span><?php _e('shop now', 'kutetheme') ?></span></a>
                             </div>
                             <div class="div-2" >
-                                <a href="<?php echo $term_link; ?>">
-                                    <img src="<?php echo esc_attr($image) ?>" alt="<?php echo esc_attr($term->name) ?>" class="hot-cate-img" />
+                                <a href="<?php echo esc_url( $term_link ); ?>">
+                                    <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" class="hot-cate-img" />
                                 </a>
                             </div>
                             
@@ -215,8 +222,8 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                         <div class="cate-content">
                             <ul>
                                 <?php foreach($children as $child): ?>
-                                    <?php $chil_link = esc_attr(get_term_link( $child ) ); ?>
-                                    <li><a href="<?php echo esc_attr($chil_link) ?>"><?php echo $child->name ?></a></li>
+                                    <?php $chil_link = esc_attr( get_term_link( $child ) ); ?>
+                                    <li><a href="<?php echo esc_url( $chil_link ) ?>"><?php echo esc_html( $child->name ) ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
@@ -229,8 +236,5 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
-    }
-    public function kt_thumbnail_size(){
-        return '';
     }
 }

@@ -1,6 +1,6 @@
 <li>
     <div class="products-block-left">
-        <a href="<?php echo the_permalink(); ?>">
+        <a href="<?php the_permalink() ; ?>">
             <?php
     			/**
     			 * woocommerce_template_loop_product_thumbnail hook
@@ -13,7 +13,7 @@
     </div>
     <div class="products-block-right">
         <p class="product-name">
-            <a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a>
+            <a href="<?php the_permalink(); ?>"><?php echo the_title(); ?></a>
         </p>
         <div class="content_price">
         <?php

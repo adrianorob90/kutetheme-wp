@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php echo WC()->cart->get_cart_total() ?>
         <span class="notify notify-left"><?php echo esc_attr( $cart_count ); ?></span>
     </a>
-    <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
+    <?php do_action('kt_mini_cart_content', esc_url(  $check_out_url ) ); ?>
 </div>
 <?php elseif( $kt_used_header == 2 ):?>
     <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
@@ -40,12 +40,12 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php endif; ?>
     <?php if( function_exists( 'YITH_WCWL' ) ):
         $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-        <a class="btn-heart" href="<?php echo esc_url( $wishlist_url );; ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
+        <a class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
     <?php endif; ?>
     <div class="btn-cart" id="cart-block">
         <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
-        <span class="notify notify-right"><?php echo $cart_count; ?></span>
-        <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
+        <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
+        <?php do_action('kt_mini_cart_content',esc_url( $check_out_url ) ); ?>
     </div>
     </div>
 <?php elseif($kt_used_header==6):?>
@@ -60,8 +60,8 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php endif; ?>
         <div class="btn-cart" id="cart-block">
             <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
-            <span class="notify notify-right"><?php echo $cart_count; ?></span>
-            <?php do_action('kt_mini_cart_content', $check_out_url ); ?>
+            <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
+            <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
         </div>
 
     </div>

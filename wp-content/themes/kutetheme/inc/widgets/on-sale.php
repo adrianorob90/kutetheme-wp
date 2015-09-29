@@ -20,10 +20,13 @@ class Widget_KT_On_Sale extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-        $title   = isset( $instance[ 'title' ] )   ? esc_attr($instance[ 'title' ])   : '';
-        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 3;
-        $orderby = isset( $instance[ 'orderby' ] ) ? $instance[ 'orderby' ] : 'date';
-        $order   = isset( $instance[ 'order' ] )   ? $instance[ 'order' ]   : 'desc';
+        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] )   : '';
+        
+        $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) ) ? intval( $instance[ 'number' ] ) : 3;
+        
+        $orderby = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        
+        $order   = ( isset( $instance[ 'order' ] )   && $instance[ 'order' ] )   ? esc_attr( $instance[ 'order' ] )   : 'desc';
         
         $meta_query = WC()->query->get_meta_query();
         $product_ids_on_sale = wc_get_product_ids_on_sale();
@@ -62,7 +65,7 @@ class Widget_KT_On_Sale extends WP_Widget {
                 </ul>
             </div>
             <?php 
-            remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+            remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
             remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
             ?>
         </div>
@@ -74,29 +77,37 @@ class Widget_KT_On_Sale extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-        $instance[ 'title' ] = isset( $new_instance[ 'title' ] ) ? $new_instance[ 'title' ] : '';
-        $instance[ 'number' ] = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? $new_instance[ 'number' ] : 3;
-        $instance[ 'orderby' ]  = $new_instance[ 'orderby' ] ? $new_instance[ 'orderby' ] : 'date';
-        $instance[ 'order' ]    = $new_instance[ 'order' ]   ? $new_instance[ 'order' ] : 'desc';
+        
+        $instance[ 'title' ]    = ( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] ) ? esc_html( $new_instance[ 'title' ] ) : '';
+        
+        $instance[ 'number' ]   = ( isset( $new_instance[ 'number' ] ) && intval( $new_instance[ 'perpage' ] ) ) ? intval( $new_instance[ 'number' ] ) : 3;
+        
+        $instance[ 'orderby' ]  = ( isset( $new_instance[ 'orderby' ] ) && $new_instance[ 'orderby' ] ) ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
+        
+        $instance[ 'order' ]    = ( isset( $new_instance[ 'order' ] ) && $new_instance[ 'order' ] )   ? esc_attr( $new_instance[ 'order' ] ) : 'desc';
         
 		return $instance;
 	}
 
 	public function form( $instance ) {
 		//Defaults
-        $title      = isset( $instance[ 'title' ] )      ? $instance[ 'title' ] : '';
-        $number = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) ) ? $instance[ 'number' ] : 3;
-        $orderby    = isset( $instance[ 'orderby' ] )    ? $instance[ 'orderby' ] : 'date';
-        $order      = isset( $instance[ 'order' ] )      ? $instance[ 'order' ] : 'desc';
+        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] )   : '';
+        
+        $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) ) ? intval( $instance[ 'number' ] ) : 3;
+        
+        $orderby = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
+        
+        $order   = ( isset( $instance[ 'order' ] )   && $instance[ 'order' ] )   ? esc_attr( $instance[ 'order' ] )   : 'desc';
+        
 	?>
         
         <p>
             <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
