@@ -41,8 +41,8 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','kutetheme'),
-	        'hide'   => __( 'Hide', 'kutetheme' ),
+			'show' =>__('Show','kutetheme'),
+			'hide' => __( 'Hide', 'kutetheme' ),
 	    ),
 	) );
 	$page_option->add_field( array(
@@ -52,8 +52,8 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'default'          => 'show',
 	    'options'          => array(
-	    	'show'=>__('Show','kutetheme'),
-	        'hide'   => __( 'Hide', 'kutetheme' ),
+			'show' =>__('Show','kutetheme'),
+			'hide' => __( 'Hide', 'kutetheme' ),
 	    ),
 	) );
 	$page_option->add_field( array(
@@ -63,9 +63,9 @@ function kt_register_demo_metabox() {
 	    'type'             => 'select',
 	    'show_option_none' => true,
 	    'options'          => array(
-	    	'left'=>__('Left Sidebar','kutetheme'),
-	    	'right'=>__('Right Sidebar','kutetheme'),
-	        'full'   => __( 'Full width layout', 'kutetheme' ),
+			'left'  =>__('Left Sidebar','kutetheme'),
+			'right' =>__('Right Sidebar','kutetheme'),
+			'full'  => __( 'Full width layout', 'kutetheme' ),
 	    ),
 	) );
 	$page_option->add_field( array(
