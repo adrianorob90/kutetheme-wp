@@ -161,7 +161,7 @@ class KT_Admin {
     		'name'    => __( 'Sidebar Area', 'kutetheme' ),
     		'id'      => 'kt_sidebar_are',
     		'type'    => 'select',
-    		'default' => 'full',
+    		'default' => 'left',
             'options' => array(
                 'full'  => 'Full',
                 'left'  => 'Left',
@@ -318,7 +318,7 @@ class KT_Admin {
     		'name'    => __( 'Shop Sidebar Area', 'kutetheme' ),
     		'id'      => 'kt_woo_shop_sidebar_are',
     		'type'    => 'select',
-    		'default' => 'full',
+    		'default' => 'left',
             'options' => array(
                 'full'  => 'Full',
                 'left'  => 'Left',

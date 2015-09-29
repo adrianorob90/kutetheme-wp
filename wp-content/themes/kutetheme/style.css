@@ -618,3 +618,7 @@ a img.aligncenter {
 #trademark-text-box .widget_nav_menu li{
     list-style: none;
 }
+
+.no-results.not-found{
+    min-height: 300px;
+}
