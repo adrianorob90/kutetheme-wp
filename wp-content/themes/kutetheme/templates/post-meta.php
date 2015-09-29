@@ -8,19 +8,9 @@
     ?>
     <span class="cat"><i class="fa fa-folder-o"></i> <?php the_category(', '); ?></span>
     <span class="comment-count"><i class="fa fa-comment-o"></i> <?php comments_number(
-        __('0', 'kutetheme'),
-        __('1', 'kutetheme'),
-        __('%', 'kutetheme')
+        __('0 comment', 'kutetheme'),
+        __('1 comment', 'kutetheme'),
+        __('% comments', 'kutetheme')
     ); ?></span>
     <span class="date"><i class="fa fa-calendar"></i> <?php echo get_the_date('F j, Y');?></span>
 </div>
-<!--
-<div class="post-star">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star-half-o"></i>
-    <span>(7 votes)</span>
-</div>
--->

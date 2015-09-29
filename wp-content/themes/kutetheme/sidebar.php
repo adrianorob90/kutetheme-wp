@@ -16,6 +16,7 @@ if(is_page()){
 	}
 }
 ?>
+
 <div id="secondary" class="secondary">
 	<?php if ( is_active_sidebar( $kt_used_sidebar ) ) : ?>
 		<div id="widget-area" class="widget-area" role="complementary">

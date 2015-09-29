@@ -16,9 +16,6 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .site-content{
     overflow-x:hidden; 
 }
-.sticky {
-    
-}
 .owl-item {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
@@ -305,7 +302,11 @@ a img.aligncenter {
     line-height: 30px;
     color: #999;
 }
-
+.widget_rss img{
+    max-width: 14px;
+    vertical-align: middle;
+    margin-top: -4px;
+}
 /*widget_search*/
 .widget_search{
     border: none;
@@ -445,6 +446,7 @@ a img.aligncenter {
 .gallery {
     float: left;
     overflow: hidden;
+    width: 100%;
 }
 .gallery img{
     height: auto;
@@ -533,4 +535,86 @@ a img.aligncenter {
     font-size: 14px;
     text-transform: none;
     line-height: 20px;
+}
+
+
+#footer .widget-container,
+#footer .widget {
+    margin-bottom: 15px;
+    width: 100%;
+    float: left;
+    padding: 0;
+}
+#footer .widget-container:last-child{
+    margin-bottom: 0;
+}
+
+#footer .widget-container table,
+#footer .widget-container td,
+#footer .widget-container th{
+    border: 1px solid #ccc;
+}
+#footer .widget-container input,
+#footer .widget-container select{
+    border: 1px solid #ccc;
+}
+
+#footer .widget_archive>ul{
+    padding: 0;
+}
+#footer .widget_meta ul,
+#footer .widget_recent_comments ul,
+#footer .widget_recent_entries ul,
+#footer .widget_rss ul{
+    padding: 0;
+}
+#footer div.widget_rss ul li{
+    list-style: none;
+}
+#footer .widget_recent_comments ul li{
+    border-bottom: 1px solid #ccc;
+    list-style: none;
+}
+
+#footer .widget_pages>ul{
+    padding: 0;
+}
+#footer div.widget_pages ul li,
+#footer div.widget_categories ul li,
+#footer div.widget_meta ul li,
+#footer div.widget_recent_entries ul li,
+#footer div.widget_archive ul li,
+#footer div.widget_recent_comments ul li{
+    list-style: none;
+}
+#footer div.widget_pages>ul>li>a:before,
+#footer div.widget_categories>ul>li>a:before{
+    content: "\f105";
+    font-size: 14px;
+    display: inline-block;
+    text-align: right;
+    font-family: "FontAwesome";
+    padding-right: 12px;
+}
+#footer div.widget_pages ul.children li a:before,
+#footer div.widget_categories ul.children li a:before,
+#footer div.widget_categories ul.sub-menu li a:before{
+    content: "\f0da";
+    font-size: 14px;
+    display: inline-block;
+    text-align: right;
+    font-family: "FontAwesome";
+    padding-right: 12px;
+}
+#trademark-box{
+    overflow: hidden;
+}
+#footer div.widget_categories ul li a:before,
+#footer div.widget_categories ul.sub-menu li a:before{
+    display: none;
+}
+
+#trademark-box .widget_nav_menu li,
+#trademark-text-box .widget_nav_menu li{
+    list-style: none;
 }

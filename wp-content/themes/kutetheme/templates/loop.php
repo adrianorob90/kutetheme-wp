@@ -1,5 +1,7 @@
 <div <?php post_class('post-item'); ?>>
 <article class="entry">
+    <h3 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+    <?php get_template_part( 'templates/post','meta' );?>
     <div class="row">
         <?php if(has_post_thumbnail()):?>
         <div class="col-sm-12 col-md-5">
@@ -14,11 +16,11 @@
         <div class="col-sm-12">
         <?php endif;?>
             <div class="entry-ci">
-                <h3 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                <?php get_template_part( 'templates/post','meta' );?>
+                
                 <div class="entry-excerpt">
                     <?php the_excerpt(); ?>
                 </div>
+                <?php the_tags( '<div class="entry-tags">'.__('<i class="fa fa-tags"></i>', 'kutetheme' ).' ', ', ', '<div>' );?>
                 <div class="entry-more">
                     <a href="<?php the_permalink();?>"><?php _e('Read more', 'kutetheme' );?></a>
                 </div>
