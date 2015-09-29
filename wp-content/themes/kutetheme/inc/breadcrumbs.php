@@ -373,7 +373,7 @@ class Breadcrumb_Trail {
      */
     public function do_network_home_link() {
         if ( is_multisite() && !is_main_site() && true === $this->args['network'] )
-            $this->items[] = '<a href="' . network_home_url() . '" title="' . esc_attr( $this->args['labels']['home'] ) . '" rel="home">' . $this->args['labels']['home'] . '</a>';
+            $this->items[] = '<a href="' . esc_url(network_home_url()) . '" title="' . esc_attr( $this->args['labels']['home'] ) . '" rel="home">' . $this->args['labels']['home'] . '</a>';
     }
 
     /**
@@ -386,7 +386,7 @@ class Breadcrumb_Trail {
     public function do_site_home_link() {
         $label = ( is_multisite() && !is_main_site() && true === $this->args['network'] ) ? get_bloginfo( 'name' ) : $this->args['labels']['home'];
         $rel   = ( is_multisite() && !is_main_site() && true === $this->args['network'] ) ? '' : ' rel="home"';
-        $this->items[] = '<a href="' . home_url() . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '"' . $rel .'>' . $label . '</a>';
+        $this->items[] = '<a href="' . esc_url( home_url('/') ) . '" title="' . esc_attr( get_bloginfo( 'name' ) ) . '"' . $rel .'>' . $label . '</a>';
     }
 
     /**
@@ -845,7 +845,7 @@ class Breadcrumb_Trail {
 
         /* Add the week item. */
         if ( is_paged() )
-            $this->items[] = get_archives_link( add_query_arg( array( 'm' => get_the_time( 'Y' ), 'w' => get_the_time( 'W' ) ), home_url() ), $week, false );
+            $this->items[] = get_archives_link( add_query_arg( array( 'm' => get_the_time( 'Y' ), 'w' => get_the_time( 'W' ) ), home_url('/') ), $week, false );
 
         elseif ( true === $this->args['show_title'] )
             $this->items[] = $week;

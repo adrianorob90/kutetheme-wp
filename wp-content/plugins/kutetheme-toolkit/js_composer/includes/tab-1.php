@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                         if( isset( $icon ) && $icon ): 
-                            $att_icon = wp_get_attachment_image_src( $icon, '30x30' );  
+                            $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
                             $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
                         endif; 
                     ?>

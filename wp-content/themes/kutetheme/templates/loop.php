@@ -13,22 +13,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <div <?php post_class('post-item'); ?>>
-    <article class="entry">
-        <h3 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-        <?php get_template_part( 'templates/post', 'meta' );?>
-        <div class="row">
-            <?php if(has_post_thumbnail()):?>
-            <div class="col-sm-12 col-md-5">
-                <div class="entry-thumb image-hover2">
-                    <a href="<?php the_permalink();?>">
-                        <?php the_post_thumbnail( 'post-thumb' );?>
-                    </a>
-                </div>
+
+<article class="entry">
+    <h3 class="entry-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+    <?php get_template_part( 'templates/post','meta' );?>
+    <div class="row">
+        <?php if(has_post_thumbnail()):?>
+        <div class="col-sm-12 col-md-5">
+            <div class="entry-thumb image-hover2">
+                <a href="<?php the_permalink();?>">
+                    <?php the_post_thumbnail('kt-post-thumb-small');?>
+                </a>
             </div>
-            <div class="col-sm-12 col-md-7">
-            <?php else:?>
+        </div>
+        <div class="col-sm-12 col-md-7">
+        <?php else:?>
             <div class="col-sm-12">
-            <?php endif;?>
+        <?php endif;?>
                 <div class="entry-ci">
                     <div class="entry-excerpt">
                         <?php the_excerpt(); ?>

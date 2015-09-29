@@ -11,30 +11,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // Setting shortcode lastest
 vc_map( array(
-    "name" => __( "Lastest Deals", 'kutetheme'),
-    "base" => "lastest_deals_sidebar",
-    "category" => __('Kute Theme', 'kutetheme' ),
+    "name"        => __( "Lastest Deals", 'kutetheme'),
+    "base"        => "lastest_deals_sidebar",
+    "category"    => __('Kute Theme', 'kutetheme' ),
     "description" => __( "Show lastest deal products in sidebar", 'kutetheme'),
-    "params" => array(
+    "params"      => array(
         array(
-            "type" => "textfield",
-            "heading" => __( "Title", 'kutetheme' ),
-            "param_name" => "title",
+            "type"        => "textfield",
+            "heading"     => __( "Title", 'kutetheme' ),
+            "param_name"  => "title",
             "admin_label" => true,
             'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
         ),
         array(
-            "type" => "kt_number",
-            "heading" => __("Number Product", 'kutetheme'),
-            "param_name" => "number",
-            "value" => 12,
+            "type"        => "kt_number",
+            "heading"     => __("Number Product", 'kutetheme'),
+            "param_name"  => "number",
+            "value"       => 12,
             "description" => __("Enter number of Product", 'kutetheme')
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'kutetheme'),
-        	"param_name" => "orderby",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order by", 'kutetheme'),
+            "param_name" => "orderby",
+            "value"      => array(
         		__('None', 'kutetheme')     => 'none',
                 __('ID', 'kutetheme')       => 'ID',
                 __('Author', 'kutetheme')   => 'author',
@@ -43,81 +43,81 @@ vc_map( array(
                 __('Modified', 'kutetheme') => 'modified',
                 __('Rand', 'kutetheme')     => 'rand',
         	),
-            'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",'kutetheme')
+            'std'         => 'date',
+            "description" => __("Select how to sort retrieved posts.",'kutetheme')
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order", 'kutetheme'),
-        	"param_name" => "order",
-        	"value" => array(
-                __('ASC', 'kutetheme') => 'ASC',
+            "type"       => "dropdown",
+            "heading"    => __("Order", 'kutetheme'),
+            "param_name" => "order",
+            "value"      => array(
+                __('ASC', 'kutetheme')  => 'ASC',
                 __('DESC', 'kutetheme') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.",'kutetheme')
+            'std'         => 'DESC',
+            "description" => __("Designates the ascending or descending order.",'kutetheme')
         ),
         array(
-			'type' => 'css_editor',
-			'heading' => __( 'Css', 'js_composer' ),
-			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-			'group' => __( 'Design options', 'js_composer' )
+            'type'           => 'css_editor',
+            'heading'        => __( 'Css', 'js_composer' ),
+            'param_name'     => 'css',
+            // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+            'group'          => __( 'Design options', 'js_composer' )
 		),
         
         // Carouse
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'std' => 'false',
-			'heading' => __( 'AutoPlay', 'kutetheme' ),
-			'param_name' => 'autoplay',
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'std'         => 'false',
+            'heading'     => __( 'AutoPlay', 'kutetheme' ),
+            'param_name'  => 'autoplay',
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'std' => 'false',
-            'heading' => __( 'Navigation', 'kutetheme' ),
-			'param_name' => 'navigation',
+            'std'         => 'false',
+            'heading'     => __( 'Navigation', 'kutetheme' ),
+            'param_name'  => 'navigation',
             'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
-			'type' => 'dropdown',
+            'type'  => 'dropdown',
             'value' => array(
                 __( 'Yes', 'js_composer' ) => 'true',
                 __( 'No', 'js_composer' )  => 'false'
             ),
-            'std' => 'false',
-            'heading' => __( 'Loop', 'kutetheme' ),
-			'param_name' => 'loop',
+            'std'         => 'false',
+            'heading'     => __( 'Loop', 'kutetheme' ),
+            'param_name'  => 'loop',
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
         array(
-			"type" => "kt_number",
-			"heading" => __("Slide Speed", 'kutetheme'),
-			"param_name" => "slidespeed",
-			"value" => "200",
-            "suffix" => __("milliseconds", 'kutetheme'),
-			"description" => __('Slide speed in milliseconds', 'kutetheme'),
-            'group' => __( 'Carousel settings', 'kutetheme' ),
+            "type"        => "kt_number",
+            "heading"     => __("Slide Speed", 'kutetheme'),
+            "param_name"  => "slidespeed",
+            "value"       => "200",
+            "suffix"      => __("milliseconds", 'kutetheme'),
+            "description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 	  	),
         array(
-            "type" => "textfield",
-            "heading" => __( "Extra class name", 'kutetheme' ),
-            "param_name" => "el_class",
+            "type"        => "textfield",
+            "heading"     => __( "Extra class name", 'kutetheme' ),
+            "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
         )
     )
@@ -126,18 +126,18 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'lastest_deals_sidebar', $atts ) : $atts;
         $atts = shortcode_atts( array(
-            'title'      => '',
-            'number'     => 12,
+            'title'         => '',
+            'number'        => 12,
             //Carousel            
-            'autoplay'   => "false",
-            'navigation' => "false",
-            'slidespeed' => 250,
-            'loop'       => "false",
-            'items'      => 1,
+            'autoplay'      => "false",
+            'navigation'    => "false",
+            'slidespeed'    => 250,
+            'loop'          => "false",
+            'items'         => 1,
             
             'css_animation' => '',
-            'el_class'   => '',
-            'css'        => '',
+            'el_class'      => '',
+            'css'           => '',
             
         ), $atts );
         extract($atts);
@@ -181,16 +181,16 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
         
         if ( $query->have_posts() ) :
             $data_carousel = array(
-                "autoplay"   => $autoplay,
-                "navigation" => $navigation,
-                "slidespeed" => $slidespeed,
-                "autoheight" => "false",
-                "loop"       => $loop,
-                "dots"       => "false",
-                'nav'        => "true",
-                "autoplayTimeout" => 1000,
+                "autoplay"           => $autoplay,
+                "navigation"         => $navigation,
+                "slidespeed"         => $slidespeed,
+                "autoheight"         => "false",
+                "loop"               => $loop,
+                "dots"               => "false",
+                'nav'                => "true",
+                "autoplayTimeout"    => 1000,
                 "autoplayHoverPause" => "true",
-                'items'      => 1,
+                'items'              => 1,
             );
             add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
             ?>

@@ -10,42 +10,42 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 vc_map( array(
-     "name" => __( "Popular Category", 'kutetheme'),
-     "base" => "popular_category",
-     "category" => __('Kute Theme', 'kutetheme' ),
+     "name"        => __( "Popular Category", 'kutetheme'),
+     "base"        => "popular_category",
+     "category"    => __('Kute Theme', 'kutetheme' ),
      "description" => __( "Display popular category", 'kutetheme'),
-     "params" => array(
+     "params"      => array(
         array(
-            "type" => "textfield",
-            "heading" => __( "Title", 'kutetheme' ),
-            "param_name" => "title",
+            "type"        => "textfield",
+            "heading"     => __( "Title", 'kutetheme' ),
+            "param_name"  => "title",
             "admin_label" => true,
         ),
         array(
-            "type" => "kt_taxonomy",
-            "taxonomy" => "product_cat",
-            "class" => "",
-            "heading" => __("Category", 'kutetheme'),
-            "param_name" => "taxonomy",
-            "value" => '',
-            'parent' => 0,
-            'multiple' => false,
+            "type"        => "kt_taxonomy",
+            "taxonomy"    => "product_cat",
+            "class"       => "",
+            "heading"     => __("Category", 'kutetheme'),
+            "param_name"  => "taxonomy",
+            "value"       => '',
+            'parent'      => 0,
+            'multiple'    => false,
             'placeholder' => __('Choose categoy', 'kutetheme'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
         array(
-            "type" => "textfield",
-            "heading" => __( "Number Child Category", 'kutetheme' ),
-            "param_name" => "per_page",
-            'std' => 5,
+            "type"        => "textfield",
+            "heading"     => __( "Number Child Category", 'kutetheme' ),
+            "param_name"  => "per_page",
+            'std'         => 5,
             "admin_label" => false,
             'description' => __( 'Number child category be showed', 'kutetheme' )
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order by", 'kutetheme'),
-        	"param_name" => "orderby",
-        	"value" => array(
+            "type"       => "dropdown",
+            "heading"    => __("Order by", 'kutetheme'),
+            "param_name" => "orderby",
+            "value"      => array(
         		__('None', 'kutetheme')     => 'none',
                 __('ID', 'kutetheme')       => 'ID',
                 __('Author', 'kutetheme')   => 'author',
@@ -54,27 +54,27 @@ vc_map( array(
                 __('Modified', 'kutetheme') => 'modified',
                 __('Rand', 'kutetheme')     => 'rand',
         	),
-            'std' => 'date',
-        	"description" => __("Select how to sort retrieved posts.",'kutetheme'),
+            'std'         => 'date',
+            "description" => __("Select how to sort retrieved posts.",'kutetheme'),
         ),
         array(
-            "type" => "dropdown",
-        	"heading" => __("Order", 'kutetheme'),
-        	"param_name" => "order",
-        	"value" => array(
-                __('ASC', 'kutetheme') => 'ASC',
+            "type"       => "dropdown",
+            "heading"    => __("Order", 'kutetheme'),
+            "param_name" => "order",
+            "value"      => array(
+                __('ASC', 'kutetheme')  => 'ASC',
                 __('DESC', 'kutetheme') => 'DESC'
         	),
-            'std' => 'DESC',
-        	"description" => __("Designates the ascending or descending order.", 'kutetheme')
+            'std'         => 'DESC',
+            "description" => __("Designates the ascending or descending order.", 'kutetheme')
         ),
         array(
-			'type' => 'css_editor',
-			'heading' => __( 'Css', 'js_composer' ),
-			'param_name' => 'css',
-			// 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
-			'group' => __( 'Design options', 'js_composer' ),
-            'admin_label' => false,
+            'type'           => 'css_editor',
+            'heading'        => __( 'Css', 'js_composer' ),
+            'param_name'     => 'css',
+            // 'description' => __( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'js_composer' ),
+            'group'          => __( 'Design options', 'js_composer' ),
+            'admin_label'    => false,
 		),
         
     )
@@ -84,20 +84,20 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'popular_category', $atts ) : $atts;
         extract( shortcode_atts( array(
-            'title'      => '',
-            'taxonomy'   => '',
-            'per_page'   => 5,
-            'orderby'    => 'date',
-            'order'      => 'desc',
-            'css'        => '',
+            'title'         => '',
+            'taxonomy'      => '',
+            'per_page'      => 5,
+            'orderby'       => 'date',
+            'order'         => 'desc',
+            'css'           => '',
             'css_animation' => '',
-            'el_class'   => '',
+            'el_class'      => '',
         ), $atts ) );
         
         $elementClass = array(
-        	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'block-popular-cat ', $this->settings['base'], $atts ),
-        	'extra' => $this->getExtraClass( $el_class ),
-        	'css_animation' => $this->getCSSAnimation( $css_animation ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'block-popular-cat ', $this->settings['base'], $atts ),
+            'extra'            => $this->getExtraClass( $el_class ),
+            'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
         ob_start();

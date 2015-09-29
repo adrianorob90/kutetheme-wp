@@ -55,7 +55,7 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
  *
  * @since Kute theme 1.0.0
  */
-function kutetheme_setup() {
+function kt_setup() {
 
 	/*
 	 * Make theme available for translation.
@@ -124,17 +124,12 @@ function kutetheme_setup() {
 	 * specifically font, colors, icons, and column width.
 	 */
 	add_editor_style( THEME_URL . 'css/editor-style.css' );
-    
-    add_image_size ( '585x65', 585, 66, true );
-    add_image_size ( '1170x66', 1170, 66, true );
-    add_image_size ( '30x30', 30, 30, true );
-    add_image_size ( 'post-thumb', 345, 244, true );
-    add_image_size ( 'post-thumb-small', 70, 49, true );
-    add_image_size ( '268x255', 268, 255, true );
-    add_image_size ('shop_catalog_image_size', 300, 366, true );
+    add_image_size ( 'kt-post-thumb', 345, 244, true );
+    add_image_size ( 'kt-post-thumb-small', 70, 49, true );
+    add_image_size ( 'kt_post_blog_268x255', 268, 255, true );
 }
 endif; // kt_setup
-add_action( 'after_setup_theme', 'kutetheme_setup' );
+add_action( 'after_setup_theme', 'kt_setup' );
 
 /**
  * Register widget area.
@@ -285,7 +280,6 @@ add_action( 'wp_head', 'kt_javascript_detection', 0 );
  */
 function kt_scripts() {
 	// Add custom fonts, used in the main stylesheet.
-    
 
 	// Load the Internet Explorer specific stylesheet.
 	wp_enqueue_style( 'kt-ie', get_template_directory_uri() . '/css/ie.css', array( 'kt-style' ), '1.0' );
@@ -339,23 +333,21 @@ function kt_scripts() {
 		wp_enqueue_script( 'kt-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20141010' );
 	}
     
-    wp_enqueue_script( 'kt-bootstrap', get_template_directory_uri() . '/libs/bootstrap/js/bootstrap.min.js', array( 'jquery' ) );
+    wp_enqueue_script( 'kt-bootstrap', get_template_directory_uri() . '/libs/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20150929', true );
     
-    wp_enqueue_script( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.js', array( 'jquery' ) );
+    wp_enqueue_script( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.js', array( 'jquery' ), '20150929', true );
     
-    wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ) );
+    wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ), '20150929', true );
+        
+    wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ), '20150929', true );
     
-    //wp_enqueue_script( 'kt-countdown', get_template_directory_uri() . '/libs/jquery.countdown/jquery.countdown.min.js', array( 'jquery' ) );
+    wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ), '20150929',true );
     
-    wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ) );
-    
-    wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ) );
-    
-	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.0', true );
+	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150929', true );
 
-
-	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ) );
-	wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ) );
+	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '20150929', true );
+	wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '20150929', true );
+    
 
     
 	wp_localize_script( 'kt-script', 'screenReaderText', array(
@@ -389,48 +381,6 @@ if( ! function_exists("kt_enqueue_script")){
         wp_enqueue_media();
     }
 }
-
-/**
- * Add featured image as background image to post navigation elements.
- *
- * @since Kute Theme 1.0
- *
- * @see wp_add_inline_style()
- */
-function kt_post_nav_background() {
-	if ( ! is_single() ) {
-		return;
-	}
-
-	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-	$next     = get_adjacent_post( false, '', false );
-	$css      = '';
-
-	if ( is_attachment() && 'attachment' == $previous->post_type ) {
-		return;
-	}
-
-	if ( $previous &&  has_post_thumbnail( $previous->ID ) ) {
-		$prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-thumbnail' );
-		$css .= '
-			.post-navigation .nav-previous { background-image: url(' . esc_url( $prevthumb[0] ) . '); }
-			.post-navigation .nav-previous .post-title, .post-navigation .nav-previous a:hover .post-title, .post-navigation .nav-previous .meta-nav { color: #fff; }
-			.post-navigation .nav-previous a:before { background-color: rgba(0, 0, 0, 0.4); }
-		';
-	}
-
-	if ( $next && has_post_thumbnail( $next->ID ) ) {
-		$nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-thumbnail' );
-		$css .= '
-			.post-navigation .nav-next { background-image: url(' . esc_url( $nextthumb[0] ) . '); border-top: 0; }
-			.post-navigation .nav-next .post-title, .post-navigation .nav-next a:hover .post-title, .post-navigation .nav-next .meta-nav { color: #fff; }
-			.post-navigation .nav-next a:before { background-color: rgba(0, 0, 0, 0.4); }
-		';
-	}
-
-	wp_add_inline_style( 'twentyfifteen-style', $css );
-}
-add_action( 'wp_enqueue_scripts', 'kt_post_nav_background' );
 
 /**
  * Display descriptions in main navigation.
