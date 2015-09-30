@@ -131,7 +131,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         $subcats = get_categories($args);
         ?>
         <div class="<?php echo esc_attr( $elementClass ); ?>">
-            <div class="parent-categories"><?php echo $title ? esc_html( $title ) : esc_html( $term->name ) ?></div>
+            <div class="parent-categories"><?php echo  $title ? esc_html( $title ) : esc_html( $term->name ) ?></div>
             <div class="block-popular-inner">
                 <div class="image banner-boder-zoom2">
                     <a href="<?php echo esc_url( $link ); ?>">

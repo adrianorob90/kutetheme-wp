@@ -16,14 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-brand">
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                     if( isset( $icon ) && $icon ): 
                         $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
                         $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
                     endif; 
                     ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo $att_icon_url; ?>" />
+                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ) ; ?>" />
                     <?php  echo ( isset( $title ) && $title ) ?  esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
               </div>
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               <ul class="nav navbar-nav">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $tab ): ?>
-                    <li <?php echo $i == 0 ? 'class="active"': '' ?> >
+                    <li <?php echo  $i == 0 ? 'class="active"': '' ?> >
                         <a data-toggle="tab" href="<?php echo '#tab-' . $id.  '-' . $i; ?>">
                             <?php
                             if(isset( $tab['header'] ) && $tab['header']){
@@ -108,7 +108,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                                 <?php for( $index; $index < $next_index ; $index++ ): ?>
                                                     <?php if( isset( $list_banner_left[$index] ) ): $l = $list_banner_left[$index]; ?>
                                                         <li>
-                                                            <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                                                            <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                                                                 <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url($l->ID) ); ?>" />
                                                             </a>
                                                         </li>

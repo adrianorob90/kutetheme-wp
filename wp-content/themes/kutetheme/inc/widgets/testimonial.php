@@ -83,19 +83,19 @@ class Widget_KT_Testimonial extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
         
-        $instance[ 'title' ]      = ( isset( $new_instance[ 'title' ] )        && $new_instance[ 'title' ] )                ? esc_html( $new_instance[ 'title' ] ) : '';
+        $instance[ 'title' ]      = ( isset( $new_instance[ 'title' ] )        && $new_instance[ 'title' ] )                ? esc_html( $new_instance[ 'title' ] )      : '';
         
-		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )     && $new_instance[ 'autoplay' ] )             ? esc_attr( $new_instance[ 'autoplay' ] ) : "";
+		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )     && $new_instance[ 'autoplay' ] )             ? esc_attr( $new_instance[ 'autoplay' ] )   : "";
         
-        $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )         && $new_instance[ 'loop' ]  )                ? esc_attr( $new_instance[ 'loop' ] ) : "";
+        $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )         && $new_instance[ 'loop' ]  )                ? esc_attr( $new_instance[ 'loop' ] )       : "";
         
-        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] )   && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
+        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] )   && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] )   : 250;
         
-        $instance[ 'number' ]     = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )  : 3;
+        $instance[ 'number' ]     = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )       : 3;
         
-        $instance[ 'orderby' ]    = ( isset( $new_instance[ 'orderby' ] )      && $new_instance[ 'orderby' ] )              ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
+        $instance[ 'orderby' ]    = ( isset( $new_instance[ 'orderby' ] )      && $new_instance[ 'orderby' ] )              ? esc_attr( $new_instance[ 'orderby' ] )    : 'date';
         
-        $instance[ 'order' ]      = ( isset( $new_instance[ 'order' ] )        && $new_instance[ 'order' ] )                ? esc_attr( $new_instance[ 'order' ] )   : 'desc';
+        $instance[ 'order' ]      = ( isset( $new_instance[ 'order' ] )        && $new_instance[ 'order' ] )                ? esc_attr( $new_instance[ 'order' ] )      : 'desc';
         
 		return $instance;
 	}

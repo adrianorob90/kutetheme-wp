@@ -331,14 +331,14 @@ class Tax_Meta_Class {
         echo '</table>
         <span class="at-re-toggle"><img src="';
            if ($this->_Local_images){
-             echo $plugin_path.'/images/edit.png';
+             echo  $plugin_path.'/images/edit.png';
            }else{
              echo 'http://i.imgur.com/ka0E2.png';
            }
            echo '" alt="Edit" title="Edit"/></span> 
         <img src="';
         if ($this->_Local_images){
-          echo $plugin_path.'/images/remove.png';
+          echo  $plugin_path.'/images/remove.png';
         }else{
           echo 'http://i.imgur.com/g8Duj.png';
         }
@@ -351,7 +351,7 @@ class Tax_Meta_Class {
 
     echo '<img src="';
     if ($this->_Local_images){
-      echo $plugin_path.'/images/add.png';
+      echo  $plugin_path.'/images/add.png';
     }else{
       echo 'http://i.imgur.com/w5Tuc.png';
     }
@@ -385,7 +385,7 @@ class Tax_Meta_Class {
     } 
     echo '</table><img src="';
     if ($this->_Local_images){
-      echo $plugin_path.'/images/remove.png';
+      echo  $plugin_path.'/images/remove.png';
     }else{
       echo 'http://i.imgur.com/g8Duj.png';
     }

@@ -14,27 +14,29 @@ class Widget_KT_Best_Seller extends WP_Widget {
 		$widget_ops = array(
                         'classname'   => 'widget_kt_best_seller', 
                         'description' => __( 'Box best seller product on sidebar.', 'kutetheme' )
-                         );
+                    );
 		parent::__construct( 'widget_kt_best_seller', __('KT Best Seller', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
         echo  $args['before_widget'];
         
-        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] )   ? esc_html ( $instance[ 'title' ] )   : __( 'Best Sellers', 'kutetheme' );
-        $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) ) ? intval( $instance[ 'number' ] ) : 6;
-        $perpage = ( isset( $instance[ 'perpage' ] ) && intval( $instance[ 'perpage' ] ) ) ? intval( $instance[ 'perpage' ] ) : 3;
+        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] )             ? esc_html ( $instance[ 'title' ] )   : __( 'Best Sellers', 'kutetheme' );
+        
+        $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) )  ? intval( $instance[ 'number' ] )     : 6;
+        
+        $perpage = ( isset( $instance[ 'perpage' ] ) && intval( $instance[ 'perpage' ] ) ) ? intval( $instance[ 'perpage' ] )    : 3;
         
         $meta_query = WC()->query->get_meta_query();
         $params = array(
-			'post_type'				=> 'product',
-			'post_status'			=> 'publish',
-			'ignore_sticky_posts'	=> 1,
-			'posts_per_page' 		=> $number,
-			'meta_query' 			=> $meta_query,
-            'suppress_filter'       => true,
-            'orderby'               => 'meta_value_num',
-            'meta_key'              => 'total_sales'
+			'post_type'			  => 'product',
+			'post_status'		  => 'publish',
+			'ignore_sticky_posts' => 1,
+			'posts_per_page'      => $number,
+			'meta_query' 		  => $meta_query,
+            'suppress_filter'     => true,
+            'orderby'             => 'meta_value_num',
+            'meta_key'            => 'total_sales'
 		);
         $product = new WP_Query( $params );
         

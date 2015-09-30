@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                     if( isset( $icon ) && $icon ): 
                         $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
               <ul class="nav navbar-nav">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $tab ): ?>
-                    <li <?php echo $i == 0 ? 'class="active"': '' ?> >
+                    <li <?php echo  $i == 0 ? 'class="active"': '' ?> >
                         <a data-toggle="tab" href="<?php echo '#tab-' . $id . '-' . $i; ?>">
                             <?php
                             if(isset( $tab['header'] ) && $tab['header']){
@@ -233,7 +233,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                        $att_banner_left_url =  is_array($att_banner_left) ? esc_url($att_banner_left[0]) : "";    ?> 
                                        <div class="box-left">
                                            <div class="banner-img">
-                                                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                                                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                                                     <img alt="<?php  echo esc_attr( $current->post_title ) ?>" src="<?php echo esc_url( $att_banner_left_url ); ?>" />
                                                 </a>
                                             </div>

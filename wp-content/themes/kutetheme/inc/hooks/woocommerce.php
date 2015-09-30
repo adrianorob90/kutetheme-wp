@@ -48,7 +48,6 @@ if( ! function_exists("kt_get_price_html_from_to")){
             if($pr != $sale){
                 $percentage = round( ( ( $sale - $pr  ) / $sale ) * 100 );
                 $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( ' OFF', 'kutetheme' ), __( '(', 'kutetheme' ), __( ')', 'kutetheme' ) );
-                //$price .= sprintf( '<span class="colreduce-percentage">-%s <span class="colreduce-lable">%s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( 'OFF', 'kutetheme' ) );
             }
         }
         return $price;
@@ -191,7 +190,6 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
         $d = date( 'd', $strtotime );
     
         if($sale_price_dates_to){
-            //$cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
             $cache = 'data-time="' .esc_attr($sale_price_dates_to). '" data-y="'.esc_attr($y).'" data-m="'.esc_atrr($m).'" data-d="'.esc_attr($d).'" data-h="00" data-i="00" data-s="00" data-strtotime="'. esc_attr($strtotime) .'"';
             
             wp_cache_add( $cache_key, $cache );
@@ -955,41 +953,41 @@ if(!function_exists('kt_get_social_header')){
         $instagram  = kt_option('kt_instagram_link_id');
         
         if ($facebook) {
-            $social_icons .= '<a href="'.esc_url($facebook).'" title ="Facebook" ><i class="fa fa-facebook"></i></a>';
+            $social_icons .= '<a href="'.esc_url($facebook).'" title ="'.__( 'Facebook', 'kutetheme' ).'" ><i class="fa fa-facebook"></i></a>';
         }
         if ($twitter) {
-            $social_icons .= '<a href="http://www.twitter.com/'.esc_attr($twitter).'" title ="Twitter" ><i class="fa fa-twitter"></i></a>';
+            $social_icons .= '<a href="http://www.twitter.com/'.esc_attr($twitter).'" title = "'.__( 'Twitter', 'kutetheme' ).'" ><i class="fa fa-twitter"></i></a>';
         }
         if ($dribbble) {
-            $social_icons .= '<a href="http://www.dribbble.com/'.esc_attr($dribbble).'" title ="Dribbble" ><i class="fa fa-dribbble"></i></a>';
+            $social_icons .= '<a href="http://www.dribbble.com/'.esc_attr($dribbble).'" title ="'.__( 'Dribbble', 'kutetheme' ).'" ><i class="fa fa-dribbble"></i></a>';
         }
         if ($vimeo) {
-            $social_icons .= '<a href="http://www.vimeo.com/'.esc_attr($vimeo).'" title ="Vimeo" ><i class="fa fa-vimeo-square"></i></a>';
+            $social_icons .= '<a href="http://www.vimeo.com/'.esc_attr($vimeo).'" title ="'.__( 'Vimeo', 'kutetheme' ).'" ><i class="fa fa-vimeo-square"></i></a>';
         }
         if ($tumblr) {
-            $social_icons .= '<a href="http://'.esc_attr($tumblr).'.tumblr.com/" title ="Tumblr" ><i class="fa fa-tumblr"></i></a>';
-        }
+            $social_icons .= '<a href="http://'.esc_attr($tumblr).'.tumblr.com/" title ="'.__( 'Tumblr', 'kutetheme' ).'" ><i class="fa fa-tumblr"></i></a>';
+        } 
         if ($skype) {
-            $social_icons .= '<a href="skype:'.esc_attr($skype).'" title ="Skype" ><i class="fa fa-skype"></i></a>';
+            $social_icons .= '<a href="skype:'.esc_attr($skype).'" title ="'.__( 'Skype', 'kutetheme' ).'" ><i class="fa fa-skype"></i></a>';
         }
         if ($linkedin) {
-            $social_icons .= '<a href="'.esc_attr($linkedin).'" title ="Linkedin" ><i class="fa fa-linkedin"></i></a>';
+            $social_icons .= '<a href="'.esc_attr($linkedin).'" title ="'.__( 'Linkedin', 'kutetheme' ).'" ><i class="fa fa-linkedin"></i></a>';
         }
         if ($googleplus) {
-            $social_icons .= '<a href="'.esc_url( $googleplus ).'" title ="Google Plus" ><i class="fa fa-google-plus"></i></a>';
+            $social_icons .= '<a href="'.esc_url( $googleplus ).'" title ="'.__( 'Google Plus', 'kutetheme' ).'" ><i class="fa fa-google-plus"></i></a>';
         }
         if ($youtube) {
-            $social_icons .= '<a href="http://www.youtube.com/user/'.esc_attr( $youtube ).'" title ="Youtube"><i class="fa fa-youtube"></i></a>';
+            $social_icons .= '<a href="http://www.youtube.com/user/'.esc_attr( $youtube ).'" title ="'.__( 'Youtube', 'kutetheme' ).'"><i class="fa fa-youtube"></i></a>';
         }
         if ($pinterest) {
-            $social_icons .= '<a href="http://www.pinterest.com/'.esc_attr( $pinterest ).'/" title ="Pinterest" ><i class="fa fa-pinterest-p"></i></a>';
+            $social_icons .= '<a href="http://www.pinterest.com/'.esc_attr( $pinterest ).'/" title ="'.__( 'Pinterest', 'kutetheme' ).'" ><i class="fa fa-pinterest-p"></i></a>';
         }
         if ($instagram) {
-            $social_icons .= '<a href="http://instagram.com/'.esc_attr( $instagram ).'" title ="Instagram" ><i class="fa fa-instagram"></i></a>';
+            $social_icons .= '<a href="http://instagram.com/'.esc_attr( $instagram ).'" title ="'.__( 'Instagram', 'kutetheme' ).'" ><i class="fa fa-instagram"></i></a>';
         }
         
         if ($vk) {
-            $social_icons .= '<a href="https://vk.com/'.esc_attr( $vk ).'" title ="Vk" ><i class="fa fa-vk"></i></a>';
+            $social_icons .= '<a href="https://vk.com/'.esc_attr( $vk ).'" title ="'.__( 'Vk', 'kutetheme' ).'" ><i class="fa fa-vk"></i></a>';
         }
         ?>
         <?php if( $social_icons ):?>

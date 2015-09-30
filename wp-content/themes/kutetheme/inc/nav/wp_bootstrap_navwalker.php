@@ -136,9 +136,9 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
     				$item_output .= '<a'. $attributes .'>';
             
             if($this->megamenu_img_icon){
-                $file = wp_get_attachment_thumb_url($this->megamenu_img_icon);
+                $file = wp_get_attachment_thumb_url( intval( $this->megamenu_img_icon ) );
                 if( $file ){
-                    $imgicon = '<img src="'.esc_url($file).'" alt="'.$item->title.'" title="'.$item->title.'" />';
+                    $imgicon = '<img src="' . esc_url( $file ) . '" alt="' . esc_attr( $item->title ) . '" title="' . esc_attr( $item->title ) . '" />';
                     $item_output .= $imgicon;
                 }
                 
@@ -148,15 +148,15 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			
             $item_output .= $args->after;
             
-            if($this->megamenu_enable && $this->megamenu_menu_page){
-            	$menu_with = kt_get_post_meta($this->megamenu_menu_page,'kt_megamenu_width',830);
+            if( $this->megamenu_enable && $this->megamenu_menu_page ){
+            	$menu_with = kt_get_post_meta( $this->megamenu_menu_page, 'kt_megamenu_width', 830 );
 
                 if( post_type_exists('megamenu') ){
-                    $pages = new WP_Query( array( 'post_type' => 'megamenu', 'p' => $this->megamenu_menu_page ));
+                    $pages = new WP_Query( array( 'post_type' => 'megamenu', 'p' => intval( $this->megamenu_menu_page ) ));
                 }else{
-                    $pages = new WP_Query( array( 'post_type' => 'page', 'page' => $this->megamenu_menu_page ));
+                    $pages = new WP_Query( array( 'post_type' => 'page', 'page' => intval( $this->megamenu_menu_page ) ));
                 }
-                $item_output .= '<div style="width:'.$menu_with.'px" class="dropdown-menu megamenu menu_page mega-menu-'.$depth.' p-'.$this->megamenu_menu_page.'">';
+                $item_output .= '<div style="width:' . intval($menu_with) . 'px" class="dropdown-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'">';
                 if($pages->have_posts()):
                     ob_start();
                     while($pages->have_posts()): $pages->the_post();
@@ -229,10 +229,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 				$fb_output = '<' . $container;
 
 				if ( $container_id )
-					$fb_output .= ' id="' . $container_id . '"';
+					$fb_output .= ' id="' . esc_attr( $container_id ) . '"';
 
 				if ( $container_class )
-					$fb_output .= ' class="' . $container_class . '"';
+					$fb_output .= ' class="' . esc_attr( $container_class ) . '"';
 
 				$fb_output .= '>';
 			}
@@ -240,17 +240,17 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			$fb_output .= '<ul';
 
 			if ( $menu_id )
-				$fb_output .= ' id="' . $menu_id . '"';
+				$fb_output .= ' id="' . esc_attr( $menu_id ) . '"';
 
 			if ( $menu_class )
-				$fb_output .= ' class="' . $menu_class . '"';
+				$fb_output .= ' class="' . esc_attr( $menu_class ) . '"';
 
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'kutetheme' ) . '</a></li>';
 			$fb_output .= '</ul>';
 
 			if ( $container )
-				$fb_output .= '</' . $container . '>';
+				$fb_output .= '</' . esc_attr( $container ) . '>';
 
 			echo  $fb_output;
 		}

@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
           <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                         if( isset( $icon ) && $icon ): 
                             $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
@@ -32,7 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <ul class="nav navbar-nav">
                     <?php $i = 0; ?>
                     <?php foreach( $tabs as $tab ): ?>
-                        <li <?php echo $i == 0 ? 'class="active"': '' ?> >
+                        <li <?php echo  $i == 0 ? 'class="active"': '' ?> >
                             <a data-toggle="tab" href="<?php echo '#tab-' . $id . '-' . $i; ?>">
                                 <?php
                                 if(isset( $tab['header'] ) && $tab['header']){
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="category-banner">
                 <?php foreach($list_banner_top as $b): ?>
                 <div class="col-sm-<?php echo esc_attr( $class ) ?> banner">
-                    <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                    <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                         <img alt="<?php echo esc_attr( $b->post_title ); ?>" class="img-responsive" src="<?php echo esc_url( wp_get_attachment_url($b->ID) ) ?>" />
                     </a>
                 </div>
@@ -111,7 +111,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     ?>
                     <?php foreach($list_banner_left as $l): ?>
                         <div class="banner-img">
-                            <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                            <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                                 <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url($l->ID) ) ?>" />
                             </a>
                         </div>

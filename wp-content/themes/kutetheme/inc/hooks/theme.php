@@ -137,7 +137,7 @@ if( ! function_exists( 'kt_custom_js' ) ){
         if( $js ) :
         ?>
         <script type="text/javascript" id="custom-js">
-    		<?php echo  $js; ?>
+    		<?php echo esc_textarea( $js ) ; ?>
     	</script>
         <?php
         endif;

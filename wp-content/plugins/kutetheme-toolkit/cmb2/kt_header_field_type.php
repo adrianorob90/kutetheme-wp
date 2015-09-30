@@ -26,9 +26,9 @@ function kt_cmb2_render_header_field_callback( $field, $value, $object_id, $obje
     if(isset($field->args['options']) && isset($field->args['id']) && is_array($field->args['options']) && count($field->args['options']) > 0):
         foreach($field->args['options'] as $k => $v):
         ?>
-            <label class="kt_header" for="kt_header_<?php echo $k; ?>">
-                <input class="radio" style="display: none;" type="radio" <?php checked( $field->value ? $field->value : $field->escaped_value, $k ) ?> id="kt_header_<?php echo $k; ?>" name="<?php echo $field->args['id']; ?>" value="<?php echo $k; ?>" />
-                <img sty src="<?php echo $v ?>" alt="<?php echo 'Header '.$k ?>"/>
+            <label class="kt_header" for="kt_header_<?php echo esc_attr( $k ) ; ?>">
+                <input class="radio" style="display: none;" type="radio" <?php checked( $field->value ? $field->value : $field->escaped_value, $k ) ?> id="kt_header_<?php echo esc_attr( $k ) ; ?>" name="<?php echo  $field->args['id']; ?>" value="<?php echo esc_attr( $k ); ?>" />
+                <img sty src="<?php echo esc_url( $v ) ?>" alt="<?php echo 'Header '. esc_attr( $k ) ?>"/>
             </label>
         <?php
         endforeach;

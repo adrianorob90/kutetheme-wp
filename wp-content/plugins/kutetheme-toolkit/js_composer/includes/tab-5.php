@@ -21,7 +21,7 @@ if( isset( $banner_left ) && $banner_left ):
     foreach($list_banner_left as $l):
     ?>
         <div class="banner-left">
-            <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+            <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                 <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url($l->ID) ); ?>" />
             </a>
         </div>
@@ -38,7 +38,7 @@ endif;
           <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                     if( isset( $icon ) && $icon ): 
                         $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
@@ -55,7 +55,7 @@ endif;
               <ul class="nav navbar-nav">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $tab ): ?>
-                    <li <?php echo $i == 0 ? 'class="active"': '' ?> >
+                    <li <?php echo  $i == 0 ? 'class="active"': '' ?> >
                         <a data-toggle="tab" href="<?php echo '#tab-' . $id . '-' . $i; ?>">
                             <?php
                             if(isset( $tab['header'] ) && $tab['header']){
@@ -232,10 +232,10 @@ endif;
                                             <div class="box-left hidden-tablet">
                                                 <?php if ( $count_banner_left > 1 ): ?>
                                                 <div class="owl-intab owl-carousel" data-loop="true" data-items="1" data-autoplay="true" data-dots="false" data-nav="true">
-                                                    <?php echo $banner_carousel; ?>
+                                                    <?php echo  $banner_carousel; ?>
                                                 </div>
                                                 <?php else: ?>
-                                                    <?php echo $banner_carousel; ?>
+                                                    <?php echo  $banner_carousel; ?>
                                                 <?php endif; ?>
                                             </div>
                                     <?php endif; ?>
@@ -249,7 +249,7 @@ endif;
                                             while ( $products->have_posts() ) : $products->the_post();
                                                 ob_start();   
                                                 ?>
-                                                    <li class="col-sm-4 item-<?php echo $j + 1; ?><?php echo ( $j > 5 ) ? ' hidden-tablet' : '' ?>">
+                                                    <li class="col-sm-4 item-<?php echo ( $j + 1 ); ?><?php echo ( $j > 5 ) ? ' hidden-tablet' : '' ?>">
                                                     <?php
                                                         wc_get_template_part( 'content', 'product-tab2' );
                                                     ?>
@@ -259,7 +259,7 @@ endif;
                                                 if( $j > 2 ){
                                                     $fullbox .= $html;
                                                 }else{
-                                                    echo $html;
+                                                    echo  $html;
                                                 }
                                                 $j++;
                                             endwhile; // end of the loop.
@@ -269,7 +269,7 @@ endif;
                                     <?php if( isset( $fullbox )): ?>
                                         <div class="box-full clearfix">
                                             <ul class="product-list">
-                                                <?php echo $fullbox; ?>
+                                                <?php echo  $fullbox; ?>
                                            </ul>
                                         </div>
                                     <?php endif; ?>

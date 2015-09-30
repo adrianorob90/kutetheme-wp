@@ -189,7 +189,7 @@ class Widget_KT_Slider extends WP_Widget {
                     }
                 }else{?>
                     <div class="item widget-content">
-                        <span class="remove">X</span>
+                        <span class="remove"><?php _e( 'X', 'kutetheme' ) ?></span>
                         <p>
                             <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name( 'title' ); ?>[]" type="text" />

@@ -104,8 +104,8 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                             <p>
                     			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                     			<select name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat">
-                    				<option value="_blank"<?php selected( esc_attr( $target ) , '_blank' ); ?>><?php _e('Open New Window', 'kutetheme'); ?></option>
-                    				<option value="_self"<?php selected( esc_attr( $target ), '_self' ); ?>><?php _e('Stay in Window', 'kutetheme'); ?></option>
+                    				<option value="_blank"<?php selected( esc_attr( $target ) , '_blank' ); ?>><?php _e( 'Open New Window', 'kutetheme'); ?></option>
+                    				<option value="_self"<?php selected( esc_attr( $target ), '_self' ); ?>><?php _e( 'Stay in Window', 'kutetheme'); ?></option>
                     			</select>
                     		</p>
                         </div>
@@ -150,8 +150,8 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                         <p>
                 			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
                 			<select tpl-name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat widget-name">
-                				<option value="_blank"><?php _e('Open New Window', 'kutetheme'); ?></option>
-                				<option value="_self"><?php _e('Stay in Window', 'kutetheme'); ?></option>
+                				<option value="_blank"><?php _e( 'Open New Window', 'kutetheme'); ?></option>
+                				<option value="_self"><?php _e( 'Stay in Window', 'kutetheme'); ?></option>
                 			</select>
                 		</p>
                     </div>

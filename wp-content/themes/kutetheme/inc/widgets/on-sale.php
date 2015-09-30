@@ -56,7 +56,7 @@ class Widget_KT_On_Sale extends WP_Widget {
                 add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
             ?>
             <div class="block_content product-onsale">
-                <ul class="product-list owl-carousel" data-loop="true" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="false">
+                <ul class="product-list owl-carousel" data-loop="false" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1" data-autoplay="false">
                     <?php while($product->have_posts()): $product->the_post(); ?>
                         <li>
                             <?php wc_get_template_part( 'content', 'on-sale-sidebar' ); ?>

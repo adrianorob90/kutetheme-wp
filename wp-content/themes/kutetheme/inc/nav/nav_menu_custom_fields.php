@@ -32,8 +32,8 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
             </label>
             <span class="clearfix"></span>
             <span class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
-                <img src="<?php echo esc_url( $img_preview ); ?>" alt="Image preview" title="Image preview" />
-                <i class="fa fa-times">X</i>
+                <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php _e( 'Image preview', 'kutetheme' ) ?>" title="<?php _e( 'Image preview', 'kutetheme' ) ?>" />
+                <i class="fa fa-times"><?php _e( 'X', 'kutetheme' ) ?></i>
             </span>
             <span class="clearfix"></span>
             <input type="button" class="button-secondary kt_image_menu" value="<?php _e( 'Upload image', 'kutetheme' ); ?>" />

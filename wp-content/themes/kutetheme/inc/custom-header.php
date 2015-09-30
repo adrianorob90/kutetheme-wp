@@ -85,7 +85,7 @@ function kt_header_style() {
 
 	// If we get this far, we have custom styles. Let's do this.
 	?>
-	<style type="text/css" id="twentyfifteen-header-css">
+	<style type="text/css" id="kt-header-css">
 	<?php
 		// Short header for when there is no Custom Header and Header Text is hidden.
 		if ( empty( $header_image ) && ! display_header_text() ) :
@@ -213,7 +213,7 @@ function kt_header_background_color_css() {
 		}
 	';
 
-	wp_add_inline_style( 'twentyfifteen-style', sprintf( $css, $header_background_color ) );
+	wp_add_inline_style( 'kt-style', sprintf( $css, $header_background_color ) );
 }
 add_action( 'wp_enqueue_scripts', 'kt_header_background_color_css', 11 );
 

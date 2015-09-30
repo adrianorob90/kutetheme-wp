@@ -39,7 +39,20 @@ if( ! function_exists( 'kt_get_hotline' )){
         <?php
         $result = ob_get_contents();
         ob_end_clean();
-        return  $result;
+        $allowed_html = array(
+            'a' => array(
+                'href' => array (),
+                'title' => array ()
+            ),
+            'i' => array(
+                'class' => array()
+            ),
+            'div' => array(
+                'class' => array()
+            ),
+            'span' => array()
+        );
+        echo wp_kses( $result, $allowed_html );
     }
 }
 if ( ! function_exists( 'kt_option' ) ){
@@ -75,7 +88,18 @@ if( ! function_exists( "kt_get_logo" ) ){
         $default = kt_option("kt_logo" , THEME_URL . '/images/logo.png');
         
         $html = '<a href="'.esc_url( get_home_url() ).'"><img alt="'.esc_attr( get_bloginfo('name') ).'" src="'.esc_url($default).'" /></a>';
-        return $html;
+        
+        $allowed_html = array(
+            'a' => array(
+                'href' => array (),
+                'title' => array ()
+            ),
+            'img' => array(
+                'alt' => array (),
+                'src' => array()
+            ),
+        );
+        echo wp_kses( $html, $allowed_html );
     }
 }
 
@@ -84,7 +108,18 @@ if( ! function_exists( "kt_get_logo_footer" ) ){
         $default = kt_option("kt_logo_footer" , THEME_URL . 'images/logo.png');
         
         $html = '<a href="' . esc_url( get_home_url('/') ) . '"><img alt="' . esc_attr( get_bloginfo('name')) . '" src="' . esc_url($default) . '" /></a>';
-        return $html;
+        
+        $allowed_html = array(
+            'a' => array(
+                'href' => array (),
+                'title' => array ()
+            ),
+            'img' => array(
+                'alt' => array (),
+                'src' => array()
+            ),
+        );
+        echo wp_kses( $html, $allowed_html );
     }
 }
 if( ! function_exists( 'kt_get_info_address' )){

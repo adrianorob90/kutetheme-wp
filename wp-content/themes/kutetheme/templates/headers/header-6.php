@@ -54,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="box-vertical-megamenus">
                     <h4 class="title">
                         <span class="btn-open-mobile"><i class="fa fa-bars"></i></span>
-                        <span class="title-menu"><?php _e('Categories','kutetheme');?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' );?></span>
                     </h4>
                     <div class="vertical-menu-content is-home">
                         <?php

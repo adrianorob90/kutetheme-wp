@@ -28,10 +28,10 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
              if(isset( $instance[ 'title' ]) && $instance[ 'title' ] && count($instance[ 'title' ]) > 0 ):
                 for( $i = 0; $i < count($instance['title']); $i++ ):
                 
-                    $title  = ( isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i] )   ? esc_html( $instance[ 'title' ][$i] ) : '';
-                    $image  = ( isset($instance[ 'image' ][$i])   && intval( $instance[ 'image' ][$i] ) ) ? intval( $instance[ 'image' ][$i] ) : '';
-                    $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] ) : '#';
-                    $target = ( isset($instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ) ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
+                    $title  = ( isset($instance[ 'title' ][$i])   && $instance[ 'title' ][$i] )   ? esc_html( $instance[ 'title' ][$i] )        : '';
+                    $image  = ( isset($instance[ 'image' ][$i])   && intval( $instance[ 'image' ][$i] ) ) ? intval( $instance[ 'image' ][$i] )  : '';
+                    $link   = ( isset($instance[ 'link' ][$i])    && $instance[ 'link' ][$i] )    ? esc_url( $instance[ 'link' ][$i] )          : '#';
+                    $target = ( isset($instance[ 'target' ][$i])  && $instance[ 'target' ][$i]  ) ? esc_attr( $instance[ 'target' ][$i] )       : '_blank';
                     
                     $img_preview = "";
                     if($image){
@@ -136,7 +136,8 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     			</select>
                     		</p>
                         </div>
-                    <?php }}
+                    <?php }
+                    }
                 }else{?>
                     <div class="item widget-content">
                         <span class="remove"><?php _e( 'X', 'kutetheme' ) ?></span>
@@ -199,7 +200,6 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     </div>
                 </div>
             </div>
-            <p></p>
         </div>
     <?php
 	}

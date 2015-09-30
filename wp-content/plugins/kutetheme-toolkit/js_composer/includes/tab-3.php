@@ -23,7 +23,7 @@ if( ! $is_phone ):
         foreach($list_banner_left as $l):
         ?>
             <li>
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url( $l->ID ) ); ?>" />
                 </a>
             </li>
@@ -77,14 +77,14 @@ endif;
           <div class="container-fuild">
             <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-brand">
-                <a href="<?php echo $term_link ? esc_url( $term_link ) : ''; ?>">
+                <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                     <?php 
                     if( isset( $icon ) && $icon ): 
                         $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
                         $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
                     endif; 
                     ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo $att_icon_url; ?>" />
+                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ) ; ?>" />
                     <?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
               </div>
@@ -94,7 +94,7 @@ endif;
               <ul class="nav navbar-nav">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $tab ): ?>
-                    <li <?php echo $i == 0 ? 'class="active"': '' ?> >
+                    <li <?php echo  $i == 0 ? 'class="active"': '' ?> >
                         <a data-toggle="tab" href="<?php echo '#tab-' . $id . '-' . $i; ?>">
                             <?php
                             if(isset( $tab['header'] ) && $tab['header']){
@@ -274,19 +274,19 @@ endif;
                                                 <h3><span><?php _e( 'Deals of The Day', 'kutetheme' ) ?></span></h3>
                                             </div>
                                             <ul class="owl-carousel" data-items="1" data-nav="true" data-dots="false">
-                                                <?php echo $deal_product_tmp; ?>
+                                                <?php echo  $deal_product_tmp; ?>
                                             </ul>
                                         </div>
                                         <?php endif; ?>
                                         <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
                                         <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-dots="false" data-nav="true">
-                                            <?php echo $banner_carousel; ?>
+                                            <?php echo  $banner_carousel; ?>
                                         </ul>
                                         <?php endif; ?>
                                     <?php else: ?>
                                         <?php if( isset( $banner_carousel ) && $banner_carousel ) : ?>
                                         <ul class="owl-intab owl-carousel" data-loop="true" data-items="1" data-dots="false" data-nav="true">
-                                            <?php echo $banner_carousel; ?>
+                                            <?php echo  $banner_carousel; ?>
                                         </ul>
                                         <?php endif; ?>
                                         
@@ -296,7 +296,7 @@ endif;
                                                 <h3><span><?php _e( 'Deals of The Day', 'kutetheme' ) ?></span></h3>
                                             </div>
                                             <ul class="owl-carousel" data-items="1" data-nav="true" data-dots="false">
-                                                <?php echo $deal_product_tmp; ?>
+                                                <?php echo  $deal_product_tmp; ?>
                                             </ul>
                                         </div>
                                         <?php endif; ?>

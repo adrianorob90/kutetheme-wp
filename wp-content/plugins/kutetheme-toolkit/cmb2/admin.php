@@ -122,7 +122,7 @@ class KT_Admin {
             <?php  if ( count( $boxes ) > 1 ) { ?>
             <h2 class="nav-tab-wrapper">
                 <?php foreach ( $boxes as $k => $mb ) { ?>
-                <a href="<?php echo add_query_arg( array( 'tab' => $k ), $link ) ?>" class="nav-tab <?php echo $tab == $k ? 'nav-tab-active' : ''; ?>"><?php echo $mb->meta_box['title']; ?></a>
+                <a href="<?php echo  add_query_arg( array( 'tab' => esc_attr( $k ) ), esc_url($link) ) ?>" class="nav-tab <?php echo  $tab == $k ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $mb->meta_box['title'] ) ; ?></a>
                 <?php } ?>
             </h2>
             <?php } ?>
