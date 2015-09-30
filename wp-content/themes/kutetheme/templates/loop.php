@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="col-sm-12 col-md-5">
             <div class="entry-thumb image-hover2">
                 <a href="<?php the_permalink();?>">
-                    <?php the_post_thumbnail('kt-post-thumb-small');?>
+                    <?php the_post_thumbnail('kt-post-thumb');?>
                 </a>
             </div>
         </div>

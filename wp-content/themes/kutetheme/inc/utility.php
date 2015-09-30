@@ -31,7 +31,7 @@ if( ! function_exists( 'kt_get_hotline' )){
                     </a>
                 <?php endif; ?>
                 <?php if( $email && is_email( $email ) ) : ?>
-                    <a href="mailto:<?php echo esc_attr( $email );?>" title="<?php echo esc_attr( $email );?>">
+                    <a href="<?php echo esc_attr( 'mailto:'. $email );?>" title="<?php echo esc_attr( $email );?>">
                         <span><i class="fa fa-envelope"></i> <?php _e( 'Contact us today !', 'kutetheme' ) ?></span>
                     </a>
                 <?php endif; ?>

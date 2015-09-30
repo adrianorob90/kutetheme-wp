@@ -192,7 +192,7 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
     
         if($sale_price_dates_to){
             //$cache = 'data-countdown="'.$sale_price_dates_to.'" data-time="'.$sale_price_dates_to.'" data-strtotime="'.strtotime($sale_price_dates_to).'"';
-            $cache = 'data-time="' .$sale_price_dates_to. '" data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'. $strtotime .'"';
+            $cache = 'data-time="' .esc_attr($sale_price_dates_to). '" data-y="'.esc_attr($y).'" data-m="'.esc_atrr($m).'" data-d="'.esc_attr($d).'" data-h="00" data-i="00" data-s="00" data-strtotime="'. esc_attr($strtotime) .'"';
             
             wp_cache_add( $cache_key, $cache );
             echo esc_attr( $cache );
