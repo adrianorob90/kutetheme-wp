@@ -3,7 +3,7 @@
   Plugin Name: Kutetheme toolkit
   Plugin URI: http://kutethemes.com/demo/kuteshop/
   Description: A Toolkit for Kute theme
-  Author: AngelsIT
+  Author: KuteTheme
   Version: 1.0.0
   Author URI: http://kutethemes.com/demo/kuteshop/
  */
