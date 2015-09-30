@@ -18,7 +18,7 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-	   echo $args['before_widget'];
+	   echo  $args['before_widget'];
        //Defaults
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] ) : '';
        ?>
@@ -35,13 +35,13 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                     $target = isset( $instance[ 'target' ][ $i ] ) && $instance[ 'target' ][$i]  ? esc_attr( $instance[ 'target' ][$i] ) : '_blank';
                     
                     if($title): ?>
-                        <li><a target="<?php echo $target  ?>" href="<?php echo $link; ?>"><?php echo esc_html( $title ) ?></a></li>
+                        <li><a target="<?php echo esc_attr( $target ); ?>" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $title ) ?></a></li>
                     <?php endif; ?>
                 <?php endfor; ?>
             <?php endif; ?>
         </ul>
        <?php
-       echo $args[ 'after_widget' ];
+       echo  $args[ 'after_widget' ];
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -76,8 +76,8 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] )  : '';
 	?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_html( $wtitle ); ?>" />
+            <label for="<?php echo  $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo  esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo  esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_html( $wtitle ); ?>" />
         </p>
         <div class="content multi-item">
             <?php
@@ -95,17 +95,17 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                             <span class="remove">X</span>
                             <p>
                                 <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_html( $title ); ?>" />
+                                <input class="widefat" id="<?php echo  $this->get_field_id( 'title'); ?>" name="<?php echo  $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_html( $title ); ?>" />
                             </p>
                             <p>
-                                <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo $this->get_field_id( 'link'); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo $link ; ?>" />
+                                <label for="<?php echo  $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
+                                <input class="widefat" id="<?php echo  $this->get_field_id( 'link'); ?>" name="<?php echo  $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_url( $link ) ; ?>" />
                             </p>
                             <p>
                     			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
-                    			<select name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat">
-                    				<option value="_blank"<?php selected( $target, '_blank' ); ?>><?php _e('Open New Window', 'kutetheme'); ?></option>
-                    				<option value="_self"<?php selected( $target, '_self' ); ?>><?php _e('Stay in Window', 'kutetheme'); ?></option>
+                    			<select name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat">
+                    				<option value="_blank"<?php selected( esc_attr( $target ) , '_blank' ); ?>><?php _e('Open New Window', 'kutetheme'); ?></option>
+                    				<option value="_self"<?php selected( esc_attr( $target ), '_self' ); ?>><?php _e('Stay in Window', 'kutetheme'); ?></option>
                     			</select>
                     		</p>
                         </div>
@@ -116,15 +116,15 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                         <span class="remove">X</span>
                         <p>
                             <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
-                            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>[]" type="text" />
+                            <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name( 'title' ); ?>[]" type="text" />
                         </p>
                         <p>
-                        <label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
-                            <input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>[]" type="text" />
+                        <label for="<?php echo  $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:', 'kutetheme'); ?></label> 
+                            <input class="widefat" id="<?php echo  $this->get_field_id( 'link' ); ?>" name="<?php echo  $this->get_field_name( 'link' ); ?>[]" type="text" />
                         </p>
                         <p>
                 			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
-                			<select name="<?php echo $this->get_field_name( 'target' ); ?>[]" id="<?php echo $this->get_field_id( 'target' ); ?>" class="widefat">
+                			<select name="<?php echo  $this->get_field_name( 'target' ); ?>[]" id="<?php echo  $this->get_field_id( 'target' ); ?>" class="widefat">
                 				<option value="_blank"><?php _e( 'Open New Window', 'kutetheme' ); ?></option>
                 				<option value="_self"><?php _e( 'Stay in Window', 'kutetheme' ); ?></option>
                 			</select>
@@ -139,17 +139,17 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                         <span class="remove">X</span>
                         <p>
                             <label><?php _e('Title:', 'kutetheme'); ?></label> 
-                            <input class="widefat widget-name" id="<?php echo $this->get_field_id('title'); ?>" tpl-name="<?php echo $this->get_field_name('title'); ?>[]" type="text" />
+                            <input class="widefat widget-name" id="<?php echo  $this->get_field_id('title'); ?>" tpl-name="<?php echo  $this->get_field_name('title'); ?>[]" type="text" />
                         </p>
                         
                         <p>
-                            <label for="<?php echo $this->get_field_id('link'); ?>"><?php _e('Link:', 'kutetheme'); ?></label> 
-                            <input class="widefat widget-name" id="<?php echo $this->get_field_id('link'); ?>" tpl-name="<?php echo $this->get_field_name('link'); ?>[]" type="text" />
+                            <label for="<?php echo  $this->get_field_id('link'); ?>"><?php _e('Link:', 'kutetheme'); ?></label> 
+                            <input class="widefat widget-name" id="<?php echo  $this->get_field_id('link'); ?>" tpl-name="<?php echo  $this->get_field_name('link'); ?>[]" type="text" />
                         </p>
                         
                         <p>
                 			<label><?php _e( 'Target:', 'kutetheme'); ?></label>
-                			<select tpl-name="<?php echo $this->get_field_name('target'); ?>[]" id="<?php echo $this->get_field_id('target'); ?>" class="widefat widget-name">
+                			<select tpl-name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat widget-name">
                 				<option value="_blank"><?php _e('Open New Window', 'kutetheme'); ?></option>
                 				<option value="_self"><?php _e('Stay in Window', 'kutetheme'); ?></option>
                 			</select>

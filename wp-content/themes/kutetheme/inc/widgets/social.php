@@ -18,7 +18,7 @@ class Widget_KT_Social extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-	   echo $args['before_widget'];
+	   echo  $args['before_widget'];
        //Defaults
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
         
@@ -77,10 +77,21 @@ class Widget_KT_Social extends WP_Widget {
         ?>
         <div class="introduce-title"><?php echo esc_attr($wtitle) ?></div>
         <div class="social-link">
-            <?php echo $social_icons ?>
+            <?php
+                $allowed_html = array(
+                    'a' => array(
+                        'href' => array (),
+                        'title' => array()
+                    ),
+                    'i' => array(
+                        'classs' => array()
+                    )
+                );
+                echo wp_kses( $social_icons, $allowed_html );
+            ?>
         </div>
         <?php
-       echo $args[ 'after_widget' ];
+       echo  $args[ 'after_widget' ];
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -94,7 +105,7 @@ class Widget_KT_Social extends WP_Widget {
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
 	?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_attr( $wtitle ); ?>" />
         </p>
     <?php

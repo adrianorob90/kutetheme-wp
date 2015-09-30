@@ -365,8 +365,7 @@ if ( ! class_exists( 'YIT_Plugin_Panel_WooCommerce' ) ) {
          * @return array Filtered body classes
          */
         public function admin_body_class( $admin_body_classes ){
-            $admin_body_classes .= ' woocommerce ';
-            return $admin_body_classes;
+            return substr_count( $admin_body_classes, 'woocommerce' ) == 0 ? $admin_body_classes .= ' woocommerce ' : $admin_body_classes;
         }
 
         /**

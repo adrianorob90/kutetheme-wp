@@ -262,7 +262,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 
             //WARNING: The file is not automatically deleted, The script must unlink() the file.
             if ( ! $url ) {
-                return new WP_Error( 'http_no_url', __( 'Invalid URL Provided.' ) );
+                return new WP_Error( 'http_no_url', __( 'Invalid URL Provided.', 'yit' ) );
             }
 
             $tmpfname = wp_tempnam( $url );
@@ -275,7 +275,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
             );
 
             if ( ! $tmpfname ) {
-                return new WP_Error( 'http_no_file', __( 'Could not create Temporary file.' ) );
+                return new WP_Error( 'http_no_file', __( 'Could not create Temporary file.', 'yit' ) );
             }
 
             $response = wp_safe_remote_post( $url, $args );
@@ -507,7 +507,7 @@ if ( ! class_exists( 'YIT_Upgrade' ) ) {
 
             check_admin_referer( 'upgrade-plugin-multisite_' . $plugin );
 
-            $title        = __( 'Update Plugin' );
+            $title        = __( 'Update Plugin', 'yith-plugin-fw' );
             $parent_file  = 'plugins.php';
             $submenu_file = 'plugins.php';
 

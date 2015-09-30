@@ -19,7 +19,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-        echo $args['before_widget'];
+        echo  $args['before_widget'];
         
         $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] )   ? esc_html ( $instance[ 'title' ] )   : __( 'Best Sellers', 'kutetheme' );
         $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) ) ? intval( $instance[ 'number' ] ) : 6;
@@ -50,16 +50,16 @@ class Widget_KT_Best_Seller extends WP_Widget {
             <div class="block left-module">
                 <?php
                 if( $title ){
-                    echo $args['before_title'];
-                    echo $title;
-                    echo $args['after_title'];
+                    echo  $args['before_title'];
+                    echo esc_html( $title ) ;
+                    echo  $args['after_title'];
                 }
                 $i = 1;
                 $endtag = $perpage + 1;
                 ob_start();
                 ?>
                 <?php while($product->have_posts()): $product->the_post(); ?>
-                    <?php if( $i==1 ): ?>
+                    <?php if( $i == 1 ): ?>
                     <ul class="products-block best-sell">
                     <?php endif; ?>
                         <?php wc_get_template_part( 'content', 'special-product-sidebar' ); ?>
@@ -71,8 +71,8 @@ class Widget_KT_Best_Seller extends WP_Widget {
                 <?php $html = ob_get_clean(); ?>
                 <?php if( $i < 2 ){ $loop = 'false'; } ?>
                 <div class="block_content">
-                    <div class="owl-carousel owl-best-sell" data-slidespeed="<?php echo $speed; ?>" data-loop="<?php echo $loop; ?>" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="<?php echo $autoplay; ?>" data-autoplayHoverPause = "true" data-items="1">
-                        <?php echo $html; ?>
+                    <div class="owl-carousel owl-best-sell" data-slidespeed="<?php echo intval( $speed ); ?>" data-loop="<?php echo esc_attr( $loop ) ; ?>" data-nav = "false" data-margin = "0" data-autoplayTimeout="1000" data-autoplay="<?php echo esc_attr( $autoplay ) ; ?>" data-autoplayHoverPause = "true" data-items="1">
+                        <?php echo  $html; ?>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
         endif;
         wp_reset_query();
         wp_reset_postdata();
-        echo $args[ 'after_widget' ];
+        echo  $args[ 'after_widget' ];
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -116,34 +116,34 @@ class Widget_KT_Best_Seller extends WP_Widget {
         $loop     = ( isset( $instance[ 'loop' ] )     && $instance[ 'loop' ] )                 ? 'true' : 'false';
 	?>
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
             
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_html( $title ); ?>" />
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_html( $title ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
             
-            <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo intval( $number ); ?>" />
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'number' ); ?>" name="<?php echo  $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo intval( $number ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'perpage' ); ?>"><?php _e( 'Perpage:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'perpage' ); ?>"><?php _e( 'Perpage:', 'kutetheme'); ?></label> 
             
-            <input class="widefat" id="<?php echo $this->get_field_id( 'perpage' ); ?>" name="<?php echo $this->get_field_name('perpage'); ?>" type="text" value="<?php echo intval( $perpage ); ?>" />
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'perpage' ); ?>" name="<?php echo  $this->get_field_name('perpage'); ?>" type="text" value="<?php echo intval( $perpage ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'speed' ); ?>"><?php _e( 'Speed Carousel:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'speed' ); ?>"><?php _e( 'Speed Carousel:', 'kutetheme'); ?></label> 
             
-            <input class="widefat" id="<?php echo $this->get_field_id( 'speed' ); ?>" name="<?php echo $this->get_field_name('speed'); ?>" type="text" value="<?php echo intval($speed); ?>" />
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'speed' ); ?>" name="<?php echo  $this->get_field_name('speed'); ?>" type="text" value="<?php echo intval($speed); ?>" />
         </p>
         
         <p>
-            <input type="checkbox" <?php checked( $autoplay, "true" ) ?> class="checkbox" id="<?php echo $this->get_field_id( 'autoplay' ); ?>" name="<?php echo $this->get_field_name( 'autoplay' ); ?>" />
+            <input type="checkbox" <?php checked( esc_attr( $autoplay ), "true" ) ?> class="checkbox" id="<?php echo  $this->get_field_id( 'autoplay' ); ?>" name="<?php echo  $this->get_field_name( 'autoplay' ); ?>" />
             
-            <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto play', 'kutetheme' ) ?></label><br />
+            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto play', 'kutetheme' ) ?></label><br />
             
-            <input type="checkbox" <?php checked( $loop, "true" ) ?> class="checkbox" id="<?php echo $this->get_field_id( 'loop' ); ?>" name="<?php echo $this->get_field_name('loop'); ?>" />
+            <input type="checkbox" <?php checked( esc_attr( $loop ), "true" ) ?> class="checkbox" id="<?php echo  $this->get_field_id( 'loop' ); ?>" name="<?php echo  $this->get_field_name('loop'); ?>" />
             
-            <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e( 'Loop', 'kutetheme' ); ?></label><br />
+            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php _e( 'Loop', 'kutetheme' ); ?></label><br />
         </p>
     <?php
 	}

@@ -18,40 +18,41 @@ class Widget_KT_Testimonial extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-        echo $args['before_widget'];
+        echo  $args['before_widget'];
         
-        $title   = ( isset( $instance[ 'title' ] ) && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] ) : '';
-        $number  = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) > 0 )  ? intval( $instance[ 'number' ] )  : 3;
+        
+        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] ) ? esc_html( $instance[ 'title' ] ) : '';
+        $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) > 0 )  ? intval( $instance[ 'number' ] )  : 3;
         $orderby = ( isset( $instance[ 'orderby' ] ) && $instance[ 'orderby' ] ) ? esc_attr( $instance[ 'orderby' ] ) : 'date';
-        $order   = ( isset( $instance[ 'order' ] ) && $instance[ 'order' ] ) ? esc_attr( $instance[ 'order' ] )   : 'desc';
+        $order   = ( isset( $instance[ 'order' ] )   && $instance[ 'order' ] ) ? esc_attr( $instance[ 'order' ] )   : 'desc';
         
         
-        $autoplay   = ( isset( $instance[ 'autoplay' ] ) && $instance[ 'autoplay' ] == "true" ) ? "true" : "false";
-        $loop       = ( isset( $instance[ 'loop' ] ) && $instance[ 'loop' ] == "true" ) ? "true" : "false";
+        $autoplay   = ( isset( $instance[ 'autoplay' ] )   && $instance[ 'autoplay' ] ) ? "true" : "false";
+        $loop       = ( isset( $instance[ 'loop' ] )       && $instance[ 'loop' ] ) ? "true" : "false";
 		$slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $instance[ 'slidespeed' ] ) : '250';
         
+        
+        if( $title ){
+            echo  $args['before_title'];
+            echo esc_html( $title );
+            echo  $args['after_title'];
+        }
+        $query = array( 
+            'post_type' => 'testimonial', 
+            'number'    => intval( $number ),
+            'orderby'   => esc_attr( $orderby ),
+            'order'     => esc_attr( $order )
+        );
         $data_carousel    = array(
             "autoplay"   => $autoplay,
             "slidespeed" => $slidespeed,
             "theme"      => 'style-navigation-bottom',
-            'nav'        => false,
+            'nav'        => "false",
             'items'      => 1
-        );
-        
-        if( $title ){
-            echo $args['before_title'];
-            echo $title;
-            echo $args['after_title'];
-        }
-        $query = array( 
-            'post_type' => 'testimonial', 
-            'numbe'     => $number,
-            'orderby'   => $orderby,
-            'order'     => $order
         );
         $pages = new WP_Query( $query );
         if($pages->have_posts()):
-            if( $pages->have_posts() ) $data_carousel['loop'] = $loop;
+            if( $pages->have_posts() ) $data_carousel['loop'] = esc_attr( $loop ) ;
            ?>
            <!-- Testimonials -->
             <div class="block left-module container-testimonials">
@@ -76,25 +77,25 @@ class Widget_KT_Testimonial extends WP_Widget {
        endif;
        wp_reset_query();
        wp_reset_postdata();
-       echo $args[ 'after_widget' ];
+       echo  $args[ 'after_widget' ];
 	}
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
         
-        $instance[ 'title' ] = ( isset( $new_instance[ 'title' ] ) && $new_instance[ 'title' ] ) ? esc_html( $new_instance[ 'title' ] ) : '';
+        $instance[ 'title' ]      = ( isset( $new_instance[ 'title' ] )        && $new_instance[ 'title' ] )                ? esc_html( $new_instance[ 'title' ] ) : '';
         
-		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )   && $new_instance[ 'autoplay' ] == "true" )   ? esc_attr( $new_instance[ 'autoplay' ] ) : "";
+		$instance[ 'autoplay' ]   = ( isset( $new_instance[ 'autoplay' ] )     && $new_instance[ 'autoplay' ] )             ? esc_attr( $new_instance[ 'autoplay' ] ) : "";
         
-        $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )       && $new_instance[ 'loop' ] == "true"  )      ? esc_attr( $new_instance[ 'loop' ] ) : "";
+        $instance[ 'loop' ]       = ( isset( $new_instance[ 'loop' ] )         && $new_instance[ 'loop' ]  )                ? esc_attr( $new_instance[ 'loop' ] ) : "";
         
-        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] ) && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
+        $instance[ 'slidespeed' ] = ( isset( $new_instance[ 'slidespeed' ] )   && intval( $new_instance[ 'slidespeed' ] ) ) ? intval( $new_instance[ 'slidespeed' ] ) : 250;
         
-        $instance[ 'number' ]   = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )  : 3;
+        $instance[ 'number' ]     = ( isset( $new_instance[ 'number' ] )       && intval( $new_instance[ 'number' ] ) > 0 ) ? intval( $new_instance[ 'number' ] )  : 3;
         
-        $instance[ 'orderby' ]  = ( isset( $new_instance[ 'orderby' ] )      && $new_instance[ 'orderby' ] )              ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
+        $instance[ 'orderby' ]    = ( isset( $new_instance[ 'orderby' ] )      && $new_instance[ 'orderby' ] )              ? esc_attr( $new_instance[ 'orderby' ] ) : 'date';
         
-        $instance[ 'order' ]    = ( isset( $new_instance[ 'order' ] )        && $new_instance[ 'order' ] )                ? esc_attr( $new_instance[ 'order' ] )   : 'desc';
+        $instance[ 'order' ]      = ( isset( $new_instance[ 'order' ] )        && $new_instance[ 'order' ] )                ? esc_attr( $new_instance[ 'order' ] )   : 'desc';
         
 		return $instance;
 	}
@@ -107,7 +108,7 @@ class Widget_KT_Testimonial extends WP_Widget {
         
         $loop       = ( isset( $instance[ 'loop' ] ) && $instance[ 'loop' ] ) ? "true" : "false";
 		
-        $slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $instance[ 'slidespeed' ] ) : '250';
+        $slidespeed = ( isset( $instance[ 'slidespeed' ] ) && intval( $instance[ 'slidespeed' ] ) ) ? intval( $instance[ 'slidespeed' ] ) : 250;
         
         $number  = ( isset( $instance[ 'number' ] ) && intval( $instance[ 'number' ] ) > 0 )  ? intval( $instance[ 'number' ] )  : 3;
         
@@ -117,42 +118,42 @@ class Widget_KT_Testimonial extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
+            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
-			<input class="checkbox" <?php checked( $autoplay, "true" ); ?> type="checkbox" id="<?php echo $this->get_field_id('autoplay'); ?>" name="<?php echo $this->get_field_name('autoplay'); ?>" /> 
-            <label for="<?php echo $this->get_field_id( 'autoplay' ); ?>"><?php _e('Auto next slide', 'kutetheme') ?></label>
+			<input class="checkbox" <?php checked( esc_attr( $autoplay ), "true" ); ?> type="checkbox" id="<?php echo  $this->get_field_id('autoplay'); ?>" name="<?php echo  $this->get_field_name('autoplay'); ?>" /> 
+            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto next slide', 'kutetheme' ) ?></label>
 		</p>
         <p>
-			<input class="checkbox" <?php checked( $loop, "true" ); ?> type="checkbox" id="<?php echo $this->get_field_id('loop'); ?>" name="<?php echo $this->get_field_name('loop'); ?>" /> 
-            <label for="<?php echo $this->get_field_id( 'loop' ); ?>"><?php _e('Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme') ?></label>
+			<input class="checkbox" <?php checked( esc_attr( $loop ), "true" ); ?> type="checkbox" id="<?php echo  $this->get_field_id('loop'); ?>" name="<?php echo  $this->get_field_name('loop'); ?>" /> 
+            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php _e( 'Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme' ) ?></label>
 		</p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'slidespeed' ); ?>"><?php _e( 'Slide Speed:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'slidespeed' ); ?>" name="<?php echo $this->get_field_name('slidespeed'); ?>" type="text" value="<?php echo esc_attr($slidespeed); ?>" />
+            <label for="<?php echo  $this->get_field_id( 'slidespeed' ); ?>"><?php _e( 'Slide Speed:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'slidespeed' ); ?>" name="<?php echo  $this->get_field_name('slidespeed'); ?>" type="text" value="<?php echo intval( $slidespeed ); ?>" />
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr($number); ?>" />
+            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'number' ); ?>" name="<?php echo  $this->get_field_name('number'); ?>" type="text" value="<?php echo intval( $number ); ?>" />
         </p>
         
         <p>
-            <label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
-            <select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name('orderby'); ?>">
-                <option value="id" <?php selected( 'id', $orderby ) ?>><?php _e( 'ID', 'kutetheme' ) ?></option>
-            	<option class="author" value="author" <?php selected( 'author', $orderby ) ?>><?php _e( 'Author', 'kutetheme' ) ?></option>
-            	<option class="name" value="name" <?php selected( 'name', $orderby ) ?>><?php _e( 'Name', 'kutetheme' ) ?></option>
-            	<option class="date" value="date" <?php selected( 'date', $orderby ) ?>><?php _e( 'Date', 'kutetheme' ) ?></option>
-            	<option class="modified" value="modified" <?php selected( 'modified', $orderby ) ?>><?php _e( 'Modified', 'kutetheme' ) ?></option>
-            	<option class="rand" value="rand" <?php selected( 'rand', $orderby ) ?>><?php _e( 'Rand', 'kutetheme' ) ?></option>
+            <label for="<?php echo  $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
+            <select class="widefat" id="<?php echo  $this->get_field_id( 'orderby' ); ?>" name="<?php echo  $this->get_field_name('orderby'); ?>">
+                <option value="id" <?php selected( esc_attr( $orderby ), 'id' ) ?>><?php _e( 'ID', 'kutetheme' ) ?></option>
+            	<option class="author" value="author" <?php selected( esc_attr( $orderby ), 'author' ) ?>><?php _e( 'Author', 'kutetheme' ) ?></option>
+            	<option class="name" value="name" <?php selected( esc_attr( $orderby ), 'name' ) ?>><?php _e( 'Name', 'kutetheme' ) ?></option>
+            	<option class="date" value="date" <?php selected( esc_attr( $orderby ), 'date' ) ?>><?php _e( 'Date', 'kutetheme' ) ?></option>
+            	<option class="modified" value="modified" <?php selected( esc_attr( $orderby ), 'modified' ) ?>><?php _e( 'Modified', 'kutetheme' ) ?></option>
+            	<option class="rand" value="rand" <?php selected( esc_attr( $orderby ), 'rand' ) ?>><?php _e( 'Rand', 'kutetheme' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'kutetheme'); ?></label> 
-            <select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name('order'); ?>">
-                <option value="desc" <?php selected( 'desc', $order ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
-            	<option value="asc" <?php selected( 'asc', $order ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
+            <label for="<?php echo  $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'kutetheme'); ?></label> 
+            <select class="widefat" id="<?php echo  $this->get_field_id( 'order' ); ?>" name="<?php echo  $this->get_field_name('order'); ?>">
+                <option value="desc" <?php selected( esc_attr( $order ), 'desc' ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
+            	<option value="asc" <?php selected( esc_attr( $order ), 'asc' ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
             </select>
         </p>
         

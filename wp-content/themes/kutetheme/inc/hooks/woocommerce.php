@@ -171,7 +171,7 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
         $cache_key = 'time_sale_price_'.$product_id;
         $cache = wp_cache_get($cache_key);
         if( $cache ){
-            echo $cache;
+            echo esc_attr( $cache ) ;
             return;
         }
         $sale_price_dates_to = false;
@@ -195,7 +195,7 @@ if( ! function_exists('woocommerce_datatime_sale_product_variable') ){
             $cache = 'data-time="' .$sale_price_dates_to. '" data-y="'.$y.'" data-m="'.$m.'" data-d="'.$d.'" data-h="00" data-i="00" data-s="00" data-strtotime="'. $strtotime .'"';
             
             wp_cache_add( $cache_key, $cache );
-            echo $cache;
+            echo esc_attr( $cache );
         }else{
             wp_cache_delete( $cache_key );
         }
@@ -248,8 +248,8 @@ if( ! function_exists('kt_get_cart_content') ){
                                                 </a>
                                             </div>
                                             <div class="p-right">
-                                                <p class="p-name"><?php echo $product_name; ?></p>
-                                                <p class="p-rice"><?php echo $product_price ?></p>
+                                                <p class="p-name"><?php echo  $product_name; ?></p>
+                                                <p class="p-rice"><?php echo  $product_price ?></p>
                                                 <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( __('Qty: ', 'kutetheme').__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
                                             </div>
                                         </li>
@@ -416,7 +416,7 @@ if( ! function_exists( 'kt_custom_class_list_product' ) ){
             if(isset($_SESSION['shop_products_layout'])){
                 $shop_products_layout = $_SESSION[ 'shop_products_layout' ];
             }
-            echo $shop_products_layout;
+            echo esc_attr( $shop_products_layout );
         }
     }
 }
@@ -454,7 +454,7 @@ if( ! function_exists( 'kt_category_slider' ) ) {
         
         $cateID = $cate->term_id;
         
-        $category_slider = get_tax_meta($cateID,'kt_category_slider');
+        $category_slider = get_tax_meta( $cateID, 'kt_category_slider' );
         
         if($category_slider){
             
@@ -604,10 +604,10 @@ if( ! function_exists('kt_show_product_meta') ){
         ?>
         <div class="product-meta">
             <?php if( $sku ):?>
-                <p><?php _e( 'Item Code', 'kutetheme' );?>: #<?php echo $sku;?></p>
+                <p><?php _e( 'Item Code', 'kutetheme' );?>: #<?php echo esc_attr( $sku ) ;?></p>
             <?php endif;?>
             <?php if( $availability ):?>
-                <p><?php _e( 'Availability', 'kutetheme' );?>: <?php echo $availability;?></p>
+                <p><?php _e( 'Availability', 'kutetheme' );?>: <?php echo esc_attr( $availability ) ;?></p>
             <?php endif;?>
         </div>
         <?php
@@ -738,7 +738,15 @@ if( ! function_exists( 'kt_show_product_images' ) ) {
                 ?>
                 <div class="product-image easyzoom easyzoom--overlay easyzoom--with-thumbnails">
                     <a href="<?php echo esc_url( $image_link );?>">
-                        <?php echo $image;?>
+                        <?php
+                        $allowed_html = array(
+                            'img' => array(
+                                'alt' => array (),
+                                'src' => array()
+                            )
+                        );
+                        echo wp_kses( $image, $allowed_html );
+                        ?>
                     </a>
                 </div>
                 <?php
@@ -767,7 +775,15 @@ if( ! function_exists( 'kt_show_product_images' ) ) {
                                 ?>
                                 <li>
                                     <a href="<?php echo esc_url( $image_link );?>" data-standard="<?php echo esc_url( $standard_link );?>">
-                                        <?php echo $image ;?>
+                                        <?php
+                                        $allowed_html = array(
+                                            'img' => array(
+                                                'alt' => array (),
+                                                'src' => array()
+                                            )
+                                        );
+                                        echo wp_kses( $image, $allowed_html );
+                                        ?>
                                     </a>
                                 </li>
                             <?php
@@ -875,8 +891,8 @@ if ( ! function_exists( 'kt_template_loop_product_thumbnail' ) ) {
 
 
 if( ! function_exists( 'kt_short_tring' ) ) {
-    function kt_short_tring($str,$words=10,$after='...'){
-        echo $str = preg_replace('!\s+!', ' ', $str);
+    function kt_short_tring($str, $words=10, $after='...'){
+        echo  $str = preg_replace('!\s+!', ' ', $str);
         $output   = "";
         if( $str ) {
             $atrr = explode(' ',$str);
@@ -978,7 +994,18 @@ if(!function_exists('kt_get_social_header')){
         ?>
         <?php if( $social_icons ):?>
             <div class="top-bar-social">
-                <?php echo $social_icons;?>
+                <?php
+                $allowed_html = array(
+                    'a' => array(
+                        'href' => array (),
+                        'title' => array()
+                    ),
+                    'i' => array(
+                        'classs' => array()
+                    )
+                );
+                echo wp_kses( $social_icons, $allowed_html );
+                ?>
             </div>
         <?php endif;?>
         <?php

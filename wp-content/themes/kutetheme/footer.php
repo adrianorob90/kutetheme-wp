@@ -25,7 +25,17 @@
                             $hotline = kt_get_info_hotline();
                             $email   = kt_get_info_email();
                             $copyright = kt_get_info_copyrights();
-                            echo $logo;
+                            $allowed_html = array(
+                                'a' => array(
+                                    'href' => array (),
+                                    'title' => array ()
+                                ),
+                                'img' => array(
+                                    'alt' => array (),
+                                    'src' => array()
+                                ),
+                            );
+                            echo wp_kses( $logo, $allowed_html );
                         ?>
                         <div id="address-list">
                             <?php if( $address ): ?>
@@ -105,8 +115,8 @@
                         dynamic_sidebar('footer-menu-bottom');
                     }
                 ?>
-                <?php if($copyright): ?>
-                    <p class="text-center"><?php echo $copyright; ?></p>
+                <?php if( $copyright ): ?>
+                    <p class="text-center"><?php echo esc_textarea( $copyright ) ; ?></p>
                 <?php endif; ?>
             </div><!-- /#footer-menu-box -->
         </div> 

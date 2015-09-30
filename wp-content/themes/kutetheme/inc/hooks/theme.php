@@ -134,11 +134,13 @@ add_action( 'wp_enqueue_scripts', 'kt_custom_inline_style' );
 if( ! function_exists( 'kt_custom_js' ) ){
     function kt_custom_js(){
         $js = kt_get_customize_js();
+        if( $js ) :
         ?>
-        <script type="text/javascript">
-    		<?php echo $js; ?>
+        <script type="text/javascript" id="custom-js">
+    		<?php echo  $js; ?>
     	</script>
         <?php
+        endif;
     }
 }
 add_action( 'wp_footer', 'kt_custom_js' );

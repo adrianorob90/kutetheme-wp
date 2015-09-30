@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
     <?php
         if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-        <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>
+        <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
     <?php endif; ?>
     <?php if( function_exists( 'YITH_WCWL' ) ):
         $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
         <?php
             if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-            <a title="<?php _e( "Compare", 'kutetheme') ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo $count ?>)</span></a>
+            <a title="<?php _e( "Compare", 'kutetheme') ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
         <?php endif; ?>
         <?php if( function_exists( 'YITH_WCWL' ) ):
             $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
