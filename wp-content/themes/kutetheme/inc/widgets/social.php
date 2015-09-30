@@ -41,7 +41,7 @@ class Widget_KT_Social extends WP_Widget {
             $social_icons .= '<a href="'.esc_url($facebook).'" title ="Facebook" ><i class="fa fa-facebook"></i></a>';
         }
         if ($twitter) {
-            $social_icons .= '<a href="http://www.twitter.com/'.esc_attr($twitter).'" title ="Twitter" ><i class="fa fa-twitter"></i></a>';
+            $social_icons .= '<a href="http://www.twitter.com/'.esc_attr($twitter).'" title = "Twitter" ><i class="fa fa-twitter"></i></a>';
         }
         if ($dribbble) {
             $social_icons .= '<a href="http://www.dribbble.com/'.esc_attr($dribbble).'" title ="Dribbble" ><i class="fa fa-dribbble"></i></a>';

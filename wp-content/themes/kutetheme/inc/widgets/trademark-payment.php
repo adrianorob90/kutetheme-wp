@@ -112,7 +112,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                         }
                         if( $title ){?>
                         <div class="item widget-content">
-                            <span class="remove">X</span>
+                            <span class="remove"><?php _e( 'X', 'kutetheme' );?></span>
                             <p>
                                 <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                                 <input class="widefat" id="<?php echo $this->get_field_id( 'title'); ?>" name="<?php echo $this->get_field_name('title'); ?>[]" type="text" value="<?php echo ($title); ?>" />
@@ -139,7 +139,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     <?php }}
                 }else{?>
                     <div class="item widget-content">
-                        <span class="remove">X</span>
+                        <span class="remove"><?php _e( 'X', 'kutetheme' );?></span>
                         <p>
                             <label><?php _e( 'Title:', 'kutetheme'); ?></label> 
                             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>[]" type="text" />
@@ -169,7 +169,7 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                 <input type="button" class="button btn-plus" value="+" />
                 <div class="template" style="display: none;">
                     <div class="item widget-content">
-                        <span class="remove">X</span>
+                        <span class="remove"><?php _e( 'X', 'kutetheme' );?></span>
                         <p>
                             <label><?php _e('Title:', 'kutetheme'); ?></label> 
                             <input class="widefat widget-name" id="<?php echo $this->get_field_id('title'); ?>" tpl-name="<?php echo $this->get_field_name('title'); ?>[]" type="text" />
