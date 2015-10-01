@@ -484,3 +484,18 @@ if( ! function_exists( 'kt_get_post_meta' ) ) {
         return $default;
     }
 }
+if( ! function_exists( 'kt_get_html' ) ){
+    function kt_get_html( $html ){
+        return balanceTags( $html );
+    }
+}
+if( ! function_exists( 'kt_get_js' ) ) {
+    function kt_get_js( $js ){
+        return $js;
+    }
+}
+if( ! function_exists( 'kt_get_css' ) ) {
+    function kt_get_css( $css ){
+        return $css;
+    }
+}
