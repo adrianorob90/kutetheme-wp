@@ -40,17 +40,17 @@
                         <div id="address-list">
                             <?php if( $address ): ?>
                                 <div class="tit-name"><?php esc_html_e( 'Address:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php esc_html_e( $address );  ?></div>
+                                <div class="tit-contain"><?php echo esc_html( $address );  ?></div>
                             <?php endif; ?>
                             
                             <?php if( $hotline ): ?>
                                 <div class="tit-name"><?php esc_html_e( 'Phone:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php esc_html_e( $hotline ); ?></div>
+                                <div class="tit-contain"><?php echo esc_html( $hotline ); ?></div>
                             <?php endif; ?>
                             
                             <?php if( $email && is_email( $email ) ): ?>
                                 <div class="tit-name"><?php esc_html_e( 'Email:', 'kutetheme' ) ?></div>
-                                <div class="tit-contain"><?php esc_html_e( $email ); ?></div>
+                                <div class="tit-contain"><?php echo esc_html( $email ); ?></div>
                             <?php endif; ?>
                         </div>
                     </div> 
