@@ -13,8 +13,8 @@ class Widget_KT_On_Sale extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_on_sale', 
-                        'description' => __( 'Box On Sale.', 'kutetheme' ) );
-		parent::__construct( 'widget_kt_on_sale', __('KT On Sale', 'kutetheme' ), $widget_ops );
+                        'description' => esc_attr__( 'Box On Sale.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_on_sale', esc_attr__('KT On Sale', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -102,29 +102,29 @@ class Widget_KT_On_Sale extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  $this->get_field_id( 'number' ); ?>" name="<?php echo  $this->get_field_name('number'); ?>" type="text" value="<?php echo esc_attr( $number ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'orderby' ); ?>"><?php esc_html_e( 'Order By:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo  $this->get_field_id( 'orderby' ); ?>" name="<?php echo  $this->get_field_name('orderby'); ?>">
-                <option value="id" <?php selected( esc_attr( $orderby ), 'id' ) ?>><?php _e( 'ID', 'kutetheme' ) ?></option>
-            	<option class="author" value="author" <?php selected( esc_attr( $orderby ), 'author' ) ?>><?php _e( 'Author', 'kutetheme' ) ?></option>
-            	<option class="name" value="name" <?php selected( esc_attr( $orderby ), 'name' ) ?>><?php _e( 'Name', 'kutetheme' ) ?></option>
-            	<option class="date" value="date" <?php selected( esc_attr( $orderby ), 'date' ) ?>><?php _e( 'Date', 'kutetheme' ) ?></option>
-            	<option class="modified" value="modified" <?php selected( esc_attr( $orderby ), 'modified' ) ?>><?php _e( 'Modified', 'kutetheme' ) ?></option>
-            	<option class="rand" value="rand" <?php selected( esc_attr( $orderby ), 'rand' ) ?>><?php _e( 'Rand', 'kutetheme' ) ?></option>
+                <option value="id" <?php selected( esc_attr( $orderby ), 'id' ) ?>><?php esc_html_e( 'ID', 'kutetheme' ) ?></option>
+            	<option class="author" value="author" <?php selected( esc_attr( $orderby ), 'author' ) ?>><?php esc_html_e( 'Author', 'kutetheme' ) ?></option>
+            	<option class="name" value="name" <?php selected( esc_attr( $orderby ), 'name' ) ?>><?php esc_html_e( 'Name', 'kutetheme' ) ?></option>
+            	<option class="date" value="date" <?php selected( esc_attr( $orderby ), 'date' ) ?>><?php esc_html_e( 'Date', 'kutetheme' ) ?></option>
+            	<option class="modified" value="modified" <?php selected( esc_attr( $orderby ), 'modified' ) ?>><?php esc_html_e( 'Modified', 'kutetheme' ) ?></option>
+            	<option class="rand" value="rand" <?php selected( esc_attr( $orderby ), 'rand' ) ?>><?php esc_html_e( 'Rand', 'kutetheme' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'order' ); ?>"><?php esc_html_e( 'Order Way:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo  $this->get_field_id( 'order' ); ?>" name="<?php echo  $this->get_field_name('order'); ?>">
-                <option value="desc" <?php selected( esc_attr( $order ), 'desc' ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
-            	<option value="asc" <?php selected( esc_attr( $order ), 'asc' ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
+                <option value="desc" <?php selected( esc_attr( $order ), 'desc' ) ?>><?php esc_html_e( 'DESC', 'kutetheme' ) ?></option>
+            	<option value="asc" <?php selected( esc_attr( $order ), 'asc' ) ?>><?php esc_html_e( 'ASC', 'kutetheme' ) ?></option>
             </select>
         </p>
         

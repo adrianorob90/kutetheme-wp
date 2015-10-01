@@ -24,11 +24,11 @@
 		<?php the_content(); ?>
 		<?php
 			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'kutetheme' ) . '</span>',
+				'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'kutetheme' ) . '</span>',
 				'after'       => '</div>',
 				'link_before' => '<span>',
 				'link_after'  => '</span>',
-				'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'kutetheme' ) . ' </span>%',
+				'pagelink'    => '<span class="screen-reader-text">' . esc_html__( 'Page', 'kutetheme' ) . ' </span>%',
 				'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 		?>

@@ -13,8 +13,8 @@ class Widget_KT_Social extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_social', 
-                        'description' => __( 'Accepted display social.', 'kutetheme' ) );
-		parent::__construct( 'widget_kt_social', __('KT Social', 'kutetheme' ), $widget_ops );
+                        'description' => esc_attr__( 'Accepted display social.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_social', esc_attr__('KT Social', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -105,7 +105,7 @@ class Widget_KT_Social extends WP_Widget {
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_html( $instance[ 'wtitle' ] ) : '';
 	?>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'wtitle' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'wtitle' ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_attr( $wtitle ); ?>" />
         </p>
     <?php

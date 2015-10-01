@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <?php the_excerpt(); ?>
                     </div>
                     <div class="entry-more">
-                        <a href="<?php the_permalink();?>"><?php _e( 'Read more', 'kutetheme' );?></a>
+                        <a href="<?php the_permalink();?>"><?php esc_html_e( 'Read more', 'kutetheme' );?></a>
                     </div>
                 </div>
             </div>

@@ -246,7 +246,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 				$fb_output .= ' class="' . esc_attr( $menu_class ) . '"';
 
 			$fb_output .= '>';
-			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . __( 'Add a menu', 'kutetheme' ) . '</a></li>';
+			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">' . esc_attr__( 'Add a menu', 'kutetheme' ) . '</a></li>';
 			$fb_output .= '</ul>';
 
 			if ( $container )

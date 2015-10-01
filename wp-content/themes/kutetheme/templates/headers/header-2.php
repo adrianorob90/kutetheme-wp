@@ -20,8 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php echo kt_get_wpml(); ?>
             
             <div class="support-link">
-                <a href="<?php kt_service_link(); ?>"><?php _e( 'Services', 'kutetheme' ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php _e( 'Support', 'kutetheme' ) ?></a>
+                <a href="<?php kt_service_link(); ?>"><?php esc_html_e( 'Services', 'kutetheme' ) ?></a>
+                <a href="<?php kt_support_link(); ?>"><?php esc_html_e( 'Support', 'kutetheme' ) ?></a>
             </div>
             <?php echo kt_menu_my_account(); ?>
         </div>
@@ -51,7 +51,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <div class="col-sm-3" id="box-vertical-megamenus">
                     <div class="box-vertical-megamenus style2">
                         <h4 class="title">
-                            <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                            <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
                             <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
                         </h4>
                     <div class="vertical-menu-content is-home">
@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 'walker'            => new wp_bootstrap_navwalker())
                             );
                         ?><!--/.nav-collapse -->
-                        <div class="all-category"><span class="open-cate"><?php _e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
                 </div>
@@ -79,7 +79,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                     <i class="fa fa-bars"></i>
                                 </button>
-                                <a class="navbar-brand" href="#"><?php _e( 'Menu', 'kutetheme' ) ?></a>
+                                <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
                             </div>
                             <?php
                                 wp_nav_menu( array(

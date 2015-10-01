@@ -27,7 +27,7 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( 'color_scheme', array(
-		'label'    => __( 'Base Color Scheme', 'kutetheme' ),
+		'label'    => esc_attr__( 'Base Color Scheme', 'kutetheme' ),
 		'section'  => 'colors',
 		'type'     => 'select',
 		'choices'  => kt_get_color_scheme_choices(),
@@ -42,8 +42,8 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color', array(
-		'label'       => __( 'Theme Color', 'kutetheme' ),
-		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
+		'label'       => esc_attr__( 'Theme Color', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
 
@@ -58,8 +58,8 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'box_background_color', array(
-		'label'       => __( 'Box and Sidebar Background Color', 'kutetheme' ),
-		'description' => __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
+		'label'       => esc_attr__( 'Box and Sidebar Background Color', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
     
@@ -71,8 +71,8 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'textcolor', array(
-		'label'       => __( 'Text Color', 'kutetheme' ),
-		'description' => __( 'Applied to the header on small screens and the text on wide screens.', 'kutetheme' ),
+		'label'       => esc_attr__( 'Text Color', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the header on small screens and the text on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
     
@@ -84,13 +84,13 @@ function kt_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'price_color', array(
-		'label'       => __( 'Price Color', 'kutetheme' ),
-		'description' => __( 'Applied to the price on wide screens.', 'kutetheme' ),
+		'label'       => esc_attr__( 'Price Color', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the price on wide screens.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
 
 	// Add an additional description to the header image section.
-	$wp_customize->get_section( 'header_image' )->description = __( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' );
+	$wp_customize->get_section( 'header_image' )->description = esc_attr__( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' );
 }
 add_action( 'customize_register', 'kt_customize_register', 11 );
 /**
@@ -116,7 +116,7 @@ add_action( 'customize_register', 'kt_customize_register', 11 );
 function kt_get_color_schemes() {
 	return apply_filters( 'kt_color_schemes', array(
 		'default' => array(
-			'label'  => __( 'Default', 'kutetheme' ),
+			'label'  => esc_attr__( 'Default', 'kutetheme' ),
 			'colors' => array(
                 '#ffffff',//Background Color.
 				'#ff3366',//Main Color
@@ -130,7 +130,7 @@ function kt_get_color_schemes() {
 			),
 		),
 		'brown'    => array(
-			'label'  => __( 'Brown', 'kutetheme' ),
+			'label'  => esc_attr__( 'Brown', 'kutetheme' ),
 			'colors' => array(
                 '#ffffff',//Background Color.
 				'#958457',//Main Color
@@ -144,7 +144,7 @@ function kt_get_color_schemes() {
 			),
 		),
 		'blue'    => array(
-			'label'  => __( 'Blue', 'kutetheme' ),
+			'label'  => esc_attr__( 'Blue', 'kutetheme' ),
 			'colors' => array(
                 '#ffffff',//Background Color.
 				'#007176',//Main Color

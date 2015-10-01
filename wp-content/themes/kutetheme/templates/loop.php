@@ -36,7 +36,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     </div>
                     <?php the_tags( '<div class="entry-tags">'.__('<i class="fa fa-tags"></i>', 'kutetheme' ).' ', ', ', '<div>' );?>
                     <div class="entry-more">
-                        <a href="<?php the_permalink();?>"><?php _e( 'Read more', 'kutetheme' );?></a>
+                        <a href="<?php the_permalink();?>"><?php esc_html_e( 'Read more', 'kutetheme' );?></a>
                     </div>
                 </div>
             </div>

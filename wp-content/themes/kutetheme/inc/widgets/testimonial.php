@@ -13,8 +13,8 @@ class Widget_KT_Testimonial extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname' => 'widget_kt_testimonial', 
-                        'description' => __( 'Testimonial Carousel on sidebar.', 'kutetheme' ) );
-		parent::__construct( 'widget_kt_testimonial', __('KT Testimonial', 'kutetheme' ), $widget_ops );
+                        'description' => esc_attr__( 'Testimonial Carousel on sidebar.', 'kutetheme' ) );
+		parent::__construct( 'widget_kt_testimonial', esc_attr__('KT Testimonial', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
@@ -118,42 +118,42 @@ class Widget_KT_Testimonial extends WP_Widget {
 	?>
         
         <p>
-            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
         </p>
         <p>
 			<input class="checkbox" <?php checked( esc_attr( $autoplay ), "true" ); ?> type="checkbox" id="<?php echo  $this->get_field_id('autoplay'); ?>" name="<?php echo  $this->get_field_name('autoplay'); ?>" /> 
-            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto next slide', 'kutetheme' ) ?></label>
+            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php esc_html_e( 'Auto next slide', 'kutetheme' ) ?></label>
 		</p>
         <p>
 			<input class="checkbox" <?php checked( esc_attr( $loop ), "true" ); ?> type="checkbox" id="<?php echo  $this->get_field_id('loop'); ?>" name="<?php echo  $this->get_field_name('loop'); ?>" /> 
-            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php _e( 'Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme' ) ?></label>
+            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php esc_html_e( 'Inifnity loop. Duplicate last and first items to get loop illusion.', 'kutetheme' ) ?></label>
 		</p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'slidespeed' ); ?>"><?php _e( 'Slide Speed:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'slidespeed' ); ?>"><?php esc_html_e( 'Slide Speed:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  $this->get_field_id( 'slidespeed' ); ?>" name="<?php echo  $this->get_field_name('slidespeed'); ?>" type="text" value="<?php echo intval( $slidespeed ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  $this->get_field_id( 'number' ); ?>" name="<?php echo  $this->get_field_name('number'); ?>" type="text" value="<?php echo intval( $number ); ?>" />
         </p>
         
         <p>
-            <label for="<?php echo  $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order By:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'orderby' ); ?>"><?php esc_html_e( 'Order By:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo  $this->get_field_id( 'orderby' ); ?>" name="<?php echo  $this->get_field_name('orderby'); ?>">
-                <option value="id" <?php selected( esc_attr( $orderby ), 'id' ) ?>><?php _e( 'ID', 'kutetheme' ) ?></option>
-            	<option class="author" value="author" <?php selected( esc_attr( $orderby ), 'author' ) ?>><?php _e( 'Author', 'kutetheme' ) ?></option>
-            	<option class="name" value="name" <?php selected( esc_attr( $orderby ), 'name' ) ?>><?php _e( 'Name', 'kutetheme' ) ?></option>
-            	<option class="date" value="date" <?php selected( esc_attr( $orderby ), 'date' ) ?>><?php _e( 'Date', 'kutetheme' ) ?></option>
-            	<option class="modified" value="modified" <?php selected( esc_attr( $orderby ), 'modified' ) ?>><?php _e( 'Modified', 'kutetheme' ) ?></option>
-            	<option class="rand" value="rand" <?php selected( esc_attr( $orderby ), 'rand' ) ?>><?php _e( 'Rand', 'kutetheme' ) ?></option>
+                <option value="id" <?php selected( esc_attr( $orderby ), 'id' ) ?>><?php esc_html_e( 'ID', 'kutetheme' ) ?></option>
+            	<option class="author" value="author" <?php selected( esc_attr( $orderby ), 'author' ) ?>><?php esc_html_e( 'Author', 'kutetheme' ) ?></option>
+            	<option class="name" value="name" <?php selected( esc_attr( $orderby ), 'name' ) ?>><?php esc_html_e( 'Name', 'kutetheme' ) ?></option>
+            	<option class="date" value="date" <?php selected( esc_attr( $orderby ), 'date' ) ?>><?php esc_html_e( 'Date', 'kutetheme' ) ?></option>
+            	<option class="modified" value="modified" <?php selected( esc_attr( $orderby ), 'modified' ) ?>><?php esc_html_e( 'Modified', 'kutetheme' ) ?></option>
+            	<option class="rand" value="rand" <?php selected( esc_attr( $orderby ), 'rand' ) ?>><?php esc_html_e( 'Rand', 'kutetheme' ) ?></option>
             </select>
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'order' ); ?>"><?php _e( 'Order Way:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'order' ); ?>"><?php esc_html_e( 'Order Way:', 'kutetheme'); ?></label> 
             <select class="widefat" id="<?php echo  $this->get_field_id( 'order' ); ?>" name="<?php echo  $this->get_field_name('order'); ?>">
-                <option value="desc" <?php selected( esc_attr( $order ), 'desc' ) ?>><?php _e( 'DESC', 'kutetheme' ) ?></option>
-            	<option value="asc" <?php selected( esc_attr( $order ), 'asc' ) ?>><?php _e( 'ASC', 'kutetheme' ) ?></option>
+                <option value="desc" <?php selected( esc_attr( $order ), 'desc' ) ?>><?php esc_html_e( 'DESC', 'kutetheme' ) ?></option>
+            	<option value="asc" <?php selected( esc_attr( $order ), 'asc' ) ?>><?php esc_html_e( 'ASC', 'kutetheme' ) ?></option>
             </select>
         </p>
         

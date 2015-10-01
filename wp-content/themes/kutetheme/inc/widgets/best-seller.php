@@ -13,15 +13,15 @@ class Widget_KT_Best_Seller extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
                         'classname'   => 'widget_kt_best_seller', 
-                        'description' => __( 'Box best seller product on sidebar.', 'kutetheme' )
+                        'description' => esc_attr__( 'Box best seller product on sidebar.', 'kutetheme' )
                     );
-		parent::__construct( 'widget_kt_best_seller', __('KT Best Seller', 'kutetheme' ), $widget_ops );
+		parent::__construct( 'widget_kt_best_seller', esc_attr__('KT Best Seller', 'kutetheme' ), $widget_ops );
 	}
 
 	public function widget( $args, $instance ) {
         echo  $args['before_widget'];
         
-        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] )             ? esc_html ( $instance[ 'title' ] )   : __( 'Best Sellers', 'kutetheme' );
+        $title   = ( isset( $instance[ 'title' ] )   && $instance[ 'title' ] )             ? esc_html ( $instance[ 'title' ] )   : esc_attr__( 'Best Sellers', 'kutetheme' );
         
         $number  = ( isset( $instance[ 'number' ] )  && intval( $instance[ 'number' ] ) )  ? intval( $instance[ 'number' ] )     : 6;
         
@@ -88,7 +88,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 
 	public function update( $new_instance, $old_instance ) {
 		$instance = $new_instance;
-        $instance[ 'title' ]    = ( isset( $new_instance[ 'title' ] )    && $new_instance[ 'title' ] )                 ? esc_html($new_instance[ 'title' ] ) : __( 'Best Sellers', 'kutetheme' );
+        $instance[ 'title' ]    = ( isset( $new_instance[ 'title' ] )    && $new_instance[ 'title' ] )                 ? esc_html($new_instance[ 'title' ] ) : esc_attr__( 'Best Sellers', 'kutetheme' );
         
         $instance[ 'number' ]   = ( isset( $new_instance[ 'number' ] )   && intval( $new_instance[ 'perpage' ] ) > 0 ) ? intval( $new_instance[ 'number' ] ) : 6;
         
@@ -105,7 +105,7 @@ class Widget_KT_Best_Seller extends WP_Widget {
 
 	public function form( $instance ) {
 		//Defaults
-        $title    = ( isset( $instance[ 'title' ] )    && $instance[ 'title' ] )                ? esc_html( $instance[ 'title' ] ) : __( 'Best Sellers', 'kutetheme' );
+        $title    = ( isset( $instance[ 'title' ] )    && $instance[ 'title' ] )                ? esc_html( $instance[ 'title' ] ) : esc_attr__( 'Best Sellers', 'kutetheme' );
         
         $number   = ( isset( $instance[ 'number' ] )   && intval( $instance[ 'number' ] ) > 0 ) ? intval( $instance[ 'number' ] ) : 6;
         
@@ -118,34 +118,34 @@ class Widget_KT_Best_Seller extends WP_Widget {
         $loop     = ( isset( $instance[ 'loop' ] )     && $instance[ 'loop' ] )                 ? 'true' : 'false';
 	?>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'title' ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
             
             <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_html( $title ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php _e( 'Number:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'number' ); ?>"><?php esc_html_e( 'Number:', 'kutetheme'); ?></label> 
             
             <input class="widefat" id="<?php echo  $this->get_field_id( 'number' ); ?>" name="<?php echo  $this->get_field_name( 'number' ); ?>" type="text" value="<?php echo intval( $number ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'perpage' ); ?>"><?php _e( 'Perpage:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'perpage' ); ?>"><?php esc_html_e( 'Perpage:', 'kutetheme'); ?></label> 
             
             <input class="widefat" id="<?php echo  $this->get_field_id( 'perpage' ); ?>" name="<?php echo  $this->get_field_name('perpage'); ?>" type="text" value="<?php echo intval( $perpage ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'speed' ); ?>"><?php _e( 'Speed Carousel:', 'kutetheme'); ?></label> 
+            <label for="<?php echo  $this->get_field_id( 'speed' ); ?>"><?php esc_html_e( 'Speed Carousel:', 'kutetheme'); ?></label> 
             
-            <input class="widefat" id="<?php echo  $this->get_field_id( 'speed' ); ?>" name="<?php echo  $this->get_field_name('speed'); ?>" type="text" value="<?php echo intval($speed); ?>" />
+            <input class="widefat" id="<?php echo  $this->get_field_id( 'speed' ); ?>" name="<?php echo  $this->get_field_name('speed'); ?>" type="text" value="<?php echo intval( $speed ); ?>" />
         </p>
         
         <p>
             <input type="checkbox" <?php checked( esc_attr( $autoplay ), "true" ) ?> class="checkbox" id="<?php echo  $this->get_field_id( 'autoplay' ); ?>" name="<?php echo  $this->get_field_name( 'autoplay' ); ?>" />
             
-            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php _e( 'Auto play', 'kutetheme' ) ?></label><br />
+            <label for="<?php echo  $this->get_field_id( 'autoplay' ); ?>"><?php esc_html_e( 'Auto play', 'kutetheme' ) ?></label><br />
             
             <input type="checkbox" <?php checked( esc_attr( $loop ), "true" ) ?> class="checkbox" id="<?php echo  $this->get_field_id( 'loop' ); ?>" name="<?php echo  $this->get_field_name('loop'); ?>" />
             
-            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php _e( 'Loop', 'kutetheme' ); ?></label><br />
+            <label for="<?php echo  $this->get_field_id( 'loop' ); ?>"><?php esc_html_e( 'Loop', 'kutetheme' ); ?></label><br />
         </p>
     <?php
 	}

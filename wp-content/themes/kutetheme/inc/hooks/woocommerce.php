@@ -17,7 +17,7 @@ add_action( "kt_after_loop_item_title", "woocommerce_template_loop_price", 5 );
 
 function woocommerce_custom_sales_price( $price, $product ) {
 	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
-	return $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $percentage . __('%', 'kutetheme'), __( ' OFF', 'kutetheme' ), __( '(', 'kutetheme' ), __( ')', 'kutetheme' ) );
+	return $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $percentage . esc_attr__('%', 'kutetheme'), esc_attr__( ' OFF', 'kutetheme' ), esc_attr__( '(', 'kutetheme' ), esc_attr__( ')', 'kutetheme' ) );
 }
 
 /**
@@ -47,7 +47,7 @@ if( ! function_exists("kt_get_price_html_from_to")){
             
             if($pr != $sale){
                 $percentage = round( ( ( $sale - $pr  ) / $sale ) * 100 );
-                $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $html_sale . $percentage . __('%', 'kutetheme'), __( ' OFF', 'kutetheme' ), __( '(', 'kutetheme' ), __( ')', 'kutetheme' ) );
+                $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $html_sale . $percentage . esc_attr__('%', 'kutetheme'), esc_attr__( ' OFF', 'kutetheme' ), esc_attr__( '(', 'kutetheme' ), esc_attr__( ')', 'kutetheme' ) );
             }
         }
         return $price;
@@ -62,7 +62,7 @@ function kt_get_rating_html($rating_html, $rating){
         $rating = $product->get_average_rating();
     }
     //if($rating <=0) return'';
-    $rating_html  = '<div class="product-star" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+    $rating_html  = '<div class="product-star" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
     for($i = 1;$i <= 5 ;$i++){
         if($rating >= $i){
             if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
@@ -131,7 +131,7 @@ if( ! function_exists('kt_get_tool_wishlish') ){
 }
 if( ! function_exists('kt_get_tool_quickview') ){
     function kt_get_tool_quickview(){
-        echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', __('Quick view', 'kutetheme'), get_the_ID() );
+        echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', esc_attr__('Quick view', 'kutetheme'), get_the_ID() );
     }
 }
 
@@ -216,7 +216,7 @@ if( ! function_exists('kt_get_cart_content') ){
         if ( ! WC()->cart->is_empty() ) : ?>
             <div class="cart-block">
                 <div class="cart-block-content">
-                    <h5 class="cart-title"><?php _e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
+                    <h5 class="cart-title"><?php esc_html_e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
                     <div class="cart-block-list">
                         <ul>
                             <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
@@ -246,9 +246,16 @@ if( ! function_exists('kt_get_cart_content') ){
                                                 </a>
                                             </div>
                                             <div class="p-right">
-                                                <p class="p-name"><?php echo  $product_name; ?></p>
-                                                <p class="p-rice"><?php echo  $product_price ?></p>
-                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( __('Qty: ', 'kutetheme').__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
+                                                <p class="p-name"><?php echo esc_html( $product_name ) ; ?></p>
+                                                <?php 
+                                                $allowed_html = array(
+                                                    'span' => array(
+                                                        'class' => array ()
+                                                    )
+                                                );
+                                                ?>
+                                                <p class="p-rice"><?php echo  wp_kses( $product_price, $allowed_html )  ?></p>
+                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( esc_attr__('Qty: ', 'kutetheme').esc_attr__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
                                             </div>
                                         </li>
                                     <?php endif; ?>
@@ -256,13 +263,13 @@ if( ! function_exists('kt_get_cart_content') ){
                         </ul>
                     </div>
                     <div class="toal-cart">
-                        <span><?php _e('Total', 'kutetheme') ?></span>
+                        <span><?php esc_html_e( 'Total', 'kutetheme' ) ?></span>
                         <span class="toal-price pull-right">
                             <?php echo WC()->cart->get_cart_total() ?>
                         </span>
                     </div>
                     <div class="cart-buttons">
-                        <a href="<?php echo esc_url( $check_out_url ); ?>" class="btn-check-out"><?php echo _e( 'Checkout', 'kutetheme' ); ?></a>
+                        <a href="<?php echo esc_url( $check_out_url ); ?>" class="btn-check-out"><?php echo esc_html_e( 'Checkout', 'kutetheme' ); ?></a>
                     </div>
                 </div>
             </div>
@@ -285,9 +292,9 @@ if( ! function_exists( 'kt_add_to_cart_message' ) ){
     	// Output success messages
     	if (get_option('woocommerce_cart_redirect_after_add')=='yes') :
     		$return_to 	= get_permalink( woocommerce_get_page_id('shop') );
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, __( 'Continue Shopping &rarr;', 'woocommerce'), __( 'Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, esc_attr__( 'Continue Shopping &rarr;', 'woocommerce'), esc_attr__( 'Product successfully added to your cart.', 'woocommerce') );
     	else :
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), __( 'View Cart &rarr;', 'woocommerce'), __( 'Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), esc_attr__( 'View Cart &rarr;', 'woocommerce'), esc_attr__( 'Product successfully added to your cart.', 'woocommerce') );
     	endif;
     		return $message;
     }
@@ -314,7 +321,7 @@ if( ! function_exists( 'kt_woocommerce_single_product' ) ){
                     woocommerce_template_single_add_to_cart();
                 ?>
                 <div class="group-product-price">
-                    <label><?php _e( 'Price', 'kutetheme' );?></label>
+                    <label><?php esc_html_e( 'Price', 'kutetheme' );?></label>
                     <?php woocommerce_template_single_price();?>
                 </div>
             </div>
@@ -365,7 +372,7 @@ add_action( 'wp_ajax_nopriv_frontend_product_quick_view', 'wp_ajax_frontend_prod
 */
 if( ! function_exists( 'kt_loop_shop_columns' ) ){
     function kt_loop_shop_columns( $number_columns ) {
-        $kt_woo_grid_column = kt_option('kt_woo_grid_column','3');
+        $kt_woo_grid_column = kt_option( 'kt_woo_grid_column', '3' );
         return $kt_woo_grid_column;
     }
 }
@@ -392,10 +399,10 @@ if( ! function_exists( 'kt_custom_display_view' ) ){
         ?>
         <ul class="display-product-option">
             <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
-                <span><?php _e( 'grid', 'kutetheme' );?></span>
+                <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
             </li>
             <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
-                <span><?php _e( 'list', 'kutetheme' );?></span>
+                <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
             </li>
         </ul>
         <?php
@@ -456,7 +463,7 @@ if( ! function_exists( 'kt_category_slider' ) ) {
         
         if($category_slider){
             
-            $list_image = explode('|', $category_slider['url']);
+            $list_image = explode( '|', $category_slider['url'] );
             
             if( count( $list_image ) > 1 ):
                 ?>
@@ -580,15 +587,14 @@ Custom woocommerce_page_title
 add_filter( 'woocommerce_page_title', 'custom_woocommerce_page_title');
 if( ! function_exists( 'custom_woocommerce_page_title' ) ){
     function custom_woocommerce_page_title( $page_title ) {
-      return  '<span>'.$page_title.'</span>';
+      return  '<span>' . esc_html( $page_title ) . '</span>';
     }
 }
 
 // Product meta
-remove_action('woocommerce_single_product_summary','woocommerce_template_single_meta',40);
+remove_action( 'woocommerce_single_product_summary','woocommerce_template_single_meta', 40 );
 
 if( ! function_exists('kt_show_product_meta') ){
-    add_filter('woocommerce_single_product_summary','kt_show_product_meta',11);
     function kt_show_product_meta(){
         global $product;
         
@@ -596,21 +602,22 @@ if( ! function_exists('kt_show_product_meta') ){
         
         $availability = "";
         
-        if ( $product->is_in_stock() ) $availability   = __('In stock', 'kutetheme');
-        if ( ! $product->is_in_stock() ) $availability = __('Out of stock', 'kutetheme');
+        if ( $product->is_in_stock() ) $availability   = esc_attr__('In stock', 'kutetheme');
+        if ( ! $product->is_in_stock() ) $availability = esc_attr__('Out of stock', 'kutetheme');
         
         ?>
         <div class="product-meta">
             <?php if( $sku ):?>
-                <p><?php _e( 'Item Code', 'kutetheme' );?>: #<?php echo esc_attr( $sku ) ;?></p>
+                <p><?php esc_html_e( 'Item Code', 'kutetheme' );?>: #<?php echo esc_attr( $sku ) ;?></p>
             <?php endif;?>
             <?php if( $availability ):?>
-                <p><?php _e( 'Availability', 'kutetheme' );?>: <?php echo esc_attr( $availability ) ;?></p>
+                <p><?php esc_html_e( 'Availability', 'kutetheme' );?>: <?php echo esc_attr( $availability ) ;?></p>
             <?php endif;?>
         </div>
         <?php
     }
 }
+add_filter( 'woocommerce_single_product_summary','kt_show_product_meta', 11 );
 
 //Available Options
 if( ! function_exists( 'kt_available_options' ) ){
@@ -620,7 +627,7 @@ if( ! function_exists( 'kt_available_options' ) ){
         if( $product->is_type( 'variable' ) ){
             ?>
                 <div class="available-options">
-                    <h3 class="available-title"><?php echo _e( 'Available Options', 'kutetheme' );?>:</h3>
+                    <h3 class="available-title"><?php echo esc_html_e( 'Available Options', 'kutetheme' );?>:</h3>
                 </div>
             <?php     
         }
@@ -646,8 +653,8 @@ if( ! function_exists( 'kt_utilities_single_product' ) ){
         ?>
         <div class="utilities">
             <ul>
-                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e( 'Print', 'kutetheme' );?></a></li>
-                <li><a href="<?php echo esc_url('mailto:?subject='.get_the_title());?>"><i class="fa fa-envelope-o"></i> <?php _e( 'Send to a friend', 'kutetheme' );?></a></li>
+                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php esc_html_e( 'Print', 'kutetheme' );?></a></li>
+                <li><a href="<?php echo esc_url('mailto:?subject='. esc_html( get_the_title() ) );?>"><i class="fa fa-envelope-o"></i> <?php esc_html_e( 'Send to a friend', 'kutetheme' );?></a></li>
             </ul>
         </div>
         <?php
@@ -664,13 +671,13 @@ if( ! function_exists('kt_product_size_chart') ){
         if( isset( $option_product[ 'kt_product_size_chart' ] ) ):
             ?>
             <div class="product-size-chart">
-                <a id="size_chart" class="fancybox" href="<?php echo esc_url( $option_product['kt_product_size_chart'][0]);?>"><?php _e('Size Chart','kutetheme')?></a>
+                <a id="size_chart" class="fancybox" href="<?php echo esc_url( $option_product['kt_product_size_chart'][0]);?>"><?php esc_html_e( 'Size Chart', 'kutetheme' )?></a>
             </div>
             <?php
         endif;
     }
 }
-add_filter( 'woocommerce_single_product_summary', 'kt_product_size_chart',21);
+add_filter( 'woocommerce_single_product_summary', 'kt_product_size_chart', 21);
 
 //Tab category Deal
 add_action('kt_loop_product_after_countdown', 'woocommerce_template_loop_rating', 5);
@@ -712,7 +719,7 @@ if ( ! function_exists( 'kt_shop_thumbnail_image_size' ) ) {
 if( ! function_exists( 'kt_show_product_images' ) ) {
     $kt_woo_style_image_product = kt_option('kt_woo_style_image_product','popup');
     if( $kt_woo_style_image_product =='zoom' ){
-        remove_action( 'woocommerce_before_single_product_summary' , 'woocommerce_show_product_images',20);
+        remove_action( 'woocommerce_before_single_product_summary' , 'woocommerce_show_product_images', 20 );
         add_action( 'woocommerce_before_single_product_summary' ,'kt_show_product_images', 21 );
     }
     
@@ -728,7 +735,7 @@ if( ! function_exists( 'kt_show_product_images' ) ) {
                 
                 $image_link     = wp_get_attachment_url( get_post_thumbnail_id() );
                 
-                $image          = get_the_post_thumbnail( $post->ID,array(417,510), array(
+                $image          = get_the_post_thumbnail( $post->ID,array( 417, 510 ), array(
                     'title' => $image_title,
                     'alt'   => $image_title
                 ) );
@@ -756,7 +763,7 @@ if( ! function_exists( 'kt_show_product_images' ) ) {
                 ?>
                 <div class="product-list-thumb">
                     <ul class="thumbnails kt-owl-carousel" data-margin="10" data-nav="true" data-responsive='{"0":{"items":2},"600":{"items":2},"1000":{"items":3}}'>
-                            <?php 
+                        <?php 
                             foreach ( $attachment_ids as $attachment_id ) {
                                 $image_link = wp_get_attachment_url( $attachment_id );
                                 
@@ -849,7 +856,7 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
         
         $dimensions = wc_get_image_size( $size );
         
-        $placeholder = 'images/placeholder-'.$size.'.png';
+        $placeholder = 'images/placeholder-'.esc_attr( $size ).'.png';
         
         if( ! file_exists( THEME_DIR . $placeholder ) ){
             if( wc_placeholder_img_src() ){
@@ -866,10 +873,10 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
 		    $id = get_post_thumbnail_id();
 			$thumbnail_src = wp_get_attachment_image_src( $id, $size );
             
-            $thumbnail = '<img class="owl-lazy attachment-' . $size . ' wp-post-image" src="' . $placeholder . '"  data-src="' . $thumbnail_src[0] . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
+            $thumbnail = '<img class="owl-lazy attachment-' . esc_attr( $size ) . ' wp-post-image" src="' . esc_url( $placeholder ) . '"  data-src="' . esc_url( $thumbnail_src[0] ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
             return $thumbnail;
 		}else{
-		    $thumbnail = '<img class="attachment-' . $size . '" src="' . $placeholder . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
+		    $thumbnail = '<img class="attachment-' . esc_attr( $size ) . '" src="' . esc_url( $placeholder ) . '" width="' . esc_attr( $dimensions['width'] ) . '" height="' . esc_attr( $dimensions['height'] ) . '" alt="' . esc_attr( $title ) . '" >';
             return $thumbnail;  
 		}
 	}
@@ -918,16 +925,16 @@ if( ! function_exists( 'kt_get_hot_product_tags' ) ){
        ?>
        <?php if($terms):?>
        <div class="keyword">
-            <p class="lebal"><?php _e('Keywords', 'kutetheme')?>:</p>
+            <p class="lebal"><?php esc_html_e( 'Keywords', 'kutetheme' )?>:</p>
             <p>
                 <?php
                     $i=0;
                 ?>
-                <?php foreach($terms as $term):?>
+                <?php foreach( $terms as $term ):?>
                     <?php
                     $i++;
                     ?>
-                    <a href="<?php echo esc_url( get_term_link( $term ) );?>"><?php echo esc_html( $term->name );?><?php if ( $i < $number ) echo ', '; else echo ' ..'; ?></a>
+                    <a href="<?php echo esc_url( get_term_link( $term ) );?>"><?php echo esc_html( $term->name );?><?php if ( $i < $number ) esc_html_e( ', ', 'kutetheme' ) ; else esc_html_e( ' ..', 'kutetheme' ) ; ?></a>
                 <?php endforeach;?>
             </p>
         </div>
@@ -953,7 +960,7 @@ if(!function_exists('kt_get_social_header')){
         $instagram  = kt_option('kt_instagram_link_id');
         
         if ($facebook) {
-            $social_icons .= '<a href="'.esc_url($facebook).'" title ="'.__( 'Facebook', 'kutetheme' ).'" ><i class="fa fa-facebook"></i></a>';
+            $social_icons .= '<a href="' . esc_url($facebook) . '" title ="'.__( 'Facebook', 'kutetheme' ).'" ><i class="fa fa-facebook"></i></a>';
         }
         if ($twitter) {
             $social_icons .= '<a href="http://www.twitter.com/'.esc_attr($twitter).'" title = "'.__( 'Twitter', 'kutetheme' ).'" ><i class="fa fa-twitter"></i></a>';
@@ -1016,7 +1023,7 @@ if( !function_exists( 'kt_review_rating_html' ) ){
     function kt_review_rating_html( $rating ){
         $rating_html = '';
         if($rating <=0) return '';
-        $rating_html  = '<div class="review-rating" title="' . sprintf( __( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
+        $rating_html  = '<div class="review-rating" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
         for($i = 1;$i <= 5 ;$i++){
             if($rating >= $i){
                 if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
@@ -1029,14 +1036,24 @@ if( !function_exists( 'kt_review_rating_html' ) ){
             }
         }
         $rating_html .= '</div>';
-        return $rating_html;
+        
+        $allowed_html = array(
+            'div' => array(
+                'class' => array (),
+                'title' => array ()
+            ),
+            'i' => array(
+                'class' => array ()
+            ),
+        );
+        return wp_kses( $rating_html, $allowed_html );
     }
 }
 
 
 // Get max date sale 
-if( !function_exists( 'kt_get_max_date_sale')){
-    function kt_get_max_date_sale( $product_id ){
+if( ! function_exists( 'kt_get_max_date_sale') ) {
+    function kt_get_max_date_sale( $product_id ) {
         $time = 0;
         // Get variations
         $args = array(
@@ -1062,7 +1079,7 @@ if( !function_exists( 'kt_get_max_date_sale')){
                 SELECT
                 meta_value
                 FROM $wpdb->postmeta
-                WHERE meta_key = '_sale_price_dates_to' and post_id IN(".join(',',$variation_ids).")
+                WHERE meta_key = '_sale_price_dates_to' and post_id IN(" . join( ',', $variation_ids ) . ")
                 ORDER BY meta_value DESC
                 LIMIT 1
             " );

@@ -32,7 +32,7 @@ if( ! function_exists( 'kt_get_hotline' )){
                 <?php endif; ?>
                 <?php if( $email && is_email( $email ) ) : ?>
                     <a href="<?php echo esc_attr( 'mailto:'. $email );?>" title="<?php echo esc_attr( $email );?>">
-                        <span><i class="fa fa-envelope"></i> <?php _e( 'Contact us today !', 'kutetheme' ) ?></span>
+                        <span><i class="fa fa-envelope"></i> <?php esc_html_e( 'Contact us today !', 'kutetheme' ) ?></span>
                     </a>
                 <?php endif; ?>
             </div>
@@ -200,30 +200,30 @@ if( ! function_exists('kt_menu_my_account')){
         <div id="user-info-top" class="user-info pull-right">
             <div class="dropdown">
                 <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                    <span><?php _e( 'My Account', 'kutetheme' ) ?></span>
+                    <span><?php esc_html_e( 'My Account', 'kutetheme' ) ?></span>
                 </a>
                 <ul class="dropdown-menu mega_dropdown" role="menu">
                     <?php if ( ! is_user_logged_in() ):  ?>
                         <?php if( kt_is_wc() ): 
                                 $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
-                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php _e( 'Login / Register', 'kutetheme' ) ?>"><?php _e('Login / Register', 'kutetheme'); ?></a></li>
+                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php esc_html_e( 'Login / Register', 'kutetheme' ) ?>"><?php esc_html_e('Login / Register', 'kutetheme'); ?></a></li>
                         <?php else: 
                             $url = wp_login_url();
                             $url_register = wp_registration_url(); ?>
-                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php _e( 'Login', 'kutetheme' ) ?>"><?php _e( 'Login', 'kutetheme' ) ?></a></li>
-                            <li><a href="<?php echo esc_url( $url_register ); ?>" title="<?php _e( 'Register', 'kutetheme' ); ?>"><?php _e( 'Register', 'kutetheme' ); ?></a></li>
+                            <li><a href="<?php echo esc_url( $url ); ?>" title="<?php esc_html_e( 'Login', 'kutetheme' ) ?>"><?php esc_html_e( 'Login', 'kutetheme' ) ?></a></li>
+                            <li><a href="<?php echo esc_url( $url_register ); ?>" title="<?php esc_html_e( 'Register', 'kutetheme' ); ?>"><?php esc_html_e( 'Register', 'kutetheme' ); ?></a></li>
                         <?php endif; ?>
                     <?php else: ?>
-                        <li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php _e( 'Logout', 'kutetheme' ) ?></a></li>
+                        <li><a href="<?php echo esc_url( wp_logout_url() ); ?>"><?php esc_html_e( 'Logout', 'kutetheme' ) ?></a></li>
                         <?php if( function_exists( 'YITH_WCWL' ) ):
                             $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                            <li><a href="<?php echo esc_url( $wishlist_url ); ?>"><?php _e( 'Wishlists', 'kutetheme' ) ?></a></li>
+                            <li><a href="<?php echo esc_url( $wishlist_url ); ?>"><?php esc_html_e( 'Wishlists', 'kutetheme' ) ?></a></li>
                         <?php endif; ?>
                     <?php endif; ?>
                     <?php if(defined( 'YITH_WOOCOMPARE' )): 
                             global $yith_woocompare; 
                             $count = count($yith_woocompare->obj->products_list); ?>
-                        <li><a href="#" class="yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo esc_attr( $count ); ?>)</span></a></li>
+                        <li><a href="#" class="yith-woocompare-open"><?php esc_html_e( "Compare", 'kutetheme') ?><span>(<?php echo esc_attr( $count ); ?>)</span></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
@@ -332,8 +332,8 @@ function kt_paging_nav() {
 	}
     
     echo get_the_posts_pagination( array(
-        'prev_text'          => sprintf( '<i class="fa fa-angle-double-left"></i> %1$s', __( 'Previous', 'kutetheme' ) ),
-        'next_text'          => sprintf( '%1$s <i class="fa fa-angle-double-right"></i>', __( 'Next', 'kutetheme' ) ),
+        'prev_text'          => sprintf( '<i class="fa fa-angle-double-left"></i> %1$s', esc_attr__( 'Previous', 'kutetheme' ) ),
+        'next_text'          => sprintf( '%1$s <i class="fa fa-angle-double-right"></i>', esc_attr__( 'Next', 'kutetheme' ) ),
         'screen_reader_text' => '&nbsp;',
         'before_page_number' => '',
     ) );
@@ -352,14 +352,14 @@ if ( ! function_exists( 'kt_comment_nav' ) ) :
         if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
             ?>
             <nav class="navigation comment-navigation" role="navigation">
-                <h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'kutetheme' ); ?></h2>
+                <h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'kutetheme' ); ?></h2>
                 <div class="nav-links">
                     <?php
-                    if ( $prev_link = get_previous_comments_link( __( 'Older Comments', 'kutetheme' ) ) ) :
+                    if ( $prev_link = get_previous_comments_link( esc_html__( 'Older Comments', 'kutetheme' ) ) ) :
                         printf( '<div class="nav-previous">%s</div>', esc_url( $prev_link ) );
                     endif;
 
-                    if ( $next_link = get_next_comments_link( __( 'Newer Comments',  'kutetheme' ) ) ) :
+                    if ( $next_link = get_next_comments_link( esc_html__( 'Newer Comments',  'kutetheme' ) ) ) :
                         printf( '<div class="nav-next">%s</div>', esc_url( $next_link ) );
                     endif;
                     ?>
@@ -395,16 +395,16 @@ function kt_comments( $comment, $args, $depth ) {
             <div class="comment-entry entry-content">
                 <?php comment_text() ?>
                 <?php if ( $comment->comment_approved == '0' ) : ?>
-                    <em><?php _e( 'Your comment is awaiting moderation.', 'kutetheme' ) ?></em>
+                    <em><?php esc_html_e( 'Your comment is awaiting moderation.', 'kutetheme' ) ?></em>
                 <?php endif; ?>
             </div>
             <div class="comment-actions clear">
-                <?php edit_comment_link( __( '(Edit)', 'kutetheme'),'  ','' ) ?>
+                <?php edit_comment_link( esc_html__( '(Edit)', 'kutetheme'),'  ','' ) ?>
                 <?php comment_reply_link( array_merge( $args,
                     array(
                         'depth'      => $depth,
                         'max_depth'  => $args['max_depth'],
-                        'reply_text' =>'<i class="fa fa-share"></i> '.__( 'Reply', 'kutetheme' )
+                        'reply_text' =>'<i class="fa fa-share"></i> ' . esc_html__( 'Reply', 'kutetheme' )
                     ))) ?>
             </div>
         </div>

@@ -24,9 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     <?php if( $kt_used_header == 1 ):?>
     <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-5 col-md-2">
         <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
-            <span class="title"><?php _e( 'Shopping cart', 'kutetheme' ); ?></span>
+            <span class="title"><?php esc_html_e( 'Shopping cart', 'kutetheme' ); ?></span>
             <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ), 'kutetheme' ), esc_attr( $cart_count ) ) ?></span>
-            <span><?php _e( '-', 'kutetheme' ); ?></span> 
+            <span><?php esc_html_e( '-', 'kutetheme' ); ?></span> 
             <?php echo WC()->cart->get_cart_total() ?>
             <span class="notify notify-left"><?php echo esc_attr( $cart_count ); ?></span>
         </a>
@@ -36,14 +36,14 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
             <?php
                 if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                <a href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
+                <a href="#" class="btn-compare yith-woocompare-open"><?php esc_html_e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
             <?php endif; ?>
             <?php if( function_exists( 'YITH_WCWL' ) ):
                 $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                <a class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
+                <a class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php esc_html_e( 'Wishlists', 'kutetheme') ?></a>
             <?php endif; ?>
             <div class="btn-cart" id="cart-block">
-                <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php _e('Cart', 'kutetheme' );?></a>
+                <a class="cart-link" title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php esc_html_e('Cart', 'kutetheme' );?></a>
                 <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
                 <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
             </div>
@@ -52,14 +52,14 @@ if ( ! defined( 'ABSPATH' ) ) {
          <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
             <?php
                 if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
-                <a title="<?php _e( "Compare", 'kutetheme') ?>" href="#" class="btn-compare yith-woocompare-open"><?php _e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
+                <a title="<?php esc_html_e( "Compare", 'kutetheme') ?>" href="#" class="btn-compare yith-woocompare-open"><?php esc_html_e( "Compare", 'kutetheme') ?><span>(<?php echo intval( $count ) ?>)</span></a>
             <?php endif; ?>
             <?php if( function_exists( 'YITH_WCWL' ) ):
                 $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                <a title="<?php _e( "Wishlists", 'kutetheme') ?>" class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php _e( 'Wishlists', 'kutetheme') ?></a>
+                <a title="<?php esc_html_e( "Wishlists", 'kutetheme') ?>" class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php esc_html_e( 'Wishlists', 'kutetheme') ?></a>
             <?php endif; ?>
             <div class="btn-cart" id="cart-block">
-                <a class="cart-link" title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php _e( 'Cart', 'kutetheme' );?></a>
+                <a class="cart-link" title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php esc_html_e( 'Cart', 'kutetheme' );?></a>
                 <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
                 <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
             </div>

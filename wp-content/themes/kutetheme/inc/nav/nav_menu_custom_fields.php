@@ -27,16 +27,16 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
                 }
             ?>
             <label for="menu-item-image-<?php echo esc_attr( $item_id ); ?>">
-                <?php _e( 'Image Icon', 'kutetheme'); ?><br />
+                <?php esc_html_e( 'Image Icon', 'kutetheme'); ?><br />
                 <input type="hidden" value="<?php echo esc_attr( $item->img_icon ); ?>" name="menu-item-megamenu-img_icon[<?php echo esc_attr( $item_id ); ?>]" id="menu-item-imgicon-<?php echo esc_attr( $item_id ); ?>" class="widefat edit-menu-item-image" />
             </label>
             <span class="clearfix"></span>
             <span class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
-                <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php _e( 'Image preview', 'kutetheme' ) ?>" title="<?php _e( 'Image preview', 'kutetheme' ) ?>" />
-                <i class="fa fa-times"><?php _e( 'X', 'kutetheme' ) ?></i>
+                <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php esc_html_e( 'Image preview', 'kutetheme' ) ?>" title="<?php esc_html_e( 'Image preview', 'kutetheme' ) ?>" />
+                <i class="fa fa-times"><?php esc_html_e( 'X', 'kutetheme' ) ?></i>
             </span>
             <span class="clearfix"></span>
-            <input type="button" class="button-secondary kt_image_menu" value="<?php _e( 'Upload image', 'kutetheme' ); ?>" />
+            <input type="button" class="button-secondary kt_image_menu" value="<?php esc_html_e( 'Upload image', 'kutetheme' ); ?>" />
         </p>
         <?php if(post_type_exists('megamenu')){
             $post_type = 'megamenu';
@@ -50,16 +50,16 @@ function kt_add_custom_fields( $item_id, $item, $depth, $args ) {
             <p class="field-enable description description-wide">
                 <label for="menu-item-enable-<?php echo esc_attr( $item_id ); ?>">
                     <input type="checkbox" <?php checked( esc_attr( $item->enable ), 'enabled'); ?> data-id="<?php echo esc_attr( $item_id ); ?>" id="menu-item-enable-<?php echo esc_attr( $item_id ); ?>" name="menu-item-megamenu-enable[<?php echo esc_attr( $item_id ); ?>]" value="enabled" class="edit-menu-item-enable"/>
-                    <b><?php _e( 'Enable Mega Menu (only for main menu)', 'kutetheme'); ?></b>
+                    <b><?php esc_html_e( 'Enable Mega Menu (only for main menu)', 'kutetheme'); ?></b>
                 </label>
             </p>
             <div id="content-megamenu-<?php echo esc_attr( $item_id ); ?>" class="megamenu-layout clearfix">
                 <div class="megamenu-layout-depth-1">
                     <p class="field-menu_page description description-wide">
                         <label for="menu-item-menu_page-<?php echo esc_attr( $item_id ); ?>">
-                            <?php _e( 'Menu Page', 'kutetheme' ); ?><br />
+                            <?php esc_html_e( 'Menu Page', 'kutetheme' ); ?><br />
                             <select class="widefat"  id="menu-item-menu_page-<?php echo esc_attr( $item_id ); ?>" name="menu-item-megamenu-menu_page[<?php echo esc_attr( $item_id ); ?>]">
-                                <option value="0"><?php _e( 'Choose Menu Page', 'kutetheme' ) ?></option>
+                                <option value="0"><?php esc_html_e( 'Choose Menu Page', 'kutetheme' ) ?></option>
                                 <?php
                                     while($pages->have_posts()): $pages->the_post();
                                         $id = get_the_ID();
