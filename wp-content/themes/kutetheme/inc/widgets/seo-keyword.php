@@ -18,7 +18,7 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
 	}
 
 	public function widget( $args, $instance ) {
-	   echo  $args['before_widget'];
+	   echo apply_filters( 'kt_wg_before_widget', $args['before_widget'] );
        //Defaults
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] ) : '';
        ?>
@@ -41,7 +41,7 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
             <?php endif; ?>
         </ul>
        <?php
-       echo  $args[ 'after_widget' ];
+       echo apply_filters( 'kt_wg_after_widget', $args[ 'after_widget' ] ) ;
 	}
 
 	public function update( $new_instance, $old_instance ) {
@@ -76,7 +76,7 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
         $wtitle = (isset( $instance[ 'wtitle' ] ) && $instance[ 'wtitle' ] ) ? esc_attr( $instance[ 'wtitle' ] )  : '';
 	?>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'wtitle' ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
+            <label for="<?php echo esc_attr( $this->get_field_id( 'wtitle' ) ); ?>"><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
             <input class="widefat" id="<?php echo  esc_attr( $this->get_field_id( 'wtitle' ) ) ; ?>" name="<?php echo  esc_attr( $this->get_field_name('wtitle') ) ; ?>" type="text" value="<?php echo esc_html( $wtitle ); ?>" />
         </p>
         <div class="content multi-item">
@@ -95,15 +95,15 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                             <span class="remove"><?php esc_html_e('X', 'kutetheme');?></span>
                             <p>
                                 <label><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo  $this->get_field_id( 'title'); ?>" name="<?php echo  $this->get_field_name('title'); ?>[]" type="text" value="<?php echo esc_html( $title ); ?>" />
+                                <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>[]" type="text" value="<?php echo esc_html( $title ); ?>" />
                             </p>
                             <p>
-                                <label for="<?php echo  $this->get_field_id( 'link' ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
-                                <input class="widefat" id="<?php echo  $this->get_field_id( 'link'); ?>" name="<?php echo  $this->get_field_name( 'link' ); ?>[]" type="text" value="<?php echo esc_url( $link ) ; ?>" />
+                                <label for="<?php echo esc_attr( $this->get_field_id( 'link' ) ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
+                                <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'link') ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'link' ) ); ?>[]" type="text" value="<?php echo esc_url( $link ) ; ?>" />
                             </p>
                             <p>
                     			<label><?php esc_html_e( 'Target:', 'kutetheme'); ?></label>
-                    			<select name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat">
+                    			<select name="<?php echo esc_attr( $this->get_field_name('target') ); ?>[]" id="<?php echo esc_attr( $this->get_field_id('target') ); ?>" class="widefat">
                     				<option value="_blank"<?php selected( esc_attr( $target ) , '_blank' ); ?>><?php esc_html_e( 'Open New Window', 'kutetheme'); ?></option>
                     				<option value="_self"<?php selected( esc_attr( $target ), '_self' ); ?>><?php esc_html_e( 'Stay in Window', 'kutetheme'); ?></option>
                     			</select>
@@ -116,15 +116,15 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                         <span class="remove"><?php esc_html_e('X', 'kutetheme');?></span>
                         <p>
                             <label><?php esc_html_e( 'Title:', 'kutetheme'); ?></label> 
-                            <input class="widefat" id="<?php echo  $this->get_field_id( 'title' ); ?>" name="<?php echo  $this->get_field_name( 'title' ); ?>[]" type="text" />
+                            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>[]" type="text" />
                         </p>
                         <p>
-                        <label for="<?php echo  $this->get_field_id( 'link' ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
-                            <input class="widefat" id="<?php echo  $this->get_field_id( 'link' ); ?>" name="<?php echo  $this->get_field_name( 'link' ); ?>[]" type="text" />
+                        <label for="<?php echo esc_attr( $this->get_field_id( 'link' ) ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
+                            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'link' ) ); ?>[]" type="text" />
                         </p>
                         <p>
                 			<label><?php esc_html_e( 'Target:', 'kutetheme'); ?></label>
-                			<select name="<?php echo  $this->get_field_name( 'target' ); ?>[]" id="<?php echo  $this->get_field_id( 'target' ); ?>" class="widefat">
+                			<select name="<?php echo esc_attr( $this->get_field_name( 'target' ) ); ?>[]" id="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>" class="widefat">
                 				<option value="_blank"><?php esc_html_e( 'Open New Window', 'kutetheme' ); ?></option>
                 				<option value="_self"><?php esc_html_e( 'Stay in Window', 'kutetheme' ); ?></option>
                 			</select>
@@ -139,17 +139,17 @@ class Widget_KT_SEO_Keyword extends WP_Widget {
                         <span class="remove"><?php esc_html_e( 'X', 'kutetheme' );?></span>
                         <p>
                             <label><?php esc_html_e('Title:', 'kutetheme'); ?></label> 
-                            <input class="widefat widget-name" id="<?php echo  $this->get_field_id('title'); ?>" tpl-name="<?php echo  $this->get_field_name('title'); ?>[]" type="text" />
+                            <input class="widefat widget-name" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" tpl-name="<?php echo esc_attr( $this->get_field_name('title') ); ?>[]" type="text" />
                         </p>
                         
                         <p>
-                            <label for="<?php echo  $this->get_field_id('link'); ?>"><?php esc_html_e('Link:', 'kutetheme'); ?></label> 
-                            <input class="widefat widget-name" id="<?php echo  $this->get_field_id('link'); ?>" tpl-name="<?php echo  $this->get_field_name('link'); ?>[]" type="text" />
+                            <label for="<?php echo esc_attr( $this->get_field_id('link') ); ?>"><?php esc_html_e('Link:', 'kutetheme'); ?></label> 
+                            <input class="widefat widget-name" id="<?php echo esc_attr( $this->get_field_id('link') ); ?>" tpl-name="<?php echo esc_attr( $this->get_field_name('link') ); ?>[]" type="text" />
                         </p>
                         
                         <p>
                 			<label><?php esc_html_e( 'Target:', 'kutetheme'); ?></label>
-                			<select tpl-name="<?php echo  $this->get_field_name('target'); ?>[]" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat widget-name">
+                			<select tpl-name="<?php echo esc_attr( $this->get_field_name('target') ); ?>[]" id="<?php echo esc_attr( $this->get_field_id('target') ); ?>" class="widefat widget-name">
                 				<option value="_blank"><?php esc_html_e( 'Open New Window', 'kutetheme'); ?></option>
                 				<option value="_self"><?php esc_html_e( 'Stay in Window', 'kutetheme'); ?></option>
                 			</select>

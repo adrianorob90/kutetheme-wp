@@ -20,7 +20,8 @@ class WP_Widget_KT_Image extends WP_Widget {
         $attachment = wp_get_attachment_image_src( $instance[ 'attachment' ], 'full' );
         
         if($attachment && isset( $attachment[ 0 ] ) && $attachment[ 0 ] ){
-    		echo  $args[ 'before_widget' ];
+            
+    		echo  apply_filters( 'kt_wg_before_widget', $args['before_widget'] );
             
             $capture = ( isset( $instance[ 'capture' ] ) ) ? esc_attr( $instance[ 'capture' ] ) : '';
             
@@ -36,7 +37,7 @@ class WP_Widget_KT_Image extends WP_Widget {
             </div>
             <?php
             
-    		echo  $args[ 'after_widget' ];
+    		echo apply_filters( 'kt_wg_after_widget', $args[ 'after_widget' ] ) ;
 		}
 	}
 
@@ -79,23 +80,23 @@ class WP_Widget_KT_Image extends WP_Widget {
         
         <p style="text-align: center;">
             <input type="button" style="width: 100%; padding: 10px; height: auto;" class="button kt_image_upload" value="<?php esc_attr_e( 'Select your image', 'kutetheme') ?>" />
-            <input class="widefat kt_image_attachment" id="<?php echo  $this->get_field_id( 'attachment' ); ?>" name="<?php echo  $this->get_field_name( 'attachment' ); ?>" type="hidden" value="<?php echo intval( $attachment ); ?>" />
+            <input class="widefat kt_image_attachment" id="<?php echo esc_attr( $this->get_field_id( 'attachment' ) ); ?>" name="<?php echo esc_attr(  $this->get_field_name( 'attachment' ) ); ?>" type="hidden" value="<?php echo intval( $attachment ); ?>" />
         </p>
         <p class="kt_image_preview" style="<?php if( $preview ){ echo "display: block;";} ?>">
             <img src="<?php echo esc_url( $img_preview ); ?>" alt="" class="kt_image_preview_img" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'capture' ); ?>"><?php esc_html_e( 'Capture:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo  $this->get_field_id( 'capture' ); ?>" name="<?php echo  $this->get_field_name( 'capture' ); ?>" type="text" value="<?php echo esc_attr( $capture ); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'capture' ) ); ?>"><?php esc_html_e( 'Capture:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'capture' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'capture' ) ); ?>" type="text" value="<?php echo esc_attr( $capture ); ?>" />
         </p>
         <p>
-            <label for="<?php echo  $this->get_field_id( 'link' ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
-            <input class="widefat" id="<?php echo  $this->get_field_id( 'link' ); ?>" name="<?php echo  $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_url( $link ); ?>" />
+            <label for="<?php echo esc_attr( $this->get_field_id( 'link' ) ); ?>"><?php esc_html_e( 'Link:', 'kutetheme'); ?></label> 
+            <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'link' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'link' ) ); ?>" type="text" value="<?php echo esc_url( $link ); ?>" />
         </p>
         <p>
-			<label for="<?php echo  $this->get_field_id( 'target' ); ?>"><?php esc_html_e( 'Target:', 'kutetheme'); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'target' ) ); ?>"><?php esc_html_e( 'Target:', 'kutetheme'); ?></label>
 			
-            <select name="<?php echo  $this->get_field_name( 'target' ); ?>" id="<?php echo  $this->get_field_id('target'); ?>" class="widefat">
+            <select name="<?php echo esc_attr( $this->get_field_name( 'target' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id('target') ); ?>" class="widefat">
 				<option value="_self"<?php selected( esc_attr( $instance[ 'target' ] ), '_self' ); ?>><?php esc_html_e( 'Stay in Window', 'kutetheme' ); ?></option>
 				<option value="_blank"<?php selected( esc_attr( $instance[ 'target' ] ), '_blank' ); ?>><?php esc_html_e( 'Open New Window', 'kutetheme' ); ?></option>
 			</select>
