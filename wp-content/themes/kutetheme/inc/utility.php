@@ -499,3 +499,8 @@ if( ! function_exists( 'kt_get_css' ) ) {
         return $css;
     }
 }
+if( ! function_exists( 'kt_get_str' ) ) {
+    function kt_get_str( $str ){
+        return $str;
+    }
+}

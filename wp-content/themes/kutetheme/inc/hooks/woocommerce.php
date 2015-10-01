@@ -897,7 +897,10 @@ if ( ! function_exists( 'kt_template_loop_product_thumbnail' ) ) {
 
 if( ! function_exists( 'kt_short_tring' ) ) {
     function kt_short_tring($str, $words=10, $after='...'){
-        echo  $str = preg_replace('!\s+!', ' ', $str);
+        $str = preg_replace('!\s+!', ' ', $str);
+        
+        echo kt_get_str( $str );
+        
         $output   = "";
         if( $str ) {
             $atrr = explode(' ',$str);

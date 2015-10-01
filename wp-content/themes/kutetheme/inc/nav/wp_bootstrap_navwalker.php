@@ -252,7 +252,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
 			if ( $container )
 				$fb_output .= '</' . esc_attr( $container ) . '>';
 
-			echo  $fb_output;
+			echo kt_get_html( $fb_output );
 		}
 	}
 }
