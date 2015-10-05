@@ -471,11 +471,11 @@
       $(document).on('click','.widget_product_categories a',function(){
         var paerent = $(this).closest('li');
         var t = $(this);
-        paerent.find('a').removeClass('open');
-        paerent.find('ul').removeClass('open');
+        //paerent.find('a').removeClass('open');
+        //paerent.find('ul').removeClass('open');
         paerent.find('ul').addClass('open');
         if(paerent.children('ul').length > 0){
-            $(this).toggleClass('open');
+            //$(this).toggleClass('open');
             $(this).closest('li').children('ul').slideToggle();
             return false;
         }
