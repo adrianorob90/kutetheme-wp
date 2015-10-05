@@ -946,7 +946,7 @@ if( ! function_exists( 'kt_get_hot_product_tags' ) ){
     }
 }
 
-if(!function_exists('kt_get_social_header')){
+if( ! function_exists('kt_get_social_header')){
     function kt_get_social_header(){
         $social_icons = '';
         $facebook   = kt_option('kt_facebook_link_id');
@@ -1003,16 +1003,7 @@ if(!function_exists('kt_get_social_header')){
         <?php if( $social_icons ):?>
             <div class="top-bar-social">
                 <?php
-                $allowed_html = array(
-                    'a' => array(
-                        'href' => array (),
-                        'title' => array()
-                    ),
-                    'i' => array(
-                        'classs' => array()
-                    )
-                );
-                echo wp_kses( $social_icons, $allowed_html );
+                    echo apply_filters( 'kt_get_social_header', $social_icons );
                 ?>
             </div>
         <?php endif;?>
