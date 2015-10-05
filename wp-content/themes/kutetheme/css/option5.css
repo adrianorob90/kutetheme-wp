@@ -142,13 +142,14 @@
 	border-left: 1px solid #eaeaea;
 }
 .option5 .main-header .header-search-box .form-inline .input-serach{
-	padding-top: 9px;
+	padding-top: 0px;
+    width: calc(100% - 41px);
 }
 .option5 .main-header .header-search-box .form-inline .btn-search{
 	background: none;
 	border-left: 1px solid #eaeaea;
-	color: #f96d10;
 	font-size: 16px;
+    background: #f96d10 url("../images/search.png") no-repeat center center;
 }
 .option5 .main-header .header-search-box .form-inline .btn-search .fa{
 	line-height: inherit;
