@@ -12,9 +12,11 @@
  * @var $custom_stroke_color
  * @var $stroke_width
  * @var $values
+ * @var $css
  * Shortcode class
  * @var $this WPBakeryShortCode_Vc_Round_Chart
  */
+$el_class = $title = $type = $style = $legend = $animation = $tooltips = $stroke_color = $stroke_width = $values = $css = $custom_stroke_color = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -87,9 +89,9 @@ foreach ( $base_colors['active'] as $name => $color ) {
 
 wp_enqueue_script( 'vc_round_chart' );
 
-$el_class = $this->getExtraClass( $el_class );
-
-$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'vc_chart vc_round-chart wpb_content_element' . $el_class, $this->settings['base'], $atts );
+$class_to_filter = 'vc_chart vc_round-chart wpb_content_element';
+$class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class );
+$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 
 $options = array();
 

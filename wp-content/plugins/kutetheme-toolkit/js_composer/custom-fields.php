@@ -124,6 +124,11 @@ function vc_kt_taxonomy_settings_field($settings, $value) {
 		$value_arr = array_map( 'trim', explode(',', $value_arr) );
 	}
     $output = '';
+    if( isset( $settings['hide_empty'] ) && $settings['hide_empty'] ){
+        $settings['hide_empty'] = 1;
+    }else{
+        $settings['hide_empty'] = 0;
+    }
 	if ( ! empty($settings['taxonomy']) ) {
 		
         $terms_fields = array();
@@ -131,14 +136,13 @@ function vc_kt_taxonomy_settings_field($settings, $value) {
             $terms_fields[] = "<option value=''>".$settings['placeholder']."</option>";
         }
         
-        $terms = get_terms( $settings['taxonomy'] , array('hide_empty' => false, 'parent' => $settings['parent']));
+        $terms = get_terms( $settings['taxonomy'] , array('hide_empty' => false, 'parent' => $settings['parent'], 'hide_empty' => $settings['hide_empty'] ));
 		if ( $terms && !is_wp_error($terms) ) {
 			foreach( $terms as $term ) {
                 $selected = (in_array( $term->term_id, $value_arr )) ? ' selected="selected"' : '';
                 $terms_fields[] = "<option value='{$term->term_id}' {$selected}>{$term->name}</option>";
 			}
 		}
-
         $size = (!empty($settings['size'])) ? 'size="'.$settings['size'].'"' : '';
         $multiple = (!empty($settings['multiple'])) ? 'multiple="multiple"' : '';
         
@@ -154,3 +158,4 @@ function vc_kt_taxonomy_settings_field($settings, $value) {
     
     return $output;
 }
+

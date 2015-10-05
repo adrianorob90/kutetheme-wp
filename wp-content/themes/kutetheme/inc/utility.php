@@ -10,14 +10,21 @@ $kt_used_header = 1;
 if( ! function_exists( 'kt_get_header' )){
     function kt_get_header(){
         global $kt_used_header;
-        $setting = kt_option('kt_used_header', '1');
         
-        $kt_used_header = intval($setting);
+        if( isset( $kt_used_header ) && $kt_used_header ){
+            $setting = kt_option('kt_used_header', '1');
+            $kt_used_header = intval($setting);
+        }
         
-        get_template_part( 'templates/headers/header',  $setting);
+        get_template_part( 'templates/headers/header',  $kt_used_header);
     }
 }
-
+if( ! function_exists( 'kt_get_favicon' ) ){
+    function kt_get_favicon(){
+        $default = kt_option("kt_favicon" , THEME_URL . '/images/favicon.ico');
+        echo '<link rel="shortcut icon" href="' . $default . '" />';
+    }
+}
 if( ! function_exists( 'kt_get_hotline' )){
     function kt_get_hotline(){
         $hotline = kt_get_info_hotline();
@@ -263,7 +270,14 @@ if( ! function_exists('kt_about_us_link')){
 
 if( ! function_exists('kt_search_form') ){
     function kt_search_form(){
-        if( kt_is_wc() ){
+        global $kt_used_header;
+        
+        if( isset( $kt_used_header ) && $kt_used_header ){
+            $setting = kt_option('kt_used_header', '1');
+            $kt_used_header = intval($setting);
+        }
+        
+        if( kt_is_wc() && $kt_used_header != 5 ){
             get_template_part('templates/search-form/product', 'search-form' );
         }else{
             get_template_part('templates/search-form/post', 'search-form' );
@@ -465,15 +479,18 @@ if( ! function_exists( "kt_get_menu" ) ){
  * @param $data array. All data for carousel
  * 
  */
-function _data_carousel( $data ){
-    $output = "";
-    foreach($data as $key => $val){
-        if($val){
-            $output .= ' data-'.$key.'="'.esc_attr( $val ).'"';
+if( ! function_exists( '_data_carousel' ) ){
+    function _data_carousel( $data ){
+        $output = "";
+        foreach($data as $key => $val){
+            if($val){
+                $output .= ' data-'.$key.'="'.esc_attr( $val ).'"';
+            }
         }
+        return $output;
     }
-    return $output;
 }
+
 
 if( ! function_exists( 'kt_get_post_meta' ) ) {
     function kt_get_post_meta( $post_id, $key, $default = "" ){

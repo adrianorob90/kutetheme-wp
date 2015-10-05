@@ -1,11 +1,4 @@
 <?php
-/*
-Plugin Name: Product Brands
-Author: KuteTheme
-Version: 1.0
-Author URI: http://kutetheme.com/
- */
- 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }

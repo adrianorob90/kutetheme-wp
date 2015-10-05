@@ -362,7 +362,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
          global $woocommerce_loop;
         $is_phone = false;
         
-        if( function_exists( 'edo_is_phone' ) && edo_is_phone() ){
+        if( function_exists( 'kt_is_phone' ) && kt_is_phone() ){
             $is_phone = true;
         }
         

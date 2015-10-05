@@ -762,7 +762,7 @@ class CMB2_Field {
 	 * @param string $param Field parameter
 	 */
 	public function peform_param_callback( $param ) {
-		echo  $this->get_param_callback_result( $param );
+		echo $this->get_param_callback_result( $param );
 	}
 
 	/**

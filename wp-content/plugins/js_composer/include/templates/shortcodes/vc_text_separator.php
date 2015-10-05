@@ -11,10 +11,20 @@
  * @var $accent_color
  * @var $el_class
  * @var $layout
+ * @var $css
  * @var $border_width
  * Shortcode class
  * @var $this WPBakeryShortcode_Vc_Text_Separator
  */
+
+$title_align = $el_width = $style = $title = $align =
+$color = $accent_color = $el_class = $layout = $css =
+$border_width = $add_icon = $i_type = $i_icon_fontawesome =
+$i_icon_openiconic = $i_icon_typicons = $i_icon_entypo =
+$i_icon_linecons = $i_color = $i_custom_color =
+$i_background_style = $i_background_color =
+$i_custom_background_color = $i_size = $i_css_animation = '';
+
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
 
@@ -32,13 +42,14 @@ if ( '' !== $color && 'custom' !== $color ) {
 }
 $inline_css = ( 'custom' === $color && '' !== $accent_color ) ? ' style="' . vc_get_css_color( 'border-color', $accent_color ) . '"' : '';
 
-$class .= $this->getExtraClass( $el_class );
-$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class, $this->settings['base'], $atts );
+$class_to_filter = $class;
+$class_to_filter .= vc_shortcode_custom_css_class( $css, ' ' ) . $this->getExtraClass( $el_class );
+$css_class = apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class_to_filter, $this->settings['base'], $atts );
 
 ?>
 <div class="<?php echo esc_attr( trim( $css_class ) ); ?>"><span
 		class="vc_sep_holder vc_sep_holder_l"><span<?php echo $inline_css; ?>
 			class="vc_sep_line"></span></span><?php if ( '' !== $title && 'separator_no_text' !== $layout ): ?>
-		<h4><?php echo $title; ?></h4><?php endif; ?><span
+		<h4><?php echo $title; ?></h4><?php endif ?><span
 		class="vc_sep_holder vc_sep_holder_r"><span<?php echo $inline_css; ?> class="vc_sep_line"></span></span>
-	</div><?php echo $this->endBlockComment( $this->getShortcode() ) . "\n";
+	</div>

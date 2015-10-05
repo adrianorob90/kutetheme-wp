@@ -17,6 +17,7 @@
  * Shortcode class
  * @var $this WPBakeryShortCode_VC_Row
  */
+$el_class = $full_height = $full_width = $content_placement = $parallax = $parallax_image = $css = $el_id = $video_bg = $video_bg_url = $video_bg_parallax = '';
 $output = $after_output = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -54,11 +55,6 @@ if ( ! empty( $full_height ) ) {
 	if ( ! empty( $content_placement ) ) {
 		$css_classes[] = ' vc_row-o-content-' . $content_placement;
 	}
-}
-
-// use default video if user checked video, but didn't chose url
-if ( ! empty( $video_bg ) && empty( $video_bg_url ) ) {
-	$video_bg_url = 'https://www.youtube.com/watch?v=lMJXxhRFO1k';
 }
 
 $has_video_bg = ( ! empty( $video_bg ) && ! empty( $video_bg_url ) && vc_extract_youtube_id( $video_bg_url ) );
@@ -104,6 +100,5 @@ $output .= '<div ' . implode( ' ', $wrapper_attributes ) . '>';
 $output .= wpb_js_remove_wpautop( $content );
 $output .= '</div>';
 $output .= $after_output;
-$output .= $this->endBlockComment( $this->getShortcode() );
 
 echo $output;

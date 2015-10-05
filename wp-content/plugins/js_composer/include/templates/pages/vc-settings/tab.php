@@ -1,10 +1,10 @@
 <?php
 $tab = preg_replace( '/^vc\-/', '', $page->getSlug() );
 $use_custom = get_option( vc_settings()->getFieldPrefix() . 'use_custom' );
-$css = $tab == 'color' && $use_custom ? ' color_enabled' : '';
+$css = ( ( 'color' === $tab ) && $use_custom ) ? ' color_enabled' : '';
 ?>
 <form action="options.php" method="post" id="vc_settings-<?php echo $tab ?>"
-      class="vc_settings-tab-content vc_settings-tab-content-active<?php echo esc_attr( $css ) ?>"<?php echo apply_filters( 'vc_setting-tab-form-' . $tab, '' ) ?>>
+      class="vc_settings-tab-content vc_settings-tab-content-active <?php echo esc_attr( $css ) ?>"<?php echo apply_filters( 'vc_setting-tab-form-' . $tab, '' ) ?>>
 	<?php settings_fields( vc_settings()->getOptionGroup() . '_' . $tab ) ?>
 	<?php do_settings_sections( vc_settings()->page() . '_' . $tab ) ?>
 	<?php wp_nonce_field( 'wpb_js_settings_save_action', 'wpb_js_nonce_field' ); ?>
@@ -21,7 +21,7 @@ $css = $tab == 'color' && $use_custom ? ' color_enabled' : '';
 				</td>
 			</tr>
 		</table>
-	<?php endif; ?>
+	<?php endif ?>
 	<?php
 	$submit_button_attributes = array();
 	$submit_button_attributes = apply_filters( 'vc_settings-tab-submit-button-attributes', $submit_button_attributes, $tab );
@@ -31,13 +31,13 @@ $css = $tab == 'color' && $use_custom ? ' color_enabled' : '';
 	?>
 	<?php if ( $tab !== 'updater' ): ?>
 		<?php submit_button( __( 'Save Changes', 'js_composer' ), 'primary', 'submit_btn', true, $submit_button_attributes ); ?>
-	<?php endif; ?>
+	<?php endif ?>
 	<input type="hidden" name="vc_action" value="vc_action-<?php echo $tab; ?>"
 	       id="vc_settings-<?php echo $tab; ?>-action"/>
-	<?php if ( $tab == 'color' ): ?>
+	<?php if ( $tab === 'color' ): ?>
 		<a href="#" class="button vc_restore-button"
 		   id="vc_settings-color-restore-default"><?php _e( 'Restore Default', 'js_composer' ) ?></a>
-	<?php endif; ?>
+	<?php endif ?>
 	<?php if ( $tab === 'updater' ): ?>
 		<input type="hidden" id="vc_settings-license-status" name="vc_license_status"
 		       value="<?php echo empty( $license_activation_key ) ? 'not_activated' : 'activated' ?>"/>
@@ -45,5 +45,5 @@ $css = $tab == 'color' && $use_custom ? ' color_enabled' : '';
 		   id="vc_settings-activate-license"><?php empty( $license_activation_key ) ? _e( 'Activate License', 'js_composer' ) : _e( 'Deactivate License', 'js_composer' ) ?></a>
 		<span class="vc_updater-spinner-wrapper" style="display: none;" id="vc_updater-spinner"><img
 				src="<?php echo get_site_url() ?>/wp-admin/images/wpspin_light.gif"/></span>
-	<?php endif; ?>
+	<?php endif ?>
 </form>

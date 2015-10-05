@@ -56,6 +56,18 @@ function kt_register_demo_metabox() {
 			'hide' => __( 'Hide', 'kutetheme' ),
 	    ),
 	) );
+    
+    $page_option->add_field( array(
+	    'name'             => __('Page Comment','kutetheme'),
+	    'desc'             => __("Endable comment page( default: enable ).",'kutetheme'),
+	    'id'               => 'kt_enable_page_comment',
+	    'type'             => 'select',
+	    'default'          => 'show',
+	    'options'          => array(
+			'show' => __( 'Show','kutetheme'),
+			'hide' => __( 'Hide', 'kutetheme' ),
+	    ),
+	) );
 	$page_option->add_field( array(
 	    'name'             => __('Page layout','kutetheme'),
 	    'desc'             => __("Please choose this page's layout.",'kutetheme'),

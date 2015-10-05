@@ -268,7 +268,7 @@ class KT_Admin {
     			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v2.jpg',
     			// '3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
        //          '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v4.jpg',
-       //          '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
+                //'5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
                 '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
        //          '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
     		),

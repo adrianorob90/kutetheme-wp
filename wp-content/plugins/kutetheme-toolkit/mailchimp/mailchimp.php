@@ -1,5 +1,4 @@
 <?php
-
 // Prevent loading this file directly
 if ( !defined('ABSPATH')) exit;
 
@@ -13,7 +12,10 @@ define( 'MAILCHIMP_ASSETS', trailingslashit( MAILCHIMP_URL . 'assets' ) );
  * Get Mailchimp API
  *
  */
-require_once ( MAILCHIMP_PATH.'MCAPI.class.php' );
+if( ! class_exists( 'MCAPI' ) ){
+    require_once ( MAILCHIMP_PATH.'MCAPI.class.php' );
+}
+
 
 class KT_Mailchimp{
     
@@ -531,9 +533,9 @@ class Widget_KT_Mailchimp extends WP_Widget {
         $content     = (isset($instance['content']) && $instance['content']) ? esc_html($instance['content']) : 'Success!  Check your inbox or spam folder for a message containing a confirmation link.';
         $layout      = (isset($instance['layout']) && $instance['layout']) ? esc_html($instance['layout']) : 'one';
         
-        $height_desktop = (isset($instance['height_desktop']) && intval(['height_desktop']) > 0) ? intval($instance['height_desktop']) : 0;
-        $height_tablet  = (isset($instance['height_tablet']) && intval(['height_tablet']) > 0) ? intval($instance['height_tablet']) : 0;
-        $height_mobile  = (isset($instance['height_mobile']) && intval(['height_mobile']) > 0) ? intval($instance['height_mobile']) : 0;
+        $height_desktop = (isset($instance['height_desktop']) && intval($instance['height_desktop']) > 0) ? intval($instance['height_desktop']) : 0;
+        $height_tablet  = (isset($instance['height_tablet']) && intval($instance['height_tablet']) > 0) ? intval($instance['height_tablet']) : 0;
+        $height_mobile  = (isset($instance['height_mobile']) && intval($instance['height_mobile']) > 0) ? intval($instance['height_mobile']) : 0;
         $css = (isset($instance['css']) && $instance['css']) ? esc_html($instance['css']) : '';
         
         $new_instance['title'] = $title;
@@ -559,9 +561,9 @@ class Widget_KT_Mailchimp extends WP_Widget {
         $content     = (isset($instance['content']) && $instance['content']) ? esc_attr($instance['content']) : 'Success!  Check your inbox or spam folder for a message containing a confirmation link.';
         $layout      = (isset($instance['layout']) && $instance['layout']) ? esc_attr($instance['layout']) : 'one';
         
-        $height_desktop = (isset($instance['height_desktop']) && intval(['height_desktop']) > 0) ? intval($instance['height_desktop']) : 0;
-        $height_tablet  = (isset($instance['height_tablet']) && intval(['height_tablet']) > 0) ? intval($instance['height_tablet']) : 0;
-        $height_mobile  = (isset($instance['height_mobile']) && intval(['height_mobile']) > 0) ? intval($instance['height_mobile']) : 0;
+        $height_desktop = (isset($instance['height_desktop']) && intval($instance['height_desktop']) > 0) ? intval($instance['height_desktop']) : 0;
+        $height_tablet  = (isset($instance['height_tablet']) && intval($instance['height_tablet']) > 0) ? intval($instance['height_tablet']) : 0;
+        $height_mobile  = (isset($instance['height_mobile']) && intval($instance['height_mobile']) > 0) ? intval($instance['height_mobile']) : 0;
         $css = (isset($instance['css']) && $instance['css']) ? esc_attr($instance['css']) : '';
         
         $options = get_option( 'kt_mailchimp_option' );

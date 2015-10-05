@@ -189,8 +189,9 @@ vc_map( array(
             "heading"     => __("Category", 'kutetheme'),
             "param_name"  => "taxonomy",
             "value"       => '',
-            'parent'      => 0,
+            'parent'      => '',
             'multiple'    => true,
+            'hide_empty'  => false,
             'placeholder' => __('Choose categoy', 'kutetheme'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),

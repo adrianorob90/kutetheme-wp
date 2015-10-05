@@ -12,6 +12,7 @@
  * Shortcode class
  * @var $this WPBakeryShortCode_VC_Button
  */
+$color = $size = $icon = $target = $href = $el_class = $title = '';
 $output = '';
 $atts = vc_map_get_attributes( $this->getShortcode(), $atts );
 extract( $atts );
@@ -43,8 +44,8 @@ if ( 'same' === $target || '_self' === $target ) {
 $target = ( '' !== $target ) ? ' target="' . esc_attr( $target ) . '"' : '';
 
 $color = ( '' !== $color ) ? ' wpb_' . $color : '';
-$size = ( '' !== $size && $size != 'wpb_regularsize' ) ? ' wpb_' . $size : ' ' . $size;
-$icon = ( '' !== $icon && $icon != 'none' ) ? ' ' . $icon : '';
+$size = ( '' !== $size && $size !== 'wpb_regularsize' ) ? ' wpb_' . $size : ' ' . $size;
+$icon = ( '' !== $icon && $icon !== 'none' ) ? ' ' . $icon : '';
 $i_icon = ( '' !== $icon ) ? ' <i class="icon"> </i>' : '';
 $el_class = $this->getExtraClass( $el_class );
 
@@ -57,4 +58,4 @@ if ( '' !== $href ) {
 	$output .= '<button class="' . esc_attr( $css_class ) . '">' . $title . $i_icon . '</button>';
 
 }
-echo $output . $this->endBlockComment( $this->getShortcode() ) . "\n";
+echo $output;

@@ -8,6 +8,8 @@
  */
 ?>
 <?php 
+    $kt_page_comment = kt_get_post_meta( get_the_ID(), 'kt_enable_page_comment', 'show' );
+    
     $kt_show_page_title = kt_get_post_meta( get_the_ID(), 'kt_show_page_title', 'show');
 
     $kt_page_extra_class = kt_get_post_meta( get_the_ID(), 'kt_page_extra_class', 'show');
@@ -34,9 +36,11 @@
 		?>
 	</div><!-- .entry-content -->
 	<?php
+    if( $kt_page_comment == 'show' ):
     // If comments are open or we have at least one comment, load up the comment template.
     if ( comments_open() || get_comments_number() ) :
         comments_template();
+    endif;
     endif;
     ?>
 </article><!-- #post-## -->

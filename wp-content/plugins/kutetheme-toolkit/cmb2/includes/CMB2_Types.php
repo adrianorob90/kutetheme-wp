@@ -76,7 +76,7 @@ class CMB2_Types {
 	 */
 	protected function _render() {
 		$this->field->peform_param_callback( 'before_field' );
-		echo  $this->{$this->field->type()}();
+		echo $this->{$this->field->type()}();
 		$this->field->peform_param_callback( 'after_field' );
 	}
 
@@ -288,13 +288,13 @@ class CMB2_Types {
 		$this->_desc( true, true, true );
 		?>
 
-		<div id="<?php echo esc_attr( $table_id ); ?>" class="cmb-repeat-table cmb-nested">
+		<div id="<?php echo $table_id; ?>" class="cmb-repeat-table cmb-nested">
 			<div class="cmb-tbody cmb-field-list">
 				<?php $this->repeatable_rows(); ?>
 			</div>
 		</div>
 		<p class="cmb-add-row">
-			<button data-selector="<?php echo esc_attr( $table_id ) ; ?>" class="cmb-add-row-button button"><?php echo esc_html( $this->_text( 'add_row_text', __( 'Add Row', 'cmb2' ) ) ); ?></button>
+			<button data-selector="<?php echo $table_id; ?>" class="cmb-add-row-button button"><?php echo esc_html( $this->_text( 'add_row_text', __( 'Add Row', 'cmb2' ) ) ); ?></button>
 		</p>
 
 		<?php
@@ -348,12 +348,12 @@ class CMB2_Types {
 		$disabled = $disable_remover ? ' button-disabled' : '';
 		?>
 
-		<div class="cmb-row <?php echo esc_attr( $class ) ; ?>">
+		<div class="cmb-row <?php echo $class; ?>">
 			<div class="cmb-td">
 				<?php $this->_render(); ?>
 			</div>
 			<div class="cmb-td cmb-remove-row">
-				<button class="button cmb-remove-row-button<?php echo esc_attr( $disabled ) ; ?>"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></button>
+				<button class="button cmb-remove-row-button<?php echo $disabled; ?>"><?php echo esc_html( $this->_text( 'remove_row_text', __( 'Remove', 'cmb2' ) ) ); ?></button>
 			</div>
 		</div>
 
@@ -383,9 +383,9 @@ class CMB2_Types {
 		$desc = sprintf( "\n" . '<%1$s class="cmb2-metabox-description">%2$s</%1$s>' . "\n", $tag, $desc );
 
 		if ( $echo ) {
-			echo esc_textarea( $desc ) ;
+			echo $desc;
 		}
-		return esc_textarea( $desc );
+		return $desc;
 	}
 
 	/**
@@ -495,7 +495,7 @@ class CMB2_Types {
 		) );
 
 		wp_editor( $a['value'], $a['id'], $a['options'] );
-		echo esc_textarea( $a['desc'] ) ;
+		echo $a['desc'];
 	}
 
 	public function text_date( $args = array() ) {
@@ -821,7 +821,7 @@ class CMB2_Types {
 			) )
 			: '';
 
-		echo  $this->input( array(
+		echo $this->input( array(
 			'class'           => 'cmb2-oembed regular-text',
 			'data-objectid'   => $this->field->object_id,
 			'data-objecttype' => $this->field->object_type,
@@ -835,7 +835,7 @@ class CMB2_Types {
 		$name       = $this->_name();
 		$img_size   = $this->field->args( 'preview_size' );
 
-		echo  $this->input( array(
+		echo $this->input( array(
 			'type'  => 'hidden',
 			'class' => 'cmb2-upload-file cmb2-upload-list',
 			'size'  => 45, 'desc'  => '', 'value'  => '',
@@ -896,7 +896,7 @@ class CMB2_Types {
 		// if options array and 'url' => false, then hide the url field
 		$input_type = array_key_exists( 'url', $options ) && false === $options['url'] ? 'hidden' : 'text';
 
-		echo  $this->input( array(
+		echo $this->input( array(
 			'type'  => $input_type,
 			'class' => 'cmb2-upload-file regular-text',
 			'size'  => 45,
@@ -930,7 +930,7 @@ class CMB2_Types {
 			$_id_value = cmb2_utils()->image_id_from_url( esc_url_raw( $meta_value ) );
 		}
 
-		echo  $this->input( array(
+		echo $this->input( array(
 			'type'  => 'hidden',
 			'class' => 'cmb2-upload-file-id',
 			'value' => $_id_value,
