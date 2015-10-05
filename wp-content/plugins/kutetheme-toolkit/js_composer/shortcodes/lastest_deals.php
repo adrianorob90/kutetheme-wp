@@ -209,7 +209,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             'css'            => '',
             'el_class'       => '',
             'nav'            => "true",
-            'loop'           => "true",
+            'loop'           => "false",
             //Default
             'use_responsive' => 1,
             'items_destop'   => 5,
@@ -257,6 +257,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 "navigation"    => $navigation,
                 "margin"        => $margin,
                 "slidespeed"    => $slidespeed,
+                "loop"          => $loop,
                 "theme"         => 'style-navigation-bottom',
                 "autoheight"    => "false",
                 'nav'           => "true",

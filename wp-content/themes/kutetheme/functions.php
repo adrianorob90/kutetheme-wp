@@ -436,7 +436,7 @@ add_filter( 'get_search_form', 'kt_search_form_modify' );
  *
  * @since Kute Theme 1.0
  */
-require THEME_DIR . '/inc/custom-header.php';
+//require THEME_DIR . '/inc/custom-header.php';
 
 /**
  * Implement the Custom breadcrumbs.

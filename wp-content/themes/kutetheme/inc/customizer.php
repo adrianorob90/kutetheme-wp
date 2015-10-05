@@ -377,7 +377,10 @@ function kt_get_color_scheme_css( $colors ) {
  	div.ui-selectmenu-menu .ui-state-hover,
  	 .ui-selectmenu-menu .ui-state-focus, 
  	div.ui-selectmenu-menu .ui-widget-content .ui-state-focus, 
- 	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus
+ 	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus,
+    
+    .option5 .nav-top-menu #main-menu .navbar,
+    .option5 .header .main-header .header-search-box .form-inline .btn-search
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
