@@ -471,13 +471,11 @@
       $(document).on('click','.widget_product_categories a',function(){
         var paerent = $(this).closest('li');
         var t = $(this);
-        $('.widget_product_categories li ul').removeClass('open');
-        $('.widget_product_categories a').removeClass('open');
+        paerent.find('a').removeClass('open');
+        paerent.find('ul').removeClass('open');
         paerent.find('ul').addClass('open');
         if(paerent.children('ul').length > 0){
-            //$('.widget_product_categories').find('.children').hide();
             $(this).toggleClass('open');
-            $('.widget_product_categories li ul').not('.open').slideUp();
             $(this).closest('li').children('ul').slideToggle();
             return false;
         }

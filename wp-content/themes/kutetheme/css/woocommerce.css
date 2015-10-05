@@ -312,6 +312,13 @@
     padding-left: 20px;
     display: none;
 }
+.widget_product_categories>ul>li.current-cat-parent>.children{
+	display: block;
+}
+.widget_product_categories>ul>li.current-cat-parent>a:before{
+	content: "\f107";
+	padding-right: 8px;
+}
 .widget_product_categories .children li a:before {
     content: "\f0da";
     font-size: 14px;
