@@ -35,14 +35,13 @@ class Widget_KT_Trademark_Payment extends WP_Widget {
                     
                     $img_preview = "";
                     if($image){
-                        $img_preview = wp_get_attachment_url($image);
-                        $preview = true;
+                        $img_preview = wp_get_attachment_image( intval( $image ), 'full' );
                     }
-                    if( $title ):
+                    if( $title && $img_preview ):
                         ?>
                         <li>
                             <a target="<?php echo esc_attr( $target ) ?>" href="<?php echo esc_url( $link );  ?>">
-                                <img src="<?php echo esc_url( $img_preview ); ?>" alt="<?php echo esc_attr( $title )  ?>" />
+                                <?php echo apply_filters( 'kt_trademark_image', $img_preview ); ?>
                             </a>
                         </li>
                     <?php endif; ?>

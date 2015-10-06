@@ -1,7 +1,7 @@
 
 /**************************************************************************
  * jquery.themepunch.revolution.js - jQuery Plugin for Revolution Slider
- * @version: 5.0.71 (02.09.2015)
+ * @version: 5.0.9 (21.09.2015)
  * @requires jQuery v1.7 or later (tested on 1.9)
  * @author ThemePunch
 **************************************************************************/
@@ -22,9 +22,12 @@
 				autoHeight:"off",					
 				sliderType : "standard",				// standard, carousel, hero					
 				sliderLayout : "auto",					// auto, fullwidth, fullscreen				
+
+				fullScreenAutoWidth:"off",				// Turns the FullScreen Slider to be a FullHeight but auto Width Slider
 				fullScreenAlignForce:"off",
 				fullScreenOffsetContainer:"",			// Size for FullScreen Slider minimising Calculated on the Container sizes
 				fullScreenOffset:"0",					// Size for FullScreen Slider minimising					
+
 				hideCaptionAtLimit:0,					// It Defines if a caption should be shown under a Screen Resolution ( Basod on The Width of Browser)
 				hideAllCaptionAtLimit:0,				// Hide all The Captions if Width of Browser is less then this value
 				hideSliderAtLimit:0,					// Hide the whole slider, and stop also functions if Width of Browser is less than this value										
@@ -556,7 +559,7 @@ jQuery.extend(true, _R, {
 	getHorizontalOffset : function(container,side) {
 		var thumbloff = gWiderOut(container,'.outer-left'),
 			thumbroff = gWiderOut(container,'.outer-right');
-						
+							
 		switch (side) {
 			case "left":
 				return thumbloff;
@@ -579,7 +582,7 @@ jQuery.extend(true, _R, {
 			nindex = 0;
 	
 		container.find('.next-revslide').removeClass("next-revslide");
-
+		
 
 		// SET NEXT DIRECTION
 		if (direction && jQuery.isNumeric(direction) || direction.match(/to/g)) {			
@@ -978,6 +981,7 @@ var initSlider = function (container,opt) {
 	opt.cid = container.attr('id');
 	opt.ul.css({visibility:"visible"});
     opt.slideamount = opt.ul.find('>li').length;
+    opt.slayers = container.find('.tp-static-layers');
 
     // Save Original Index of Slides
     opt.ul.find('>li').each(function(i) {
@@ -1051,18 +1055,22 @@ var initSlider = function (container,opt) {
 				target= li.data('target') || "_self",
 				zindex= li.data('slideindex')==="back" ? 0 : 60,					
 				linktoslide=li.data('linktoslide'),
-				checksl = linktoslide;					
+				checksl = linktoslide;	
+			
 			if (linktoslide != undefined) 
 				if (linktoslide!="next" && linktoslide!="prev")
 					opt.li.each(function() {
 						var t = jQuery(this);
-						if (t.data('origindex')+1==checksl) linktoslide = t.index()+1;
+						if (t.data('origindex')+1==checksl) linktoslide = t.data('index');
 					});
 			
 			
 			if (link!="slide") linktoslide="no";
+			
 			var apptxt = '<div class="tp-caption sft slidelink" style="cursor:pointer;width:100%;height:100%;z-index:'+zindex+';" data-x="center" data-y="center" ',
-				jts = linktoslide==="scroll_under" ? '[{"event":"click","action":"scrollbelow","offset":"100px","delay":"0"}]' : '[{"event":"click","action":"jumptoslide","slide":"2","delay":"0.2"}]'
+				jts = linktoslide==="scroll_under" ? '[{"event":"click","action":"scrollbelow","offset":"100px","delay":"0"}]' : 
+					 linktoslide==="prev" ? '[{"event":"click","action":"jumptoslide","slide":"prev","delay":"0.2"}]' : 
+					 linktoslide==="next" ? '[{"event":"click","action":"jumptoslide","slide":"next","delay":"0.2"}]' : '[{"event":"click","action":"jumptoslide","slide":"'+linktoslide+'","delay":"0.2"}]'
 			
 			apptxt = linktoslide=="no" ? apptxt +' data-start="0">' : apptxt + 'data-actions='+"'"+jts + "'"+' data-start="0">';
 			apptxt = apptxt + '<a style="width:100%;height:100%;display:block"';					
@@ -1108,17 +1116,19 @@ var initSlider = function (container,opt) {
 	
 	// BUILD A FORCE FULLWIDTH CONTAINER, TO SPAN THE FULL SLIDER TO THE FULL WIDTH OF BROWSER
 	if (opt.sliderLayout!="auto" && container.closest('.forcefullwidth_wrapper_tp_banner').length==0) {
-		var cp = container.parent(),				
-			mb = cp.css('marginBottom'),
-			mt = cp.css('marginTop');
-		mb = mb===undefined ? 0 : mb;
-		mt = mt===undefined ? 0 : mt;
+		if (opt.sliderLayout!=="fullscreen" || opt.fullScreenAutoWidth!="on") {			
+			var cp = container.parent(),				
+				mb = cp.css('marginBottom'),
+				mt = cp.css('marginTop');
+			mb = mb===undefined ? 0 : mb;
+			mt = mt===undefined ? 0 : mt;
 
-		cp.wrap('<div class="forcefullwidth_wrapper_tp_banner" style="position:relative;width:100%;height:auto;margin-top:'+mt+';margin-bottom:'+mb+'"></div>');
-		container.closest('.forcefullwidth_wrapper_tp_banner').append('<div class="tp-fullwidth-forcer" style="width:100%;height:'+container.height()+'px"></div>');
-		container.parent().css({marginTop:"0px",marginBottom:"0px"});
-		//container.css({'backgroundColor':container.parent().css('backgroundColor'),'backgroundImage':container.parent().css('backgroundImage')});
-		container.parent().css({position:'absolute'});						
+			cp.wrap('<div class="forcefullwidth_wrapper_tp_banner" style="position:relative;width:100%;height:auto;margin-top:'+mt+';margin-bottom:'+mb+'"></div>');
+			container.closest('.forcefullwidth_wrapper_tp_banner').append('<div class="tp-fullwidth-forcer" style="width:100%;height:'+container.height()+'px"></div>');
+			container.parent().css({marginTop:"0px",marginBottom:"0px"});
+			//container.css({'backgroundColor':container.parent().css('backgroundColor'),'backgroundImage':container.parent().css('backgroundImage')});
+			container.parent().css({position:'absolute'});						
+		}
 	}
 
 
@@ -1217,29 +1227,43 @@ var initSlider = function (container,opt) {
 
 			// REMOVE VIDEO AUTOPLAYS FOR MOBILE DEVICES 
 			if (_ISM) {
-				if (an == true || an=="true")
+				if (an == true || an=="true") {
 						_nc.data('autoplayonlyfirsttime',"false");
-				if (ap==true || ap=="true")
+						an=false;
+				}
+				if (ap==true || ap=="true" || ap=="on" || ap=="1sttime") {
 					 _nc.data('autoplay',"off");
+					 ap="off";
+				}
+
 			}
 			
 
 			// PREPARE TIMER BEHAVIOUR BASED ON AUTO PLAYED VIDEOS IN SLIDES
 			if (an == true || an=="true" || ap == "1sttime")  
 				_nc.closest('li.tp-revslider-slidesli').addClass("rs-pause-timer-once");
-			if (ap==true || ap=="true" || ap == "on" || ap == "no1sttime")
+			
+			if (ap==true || ap=="true" || ap == "on" || ap == "no1sttime") 
 				_nc.closest('li.tp-revslider-slidesli').addClass("rs-pause-timer-always");
+				
 							
 		});
 
 		container.hover(
 			function() {				
-					container.trigger('tp-mouseenter');					
+					container.trigger('tp-mouseenter');		
+					opt.overcontainer=true;			
 			},
 			function() {
 					container.trigger('tp-mouseleft');												
+					opt.overcontainer=false;
 			});
 
+
+		container.on('mouseover',function() {
+			container.trigger('tp-mouseover');
+			opt.overcontainer=true;
+		})
 
 		// REMOVE ANY VIDEO JS SETTINGS OF THE VIDEO  IF NEEDED  (OLD FALL BACK, AND HELP FOR 3THD PARTY PLUGIN CONFLICTS)
 		container.find('.tp-caption video').each(function(i) {
@@ -1254,14 +1278,14 @@ var initSlider = function (container,opt) {
 		
 		
 		// PRELOAD STATIC LAYERS			
-		loadImages(container.find('.tp-static-layers img'),opt,0);
+		loadImages(container.find('.tp-static-layers'),opt,0);
+
 		waitForCurrentImages(container.find('.tp-static-layers img'),opt,function() {
-			container.find('.tp-static-layers img').each(function() {				
+			container.find('.tp-static-layers img').each(function() {								
 				var e = jQuery(this),
 					src = e.data('lazyload') != undefined ? e.data('lazyload') : e.attr('src'),
-					loadobj = getLoadObj(opt,src);
-
-				e.attr('src',loadobj.src)
+					loadobj = getLoadObj(opt,src);								
+				e.attr('src',loadobj.src)				
 			})
 		})
 
@@ -1420,23 +1444,28 @@ var cArray = function(b,l) {
 
 var checkHoverDependencies = function(_nc,opt) {
 	
-	if (_nc.data('start')==="sliderenter") {
+	if (_nc.data('start')==="sliderenter") {		
 		if (opt.layersonhover===undefined) {					
-			opt.c.on('tp-mouseenter',function() {
-				if (opt.layersonhover)
-					jQuery.each(opt.layersonhover,function(i,tnc) {						
+			opt.c.on('tp-mouseenter',function() {								
+				if (opt.layersonhover)					
+					jQuery.each(opt.layersonhover,function(i,tnc) {											
 						tnc.data('animdirection',"in");
 						var otl = tnc.data('timeline_out'),
 							base_offsetx = opt.sliderType==="carousel" ? 0 : opt.width/2 - (opt.gridwidth[opt.curWinRange]*opt.bw)/2,
-							base_offsety=0;																	
-						if (otl!=undefined) {										
-							otl.pause(0);
-							otl.kill();													
-						}							
-						_R.animateSingleCaption(tnc,opt,base_offsetx,base_offsety,0,false,true);	
-						var tl = tnc.data('timeline');
-						tnc.data('triggerstate',"on");																									
-						tl.play(0);													
+							base_offsety=0,
+							cli = tnc.closest('.tp-revslider-slidesli');
+
+						if (cli.hasClass("active-revslide") || cli.hasClass("processing-revslide")) {
+
+							if (otl!=undefined) {										
+								otl.pause(0);
+								otl.kill();													
+							}							
+							_R.animateSingleCaption(tnc,opt,base_offsetx,base_offsety,0,false,true);	
+							var tl = tnc.data('timeline');
+							tnc.data('triggerstate',"on");																															
+							tl.play(0);										
+						}
 					});
 			});
 			opt.c.on('tp-mouseleft',function() {
@@ -1458,13 +1487,23 @@ var checkHoverDependencies = function(_nc,opt) {
 
 
 var contWidthManager = function(opt) {	
-	if (opt.sliderLayout!="auto") {
-		var loff = Math.ceil(opt.c.closest('.forcefullwidth_wrapper_tp_banner').offset().left - _R.getHorizontalOffset(opt.c,"left"));																
+
+	var rl = _R.getHorizontalOffset(opt.c,"left");
+
+	if (opt.sliderLayout!="auto" && (opt.sliderLayout!=="fullscreen" || opt.fullScreenAutoWidth!="on")) {		
+		var loff = Math.ceil(opt.c.closest('.forcefullwidth_wrapper_tp_banner').offset().left - rl);																
 		punchgs.TweenLite.set(opt.c.parent(),{'left':(0-loff)+"px",'width':jQuery(window).width()-_R.getHorizontalOffset(opt.c,"both")});		
-	} else {
-		var loff =_R.getHorizontalOffset(opt.c,"left");									
-		punchgs.TweenLite.set(opt.ul,{left:loff,width:opt.c.width()-_R.getHorizontalOffset(opt.c,"both")});		
-	}		
+	} else {		
+		if (opt.sliderLayout=="fullscreen" && opt.fullScreenAutoWidth=="on")
+			punchgs.TweenLite.set(opt.ul,{left:0,width:opt.c.width()});		
+		else
+			punchgs.TweenLite.set(opt.ul,{left:rl,width:opt.c.width()-_R.getHorizontalOffset(opt.c,"both")});		
+	}	
+
+
+	// put Static Layer Wrapper in Position	
+	if (opt.slayers && (opt.sliderLayout!="fullwidth" && opt.sliderLayout!="fullscreen"))
+		punchgs.TweenLite.set(opt.slayers,{left:rl});
 }
 
 
@@ -1693,6 +1732,27 @@ var cutParams = function(a) {
 		b = a.split("?")[0];
 	return b;
 }
+
+var relativeRedir = function(redir){
+  return location.pathname.replace(/(.*)\/[^/]*/, "$1/"+redir);
+}
+
+var abstorel = function (base, relative) {
+    var stack = base.split("/"),
+        parts = relative.split("/");
+    stack.pop(); // remove current file name (or empty string)
+                 // (omit if "base" is the current folder without trailing slash)
+    for (var i=0; i<parts.length; i++) {
+        if (parts[i] == ".")
+            continue;
+        if (parts[i] == "..")
+            stack.pop();
+        else
+            stack.push(parts[i]);
+    }
+    return stack.join("/");
+}
+
 var imgLoaded = function(img,opt,progress) {
 	opt.syncload--;	
 	if (opt.loadqueue)
@@ -1700,13 +1760,19 @@ var imgLoaded = function(img,opt,progress) {
 
 			var mqsrc = queue.src.replace(/\.\.\/\.\.\//gi,""),
 				fullsrc = self.location.href,
-				origin = document.location.origin;
-			
-			fullsrc = fullsrc.substring(0,fullsrc.length-1)+mqsrc;
+				origin = document.location.origin,
+				fullsrc_b = fullsrc.substring(0,fullsrc.length-1)+"/"+mqsrc,
+				origin_b = origin+"/"+mqsrc,
+				absolute = abstorel(self.location.href,queue.src);
+						
+			fullsrc = fullsrc.substring(0,fullsrc.length-1)+mqsrc;						
 			origin = origin+mqsrc;
 						
 			if (cutParams(origin) === cutParams(decodeURIComponent(img.src)) || 
 				cutParams(fullsrc)=== cutParams(decodeURIComponent(img.src)) || 
+				cutParams(absolute)=== cutParams(decodeURIComponent(img.src)) || 
+				cutParams(origin_b) === cutParams(decodeURIComponent(img.src)) || 
+				cutParams(fullsrc_b)=== cutParams(decodeURIComponent(img.src)) || 
 				cutParams(queue.src) === cutParams(decodeURIComponent(img.src)) || 
 				cutParams(queue.src).replace(/^.*\/\/[^\/]+/, '') === cutParams(decodeURIComponent(img.src)).replace(/^.*\/\/[^\/]+/, '') || 
 				(window.location.origin==="file://" && cutParams(img.src).match(new RegExp(mqsrc)))) {																	
@@ -1766,7 +1832,8 @@ var loadImages = function(container,opt,prio) {
 	container.find('img,.defaultimg').each(function() {
 		var element = jQuery(this),
 			src = element.data('lazyload') !== undefined && element.data('lazyload')!=="undefined" ? element.data('lazyload') : element.attr('src');							
-					
+		
+		element.data('start-to-load',jQuery.now());
 		addToLoadQueue(src,opt,prio);
 	});
 	progressImageLoad(opt);
@@ -1791,6 +1858,7 @@ var waitForCurrentImages = function(nextli,opt,callback) {
 			src = element.data('lazyload') != undefined ? element.data('lazyload') : element.attr('src'),
 			loadobj = getLoadObj(opt,src);
 		
+
 		// IF ELEMENTS IS NOT LOADED YET, AND IT IS NOW LOADED
 		if (element.data('loaded')===undefined && loadobj !==undefined && loadobj.progress && loadobj.progress.match(/loaded/g)) {
 			
@@ -1818,19 +1886,42 @@ var waitForCurrentImages = function(nextli,opt,callback) {
 				
 				
 				element.data('ww',w);
-				element.data('hh',h);
+				element.data('hh',h); 
 				
 			}
 			// ELEMENT IS NOW FULLY LOADED
 			element.data('loaded',true);
-		} 
-
-		if (loadobj && loadobj.progress && loadobj.progress.match(/inprogress|inload|prepared/g)) waitforload = true;			
-		// WAIT FOR VIDEO API'S			
-		if (opt.youtubeapineeded == true && (!window['YT'] || YT.Player==undefined)) waitforload = true;
-		if (opt.vimeoapineeded == true && !window['Froogaloop']) waitforload = true;	
+		} 		
 
 
+		if (loadobj && loadobj.progress && loadobj.progress.match(/inprogress|inload|prepared/g)) 
+			if (jQuery.now()-element.data('start-to-load')<5000) 
+					waitforload = true;			
+			else
+				console.error(src+"  Could not be loaded !");
+		
+		// WAIT FOR VIDEO API'S					
+		if (opt.youtubeapineeded == true && (!window['YT'] || YT.Player==undefined)) {		
+			waitforload = true;			
+			if (jQuery.now()-opt.youtubestarttime>5000 && opt.youtubewarning!=true) {
+				opt.youtubewarning = true;
+				var txt = "YouTube Api Could not be loaded !";
+				if (location.protocol === 'https:') txt = txt + " Please Check and Renew SSL Certificate !";
+				console.error(txt); 
+				opt.c.append('<div style="position:absolute;top:50%;width:100%;color:#e74c3c;  font-size:16px; text-align:center; padding:15px;background:#000; display:block;"><strong>'+txt+'</strong></div>')				 				
+			}
+		}
+
+		if (opt.vimeoapineeded == true && !window['Froogaloop']) {
+			waitforload = true;
+			if (jQuery.now()-opt.vimeostarttime>5000 && opt.vimeowarning!=true) {
+				opt.vimeowarning= true;
+				var txt = "Vimeo Froogaloop Api Could not be loaded !";
+				if (location.protocol === 'https:') txt = txt + " Please Check and Renew SSL Certificate !";
+				console.error(txt); 
+				opt.c.append('<div style="position:absolute;top:50%;width:100%;color:#e74c3c;  font-size:16px; text-align:center; padding:15px;background:#000; display:block;"><strong>'+txt+'</strong></div>')				 
+			}
+		}			
 	});
 	
 
@@ -1850,6 +1941,8 @@ var waitForCurrentImages = function(nextli,opt,callback) {
 var swapSlide = function(container,opt) {	
 
 	clearTimeout(opt.waitWithSwapSlide);
+
+
 
 	if (container.find('.processing-revslide').length>0) {			
 		opt.waitWithSwapSlide = setTimeout(function() {
@@ -1893,6 +1986,8 @@ var swapSlide = function(container,opt) {
 
 	// WAIT FOR SWAP SLIDE PROGRESS
 	waitForCurrentImages(nextli,opt,function() {				 
+
+
 		// MANAGE BG VIDEOS
 		nextli.find('.rs-background-video-layer').each(function() {
 			var _nc = jQuery(this);				
@@ -1958,6 +2053,8 @@ var swapSlideProgress = function(opt,defimg,container) {
 	///////////////////////////
 	//	REMOVE THE CAPTIONS //
 	///////////////////////////
+
+
 	
 	if (actli.index() != nextli.index() && opt.firststart!=1) 	
 		if (_R.removeTheCaptions) _R.removeTheCaptions(actli,opt);
@@ -2211,6 +2308,7 @@ var countDown = function(container,opt) {
 
 
 			container.on('starttimer',function() {
+				
 				if (opt.conthover!=1 && opt.videoplaying!=true && opt.width>opt.hideSliderAtLimit && opt.tonpause != true && opt.overnav !=true)
 					if (opt.noloopanymore !== 1 && (!opt.viewPort.enable || opt.inviewport)) {								
 						bt.css({visibility:"visible"});
@@ -2222,8 +2320,10 @@ var countDown = function(container,opt) {
 			});
 
 
-			container.on('restarttimer',function() {				 
+			container.on('restarttimer',function() {	
+
 				var bt = jQuery(this).find('.tp-bannertimer');
+				if (opt.mouseoncontainer && opt.navigation.onHoverStop=="on" && (!_ISM)) return false; 
 				if (opt.noloopanymore !== 1 && (!opt.viewPort.enable || opt.inviewport)) {
 					bt.css({visibility:"visible"});
 					bt.data('tween').kill();
@@ -2260,13 +2360,15 @@ var countDown = function(container,opt) {
 			bt.data('opt',opt);
 			container.trigger("starttimer");
 
-			container.on('tp-mouseenter',function() {							
+			container.on('tp-mouseenter',function() {	
+				    opt.mouseoncontainer = true;			
 					if (opt.navigation.onHoverStop=="on" && (!_ISM)) {
 						container.trigger('stoptimer');
 						container.trigger('revolution.slide.onpause');								
 					}
 			});
 			container.on('tp-mouseleft',function() {
+					opt.mouseoncontainer = false;
 					if (container.data('conthover')!=1 && opt.navigation.onHoverStop=="on" && ((opt.viewPort.enable==true && opt.inviewport) || opt.viewPort.enable==false)) {
 						container.trigger('revolution.slide.onresume');
 						container.trigger('starttimer');									
@@ -2311,16 +2413,20 @@ var vis = (function(){
 
 var restartOnFocus = function(opt) {
 	if (opt==undefined || opt.c==undefined) return false;
-    punchgs.TweenLite.delayedCall(0.3,function(){        	
-        // TAB IS ACTIVE, WE CAN START ANY PART OF THE SLIDER        
-        if (opt.fallbacks.nextSlideOnWindowFocus=="on") opt.c.revnext();
-        opt.c.revredraw();
-        if (opt.lastsliderstatus=="playing")								
-		opt.c.revresume();
-    });
+	if (opt.windowfocused!=true) {
+		opt.windowfocused = true;
+	    punchgs.TweenLite.delayedCall(0.3,function(){        	
+	        // TAB IS ACTIVE, WE CAN START ANY PART OF THE SLIDER        
+	        if (opt.fallbacks.nextSlideOnWindowFocus=="on") opt.c.revnext();
+	        opt.c.revredraw();
+	        if (opt.lastsliderstatus=="playing")								
+			opt.c.revresume();
+	    });
+	}
 }
 
 var lastStatBlur = function(opt) {
+	opt.windowfocused = false;
 	opt.lastsliderstatus = opt.sliderstatus;
 	opt.c.revpause();	
 	var actsh = opt.c.find('.active-revslide .slotholder'),

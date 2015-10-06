@@ -1707,6 +1707,7 @@ var RevSliderAdmin = new function(){
 
 				//set visual image
 				jQuery("#divbgholder").css("background-image","url("+urlImage+")");
+				jQuery('#slide_selector .list_slide_links li.selected .slide-media-container ').css("background-image","url("+urlImage+")")
 
 				//update setting input
 				jQuery("#image_url").val(urlImage);
@@ -2197,6 +2198,7 @@ var RevSliderAdmin = new function(){
 		RevSliderSettings.onoffStatus(jQuery('input[name="save_performance"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_force_cover"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_nextslide"]'));
+		RevSliderSettings.onoffStatus(jQuery('input[name="video_allowfullscreen"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_force_rewind"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_mute"]'));
 		

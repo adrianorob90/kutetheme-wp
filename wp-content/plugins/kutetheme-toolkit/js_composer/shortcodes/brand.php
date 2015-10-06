@@ -281,12 +281,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                         $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
         
                                 		if ( $thumbnail_id ) {
-                                			$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-                                            if( is_array($image) && isset($image[0]) && $image[0] ){
-                                                $image = $image[0];
-                                            }else{
-                                                $image = "";
-                                            }
+                                		  $image = wp_get_attachment_image( intval( $thumbnail_id ), 'full' );
                                 		} else {
                                 			$image = "";
                                 		}
@@ -314,7 +309,9 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                             <div class="col-xs-12 col-sm-4 trademark-info">
                                                 <?php if($image): ?>
                                                 <div class="trademark-logo">
-                                                    <a href="<?php echo esc_url( $term_link ); ?>"><img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $term->name ); ?>" /></a>
+                                                    <a href="<?php echo esc_url( $term_link ); ?>">
+                                                        <?php echo apply_filters( 'kt_brand_image_' . $term->slug, $image ) ?>
+                                                    </a>
                                                 </div>
                                                 <?php endif;?>
                                                 <div class="trademark-desc">

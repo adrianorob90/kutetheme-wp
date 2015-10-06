@@ -1,6 +1,6 @@
 /********************************************
  * REVOLUTION 5.0 EXTENSION - VIDEO FUNCTIONS
- * @version: 1.0.4 (02.09.2015)
+ * @version: 1.0.9 (21.09.2015)
  * @requires jquery.themepunch.revolution.js
  * @author ThemePunch
 *********************************************/
@@ -199,12 +199,11 @@ jQuery.extend(true,_R, {
 
 	checkVideoApis : function(_nc,opt,addedApis) {		
 		var httpprefix = location.protocol === 'https:' ? "https" : "http";
-
-
+				
 		if ((_nc.data('ytid')!=undefined  || _nc.find('iframe').length>0 && _nc.find('iframe').attr('src').toLowerCase().indexOf('youtube')>0)) opt.youtubeapineeded = true;
 		if ((_nc.data('ytid')!=undefined  || _nc.find('iframe').length>0 &&  _nc.find('iframe').attr('src').toLowerCase().indexOf('youtube')>0) && addedApis.addedyt==0) {
+			opt.youtubestarttime = jQuery.now();
 			addedApis.addedyt=1;
-
 			var s = document.createElement("script");								
 			s.src = "https://www.youtube.com/iframe_api"; /* Load Player API*/
 			var before = document.getElementsByTagName("script")[0],
@@ -221,6 +220,7 @@ jQuery.extend(true,_R, {
 
 		if ((_nc.data('vimeoid')!=undefined || _nc.find('iframe').length>0 && _nc.find('iframe').attr('src').toLowerCase().indexOf('vimeo')>0)) opt.vimeoapineeded = true;	
 	  	if ((_nc.data('vimeoid')!=undefined || _nc.find('iframe').length>0 && _nc.find('iframe').attr('src').toLowerCase().indexOf('vimeo')>0) && addedApis.addedvim==0) {
+			opt.vimeostarttime = jQuery.now();
 			addedApis.addedvim=1;
 			var f = document.createElement("script"),
 				before = document.getElementsByTagName("script")[0],
@@ -246,6 +246,7 @@ jQuery.extend(true,_R, {
 			videomp = _nc.data('videomp4'),
 			videowebm = _nc.data('videowebm'),
 			videoogv = _nc.data('videoogv'),
+			videoafs = _nc.data('allowfullscreenvideo'),
 			videocontrols = _nc.data('videocontrols'),
 			httpprefix = "http",
 			videoloop = _nc.data('videoloop')=="loop" ? "loop" : _nc.data('videoloop')=="loopandnoslidestop" ? "loop" : "",
@@ -261,24 +262,26 @@ jQuery.extend(true,_R, {
 		switch (newvideotype) {
 			case "html5":
 				if (videocontrols!="controls") videocontrols="";								
-				var apptxt = '<video style="object-fit:cover;background-size:cover;visible:hidden;width:100%; height:100%" class="" '+videoloop+' preload="'+videopreload+'"';
+				var apptxt = '<video style="object-fit:cover;background-size:cover;visible:hidden;width:100%; height:100%" class="" '+videoloop+' preload="'+videopreload+'">';
 
 				//if (_nc.data('videoposter')!=undefined) apptxt = apptxt + 'poster="'+_nc.data('videoposter')+'">';
 				if (videowebm!=undefined && _R.get_browser().toLowerCase()=="firefox") apptxt = apptxt + '<source src="'+videowebm+'" type="video/webm" />';
 				if (videomp!=undefined) apptxt = apptxt + '<source src="'+videomp+'" type="video/mp4" />';
 				if (videoogv!=undefined) apptxt = apptxt + '<source src="'+videoogv+'" type="video/ogg" />';
 				apptxt = apptxt + '</video>';
-				
+				var hfm ="";
+				if (videoafs==="true" ||  videoafs===true)
+					hfm = '<div class="tp-video-button-wrap"><button  type="button" class="tp-video-button tp-vid-full-screen">Full-Screen</button></div>';
 
 				if (videocontrols=="controls")
 					apptxt = apptxt + ('<div class="tp-video-controls">'+
-											'<div class="tp-video-button-wrap"><button type="button" class="tp-video-button tp-vid-play-pause">Play</button></div>'+
-											'<div class="tp-video-seek-bar-wrap"><input  type="range" class="tp-seek-bar" value="0"></div>'+
-											'<div class="tp-video-button-wrap"><button  type="button" class="tp-video-button tp-vid-mute">Mute</button></div>'+
-											'<div class="tp-video-vol-bar-wrap"><input  type="range" class="tp-volume-bar" min="0" max="1" step="0.1" value="1"></div>'+
-											'<div class="tp-video-button-wrap"><button  type="button" class="tp-video-button tp-vid-full-screen">Full-Screen</button></div>'+
-										'</div>');
-
+										  '<div class="tp-video-button-wrap"><button type="button" class="tp-video-button tp-vid-play-pause">Play</button></div>'+
+										  '<div class="tp-video-seek-bar-wrap"><input  type="range" class="tp-seek-bar" value="0"></div>'+
+										  '<div class="tp-video-button-wrap"><button  type="button" class="tp-video-button tp-vid-mute">Mute</button></div>'+
+										  '<div class="tp-video-vol-bar-wrap"><input  type="range" class="tp-volume-bar" min="0" max="1" step="0.1" value="1"></div>'+
+										  hfm+
+										  '</div>');
+				
 				_nc.data('videomarkup',apptxt)
 				_nc.append(apptxt);
 
@@ -317,21 +320,36 @@ jQuery.extend(true,_R, {
 							 	
 			 	if (s!=-1) vida=vida+"&start="+s;
 			 	if (e!=-1) vida=vida+"&end="+e;
+
+				// CHECK VIDEO ORIGIN, AND EXTEND WITH WWW IN CASE IT IS MISSING !
+			 	var orig = vida.split('origin='+httpprefix+'://'),
+			 		vida_new = "";
+			 				 	
+			 	if (orig.length>1) {
+			 		vida_new = orig[0]+'origin='+httpprefix+'://';
+			 		if (self.location.href.match(/www/gi) && !orig[1].match(/www/gi)) 						 	 						 		
+			 				vida_new=vida_new+"www."
+			 		vida_new=vida_new+orig[1];
+			 	} else {
+			 		vida_new = vida;
+			 	}	
 			 	
-			 	
-			 	_nc.data('videomarkup','<iframe style="visible:hidden" src="'+httpprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida+'" width="100%" height="100%" style="width:100%;height:100%"></iframe>');
+			 	var yafv = videoafs==="true" ||  videoafs===true ? "allowfullscreen" : "";		 	
+			 	_nc.data('videomarkup','<iframe style="visible:hidden" src="'+httpprefix+'://www.youtube.com/embed/'+vidytid+'?'+vida_new+'" '+yafv+' width="100%" height="100%" style="width:100%;height:100%"></iframe>');
 			break;
 
 			case "vimeo":
 				if (location.protocol === 'https:')
-					httpprefix = "https";
+					httpprefix = "https";				
 				_nc.data('videomarkup','<iframe style="visible:hidden" src="'+httpprefix+'://player.vimeo.com/video/'+vimeoid+'?'+vida+'" width="100%" height="100%" style="100%;height:100%"></iframe>');
 			break;
 		}
 		
 		//if (videotype=="vimeo" || videotype=="youtube") {
 		// IF VIDEOPOSTER EXISTING
-		if (_nc.data('videoposter')!=undefined && _nc.data('videoposter').length>2) {
+		var posteronlyonmobile = (_ISM!=true && (_nc.data('posterOnMobile')!="on" && _nc.data('posteronmobile')!="on")) || _ISM;
+		
+		if (_nc.data('videoposter')!=undefined && _nc.data('videoposter').length>2 && posteronlyonmobile) {
 			if (_nc.find('.tp-videoposter').length==0)
 				_nc.append('<div class="tp-videoposter noSwipe" style="cursor:pointer; position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:3;background-image:url('+_nc.data('videoposter')+'); background-size:cover;background-position:center center;"></div>');				
 			if (_nc.find('iframe').length==0)
@@ -449,9 +467,10 @@ var addVideoListener = function(_nc,opt,startnow) {
 								opt.c.trigger('revolution.slide.onvideoplay',getVideoDatas(player,"youtube",_nc.data()));													
 							} else {							
 								if (event.data==0 && loop) {
-									player.playVideo();
+									//player.playVideo();
 									var s = getStartSec(_nc.data('videostartat'));
-									if (s!=-1) player.seekTo(s);									
+									if (s!=-1) player.seekTo(s);
+									player.playVideo();									
 								}
 								if ((event.data==0 || event.data==2) && _nc.data('showcoveronpause')=="on" && _nc.find('.tp-videoposter').length>0) {										
 									punchgs.TweenLite.to(_nc.find('.tp-videoposter'),0.3,{autoAlpha:1,force3D:"auto",ease:punchgs.Power3.easeInOut});
@@ -704,15 +723,16 @@ var htmlvideoevents = function(_nc,opt,startnow) {
 		});
 
 		// Event listener for the full-screen button
-		addEvent(fullScreenButton,"click", function() {
-			if (video.requestFullscreen) {
-				video.requestFullscreen();
-			} else if (video.mozRequestFullScreen) {
-				video.mozRequestFullScreen(); // Firefox
-			} else if (video.webkitRequestFullscreen) {
-				video.webkitRequestFullscreen(); // Chrome and Safari
-			}
-		});
+		if (fullScreenButton)
+			addEvent(fullScreenButton,"click", function() {
+				if (video.requestFullscreen) {
+					video.requestFullscreen();
+				} else if (video.mozRequestFullScreen) {
+					video.mozRequestFullScreen(); // Firefox
+				} else if (video.webkitRequestFullscreen) {
+					video.webkitRequestFullscreen(); // Chrome and Safari
+				}
+			});
 
 
 		// Event listener for the seek bar

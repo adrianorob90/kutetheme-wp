@@ -34,7 +34,7 @@
 .ui-rotatable-handle                                                      { 	height:15px ;	width:15px;	cursor:pointer!important;	background-image:url(../images/rs_rotate.png);	background-size:100%;	right:2px;	top:2px;	position:absolute;	z-index:500; border-radius: 50%}
 .ui-rotatable-handle:hover 												  { 	background-color:#3498db;}
 
-.ui-autocomplete														  {		z-index:12000;}
+.ui-autocomplete														  {		z-index:1200000;}
 #tp-thelistofclasses .ui-autocomplete-category							  {		font-size:14px !important; color:#000; border-bottom:1px solid #d5d5d5; line-height:25px;margin-bottom:10px; font-weight: 600; padding:10px 15px 5px;}
 #tp-thelistofclasses .ui-menu-item										  {		-webkit-transition:none !important; transition:none !important; padding:0px 10px;}
 #tp-thelistofclasses .ui-menu-item a									  {		-webkit-transition:none !important; transition:none !important; font-size:11px !important; font-weight:400; color:#000; line-height:12px; display:block; padding:0px;}
@@ -1497,7 +1497,7 @@ input[name="shape_padding[]"]:disabled									{	opacity: 0.5}
 .reverse_input_wrapper					{	border-bottom:1px solid #999;}
 .reverse_input_text						{	font-size:11px;color:#666;font-weight: 400; display: inline-block !important; margin-right:7px;}
 
-
+select[name="rev_show_the_slides"] 		{	max-width:150px;}
 
 /*********** RTL BASED SETTINGS ****************/
 

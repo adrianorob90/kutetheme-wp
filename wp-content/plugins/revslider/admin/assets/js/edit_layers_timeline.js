@@ -913,13 +913,20 @@ var tpLayerTimelinesRev = new function(){
 			bordercolor = deform["border-color"],
 			bordertrans = deform["border-transparency"];
 
+
 		if(is_demo && params.alias == 'First'){
 			
 		}
-
+		
 		// REMOVE SPLITS
-		if (inlayer.data('mySplitText') != undefined)
+		if (inlayer.data('mySplitText') != undefined) {
 			try{inlayer.data('mySplitText').revert();} catch(e) {}
+			if (params.type=="text" || params.type=="button") {
+				inlayer.html(params.text);
+				u.makeCurrentLayerRotatable();
+			}
+			inlayer.removeData('mySplitText')
+		}
 
 		// BACKGROUND OPACITY
 		if (Number(bgtrans)<1) {
@@ -984,7 +991,7 @@ var tpLayerTimelinesRev = new function(){
 		caption.css({width:mwidth, height:mheight});
 		
 		var fw = parseInt(u.getVal(ss,"font-weight"),0) || 400;
-
+		
 		
 		punchgs.TweenLite.set(inlayer, {	 clearProps:"all"});
 		punchgs.TweenLite.set(inlayer, {	
@@ -1019,7 +1026,7 @@ var tpLayerTimelinesRev = new function(){
 											 fontStyle:deformidle["font-style"],
 											 textDecoration:deform["text-decoration"],
 											 borderColor:bordercolor,
-											 borderRadius:parseInt(deform["border-radius"][0],0)+"px "+parseInt(deform["border-radius"][1],0)+"px "+parseInt(deform["border-radius"][2],0)+"px "+parseInt(deform["border-radius"][3],0)+"px",
+											 borderRadius:deform["border-radius"][0]+" "+deform["border-radius"][1]+" "+deform["border-radius"][2]+" "+deform["border-radius"][3],
 											 borderWidth:parseInt(deform["border-width"],0)+"px",
 											 borderStyle:deform["border-style"],
 											 whiteSpace:u.getVal(params,"whitespace"),

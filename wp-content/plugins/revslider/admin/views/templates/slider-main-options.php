@@ -997,6 +997,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									<span class="relpos"><input id="height" name="height" type="text" style="width:120px" class="textbox-small" value="<?php echo $height;?>"><span class="pxfill">px</span></span>
 									<span class="tp-clearfix" style="margin-bottom:15px"></span>
 									<span class="description"><?php _e('Specify a layer grid size above', REVSLIDER_TEXTDOMAIN);?></span>
+									<span class="description" style="padding:20px 20px 0px; box-sizing:border-box;-moz-box-sizing:border-box;"><?php _e('Slider is always Linear Responsive till next Defined Grid size has been hit.', REVSLIDER_TEXTDOMAIN);?></span>
 								</div>
 							</div>
 							<div class="rsp-macbook-view rsp-view-cell">
@@ -1031,6 +1032,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									<span style="text-align:left">
 										<input type="checkbox"  class="tp-moderncheckbox" id="enable_custom_size_notebook" name="enable_custom_size_notebook" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'enable_custom_size_notebook', 'off'), "on");?>>
 									</span>
+									<span class="description" style="padding:0px 20px 0px; box-sizing:border-box;-moz-box-sizing:border-box;"><?php _e('<br>If not defined, the next bigger Layer Grid Size is the basic of Linear Responsive calculations.', REVSLIDER_TEXTDOMAIN);?></span>
 								</div>
 							</div>
 							<div class="rsp-tablet-view rsp-view-cell">
@@ -1064,6 +1066,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									<span style="text-align:left">
 										<input type="checkbox"  class="tp-moderncheckbox" id="enable_custom_size_tablet" name="enable_custom_size_tablet" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'enable_custom_size_tablet', 'off'), "on");?>>
 									</span>
+									<span class="description" style="padding:0px 20px 0px; box-sizing:border-box;-moz-box-sizing:border-box;"><?php _e('<br>If not defined, the next bigger Layer Grid Size is the basic of Linear Responsive calculations.', REVSLIDER_TEXTDOMAIN);?></span>
 								</div>
 
 							</div>
@@ -1099,6 +1102,7 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									<span style="text-align:left">
 										<input type="checkbox"  class="tp-moderncheckbox" id="enable_custom_size_iphone" name="enable_custom_size_iphone" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'enable_custom_size_iphone', 'off'), "on");?>>
 									</span>
+									<span class="description" style="padding:0px 20px 0px; box-sizing:border-box;-moz-box-sizing:border-box;"><?php _e('<br>If not defined, the next bigger Layer Grid Size is the basic of Linear Responsive calculations.', REVSLIDER_TEXTDOMAIN);?></span>
 								</div>
 							</div>
 							<div style="clear:both;float:none"></div>
@@ -1110,39 +1114,56 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 						<!-- VISUAL ADVANCED SIZING -->
 						<div class="inside" id="visual-sizing" style="display:none; padding:25px 20px;">
 							<div id="fullscreen-advanced-sizing">
-								<div style="text-align:center">
-									<span class="rs-preset-label noopacity " style="display:inline-block;margin-right:20px"><?php _e("FullScreen Align Force", REVSLIDER_TEXTDOMAIN);?> </span>
-									<input type="checkbox"  class="tp-moderncheckbox withlabel" id="full_screen_align_force" name="full_screen_align_force" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'full_screen_align_force', 'off'), "on");?>>
-									<span class="description"><?php _e("Layers align within the full slider instead of the layer grid.", REVSLIDER_TEXTDOMAIN);?></span>
-								</div>
-								<div style="clear:both;float:none; height:25px"></div>
+								<span class="one-half-container" style="vertical-align:top">
+									
+									<span class="rs-preset-label noopacity "><?php _e("Minimal Height of Slider (Optional)", REVSLIDER_TEXTDOMAIN);?></span>
+									<span style="clear:both;float:none; height:25px;display:block"></span>
+								
+									<span style="text-align:left; display:none;">
+										<span class="rs-preset-label noopacity " style="display:inline-block;margin-right:20px"><?php _e("FullScreen Align Force", REVSLIDER_TEXTDOMAIN);?> </span>
+										<input type="checkbox"  class="tp-moderncheckbox withlabel" id="full_screen_align_force" name="full_screen_align_force" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'full_screen_align_force', 'off'), "on");?>>
+										<span class="description"><?php _e("Layers align within the full slider instead of the layer grid.", REVSLIDER_TEXTDOMAIN);?></span>
+									</span>
+									
+									<span class="slidertitlebox limitedtablebox">
+										<span class="one-half-container">
+											<input placeholder="<?php _e("Min. Height", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_min_height" name="fullscreen_min_height" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_min_height", "");?>">
+											<i class="input-edit-icon"></i>
+											<span class="description"><?php _e("The minimum height of the Slider in FullScreen mode.", REVSLIDER_TEXTDOMAIN);?></span>
+										</span>
+									</span>
+									<span style="clear:both;float:none; height:25px;display:block"></span>
 
-								<span class="rs-preset-label noopacity "><?php _e("Increase/Decrease Fullscreen Height", REVSLIDER_TEXTDOMAIN);?></span>
-								<div style="clear:both;float:none; height:25px"></div>
+									<span style="text-align:left; padding:0px 20px;">
+										<span class="rs-preset-label noopacity " style="display:inline-block;margin-right:20px"><?php _e("Disable Force FullWidth", REVSLIDER_TEXTDOMAIN);?> </span>
+										<input type="checkbox"  class="tp-moderncheckbox withlabel" id="autowidth_force" name="autowidth_force" data-unchecked="off" <?php checked(RevSliderFunctions::getVal($arrFieldsParams, 'autowidth_force', 'off'), "on");?>>
+										<span class="description" style="padding:0px 20px;"><?php _e("Disable the FullWidth Force function, and allow to float the Fullheight slider horizontal.", REVSLIDER_TEXTDOMAIN);?></span>
+									</span>
 
-								<div class="slidertitlebox limitedtablebox">
-									<span class="one-full-container">
-										<input placeholder="<?php _e("Containers", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_offset_container" name="fullscreen_offset_container" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_offset_container", "");?>">
-										<i class="input-edit-icon"></i>
-										<span class="description"><?php _e("Example: #header or .header, .footer, #somecontainer | Height of Slider will be decreased with the height of these Containers to fit perfect in the screen.", REVSLIDER_TEXTDOMAIN);?></span>
+								</span>
+
+								<span class="one-half-container" style="vertical-align:top">
+									<span class="rs-preset-label noopacity "><?php _e("Increase/Decrease Fullscreen Height (Optional)", REVSLIDER_TEXTDOMAIN);?></span>
+									<span style="clear:both;float:none; height:25px;display:block"></span>
+
+									<span class="slidertitlebox limitedtablebox">
+										<span class="one-full-container">
+											<input placeholder="<?php _e("Containers", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_offset_container" name="fullscreen_offset_container" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_offset_container", "");?>">
+											<i class="input-edit-icon"></i>
+											<span class="description"><?php _e("Example: #header or .header, .footer, #somecontainer | Height of Slider will be decreased with the height of these Containers to fit perfect in the screen.", REVSLIDER_TEXTDOMAIN);?></span>
+										</span>
 									</span>
-								</div>
-								<div style="clear:both;float:none; height:25px"></div>
-								<div class="slidertitlebox limitedtablebox">
-									<span class="one-full-container">
-										<input placeholder="<?php _e("PX or %", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_offset_size" name="fullscreen_offset_size" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_offset_size", "");?>">
-										<i class="input-edit-icon"></i>
-										<span class="description"><?php _e("Decrease/Increase height of Slider. Can be used with px and %. Positive/Negative values allowed. Example: 40px or 10%", REVSLIDER_TEXTDOMAIN);?></span>
+									<span style="clear:both;float:none; height:25px;display:block"></span>
+									<span class="slidertitlebox limitedtablebox">
+										<span class="one-full-container">
+											<input placeholder="<?php _e("PX or %", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_offset_size" name="fullscreen_offset_size" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_offset_size", "");?>">
+											<i class="input-edit-icon"></i>
+											<span class="description"><?php _e("Decrease/Increase height of Slider. Can be used with px and %. Positive/Negative values allowed. Example: 40px or 10%", REVSLIDER_TEXTDOMAIN);?></span>
+										</span>
 									</span>
-								</div>
-								<div style="clear:both;float:none; height:25px"></div>
-								<div class="slidertitlebox limitedtablebox">
-									<span class="one-half-container">
-										<input placeholder="<?php _e("Min. Height", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" id="fullscreen_min_height" name="fullscreen_min_height" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "fullscreen_min_height", "");?>">
-										<i class="input-edit-icon"></i>
-										<span class="description"><?php _e("The minimum height of the Slider in FullScreen mode.", REVSLIDER_TEXTDOMAIN);?></span>
-									</span>
-								</div>
+									<span style="clear:both;float:none; height:25px;display:block"></span>
+									
+								</span>
 							</div>
 							<div id="normal-advanced-sizing">
 
@@ -1162,11 +1183,11 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									</span>
 									
 									<span class="one-third-container" style="vertical-align:top">
-										<input placeholder="<?php _e("Min. Height", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" style="padding:11px 45px 11px 15px; line-height:26px" id="min_height" name="min_height" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "min_height", "");?>">
+										<input placeholder="<?php _e("Min. Heigh (Optional)", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" style="padding:11px 45px 11px 15px; line-height:26px" id="min_height" name="min_height" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "min_height", "");?>">
 										<i class="input-edit-icon"></i>
 										<span class="description"><?php _e("The minimum height of the Slider in FullWidth or Auto mode.", REVSLIDER_TEXTDOMAIN);?></span>
 										<span class="rs-show-on-auto">
-											<input placeholder="<?php _e("Max. Width", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" style="padding:11px 45px 11px 15px; margin-top: 20px; line-height:26px" id="max_width" name="max_width" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "max_width", "");?>">
+											<input placeholder="<?php _e("Max. Width (Optional)", REVSLIDER_TEXTDOMAIN);?>" type="text" class="text-sidebar" style="padding:11px 45px 11px 15px; margin-top: 20px; line-height:26px" id="max_width" name="max_width" value="<?php echo RevSliderFunctions::getVal($arrFieldsParams, "max_width", "");?>">
 											<i class="input-edit-icon" style="top: 99px;"></i>
 											<span class="description"><?php _e("The maximum width of the Slider in Auto mode.", REVSLIDER_TEXTDOMAIN);?></span>
 										</span>
@@ -1184,6 +1205,8 @@ if(!isset($linksEditSlides)) $linksEditSlides = '';
 									a.slideDown(200);
 									jQuery('#removethisbuttonarea').remove();
 								})
+
+								jQuery('#show_advanced_navigation').click();
 
 								jQuery('input[name="slider_type"]').on("change",function() {
 									var s_fs = jQuery('#slider_type_3').attr("checked")==="checked";

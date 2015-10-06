@@ -895,6 +895,7 @@ var UniteAdminRev = new function(){
 		jQuery("#input_disable_on_mobile").prop("checked","");
 		jQuery("#input_video_cover").prop("checked","");
 		jQuery("#input_video_stopallvideo").prop("checked","");
+		jQuery("#input_video_allowfullscreen").prop("checked","");
 		jQuery("#input_video_dotted_overlay option[value='none']").attr("selected",true);
 		jQuery("#input_video_ratio option[value='16:9']").attr("selected",true);
 		jQuery('#input_video_preload option[value="auto"]').attr("selected",true);
@@ -915,6 +916,7 @@ var UniteAdminRev = new function(){
 		RevSliderSettings.onoffStatus(jQuery("#input_disable_on_mobile"));
 		RevSliderSettings.onoffStatus(jQuery("#input_video_cover"));
 		RevSliderSettings.onoffStatus(jQuery("#input_video_stopallvideo"));
+		RevSliderSettings.onoffStatus(jQuery("#input_video_allowfullscreen"));
 		RevSliderSettings.onoffStatus(jQuery("#input_use_poster_on_mobile"));
 		
 		jQuery('#button-video-add').hide();
@@ -1062,6 +1064,11 @@ var UniteAdminRev = new function(){
 			jQuery("#input_video_stopallvideo").prop("checked","checked");
 		else
 			jQuery("#input_video_stopallvideo").prop("checked","");
+
+		if(data.allowfullscreen && data.allowfullscreen == true)
+			jQuery("#input_video_allowfullscreen").prop("checked","checked");
+		else
+			jQuery("#input_video_allowfullscreen").prop("checked","");
 		
 		if(data.preload){
 			jQuery("#input_video_preload option").each(function(){
@@ -1135,6 +1142,7 @@ var UniteAdminRev = new function(){
 		RevSliderSettings.onoffStatus(jQuery('#input_disable_on_mobile'));
 		RevSliderSettings.onoffStatus(jQuery('#input_video_cover'));
 		RevSliderSettings.onoffStatus(jQuery('#input_video_stopallvideo'));
+		RevSliderSettings.onoffStatus(jQuery('#input_video_allowfullscreen'));
 		RevSliderSettings.onoffStatus(jQuery('#input_use_poster_on_mobile'));
 		RevSliderSettings.onoffStatus(jQuery('#input_video_show_cover_pause'));
 		
@@ -1162,6 +1170,7 @@ var UniteAdminRev = new function(){
 		obj.disable_on_mobile = jQuery("#input_disable_on_mobile").is(":checked");
 		obj.cover = jQuery("#input_video_cover").is(":checked");
 		obj.stopallvideo = jQuery("#input_video_stopallvideo").is(":checked");
+		obj.allowfullscreen = jQuery("#input_video_allowfullscreen").is(":checked");
 		obj.dotted = jQuery("#input_video_dotted_overlay option:selected").val();
 		obj.preload = jQuery("#input_video_preload option:selected").val();
 		obj.videospeed = jQuery("#input_video_speed option:selected").val();

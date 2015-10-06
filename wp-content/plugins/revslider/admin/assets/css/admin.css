@@ -7,6 +7,8 @@
 
 html				{	background: #ddd !important}
 
+#tp-bgyoutubesrc,
+#tp-bgvimeosrc,
 .text-selectable	{	-webkit-touch-callout: all !important;
 					    -webkit-user-select: all !important;
 					    -khtml-user-select: all !important;
