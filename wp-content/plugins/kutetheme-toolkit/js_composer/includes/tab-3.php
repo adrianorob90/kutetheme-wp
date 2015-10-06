@@ -24,7 +24,7 @@ if( ! $is_phone ):
         ?>
             <li>
                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                    <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url( $l->ID ) ); ?>" />
+                    <?php echo wp_get_attachment_image($l->ID,'full');?>
                 </a>
             </li>
         <?php
@@ -78,13 +78,7 @@ endif;
             <!-- Brand and toggle get grouped for better mobile display -->
               <div class="navbar-brand">
                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                    <?php 
-                    if( isset( $icon ) && $icon ): 
-                        $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
-                        $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
-                    endif; 
-                    ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ) ; ?>" />
+                    <?php echo wp_get_attachment_image( $icon,'full'); ?>
                     <?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
               </div>

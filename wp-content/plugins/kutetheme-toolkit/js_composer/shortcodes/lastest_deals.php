@@ -312,7 +312,6 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                             }
                             ?>
                             <li>
-                               <!--<input class="data-time" type="hidden" <?php do_action('woocommerce_datatime_sale_product', $id, $post) ?> />-->
         					   <?php wc_get_template_part( 'content', 'product-lastest-deal' );?>
                             </li>
                         <?php
@@ -322,11 +321,16 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                      ?>
                 </ul>
                 <?php
-                    $y = date('Y',$max);
-                    $m = date('m',$max);
-                    $d = date('d',$max);
+                    if( $max > 0 ){
+                        $y = date('Y',$max);
+                        $m = date('m',$max);
+                        $d = date('d',$max);
+                        ?>
+                        <input class="max-time" type="hidden" value="" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" />
+                        <?php
+                    }
+                    
                 ?>
-                <input class="max-time" type="hidden" value="" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" />
             </div>
         </div>
         <?php
