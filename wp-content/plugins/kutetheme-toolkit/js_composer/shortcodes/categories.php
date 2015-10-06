@@ -192,12 +192,7 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                     $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
 
             		if ( $thumbnail_id ) {
-            			$image = wp_get_attachment_image_src( $thumbnail_id, 'full' );
-                        if( is_array($image) && isset($image[0]) && $image[0] ){
-                            $image = $image[0];
-                        }else{
-                            $image = "";
-                        }
+                        $image = wp_get_attachment_image( intval( $thumbnail_id ),'full', 0, array( 'class' => 'hot-cate-img' ) );
             		} else {
             			$image = "";
             		}
@@ -214,7 +209,7 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                             <div class="div-2" >
                                 <?php if($image) : ?>
                                 <a href="<?php echo esc_url( $term_link ); ?>">
-                                    <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" class="hot-cate-img" />
+                                    <?php echo apply_filters( 'kt_hot_category_image_' . $term->slug , $image) ?>
                                 </a>
                                 <?php endif; ?>
                             </div>
