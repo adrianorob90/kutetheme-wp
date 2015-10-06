@@ -41,6 +41,7 @@ class RevSliderTemplate {
 			$username = '';
 			$code = '';
 		}
+
 		
 		$rattr = array(
 			'api' => urlencode($api_key),
@@ -56,7 +57,8 @@ class RevSliderTemplate {
 		if(wp_mkdir_p( $upload_dir['basedir'].$this->templates_path ) ) { //check here to not flood the server
 			$request = wp_remote_post($this->templates_url.$this->templates_download, array(
 				'user-agent' => 'WordPress/'.$wp_version.'; '.get_bloginfo('url'),
-				'body' => $rattr
+				'body' => $rattr,
+				'timeout' => 45 //DIRK 
 			));
 			
 			if(!is_wp_error($request)) {

@@ -160,6 +160,11 @@
 				<input type="checkbox" class="checkbox_video_dialog tp-moderncheckbox" id="input_video_stopallvideo" >
 			</div>
 
+			<div class="mb10 hide-for-vimeo">
+				<label for="input_video_allowfullscreen"><?php _e('Allow FullScreen:', REVSLIDER_TEXTDOMAIN); ?></label>
+				<input type="checkbox" class="checkbox_video_dialog tp-moderncheckbox" id="input_video_allowfullscreen" >
+			</div>
+
 			<div class="mb10">	
 				<label for="input_video_nextslide"><?php _e('Next Slide On End:', REVSLIDER_TEXTDOMAIN); ?></label>
 				<input type="checkbox" class="checkbox_video_dialog tp-moderncheckbox" id="input_video_nextslide" >

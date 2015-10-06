@@ -177,6 +177,7 @@ $video_dotted_overlay = RevSliderFunctions::getVal($slideParams, 'video_dotted_o
 $video_ratio = RevSliderFunctions::getVal($slideParams, 'video_ratio', 'none');
 $video_loop = RevSliderFunctions::getVal($slideParams, 'video_loop', 'none');
 $video_nextslide = RevSliderFunctions::getVal($slideParams, 'video_nextslide', 'off');
+$video_allowfullscreen = RevSliderFunctions::getVal($slideParams, 'video_allowfullscreen', 'on');
 $video_force_rewind = RevSliderFunctions::getVal($slideParams, 'video_force_rewind', 'on');
 $video_speed = RevSliderFunctions::getVal($slideParams, 'video_speed', '1');
 $video_mute = RevSliderFunctions::getVal($slideParams, 'video_mute', 'on');

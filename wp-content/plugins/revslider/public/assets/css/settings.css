@@ -595,7 +595,7 @@ img.tp-slider-alternative-image	{
 .rev-btn.rev-uppercase,
 .rev-btn.rev-uppercase:visited			{ 	text-transform: uppercase; letter-spacing: 1px; font-size: 15px; font-weight: 900; }
 
-.rev-btn.rev-withicon i					{ 	font-size: 15px; font-weight: normal; position: relative; top: 0px; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; -ms-transition: all 0.2s ease-out !important; margin-left:10px !importan;}
+.rev-btn.rev-withicon i					{ 	font-size: 15px; font-weight: normal; position: relative; top: 0px; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; -ms-transition: all 0.2s ease-out !important; margin-left:10px !important;}
 
 .rev-btn.rev-hiddenicon i				{ 	font-size: 15px; font-weight: normal; position: relative; top: 0px; -webkit-transition: all 0.2s ease-out !important; -moz-transition: all 0.2s ease-out !important; -o-transition: all 0.2s ease-out !important; -ms-transition: all 0.2s ease-out !important; opacity: 0; margin-left:0px !important; width:0px !important;  }
 .rev-btn.rev-hiddenicon:hover i			{   opacity: 1 !important; margin-left:10px !important; width:auto !important;}
@@ -895,6 +895,7 @@ img.tp-slider-alternative-image	{
 
 
 
+
 /******************************
 	-	LOADER FORMS	-
 ********************************/
@@ -1116,7 +1117,7 @@ img.tp-slider-alternative-image	{
 .tp-bannertimer					{	background:#000; background:rgba(0,0,0,0.15); height:5px;}
 
 
-.tparrows						{	cursor:pointer; background:#000; background:rgba(0,0,0,0.5); width:40px;height:40px;position:absolute; display:block; z-index:100; }
+.tparrows						{	cursor:pointer; background:#000; background:rgba(0,0,0,0.5); width:40px;height:40px;position:absolute; display:block; z-index:1000; }
 .tparrows:hover 				{	background:#000;}
 .tparrows:before				{	font-family: "revicons"; font-size:15px; color:#fff; display:block; line-height: 40px; text-align: center;}
 .tparrows.tp-leftarrow:before	{	content: '\e824'; }

@@ -335,10 +335,10 @@ $startanims = $operations->getArrAnimations();
 
 								<!-- BORDER RADIUS -->
 								<i class="rs-mini-layer-icon rs-icon-borderradius rs-toolbar-icon tipsy_enabled_top" title="<?php _e("Border Radius (px)",REVSLIDER_TEXTDOMAIN); ?>" style="margin-right:10px"></i>
-								<input data-suffix="px" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0"  title="<?php _e("Border Radius Top Left",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
-								<input data-suffix="px" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Top Right",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
-								<input data-suffix="px" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Bottom Right",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
-								<input data-suffix="px" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Bottom Left",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
+								<input data-suffix="px" data-suffixalt="%" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0"  title="<?php _e("Border Radius Top Left",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
+								<input data-suffix="px" data-suffixalt="%" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Top Right",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
+								<input data-suffix="px" data-suffixalt="%" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Bottom Right",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
+								<input data-suffix="px" data-suffixalt="%" class="rs-staticcustomstylechange corn-input text-sidebar rs-layer-input-field tipsy_enabled_top" data-steps="1" data-min="0" title="<?php _e("Border Radius Bottom Left",REVSLIDER_TEXTDOMAIN); ?>" style="width:50px" type="text" name="css_border-radius[]" value="">
 							</span>
 
 						

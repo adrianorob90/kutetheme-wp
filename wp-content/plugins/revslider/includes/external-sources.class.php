@@ -132,8 +132,8 @@ class RevSliderFacebook {
 	 */
 	public function get_photo_feed($user,$app_id,$app_secret,$item_count=10){
 		$oauth = wp_remote_fopen("https://graph.facebook.com/oauth/access_token?type=client_cred&client_id=".$app_id."&client_secret=".$app_secret);
-		$url = "https://graph.facebook.com/$user/feed?".$oauth;
-		
+		$url = "https://graph.facebook.com/$user/feed?".$oauth."&fields=id,from,message,picture,link,name,icon,privacy,type,status_type,object_id,application,created_time,updated_time,is_hidden,is_expired,likes,comments";
+
 		$transient_name = 'revslider_' . md5($url);
 		if ($this->transient_sec > 0 && false !== ($data = get_transient( $transient_name)))
 			return ($data);

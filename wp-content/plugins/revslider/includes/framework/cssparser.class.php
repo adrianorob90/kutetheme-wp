@@ -529,7 +529,7 @@ class RevSliderCssParser{
 			
 			if(!isset($setting['type'])) $setting['type'] = 'text';
 			
-			$arr[ucfirst($setting['version'])][] = array('label' => trim(str_replace('.tp-caption.', '', $style['handle'])), 'type' => $setting['type']);
+			if(array_key_exists('version', $setting) && isset($setting['version'])) $arr[ucfirst($setting['version'])][] = array('label' => trim(str_replace('.tp-caption.', '', $style['handle'])), 'type' => $setting['type']);
 		}
 
 		$sorted = array();

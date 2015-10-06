@@ -11,7 +11,7 @@ define("REVSLIDER_TEXTDOMAIN","revslider");
 
 class RevSliderGlobals{
 
-	const SLIDER_REVISION = '5.0.7';
+	const SLIDER_REVISION = '5.0.9';
 	const TABLE_SLIDERS_NAME = "revslider_sliders";
 	const TABLE_SLIDES_NAME = "revslider_slides";
 	const TABLE_STATIC_SLIDES_NAME = "revslider_static_slides";
@@ -23,7 +23,7 @@ class RevSliderGlobals{
 	const FIELDS_SLIDE = "slider_id,slide_order,params,layers";
 	const FIELDS_SLIDER = "title,alias,params";
 
-	const YOUTUBE_EXAMPLE_ID = "T8--OggjJKQ";
+	const YOUTUBE_EXAMPLE_ID = "iyuxFo-WBiU";
 	const DEFAULT_YOUTUBE_ARGUMENTS = "hd=1&amp;wmode=opaque&amp;showinfo=0&amp;ref=0;";
 	const DEFAULT_VIMEO_ARGUMENTS = "title=0&amp;byline=0&amp;portrait=0&amp;api=1";
 	const LINK_HELP_SLIDERS = "http://www.themepunch.com/revslider-doc/slider-revolution-documentation/";

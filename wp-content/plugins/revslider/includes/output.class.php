@@ -1866,6 +1866,10 @@ class RevSliderOutput {
 							$add_data .= ($v_controls) ? ' data-videocontrols="none"' : ' data-videocontrols="controls"';
 							$add_data .=  ' data-videowidth="'.$videoWidth.'" data-videoheight="'.$videoHeight.'"';
 							
+							if(is_ssl()){
+								$urlPoster = str_replace("http://", "https://", $urlPoster);
+							}
+							
 							if(!empty($urlPoster)) $add_data .= ' data-videoposter="'.$urlPoster.'"';
 							if(!empty($urlOgv)) $add_data .= ' data-videoogv="'.$urlOgv.'"';
 							if(!empty($urlWebm)) $add_data .= ' data-videowebm="'.$urlWebm.'"';
@@ -1935,6 +1939,9 @@ class RevSliderOutput {
 						$htmlVideoNextSlide = '			data-nextslideatend="true"'." \n";
 
 					$videoThumbnail = (isset($videoData["previewimage"])) ? $videoData["previewimage"] : '';
+					if(is_ssl()){
+						$videoThumbnail = str_replace("http://", "https://", $videoThumbnail);
+					}
 
 					if(trim($videoThumbnail) !== '') $htmlVideoThumbnail = '			data-videoposter="'.$videoThumbnail.'"'." \n";
 					if(!empty($videoThumbnail)){
@@ -1950,7 +1957,10 @@ class RevSliderOutput {
 					$htmlDisableOnMobile = ($disable_on_mobile)	? '			data-disablevideoonmobile="1"'." \n" : '';
 					$stopallvideo = RevSliderFunctions::getVal($videoData, "stopallvideo");
 					$stopallvideo = RevSliderFunctions::strToBool($stopallvideo);
+					$allowfullscreenvideo = RevSliderFunctions::getVal($videoData, "allowfullscreen");
+					$allowfullscreenvideo = RevSliderFunctions::strToBool($allowfullscreenvideo);
 					$htmlDisableOnMobile .= ($stopallvideo)	? '			data-stopallvideos="true"'." \n" : '';
+					$htmlDisableOnMobile .= ($allowfullscreenvideo)	? '			data-allowfullscreenvideo="true"'." \n" : '';
 					
 				break;
 			}
@@ -3313,6 +3323,7 @@ class RevSliderOutput {
 						$sl_layout = 'auto';}?>
 					e.sliderLayout = "<?php echo $sl_layout; ?>";
 <?php if($this->slider->getParam("slider_type") == "fullscreen"){ ?>
+					e.fullScreenAutoWidth='<?php echo esc_attr($this->slider->getParam("autowidth_force","off")); ?>';
 					e.fullScreenAlignForce='<?php echo esc_attr($this->slider->getParam("full_screen_align_force","off")); ?>';
 					e.fullScreenOffsetContainer= '<?php echo esc_attr($this->slider->getParam("fullscreen_offset_container","")); ?>';
 					e.fullScreenOffset='<?php echo esc_attr($this->slider->getParam("fullscreen_offset_size","")); ?>';
@@ -3761,7 +3772,8 @@ class RevSliderOutput {
 
 			echo '						autoHeight:"'. esc_attr($this->slider->getParam("auto_height", 'off')). '",'."\n";
 			
-			if($this->slider->getParam("slider_type") == "fullscreen"){
+			if($this->slider->getParam("slider_type") == "fullscreen"){				
+				echo '						fullScreenAutoWidth:"'. esc_attr($this->slider->getParam("autowidth_force","off")) .'",'."\n";
 				echo '						fullScreenAlignForce:"'. esc_attr($this->slider->getParam("full_screen_align_force","off")) .'",'."\n";
 				echo '						fullScreenOffsetContainer: "'. esc_attr($this->slider->getParam("fullscreen_offset_container","")) .'",'."\n";
 				echo '						fullScreenOffset: "'. esc_attr($this->slider->getParam("fullscreen_offset_size","")) .'",'."\n";

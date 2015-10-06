@@ -922,8 +922,7 @@ var UniteCssEditorRev = new function(){
 		
 		//check if suffix is available, if yes, check both
 		var suffix = '';
-		if(typeof(jQuery(selector).data('suffix')) !== 'undefined') suffix = jQuery(selector).data('suffix');
-		
+		if(typeof(jQuery(selector).data('suffix')) !== 'undefined') suffix = jQuery(selector).data('suffix');		
 		if(typeof(obj[handle]) === 'undefined'){ //check if default value, if not then do differentthandefault
 			//check def with value
 			if(def == value || def+suffix == value){

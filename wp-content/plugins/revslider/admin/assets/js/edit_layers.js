@@ -1872,7 +1872,6 @@ var UniteLayersRev = new function(){
 
 	// SET SUFFIX FOR INPUT FIELD OR LEAVE THE CURRENT VALUE 
 	var specOrVal = function(putin,possiblevalues,suffix) {			
-
 		var result = jQuery.inArray(putin,possiblevalues)>=0 ? putin : putin===undefined || !jQuery.isNumeric(parseInt(putin,0)) || putin.length===0 ? "" : parseInt(putin,0)+suffix;		
 		return result;
 	}
@@ -2091,15 +2090,31 @@ var UniteLayersRev = new function(){
 			var inp = jQuery(this),
 				cv = parseFloat(inp.val()),
 				min = parseFloat(inp.data("min")),
-				max = parseFloat(inp.data("max"));
+				max = parseFloat(inp.data("max")),
+				lsuffix = inp.val().slice(-1) || "",
+				ltsuffix = inp.val().slice(-2) || "",
+				usuffix = inp.data('suffix'),
+				asuffix = inp.data('suffixalt');
 			
-			if (inp.data('suffix')!=undefined) {
+			
+			if (usuffix!=undefined) {				
 				if (jQuery.isNumeric(cv) && cv > -9999999 && cv<9999999 ) {
 					if (min!=undefined && cv<min) cv = min;
 					if (min!=undefined && cv>max) cv = max;					
 					if (isNaN(cv)) cv = 0;
 					cv = Math.round(cv*100)/100;
-					inp.val(cv+inp.data('suffix'));
+
+					if (asuffix==undefined)
+						inp.val(cv+usuffix);
+					else {						
+						if (lsuffix == asuffix)
+							inp.val(cv+lsuffix)
+						else
+						if (ltsuffix == asuffix)
+							inp.val(cv+ltsuffix)
+						else
+							inp.val(cv+usuffix);
+					}
 				}
 			}
 			
@@ -4543,11 +4558,11 @@ var UniteLayersRev = new function(){
 	// UPDATE LAYER TEXT ON WRITE && UPDATE TITLE OF LAYER
 	var updateLayerTextField = function(event,timerobj,txt) {
 		var jobj = getjQueryLayer();
-		if (selectedLayerSerial!=-1 && jobj.length>0) jobj.find('.innerslide_layer.tp-caption').html(txt);
+		
+		if (selectedLayerSerial!=-1 && jobj.length>0) jobj.find('.innerslide_layer.tp-caption').html(txt);			
 		var li = timerobj.closest("li");
 		txt = u.getSortboxText(txt);
-		li.find('.timer-layer-text').html(txt);
-
+		li.find('.timer-layer-text').html(txt);				
 	}
 
 	/**
@@ -4666,10 +4681,11 @@ var UniteLayersRev = new function(){
 			break;
 			default:
 			case "text":				
-			case "button":				
+			case "button":		
+				
 				htmlLayer.find('.innerslide_layer').html(objLayer.text);
 				t.makeCurrentLayerRotatable(serial);
-				t.updateHtmlLayerCorners(htmlLayer,objLayer);
+				t.updateHtmlLayerCorners(htmlLayer,objLayer);				
 			break;
 			/*case 'no_edit':
 				
@@ -4801,9 +4817,8 @@ var UniteLayersRev = new function(){
 		
 		objUpdate['lazy-load'] = jQuery('#layer-lazy-loading option:selected').val();
 		objUpdate['image-size'] = jQuery('#layer-image-size option:selected').val();
-		
+				
 		objUpdate.text = jQuery("#layer_text").val();
-
 		
 		objUpdate.alias = jQuery('#layer_sort_'+selectedLayerSerial+" .timer-layer-text").val();
 
@@ -4811,6 +4826,7 @@ var UniteLayersRev = new function(){
 		if (jQuery('#layer_text').data('new_content'))
 			jQuery('#layer_sort_'+selectedLayerSerial+" .timer-layer-text").val(objUpdate.text);
 
+		
 		jQuery('#layer_quicksort_'+selectedLayerSerial+" .add-layer-txt").html(objUpdate.alias);
 		
 		objUpdate = t.setVal(objUpdate, 'top', Number(parseInt(jQuery("#layer_top").val(),0)));
@@ -5137,11 +5153,14 @@ var UniteLayersRev = new function(){
 		//objUpdate.type = jQuery('#layer_type option:selected').val();
 		
 		
+
 		//update object - Write back changes in ObjArray
 		updateCurrentLayer(objUpdate, ['layer_action']);
 
+
 		//update html layers
 		updateHtmlLayersFromObject();
+
 
 		//update html sortbox
 		updateHtmlSortboxFromObject();
@@ -5156,7 +5175,7 @@ var UniteLayersRev = new function(){
 		//update the timeline with the new data
 		u.updateCurrentLayerTimeline();
 		
-		t.set_cover_mode();
+		t.set_cover_mode();		
 
 	}
 
@@ -5211,8 +5230,8 @@ var UniteLayersRev = new function(){
 		var objLayer = t.getLayer(serial, isDemo);
 		var html = t.makeLayerHtml(serial,objLayer, isDemo)
 		var htmlInner = jQuery(html).html();
-		var htmlLayer = t.getHtmlLayerFromSerial(serial, isDemo);
-
+		var htmlLayer = t.getHtmlLayerFromSerial(serial, isDemo);		
+		
 		htmlLayer.html(htmlInner);
 	}
 
@@ -5521,6 +5540,7 @@ var UniteLayersRev = new function(){
 		jQuery('.rs-internal-class-wrapper').text(objLayer.internal_class);
 		
 		jQuery('#layer_caption').val(objLayer.style);
+
 		jQuery('#layer_text').val(UniteAdminRev.stripslashes(objLayer.text));				
 		jQuery('#layer_text').data('new_content',false)
 		jQuery('#layer_alt_option option[value="'+objLayer.alt_option+'"]').attr('selected', 'selected');

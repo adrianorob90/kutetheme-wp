@@ -1,13 +1,14 @@
 /********************************************
  * REVOLUTION 5.0 EXTENSION - LAYER ANIMATION
- * @version: 1.1.0 (01.09.2015)
+ * @version: 1.1.2 (16.09.2015)
  * @requires jquery.themepunch.revolution.js
  * @author ThemePunch
 *********************************************/
 
 (function($) {
 
-var _R = jQuery.fn.revolution;
+var _R = jQuery.fn.revolution,
+	_ISM = _R.is_mobile();
 
 ///////////////////////////////////////////
 // 	EXTENDED FUNCTIONS AVAILABLE GLOBAL  //
@@ -187,8 +188,7 @@ jQuery.extend(true,_R, {
 				_nc.data('videoposter',_nc.data('thumbimage'))
 				
 		// FALL BACK TO NORMAL IMAGE IF NO VIDEO SHOULD BE PLAYED ON MOBILE DEVICES
-		if (_nc.hasClass("tp-videolayer") &&  _nc.data('videoposter')!=undefined && _nc.data('posterOnMobile')=="on" && _ISM) {
-
+		if (_nc.hasClass("tp-videolayer") &&  _nc.data('videoposter')!=undefined && (_nc.data('posterOnMobile')=="on"  || _nc.data('posteronmobile')=="on") && _ISM) {			
 			var vidw =  makeArray(_nc.data('videowidth'),opt)[opt.curWinRange] || makeArray(_nc.data('videowidth'),opt) || "auto",
 				vidh =  makeArray(_nc.data('videoheight'),opt)[opt.curWinRange] || makeArray(_nc.data('videoheight'),opt) || "auto";					
 			
@@ -638,7 +638,10 @@ jQuery.extend(true,_R, {
 			  	_R.animcompleted(_nc,opt);
 			  });
 
-
+			  // SHOW ELEMENTS WITH SLIDEENTER A BIT LATER FIRST ! 
+			  if (($start=="sliderenter" && opt.overcontainer))			
+			  	mdelay = 0.6;
+			  
 			  tl.add(newtl.staggerFromTo(animobject,$a.f.speed,$a.f.anim,$a.r.anim,$a.f.elemdelay),mdelay);	
 			  
 			
@@ -678,9 +681,11 @@ jQuery.extend(true,_R, {
 			tl = _nc.data('timeline');
 			
 			if (_nc.data('loopanimation')=="on") callCaptionLoops(_lw,opt.bw);		
-						
 			
-			if ($start!="sliderenter" && (staticdirection==-1 || staticdirection==1 || triggerforce || (staticdirection==0 && $progress<1 && _nc.hasClass("rev-static-visbile"))))
+			
+		
+			
+			if (($start!="sliderenter" || ($start=="sliderenter" && opt.overcontainer)) && (staticdirection==-1 || staticdirection==1 || triggerforce || (staticdirection==0 && $progress<1 && _nc.hasClass("rev-static-visbile"))))				
 				if (($progress<1 && $progress>0) || 
 					($progress==0 && $start!="bytrigger" && $lts!="keep") || 
 					($progress==0 && $start!="bytrigger" && $lts=="keep" && $cts=="on") || 				
@@ -711,8 +716,11 @@ jQuery.extend(true,_R, {
 		// Kill TimeLine of "in Animation"
 		_nc.data('outstarted',1);
 		
-		_nc.data('timeline').pause();
 
+		if (_nc.data('timeline'))
+			_nc.data('timeline').pause();
+		else
+			if (_nc.data('_pw')===undefined) return;
 		
 		var tl = new punchgs.TimelineLite(),
 			subtl = new punchgs.TimelineLite(),
