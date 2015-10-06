@@ -87,7 +87,7 @@ class Widget_KT_Social extends WP_Widget {
                         'classs' => array()
                     )
                 );
-                echo wp_kses( $social_icons, $allowed_html );
+                echo kt_get_html( $social_icons );
             ?>
         </div>
         <?php
