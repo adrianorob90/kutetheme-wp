@@ -5726,7 +5726,7 @@ span.notify-right{
 }
 .vertical-menu-list>li>a>img{
   vertical-align: middle;
-  padding-right: 15px;
+  margin-right: 15px;
 }
 .vertical-menu-list>.menu-item-has-children>a:before,
 .vertical-menu-list>.dropdown>a:before{

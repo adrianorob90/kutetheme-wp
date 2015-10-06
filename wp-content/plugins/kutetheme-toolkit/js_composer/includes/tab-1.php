@@ -16,13 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                    <?php 
-                        if( isset( $icon ) && $icon ): 
-                            $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
-                            $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
-                        endif; 
-                    ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ); ?>" />
+                    <?php echo wp_get_attachment_image( $icon,'full'); ?>
                     <?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
             </div>
@@ -83,11 +77,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php foreach($list_banner_top as $b): ?>
                 <div class="col-sm-<?php echo esc_attr( $class ) ?> banner">
                     <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                        <img alt="<?php echo esc_attr( $b->post_title ); ?>" class="img-responsive" src="<?php echo esc_url( wp_get_attachment_url($b->ID) ) ?>" />
+                        <?php echo wp_get_attachment_image($b->ID,'full');?>
                     </a>
                 </div>
                 <?php endforeach; ?>
-           </div>
+            </div>
            <?php endif; ?>
        <?php endif; ?>
         <div class="product-featured clearfix">
@@ -112,7 +106,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php foreach($list_banner_left as $l): ?>
                         <div class="banner-img">
                             <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                                <img alt="<?php echo esc_attr( $l->post_title ) ?>" src="<?php echo esc_url( wp_get_attachment_url($l->ID) ) ?>" />
+                                <?php echo wp_get_attachment_image($l->ID,'full');?>
                             </a>
                         </div>
                     <?php endforeach; ?>

@@ -136,9 +136,10 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
     				$item_output .= '<a'. $attributes .'>';
             
             if($this->megamenu_img_icon){
-                $file = wp_get_attachment_thumb_url( intval( $this->megamenu_img_icon ) );
-                if( $file ){
-                    $imgicon = '<img src="' . esc_url( $file ) . '" alt="' . esc_attr( $item->title ) . '" title="' . esc_attr( $item->title ) . '" />';
+                $imgicon = wp_get_attachment_image( intval( $this->megamenu_img_icon),'full' );
+
+                if( $imgicon ){
+                    //$imgicon = '<img src="' . esc_url( $file ) . '" alt="' . esc_attr( $item->title ) . '" title="' . esc_attr( $item->title ) . '" />';
                     $item_output .= $imgicon;
                 }
                 

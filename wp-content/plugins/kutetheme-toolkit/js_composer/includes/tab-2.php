@@ -17,13 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-brand">
                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                    <?php 
-                    if( isset( $icon ) && $icon ): 
-                        $att_icon = wp_get_attachment_image_src( $icon, 'full' );  
-                        $att_icon_url =  is_array($att_icon) ? esc_url($att_icon[0]) : ""; 
-                    endif; 
-                    ?>
-                    <img alt="<?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>" src="<?php echo esc_url( $att_icon_url ); ?>" />
+                    <?php echo wp_get_attachment_image( $icon,'full'); ?>
                     <?php  echo ( isset( $title ) && $title ) ? esc_html( $title ) : __( 'Tabs Name', 'kutetheme' );  ?>
                 </a>
             </div>
@@ -228,13 +222,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                                     }
                                    ?>
                                    <?php if( $current ): ?>
-                                       <?php  
-                                       $att_banner_left = wp_get_attachment_image_src( $current->ID, '386x572' );  
-                                       $att_banner_left_url =  is_array($att_banner_left) ? esc_url($att_banner_left[0]) : "";    ?> 
                                        <div class="box-left">
                                            <div class="banner-img">
                                                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                                                    <img alt="<?php  echo esc_attr( $current->post_title ) ?>" src="<?php echo esc_url( $att_banner_left_url ); ?>" />
+                                                    <?php echo wp_get_attachment_image($current->ID,'full');?>
                                                 </a>
                                             </div>
                                        </div>

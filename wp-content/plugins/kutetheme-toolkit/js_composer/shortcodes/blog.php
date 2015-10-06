@@ -262,6 +262,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                 <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                     <?php while( $posts->have_posts() ): $posts->the_post(); ?>
                     <li>
+                        <?php if( has_post_thumbnail() ): ?>
                         <div class="post-thumb image-hover2">
                                                   
                             <a href="<?php the_permalink() ?>">
@@ -269,12 +270,14 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                                 $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "kt_post_blog_268x255" );
                                 if( $thumbnail_src ):
                              ?>
-                                <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
+                                <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
                                 <?php else: ?>
-                                    <img alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
+                                    <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
                                 <?php endif; ?>
                              </a>
                         </div>
+                        <?php endif; ?>
+
                         <div class="post-desc">
                             <h5 class="post-title">
                                 <a  href="<?php the_permalink() ?>"><?php the_title() ?></a>
