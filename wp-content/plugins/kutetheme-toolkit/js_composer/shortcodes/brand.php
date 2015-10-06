@@ -285,10 +285,10 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                             if( is_array($image) && isset($image[0]) && $image[0] ){
                                                 $image = $image[0];
                                             }else{
-                                                $image = wc_placeholder_img_src();
+                                                $image = "";
                                             }
                                 		} else {
-                                			$image = wc_placeholder_img_src();
+                                			$image = "";
                                 		}
                                         $meta_query = WC()->query->get_meta_query();
                                         $args = array(
@@ -312,9 +312,11 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                         ?>
                                         <div class="row">
                                             <div class="col-xs-12 col-sm-4 trademark-info">
+                                                <?php if($image): ?>
                                                 <div class="trademark-logo">
                                                     <a href="<?php echo esc_url( $term_link ); ?>"><img src="<?php echo esc_url( $image ); ?>" alt="<?php echo esc_attr( $term->name ); ?>" /></a>
                                                 </div>
+                                                <?php endif;?>
                                                 <div class="trademark-desc">
                                                     <?php echo esc_html( $term->description ) ?>
                                                 </div>

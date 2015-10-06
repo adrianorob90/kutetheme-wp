@@ -196,10 +196,10 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                         if( is_array($image) && isset($image[0]) && $image[0] ){
                             $image = $image[0];
                         }else{
-                            $image = wc_placeholder_img_src();
+                            $image = "";
                         }
             		} else {
-            			$image = wc_placeholder_img_src();
+            			$image = "";
             		}
                     $children = get_terms( 'product_cat', $arg_child );
                 ?>
@@ -212,9 +212,11 @@ class WPBakeryShortCode_Categories extends WPBakeryShortCode {
                                 <a href="<?php echo esc_url( $term_link ); ?>" class="cate-link link-active" data-ac="flipInX" ><span><?php _e('shop now', 'kutetheme') ?></span></a>
                             </div>
                             <div class="div-2" >
+                                <?php if($image) : ?>
                                 <a href="<?php echo esc_url( $term_link ); ?>">
                                     <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" class="hot-cate-img" />
                                 </a>
+                                <?php endif; ?>
                             </div>
                             
                         </div>
