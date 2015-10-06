@@ -540,9 +540,7 @@ a img.aligncenter {
 
 #footer .widget-container,
 #footer .widget {
-    margin-bottom: 15px;
     width: 100%;
-    float: left;
     padding: 0;
 }
 #footer .widget-container:last-child{
