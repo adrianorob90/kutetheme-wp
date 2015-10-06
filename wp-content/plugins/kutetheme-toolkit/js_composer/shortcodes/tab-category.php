@@ -396,7 +396,6 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 $style = "style='background: #fff url(".$att_bg_url.") no-repeat left bottom;'";
             }
         endif; 
-        
         if( count( $tabs ) >0 && $term ):
             $term_link = get_term_link($term);
             if( ! $is_phone ){

@@ -114,10 +114,10 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
             if( is_array($image) && isset($image[0]) && $image[0] ){
                 $image = $image[0];
             }else{
-                $image = wc_placeholder_img_src();
+                $image = "";
             }
 		} else {
-			$image = wc_placeholder_img_src();
+			$image = "";
 		}
         
         $args = array(
@@ -133,11 +133,13 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         <div class="<?php echo esc_attr( $elementClass ); ?>">
             <div class="parent-categories"><?php echo  $title ? esc_html( $title ) : esc_html( $term->name ) ?></div>
             <div class="block-popular-inner">
+                <?php if( $image): ?>
                 <div class="image banner-boder-zoom2">
                     <a href="<?php echo esc_url( $link ); ?>">
                         <img src="<?php echo esc_url( $image ) ?>" alt="<?php echo esc_attr( $term->name ) ?>" class="popular-cate-img" />
                     </a>
                 </div>
+                <?php endif;?>
                 <div class="sub-categories">
                     <ul>
                         <?php foreach( $subcats as $cate ): ?>

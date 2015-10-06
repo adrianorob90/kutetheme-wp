@@ -63,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <a href="#" class="btn-elevator down fa fa-angle-down"></a>
           </div>
         </nav>
-       <div class="product-featured clearfix" <?php echo isset($style) ? esc_attr( $style ) : '';  ?> >
+       <div class="product-featured clearfix" <?php echo isset($style) ? kt_get_css( $style ) : '';  ?> >
             <div class="row">
                 <div class="col-sm-2 sub-category-wapper">
                     <?php if( ! $is_phone ): ?>
