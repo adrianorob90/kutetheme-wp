@@ -354,9 +354,12 @@ if( ! function_exists( 'kt_scripts' ) ){
     	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150929', true );
     
     	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '20150929', true );
-    	wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '20150929', true );
+    	
+        wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '20150929', true );
         
-    
+        if(is_rtl()){
+            wp_enqueue_style( 'bootstrap-rtl-css', get_template_directory_uri() . '/libs/bootstrap/css/bootstrap-rtl.css', array());
+        }
         
     	wp_localize_script( 'kt-script', 'screenReaderText', array(
     		'expand'   => '<span class="screen-reader-text">' . esc_html__( 'expand child menu', 'kutetheme' ) . '</span>',

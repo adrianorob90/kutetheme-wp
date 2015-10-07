@@ -1,0 +1,81 @@
+/*------------------------------------------------------------------
+Theme Name: KuteTheme
+Description: Adds support for languages written in a Right To Left (RTL) direction.
+[Table of contents]
+1. General
+2. Header
+3. Footer
+4. Main menu
+5. Owl carousel Theme
+6. Visual Composer
+7. Sidebar
+8. Blog
+9. Woocommerce
+10. Responsive
+-------------------------------------------------------------------*/
+
+/** ================================================
+    1. General
+*** ================================================*/
+
+/** ================================================
+    2. Header
+*** ================================================*/
+.main-header .header-search-box .form-inline .btn-search{
+    right: auto;
+    left: -1px;
+}
+.main-header .header-search-box .form-inline .input-serach input{
+    padding-left:0;
+    padding-right: 15px;
+}
+.group-button-header .btn-cart, .group-button-header .btn-heart, .group-button-header .btn-compare{
+    float: left;
+    margin-left: 16px;
+    margin-right: 0;
+}
+.group-button-header .btn-compare{
+    margin: 0;
+}
+.cart-block{
+    left: -1px ;
+    right: auto ;
+}
+/** ================================================
+    3. Footer
+*** ================================================*/
+
+/** ================================================
+    4. Main Menu
+*** ================================================*/
+.option5 #main-menu{
+    padding-left: 15px;
+    padding-right: 70px;
+}
+.megamenu .widget .widgettitle:before{
+    left: auto;
+    right: 0;
+}
+.option5 #main-menu .navbar-default .navbar-nav>li>a{
+    background-position: left center;
+}
+#main-menu .dropdown-menu{
+    right: auto;
+}
+.vertical-menu-list>li>a>img{
+    margin-right: 0;
+    margin-left: 15px;
+}
+.vertical-menu-list>li:hover .dropdown-menu{
+    right: 100%;
+    left: auto;
+}
+.vertical-menu-list>.menu-item-has-children>a:before, .vertical-menu-list>.dropdown>a:before{
+    right: auto;
+    left: 20px;
+    content:"\f104";
+}
+.vertical-menu-list .dropdown-menu{
+    right: 100%;
+    left: auto;
+}

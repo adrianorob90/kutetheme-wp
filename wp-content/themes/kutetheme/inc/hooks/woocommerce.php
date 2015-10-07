@@ -219,47 +219,48 @@ if( ! function_exists('kt_get_cart_content') ){
                     <h5 class="cart-title"><?php esc_html_e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
                     <div class="cart-block-list">
                         <ul>
-                            <?php foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
-                                    $bag_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-                                    $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
+                            <?php 
+                            foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ):
+                                $bag_product = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+                                $product_id   = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
                                     
-                                    if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
-                                    
+                                if ( $bag_product &&  $bag_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ): 
+                                
                                     $product_name  = apply_filters( 'woocommerce_cart_item_name', $bag_product->get_title(), $cart_item, $cart_item_key );
                 					$thumbnail     = apply_filters( 'woocommerce_cart_item_thumbnail', $bag_product->get_image('shop_thumbnail'), $cart_item, $cart_item_key );
                 					$product_price = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $bag_product ), $cart_item, $cart_item_key );
                                     ?>
-                                        <li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
-                                            <div class="p-left">
-                                                <?php
-                        						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
-                        							'<a href="%s" class="remove remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
-                        							esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
-                        							__( 'Remove this item', 'woocommerce' ),
-                        							esc_attr( $product_id ),
-                        							esc_attr( $bag_product->get_sku() )
-                        						), $cart_item_key );
-                        						?>
-                                                
-                                                <a href="<?php echo esc_url( get_permalink( $cart_item[ 'product_id' ] ) )  ?>">
-                                                    <?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ); ?>
-                                                </a>
-                                            </div>
-                                            <div class="p-right">
-                                                <p class="p-name"><?php echo esc_html( $product_name ) ; ?></p>
-                                                <?php 
-                                                $allowed_html = array(
-                                                    'span' => array(
-                                                        'class' => array ()
-                                                    )
-                                                );
-                                                ?>
-                                                <p class="p-rice"><?php echo  wp_kses( $product_price, $allowed_html )  ?></p>
-                                                <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( esc_attr__('Qty: ', 'kutetheme').esc_attr__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
-                                            </div>
-                                        </li>
-                                    <?php endif; ?>
-                            <?php endforeach; ?>
+                                    <li class="<?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item product-info', $cart_item, $cart_item_key ) ); ?>">
+                                        <div class="p-left">
+                                            <?php
+                    						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
+                    							'<a href="%s" class="remove remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
+                    							esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
+                    							__( 'Remove this item', 'woocommerce' ),
+                    							esc_attr( $product_id ),
+                    							esc_attr( $bag_product->get_sku() )
+                    						), $cart_item_key );
+                    						?>
+                                            
+                                            <a href="<?php echo esc_url( get_permalink( $cart_item[ 'product_id' ] ) )  ?>">
+                                                <?php echo str_replace( array( 'http:', 'https:' ), '', $thumbnail ); ?>
+                                            </a>
+                                        </div>
+                                        <div class="p-right">
+                                            <p class="p-name"><?php echo esc_html( $product_name ) ; ?></p>
+                                            <?php 
+                                            $allowed_html = array(
+                                                'span' => array(
+                                                    'class' => array ()
+                                                )
+                                            );
+                                            ?>
+                                            <p class="p-rice"><?php echo  wp_kses( $product_price, $allowed_html )  ?></p>
+                                            <?php echo apply_filters( 'woocommerce_widget_cart_item_quantity', '<p class="quantity">' . sprintf( esc_attr__('Qty: ', 'kutetheme').esc_attr__('%s', 'kutetheme'), $cart_item['quantity'] ) . '</p>', $cart_item, $cart_item_key ); ?>
+                                        </div>
+                                    </li>
+                                <?php endif; ?>
+                        <?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="toal-cart">

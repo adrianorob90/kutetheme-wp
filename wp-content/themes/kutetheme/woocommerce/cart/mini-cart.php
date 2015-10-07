@@ -30,7 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php echo WC()->cart->get_cart_total() ?>
             <span class="notify notify-left"><?php echo esc_attr( $cart_count ); ?></span>
         </a>
-        <?php do_action('kt_mini_cart_content', esc_url(  $check_out_url ) ); ?>
+        <?php do_action( 'kt_mini_cart_content', esc_url(  $check_out_url ) ); ?>
     </div>
     <?php elseif( $kt_used_header == 2 ):?>
         <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="btn-cart" id="cart-block">
                 <a class="cart-link" title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url($check_out_url);?>"><?php esc_html_e('Cart', 'kutetheme' );?></a>
                 <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
-                <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+                <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
             </div>
         </div>
     <?php elseif( $kt_used_header == 5 ) :?>
@@ -62,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <div class="btn-cart" id="cart-block">
             <a class="cart-link" title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php esc_html_e( 'Cart', 'kutetheme' );?></a>
             <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
-            <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+            <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
         </div>
     <?php elseif( $kt_used_header == 6 ) :?>
         <div class="col-xs-5 col-sm-4 col-md-2 group-button-header">
@@ -77,7 +77,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="btn-cart" id="cart-block">
                 <a class="cart-link" title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php esc_html_e( 'Cart', 'kutetheme' );?></a>
                 <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
-                <?php do_action('kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+                <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
             </div>
     
         </div>
