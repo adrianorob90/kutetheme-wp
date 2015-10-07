@@ -1,6 +1,5 @@
-<div class="option5">
 <!-- HEADER -->
-<div id="header" class="header">
+<div id="header" class="header option5">
     <div class="top-header">
         <div class="container">
             <!--Currency-->
@@ -107,4 +106,3 @@
     </div>
 </div>
 <!-- end header -->
-</div>

@@ -156,6 +156,20 @@ function kt_get_color_schemes() {
                 '#eaeaea',//Module Border
                 '#f96d10' // Price Color
 			),
+		),
+		'orange'    => array(
+			'label'  => esc_attr__( 'Orange', 'kutetheme' ),
+			'colors' => array(
+                '#ffffff',//Background Color.
+				'#f96d10',//Main Color
+				'#e80000',//Sidebar and Box Background Color.
+				'#666666',//Main Text and Link Color.
+                '#febf2b',//Rate Star color
+                '#000000',//Button Color
+                '#0066cc',//Link Menu Footer
+                '#eaeaea',//Module Border
+                '#f96d10' // Price Color
+			),
 		)
 	) );
 }
@@ -320,7 +334,11 @@ function kt_get_color_scheme_css( $colors ) {
 	}
     
     /* Box Color */
-    div.option6.header{
+
+    div.option6.header,
+    body .box-vertical-megamenus .title,
+    body .option5 #main-menu .navbar .navbar-nav>li:hover, 
+	body .option5 #main-menu .navbar .navbar-nav>li.active{
         background-color: <?php echo esc_attr( $colors['box_background_color'] ); ?>;
     }
     
@@ -380,7 +398,8 @@ function kt_get_color_scheme_css( $colors ) {
  	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus,
     
     .option5 .nav-top-menu #main-menu .navbar,
-    .option5 .header .main-header .header-search-box .form-inline .btn-search
+    body .option5 .main-header .header-search-box .form-inline .btn-search,
+    body .option5 .nav-top-menu.nav-ontop
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }

@@ -370,8 +370,8 @@
             var width = $(window).width();
             if(width >1024){
                 if($('body').hasClass('home')){
-                    if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6')){
-
+                    if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
+                        
                     }else{
                         return false;
                     }

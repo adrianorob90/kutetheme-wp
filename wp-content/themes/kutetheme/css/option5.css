@@ -209,13 +209,13 @@
 	display: none;
 }
 
-.option5 .box-vertical-megamenus .title{
-	background: #e80000;
-}
+
 .option5 .box-vertical-megamenus .vertical-menu-content{
 	border-top: none;
 	min-width: 270px;
 	border-right: 1px solid #eaeaea;
+	display: none;
+	padding-bottom: 0;
 }
 .option5 #main-menu{
 	width: 100%;
