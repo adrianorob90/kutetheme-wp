@@ -183,10 +183,12 @@ if ( ! function_exists( 'kt_get_color_scheme' ) ) :
  * @return array An associative array of either the current or default color scheme hex values.
  */
 function kt_get_color_scheme() {
+	$color_scheme_option = get_theme_mod( 'color_scheme' );
 	$color_scheme_option = get_theme_mod( 'color_scheme', 'default' );
 	$color_schemes       = kt_get_color_schemes();
     
 	if ( array_key_exists( $color_scheme_option, $color_schemes ) ) {
+		
 		return $color_schemes[ $color_scheme_option ]['colors'];
 	}
 
