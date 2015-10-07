@@ -185,7 +185,7 @@ if ( ! function_exists( 'kt_get_color_scheme' ) ) :
 function kt_get_color_scheme() {
 	$color_scheme_option = get_theme_mod( 'color_scheme', 'default' );
 	$color_schemes       = kt_get_color_schemes();
-
+    
 	if ( array_key_exists( $color_scheme_option, $color_schemes ) ) {
 		return $color_schemes[ $color_scheme_option ]['colors'];
 	}
@@ -251,14 +251,17 @@ function kt_color_scheme_css() {
     
     $color_scheme = kt_get_color_scheme();
     
-	// Convert main and sidebar text hex color to rgba.
-	$color_button_rgb  = kt_hex2rgb( $color_scheme[5] );
-    $color_main_rgb    = kt_hex2rgb( $color_scheme[1] );
+	
     
     $main_color           = get_theme_mod( 'main_color', $color_scheme[1] );
     $box_background_color = get_theme_mod( 'box_background_color', $color_scheme[2] );
     $textcolor            = get_theme_mod( 'textcolor', $color_scheme[3] );
     $price_color          = get_theme_mod( 'price_color', $color_scheme[8] );
+    
+    // Convert main and sidebar text hex color to rgba.
+	$color_button_rgb  = kt_hex2rgb( $color_scheme[5] );
+    
+    $color_main_rgb    = kt_hex2rgb( $main_color );
     
 	$colors = array(
 		'background_color'     => $color_scheme[0],
