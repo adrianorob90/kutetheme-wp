@@ -368,7 +368,6 @@
 	}
 	.main-header .header-search-box .form-inline .input-serach {
 	    width: calc(100% - 50px);
-	    padding-top: 10px;
 	}
 	.main-header .shopping-cart-box{
 		padding-left: 15px;
@@ -378,7 +377,7 @@
 	}
 	#box-vertical-megamenus{
 		width: 50%;
-		height: 50px;
+		height: 50px;`
 		float: left;
 	}
 	#box-vertical-megamenus .box-vertical-megamenus{
@@ -789,7 +788,6 @@
 	}
 	.main-header .header-search-box .form-inline .input-serach {
 	    width: calc(100% - 50px);
-	    padding-top: 10px;
 	}
 	.main-header .shopping-cart-box{
 		padding-left: 15px;

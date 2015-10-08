@@ -1012,6 +1012,72 @@ if( ! function_exists('kt_get_social_header')){
     }
 }
 
+if( ! function_exists( 'kt_get_social_footer' )){
+    function kt_get_social_footer(){
+        $social_icons = '';
+        $facebook   = kt_option('kt_facebook_link_id');
+        $twitter    = kt_option('kt_twitter_link_id');
+        $pinterest  = kt_option('kt_pinterest_link_id');
+        $dribbble   = kt_option('kt_dribbble_link_id');
+        $vimeo      = kt_option('kt_vimeo_link_id');
+        $tumblr     = kt_option('kt_tumblr_link_id');
+        $skype      = kt_option('kt_skype_link_id');
+        $linkedin   = kt_option('kt_linkedIn_link_id');
+        $vk         = kt_option('kt_vk_link_id');
+        $googleplus = kt_option('kt_google_plus_link_id');
+        $youtube    = kt_option('kt_youtube_link_id');
+        $instagram  = kt_option('kt_instagram_link_id');
+        
+        if ($facebook) {
+            $social_icons .= '<li><a href="' . esc_url($facebook) . '" title ="'.__( 'Facebook', 'kutetheme' ).'" ><i class="fa fa-facebook"></i></a></li>';
+        }
+        if ($twitter) {
+            $social_icons .= '<li><a href="http://www.twitter.com/'.esc_attr($twitter).'" title = "'.__( 'Twitter', 'kutetheme' ).'" ><i class="fa fa-twitter"></i></a></li>';
+        }
+        if ($dribbble) {
+            $social_icons .= '<li><a href="http://www.dribbble.com/'.esc_attr($dribbble).'" title ="'.__( 'Dribbble', 'kutetheme' ).'" ><i class="fa fa-dribbble"></i></a></li>';
+        }
+        if ($vimeo) {
+            $social_icons .= '<li><a href="http://www.vimeo.com/'.esc_attr($vimeo).'" title ="'.__( 'Vimeo', 'kutetheme' ).'" ><i class="fa fa-vimeo-square"></i></a></li>';
+        }
+        if ($tumblr) {
+            $social_icons .= '<li><a href="http://'.esc_attr($tumblr).'.tumblr.com/" title ="'.__( 'Tumblr', 'kutetheme' ).'" ><i class="fa fa-tumblr"></i></a></li>';
+        } 
+        if ($skype) {
+            $social_icons .= '<li><a href="skype:'.esc_attr($skype).'" title ="'.__( 'Skype', 'kutetheme' ).'" ><i class="fa fa-skype"></i></a></li>';
+        }
+        if ($linkedin) {
+            $social_icons .= '<li><a href="'.esc_attr($linkedin).'" title ="'.__( 'Linkedin', 'kutetheme' ).'" ><i class="fa fa-linkedin"></i></a></li>';
+        }
+        if ($googleplus) {
+            $social_icons .= '<li><li><a href="'.esc_url( $googleplus ).'" title ="'.__( 'Google Plus', 'kutetheme' ).'" ><i class="fa fa-google-plus"></i></a></li>';
+        }
+        if ($youtube) {
+            $social_icons .= '<li><a href="http://www.youtube.com/user/'.esc_attr( $youtube ).'" title ="'.__( 'Youtube', 'kutetheme' ).'"><i class="fa fa-youtube"></i></a></li>';
+        }
+        if ($pinterest) {
+            $social_icons .= '<li><a href="http://www.pinterest.com/'.esc_attr( $pinterest ).'/" title ="'.__( 'Pinterest', 'kutetheme' ).'" ><i class="fa fa-pinterest-p"></i></a></li>';
+        }
+        if ($instagram) {
+            $social_icons .= '<li><a href="http://instagram.com/'.esc_attr( $instagram ).'" title ="'.__( 'Instagram', 'kutetheme' ).'" ><i class="fa fa-instagram"></i></a></li>';
+        }
+        
+        if ($vk) {
+            $social_icons .= '<li><a href="https://vk.com/'.esc_attr( $vk ).'" title ="'.__( 'Vk', 'kutetheme' ).'" ><i class="fa fa-vk"></i></a></li>';
+        }
+        ?>
+        <?php if( $social_icons ):?>
+            <div class="footer-social">
+                <ul>
+                <?php
+                    echo apply_filters( 'kt_get_social_header', $social_icons );
+                ?>
+                </ul>
+            </div>
+        <?php endif;?>
+        <?php
+    }
+}
 // Custom rating review
 
 if( !function_exists( 'kt_review_rating_html' ) ){

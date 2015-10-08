@@ -19,6 +19,13 @@ if( ! function_exists( 'kt_get_header' )){
         get_template_part( 'templates/headers/header',  $kt_used_header);
     }
 }
+
+if(!function_exists( 'kt_get_footer' )){
+    function kt_get_footer(){
+        $footer = kt_option('kt_footer_style', '1');
+        get_template_part( 'templates/footers/footer',  $footer);
+    }
+}
 if( ! function_exists( 'kt_get_favicon' ) ){
     function kt_get_favicon(){
         $default = kt_option("kt_favicon" , THEME_URL . '/images/favicon.ico');

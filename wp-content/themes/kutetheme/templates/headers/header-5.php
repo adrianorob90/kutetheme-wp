@@ -29,7 +29,7 @@
                 <?php 
                     if( kt_is_wc() ): 
                         do_action('kt_mini_cart');
-                     endif; 
+                    endif; 
                  ?>
             </div>
         </div>

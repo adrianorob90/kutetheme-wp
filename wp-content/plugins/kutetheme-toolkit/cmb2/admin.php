@@ -266,14 +266,20 @@ class KT_Admin {
             'options' => array(
     			'1' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v1.jpg',
     			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v2.jpg',
-    			// '3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
+    			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v3.jpg',
        //          '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v4.jpg',
                 '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
                 '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
        //          '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
     		),
     	) );
-        
+
+        $cmb_options_header->add_field( array(
+            'name' => __( 'Message in header', 'kutetheme' ),
+            'desc' => __( 'Display only header style 3', 'kutetheme' ),
+            'id'   => 'kt_header_message',
+            'type' => 'text',
+        ) );
         /**
     	 * Footer
     	 */
@@ -287,15 +293,52 @@ class KT_Admin {
 				'value' => array( $this->key, )
 			),
 		) );
-        
+        $cmb_options_footer->add_field( array(
+            'name'    => __( 'Footer style', 'kutetheme' ),
+            'id'      => 'kt_footer_style',
+            'type'    => 'select',
+            'default' => '1',
+            'options' => array(
+                '1'  => 'Style 1',
+                '2'  => 'Style 2'
+            ),
+            'desc'    => __( 'Setting Footer style display', 'kutetheme' ),
+        ) );
+
         $cmb_options_footer->add_field( array(
     		'name' => __( 'Copyrights', 'kutetheme' ),
     		'desc' => __( 'Copyrights your site', 'kutetheme' ),
     		'id'   => 'kt_copyrights',
     		'type' => 'textarea',
     	) );
+
+        $cmb_options_footer->add_field( array(
+            'name'    => __( 'Footer Background', 'kutetheme' ),
+            'id'      => 'kt_footer_background',
+            'type'    => 'file',
+            'desc'    => __( 'Display Background on footer style 2', 'kutetheme' ),
+        ) );
+        $cmb_options_footer->add_field( array(
+            'name'    => __( 'Footer Payment logo', 'kutetheme' ),
+            'id'      => 'kt_footer_payment_logo',
+            'type'    => 'file',
+            'desc'    => __( 'Display payment logo on footer style 2', 'kutetheme' ),
+        ) );
         
-        
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe newsletter title', 'kutetheme' ),
+            'desc' => __( 'Subscribe newsletter title display on footer style 2', 'kutetheme' ),
+            'id'   => 'kt_footer_subscribe_newsletter_title',
+            'type' => 'text',
+            'default'=>'SIGN UP BELOW FOR EARLY UPDATES'
+        ) );
+        $cmb_options_footer->add_field( array(
+            'name' => __( 'Subscribe newsletter description', 'kutetheme' ),
+            'desc' => __( 'Subscribe newsletter description display on footer style 2', 'kutetheme' ),
+            'id'   => 'kt_footer_subscribe_newsletter_description',
+            'type' => 'text',
+            'default'=>'You a Client , large or small, and want to participate in this adventure, please send us an email to support@kuteshop.com'
+        ) );
         /**
          * Woocommerce
          * */

@@ -5208,7 +5208,6 @@ span.notify-right{
   color: #fff;
   width: 32px;
   height: 32px;
-  background: #415a99;
   float: left;
   text-align: center;
   line-height: 32px;
@@ -5248,21 +5247,45 @@ span.notify-right{
   text-transform: uppercase;
   padding-bottom: 20px;
 }
-#footer2 .footer-center p{
+#footer2 .footer-center p,
+#footer2 .footer-center .mailchimp-before{
   color: #999;
   padding-bottom: 20px;
 }
-#footer2 .footer-row .form-subscribe{
+#footer2 .footer-row .form-subscribe,
+#footer2 .footer-row .mailchimp-form .input-group{
   width: 540px;
   margin: 0 auto;
   border: 1px solid #999;
   line-height: normal;
 }
+
+#footer2 .footer-row .mailchimp-form .mailchimp-success{
+  display: none;
+}
+#footer2 .footer-row .mailchimp-form .mailchimp-error{
+  color: red;
+}
+#footer2 .footer-row .mailchimp-form .mailchimp-submit{
+  background: none;
+  font-size: 0;
+  border: none;
+}
+#footer2 .footer-row .mailchimp-form .mailchimp-submit:focus{
+  outline: none;
+}
+#footer2 .footer-row .mailchimp-form .mailchimp-submit:before{
+  font-family: 'FontAwesome';
+  content: "\f1d9";
+  font-size: 14px;
+  color: #fff;
+}
 #footer2 .footer-row .form-subscribe .form-group{
   width: 100%;
   position: relative;
 }
-#footer2 .footer-row .form-subscribe .form-control{
+#footer2 .footer-row .form-subscribe .form-control,
+#footer2 .footer-row .mailchimp-form .input-group input[type="email"]{
   width: 100%;
   background: transparent;
   border: none;
@@ -5286,12 +5309,14 @@ span.notify-right{
 #footer2 .widget-title{
   text-transform: uppercase;
   padding-bottom: 20px;
+  margin: 0;
 }
 #footer2 .widget-body ul{
   padding-left: 25px;
 }
 #footer2 .widget-body li{
   line-height: 30px;
+  list-style: none;
 }
 #footer2 .widget-body li a{
   color: #999;
@@ -5346,7 +5371,29 @@ span.notify-right{
 .block-banner .block-banner-right{
   padding-left: 5px;
 }
-
+#footer2 ul{
+  padding: 0;
+}
+#footer2 ul li{
+  list-style-type: none;
+}
+#footer2 ul li ul{
+  padding-left: 20px;
+}
+#footer2 a{
+  color: #999;
+}
+#footer2 a:hover{
+  color: #fff;
+}
+#footer2 .widget,
+#footer2 .widget-container{
+  margin-bottom: 20px;
+}
+#footer2 .widget:last-child,
+#footer2 .widget-container:last-child{
+  margin-bottom: 0;
+}
 /*----------------
 [24. Hot deals]
 -----------------*/

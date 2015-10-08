@@ -121,18 +121,10 @@
 .option5 .cart-block{
 	margin-top: 5px;
 }
-.option5 .cart-block .cart-block-content .product-info .p-right .p-rice{
-	  color: #f96d10;
-}
 .option5 #shopping-cart-box-ontop .cart-block{
 	margin-top: 0;
 }
-.option5 a:hover{
-	color: #f96d10;
-}
-.option5 .top-header .dropdown-menu{
-	border-top: 2px solid #f96d10;
-}
+
 .option5 .main-header .header-search-box{
 	padding: 0 15px;
 }

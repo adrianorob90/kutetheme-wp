@@ -54,23 +54,23 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
                             <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
                         </h4>
-                    <div class="vertical-menu-content is-home">
-                        <?php
-                            wp_nav_menu( array(
-                                'menu'              => 'vertical',
-                                'theme_location'    => 'vertical',
-                                'depth'             => 2,
-                                'container'         => '',
-                                'container_class'   => '',
-                                'container_id'      => '',
-                                'menu_class'        => 'vertical-menu-list',
-                                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                'walker'            => new wp_bootstrap_navwalker())
-                            );
-                        ?><!--/.nav-collapse -->
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="vertical-menu-content is-home">
+                            <?php
+                                wp_nav_menu( array(
+                                    'menu'              => 'vertical',
+                                    'theme_location'    => 'vertical',
+                                    'depth'             => 2,
+                                    'container'         => '',
+                                    'container_class'   => '',
+                                    'container_id'      => '',
+                                    'menu_class'        => 'vertical-menu-list',
+                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                                    'walker'            => new wp_bootstrap_navwalker())
+                                );
+                            ?><!--/.nav-collapse -->
+                            <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div id="main-menu" class="col-sm-9 main-menu">
                     <nav class="navbar navbar-default">

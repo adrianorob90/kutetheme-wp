@@ -404,7 +404,10 @@ function kt_get_color_scheme_css( $colors ) {
     
     .option5 .nav-top-menu #main-menu .navbar,
     body .option5 .main-header .header-search-box .form-inline .btn-search,
-    body .option5 .nav-top-menu.nav-ontop
+    body .option5 .nav-top-menu.nav-ontop,
+    body .option5 .box-vertical-megamenus .vertical-menu-list>li:hover,
+    body .option5 #form-search-opntop:hover form,
+    body .option5 .box-vertical-megamenus .all-category span:hover
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -424,7 +427,9 @@ function kt_get_color_scheme_css( $colors ) {
     .vertical-menu-list .mega-group .mega-group-header span,
     .widget_product_tag_cloud div.tagcloud a:hover,
     div.popular-tabs .nav-tab li:hover, 
-    div.popular-tabs .nav-tab li.active{
+    div.popular-tabs .nav-tab li.active,
+    body .top-header .dropdown-menu,
+    body .option5 .box-vertical-megamenus .all-category span:hover{
         border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{

@@ -15,6 +15,15 @@
 /*---------------
 [0. Global]
 */
+.option3 .main-header .header-search-box .form-inline .input-serach{
+	width: 60%;
+}
+.option3 .main-header .header-search-box .form-inline .input-serach input{
+	height: 36px;
+}
+.option3 .form-category .ui-selectmenu-button span.ui-selectmenu-text{
+	height: 37px;
+}
 .option3 .product-list li .product-price {
 	color: #0088cc;
 }
@@ -213,11 +222,11 @@
 }
 
 .option3 #main-menu .navbar-nav > li:hover .dropdown-menu {
-  -webkit-transform: translate(0,5px);
-  -moz-transform: translate(0,5px);
-  -o-transform: translate(0,5px);
-  -ms-transform: translate(0,5px);
-  transform: translate(0,5px);
+  -webkit-transform: translate(0,0);
+  -moz-transform: translate(0,0);
+  -o-transform: translate(0,0);
+  -ms-transform: translate(0,0);
+  transform: translate(0,0);
   opacity: 1;
   visibility: visible;
 }
