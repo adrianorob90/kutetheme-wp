@@ -333,10 +333,7 @@
 	color: #fff;
 	font-weight: normal;
 	background: url("../images/icon-angle-right.png") no-repeat right center;
-	top: 50%;
-	-ms-transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+    height: 100%;
 }
 .option2 .nav-menu{
 	margin-bottom: 0;
