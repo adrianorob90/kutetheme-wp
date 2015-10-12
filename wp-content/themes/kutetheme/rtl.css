@@ -185,13 +185,21 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .option5 .nav-ontop #box-vertical-megamenus .title .btn-open-mobile{
     float: none !important;
 }
+.option2 .box-vertical-megamenus .all-category span:after{
+    content: "";
+    margin: 0;
+}
+.option2 .box-vertical-megamenus .all-category span:before{
+    content: "\f100";
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 20px;
+    font: normal normal normal 14px/1 FontAwesome;
+}
 
 /** ================================================
     6. Visual Composer
 *** ================================================*/
-div[data-vc-full-width="true"]{
-    left: 74.5px !important;
-}
 .show-brand .navbar-brand{
     margin-right: 0px;
 }

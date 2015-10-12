@@ -4,8 +4,8 @@
 .rtl .cmb2-metabox .cmb-field-list>.cmb-row:first-of-type>.cmb-th, 
 .rtl .cmb2-metabox>.cmb-row:first-of-type>.cmb-td, 
 .rtl .cmb2-metabox>.cmb-row:first-of-type>.cmb-th,
-.cmb2-media-status .img-status,
-.cmb-th,
-.cmb-th+.cmb-td{
+.rtl .cmb2-media-status .img-status,
+.rtl .cmb-th,
+.rtl .cmb-th+.cmb-td{
     float: right;
 }

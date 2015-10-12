@@ -1,18 +1,15 @@
 <?php
-/**
- * Plugin Name: KutethemeToolkit
- * Plugin URI: http://kutethemes.com/demo/kuteshop/
- * Description: A Toolkit for Kute theme
- * Version: 1.0.1
- * Author: KuteTheme
- * Author URI: http://kutethemes.com/
- * Requires at least: 4.1
- *
- * Text Domain: kutetheme
- *
- * @package Kutetheme toolkit
- * @author KuteTheme
- */
+/*
+Plugin Name: KutethemeToolkit
+Plugin URI: http://kutethemes.com/demo/kuteshop/
+Description: A Toolkit for Kute theme
+Version: 1.0.1
+Author: KuteTheme
+Author URI: http://kutethemes.com/
+Text Domain: kutetheme
+@package Kutetheme toolkit
+@author KuteTheme
+*/
  
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );

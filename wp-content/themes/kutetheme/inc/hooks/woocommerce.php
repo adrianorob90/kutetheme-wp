@@ -5,21 +5,154 @@
 if(is_admin())
     remove_action( 'admin_notices', 'woothemes_updater_notice' );
 
+
+/**
+ * Reduction
+ * */
+add_action( 'woocommerce_save_product_variation', 'kt_wc_save_product_variation', 10, 2 );
+
+add_action( 'woocommerce_variable_product_sync', 'kt_wc_variable_product_sync', 10, 2 );
+
+add_action( 'woocommerce_process_product_meta_simple', 'kt_wc_process_product_meta', 10, 1 );
+
+add_action( 'woocommerce_process_product_meta_external', 'kt_wc_process_product_meta', 10, 1 );
+
+add_action( 'woocommerce_process_product_meta_grouped', 'kt_wc_process_product_meta_grouped', 10, 1 );
+ 
+/**
+ * Template Rating
+ * */
 add_filter("woocommerce_product_get_rating_html", "kt_get_rating_html", 10, 2);
 
 /**
  * Price Regular + Sale
  * */
 add_action( "kt_after_loop_item_title", "woocommerce_template_loop_price", 5 );
+
+
+/**
+ * Save product variation
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_save_product_variation hook
+ * */
+if( ! function_exists( 'kt_wc_save_product_variation' ) ){
+    function kt_wc_save_product_variation( $variation_id, $i ){
+        // Price handling
+        $variable_regular_price = $_POST['variable_regular_price'];
+        $variable_sale_price    = $_POST['variable_sale_price'];
+        
+    	$regular_price = wc_format_decimal( $variable_regular_price[ $i ] );
+    	$sale_price    = $variable_sale_price[ $i ] === '' ? '' : wc_format_decimal( $variable_sale_price[ $i ] );
+        
+        if( $sale_price ) {
+            $reduction_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+            update_post_meta( $variation_id, '_reduction_percent', $reduction_percent );
+        }else{
+            update_post_meta( $variation_id, '_reduction_percent', 0 );
+        }
+    }
+}
+
+/**
+ * Sync product variation
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_variable_product_sync hook
+ * */
+if ( ! function_exists( 'kt_wc_variable_product_sync' ) ){
+    function kt_wc_variable_product_sync( $product_id, $children ){
+        $min_reduction_percent = null ;
+        $min_reduction_percent_id = null;
+        
+        $max_reduction_percent = null ;
+        $max_reduction_percent_id = null;
+        
+        foreach ( $children as $child_id ) {
+			$reduction_price = get_post_meta( $child_id, '_reduction_percent', true );
+            
+			// Find min reduction
+			if ( is_null( $min_reduction_percent ) || $reduction_price < $min_reduction_percent ) {
+				$min_reduction_percent    = $reduction_price;
+				$min_reduction_percent_id = $child_id;
+			}
+
+			// Find max reduction
+			if ( $reduction_price > $max_reduction_percent ) {
+				$max_reduction_percent    = $reduction_price;
+				$max_reduction_percent_id = $child_id;
+			}
+		}
+
+		// Store reduction
+		update_post_meta( $product_id, '_min_variation_reduction_percent', $min_reduction_percent );
+		update_post_meta( $product_id, '_max_variation_reduction_percent', $min_reduction_percent_id );
+
+		// Store ids
+		update_post_meta( $product_id, '_min_reduction_percent_variation_id', $max_reduction_percent );
+        update_post_meta( $product_id, '_max_reduction_percent_variation_id', $max_reduction_percent_id );
+        
+        update_post_meta( $product_id, '_reduction_percent', $min_reduction_percent );
+    }
+}
+
+/**
+ * Save product simple, external
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_process_product_meta_simple hook
+ * @hook woocommerce_process_product_meta_external hook
+ * */
+if ( ! function_exists( 'kt_wc_process_product_meta' ) ){
+    function kt_wc_process_product_meta( $product ){
+        $regular_price = ( $_POST['_regular_price'] === '' ) ? '' : wc_format_decimal( $_POST['_regular_price'] );
+		$sale_price    = ( $_POST['_sale_price'] === '' ? '' : wc_format_decimal( $_POST['_sale_price'] ) );
+        
+		if( $sale_price ) {
+            $reduction_percent = round( ( ( $regular_price - $sale_price ) / $regular_price ) * 100 );
+            update_post_meta( $product, '_reduction_percent', $reduction_percent );
+        }else{
+            update_post_meta( $product, '_reduction_percent', 0 );
+        }
+    }
+}
+
+/**
+ * Save product grouped
+ * @subpackage Meta box data
+ * @since edo 1.0
+ * @hook woocommerce_process_product_meta_grouped hook
+ * */
+if( ! function_exists( 'kt_wc_process_product_meta_grouped' ) ){
+    function kt_wc_process_product_meta_grouped( $product ){
+        update_post_meta( $product, '_reduction_percent', 0 );
+    }
+}
+
+/**
+ * Template button compare
+ * @subpackage Loop
+ * @since edo 1.0
+ * */
+
+if( ! function_exists('edo_get_tool_compare')){
+    function edo_get_tool_compare(){
+        if(defined( 'YITH_WOOCOMPARE' )){
+            echo do_shortcode('[yith_compare_button]');
+        }
+    }
+}
+
 /**
  * Sale price Percentage
  */
+if( ! function_exists( 'woocommerce_custom_sales_price' ) ){
+    function woocommerce_custom_sales_price( $price, $product ) {
+    	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
+    	return $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $percentage . esc_attr__('%', 'kutetheme'), esc_attr__( ' OFF', 'kutetheme' ), esc_attr__( '(', 'kutetheme' ), esc_attr__( ')', 'kutetheme' ) );
+    }
 
-function woocommerce_custom_sales_price( $price, $product ) {
-	$percentage = round( ( ( $product->regular_price - $product->sale_price ) / $product->regular_price ) * 100 );
-	return $price . sprintf( '<span class="colreduce-percentage"><span class="colreduce-parenthesis-open" >%3$s</span>-%1$s<span class="colreduce-lable">%2$s</span><span class="colreduce-parenthesis-close" >%4$s</span></span>', $percentage . esc_attr__('%', 'kutetheme'), esc_attr__( ' OFF', 'kutetheme' ), esc_attr__( '(', 'kutetheme' ), esc_attr__( ')', 'kutetheme' ) );
 }
-
 /**
  * Change DOM html loop template price
  * */
