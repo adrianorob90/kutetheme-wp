@@ -26,7 +26,7 @@ vc_map( array(
             'description' => __( 'Number post in a slide', 'kutetheme' )
         ),
         array(
-            "type"        => "kutetheme_taxonomy",
+            "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
             "heading"     => __("Category", 'kutetheme'),
@@ -119,7 +119,7 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-			"type"        => "kutetheme_number",
+			"type"        => "kt_number",
 			"heading"     => __("Slide Speed", 'kutetheme'),
 			"param_name"  => "slidespeed",
 			"value"       => "250",
@@ -129,7 +129,7 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-            "type"        => "kutetheme_number",
+            "type"        => "kt_number",
             "heading"     => __("Margin", 'kutetheme'),
             "param_name"  => "margin",
             "value"       => "30",
@@ -151,9 +151,19 @@ vc_map( array(
             'admin_label' => false
 		),
         array(
-			"type"        => "kutetheme_number",
+			"type"        => "kt_number",
 			"heading"     => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
 			"param_name"  => "items_destop",
+			"value"       => "4",
+            "suffix"      => __("item", 'kutetheme'),
+			"description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+			"type"        => "kt_number",
+			"heading"     => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
+			"param_name"  => "items_tablet",
 			"value"       => "3",
             "suffix"      => __("item", 'kutetheme'),
 			"description" => __('The number of items on destop', 'kutetheme'),
@@ -161,17 +171,7 @@ vc_map( array(
             'admin_label' => false,
 	  	),
         array(
-			"type"        => "kutetheme_number",
-			"heading"     => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
-			"param_name"  => "items_tablet",
-			"value"       => "2",
-            "suffix"      => __("item", 'kutetheme'),
-			"description" => __('The number of items on destop', 'kutetheme'),
-            'group'       => __( 'Carousel responsive', 'kutetheme' ),
-            'admin_label' => false,
-	  	),
-        array(
-			"type"        => "kutetheme_number",
+			"type"        => "kt_number",
 			"heading"     => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
 			"param_name"  => "items_mobile",
 			"value"       => "1",
@@ -211,7 +211,7 @@ vc_map( array(
             "admin_label" => true,
         ),
         array(
-			"type"        => "kutetheme_number",
+			"type"        => "kt_number",
 			"heading"     => __("Reduction from", 'kutetheme'),
 			"param_name"  => "reduction_from",
 			"value"       => "0",
@@ -220,7 +220,7 @@ vc_map( array(
             'admin_label' => true,
 	  	),
         array(
-			"type"        => "kutetheme_number",
+			"type"        => "kt_number",
 			"heading"     => __("Reduction to", 'kutetheme'),
 			"param_name"  => "reduction_to",
 			"value"       => "0",
@@ -253,7 +253,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'nav'            => 'true',
             //Default
             'items_destop'   => 4,
-            'items_tablet'   => 2,
+            'items_tablet'   => 3,
             'items_mobile'   => 1,
             
             'use_responsive' => 1,
@@ -282,6 +282,17 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'orderby'             => $orderby,
             'order'               => $order
 		);
+        
+        if( $taxonomy ){
+            $args['tax_query'] = 
+                array(
+            		array(
+            			'taxonomy' => 'product_cat',
+            			'field' => 'id',
+            			'terms' => explode( ",", $taxonomy )
+            	)
+            );
+        }
         $data_carousel = array(
             "autoplay"           => $autoplay,
             "navigation"         => $navigation,
@@ -319,37 +330,49 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         }
         $carousel = _data_carousel( $data_carousel );
         
-        $tabs = kutetheme_get_all_attributes( 'tab_section', $content );
+        $tabs = kt_get_all_attributes( 'tab_section', $content );
         if( count( $tabs ) >0 ) :
         $unique = uniqid();
         ?>
-		<!-- Block hot deals2 -->
-		<div class="col-sm-12">
-			<div class="block-hot-deals2 has_countdown only_countdown">
-				<h3 class="title">hot deals</h3>
-				<div class="row">
-					<div class="col-sm-4 col-md-3">
-						<div class="hot-deal-tab">
-							<div class="countdown">
-								<span class="countdown-only"></span>
-							</div>
-							<ul class="nav-tab">
-                                <?php $i = 1; ?>
-                                <?php foreach( $tabs as $tab ): 
-                                        extract( shortcode_atts( array(
-                                            'header'         => __( 'Tab name', 'kutetheme' ),
-                                            'reduction_from' => 0,
-                                            'reduction_to'   => 0,
-                                        ), $tab ) );
-                                    ?>
-		                          <li <?php if( $i ==1 ): ?> class="active" <?php endif; ?> ><a data-toggle="tab" href="#hotdeals-<?php echo $unique ?>-<?php echo $i; ?>"><?php echo $header; ?></a></li>
-                                  <?php $i++; ?>
-                                <?php endforeach; ?>
-	                      	</ul>
-						</div>
-					</div>
-					<div class="col-sm-8 col-md-9">
-						<div class="tab-container">
+        <div class="option3">
+        <!-- Hot deals -->
+        <div class="hot-deals-row">
+            <div class="hot-deals-box">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-4">
+                        <div class="hot-deals-tab">
+                            <div class="hot-deals-title vertical-text">
+                                <span>h</span>
+                                <span>o</span>
+                                <span>t</span>
+                                <span class="yellow">d</span>
+                                <span class="yellow">e</span>
+                                <span class="yellow">a</span>
+                                <span class="yellow">l</span>
+                                <span class="yellow">s</span>
+                            </div>
+                            <div class="hot-deals-tab-box">
+                                <ul class="nav-tab">
+                                    <?php $i = 1; ?>
+                                        <?php foreach( $tabs as $tab ): 
+                                                extract( shortcode_atts( array(
+                                                    'header'         => __( 'Tab name', 'kutetheme' ),
+                                                    'reduction_from' => 0,
+                                                    'reduction_to'   => 0,
+                                                ), $tab ) );
+                                            ?>
+                                          <li <?php if( $i ==1 ): ?> class="active" <?php endif; ?> ><a data-toggle="tab" href="#hotdeals-<?php echo $unique ?>-<?php echo $i; ?>"><?php echo $header; ?></a></li>
+                                          <?php $i++; ?>
+                                        <?php endforeach; ?>
+                                </ul>
+                                <div class="box-count-down">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-8 hot-deals-tab-content-col">
+                        <div class="hot-deals-tab-content tab-container">
                             <?php $i = 1; ?>
                             <?php 
                             $max_time = 0;
@@ -370,32 +393,37 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 );
                                 
                                 $args['meta_query'] = $meta;
-                                
                                 $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
                                 
                                 if( $products->have_posts() ):
+                                add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
                                 ?>
-        							<div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-        								<?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
-                                            <ul class="products kt-owl-carousel" <?php echo $carousel; ?>>
-                                                
-            									<?php while( $products->have_posts() ): $products->the_post(); ?>
-                                                    <?php kutetheme_woocommerce_product_loop_item_before(); ?>
-                                    					<?php 
-                                                            wc_get_template_part( 'content', 'list-product' );
-                                                            // Get date sale 
-                                                            $time = kutetheme_get_max_date_sale( get_the_ID() );
-                                                            if( $time > $max_time ){
-                                                                $max_time = $time;
-                                                            }
+                                <div id="hot-deal-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                    <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
+                                    <ul class="product-list owl-carousel nav-center" <?php echo $carousel; ?>>
+                                        <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                            <li>
+                            					<?php 
+                                                    wc_get_template_part( 'content', 'product-hot-deal' );
+                                                    // Get date sale 
+                                                    $time = kt_get_max_date_sale( get_the_ID() );
+                                                    if( $time > $max_time ){
+                                                        $max_time = $time;
+                                                    }
 
-                                                        ?>
-                                                    <?php kutetheme_woocommerce_product_loop_item_after(); ?>
-                                    			<?php endwhile; ?>
-            								</ul>
-                                            
-                                        <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
-        							</div>
+                                                ?>
+                                            </li>
+                            			<?php endwhile; ?>
+                                    </ul>
+                                    <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
+                                </div> 
+                                <?php 
+                                remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                ?>
                                 <?php endif; ?>
                                 <?php 
                                     wp_reset_query();
@@ -404,20 +432,22 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 <?php $i++; ?>
                             <?php endforeach; ?>
                             <?php 
-                            if( $max_time > 0 )
+                            if( $max_time > 0 ){
                                 $y = date( 'Y', $max_time );
                                 $m = date( 'm', $max_time );
                                 $d = date( 'd', $max_time );
                                 ?>
-                                <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="">
+                                <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
                                 <?php
+                                }
                             ?>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Block hot deals2 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Hot deals -->
+        </div>
         <?php
         endif;
     }
