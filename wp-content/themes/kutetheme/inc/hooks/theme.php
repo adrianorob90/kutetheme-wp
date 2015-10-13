@@ -87,6 +87,11 @@ if( ! function_exists( 'kt_register_required_plugins' ) ):
                 'slug' => 'yith-woocommerce-ajax-navigation', // The plugin slug (typically the folder name)
                 'required' => false, // If false, the plugin is only 'recommended' instead of required
             ),
+            array(
+                'name' => 'YITH WooCommerce Quick View', // The plugin name
+                'slug' => 'yith-woocommerce-quick-view', // The plugin slug (typically the folder name)
+                'required' => false, // If false, the plugin is only 'recommended' instead of required
+            ),
     	);
     
     	/*

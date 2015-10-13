@@ -2154,9 +2154,12 @@ span.notify-right{
     -o-transition: margin-left 0.2s ease 0.2s;
     transition: margin-left 0.2s ease 0.2s;
     margin-left: 200px;
+    font-size: 0;
+    line-height: 30px;
 }
 .product-list li .quick-view a.search:before{
-    font: normal normal normal 14px/1 FontAwesome;
+  font-family: 'FontAwesome';
+  font-size: 14px;
     content: "\f002";
 }
 
@@ -2195,6 +2198,9 @@ span.notify-right{
     display: inline-block;
     vertical-align: middle;
     
+}
+.product-list li .button.yith-wcqv-button{
+  display: none;
 }
 .product-list li .product-name{
     padding-bottom: 5px;

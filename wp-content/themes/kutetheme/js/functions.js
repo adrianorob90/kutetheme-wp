@@ -94,67 +94,7 @@
             obj_qty.val(val_qty);
         });
       }
-    /* ---------------------------------------------
-     Quick view
-     ---------------------------------------------*/
-     $(document).on('click','.btn-quick-view',function(){
-        var product_id = $(this).data('id');
-        var data = {
-            action: 'frontend_product_quick_view',
-            security : screenReaderText.security,
-            product_id: product_id
-        };
-        $(this).append('<i class="fa fa-spinner fa-spin"></i>');
-        
-        var t = $(this);
-        $.post(screenReaderText.ajaxurl, data, function(response){
-            t.find('.fa').remove();
-            $.fancybox(response, {
-              // fancybox API options
-              fitToView: false,
-              autoSize: false,
-              closeClick: false,
-              openEffect: 'none',
-              closeEffect: 'none',
-            }); // fancybox
-            $('.woo-quickview .thumbnails').owlCarousel(
-                {
-                    dots:false,
-                    nav:true,
-                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-                    margin:20,
-                    responsive : {
-                      // breakpoint from 0 up
-                      0 : {
-                          items : 1,
-                      },
-                      // breakpoint from 480 up
-                      480 : {
-                          items : 2,
-                      },
-                      // breakpoint from 768 up
-                      768 : {
-                          items : 2,
-                      },
-                      1000 : {
-                          items : 2,
-                      }
-                  }
-                }
-            );
-        })
-        return false;
-     });
-
-    // Quick view view image
-    $(document).on('click','.woo-quickview .thumbnails a',function(){
-        var image = $(this).attr('href');
-        $(this).closest('.woo-quickview').find('.woocommerce-main-image img').attr('src',image);
-        return false;
-    })
-     $(document).on('click','.woo-quickview .woocommerce-main-image',function(){
-        return false;
-    })
+    
     
     /* ---------------------------------------------
      Scripts initialization
@@ -422,6 +362,9 @@
                   // breakpoint from 0 up
                   0 : {
                       items : 1,
+                  },
+                  320 : {
+                      items : 2,
                   },
                   // breakpoint from 480 up
                   480 : {

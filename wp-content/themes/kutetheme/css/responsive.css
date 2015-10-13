@@ -335,6 +335,11 @@
 		padding: 0 15px!important;
 		margin: 0!important;
 	}
+	#yith-quick-view-modal .yith-wcqv-wrapper{
+		max-width: 90%;
+		max-height: 600px;
+		overflow-y:auto; 
+	}
 }
 /*--------------------
 [4. Styles for devices(>=481px and <=767px)]
@@ -752,6 +757,11 @@
 	div.home1-slider{
 		padding: 0 15px!important;
 		margin: 0!important;
+	}
+	#yith-quick-view-modal .yith-wcqv-wrapper{
+		max-width: 90%;
+		max-height: 600px;
+		overflow-y:auto; 
 	}
 }
 /*--------------------
@@ -1296,5 +1306,10 @@
 	}
 	.block-popular-cat .image{
 		width: 100%;
+	}
+	#yith-quick-view-modal .yith-wcqv-wrapper{
+		max-width: 90%;
+		max-height: 400px;
+		overflow-y:auto; 
 	}
 }

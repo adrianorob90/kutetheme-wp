@@ -131,7 +131,13 @@ if( ! function_exists('kt_get_tool_wishlish') ){
 }
 if( ! function_exists('kt_get_tool_quickview') ){
     function kt_get_tool_quickview(){
-        echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', esc_attr__('Quick view', 'kutetheme'), get_the_ID() );
+        global $product;
+        $label = esc_html( get_option( 'yith-wcqv-button-label' ) );
+        $yith_wcqv_enable = get_option( 'yith-wcqv-enable' );
+        if( $yith_wcqv_enable == 'yes' ){
+            echo '<a href="#" class="search yith-wcqv-button" data-product_id="' . $product->id . '">' . $label . '</a>';
+        }
+        //echo sprintf('<a title="%1$s" data-id="%2$s" class="search btn-quick-view" href="#"></a>', esc_attr__('Quick view', 'kutetheme'), get_the_ID() );
     }
 }
 
