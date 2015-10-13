@@ -133,6 +133,15 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
 endif; // kt_setup
 add_action( 'after_setup_theme', 'kt_setup' );
 
+
+if( ! function_exists( 'kt_customize_fullwith_row' ) ){
+    function kt_customize_fullwith_row(){
+        wp_enqueue_script( 'kt-customize-vc', get_template_directory_uri() . '/js/customize_vc_strew_row.js', array( 'jquery', 'wpb_composer_front_js' ), '1.0.1', true ); 
+    }
+}
+if( is_rtl() ){
+    add_action( 'vc_base_register_front_js', 'kt_customize_fullwith_row' );
+}
 /**
  * Register widget area.
  *
@@ -344,21 +353,21 @@ if( ! function_exists( 'kt_scripts' ) ){
     		wp_enqueue_script( 'kt-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20141010' );
     	}
         
-        wp_enqueue_script( 'kt-bootstrap', get_template_directory_uri() . '/libs/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '20150929', true );
+        wp_enqueue_script( 'kt-bootstrap', get_template_directory_uri() . '/libs/bootstrap/js/bootstrap.min.js', array( 'jquery' ), '3.3.4', true );
         
-        wp_enqueue_script( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.js', array( 'jquery' ), '20150929', true );
+        wp_enqueue_script( 'kt-carousel', get_template_directory_uri() . '/libs/owl.carousel/owl.carousel.js', array( 'jquery' ), '2.0', true );
         
-        wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ), '20150929', true );
+        wp_enqueue_script( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.js', array( 'jquery' ), '2.1.5', true );
             
-        wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ), '20150929', true );
+        wp_enqueue_script( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.min.js', array( 'jquery' ), '1.11.4', true );
         
-        wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ), '20150929',true );
+        wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ), '1.0.16',true );
         
-    	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '20150929', true );
+    	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.1', true );
     
-    	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '20150929', true );
+    	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '1.0.1', true );
     	
-        wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '20150929', true );
+        wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '2.0.2', true );
         
         if(is_rtl()){
             wp_enqueue_style( 'bootstrap-rtl-css', get_template_directory_uri() . '/libs/bootstrap/css/bootstrap-rtl.css', array());

@@ -1,6 +1,6 @@
 (function($){
     "use strict"; // Start of use strict
-    
+    var rtl = jQuery( 'body' ).hasClass( 'rtl' );
     
     var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
     /**==============================
@@ -17,7 +17,7 @@
             config.animateOut="fadeOut";
             config.animateIn="fadeIn";    
         }
-        
+        config.rtl = rtl;
         config.onInitialized = function( event ){
             var $item_active = $this.find( '.owl-item.active' );
             $item_active.each( function ( $i ) {
@@ -95,7 +95,6 @@
         });
       }
     
-    
     /* ---------------------------------------------
      Scripts initialization
      --------------------------------------------- */
@@ -148,6 +147,8 @@
           config.animateOut="";
           
           config.animateIn="fadeInUp";
+          
+          config.rtl = rtl;
           
           $(this).owlCarousel(config);
         });
@@ -377,7 +378,8 @@
                   1000 : {
                       items : 3,
                   }
-              }
+              },
+              rtl: rtl
             }
         );
 
@@ -406,7 +408,8 @@
                   1025 : {
                       items : 3,
                   }
-              }
+              },
+              rtl: rtl
             }
         );
 

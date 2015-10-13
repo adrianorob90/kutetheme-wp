@@ -18,6 +18,15 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     1. General
 *** ================================================*/
 
+.service .service-item .icon{
+    float: right;
+}
+.service .service-item .info{
+    margin-right: 40px;
+    margin-left: 0px;
+    padding-right: 15px;
+    padding-left: 0px;
+}
 /** ================================================
     2. Header
 *** ================================================*/
@@ -41,6 +50,52 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     left: -1px ;
     right: auto ;
 }
+.main-header .shopping-cart-box a.cart-link{
+    padding: 2px 15px 0 41px;
+}
+.main-header .shopping-cart-box a.cart-link .total{
+    float: right;
+    margin-left: 5px;
+}
+.main-header .shopping-cart-box{
+    margin-right: -15px;
+    margin-left: 15px;
+}
+.cart-block .cart-block-content .product-info .p-left{
+    float: right;
+}
+.cart-block .cart-block-content .product-info .p-right{
+    margin-right: 110px;
+    margin-left: 0px;
+}
+.cart-block .cart-block-content .product-info .p-left .remove_link{
+    right: 0;
+    left: auto;
+}
+
+.option2 .main-header .header-search-box .form-inline .form-category,
+.option6 .main-header .header-search-box .form-inline .form-category{
+    float: left;
+    margin-right: 0;
+    margin-left: 40px;
+}
+.option6 .main-header .header-search-box .form-inline .btn-search{
+    right: auto;
+    left: 0px;
+}
+.option6 .main-header .header-search-box .form-inline{
+    float: right;
+}
+.option6 .main-header .header-search-box .keyword{
+    float: left;
+    padding-left: 0;
+    padding-right: 15px;
+}
+.option6 .main-header .header-search-box .keyword .lebal:before{
+    margin-right: 0;
+    margin-left: 10px;
+    float: right;
+}
 /** ================================================
     3. Footer
 *** ================================================*/
@@ -48,6 +103,9 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 /** ================================================
     4. Main Menu
 *** ================================================*/
+.box-vertical-megamenus .title .btn-open-mobile{
+    float: left !important;
+}
 .option5 #main-menu{
     padding-left: 15px;
     padding-right: 70px;
@@ -58,6 +116,7 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 }
 .option5 #main-menu .navbar-default .navbar-nav>li>a{
     background-position: left center;
+    border-color: transparent;
 }
 #main-menu .dropdown-menu{
     right: auto;
@@ -78,4 +137,479 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .vertical-menu-list .dropdown-menu{
     right: 100%;
     left: auto;
+}
+#shopping-cart-box-ontop{
+    left: 0;
+    right: auto;
+}
+#user-info-opntop{
+    left: 50px;
+    right: auto;
+}
+#form-search-opntop{
+    right: auto;
+    left: 100px;
+}
+#form-search-opntop .input-serach{
+    float: right;
+}
+#form-search-opntop .btn-search{
+    float: left !important;
+}
+#form-search-opntop form{
+    padding-right: 0;
+    padding-left: 10px;
+}
+.box-vertical-megamenus .vertical-menu-list>li>a{
+    padding-left: 0;
+    padding-right: 20px;
+}
+#main-menu .navbar .navbar-nav>li>a{
+    border-right: 0;
+    border-left: 1px solid #cacaca;
+}
+#main-menu .navbar .navbar-nav>li:hover>a, 
+#main-menu .navbar .navbar-nav>li.active>a{
+    border-left: 1px solid transparent;
+    border-right: 0;
+}
+#main-menu{
+    margin-left: 0;
+    margin-right: -15px;
+}
+.option6 #main-menu{
+    padding-right: 70px;
+    padding-left: 15px;
+}
+.option6 .nav-ontop #box-vertical-megamenus .title .btn-open-mobile,
+.option5 .nav-ontop #box-vertical-megamenus .title .btn-open-mobile{
+    float: none !important;
+}
+.option2 .box-vertical-megamenus .all-category span:after{
+    content: "";
+    margin: 0;
+}
+.option2 .box-vertical-megamenus .all-category span:before{
+    content: "\f100";
+    font-size: 16px;
+    font-weight: normal;
+    margin-right: 20px;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+/** ================================================
+    6. Visual Composer
+*** ================================================*/
+.show-brand .navbar-brand{
+    margin-right: 0px;
+}
+.nav-menu .toggle-menu{
+    float: left;
+}
+.floor-elevator{
+    left: 0;
+    right: auto;
+    background-position: right center;
+    padding-left:22px;
+    padding-right: 38px;
+}
+.container-tab .navbar > .container .navbar-brand{
+    margin-right: 0;
+}
+.product-featured .banner-featured{
+    float: right;
+    margin-right: 0;
+    margin-left: -100%;
+}
+.product-featured .product-featured-content{
+    float: left;
+}
+.product-featured .product-featured-content .product-featured-list{
+    margin-left: 0;
+    margin-right: 234px;
+}
+.product-list li .product-star,
+.latest-deal-content .product-list li .content_price del,
+.latest-deals .colreduce-percentage{
+    float: left;
+}
+.product-list li .content_price .price,
+.product-list li .content_price ins{
+    float: right;
+}
+.product-list li .content_price del{
+    line-height: 28px;
+}
+.product-list li .quick-view,
+.option2 .product-list li .quick-view{
+    right: auto;
+    left: 20px;
+}
+.product-list li .quick-view a.compare,
+.yith-wcwl-add-to-wishlist .show a,
+.product-list li .quick-view a.search{
+    margin-left: -200px;
+}
+.product-list li .group-price{
+    right: 10px;
+    left: auto;
+}
+.brand-showcase-box .brand-showcase-logo .owl-controls .owl-prev,
+.latest-deals-product .owl-prev,
+.blog-list .blog-list-wapper .owl-controls .owl-prev{
+    left: 0px;
+    right: inherit;
+}
+.owl-controls .owl-next{
+    left: 26px;
+    right: inherit;
+}
+.brand-showcase-content-tab .trademark-info{
+    padding-right: 45px;
+    padding-left: inherit !important;
+}
+.trademark-product .image-product,
+.trademark-product .info-product .price ins{
+    float: right;
+}
+.trademark-product .info-product .price{
+    display: block;
+    overflow: hidden;
+}
+.trademark-product .info-product .price del{
+    float: left;
+}
+.trademark-info .trademark-link{
+    float: right;
+}
+.social-link a,
+#address-list .tit-name,
+.trademark-list li:first-child{
+    float: right;
+}
+.cate-box .cate-tit .div-1{
+    float: right;
+}
+.cate-content ul li a:before{
+    content: "\f104";
+}
+.latest-deals-product .count-down-time2{
+    left: 80px;
+    right: auto;
+}
+/**
+* Option 2
+*/
+.product-list li .content_price del{
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+}
+.option2 .show-brand .navbar-brand:after{
+    transform: rotate(180deg);
+    left: 5px;
+    right: auto;
+}
+.option2 .product-featured .product-featured-tab-content .box-left{
+    float: right;
+}
+.option2 .product-featured .sub-category-list{
+    padding-left: 0;
+    padding-right: 30px;
+}
+.option2 .product-featured .manufacture-list{
+    float: right;
+    padding-left: 0px;
+    padding-right: 15px;
+}
+.option2 .product-featured .manufacture-list .manufacture-waper{
+    border-left-width: 0px;
+}
+.option2 .product-featured .product-featured-tab-content .category-list-product{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.option2 .product-featured .product-featured-tab-content .box-left{
+    border-left: 0;
+}
+.option2 .deal-product .content_price ins{
+    float: right;
+}
+.option2 .deal-product .deal-product-content .content_price del{
+    float: left;
+}
+.option2 .product-featured .deal-product .price span{
+    margin-right:0;
+    margin-left: 10px;
+}
+.option2 .product-featured .deal-product .show-count-down .box-count{
+    float: right;
+    margin-right: 0;
+    margin-left: 5px;
+}
+.services2 .services2-item .text{
+    padding-right: 0;
+    padding-left: 30px;
+}
+.services2 .services2-item .image{
+    padding-left: 15px;
+    padding-right: 30px;
+}
+.option2 .product-featured .product-featured-tab-content .box-full .product-list li{
+    float: right;
+}
+.blog-list .blog-list-wapper ul li .readmore a:after {
+    content: "";
+}
+.blog-list .blog-list-wapper ul li .readmore a:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f177";
+    padding-right: 10px;
+}
+.option2 .product-featured{
+    background-position: right bottom !important;
+}
+.option2 .product-featured .sub-category-list{
+    float: right;
+}
+.block-popular-cat .image{
+    float: right;
+}
+.block-popular-cat .sub-categories>ul>li>a:before{
+    margin-right:0;
+    margin-left: 10px;
+}
+.main-header .shopping-cart-box a.cart-link:after{
+    right: auto;
+    left: -1px;
+}
+.brand .owl-controls .owl-next{
+    left: auto;
+    right: 0px;
+}
+.product-list li .add-to-cart a{
+    padding-left: 0;
+    padding-right: 40px;
+    background-position: right center;
+}
+.option2 .product-list li .add-to-cart a{
+    background-position: right center;
+}
+.products-block .products-block-left{
+    float: right;
+}
+.products-block .products-block-right{
+    margin-right: 85px;
+    margin-left: 0;
+}
+.widget_kt_product_special ins,
+.widget_kt_best_seller ins{
+    float: right;
+}
+.widget_kt_product_special del,
+.widget_kt_best_seller del{
+    float: left;
+    margin-right: 14px;
+    margin-left: 0px;
+}
+.products-block .products-block-right .price{
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+.products-block .link-all:before {
+    font: normal normal normal 13px/1 FontAwesome;
+    content: "\f100";
+    margin-right: 10px;
+}
+.products-block .link-all:after {
+    content: "";
+}
+.view-product-list .display-product-option{
+    left: 15px;
+    right: auto;
+}
+.widget_product_categories ul>li>a:before {
+    content: "\f104";
+    padding-right: 0;
+    padding-left: 12px;
+}
+.subcategories li{
+    float: right;
+}
+.subcategories li.current-categorie:after{
+    left: -4px;
+    right: auto;
+    content: "\f0d9";
+}
+.widget_kt_on_sale .product-list li .add-to-cart:before{
+    float: right;
+    margin-left:15px;
+    margin-right: 0px;
+}
+.yith-wcan-color li{
+    float: right;
+}
+.woocommerce .widget_price_filter .price_slider_amount{
+    text-align: left;
+}
+.woocommerce .widget_price_filter .price_slider_amount .button{
+    float: right;
+}
+.woocommerce .woocommerce-breadcrumb a,
+.woocommerce .woocommerce-breadcrumb .navigation-pipe{
+    float: right;
+}
+.woocommerce-breadcrumb .navigation-pipe:before{
+    content: "\f104";
+}
+.product-list.list .left-block{
+    float: right;
+}
+.product-list.list .product-star{
+    text-align: right;
+}
+.product-list.list .quick-view,
+.product-list.list .add-to-cart{
+    right: auto;
+    left: 36px;
+}
+.product-list.list .add-to-cart a{
+    background-position: right center;
+    margin-right: 15px;
+    padding-right: 15px;
+    margin-left: inherit;
+    padding-left: inherit;
+}
+.product-list.list .info-orther,
+.swatch-wrapper,
+.woocommerce div.product form.cart .button,
+.woocommerce .summary .yith-wcwl-add-to-wishlist,
+.woocommerce .summary .compare{
+    float: right;
+}
+.woocommerce #content div.product div.summary, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary{
+    float: left;
+}
+.woocommerce #content div.product div.images, .woocommerce div.product div.images, .woocommerce-page #content div.product div.images, .woocommerce-page div.product div.images{
+    float: right;
+}
+.quantity-plus, .quantity-minus,
+.woocommerce .quantity .qty{
+    float: right;
+    margin-right: 0px;
+    margin-left: 10px;
+}
+
+.woocommerce .summary .compare{
+    margin-right: 10px;
+    margin-left: 0px;
+}
+.images .owl-controls .owl-next{
+    right: 0;
+    left: auto
+}
+.related.products .owl-controls .owl-next, .upsells.products .owl-controls .owl-next{
+    right: auto;
+    left: 42px;
+}
+.related.products .owl-controls .owl-prev, .upsells.products .owl-controls .owl-prev{
+    right: auto;
+    left: 15px;
+}
+.blog-paging .navigation{
+    float: left;
+}
+.nav-links>a, .nav-links>span{
+    float: right;
+}
+.nav-links>a.next .fa{
+    margin-left: 10px
+}
+.nav-links>a .fa-angle-double-right:before{
+    content: "\f100";
+}
+.nav-links>a .fa-angle-double-left:before{
+    content: "\f101";
+}
+.blog-posts .post-item .entry-meta-data span{
+    margin-left: 40px;
+    margin-right: 0;
+}
+.popular-posts li a:first-child{
+    float: right;
+}
+.popular-posts li img{
+    margin-right: 0;
+    margin-left: 5px;
+}
+.blog-posts .post-item .entry .entry-meta-data{
+    overflow: hidden;
+}
+.blog-posts .post-item .entry-meta-data span{
+    float: right;
+}
+.woocommerce .widget_layered_nav ul li a, .woocommerce .widget_layered_nav ul li span{
+    float: right;
+    margin-right: 5px;
+}
+.yith-woo-ajax-navigation .count, .widget_product_categories .count, .widget_layered_nav .count{
+    margin-left: 0;
+    margin-right: 5px;
+}
+.woocommerce-cart table.cart td, 
+.woocommerce-cart table.cart th,
+.woocommerce table.wishlist_table thead th, 
+.woocommerce table.wishlist_table tbody td,
+.wishlist_table tr td.product-thumbnail, 
+.wishlist_table tr td.product-name, 
+.wishlist_table tr td.wishlist-name, 
+.wishlist_table tr td.wishlist-privacy, 
+.woocommerce table.wishlist_table tfoot td{
+    text-align: right;
+}
+.woocommerce .wishlist_table ins{
+    float: right;
+}
+.woocommerce .wishlist_table del{
+    float: left;
+}
+.entry-detail .entry-meta-data{
+    overflow: hidden;
+}
+.entry-detail .entry-meta-data span {
+    margin-left: 10px;
+    float: right;
+    margin-right: 0;
+}
+.comment-list .comment-author img{
+    float: right;
+}
+.comment-list .fn{
+    margin-right: 20px;
+    margin-left: 0px;
+}
+.comment-list .comment-content, .comment-list .comment-metadata{
+    margin-right: 90px;
+    margin-left: 0px;
+}
+.comment-list .reply{
+    text-align: left;
+}
+.single .breadcrumb .navigation-pipe{
+    text-indent: 0;
+}
+.single .breadcrumb .navigation-pipe:before{
+    content: "\f104";
+}
+.single .breadcrumb span,
+.single .breadcrumb a{
+    float: right;
+}
+.single .breadcrumb{
+    overflow: hidden;
+}
+.product-list li .quick-view .compare-button{
+    overflow: hidden;
 }

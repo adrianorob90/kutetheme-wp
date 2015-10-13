@@ -2101,6 +2101,22 @@ span.notify-right{
     top: 20%;
     width: 32px;
 }
+.hot-deals-row .product-list li .content_price .colreduce-percentage{
+  width: 52px;
+  height: 44px;
+  background: url("../images/price-percent-br.png") no-repeat center center;
+  color: #fff;
+  line-height: normal;
+  text-align: center;
+  font-size: 14px;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+
 .product-list li .quick-view a{
     width: 32px;
     height: 32px;
@@ -5421,7 +5437,7 @@ span.notify-right{
   text-align: center;
   background: #0088cc;
   color: #fff;
-  padding-top: 40px;
+  padding: 40px 0;
 }
 .hot-deals-box .hot-deals-tab .hot-deals-title>span{
   width: 100%;
@@ -5434,6 +5450,12 @@ span.notify-right{
 .hot-deals-box .hot-deals-tab .hot-deals-tab-box{
   display: table-cell;
   padding:25px;
+  vertical-align: top;
+}
+.hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab{
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li{
   line-height: 40px;
@@ -5620,10 +5642,13 @@ span.notify-right{
 .box-products .box-product-content .box-product-list .product-list li .right-block{
   margin-top: 30px;
 }
-.option3 .product-list li .price-percent-reduction2{
+.option3 .product-list li .price-percent-reduction2,
+.hot-deals-row .product-list li .content_price .colreduce-percentage{
   right: -8px;
 }
-
+.hot-deals-row .product-list li .content_price .colreduce-percentage .colreduce-lable{
+    display: block;
+}
 /** option color **/
 /*new-arrivals*/
 .box-products.new-arrivals .box-tabs li>a:after{
