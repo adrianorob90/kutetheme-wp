@@ -461,7 +461,10 @@ Category slider
 if( ! function_exists( 'kt_category_slider' ) ) {
     
     function kt_category_slider(){
-        
+        if ( !is_plugin_active( 'kutetheme-toolkit/kutetheme-toolkit.php' ) ) {
+          //plugin is activated
+            return false;
+        } 
         $cate = get_queried_object();
         
         $cateID = $cate->term_id;
