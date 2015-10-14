@@ -626,7 +626,9 @@ img.alignright{
   top: 48px;
   right: 0;
   left: auto;
-  border-top: 2px solid #ff3366;
+  border-top-color:#ff3366;
+  border-top-width: 2px;
+  border-top-style: solid; 
   transition: all 0.4s ease-out 0s;
   -webkit-transition: all 0.4s ease-out 0s;
   -o-transition: all 0.4s ease-out 0s;

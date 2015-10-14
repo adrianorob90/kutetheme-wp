@@ -402,7 +402,9 @@ function kt_get_color_scheme_css( $colors ) {
     body .option5 #form-search-opntop:hover form,
     body .option5 .box-vertical-megamenus .all-category span:hover,
     body .box-vertical-megamenus .vertical-menu-list>li:hover,
-    body .box-vertical-megamenus .all-category span:hover
+    body .box-vertical-megamenus .all-category span:hover,
+    body .option3 .nav-ontop,
+    body .option3 .nav-ontop #box-vertical-megamenus .title
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -425,15 +427,19 @@ function kt_get_color_scheme_css( $colors ) {
     div.popular-tabs .nav-tab li.active,
     body .top-header .dropdown-menu,
     body .option5 .box-vertical-megamenus .all-category span:hover,
-    body .box-vertical-megamenus .all-category span:hover{
-        border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
+    body .box-vertical-megamenus .all-category span:hover,
+    body .option3 .main-header .header-search-box .form-inline,
+    body #user-info-opntop .dropdown-menu{
+      	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
         border-top-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     a:hover,
     .cart-block .cart-block-content .product-info .p-right .p-rice,
-    .widget.widget_product_categories ul>li.current-cat>a{
+    .widget.widget_product_categories ul>li.current-cat>a,
+    body .option3 #main-menu .navbar .navbar-nav>li:hover>a,
+	body .option3 #main-menu .navbar .navbar-nav>li.active>a{
         color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     /* Text Color */
@@ -472,7 +478,9 @@ function kt_get_color_scheme_css( $colors ) {
     .option2 .deal-product .content_price,
     .option2 .product-list li .content_price .product-price,
     .woocommerce .wishlist_table span.amount,
-    .widget.widget_kt_best_seller .price{
+    .widget.widget_kt_best_seller .price,
+    .vertical-menu-list .mega-product .price,
+    body .cart-block .cart-block-content .product-info .p-right .p-rice{
         color: <?php  echo esc_attr( $colors['price_color'] ); ?>
     }
 	/* Color*/
