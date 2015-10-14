@@ -186,7 +186,7 @@ function kt_get_color_scheme() {
 	$color_scheme_option = get_theme_mod( 'color_scheme' );
 	$color_scheme_option = get_theme_mod( 'color_scheme', 'default' );
 	$color_schemes       = kt_get_color_schemes();
-    
+
 	if ( array_key_exists( $color_scheme_option, $color_schemes ) ) {
 		
 		return $color_schemes[ $color_scheme_option ]['colors'];
@@ -246,14 +246,7 @@ endif; // kt_sanitize_color_scheme
 function kt_color_scheme_css() {
 	$color_scheme_option = get_theme_mod( 'color_scheme', 'default' );
 
-	// Don't do anything if the default color scheme is selected.
-	if ( 'default' === $color_scheme_option ) {
-		return;
-	}
-    
     $color_scheme = kt_get_color_scheme();
-    
-	
     
     $main_color           = get_theme_mod( 'main_color', $color_scheme[1] );
     $box_background_color = get_theme_mod( 'box_background_color', $color_scheme[2] );
@@ -407,7 +400,9 @@ function kt_get_color_scheme_css( $colors ) {
     body .option5 .nav-top-menu.nav-ontop,
     body .option5 .box-vertical-megamenus .vertical-menu-list>li:hover,
     body .option5 #form-search-opntop:hover form,
-    body .option5 .box-vertical-megamenus .all-category span:hover
+    body .option5 .box-vertical-megamenus .all-category span:hover,
+    body .box-vertical-megamenus .vertical-menu-list>li:hover,
+    body .box-vertical-megamenus .all-category span:hover
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -429,7 +424,8 @@ function kt_get_color_scheme_css( $colors ) {
     div.popular-tabs .nav-tab li:hover, 
     div.popular-tabs .nav-tab li.active,
     body .top-header .dropdown-menu,
-    body .option5 .box-vertical-megamenus .all-category span:hover{
+    body .option5 .box-vertical-megamenus .all-category span:hover,
+    body .box-vertical-megamenus .all-category span:hover{
         border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
