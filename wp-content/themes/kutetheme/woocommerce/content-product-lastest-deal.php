@@ -37,14 +37,14 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     <div class="add-to-cart">
         <?php
-		/**
-		 * woocommerce_after_shop_loop_item hook
-		 *
-		 * @hooked woocommerce_template_loop_add_to_cart - 10
-		 */
-		do_action( 'woocommerce_after_shop_loop_item' );
-
-	?>
+    		/**
+    		 * woocommerce_after_shop_loop_item hook
+    		 *
+    		 * @hooked woocommerce_template_loop_add_to_cart - 10
+    		 */
+    		do_action( 'woocommerce_after_shop_loop_item' );
+    
+    	?>
     </div>
 </div>
 <div class="right-block">

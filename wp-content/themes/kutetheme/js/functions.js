@@ -2,6 +2,9 @@
     "use strict"; // Start of use strict
     var rtl = jQuery( 'body' ).hasClass( 'rtl' );
     
+    var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
+    var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
+     
     var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
     /**==============================
     ***  Change Color tab Category
@@ -39,8 +42,23 @@
         }
         $this.owlCarousel(config);
     }
-    
-    function edo_lazy( $lazy ){
+    function hasOnlyCountdown(){
+        jQuery( '.only_countdown' ).each(function(){
+            var max_time = $(this).find('.max-time-sale');
+            if( max_time.length > 0 ){
+                var y = max_time.data('y');
+                var m = max_time.data('m');
+                var d = max_time.data('d');
+                var austDay = new Date( y, m - 1, d, 0, 0, 0 );
+                $(this).find('.countdown-only').countdown({
+                    until: austDay,
+                    labels: labels, 
+                    layout: layout
+                });
+            }
+        });
+    }
+    function kt_lazy( $lazy ){
         $lazy.each( function($index, $element){
             $element = jQuery( $element);
             var $item = $element.closest( 'li' );
@@ -109,6 +127,8 @@
     $(document).ready(function() {
         woo_quantily();
         show_other_item_vertical_menu();
+        /* Only Count down */
+        hasOnlyCountdown();
         /* Resize top menu*/
         resizeTopmenu();
         /* Zoom image */
@@ -468,9 +488,17 @@
                 $style.append( '#'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a, #'+$id+'.option2 .category-featured .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured .nav-menu .nav>li.active a:after, #'+$id+'.option2 .category-featured .sub-category-list a:hover{color: '+$color+';}' );
                 $style.append( '#'+$id+'.option2 .category-featured .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
                 $style.append( '#'+$id+'.option2 .category-featured .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
+            }else if( $this.hasClass( 'tab-5' ) ){
+                $style.append( '#'+$id+'.option2 .category-featured.jewelry .navbar-brand, #'+$id+'.option2 .category-featured.jewelry .nav-menu .nav>li>a:before,#'+$id+'.option2 .category-featured.jewelry .product-list li .add-to-cart:hover, #'+$id+'.option2 .category-featured.jewelry .product-list li .quick-view a.search:hover, #'+$id+'.option2 .category-featured.jewelry .product-list li .quick-view a.compare:hover, #'+$id+'.option2 .category-featured.jewelry .product-list li .quick-view a.heart:hover, #'+$id+'.option2 .category-featured.jewelry .product-list li .quick-view a:hover{background-color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .category-featured.jewelry .nav-menu .nav>li:hover a, #'+$id+'.option2 .category-featured.jewelry .nav-menu .nav>li.active a,#'+$id+'.option2 .category-featured.jewelry .nav-menu .nav>li:hover a:after, #'+$id+'.option2 .category-featured.jewelry .nav-menu .nav>li.active a:after{color: '+$color+';}' );
+                $style.append( '#'+$id+'.option2 .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
+                $style.append( '#'+$id+'.option2 .category-featured.jewelry .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
             }
-        }else if( $this.hasClass('option3') ){
-            
+        }else if( $this.hasClass('box-products') ){
+            $style.append( '#'+$id+'.box-products .box-tabs li>a:before, #'+$id+'.box-products .product-list li .add-to-cart:hover, #'+$id+'.box-products .product-list li .quick-view a:hover, #'+$id+'.box-products .owl-controls .owl-prev:hover, #'+$id+'.box-products .owl-controls .owl-next:hover{background-color: '+$color+';}' );
+            $style.append( '#'+$id+'.box-products .box-tabs li>a:after{color: '+$color+';}' );
+            $style.append( '#'+$id+'.box-products .box-product-head .box-title{border-bottom-color:'+$color+'}' );
+            $style.append( '#'+$id+'.box-products .product-list li .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
         }
     });
     /**==============================
@@ -509,11 +537,11 @@
             
             var $lazy = $tab_active.find( '.kt-template-loop .owl-lazy' );
             
-            edo_lazy( $lazy );
+            kt_lazy( $lazy );
         });
         
         
-        edo_lazy( first_lazy ); 
+        kt_lazy( first_lazy ); 
           
     });
     /* ---------------------------------------------

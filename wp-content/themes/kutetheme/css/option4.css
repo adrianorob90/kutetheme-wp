@@ -5,7 +5,7 @@
 	color: #0088cc;
 }
 .option4{
-	background: #eaeaea;
+	
 }
 .option4 .product-list li .product-price {
 	color: #0088cc;
@@ -308,15 +308,19 @@
 }
 
 .formsearch-option4{
-	padding: 0;
 	height: 40px;
+}
+.formsearch-option4{
+    padding-left: 0;
+}
+.formsearch-option4.kt-wpml{
+	padding-right: 0;
 }
 .formsearch-option4>form{
 	border-right: 1px solid #ccc;
 	height: 40px;
 }
 .formsearch-option4 .form-category{
-	border-right: 1px solid #ccc;
 	height: 40px;
 	min-width: 150px;
 }
@@ -346,14 +350,28 @@
 .formsearch-option4 .input-serach{
 	padding-left: 10px;
 }
+.formsearch-option4 .input-serach input{
+    outline-width: 0;
+    border-width: 0;
+    background-color: transparent;
+}
 .formsearch-option4 .btn-search{
 	width: 50px;
 	height: 40px;
+    background-color: transparent;
+    border-width: 0;
 	border-left: 1px solid #ccc;
 	color: #666;
 }
-.formsearch-option4 .btn-search .fa{
-	line-height: inherit;
+.formsearch-option4 .btn-search:before{
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+    content: "\f002";
 }
 
 

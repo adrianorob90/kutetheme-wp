@@ -225,6 +225,7 @@ img.alignright{
    width: 100%;
    opacity: 0;
    visibility: hidden;
+   overflow: hidden;
 }
 .tab-container .active{
     opacity: 1;
@@ -2101,7 +2102,8 @@ span.notify-right{
     top: 20%;
     width: 32px;
 }
-.hot-deals-row .product-list li .content_price .colreduce-percentage{
+.hot-deals-row .product-list li .content_price .colreduce-percentage,
+.box-products .product-list li .content_price .colreduce-percentage{
   width: 52px;
   height: 44px;
   background: url("../images/price-percent-br.png") no-repeat center center;
@@ -5643,10 +5645,12 @@ span.notify-right{
   margin-top: 30px;
 }
 .option3 .product-list li .price-percent-reduction2,
-.hot-deals-row .product-list li .content_price .colreduce-percentage{
+.hot-deals-row .product-list li .content_price .colreduce-percentage,
+.box-products .product-list li .content_price .colreduce-percentage{
   right: -8px;
 }
-.hot-deals-row .product-list li .content_price .colreduce-percentage .colreduce-lable{
+.hot-deals-row .product-list li .content_price .colreduce-percentage .colreduce-lable,
+.box-products .product-list li .content_price .colreduce-percentage .colreduce-lable{
     display: block;
 }
 /** option color **/

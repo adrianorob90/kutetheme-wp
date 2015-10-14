@@ -290,8 +290,8 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             			'taxonomy' => 'product_cat',
             			'field' => 'id',
             			'terms' => explode( ",", $taxonomy )
-            	)
-            );
+                	)
+                );
         }
         $data_carousel = array(
             "autoplay"           => $autoplay,
@@ -333,23 +333,40 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         $tabs = kt_get_all_attributes( 'tab_section', $content );
         if( count( $tabs ) >0 ) :
         $unique = uniqid();
+        $new_title = array( 
+            __( 'hot' ),
+            __( 'deals' )
+         );
+        $charact = explode( ' ', $title );
+        if( is_array( $charact ) && count( $charact ) > 1 ){
+            $new_title = $charact;
+        }
         ?>
-        <div class="option3">
+        <div class="option3 col-sm-12">
         <!-- Hot deals -->
-        <div class="hot-deals-row">
-            <div class="hot-deals-box">
+        <div class="hot-deals-row container-tab">
+            <div class="hot-deals-box only_countdown">
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-4">
                         <div class="hot-deals-tab">
                             <div class="hot-deals-title vertical-text">
-                                <span>h</span>
-                                <span>o</span>
-                                <span>t</span>
-                                <span class="yellow">d</span>
-                                <span class="yellow">e</span>
-                                <span class="yellow">a</span>
-                                <span class="yellow">l</span>
-                                <span class="yellow">s</span>
+                                <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
+                                    <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
+                                        <?php if( isset( $new_title[0][$i] ) ):  ?>
+                                            <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                <?php endif; ?>
+                                
+                                <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
+                                    <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
+                                        <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
+                                            <?php if( isset( $new_title[$j][$i] ) ):  ?>
+                                                <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                <?php endfor; ?>
                             </div>
                             <div class="hot-deals-tab-box">
                                 <ul class="nav-tab">
@@ -366,7 +383,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                         <?php endforeach; ?>
                                 </ul>
                                 <div class="box-count-down">
-                                    
+                                    <span class="countdown-only"></span>
                                 </div>
                             </div>
                         </div>
@@ -400,7 +417,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                 remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
                                 ?>
-                                <div id="hot-deal-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
                                     <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
                                     <ul class="product-list owl-carousel nav-center" <?php echo $carousel; ?>>
                                         <?php while( $products->have_posts() ): $products->the_post(); ?>

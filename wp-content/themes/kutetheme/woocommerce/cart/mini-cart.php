@@ -48,6 +48,33 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
             </div>
         </div>
+    <?php elseif( $kt_used_header == 3 ) :?>
+        <div class="col-sm-6 col-md-3 group-button-header">
+                <div class="btn-cart" id="cart-block">
+                    <a title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php _e( 'Cart', 'kutetheme');?></a>
+                    <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
+                    <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+                </div>
+                <?php $url = get_permalink( get_option('woocommerce_myaccount_page_id') );?>
+                <a title="<?php _e('My Account', 'kutetheme');?>" href="<?php echo esc_attr( $url );?>" class="btn-login">
+                <?php
+                if( is_user_logged_in() ) _e( 'Account', 'kutetheme' );
+                else _e( 'Login', 'kutetheme' );
+                ?>
+                </a>
+                <?php if( function_exists( 'YITH_WCWL' ) ):
+                    $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
+                    <a title="<?php esc_html_e( "Wishlists", 'kutetheme') ?>" class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php esc_html_e( 'Wishlists', 'kutetheme') ?></a>
+                <?php endif; ?>
+            </div>
+    <?php elseif( $kt_used_header == 4 ) :?>
+            <div class="col-sm-2 col-md-1 group-button-header">
+                <div class="btn-cart" id="cart-block">
+                    <a title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php esc_html_e( 'My cart', 'kutetheme' ) ?></a>
+                    <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
+                    <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+                </div>
+            </div>
     <?php elseif( $kt_used_header == 5 ) :?>
         <?php
             if(defined( 'YITH_WOOCOMPARE' )): global $yith_woocompare; $count = count($yith_woocompare->obj->products_list); ?>
@@ -81,25 +108,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
     
         </div>
-    <?php elseif( $kt_used_header == 3 ) :?>
-        <div class="col-sm-6 col-md-3 group-button-header">
-                <div class="btn-cart" id="cart-block">
-                    <a title="My cart" href="<?php echo esc_url( $check_out_url );?>"><?php _e( 'Cart', 'kutetheme');?></a>
-                    <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
-                    <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
-                </div>
-                <?php $url = get_permalink( get_option('woocommerce_myaccount_page_id') );?>
-                <a title="<?php _e('My Account', 'kutetheme');?>" href="<?php echo esc_attr( $url );?>" class="btn-login">
-                <?php
-                if( is_user_logged_in() ) _e( 'Account', 'kutetheme' );
-                else _e( 'Login', 'kutetheme' );
-                ?>
-                </a>
-                <?php if( function_exists( 'YITH_WCWL' ) ):
-                    $wishlist_url = YITH_WCWL()->get_wishlist_url(); ?>
-                    <a title="<?php esc_html_e( "Wishlists", 'kutetheme') ?>" class="btn-heart" href="<?php echo esc_url( $wishlist_url ); ?>"><?php esc_html_e( 'Wishlists', 'kutetheme') ?></a>
-                <?php endif; ?>
-            </div>
     <?php endif;?>
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>
 </div>

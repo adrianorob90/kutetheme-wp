@@ -21,8 +21,8 @@ if( isset( $banner_left ) && $banner_left ):
     foreach($list_banner_left as $l):
     ?>
         <div class="banner-left">
-            <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                <?php echo wp_get_attachment_image($l->ID,'full');?>
+            <a href="<?php echo esc_url( $term_link ) ? esc_url( $term_link ) : ''; ?>">
+                <?php echo wp_get_attachment_image($l->ID, 'full' );?>
             </a>
         </div>
     <?php
