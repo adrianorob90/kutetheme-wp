@@ -1468,6 +1468,11 @@ del span.amount{
     width: 100%;
 }
 
+span.sku_wrapper{
+	margin-top: 0;
+	margin-bottom: 10px;
+	display: block;
+}
 /** REPONSIVE **/
 /*----------------
 [11. Styles for devices(>1200px)]
