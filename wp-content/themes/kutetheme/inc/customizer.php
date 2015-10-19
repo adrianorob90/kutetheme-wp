@@ -43,7 +43,7 @@ function kt_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color', array(
 		'label'       => esc_attr__( 'Theme Color', 'kutetheme' ),
-		'description' => esc_attr__( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the theme color.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
 
@@ -59,7 +59,7 @@ function kt_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'box_background_color', array(
 		'label'       => esc_attr__( 'Box and Sidebar Background Color', 'kutetheme' ),
-		'description' => esc_attr__( 'Applied to the header on small screens and the sidebar on wide screens.', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the box and sidebar color.', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
     
@@ -72,7 +72,7 @@ function kt_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'textcolor', array(
 		'label'       => esc_attr__( 'Text Color', 'kutetheme' ),
-		'description' => esc_attr__( 'Applied to the header on small screens and the text on wide screens.', 'kutetheme' ),
+		'description' => esc_attr__( 'Applied to the text color', 'kutetheme' ),
 		'section'     => 'colors',
 	) ) );
     
@@ -394,6 +394,7 @@ function kt_get_color_scheme_css( $colors ) {
  	 .ui-selectmenu-menu .ui-state-focus, 
  	div.ui-selectmenu-menu .ui-widget-content .ui-state-focus, 
  	div.ui-selectmenu-menu .ui-widget-header .ui-state-focus,
+    .hot-deals-box .hot-deals-tab .hot-deals-title,
     
     .option5 .nav-top-menu #main-menu .navbar,
     body .option5 .main-header .header-search-box .form-inline .btn-search,
@@ -402,7 +403,21 @@ function kt_get_color_scheme_css( $colors ) {
     body .option5 #form-search-opntop:hover form,
     body .option5 .box-vertical-megamenus .all-category span:hover,
     body .box-vertical-megamenus .vertical-menu-list>li:hover,
-    body .box-vertical-megamenus .all-category span:hover
+    body .box-vertical-megamenus .all-category span:hover,
+    
+    .header.option3 .main-header .header-search-box .form-inline .btn-search,
+    .header.option3 .nav-top-menu .box-vertical-megamenus .title,
+    .header.option3 .box-vertical-megamenus .vertical-menu-list>li:hover,
+    .header.option3 .box-vertical-megamenus .all-category:hover>span,
+    .hot-deals-box .hot-deals-tab .hot-deals-tab-box .box-count-down .box-count:before,
+    body .header.option3 .nav-ontop,
+    body .header.option3 .nav-ontop #box-vertical-megamenus .title,
+    body .header.option4 .box-vertical-megamenus .title,
+    body .header.option4 .box-vertical-megamenus .vertical-menu-list>li:hover,
+    body .header.option4 .box-vertical-megamenus .all-category:hover span,
+    body .formsearch-option4 .btn-search:hover,
+    body .option4 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
+    body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -425,7 +440,11 @@ function kt_get_color_scheme_css( $colors ) {
     div.popular-tabs .nav-tab li.active,
     body .top-header .dropdown-menu,
     body .option5 .box-vertical-megamenus .all-category span:hover,
-    body .box-vertical-megamenus .all-category span:hover{
+    body .box-vertical-megamenus .all-category span:hover,
+    
+    .header.option3 .box-vertical-megamenus .all-category:hover>span,
+    .header.option3  .main-header .header-search-box .form-inline,
+    body .header.option4 .box-vertical-megamenus .all-category:hover span{
         border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
@@ -433,7 +452,15 @@ function kt_get_color_scheme_css( $colors ) {
     }
     a:hover,
     .cart-block .cart-block-content .product-info .p-right .p-rice,
-    .widget.widget_product_categories ul>li.current-cat>a{
+    .widget.widget_product_categories ul>li.current-cat>a,
+    
+    body .option3 #main-menu .navbar .navbar-nav>li:hover>a, 
+    body .option3 #main-menu .navbar .navbar-nav>li.active>a,
+    body .option3 a:hover,
+    body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a,
+    body .option4 #main-menu .navbar .navbar-nav>li:hover>a, 
+    body .option4 #main-menu .navbar .navbar-nav>li.active>a,
+    body .option4 a:hover{
         color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     /* Text Color */
@@ -458,7 +485,8 @@ function kt_get_color_scheme_css( $colors ) {
     }
     /* Footer Menu Link*/
     .footer-menu-list li a,
-    .woocommerce .wishlist_table ins{
+    .woocommerce .wishlist_table ins,
+    body #footer2 a:hover{
         color: <?php echo esc_attr( $colors['menu_link_footer'] ); ?>
     }
     /* Price Color */

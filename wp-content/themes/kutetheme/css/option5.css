@@ -209,7 +209,7 @@
 	display: none;
 	padding-bottom: 0;
 }
-.option5 #main-menu{
+.option5 #main-menu.enable_vm{
 	width: 100%;
 	padding: 0 15px;
 	margin: 0;

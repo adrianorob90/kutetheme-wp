@@ -216,7 +216,14 @@
         })
         /** SELECT CATEGORY **/
         //$('.select-category').select2();
-        $( ".select-category" ).selectmenu();
+        if( rtl ){
+            $( ".select-category" ).selectmenu({
+                position: { my : "left-53 top"}
+            });
+        }else{
+             $( ".select-category" ).selectmenu();
+        }
+        
         /* Toggle nav menu*/
         $(document).on('click','.toggle-menu',function(){
             $(this).closest('.nav-menu').find('.navbar-collapse').toggle();

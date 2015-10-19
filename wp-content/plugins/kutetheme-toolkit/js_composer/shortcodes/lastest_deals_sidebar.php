@@ -24,6 +24,19 @@ vc_map( array(
             'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
         ),
         array(
+            "type"        => "kt_taxonomy",
+            "taxonomy"    => "product_cat",
+            "class"       => "",
+            "heading"     => __("Category", 'kutetheme'),
+            "param_name"  => "taxonomy",
+            "value"       => '',
+            'parent'      => 0,
+            'multiple'    => true,
+            'placeholder' => __('Choose categoy', 'kutetheme'),
+            "description" => __("Note: Selected categories will be hide if it empty. Only selected categories will be displayed.", 'kutetheme')
+        ),
+        
+        array(
             "type"        => "kt_number",
             "heading"     => __("Number Product", 'kutetheme'),
             "param_name"  => "number",
@@ -127,6 +140,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'lastest_deals_sidebar', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'title'         => '',
+            'taxonomy'       => '',
             'number'        => 12,
             //Carousel            
             'autoplay'      => "false",
@@ -170,6 +184,16 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
 			'meta_query' 	 => $meta_query,
 			'post__in'		 => array_merge( array( 0 ), $product_ids_on_sale )
 		);
+        if($taxonomy){
+            $args['tax_query'] = 
+                array(
+            		array(
+                        'taxonomy' => 'product_cat',
+                        'field'    => 'id',
+                        'terms'    => explode( ",", $taxonomy )
+            		)
+                );
+        }
         
         $q = apply_filters( 'woocommerce_shortcode_products_query', $args, $atts );
         

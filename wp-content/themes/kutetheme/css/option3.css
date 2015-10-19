@@ -480,6 +480,9 @@
 	display: none;
 }
 
+.option3 .top-main-header .main-header-top-link{
+    padding: 0;
+}
 /** REPONSIVE **/
 /*----------------
 [4. Styles for devices(>1200px)]

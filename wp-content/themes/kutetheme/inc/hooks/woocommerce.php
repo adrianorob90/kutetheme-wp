@@ -540,6 +540,7 @@ if( ! function_exists( 'kt_custom_display_view' ) ){
         if(isset($_SESSION['shop_products_layout'])){
             $shop_products_layout = $_SESSION['shop_products_layout'];
         }
+        ob_start();
         ?>
         <ul class="display-product-option">
             <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
@@ -550,10 +551,11 @@ if( ! function_exists( 'kt_custom_display_view' ) ){
             </li>
         </ul>
         <?php
+        $layout = ob_get_contents();
+        ob_clean();
+        return $layout;
     }
 }
-
-add_filter( 'woocommerce_before_shop_loop' , 'kt_custom_display_view' );
 
 // kt_custom_class_list_product
 
@@ -734,7 +736,27 @@ Custom woocommerce_page_title
 add_filter( 'woocommerce_page_title', 'custom_woocommerce_page_title');
 if( ! function_exists( 'custom_woocommerce_page_title' ) ){
     function custom_woocommerce_page_title( $page_title ) {
-      return  '<span>' . esc_html( $page_title ) . '</span>';
+        $shop_products_layout = 'grid';
+        
+        if(isset($_SESSION['shop_products_layout'])){
+            $shop_products_layout = $_SESSION['shop_products_layout'];
+        }
+        ob_start();
+        ?>
+        <span><?php echo esc_html( $page_title ); ?></span>
+        <ul class="display-product-option">
+            <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
+                <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
+            </li>
+            <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
+                <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
+            </li>
+        </ul>
+        <?php
+        $page_title = ob_get_contents();
+        ob_clean();
+        return  $page_title ;
+        
     }
 }
 

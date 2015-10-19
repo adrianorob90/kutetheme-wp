@@ -1338,7 +1338,7 @@ span.notify-right{
   background: none;
   color: #ff3366;
  }
-#main-menu{
+#main-menu.enable_vm{
   padding: 0;
   margin-left: -15px;
 }
@@ -3636,6 +3636,9 @@ span.notify-right{
   border: 1px solid #e4e4e4;
   margin-bottom: 20px;
 }
+.term-description{
+    margin-top: 10px;
+}
 .subcategories ul{
   overflow: hidden;
   padding: 0;
@@ -3707,17 +3710,17 @@ span.notify-right{
 }
 .view-product-list .display-product-option{
   position: absolute;
-  right: 15px;
-  margin-top: -35px;
+  right: 0;
+  bottom: 10px;
 }
 
 /** botton view option **/
 .display-product-option li{
   list-style: none;
   display: inline-block;
-  float: left;
   margin-left: 3px;
-  width: auto;
+  width: 30px;
+  height: 30px;
 }
 .display-product-option{
     height: 30px;

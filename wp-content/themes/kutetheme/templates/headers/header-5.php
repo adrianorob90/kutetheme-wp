@@ -19,7 +19,7 @@
     <!-- MAIN HEADER -->
     <div class="container main-header">
         <div class="row">
-            <div class="col-xs-4 col-sm-12 col-md-5 col-lg-4 header-search-box">
+            <div class="col-xs-4 col-sm-12 col-md-4 col-lg-4 header-search-box">
                 <?php kt_search_form();  ?>
             </div>
             <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 logo">
@@ -37,58 +37,7 @@
     <!-- END MANIN HEADER -->
     <div id="nav-top-menu" class="nav-top-menu">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3" id="box-vertical-megamenus">
-                    <div class="box-vertical-megamenus">
-                    <h4 class="title">
-                        <span class="btn-open-mobile"><i class="fa fa-bars"></i></span>
-                    </h4>
-                    <div class="vertical-menu-content is-home">
-                        <?php
-                            wp_nav_menu( array(
-                                'menu'              => 'vertical',
-                                'theme_location'    => 'vertical',
-                                'depth'             => 2,
-                                'container'         => '',
-                                'container_class'   => '',
-                                'container_id'      => '',
-                                'menu_class'        => 'vertical-menu-list',
-                                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                'walker'            => new wp_bootstrap_navwalker())
-                            );
-                        ?><!--/.nav-collapse -->
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
-                    </div>
-                </div>
-                </div>
-                <div id="main-menu" class="col-sm-9 main-menu">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                                <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                            </div>
-                            <div id="navbar" class="navbar-collapse collapse">
-                                <?php
-                                    wp_nav_menu( array(
-                                        'menu'              => 'primary',
-                                        'theme_location'    => 'primary',
-                                        'depth'             => 2,
-                                        'container'         => 'div',
-                                        'container_class'   => 'collapse navbar-collapse',
-                                        'container_id'      => 'navbar',
-                                        'menu_class'        => 'nav navbar-nav',
-                                        'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                        'walker'            => new wp_bootstrap_navwalker())
-                                    );
-                                ?><!--/.nav-collapse -->
-                            </div><!--/.nav-collapse -->
-                        </div>
-                    </nav>
-                </div>
-            </div>
+            <?php do_action( 'kt_show_menu_option_5' ); ?>
             <!-- userinfo on top-->
             <div id="form-search-opntop">
             </div>

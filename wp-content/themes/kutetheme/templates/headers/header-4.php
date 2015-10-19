@@ -27,19 +27,7 @@
                                 </button>
                                 <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
                             </div>
-                            <?php
-                                wp_nav_menu( array(
-                                    'menu'              => 'primary',
-                                    'theme_location'    => 'primary',
-                                    'depth'             => 2,
-                                    'container'         => 'div',
-                                    'container_class'   => 'collapse navbar-collapse',
-                                    'container_id'      => 'navbar',
-                                    'menu_class'        => 'nav navbar-nav',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker())
-                                );
-                            ?>
+                            <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
                         </div>
                     </nav>
                 </div>
@@ -54,44 +42,7 @@
     <!-- END MANIN HEADER -->
     <div class="nav-top-menu">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3" id="box-vertical-megamenus">
-                    <div class="box-vertical-megamenus">
-                        <h4 class="title">
-                            <span class="title-menu">Categories</span>
-                            <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
-                        </h4>
-                        <div class="vertical-menu-content is-home">
-                            <?php
-                                wp_nav_menu( array(
-                                    'menu'              => 'vertical',
-                                    'theme_location'    => 'vertical',
-                                    'depth'             => 2,
-                                    'container'         => '',
-                                    'container_class'   => '',
-                                    'container_id'      => '',
-                                    'menu_class'        => 'vertical-menu-list',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker())
-                                );
-                            ?>
-                            <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
-                        </div>
-                    </div>
-                </div>
-                <?php if( kt_is_wpml() ): ?>
-                    <div class="col-sm-5 col-md-7 formsearch-option4 kt-wpml">
-                        <?php kt_search_form();  ?>
-                    </div>
-                    <div class="col-sm-4 col-md-2 group-link-main-menu">
-                        <?php echo kt_get_wpml(); ?>
-                    </div>
-                <?php else: ?>
-                    <div class="col-sm-9 formsearch-option4">
-                        <?php kt_search_form();  ?>
-                    </div>
-                <?php endif; ?>
-            </div>
+            <?php do_action( 'kt_show_vertical_menu_option_4' ); ?>
         </div>
     </div>
 </div>

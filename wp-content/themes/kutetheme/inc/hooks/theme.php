@@ -151,3 +151,274 @@ if( ! function_exists( 'kt_custom_js' ) ){
     }
 }
 add_action( 'wp_footer', 'kt_custom_js' );
+
+if( ! function_exists( 'kt_setting_vertical_menu' ) ){
+    function kt_setting_vertical_menu(){
+        wp_nav_menu( array(
+            'menu'              => 'vertical',
+            'theme_location'    => 'vertical',
+            'depth'             => 2,
+            'container'         => '',
+            'container_class'   => '',
+            'container_id'      => '',
+            'menu_class'        => 'vertical-menu-list',
+            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+            'walker'            => new wp_bootstrap_navwalker())
+        );
+    }
+}
+
+if( ! function_exists( 'kt_setting_mega_menu' ) ){
+    function kt_setting_mega_menu(){
+        wp_nav_menu( array(
+            'menu'              => 'primary',
+            'theme_location'    => 'primary',
+            'depth'             => 2,
+            'container'         => 'div',
+            'container_class'   => 'collapse navbar-collapse',
+            'container_id'      => 'navbar',
+            'menu_class'        => 'nav navbar-nav',
+            'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+            'walker'            => new wp_bootstrap_navwalker())
+        );
+    }
+}
+if( ! function_exists( 'kt_show_menu_option_1' ) ){
+    function kt_show_menu_option_1(){ global $kt_enable_vertical_menu;?>
+        <div class="row">
+            <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
+            <div class="col-sm-3" id="box-vertical-megamenus">
+                <div class="box-vertical-megamenus">
+                    <h4 class="title">
+                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <?php kt_setting_vertical_menu(); ?>
+                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <?php else: ?>
+            <div id="main-menu" class="col-sm-12 main-menu">
+            <?php endif; ?>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
+                        </div>
+                        <?php kt_setting_mega_menu(); ?>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <?php
+    }
+}
+add_action( 'kt_show_menu_option_1', 'kt_show_menu_option_2' );
+
+if( ! function_exists( 'kt_show_menu_option_2' ) ){
+    function kt_show_menu_option_2(){ global $kt_enable_vertical_menu;?>
+        <div class="row">
+            <?php if ( $kt_enable_vertical_menu == 'enable' ) : ?>
+            <div class="col-sm-3" id="box-vertical-megamenus">
+                <div class="box-vertical-megamenus style2">
+                    <h4 class="title">
+                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <?php else: ?>
+            <div id="main-menu" class="col-sm-12 main-menu">
+            <?php endif; ?>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
+                        </div>
+                        <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    <?php }
+}
+add_action( 'kt_show_menu_option_2', 'kt_show_menu_option_2' );
+
+if( ! function_exists( 'kt_show_menu_option_3' ) ){
+    function kt_show_menu_option_3(){ global $kt_enable_vertical_menu;?>
+        <div class="row">
+            <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
+            <div class="col-sm-3" id="box-vertical-megamenus">
+                <div class="box-vertical-megamenus style2">
+                    <h4 class="title">
+                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <?php else: ?>
+            <div id="main-menu" class="col-sm-12 main-menu">
+            <?php endif; ?>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
+                        </div>
+                        <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    <?php }
+}
+add_action( 'kt_show_menu_option_3', 'kt_show_menu_option_3' );
+
+if( ! function_exists( 'kt_show_vertical_menu_option_4' ) ){
+    function kt_show_vertical_menu_option_4(){ global $kt_enable_vertical_menu;?>
+    <?php if( $kt_enable_vertical_menu == 'enable' ) : ?>
+    <div class="row enable_vm">
+        <div class="col-sm-3" id="box-vertical-megamenus">
+            <div class="box-vertical-megamenus">
+                <h4 class="title">
+                    <span class="title-menu">Categories</span>
+                    <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
+                </h4>
+                <div class="vertical-menu-content is-home">
+                    <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                    <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                </div>
+            </div>
+        </div>
+    <?php else:  ?>
+        <div class="row">
+    <?php endif; ?>
+    <?php if( kt_is_wpml() ): ?>
+            <?php if( $kt_enable_vertical_menu == 'enable' ) : ?>
+                <div class="col-sm-5 col-md-7 formsearch-option4 kt-wpml">
+                    <?php kt_search_form();  ?>
+                </div>
+                <div class="col-sm-4 col-md-2 group-link-main-menu">
+                    <?php echo kt_get_wpml(); ?>
+                </div>
+            <?php else: ?>
+                <div class="col-sm-7 col-md-10 formsearch-option4 kt-wpml">
+                    <?php kt_search_form();  ?>
+                </div>
+                <div class="col-sm-5 col-md-2 group-link-main-menu">
+                    <?php echo kt_get_wpml(); ?>
+                </div>
+            <?php endif; ?>
+        <?php else: ?>
+            <?php if( $kt_enable_vertical_menu == 'enable' ) : ?>
+                <div class="col-sm-9 formsearch-option4">
+                    <?php kt_search_form();  ?>
+                </div>
+            <?php else: ?>
+                <div class="col-sm-12 formsearch-option4">
+                    <?php kt_search_form();  ?>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+    <?php }
+}
+add_action( 'kt_show_vertical_menu_option_4', 'kt_show_vertical_menu_option_4' );
+
+if( ! function_exists( 'kt_show_menu_option_5' ) ){
+    function kt_show_menu_option_5(){ global $kt_enable_vertical_menu;?>
+        <div class="row">
+            <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
+            <div class="col-sm-3" id="box-vertical-megamenus">
+                <div class="box-vertical-megamenus">
+                    <h4 class="title">
+                        <span class="btn-open-mobile"><i class="fa fa-bars"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    </div>
+                </div>
+            </div>
+            <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <?php else: ?>
+            <div id="main-menu" class="col-sm-12 main-menu">
+            <?php endif; ?>
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+     <?php }
+}
+add_action( 'kt_show_menu_option_5', 'kt_show_menu_option_5' );
+
+
+if( ! function_exists( 'kt_show_menu_option_6' ) ){
+    function kt_show_menu_option_6(){ global $kt_enable_vertical_menu;?>
+        <div class="row">
+            <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
+                <div class="col-sm-3" id="box-vertical-megamenus">
+                    <div class="box-vertical-megamenus">
+                        <h4 class="title">
+                            <span class="btn-open-mobile"><i class="fa fa-bars"></i></span>
+                            <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' );?></span>
+                        </h4>
+                        <div class="vertical-menu-content is-home">
+                            <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                            <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <?php else: ?>
+                <div id="main-menu" class="col-sm-12 main-menu">
+            <?php endif; ?>
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
+                            </div>
+                            <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
+                        </div>
+                    </nav>
+                </div>
+        </div>
+     <?php }
+}
+add_action( 'kt_show_menu_option_6', 'kt_show_menu_option_6' );
+

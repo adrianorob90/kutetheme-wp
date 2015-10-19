@@ -7,6 +7,8 @@
 */
 $kt_used_header = 1;
 
+$kt_enable_vertical_menu = 'enable';
+
 if( ! function_exists( 'kt_get_header' )){
     function kt_get_header(){
         global $kt_used_header;
@@ -170,6 +172,14 @@ if( ! function_exists( 'kt_get_customize_js' ) ){
         return kt_option( 'kt_add_js', '' );
     }
 }
+
+if( ! function_exists( 'kt_get_setting_menu' ) ){
+    function kt_get_setting_menu(){
+        global $kt_enable_vertical_menu;
+        $kt_enable_vertical_menu = kt_option( 'kt_enable_vertical_menu', 'enable' );
+    }
+}
+kt_get_setting_menu();
 /**
  * Display dropdown choose language
  * */

@@ -60,57 +60,7 @@ $kt_header_message = kt_option('kt_header_message','');
     <!-- END MANIN HEADER -->
     <div id="nav-top-menu" class="nav-top-menu">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-3" id="box-vertical-megamenus">
-                    <div class="box-vertical-megamenus style2">
-                        <h4 class="title">
-                            <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
-                            <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
-                        </h4>
-                        <div class="vertical-menu-content is-home">
-                            <?php
-                                wp_nav_menu( array(
-                                    'menu'              => 'vertical',
-                                    'theme_location'    => 'vertical',
-                                    'depth'             => 2,
-                                    'container'         => '',
-                                    'container_class'   => '',
-                                    'container_id'      => '',
-                                    'menu_class'        => 'vertical-menu-list',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker())
-                                );
-                            ?>
-                            <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
-                        </div>
-                    </div>
-                </div>
-                <div id="main-menu" class="col-sm-9 main-menu">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                                <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                            </div>
-                            <?php
-                                wp_nav_menu( array(
-                                    'menu'              => 'primary',
-                                    'theme_location'    => 'primary',
-                                    'depth'             => 2,
-                                    'container'         => 'div',
-                                    'container_class'   => 'collapse navbar-collapse',
-                                    'container_id'      => 'navbar',
-                                    'menu_class'        => 'nav navbar-nav',
-                                    'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
-                                    'walker'            => new wp_bootstrap_navwalker())
-                                );
-                            ?>
-                        </div>
-                    </nav>
-                </div>
-            </div>
+            <?php do_action( 'kt_show_menu_option_3' ); ?>
             <!-- userinfo on top-->
             <div id="form-search-opntop">
             </div>

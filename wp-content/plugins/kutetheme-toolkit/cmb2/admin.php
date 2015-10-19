@@ -153,6 +153,20 @@ class KT_Admin {
         foreach ( $wp_registered_sidebars as $sidebar ){
             $sidebars[  $sidebar['id'] ] =   $sidebar['name'];
         }
+        /**
+    	 * User Vertical Menu
+    	 */
+    	$cmb_options_general->add_field( array(
+    		'name'    => __( 'User Vertical Menu', 'kutetheme' ),
+    		'id'      => 'kt_enable_vertical_menu',
+    		'type'    => 'select',
+    		'default' => 'enable',
+            'options' => array(
+                'enable'  => 'Enable',
+                'disable'  => 'Disable'
+            ),
+            'desc'    => __( 'Use Vertical Menu on show any page', 'kutetheme' ),
+    	) );
         
         /**
     	 * Site bar

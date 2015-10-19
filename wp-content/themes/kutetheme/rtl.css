@@ -175,7 +175,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 }
 #main-menu{
     margin-left: 0;
+}
+.rtl #main-menu.enable_vm{
     margin-right: -15px;
+    margin-left: 0;
 }
 .option6 #main-menu{
     padding-right: 70px;
@@ -196,7 +199,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     margin-right: 20px;
     font: normal normal normal 14px/1 FontAwesome;
 }
-
+.nav-ontop #box-vertical-megamenus .title .btn-open-mobile{
+    margin-left: 15px;
+    margin-right: 0;
+}
 /** ================================================
     6. Visual Composer
 *** ================================================*/
@@ -612,4 +618,187 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 }
 .product-list li .quick-view .compare-button{
     overflow: hidden;
+}
+/**
+* OPTION 4
+*/
+.formsearch-option4 .btn-search{
+    float: left !important;
+    border-left: 0;
+    border-right: 1px solid #ccc ;
+}
+.formsearch-option4>form,
+.form-category .ui-corner-all, .form-category .ui-corner-bottom, .form-category .ui-corner-right, .form-category .ui-corner-br{
+    border-right: 0;
+    border-left: 1px solid #ccc;
+}
+.form-category .ui-selectmenu-button span.ui-icon{
+    right: auto;
+    left: 15px;
+}
+.form-category .ui-selectmenu-button span.ui-selectmenu-text{
+    padding-right: 15px;
+    padding-left: 20px;
+    border-right-width: 0;
+    text-align: right;
+}
+.formsearch-option4>form, .form-category .ui-corner-all, .form-category .ui-corner-bottom, .form-category .ui-corner-right, .form-category .ui-corner-br{
+    border-left-width: 0;
+}
+.option4 .group-button-header{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.option4 .group-button-header .btn-cart{
+    background-position: center right;
+    padding-right: 25px;
+    padding-left: 0;
+    margin-left: 0;
+}
+.hot-deals-box .hot-deals-tab-content{
+    padding: 30px 0px 0 30px;
+}
+.hot-deals-box .hot-deals-tab-content-col{
+    padding-left: 15px;
+    padding-right: 0;
+}
+.hot-deals-box .hot-deals-tab .box-count-down .box-count,
+.box-products .box-tabs li,
+.box-products .box-product-content .box-product-adv,
+.cart-block .cart-block-content .cart-buttons a{
+    float: right;
+}
+.box-products .owl-controls .owl-next{
+    right: 0;
+    left: auto;
+}
+.box-products .box-tabs{
+    float: left;
+}
+.box-products .box-product-head .box-title{
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.box-products .box-product-content .box-product-list{
+    margin-left:0px;
+    margin-right: 236px;
+}
+.option4 .box-vertical-megamenus .all-category span:after,
+.option3 .box-vertical-megamenus .all-category span:after{
+    content: "";
+    margin: 0;
+}
+.option4 .box-vertical-megamenus .all-category span:before,
+.option3 .box-vertical-megamenus .all-category span:before  {
+    content: "\f100";
+    font-size: 16px;
+    font-weight: normal;
+    font: normal normal normal 14px/1 FontAwesome;
+    margin-right: 20px;
+}
+.cart-block .cart-block-content .toal-cart{
+    text-align: left;
+}
+.box-products .box-tabs li>a{
+    background-position: center left;
+}
+.box-products .box-tabs li:last-child>a{
+    padding-right: 10px;
+    padding-left: 0;
+}
+.option3 .group-button-header .btn-cart,
+.option3 .group-button-header .btn-login,
+.option3 .group-button-header .btn-heart{
+    float: left;
+    margin-left: 0;
+    margin-right: 16px;
+    padding-left: 0;
+    padding-right: 30px;
+    background-position: center right;
+}
+.option3 .group-button-header .btn-heart{
+    margin-right: 0;
+}
+.option3 .group-button-header .btn-cart .notify-right{
+    right: 27px;
+}
+.option3 #main-menu .navbar .navbar-nav>li:hover>a, .option3 #main-menu .navbar .navbar-nav>li.active>a{
+    border-left-color: #cacaca;
+    border-right: 0;
+}
+.option3 #main-menu .navbar .navbar-nav>li:last-child>a, .option3 #main-menu .navbar .navbar-nav>li.active:last-child>a{
+    padding-left: 0;
+    padding-right: 10px;
+}
+#main-menu li.dropdown>a:after{
+    float: left;
+    margin-right: 7px;
+    margin-left: 0;
+}
+#shopping-cart-box-ontop .shopping-cart-box-ontop-content{
+    left: 0;
+    right: auto;
+}
+.option3 .box-vertical-megamenus .vertical-menu-list>li>a{
+    padding: 0;
+}
+.option3 .main-header-top-link li{
+    float: right;
+}
+.option3 .main-header-top-link li >a{
+    border-left: 1px solid #e4e4e4;
+    border-right-width: 0;
+}
+.option3 .main-header-top-link li:first-child>a{
+    padding-left: 5px;
+    padding-right: 0;
+}
+.option3 .main-header-top-link li:last-child>a{
+    padding-right: 5px;
+    padding-left: 0;
+    border-left-width: 0;
+}
+.box-vertical-megamenus .vertical-menu-list{
+    border-right: 1px solid #eaeaea;
+    border-left-width: 0;
+}
+.main-header .shopping-cart-box a.cart-link{
+    text-align: left;
+}
+.main-header .shopping-cart-box a.cart-link .title{
+    margin-left: 5px;
+}
+.main-header .shopping-cart-box a.cart-link .total{
+    float: none;
+    margin-left: 0;
+}
+.main-header .shopping-cart-box a.cart-link .amount{
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.brand-showcase-box .brand-showcase-logo .owl-controls .owl-next{
+    right: auto;
+    left: 30px;
+}
+.col-xs-12.com-sm-6.col-md-3.service-item{
+    border-right-width: 0;
+    border-left: 1px solid #ccc ;
+}
+.col-xs-12.com-sm-6.col-md-3.service-item:last-child{
+    border-left: 0;
+}
+.box-vertical-megamenus .all-category{
+    padding-right: 0;
+    margin-top: 0;
+}
+.box-vertical-megamenus .all-category span:before {
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\f104";
+    font-weight: bold;
+    margin-right: 20px;
+}
+.box-vertical-megamenus .all-category span:after {
+    margin-left: 0;
+    content: "";
 }
