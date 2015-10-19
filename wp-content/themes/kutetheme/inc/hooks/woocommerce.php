@@ -5,7 +5,15 @@
 if(is_admin())
     remove_action( 'admin_notices', 'woothemes_updater_notice' );
 
+// advanced search functionality
+function advanced_search_query($query) {
 
+	if($query->is_search()) {
+        
+	}
+
+}
+add_action('pre_get_posts', 'advanced_search_query', 1000);
 /**
  * Reduction
  * */

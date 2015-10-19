@@ -417,7 +417,7 @@ function kt_get_color_scheme_css( $colors ) {
     body .header.option4 .box-vertical-megamenus .all-category:hover span,
     body .formsearch-option4 .btn-search:hover,
     body .option4 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
-    body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out
+    body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .nav-ontop,
     body .option3 .nav-ontop #box-vertical-megamenus .title
     {
@@ -445,8 +445,7 @@ function kt_get_color_scheme_css( $colors ) {
     body .box-vertical-megamenus .all-category span:hover,
     .header.option3 .box-vertical-megamenus .all-category:hover>span,
     .header.option3  .main-header .header-search-box .form-inline,
-    body .header.option4 .box-vertical-megamenus .all-category:hover span{
-    border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
+    body .header.option4 .box-vertical-megamenus .all-category:hover span,
     body .option3 .main-header .header-search-box .form-inline,
     body #user-info-opntop .dropdown-menu{
       	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
