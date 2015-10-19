@@ -27,12 +27,7 @@
 .option3 .product-list li .product-price {
 	color: #0088cc;
 }
-.option3 a:hover{
-	color: #0088cc;
-}
-.option3 .scroll_top:hover{
-	background: #0088cc;
-}
+
 .option3 .nav-center .owl-controls .owl-prev,
 .option3 .nav-center .owl-controls .owl-next{
 	-moz-transition: all 0.45s ease;
@@ -89,14 +84,11 @@
 	padding-bottom: 25px;
 	padding-top: 25px;
 }
-.option3 .top-header .dropdown-menu{
-	border-top: 2px solid #0088cc;
-}
-.option3 #user-info-opntop .dropdown-menu{
-	border-top: 2px solid #0088cc;
-}
+
 .option3 .main-header .header-search-box .form-inline{
-	border: 2px solid #0088cc;
+	border-color: #0088cc;
+	border-style: solid;
+	border-width: 2px
 }
 .option3 .main-header .header-search-box .form-inline .select2{
 	border-right: none;
@@ -105,7 +97,6 @@
 	height: 37px;
 }
 .option3 .main-header .header-search-box .form-inline .btn-search{
-	background: #0088cc url("../images/search.png") no-repeat center center;
 	width: 40px;
 	height: 40px;
 }
@@ -191,7 +182,6 @@
 .option3 .box-vertical-megamenus .title{
 	height: 40px;
 	line-height: 40px;
-	background: #0088cc;
 }
 .option3 .box-vertical-megamenus .title .btn-open-mobile{
 	line-height: 40px;
@@ -208,7 +198,6 @@
 .option3 #main-menu .navbar .navbar-nav>li:hover,
 .option3 #main-menu .navbar .navbar-nav>li.active{
 	background: transparent;
-	color: #0088cc;
 }
 .option3 #main-menu .navbar .navbar-nav>li:hover>a,
 .option3 #main-menu .navbar .navbar-nav>li.active>a{
@@ -243,6 +232,7 @@
 .option3 .nav-ontop{
 	height: 40px;
 	background: #0088cc;
+	border: none;
 }
 .option3 .nav-ontop #box-vertical-megamenus .title {
 	background: #0088cc;
@@ -268,9 +258,6 @@
 	border-bottom: 1px dotted #eaeaea;
 	line-height: 36px;
 }
-.option3 .box-vertical-megamenus .vertical-menu-list>li:hover {
-  background: #0088cc;
-}
 .option3 .box-vertical-megamenus .vertical-menu-list>li:hover>a{
 	border-color: transparent;
 }
@@ -283,10 +270,6 @@
 .option3 .box-vertical-megamenus .all-category{
 	margin-top: 0px;
 	padding-right: 0;
-}
-.option3 .box-vertical-megamenus .all-category:hover>span{
-	background:#0088cc; 
-	border-color: #0088cc;
 }
 .option3 .box-vertical-megamenus .all-category span:after{
 	  content: "\f101";
@@ -318,11 +301,7 @@
 	color: #fff;
 	border-right:none;
 }
-.option3 .nav-ontop #main-menu .navbar .navbar-nav>li:hover,
-.option3 .nav-ontop #main-menu .navbar .navbar-nav>li.active{
-	background: #31a5df;
-	color: #0088cc;
-}
+
 .option3 .nav-ontop #main-menu .navbar .navbar-nav>li:hover>a,
 .option3 .nav-ontop #main-menu .navbar .navbar-nav>li.active>a{
 	color: #fff;
@@ -340,7 +319,7 @@
 }
 .option3 #form-search-opntop:hover form {
   border: 1px solid #cacaca;
-  background: #31a5df;
+  background-color:transparent; 
 }
 .option3 #form-search-opntop ::-webkit-input-placeholder {
    color: #fff;

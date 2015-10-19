@@ -404,7 +404,7 @@ function kt_get_color_scheme_css( $colors ) {
     body .option5 .box-vertical-megamenus .all-category span:hover,
     body .box-vertical-megamenus .vertical-menu-list>li:hover,
     body .box-vertical-megamenus .all-category span:hover,
-    
+
     .header.option3 .main-header .header-search-box .form-inline .btn-search,
     .header.option3 .nav-top-menu .box-vertical-megamenus .title,
     .header.option3 .box-vertical-megamenus .vertical-menu-list>li:hover,
@@ -418,6 +418,8 @@ function kt_get_color_scheme_css( $colors ) {
     body .formsearch-option4 .btn-search:hover,
     body .option4 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out
+    body .option3 .nav-ontop,
+    body .option3 .nav-ontop #box-vertical-megamenus .title
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -441,11 +443,13 @@ function kt_get_color_scheme_css( $colors ) {
     body .top-header .dropdown-menu,
     body .option5 .box-vertical-megamenus .all-category span:hover,
     body .box-vertical-megamenus .all-category span:hover,
-    
     .header.option3 .box-vertical-megamenus .all-category:hover>span,
     .header.option3  .main-header .header-search-box .form-inline,
     body .header.option4 .box-vertical-megamenus .all-category:hover span{
-        border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
+    border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
+    body .option3 .main-header .header-search-box .form-inline,
+    body #user-info-opntop .dropdown-menu{
+      	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
         border-top-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
@@ -453,6 +457,7 @@ function kt_get_color_scheme_css( $colors ) {
     a:hover,
     .cart-block .cart-block-content .product-info .p-right .p-rice,
     .widget.widget_product_categories ul>li.current-cat>a,
+
     
     body .option3 #main-menu .navbar .navbar-nav>li:hover>a, 
     body .option3 #main-menu .navbar .navbar-nav>li.active>a,
@@ -500,7 +505,9 @@ function kt_get_color_scheme_css( $colors ) {
     .option2 .deal-product .content_price,
     .option2 .product-list li .content_price .product-price,
     .woocommerce .wishlist_table span.amount,
-    .widget.widget_kt_best_seller .price{
+    .widget.widget_kt_best_seller .price,
+    .vertical-menu-list .mega-product .price,
+    body .cart-block .cart-block-content .product-info .p-right .p-rice{
         color: <?php  echo esc_attr( $colors['price_color'] ); ?>
     }
 	/* Color*/
