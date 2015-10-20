@@ -802,3 +802,12 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     margin-left: 0;
     content: "";
 }
+.popular-tabs .nav-tab li{
+    float: right;
+    margin-left: 2px;
+    margin-right: 0px;
+}
+.popular-tabs .owl-controls .owl-prev{
+    right: inherit;
+    left: 0;
+}

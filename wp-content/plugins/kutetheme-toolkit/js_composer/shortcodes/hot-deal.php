@@ -347,7 +347,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         }
         $carousel = _data_carousel( $data_carousel );
         
-        $tabs = kt_get_all_attributes( 'tab_section', $content );
+        $tabs = kt_get_all_attributes( 'tab_sections', $content );
         if( count( $tabs ) >0 ) :
         $unique = uniqid();
         $new_title = array( 
@@ -459,6 +459,10 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                     add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
                                     ?>
+                                    <?php else: ?>
+                                        <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                            <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
+                                        </div>
                                     <?php endif; ?>
                                     <?php 
                                         wp_reset_query();

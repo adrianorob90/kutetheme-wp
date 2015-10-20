@@ -395,6 +395,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             $carousel = _data_carousel($data_carousel);
             
             $banner_i = 1;
+            
             if( isset( $banner ) && $banner ): 
                 $banner_args = array(
                     'post_type' => 'attachment',
@@ -448,7 +449,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     <div class="box-product-content">
                         <?php if( isset( $banner_carousel ) ) : ?>
                         <div class="box-product-adv">
-                            <ul class="owl-carousel nav-center" data-slidespeed="<?php echo intval( $speed_banner ) ?>" data-items="1" data-dots="false"  <?php if( $banner_i > 1 ): ?> data-autoplay="true" data-loop="true" <?php else:  ?> data-autoplay="false" data-loop="false" <?php endif;?>  data-nav="true">
+                            <ul class="owl-carousel nav-center" data-slidespeed="<?php echo intval( $speed_banner ) ?>" data-items="1" data-dots="false"  <?php if( $banner_i > 2 ): ?> data-autoplay="true" data-loop="true" <?php else:  ?> data-autoplay="false" data-loop="false" <?php endif;?>  data-nav="true">
                                 <?php echo apply_filters( 'kt_banner_box_product', $banner_carousel ) ?>
                             </ul>
                         </div>
@@ -469,12 +470,14 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                     			'terms' => $term->term_id
                                     		)
                                         );
+                                        
                                         $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                        
                                         if( $term_products->have_posts() ):
                                         ?>
             							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
             								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                                                <?php $this->kt_loop_product( $products, $carousel ) ?>
+                                                <?php $this->kt_loop_product( $term_products, $carousel ) ?>
                                             <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
             							</div>
                                         <?php else: ?>

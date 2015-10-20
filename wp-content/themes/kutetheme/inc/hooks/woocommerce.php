@@ -6,14 +6,29 @@ if(is_admin())
     remove_action( 'admin_notices', 'woothemes_updater_notice' );
 
 // advanced search functionality
-function advanced_search_query($query) {
+function kt_advanced_search_query($query) {
 
-	if($query->is_search()) {
+	if($query->is_search() && kt_is_wc() ) {
         
+		// tag search
+		if (isset($_GET['cat']) && $_GET['cat']) {
+            $taxquery = array(
+                array(
+                    'taxonomy' => 'product_cat',
+                    'field'    => 'term_id',
+                    'terms'    => array( $_GET['cat'] ),
+                    'operator' => 'IN'
+                ),
+                'relation' => 'OR',
+            );
+            $query->tax_query  = $taxquery;
+   			$query->query_vars['tax_query'] = $query->tax_query;
+		}
+		return $query;
 	}
 
 }
-add_action('pre_get_posts', 'advanced_search_query', 1000);
+add_action('pre_get_posts', 'kt_advanced_search_query');
 /**
  * Reduction
  * */

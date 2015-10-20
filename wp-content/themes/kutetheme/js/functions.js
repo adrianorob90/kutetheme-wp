@@ -596,6 +596,7 @@
                     else{
                         $('#nav-top-menu').find('.vertical-menu-content').hide();
                     }
+                    
                      $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
                 }
                 ///
@@ -697,11 +698,11 @@
 
 
     function show_other_item_vertical_menu(){
-      if($('.box-vertical-megamenus').length >0){
+      if( $( '.box-vertical-megamenus' ).length > 0 ){
           var all_item = 0;
           var limit_item = 10;
           if($('.box-vertical-megamenus').hasClass('style2')){
-            if($(window).width() <=1024){
+            if( $(window).width() <= 1024){
               limit_item = 8;
             }
             
