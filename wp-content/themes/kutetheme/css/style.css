@@ -225,7 +225,6 @@ img.alignright{
    width: 100%;
    opacity: 0;
    visibility: hidden;
-   overflow: hidden;
 }
 .tab-container .active{
     opacity: 1;

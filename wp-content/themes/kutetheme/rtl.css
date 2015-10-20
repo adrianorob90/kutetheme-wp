@@ -811,3 +811,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     right: inherit;
     left: 0;
 }
+.latest-deals .latest-deal-title{
+    background-position: right center;
+    padding-left: 0;
+    padding-right: 52px;
+    margin-right: 8px;
+    margin-left: 0;
+}
