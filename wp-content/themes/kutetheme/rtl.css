@@ -230,7 +230,7 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .product-featured .product-featured-content{
     float: left;
 }
-.product-featured .product-featured-content .product-featured-list{
+.product-featured .product-featured-content .product-featured-list.has_attachment{
     margin-left: 0;
     margin-right: 234px;
 }
@@ -817,4 +817,13 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     padding-right: 52px;
     margin-right: 8px;
     margin-left: 0;
+}
+.widget_nav_menu ul>li>a:before{
+    padding-left: 12px;
+    padding-right: 0;
+}
+#footer2 .widget-body li a:before{
+    float: right;
+    margin-left: 15px;
+    margin-right: 0;
 }

@@ -2010,6 +2010,9 @@ span.notify-right{
     width: 100%;
 
 }
+.service.hide_border{
+    border:none;
+}
 .service .service-item{
     padding-left: 35px;
     border-right: 1px solid #ccc;
@@ -2552,9 +2555,9 @@ span.notify-right{
     width: 100%;
     float: right;
 }
-.product-featured .product-featured-content .product-featured-list{
-      margin-left: 234px;
-      overflow: hidden;
+.product-featured .product-featured-content .product-featured-list.has_attachment{
+    margin-left: 234px;
+    overflow: hidden;
 }
 .product-featured .banner-featured{
     width: 234px;

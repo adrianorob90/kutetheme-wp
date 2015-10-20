@@ -1145,6 +1145,10 @@
 	border-right: 1px solid #eaeaea;
 	overflow: hidden;
 }
+.services2.hide_border,
+.services2.hide_border .services2-item{
+    border: none;
+}
 .services2 .services2-item{
 	padding: 0;
 	border-left: 1px solid #eaeaea;

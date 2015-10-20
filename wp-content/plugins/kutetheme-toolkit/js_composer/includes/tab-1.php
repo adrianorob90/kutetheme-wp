@@ -85,36 +85,35 @@ if ( ! defined( 'ABSPATH' ) ) {
            <?php endif; ?>
        <?php endif; ?>
         <div class="product-featured clearfix">
-            <div class="banner-featured">
-                <?php if( isset($featured) && $featured ): ?>
-                    <div class="featured-text">
-                        <span>
-                            <?php  _e( 'featured', 'kutetheme' ) ?>
-                        </span>
-                    </div>
-                <?php endif; ?>
-                <?php 
-                if( isset( $banner_left ) && $banner_left ): 
-                    $banner_left_args = array(
-                        'post_type' => 'attachment',
-                        'include'   => $banner_left,
-                        'orderby'   => 'post__in'
-                    );
-                    $list_banner_left = get_posts( $banner_left_args );
-                    if( $list_banner_left ):
-                    ?>
-                    <?php foreach($list_banner_left as $l): ?>
-                        <div class="banner-img">
-                            <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                                <?php echo wp_get_attachment_image($l->ID,'full');?>
-                            </a>
+            <?php if( isset( $banner_left ) && $banner_left ): ?>
+                <div class="banner-featured">
+                    <?php if( isset($featured) && $featured ): ?>
+                        <div class="featured-text">
+                            <span>
+                                <?php  _e( 'featured', 'kutetheme' ) ?>
+                            </span>
                         </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                <?php endif; ?>
-            </div>
+                    <?php endif; ?>
+                    <?php  
+                        $banner_left_args = array(
+                            'post_type' => 'attachment',
+                            'include'   => $banner_left,
+                            'orderby'   => 'post__in'
+                        );
+                        $list_banner_left = get_posts( $banner_left_args );
+                        if( $list_banner_left ):?>
+                            <?php foreach($list_banner_left as $l): ?>
+                                <div class="banner-img">
+                                    <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
+                                        <?php echo wp_get_attachment_image( $l->ID, 'full' );?>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                </div>  
+            <?php endif; ?>
             <div class="product-featured-content">
-                <div class="product-featured-list">
+                <div class="product-featured-list <?php if( isset( $banner_left ) && $banner_left ): ?> has_attachment <?php endif; ?>">
                     <div class="tab-container">
                         <?php 
                         $meta_query = WC()->query->get_meta_query();

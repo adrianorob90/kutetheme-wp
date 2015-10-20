@@ -76,6 +76,17 @@ vc_map( array(
             "description" => __("The description", 'kutetheme')
         ),
         array(
+            "type"       => "dropdown",
+            "heading"    => __("Hide Border", 'kutetheme'),
+            "param_name" => "hide_border",
+            "value"      => array(
+                __('No', 'kutetheme')  => 'no',
+                __('Yes', 'kutetheme') => 'yes'
+        	),
+            'std'         => 'no',
+            "description" => __("Hide border service box", 'kutetheme')
+        ),
+        array(
             'type'           => 'css_editor',
             'heading'        => __( 'Css', 'js_composer' ),
             'param_name'     => 'css',
@@ -99,6 +110,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             'orderby'       => 'date',
             'order'         => 'desc',            
             'css_animation' => '',
+            'hide_border'   => 'no',
             'el_class'      => '',
             'css'           => '',
             'style'         => 1
@@ -106,8 +118,13 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
         ), $atts );
         extract($atts);
         
+        if( $hide_border == 'yes' ){
+            $class = 'hide_border';
+        }else{
+            $class = '';
+        }
         $elementClass = array(
-            'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'service ', $this->settings['base'], $atts ),
+            'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $class, $this->settings['base'], $atts ),
             'extra' => $this->getExtraClass( $el_class ),
             'css_animation' => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -136,7 +153,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             if($style==1):
             ?>
             <div class="service-wapper">
-                <div class="<?php echo esc_attr( $elementClass ); ?>">
+                <div class="service <?php echo esc_attr( $elementClass ); ?>">
                     <?php
                     while( $service_query->have_posts() ):
                         $service_query->the_post();
@@ -163,9 +180,9 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                 </div>
             </div>
         <?php elseif($style==2):?>
-            <!-- Show display style 2 -->
+        <!-- Show display style 2 -->
         <div class="col-sm-12">            
-            <div class="services2">
+            <div class="services2 <?php echo esc_attr( $elementClass ); ?>">
                 <ul>
                     <?php
                     while ($service_query->have_posts()) {
