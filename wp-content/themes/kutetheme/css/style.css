@@ -5567,6 +5567,8 @@ span.notify-right{
 }
 .box-products .box-tabs{
   float: right;
+  padding: 0;
+  margin: 0;
 }
 .box-products .box-tabs li{
   display: inline;
@@ -5637,6 +5639,7 @@ span.notify-right{
 
 .box-products .box-product-content{
   margin-top: 20px;
+  overflow: hidden;
 }
 
 .box-products .box-product-content .box-product-adv{
