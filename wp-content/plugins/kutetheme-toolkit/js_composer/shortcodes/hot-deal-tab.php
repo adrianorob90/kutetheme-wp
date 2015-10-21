@@ -404,7 +404,6 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     </div>
                                 </div>
                             </div>
-<<<<<<< HEAD
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-8 hot-deals-tab-content-col">
                             <div class="hot-deals-tab-content tab-container">
