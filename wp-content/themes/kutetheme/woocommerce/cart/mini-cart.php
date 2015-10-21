@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         </div>
     <?php elseif( $kt_used_header == 3 ) :?>
-        <div class="col-sm-6 col-md-3 group-button-header">
+        <div class="col-sm-6 col-md-6 col-lg-3 group-button-header">
                 <div class="btn-cart" id="cart-block">
                     <a title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php _e( 'Cart', 'kutetheme');?></a>
                     <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
@@ -68,7 +68,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <?php endif; ?>
             </div>
     <?php elseif( $kt_used_header == 4 ) :?>
-            <div class="col-sm-2 col-md-1 group-button-header">
+            <div class="col-sm-2 col-md-2 col-lg-1 group-button-header">
                 <div class="btn-cart" id="cart-block">
                     <a title="<?php esc_html_e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url );?>"><?php esc_html_e( 'My cart', 'kutetheme' ) ?></a>
                     <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>

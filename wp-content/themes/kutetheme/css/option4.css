@@ -506,7 +506,9 @@
 [5. Styles for devices(>=993px and <=1200px)]
 */
 @media (min-width: 993px) and (max-width: 1200px) {
-	
+	.option4  .logo{
+		text-align: center;
+	}
 }
 /*--------------------
 [6. Styles for devices(>=768px and <=992px)]
@@ -526,6 +528,9 @@
 	}
 	.option4 .group-button-header .btn-cart{
 		float: left;
+	}
+	.option4 #main-menu .navbar .navbar-nav>li>a{
+		padding: 0 5px;
 	}
 }
 /*--------------------
@@ -617,6 +622,18 @@
 	}
 	.option4 #main-menu .navbar-header{
 		background: #0088cc;
+		height: 40px;
+		margin: 0;
+	}
+	.option4 #main-menu .navbar-header .navbar-brand{
+		line-height: 40px;
+		text-transform: uppercase;
+	}
+	.option4 #main-menu .navbar-header .navbar-toggle{
+		margin-top: 8px;
+	}
+	.enable_vm .formsearch-option4{
+		padding-left: 15px;
 	}
 	.option4 #main-menu li.dropdown>a:after{
 		top: 0;

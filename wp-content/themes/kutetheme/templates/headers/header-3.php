@@ -18,7 +18,7 @@ $kt_header_message = kt_option('kt_header_message','');
     <!-- MAIN HEADER -->
     <div class="container main-header">
         <div class="row top-main-header">
-            <div class="col-sm-12 col-md-3"></div>
+            <div class="col-sm-12 col-md-12 col-lg-3"></div>
             <div class="col-sm-7 col-md-6">
                 <?php
                     wp_nav_menu( array(
@@ -35,7 +35,7 @@ $kt_header_message = kt_option('kt_header_message','');
                 ?>
             </div>
             <?php if( $kt_header_message ):?>
-            <div class="col-sm-5 col-md-3">
+            <div class="col-sm-5 col-md-6 col-lg-3">
                 <div class="header-text">
                     <i class="fa fa-info-circle"></i> <?php echo kt_get_html( $kt_header_message );?> 
                 </div>
@@ -43,10 +43,10 @@ $kt_header_message = kt_option('kt_header_message','');
             <?php endif;?>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-3 logo">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 logo">
                 <?php echo kt_get_logo(); ?>
             </div>
-            <div class="col-xs-6 col-sm-6 header-search-box">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 header-search-box">
                 <?php kt_search_form();  ?>
             </div>
             <?php 
@@ -74,8 +74,5 @@ $kt_header_message = kt_option('kt_header_message','');
             </div>
         </div>
     </div>
-</div>
-<div class="container trending-wapper">
-    <?php kt_display_trending_products();?>
 </div>
 <!-- end header -->

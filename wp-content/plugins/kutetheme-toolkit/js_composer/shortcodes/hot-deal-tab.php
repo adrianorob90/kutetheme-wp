@@ -358,116 +358,116 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             $new_title = $charact;
         }
         ?>
+        <?php ob_start(); ?>
         <div class="<?php if( $style == "style-1" ): ?> option3 <?php else: ?> option4 <?php endif; ?>">
             <!-- Hot deals -->
             <div class="hot-deals-row container-tab">
-                <div class="container">
-                    <div class="hot-deals-box only_countdown">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 col-lg-4">
-                                <div class="hot-deals-tab">
-                                    <div class="hot-deals-title vertical-text">
-                                        <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
-                                            <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
-                                                <?php if( isset( $new_title[0][$i] ) ):  ?>
-                                                    <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+                <div class="hot-deals-box only_countdown">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 col-lg-4">
+                            <div class="hot-deals-tab">
+                                <div class="hot-deals-title vertical-text">
+                                    <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
+                                        <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
+                                            <?php if( isset( $new_title[0][$i] ) ):  ?>
+                                                <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                    
+                                    <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
+                                        <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
+                                            <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
+                                                <?php if( isset( $new_title[$j][$i] ) ):  ?>
+                                                    <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
                                                 <?php endif; ?>
                                             <?php endfor; ?>
                                         <?php endif; ?>
-                                        
-                                        <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
-                                            <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
-                                                <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
-                                                    <?php if( isset( $new_title[$j][$i] ) ):  ?>
-                                                        <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
-                                                    <?php endif; ?>
-                                                <?php endfor; ?>
-                                            <?php endif; ?>
-                                        <?php endfor; ?>
-                                    </div>
-                                    <div class="hot-deals-tab-box">
-                                        <ul class="nav-tab">
-                                            <?php $i = 1; ?>
-                                                <?php foreach( $tabs as $tab ): 
-                                                        extract( shortcode_atts( array(
-                                                            'header'         => __( 'Tab name', 'kutetheme' ),
-                                                            'reduction_from' => 0,
-                                                            'reduction_to'   => 0,
-                                                        ), $tab ) );
-                                                    ?>
-                                                  <li <?php if( $i ==1 ): ?> class="active" <?php endif; ?> ><a data-toggle="tab" href="#hotdeals-<?php echo $unique ?>-<?php echo $i; ?>"><?php echo $header; ?></a></li>
-                                                  <?php $i++; ?>
-                                                <?php endforeach; ?>
-                                        </ul>
-                                        <div class="box-count-down">
-                                            <span class="countdown-only"></span>
-                                        </div>
+                                    <?php endfor; ?>
+                                </div>
+                                <div class="hot-deals-tab-box">
+                                    <ul class="nav-tab">
+                                        <?php $i = 1; ?>
+                                            <?php foreach( $tabs as $tab ): 
+                                                    extract( shortcode_atts( array(
+                                                        'header'         => __( 'Tab name', 'kutetheme' ),
+                                                        'reduction_from' => 0,
+                                                        'reduction_to'   => 0,
+                                                    ), $tab ) );
+                                                ?>
+                                              <li <?php if( $i ==1 ): ?> class="active" <?php endif; ?> ><a data-toggle="tab" href="#hotdeals-<?php echo $unique ?>-<?php echo $i; ?>"><?php echo $header; ?></a></li>
+                                              <?php $i++; ?>
+                                            <?php endforeach; ?>
+                                    </ul>
+                                    <div class="box-count-down">
+                                        <span class="countdown-only"></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-12 col-lg-8 hot-deals-tab-content-col">
-                                <div class="hot-deals-tab-content tab-container">
-                                    <?php $i = 1; ?>
-                                    <?php 
-                                    $max_time = 0;
-                                    foreach( $tabs as $tab ) :
-                                        extract( shortcode_atts( array(
-                                            'header'         => __( 'Tab name', 'kutetheme' ),
-                                            'reduction_from' => 0,
-                                            'reduction_to'   => 0,
-                                        ), $tab ) );
-                                        $meta   = $meta_query;
-                                        $meta[] = array(
-                                            'key' => '_reduction_percent',
-                                            'value' => array(
-                                                $reduction_from, 
-                                                $reduction_to
-                                            ),
-                                            'compare' => 'BETWEEN'
-                                        );
-                                        
-                                        $args['meta_query'] = $meta;
-                                        $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                                        
-                                        if( $products->have_posts() ):
-                                        add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-                                        add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-                                        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
-                                        ?>
-                                        <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-                                            <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
-                                            <ul class="product-list owl-carousel nav-center" <?php echo $carousel; ?>>
-                                                <?php while( $products->have_posts() ): $products->the_post(); ?>
-                                                    <li>
-                                    					<?php 
-                                                            wc_get_template_part( 'content', 'product-hot-deal' );
-                                                            // Get date sale 
-                                                            $time = kt_get_max_date_sale( get_the_ID() );
-                                                            if( $time > $max_time ){
-                                                                $max_time = $time;
-                                                            }
-        
-                                                        ?>
-                                                    </li>
-                                    			<?php endwhile; ?>
-                                            </ul>
-                                        <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-8 hot-deals-tab-content-col">
+                            <div class="hot-deals-tab-content tab-container">
+                                <?php $i = 1; ?>
+                                <?php 
+                                $max_time = 0;
+                                foreach( $tabs as $tab ) :
+                                    extract( shortcode_atts( array(
+                                        'header'         => __( 'Tab name', 'kutetheme' ),
+                                        'reduction_from' => 0,
+                                        'reduction_to'   => 0,
+                                    ), $tab ) );
+                                    $meta   = $meta_query;
+                                    $meta[] = array(
+                                        'key' => '_reduction_percent',
+                                        'value' => array(
+                                            $reduction_from, 
+                                            $reduction_to
+                                        ),
+                                        'compare' => 'BETWEEN'
+                                    );
+                                    
+                                    $args['meta_query'] = $meta;
+                                    $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                    
+                                    if( $products->have_posts() ):
+                                    add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                    add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                    remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                    ?>
+                                    <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                        <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
+                                        <ul class="product-list owl-carousel nav-center" <?php echo $carousel; ?>>
+                                            <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                                <li>
+                                					<?php 
+                                                        wc_get_template_part( 'content', 'product-hot-deal' );
+                                                        // Get date sale 
+                                                        $time = kt_get_max_date_sale( get_the_ID() );
+                                                        if( $time > $max_time ){
+                                                            $max_time = $time;
+                                                        }
+    
+                                                    ?>
+                                                </li>
+                                			<?php endwhile; ?>
+                                        </ul>
+                                    <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
                                     </div> 
-                                    <?php 
-                                    remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-                                    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-                                    add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
-                                    ?>
-                                    <?php else: ?>
-                                        <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-                                            <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php 
-                                        wp_reset_query();
-                                        wp_reset_postdata(); 
-                                    ?>
-                                    <?php $i++; ?>
+                                <?php 
+                                remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                ?>
+                                <?php else: ?>
+                                    <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                        <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
+                                    </div>
+                                <?php endif; ?>
+                                <?php 
+                                    wp_reset_query();
+                                    wp_reset_postdata(); 
+                                ?>
+                                <?php $i++; ?>
                                 <?php endforeach; ?>
                                 <?php 
                                 if( $max_time > 0 ){
@@ -486,8 +486,10 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             </div>
         </div>
         <!-- ./Hot deals -->
-        </div>
         <?php
         endif;
+        $result = ob_get_contents();
+        ob_end_clean();
+        return $result;
     }
 }

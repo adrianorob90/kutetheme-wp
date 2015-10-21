@@ -3725,6 +3725,7 @@ span.notify-right{
   margin-left: 3px;
   width: 30px;
   height: 30px;
+  float: left;
 }
 .display-product-option{
     height: 30px;
@@ -5636,10 +5637,14 @@ span.notify-right{
 .box-products .box-tabs li.active>a:after{
   display: block;
 }
-
+.container-tab{
+  overflow: hidden;
+}
 .box-products .box-product-content{
   margin-top: 20px;
-  overflow: hidden;
+    overflow: hidden;
+    float: left;
+    width: 100%;
 }
 
 .box-products .box-product-content .box-product-adv{

@@ -15,10 +15,10 @@
     <div id="main-header">
         <div class="container main-header">
             <div class="row">
-                <div class="col-xs-12 col-sm-3 logo">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3 logo">
                     <?php echo kt_get_logo(); ?>
                 </div>
-                <div id="main-menu" class="col-sm-12 col-md-8 main-menu">
+                <div id="main-menu" class="col-sm-10 col-md-10 col-lg-8 main-menu">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
                             <div class="navbar-header">

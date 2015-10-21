@@ -239,6 +239,20 @@
 	color: #fff;
 	border:none;
 }
+.option3 .main-header-menu{
+	margin: 0;
+}
+.option3 .box-vertical-megamenus{
+	left: 0;
+	right: 0;
+}
+.option3 #main-menu.main-menu{
+	padding: 0;
+	margin: 0;
+}
+.option3 #box-vertical-megamenus{
+	padding: 0;
+}
 .option3 .box-vertical-megamenus .vertical-menu-content{
 	border-top: none;
 }
@@ -277,7 +291,7 @@
 	  font-weight: normal;
 }
 .option3 .box-vertical-megamenus .vertical-menu-content{
-	padding-bottom: 31px;
+	padding-bottom: 25px;
 }
 .option3 #main-menu .dropdown-menu .block-container .group_header>a {
   border-color: #0088cc;
@@ -387,11 +401,14 @@
 	position: relative;
 }
 .trending-wapper .trending{
-	width: 190px;
+	width: 217px;
 	position: absolute;
 	top: 0;
 	right: 0;
 	z-index: 3;
+	background-color: #fff;
+}
+.trending{
 	background-color: #fff;
 }
 .trending ul{
@@ -516,6 +533,11 @@
 	.option3 #main-menu .navbar .navbar-nav>li.active>a{
 		border: none;
 	}
+	.option3 .logo{
+		margin: 0;
+		text-align: center;
+		padding: 30px 0;
+	}
 }
 /*--------------------
 [6. Styles for devices(>=768px and <=992px)]
@@ -540,11 +562,6 @@
 		border-left: none;
 		font-size: 13px;
 	}
-	.option3 #main-menu{
-		margin: 0;
-		padding-left: 15px;
-		width: auto;
-	}
 	.option3 .navbar-right{
 		display: none;
 	}
@@ -563,7 +580,9 @@
 	.option3 .header-top-right .header-banner{
 		display: none;
 	}
-	
+	.option3 .main-header .header-search-box .form-inline .form-category{
+		display: none;
+	}
 
 	
 }
@@ -577,6 +596,7 @@
 	.option3 .group-button-header{
 		width: 100%;
 		margin-top: 25px;
+		float: left;
 	}
 	.option3 .logo {
 		margin-top: 0;
@@ -618,6 +638,19 @@
 	.option3 #home-slider .slider-left{
 		display: none;
 	}
+	.option3 #main-menu .navbar-header{
+		margin: 0;
+	}
+	.option3 #main-menu .container-fluid{
+		padding: 0;
+	}
+	.option3 #main-menu .navbar-collapse{
+		margin: 0;
+		margin-left: 0;
+	}
+	.option3 .main-menu .navbar-nav{
+		margin-top: 0;
+	}
 }
 /*--------------------
 [8. Styles for devices(<=480px)]
@@ -627,8 +660,9 @@
 		display: none;
 	}
 	.option3 .group-button-header{
-		width: 100%;
-		margin-top: 25px;
+		overflow: hidden;
+	    float: left;
+	    text-align: center;
 	}
 	.option3 .logo {
 		margin-top: 0;
@@ -673,6 +707,19 @@
 	}
 	.block-banner .block-banner-right{
 		margin-top: 10px;
+	}
+	.option3 #main-menu .navbar-header{
+		margin: 0;
+	}
+	.option3 #main-menu .container-fluid{
+		padding: 0;
+	}
+	.option3 #main-menu .navbar-collapse{
+		margin: 0;
+		margin-left: 0;
+	}
+	.option3 .main-menu .navbar-nav{
+		margin-top: 0;
 	}
 	
 }

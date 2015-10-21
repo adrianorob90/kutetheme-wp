@@ -260,9 +260,9 @@ add_action( 'kt_show_menu_option_2', 'kt_show_menu_option_2' );
 
 if( ! function_exists( 'kt_show_menu_option_3' ) ){
     function kt_show_menu_option_3(){ global $kt_enable_vertical_menu;?>
-        <div class="row">
+        <div class="row main-header-menu">
             <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
-            <div class="col-sm-3" id="box-vertical-megamenus">
+            <div class="col-xs-6 col-sm-3" id="box-vertical-megamenus">
                 <div class="box-vertical-megamenus style2">
                     <h4 class="title">
                         <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
@@ -274,7 +274,7 @@ if( ! function_exists( 'kt_show_menu_option_3' ) ){
                     </div>
                 </div>
             </div>
-            <div id="main-menu" class="col-sm-9 main-menu enable_vm">
+            <div id="main-menu" class="col-xs-6  col-sm-12 col-md-9 main-menu enable_vm">
             <?php else: ?>
             <div id="main-menu" class="col-sm-12 main-menu">
             <?php endif; ?>
