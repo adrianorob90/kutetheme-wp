@@ -75,4 +75,7 @@ $kt_header_message = kt_option('kt_header_message','');
         </div>
     </div>
 </div>
+<div class="container trending-wapper">
+    <?php kt_display_trending_products();?>
+</div>
 <!-- end header -->

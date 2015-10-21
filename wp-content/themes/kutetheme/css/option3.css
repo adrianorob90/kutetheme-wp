@@ -383,6 +383,24 @@
 .option3 .header-top-right .homeslider .bx-controls-direction .bx-next{
 	background: #0088cc;
 }
+.trending-wapper{
+	position: relative;
+}
+.trending-wapper .trending{
+	width: 190px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 3;
+	background-color: #fff;
+}
+.trending ul{
+	padding: 0;
+	margin: 0;
+}
+.trending ul li{
+	list-style: none;
+}
 .trending .trending-title{
 	height: 33px;
 	line-height: 33px;
@@ -391,6 +409,7 @@
 	text-transform: uppercase;
 	text-align: center;
 	font-size: 14px;
+	margin: 0;
 }
 .option3 .header-top-right .header-banner img{
 	width: inherit;
@@ -405,19 +424,29 @@
 	border:none;
 }
 .trending  .trending-product li .product-name{
-	margin-top: 8px;
+	margin: 0;
+	margin-top: 4px;
 }
 .trending  .trending-product li .product-price{
 	line-height: 30px;
 }
-.trending  .trending-product li .price{
+.trending  .trending-product li .product-price{
 	font-size: 18px;
 	color: #0099cc;
 }
-.trending  .trending-product li .price-old{
+.trending  .trending-product ins{
+	text-decoration: none;
+}
+.trending  .trending-product li del{
 	text-decoration: line-through;
 	margin-left: 11px;
 	color: #666;
+	font-size: 14px;
+}
+.trending  .trending-product img{
+	width: 140px;
+	margin: 0 auto;
+	height: auto;
 }
 .services-wapper{
 	background: #f6f6f6;
