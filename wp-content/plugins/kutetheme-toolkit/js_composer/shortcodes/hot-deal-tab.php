@@ -404,6 +404,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     </div>
                                 </div>
                             </div>
+<<<<<<< HEAD
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-8 hot-deals-tab-content-col">
                             <div class="hot-deals-tab-content tab-container">
@@ -477,6 +478,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     ?>
                                     <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
                                     <?php
+
                                     }
                                 ?>
                             </div>
