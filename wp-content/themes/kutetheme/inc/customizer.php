@@ -419,7 +419,8 @@ function kt_get_color_scheme_css( $colors ) {
     body .option4 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .nav-ontop,
-    body .option3 .nav-ontop #box-vertical-megamenus .title
+    body .option3 .nav-ontop #box-vertical-megamenus .title,
+    body .trending .trending-title
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
@@ -506,7 +507,8 @@ function kt_get_color_scheme_css( $colors ) {
     .woocommerce .wishlist_table span.amount,
     .widget.widget_kt_best_seller .price,
     .vertical-menu-list .mega-product .price,
-    body .cart-block .cart-block-content .product-info .p-right .p-rice{
+    body .cart-block .cart-block-content .product-info .p-right .p-rice,
+    body .trending .trending-product li .product-price{
         color: <?php  echo esc_attr( $colors['price_color'] ); ?>
     }
 	/* Color*/

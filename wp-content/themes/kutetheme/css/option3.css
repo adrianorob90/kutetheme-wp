@@ -258,6 +258,11 @@
 }
 .option3 .box-vertical-megamenus .vertical-menu-list {
 	padding-top: 4px;
+	border: none;
+}
+.option3 .box-vertical-megamenus .all-category span{
+	border-left: none;
+	border-right: none;
 }
 .option3 .box-vertical-megamenus .vertical-menu-list li{
 	border: none;
@@ -410,6 +415,7 @@
 }
 .trending{
 	background-color: #fff;
+	padding-bottom: 1px;
 }
 .trending ul{
 	padding: 0;
@@ -450,9 +456,12 @@
 .trending  .trending-product li .product-price{
 	font-size: 18px;
 	color: #0099cc;
+	display: table;
+	margin: 0 auto;
 }
 .trending  .trending-product ins{
 	text-decoration: none;
+	float: left;
 }
 .trending  .trending-product li del{
 	text-decoration: line-through;
@@ -537,6 +546,9 @@
 		margin: 0;
 		text-align: center;
 		padding: 30px 0;
+	}
+	.option3 .box-vertical-megamenus .vertical-menu-content{
+		display: none;
 	}
 }
 /*--------------------

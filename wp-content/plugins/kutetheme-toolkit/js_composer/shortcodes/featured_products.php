@@ -38,7 +38,7 @@ vc_map( array(
             "heading"     => __( "IDs", 'kutetheme' ),
             "param_name"  => "ids",
             "admin_label" => false,
-            'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' ),
+            'description' => __( 'Enter your product ID and separate by a commas ",". Ex: 1,2,3...', 'kutetheme' ),
             "dependency"  => array("element" => "box_type","value" => array('by_id'))
         ),
         array(
@@ -47,7 +47,7 @@ vc_map( array(
             "param_name"  => "number",
             "value"       => "4",
             "admin_label" => true,
-            'description' => __( 'The `number` field is used to display the number of subcategory.', 'kutetheme' ),
+            'description' => __( 'The number of products put out from your store.', 'kutetheme' ),
             "dependency"  => array("element" => "box_type","value" => array('featured'))
         ),
         array(
