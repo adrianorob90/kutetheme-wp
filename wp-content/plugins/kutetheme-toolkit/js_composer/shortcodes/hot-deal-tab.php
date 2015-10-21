@@ -435,8 +435,8 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                         remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
                                         ?>
                                         <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-                                            <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
-                                            <ul class="product-list owl-carousel nav-center" <?php echo $carousel; ?>>
+                                            <?php do_action( "woocommerce_shortcode_before_hot_deal_tab_loop" ); ?>
+                                            <ul class="product-list owl-carousel nav-center" <?php echo apply_filters( 'kt_hot_deal_tab_carousel', $carousel ) ; ?>>
                                                 <?php while( $products->have_posts() ): $products->the_post(); ?>
                                                     <li>
                                     					<?php 
@@ -451,32 +451,32 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                                     </li>
                                     			<?php endwhile; ?>
                                             </ul>
-                                        <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
-                                    </div> 
+                                            <?php do_action( "woocommerce_shortcode_after_hot_deal_tab_loop" ); ?>
+                                        </div> 
+                                        <?php 
+                                        remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                        remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                        ?>
+                                        <?php else: ?>
+                                            <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                                <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
+                                            </div>
+                                        <?php endif; ?>
+                                        <?php 
+                                            wp_reset_query();
+                                            wp_reset_postdata(); 
+                                        ?>
+                                        <?php $i++; ?>
+                                    <?php endforeach; ?>
                                     <?php 
-                                    remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-                                    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-                                    add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
-                                    ?>
-                                    <?php else: ?>
-                                        <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-                                            <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
-                                        </div>
-                                    <?php endif; ?>
-                                    <?php 
-                                        wp_reset_query();
-                                        wp_reset_postdata(); 
-                                    ?>
-                                    <?php $i++; ?>
-                                <?php endforeach; ?>
-                                <?php 
-                                if( $max_time > 0 ){
-                                    $y = date( 'Y', $max_time );
-                                    $m = date( 'm', $max_time );
-                                    $d = date( 'd', $max_time );
-                                    ?>
-                                    <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
-                                    <?php
+                                    if( $max_time > 0 ){
+                                        $y = date( 'Y', $max_time );
+                                        $m = date( 'm', $max_time );
+                                        $d = date( 'd', $max_time );
+                                        ?>
+                                        <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
+                                        <?php
                                     }
                                 ?>
                             </div>

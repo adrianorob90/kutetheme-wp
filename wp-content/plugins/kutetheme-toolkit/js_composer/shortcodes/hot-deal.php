@@ -3,12 +3,10 @@
 if ( !defined('ABSPATH')) exit;
 
 vc_map( array(
-    "name"                    => __( "Hot Deal", 'kutetheme'),
+    "name"                    => __( "Hot Deal", 'kutetheme' ),
     "base"                    => "box_hot_deal",
     "category"                => __('Kute Theme', 'kutetheme' ),
     "description"             => __( "Show box hot deal", 'kutetheme'),
-    "content_element"         => true,
-    "show_settings_on_create" => true,
     "params"                  => array(
         array(
             "type"        => "textfield",
@@ -193,11 +191,11 @@ vc_map( array(
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             'admin_label' => false,
         ),
-    ),
-    "js_view" => 'VcColumnView'
+    )
 ));
+
 class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
-    protected function content($atts, $content = null) {
+    protected function content( $atts, $content = null ) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'box_hot_deal', $atts ) : $atts;
         extract( shortcode_atts( array(
             'title'          => __( 'Hot deal', 'kutetheme' ),
@@ -228,7 +226,7 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
          global $woocommerce_loop;
         
         $elementClass = array(
-            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'hot-deals-row ', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
             'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -276,7 +274,7 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
             'autoplayHoverPause' => 'true'
         );
         
-        if( $use_responsive){
+        if( $use_responsive ){
             $arr = array(
                 '0' => array(
                     "items" => $items_mobile
@@ -290,18 +288,15 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
             );
             $data_responsive = json_encode($arr);
             $data_carousel[ "responsive" ] = $data_responsive;
-        }else{
+        }else {
             if( $items_destop > 0 ){
-                $items_destop = 4;
+                $items_destop = 5;
             }
             $data_carousel['items'] =  $items_destop;
                 
         }
         $carousel = _data_carousel( $data_carousel );
         
-        $tabs = kt_get_all_attributes( 'tab_sections', $content );
-        if( count( $tabs ) >0 ) :
-        $unique = uniqid();
         $new_title = array( 
             __( 'hot' ),
             __( 'deals' )
@@ -310,6 +305,81 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         if( is_array( $charact ) && count( $charact ) > 1 ){
             $new_title = $charact;
         }
+        $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+        ob_start();                                
+        if( $products->have_posts() ):
+        $max_time = 0;
+        ?>
+        <!-- Hot deals -->
+        <div class="<?php echo apply_filters( 'kt_class_hot_deal', $elementClass ) ?>">
+            <div class="container">
+                <div class="hot-deals-box">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-2 col-lg-2">
+                            <div class="hot-deals-tab">
+                                <div class="hot-deals-title vertical-text">
+                                    <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
+                                        <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
+                                            <?php if( isset( $new_title[0][$i] ) ):  ?>
+                                                <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    <?php endif; ?>
+                                    
+                                    <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
+                                        <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
+                                            <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
+                                                <?php if( isset( $new_title[$j][$i] ) ):  ?>
+                                                    <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
+                                                <?php endif; ?>
+                                            <?php endfor; ?>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </div>
+                                <div class="hot-deals-tab-box">
+                                    <div class="box-count-down">
+                                        <span class="countdown-only"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-10 col-lg-10 hot-deals-tab-content-col">
+                            <div class="hot-deals-tab-content tab-container">
+                                <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
+                                <ul class="products owl-carousel" <?php echo apply_filters( 'kt_hot_deal_carousel', $carousel ) ; ?>>
+                                    <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                        <li class="product">
+                        					<?php 
+                                                wc_get_template_part( 'content', 'product-hotdeal' );
+                                                // Get date sale 
+                                                $time = kt_get_max_date_sale( get_the_ID() );
+                                                if( $time > $max_time ){
+                                                    $max_time = $time;
+                                                }
+                                            ?>
+                                        </li>
+                        			<?php endwhile; ?>
+                                </ul>
+                                <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
+                            </div>
+                            <?php 
+                                if( $max_time > 0 ){
+                                    $y = date( 'Y', $max_time );
+                                    $m = date( 'm', $max_time );
+                                    $d = date( 'd', $max_time );
+                                    ?>
+                                    <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
+                                    <?php
+                                }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Hot deals -->
+        <?php
         endif;
+        return ob_get_clean();
     }
 }
