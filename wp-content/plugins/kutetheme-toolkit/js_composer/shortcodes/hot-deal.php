@@ -313,7 +313,7 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         <!-- Hot deals -->
         <div class="<?php echo apply_filters( 'kt_class_hot_deal', $elementClass ) ?>">
             <div class="container">
-                <div class="hot-deals-box">
+                <div class="hot-deals-box only_countdown">
                     <div class="row">
                         <div class="col-sm-12 col-md-2 col-lg-2">
                             <div class="hot-deals-tab">
