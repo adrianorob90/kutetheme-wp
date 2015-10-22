@@ -3716,8 +3716,25 @@ span.notify-right{
   position: absolute;
   right: 0;
   bottom: 10px;
+  font-size: 14px;
 }
-
+.view-product-list .display-product-option ul{
+    padding: 0;
+}
+.woocommerce .page-title .woocommerce-ordering .orderby:focus{
+    outline: 0;
+}
+.page-title .woocommerce-result-count,
+.woocommerce .page-title .woocommerce-ordering,
+.woocommerce .page-title .woocommerce-ordering .orderby,
+.view-product-list .display-product-option ul{
+    margin: 0;
+    float: right;
+    position: relative;
+    margin-left: 10px;
+    height: 30px;
+    line-height: 28px;
+}
 /** botton view option **/
 .display-product-option li{
   list-style: none;
@@ -3732,7 +3749,6 @@ span.notify-right{
     padding: 0;
     margin: 0;
     display: table;
-    width: 66px;
 }
 .display-product-option li.view-as-grid span{
   width: 30px;

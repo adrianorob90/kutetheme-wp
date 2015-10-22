@@ -346,6 +346,8 @@ if( ! function_exists( 'kt_scripts' ) ){
         
         wp_enqueue_style( 'kt-option-6', get_template_directory_uri() . '/css/option6.css', array('kt-style') );
         
+        wp_enqueue_style( 'kt-option-7', get_template_directory_uri() . '/css/option7.css', array('kt-style') );
+        
     	wp_enqueue_script( 'kt-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20141010', true );
     
     	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

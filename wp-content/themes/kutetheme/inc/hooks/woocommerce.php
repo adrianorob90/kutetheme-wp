@@ -41,7 +41,7 @@ add_action( 'woocommerce_process_product_meta_simple', 'kt_wc_process_product_me
 add_action( 'woocommerce_process_product_meta_external', 'kt_wc_process_product_meta', 10, 1 );
 
 add_action( 'woocommerce_process_product_meta_grouped', 'kt_wc_process_product_meta_grouped', 10, 1 );
- 
+
 /**
  * Template Rating
  * */
@@ -266,6 +266,8 @@ add_action( 'kt_loop_product_function' , 'kt_get_tool_wishlish', 1);
 add_action( 'kt_loop_product_function' , 'kt_get_tool_compare', 5);
 
 add_action( 'kt_loop_product_function' , 'kt_get_tool_quickview', 10);
+
+add_action( 'kt_loop_product_function_quickview' , 'kt_get_tool_quickview', 10);
 
 add_action( 'kt_loop_product_label', 'kt_show_product_loop_new_flash', 5 );
 
@@ -553,6 +555,7 @@ add_filter( 'loop_shop_columns', 'kt_loop_shop_columns', 1, 10 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
 
+
 // add products display
 
 if( ! function_exists( 'kt_custom_display_view' ) ){
@@ -565,14 +568,16 @@ if( ! function_exists( 'kt_custom_display_view' ) ){
         }
         ob_start();
         ?>
-        <ul class="display-product-option">
-            <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
-                <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
-            </li>
-            <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
-                <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
-            </li>
-        </ul>
+        <div class="display-product-option">
+            <ul>
+                <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
+                    <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
+                </li>
+                <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
+                    <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
+                </li>
+            </ul>
+        </div>
         <?php
         $layout = ob_get_contents();
         ob_clean();
@@ -580,6 +585,8 @@ if( ! function_exists( 'kt_custom_display_view' ) ){
     }
 }
 
+add_action( 'kt_wc_before_shop_loop', '', 20 );
+add_action( 'kt_wc_before_shop_loop', '', 30 );
 // kt_custom_class_list_product
 
 if( ! function_exists( 'kt_custom_class_list_product' ) ){
@@ -767,14 +774,25 @@ if( ! function_exists( 'custom_woocommerce_page_title' ) ){
         ob_start();
         ?>
         <span><?php echo esc_html( $page_title ); ?></span>
-        <ul class="display-product-option">
-            <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
-                <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
-            </li>
-            <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
-                <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
-            </li>
-        </ul>
+        <div class="display-product-option">
+            <ul>
+                <li class="view-as-grid <?php if( $shop_products_layout == "grid" ) echo esc_attr( 'selected' );?>">
+                    <span><?php esc_html_e( 'grid', 'kutetheme' );?></span>
+                </li>
+                <li class="view-as-list <?php if( $shop_products_layout == "list" ) echo esc_attr( 'selected' );?>">
+                    <span><?php esc_html_e( 'list', 'kutetheme' );?></span>
+                </li>
+            </ul>
+            <?php 
+                if(  function_exists( 'woocommerce_catalog_ordering' ) ){
+                    woocommerce_catalog_ordering();
+                }
+                
+                if( function_exists( 'woocommerce_result_count' ) ){
+                    woocommerce_result_count();
+                } 
+            ?>
+        </div>
         <?php
         $page_title = ob_get_contents();
         ob_clean();

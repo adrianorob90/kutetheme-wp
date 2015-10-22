@@ -827,3 +827,25 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     margin-left: 15px;
     margin-right: 0;
 }
+.page-title .woocommerce-result-count, 
+.woocommerce .page-title .woocommerce-ordering, 
+.woocommerce .page-title .woocommerce-ordering .orderby, 
+.view-product-list .display-product-option ul{
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+}
+.view-product-list .display-product-option{
+    left: 0;
+}
+.display-product-option li{
+    margin-left: 0;
+    margin-right: 3px;
+    float: left;
+}
+.woocommerce .woocommerce-ordering:before{
+    border-left: 0;
+    border-right: 1px solid #eaeaea;
+    float: left;
+    border-bottom: 1px solid #eaeaea;
+}

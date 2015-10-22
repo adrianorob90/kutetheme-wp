@@ -45,8 +45,8 @@ vc_map( array(
                 __( 'Tab 3', 'kutetheme' ) => 'tab-3',
                 __( 'Tab 4', 'kutetheme' ) => 'tab-4',
                 __( 'Tab 5', 'kutetheme' ) => 'tab-5',
-                /*__( 'Tab 6', 'kutetheme' ) => 'tab-6',
-                __( 'Tab 7', 'kutetheme' ) => 'tab-7',*/
+                __( 'Tab 6', 'kutetheme' ) => 'tab-6',
+                /*__( 'Tab 7', 'kutetheme' ) => 'tab-7',*/
         	),
         ),
         
@@ -56,6 +56,32 @@ vc_map( array(
             "param_name"  => "category",
             "admin_label" => true,
         ),
+        
+        
+        // Carousel
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Left', 'js_composer' )  => 'left',
+                __( 'Right', 'js_composer' ) => 'right',
+                
+            ),
+            'heading'     => __( 'Align', 'kutetheme' ),
+            'param_name'  => 'align',
+            'admin_label' => false,
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-6')),
+		),
+        
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("The items subcategory on per slide", 'kutetheme'),
+            "param_name"  => "number_slide",
+            "value"       => "14",
+            "suffix"      => __("subcategory", 'kutetheme'),
+            "description" => __('The number of items subcategory on per slide', 'kutetheme'),
+            'admin_label' => false,
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-6')),
+	  	),
         array(
             "type"        => "colorpicker",
             "heading"     => __("Main Color", 'kutetheme'),
@@ -67,7 +93,7 @@ vc_map( array(
             'type'        => 'attach_image',
             'heading'     => __( 'Icon', 'kutetheme' ),
             'param_name'  => 'icon',
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6')),
             'description' => __( 'Setup icon for the tab', 'kutetheme' )
     	),
         
@@ -75,7 +101,7 @@ vc_map( array(
             'type'        => 'attach_image',
             'heading'     => __( 'Background Image', 'kutetheme' ),
             'param_name'  => 'bg_cate',
-            "dependency"  => array("element" => "tabs_type", "value" => array( 'tab-2', 'tab-3', 'tab-4', 'tab-5' )),
+            "dependency"  => array("element" => "tabs_type", "value" => array( 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6' )),
             'description' => __( 'Setup background for box', 'kutetheme' )
     	),
         array(
@@ -90,7 +116,7 @@ vc_map( array(
             'type'        => 'attach_images',
             'heading'     => __( 'Banner left', 'kutetheme' ),
             'param_name'  => 'banner_left',
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6')),
             'description' => __( 'Setup image on  left of the tab', 'kutetheme' )
     	),
         
@@ -341,7 +367,8 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             'banner_left'    => '',
             "featured"       => false,
             
-            
+            "align"          => 'left',
+            "number_slide"   => 14,
             //Carousel            
             'autoplay'       => 'false', 
             'navigation'     => 'false',

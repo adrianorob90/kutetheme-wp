@@ -1,6 +1,6 @@
 <?php 
 $args = array(
-  'show_option_none' => esc_attr__( 'All Categries', 'kutetheme' ),
+  'show_option_none' => esc_attr__( 'All Categories', 'kutetheme' ),
   'taxonomy'    => 'product_cat',
   'class'      => 'select-category',
   'hide_empty'  => 1,
