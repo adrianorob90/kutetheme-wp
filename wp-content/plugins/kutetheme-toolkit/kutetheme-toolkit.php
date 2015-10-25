@@ -57,6 +57,11 @@ if( ! function_exists('kt_get_all_attributes') ){
         return $out;
     }
 }
+if( ! function_exists( 'kt_custom_blog_excerpt_length' ) ){
+    function kt_custom_blog_excerpt_length(){
+        return 23;
+    }
+}
 load_plugin_textdomain( 'kutetheme', false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
 
 require_once KUTETHEME_PLUGIN_PATH.'mobile-detect/edo-mobile-detect.php';

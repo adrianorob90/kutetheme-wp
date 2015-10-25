@@ -22,6 +22,17 @@ vc_map( array(
             "admin_label" => true,
         ),
         array(
+            "type"       => "dropdown",
+            "heading"    => __("Display Style", 'kutetheme'),
+            "param_name" => "style",
+            "value"      => array(
+                __('Style 1', 'kutetheme') => 'style-1',
+                __('Style 2', 'kutetheme') => 'style-2'
+        	),
+            'std'         => 'DESC',
+            "description" => __("Show blog carousel by difference style.",'kutetheme')
+        ),
+        array(
             "type"        => "textfield",
             "heading"     => __( "Number Post", 'kutetheme' ),
             "param_name"  => "per_page",
@@ -179,6 +190,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'orderby'        => 'date',
             'order'          => 'desc',
             
+            'style'          => 'style-1',
             //Carousel            
             'autoplay'       => 'false', 
             'navigation'     => 'false',
@@ -199,7 +211,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
          global $woocommerce_loop;
         
         $elementClass = array(
-            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'blog-list ', $this->settings['base'], $atts ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, '', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
             'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -251,58 +263,116 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         $temping_post_thumbnail = KUTETHEME_PLUGIN_URL . 'js_composer/assets/imgs/post-thumbnail.png';
         
         ob_start();
-        if( $posts->have_posts() ):                    
-        ?>
-        <!-- blog list -->
-        <div class="<?php echo esc_attr( $elementClass ); ?>">
-            <h2 class="page-heading">
-                <span class="page-heading-title"><?php echo esc_html( $title ) ?></span>
-            </h2>
-            <div class="blog-list-wapper">
-                <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                    <?php while( $posts->have_posts() ): $posts->the_post(); ?>
-                    <li>
-                        <?php if( has_post_thumbnail() ): ?>
-                        <div class="post-thumb image-hover2">
-                                                  
-                            <a href="<?php the_permalink() ?>">
-                            <?php
-                                $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "kt_post_blog_268x255" );
-                                if( $thumbnail_src ):
-                             ?>
-                                <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
-                                <?php else: ?>
-                                    <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
-                                <?php endif; ?>
-                             </a>
+        if( $posts->have_posts() ):
+        
+        if( $style == 'style-2' ):
+            ?>
+            <div class="option7">
+                <!-- ./box product diltal -->
+                <div class="row-blog <?php echo esc_attr( $elementClass ); ?>">
+                    <!-- blog list -->
+                    <div class="blog-list">
+                        <h2 class="page-heading">
+                            <span class="page-heading-title"><?php echo esc_html( $title ) ?></span>
+                        </h2>
+                        <div class="blog-list-wapper">
+                            <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                <?php add_filter( 'excerpt_length', 'kt_custom_blog_excerpt_length' ); ?>
+                                <?php while( $posts->have_posts() ): $posts->the_post(); ?>
+                                    <li>
+                                        <?php if( has_post_thumbnail() ): ?>
+                                            <div class="post-thumb image-hover2">
+                                                <a href="<?php the_permalink() ?>">
+                                                    <?php
+                                                    $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "kt_post_blog_268x255" );
+                                                    if( $thumbnail_src ):?>
+                                                        <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
+                                                    <?php else: ?>
+                                                        <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
+                                                    <?php endif; ?>
+                                                </a>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="post-desc">
+                                            <h5 class="post-title">
+                                                <a  href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                                            </h5>
+                                            <div class="post-meta">
+                                                <span class="date"><?php echo get_the_date('F j, Y');?></span>
+                                            </div>
+                                            <div class="desc">
+                                                <?php the_excerpt(); ?>
+                                            </div>
+                                            <?php if( has_tag() ): ?>
+                                                <div class="meta-tags">
+                                                   <i class="fa fa-tag"></i>
+                                                   <?php the_tags() ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </li>
+                                <?php endwhile; ?>
+                                <?php remove_filter( 'excerpt_length', 'kt_custom_blog_excerpt_length' ); ?>  
+                            </ul>
                         </div>
-                        <?php endif; ?>
-
-                        <div class="post-desc">
-                            <h5 class="post-title">
-                                <a  href="<?php the_permalink() ?>"><?php the_title() ?></a>
-                            </h5>
-                            <div class="post-meta">
-                                <span class="date"><?php echo get_the_date('F j, Y');?></span>
-                                <span class="comment">
-                                    <?php comments_number(
-                                        __('0 Comment', 'kutetheme'),
-                                        __('1 Comment', 'kutetheme'),
-                                        __('% Comments', 'kutetheme')
-                                    ); ?>
-                                </span>
-                            </div>
-                            <div class="readmore">
-                                <a href="<?php the_permalink() ?>"><?php _e( 'Readmore', 'kutetheme' ) ?></a>
-                            </div>
-                        </div>
-                    </li>
-                    <?php endwhile; ?>
-                </ul>
+                    </div>
+                    <!-- ./blog list -->
+                </div>
             </div>
-        </div>
-        <!-- ./blog list -->
-        <?php
+            <?php
+            else:                    
+                ?>
+                <!-- blog list -->
+                <div class="blog-list <?php echo esc_attr( $elementClass ); ?>">
+                    <h2 class="page-heading">
+                        <span class="page-heading-title"><?php echo esc_html( $title ) ?></span>
+                    </h2>
+                    <div class="blog-list-wapper">
+                        <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                            <?php while( $posts->have_posts() ): $posts->the_post(); ?>
+                            <li>
+                                <?php if( has_post_thumbnail() ): ?>
+                                <div class="post-thumb image-hover2">
+                                                          
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php
+                                        $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), "kt_post_blog_268x255" );
+                                        if( $thumbnail_src ):
+                                        ?>
+                                        <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ); ?>" data-src="<?php echo esc_url( $thumbnail_src[0] ) ?>" />
+                                        <?php else: ?>
+                                            <img width="<?php echo esc_attr( $thumbnail_src[1])?>" height="<?php echo esc_attr( $thumbnail_src[2])?>" alt="<?php the_title() ?>" class="owl-lazy attachment-post-thumbnail wp-post-image" src="<?php echo esc_url( $temping_post_thumbnail ) ?>" />
+                                        <?php endif; ?>
+                                     </a>
+                                </div>
+                                <?php endif; ?>
+        
+                                <div class="post-desc">
+                                    <h5 class="post-title">
+                                        <a  href="<?php the_permalink() ?>"><?php the_title() ?></a>
+                                    </h5>
+                                    <div class="post-meta">
+                                        <span class="date"><?php echo get_the_date('F j, Y');?></span>
+                                        <span class="comment">
+                                            <?php comments_number(
+                                                __('0 Comment', 'kutetheme'),
+                                                __('1 Comment', 'kutetheme'),
+                                                __('% Comments', 'kutetheme')
+                                            ); ?>
+                                        </span>
+                                    </div>
+                                    <div class="readmore">
+                                        <a href="<?php the_permalink() ?>"><?php _e( 'Readmore', 'kutetheme' ) ?></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </div>
+                </div>
+                <!-- ./blog list -->
+            <?php
+            endif;
         endif;
         wp_reset_query();
         wp_reset_postdata();

@@ -35,6 +35,22 @@ vc_map( array(
             'description' => __( 'Yes, Box product will show by brand. If It\'s checked then Null value title is not allow', 'kutetheme' )
 		),
         array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( '1 Line', 'js_composer' )  => '1-line',
+                __( '2 Line', 'js_composer' )  => '2-line',
+            ),
+            'heading'     => __( 'Line', 'kutetheme' ),
+            'param_name'  => 'line_brand',
+            'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'false' 
+                )
+             ),
+		),
+        array(
             "type"       => "dropdown",
             "heading"    => __("Order by", 'kutetheme'),
             "param_name" => "orderby",
@@ -183,6 +199,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                         
         $atts = shortcode_atts( array(
             'title'          => '',
+            'line_brand'     => '1-line',
             'show_product'   => 'true',
             'orderby'        => 'date',
             'order'          => 'desc',
@@ -253,7 +270,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
 		$tax   = get_taxonomy('product_brand');
         if( $tax ):
     		$terms = get_terms( 'product_brand',array( 'hide_empty' => 0, 'orderby' => $orderby, 'order' => $order ) );
-            if( ! is_wp_error($terms) ) :
+            if( ! is_wp_error($terms) && count( $terms ) > 0 ) :
                 if( $show_product == "true" ) :
                     ?>
                     <div class="brand-showcase <?php echo esc_attr( $elementClass ); ?>">
@@ -368,14 +385,38 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             </div>
                         </div>
                     </div>
-                    <?php
-                    else:
-                    ?>
-                    <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                        <?php foreach($terms as $term): ?>
-                            <h3><?php echo esc_html( $term->name ); ?></h3>
-                        <?php endforeach; ?>
-                    </div>
+                    <?php else: ?>
+                        <?php if( $line_brand == '2-line' ): ?>
+                            <!-- ./blog list -->
+                            <div class="row-brand <?php echo esc_attr( $elementClass ); ?>">
+                                <?php if( $title ): ?>
+                                    <h2 class="page-heading">
+                                        <span class="page-heading-title"><?php echo esc_html( $title ) ; ?></span>
+                                    </h2>
+                                <?php endif; ?>
+                                <ul class="band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                    <?php for($i = 0; $i < count( $terms ); $i += 2 ): ?>
+                                        <?php if( isset( $terms[ $i ] ) && $terms[ $i ] ): ?>
+                                            <?php $term = $terms[ $i ]; ?>
+                                            <li>
+                                                <h3><?php echo esc_html( $term->name ); ?></h3>
+                                                <?php if( isset( $terms[$i + 1] ) && $terms[$i + 1] ): ?>
+                                                    <?php $term_2 = $terms[$i + 1]; ?>
+                                                    <h3><?php echo esc_html( $term_2->name ); ?></h3>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </ul>
+                            </div>
+                            <!-- ./blog list -->
+                        <?php else: ?>
+                            <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                <?php foreach($terms as $term): ?>
+                                    <h3><?php echo esc_html( $term->name ); ?></h3>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
                     <?php
                 endif;
             endif;
