@@ -247,7 +247,9 @@
 .option7 #main-menu .navbar .navbar-nav>li.active:last-child>a{
 	border: none;
 }
-
+.option7 #main-menu li.dropdown>a:before{
+    display: none;
+}
 .option7 #main-menu li.dropdown>a:after{
 	position: absolute;
 	top: 15px;
