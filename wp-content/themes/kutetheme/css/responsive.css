@@ -543,7 +543,11 @@
 	  margin: 0;
 	  background: #ff3366;
 	  color: #fff;
-	  margin-left: 15px;
+	}
+	#main-menu.enable_vm{
+		margin: 0;
+		padding: 0 15px;
+		padding-left:0; 
 	}
 	#main-menu .navbar-header .navbar-brand {
 		padding: 0;
@@ -568,17 +572,17 @@
 		background: none;
 	}
 	#main-menu .navbar-collapse{
-		padding: 0 15px;
-		margin-left: 15px;
-		margin-right: 0px;
-		background: #eee;
+		padding: 0;
+    	margin: 0;
 	}
 	#main-menu .container-fluid{
-		padding-right: 15px;
-  		padding-left: 15px;
+		padding: 0;
 	}
 	#main-menu .navbar-collapse.in{
 		overflow-y:inherit;
+	}
+	#main-menu .navbar-nav{
+		margin: 0;
 	}
 	#main-menu .navbar .navbar-nav>li{
 		border-bottom: 1px solid #cacaca;
@@ -730,7 +734,7 @@
 		border-left: 1px solid #eaeaea;
 	}
 	.vertical-menu-list .megamenu{
-		padding: 15px 0;
+		padding: 15px;
 		border: none;
 		border-bottom: 1px solid #eaeaea;
 		border-left: 1px solid #eaeaea;
@@ -1065,7 +1069,6 @@
 	  margin: 0;
 	  background: #ff3366;
 	  color: #fff;
-	  margin-left: 15px;
 	}
 	#main-menu .navbar-header .navbar-brand {
 		padding: 0;
@@ -1091,13 +1094,17 @@
 	}
 	#main-menu .navbar-collapse{
 		padding: 0 15px;
-		margin-left: 15px;
+		margin-left: 0;
 		margin-right: 0px;
 		background: #eee;
 	}
 	#main-menu .container-fluid{
-		padding-right: 15px;
-  		padding-left: 15px;
+		padding: 0;
+	}
+	#main-menu.enable_vm{
+		padding: 0 15px;
+		margin: 0;
+		padding-left: 0;
 	}
 	#main-menu .navbar-collapse.in{
 		overflow-y:inherit;
@@ -1131,8 +1138,17 @@
 		top: 9px;
 		right: 10px;
 	}
+	#main-menu .dropdown .dropdown-menu{
+		max-width: 100%;
+	}
+	#main-menu li.dropdown>a:before,
+	#main-menu li.dropdown:hover>a:before{
+		display: none;
+	}
 	#main-menu .dropdown.open >.dropdown-menu{
 		display: block;
+		width: 100%!important;
+		min-width: 1px;
 	}
 	#main-menu li.dropdown:before{
 		display: none;
@@ -1273,10 +1289,13 @@
 		border-left: 1px solid #eaeaea;
 	}
 	.vertical-menu-list .megamenu{
-		padding: 15px 0;
+		padding: 15px;
 		border: none;
 		border-bottom: 1px solid #eaeaea;
 		border-left: 1px solid #eaeaea;
+	}
+	#main-menu .navbar-nav{
+		margin: 0;
 	}
 	.box-vertical-megamenus .vertical-menu-list li{
 		width: 100%;

@@ -318,7 +318,11 @@
 }
 .formsearch-option4>form{
 	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
 	height: 40px;
+}
+.enable_vm .formsearch-option4>form{
+	border-left: none;
 }
 .formsearch-option4 .form-category{
 	height: 40px;
@@ -609,6 +613,15 @@
 		padding: 0;
 		margin-top: 25px;
 	}
+	.option4 .main-header{
+		padding: 20px 15px;
+	}
+	.enable_vm .formsearch-option4{
+		padding-left: 15px;
+	}
+	.option4 .formsearch-option4 .input-serach{
+		border-left: 1px solid #ccc;
+	}
 }
 /*--------------------
 [8. Styles for devices(<=480px)]
@@ -668,6 +681,7 @@
 	}
 	.formsearch-option4 .form-group{
 		margin: 0;
+		border-left: 1px solid #ccc;
 	}
 	.formsearch-option4 .input-serach input{
 		padding: 10px 10px;
@@ -697,5 +711,8 @@
 	.option4 .header-top-right .homeslider{
 		padding: 0;
 		margin-top: 25px;
+	}
+	.option4 .main-header{
+		padding: 20px 15px;
 	}
 }

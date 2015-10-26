@@ -153,20 +153,7 @@ class KT_Admin {
         foreach ( $wp_registered_sidebars as $sidebar ){
             $sidebars[  $sidebar['id'] ] =   $sidebar['name'];
         }
-        /**
-    	 * User Vertical Menu
-    	 */
-    	$cmb_options_general->add_field( array(
-    		'name'    => __( 'User Vertical Menu', 'kutetheme' ),
-    		'id'      => 'kt_enable_vertical_menu',
-    		'type'    => 'select',
-    		'default' => 'enable',
-            'options' => array(
-                'enable'  => 'Enable',
-                'disable'  => 'Disable'
-            ),
-            'desc'    => __( 'Use Vertical Menu on show any page', 'kutetheme' ),
-    	) );
+        
         
         /**
     	 * Site bar
@@ -299,6 +286,38 @@ class KT_Admin {
             'desc' => __( 'Display only header style 3', 'kutetheme' ),
             'id'   => 'kt_header_message',
             'type' => 'text',
+        ) );
+        /**
+         * User Vertical Menu
+         */
+        $cmb_options_header->add_field( array(
+            'name'    => __( 'User Vertical Menu', 'kutetheme' ),
+            'id'      => 'kt_enable_vertical_menu',
+            'type'    => 'select',
+            'default' => 'enable',
+            'options' => array(
+                'enable'  => 'Enable',
+                'disable'  => 'Disable'
+            ),
+            'desc'    => __( 'Use Vertical Menu on show any page', 'kutetheme' ),
+        ) );
+        $cmb_options_header->add_field( array(
+            'name'    => __( 'Open vertical once click', 'kutetheme'),
+            'id'      => 'kt_click_open_vertical_menu',
+            'type'    => 'select',
+            'default' => 'disable',
+            'options' => array(
+                'enable'  => 'Enable',
+                'disable'  => 'Disable'
+            ),
+            'desc'    => __( 'Vertical menu only open when you click on', 'kutetheme' ),
+        ) );
+        $cmb_options_header->add_field( array(
+            'name'    => __( 'The number of visible vertical menu items', 'kutetheme' ),
+            'desc'    => __( 'The number of visible vertical menu items', 'kutetheme' ),
+            'id'      => 'kt_vertical_item_visible',
+            'default' =>11,
+            'type'    => 'text',
         ) );
         /**
     	 * Footer

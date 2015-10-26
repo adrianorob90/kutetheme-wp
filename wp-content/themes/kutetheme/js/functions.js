@@ -337,7 +337,8 @@
         $(document).on('click','.btn-open-mobile',function(){
             var width = $(window).width();
             if(width >1024){
-                if($('body').hasClass('home')){
+                if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
+                    console.log('xxx');
                     if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
                         
                     }else{
@@ -700,13 +701,14 @@
     function show_other_item_vertical_menu(){
       if( $( '.box-vertical-megamenus' ).length > 0 ){
           var all_item = 0;
-          var limit_item = 10;
+          var limit_item = $('.box-vertical-megamenus').data('items')-1;
           if($('.box-vertical-megamenus').hasClass('style2')){
             if( $(window).width() <= 1024){
               limit_item = 8;
             }
             
           }
+
           $('.box-vertical-megamenus').find('.vertical-menu-list>li').each(function(i){
               all_item = all_item + 1;
               if(i > limit_item){

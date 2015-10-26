@@ -99,6 +99,10 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
     </div>
     <?php endif; ?>
+    <?php 
+    wp_reset_postdata();
+    wp_reset_query();
+    ?>
     <?php do_action( 'kt_show_menu_option_7' ) ?>
 </div>
 <!-- end header -->

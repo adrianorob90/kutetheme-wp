@@ -217,5 +217,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
         <?php endif;?>
             <?php
         }
+        wp_reset_postdata();
+        wp_reset_query();
     }
 }

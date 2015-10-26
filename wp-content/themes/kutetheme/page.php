@@ -12,13 +12,15 @@
  */
 
 get_header();
+
+$id = get_the_ID();
 // Default option
 $kt_sidebar_are = kt_option( 'kt_sidebar_are', 'left' );
 
 // Page option
-$kt_page_layout = kt_get_post_meta( get_the_ID(), 'kt_page_layout', 'none' );
+$kt_page_layout = kt_get_post_meta( $id, 'kt_page_layout', 'none' );
 
-$kt_show_page_breadcrumb = kt_get_post_meta( get_the_ID(), 'kt_show_page_breadcrumb', 'show' );
+$kt_show_page_breadcrumb = kt_get_post_meta( $id, 'kt_show_page_breadcrumb', 'show' );
 
 if( $kt_page_layout != "none" ){
 	$kt_sidebar_are = $kt_page_layout;

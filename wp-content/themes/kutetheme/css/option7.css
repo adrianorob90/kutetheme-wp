@@ -418,6 +418,7 @@
 	padding-bottom: 50px;
 }
 
+
 .formsearch-option4{
 	height: 40px;
 }
@@ -428,31 +429,29 @@
 	border-right: 1px solid #efefef;
 	height: 40px;
 }
-.enable_vm .formsearch-option4 .form-category{
+.option7  .formsearch-option4>form{
 	border-right: 1px solid #efefef;
-}
-.disable_vm .formsearch-option4 .form-category{
-    border-left: 1px solid #efefef;
+	height: 40px;
 }
 .formsearch-option4 .form-category{
 	height: 40px;
 	min-width: 150px;
 }
-.formsearch-option4 .select2-container--default,
-.formsearch-option4 .select2-selection--single{
+.option7  .formsearch-option4 .select2-container--default,
+.option7  .formsearch-option4 .select2-selection--single{
 	border: none;
 	height: 40px;
 	padding: 0;
 	margin: 0;
 	width: 100%!important;
 }
-.formsearch-option4 .select2-container .select2-selection--single .select2-selection__rendered{
+.option7  .formsearch-option4 .select2-container .select2-selection--single .select2-selection__rendered{
 	padding: 0;
 }
-.formsearch-option4 .select2-container--default .select2-selection--single .select2-selection__arrow{
+.option7  .formsearch-option4 .select2-container--default .select2-selection--single .select2-selection__arrow{
 	right: 5px;
 }
-.formsearch-option4 .form-category select{
+.option7  .formsearch-option4 .form-category select{
 	padding: 10px 0;
 	-webkit-appearance: none;
    -moz-appearance: none;
@@ -461,16 +460,16 @@
    padding-right: 25px;
    color: #666;
 }
-.formsearch-option4 .input-serach{
+.option7 .formsearch-option4 .input-serach{
 	padding-left: 10px;
 }
-.formsearch-option4 .btn-search{
+.option7 .formsearch-option4 .btn-search{
 	width: 50px;
 	height: 40px;
 	border-left: 1px solid #efefef;
 	color: #666;
 }
-.formsearch-option4 .btn-search .fa{
+.option7  .formsearch-option4 .btn-search .fa{
 	line-height: inherit;
 }
 

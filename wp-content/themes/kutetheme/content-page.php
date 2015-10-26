@@ -37,10 +37,10 @@
 	</div><!-- .entry-content -->
 	<?php
     if( $kt_page_comment == 'show' ):
-    // If comments are open or we have at least one comment, load up the comment template.
-    if ( comments_open() || get_comments_number() ) :
-        comments_template();
-    endif;
+        // If comments are open or we have at least one comment, load up the comment template.
+        if ( comments_open() || get_comments_number() ) :
+            comments_template();
+        endif;
     endif;
     ?>
 </article><!-- #post-## -->
