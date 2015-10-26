@@ -419,15 +419,22 @@
 }
 
 .formsearch-option4{
-	padding: 0;
 	height: 40px;
+}
+.enable_vm .formsearch-option4{
+	padding: 0;
 }
 .formsearch-option4>form{
 	border-right: 1px solid #efefef;
 	height: 40px;
 }
-.formsearch-option4 .form-category{
+.enable_vm .formsearch-option4 .form-category{
 	border-right: 1px solid #efefef;
+}
+.disable_vm .formsearch-option4 .form-category{
+    border-left: 1px solid #efefef;
+}
+.formsearch-option4 .form-category{
 	height: 40px;
 	min-width: 150px;
 }

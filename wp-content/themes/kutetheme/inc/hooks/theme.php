@@ -422,3 +422,62 @@ if( ! function_exists( 'kt_show_menu_option_6' ) ){
 }
 add_action( 'kt_show_menu_option_6', 'kt_show_menu_option_6' );
 
+
+if( ! function_exists( 'kt_show_vertical_menu_option_7' ) ){
+    function kt_show_vertical_menu_option_7(){ global $kt_enable_vertical_menu;
+    if( $kt_enable_vertical_menu == 'enable' ) : ?>
+        <div class="nav-top-menu enable_vm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3" id="box-vertical-megamenus">
+                        <div class="box-vertical-megamenus">
+                            <h4 class="title">
+                                <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
+                                <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                            </h4>
+                            <div class="vertical-menu-content is-home">
+                                <?php kt_setting_vertical_menu(); ?>
+                                <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if( kt_is_wpml() ): ?>
+                        <div class="col-sm-5 col-md-6 col-lg-7 formsearch-option4">
+                            <?php kt_search_form();  ?>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-2 group-link-main-menu">
+                            <?php echo kt_get_wpml(); ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="col-sm-5 col-md-9 col-lg-9 formsearch-option4">
+                            <?php kt_search_form();  ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php else: ?>
+        <div class="nav-top-menu disable_vm">
+            <div class="container">
+                <div class="row">
+                    <?php if( kt_is_wpml() ): ?>
+                        <div class="col-sm-8 col-md-9 col-lg-9 formsearch-option4">
+                            <?php kt_search_form();  ?>
+                        </div>
+                        <div class="col-sm-4 col-md-3 col-lg-3 group-link-main-menu">
+                            <?php echo kt_get_wpml(); ?>
+                        </div>
+                    <?php else: ?>
+                        <div class="col-sm-12 formsearch-option4">
+                            <?php kt_search_form();  ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif;
+    }
+}
+add_action( 'kt_show_menu_option_7', 'kt_show_vertical_menu_option_7' );
+    
+

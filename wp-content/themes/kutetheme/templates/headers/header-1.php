@@ -42,7 +42,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                 endif; 
              ?>
         </div>
-        
     </div>
     <!-- END MANIN HEADER -->
     <div id="nav-top-menu" class="nav-top-menu">

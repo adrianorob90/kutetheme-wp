@@ -422,75 +422,75 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
             ?>
             <div class="container-tab <?php if( $style == "style-1" ): ?> option3 <?php else: ?> option4 <?php endif; ?>">
-            <!-- box product -->
-            <div class="<?php echo apply_filters( 'kt_class_box_product', $elementClass ) ?>" id="change-color-<?php echo esc_attr( $unique_id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr ( implode( ',', $main_color_rgb ) ) ;  ?>">
-                <div class="box-product-head">
-                    <span class="box-title"><?php echo esc_html( $title ) ?></span>
-                    <ul class="box-tabs nav-tab">
-                        <li class="active">
-                            <a data-toggle="tab" href="#tab-all-<?php echo $unique_id ?>">
-                                <?php _e( 'All', 'edo' ) ?>
-                            </a>
-                        </li>
-                        
-                        <?php if( count( $cate_ids ) ): ?>
-                            <?php foreach( $cate_ids as $id ):  ?>
-                                <?php $term = get_term( $id, 'product_cat' ); $cate_obj[] = $term;  ?>
-                                <li>
-                                    <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
-                                        <?php echo esc_html( $term->name )   ?>
-                                    </a>
-                                </li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-                    </ul>
-                </div>
-                <div class="box-product-content">
-                    <?php if( isset( $banner_carousel ) ) : ?>
-                    <div class="box-product-adv">
-                        <ul class="owl-carousel nav-center" data-slidespeed="<?php echo intval( $speed_banner ) ?>" data-items="1" data-dots="false"  <?php if( $banner_i > 2 ): ?> data-autoplay="true" data-loop="true" <?php else:  ?> data-autoplay="false" data-loop="false" <?php endif;?>  data-nav="true">
-                            <?php echo apply_filters( 'kt_banner_box_product', $banner_carousel ) ?>
-                        </ul>
-                    </div>
-                    <?php endif; ?>
-                    <div class="box-product-list" <?php if( ! isset( $banner_carousel ) ) : ?> style="margin-left: 0;" <?php endif; ?>>
-                        <div class="tab-container">
-                            <div id="tab-all-<?php echo esc_attr( $unique_id )  ?>" class="tab-panel active">
-								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                                    <?php $this->kt_loop_product( $products, $carousel ) ?>
-                                <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
-							</div>
-                            <?php if( count( $cate_obj ) > 0 ): ?>
-                                <?php foreach( $cate_obj as  $term ): 
-                                    $args['tax_query'] = array(
-                                        array(
-                                			'taxonomy' => 'product_cat',
-                                			'field' => 'id',
-                                			'terms' => $term->term_id
-                                		)
-                                    );
-                                    
-                                    $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                                    
-                                    if( $term_products->have_posts() ):
-                                    ?>
-        							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
-        								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
-                                            <?php $this->kt_loop_product( $term_products, $carousel ) ?>
-                                        <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
-        							</div>
-                                    <?php else: ?>
-                                        <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
-                                            <?php $this->kt_tab_empty(); ?>
-                                        </div>
-                                    <?php endif; ?>
+                <!-- box product -->
+                <div class="<?php echo apply_filters( 'kt_class_box_product', $elementClass ) ?>" id="change-color-<?php echo esc_attr( $unique_id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr ( implode( ',', $main_color_rgb ) ) ;  ?>">
+                    <div class="box-product-head">
+                        <span class="box-title"><?php echo esc_html( $title ) ?></span>
+                        <ul class="box-tabs nav-tab">
+                            <li class="active">
+                                <a data-toggle="tab" href="#tab-all-<?php echo $unique_id ?>">
+                                    <?php _e( 'All', 'edo' ) ?>
+                                </a>
+                            </li>
+                            
+                            <?php if( count( $cate_ids ) ): ?>
+                                <?php foreach( $cate_ids as $id ):  ?>
+                                    <?php $term = get_term( $id, 'product_cat' ); $cate_obj[] = $term;  ?>
+                                    <li>
+                                        <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
+                                            <?php echo esc_html( $term->name )   ?>
+                                        </a>
+                                    </li>
                                 <?php endforeach; ?>
                             <?php endif; ?>
+                        </ul>
+                    </div>
+                    <div class="box-product-content">
+                        <?php if( isset( $banner_carousel ) ) : ?>
+                        <div class="box-product-adv">
+                            <ul class="owl-carousel nav-center" data-slidespeed="<?php echo intval( $speed_banner ) ?>" data-items="1" data-dots="false"  <?php if( $banner_i > 2 ): ?> data-autoplay="true" data-loop="true" <?php else:  ?> data-autoplay="false" data-loop="false" <?php endif;?>  data-nav="true">
+                                <?php echo apply_filters( 'kt_banner_box_product', $banner_carousel ) ?>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
+                        <div class="box-product-list" <?php if( ! isset( $banner_carousel ) ) : ?> style="margin-left: 0;" <?php endif; ?>>
+                            <div class="tab-container">
+                                <div id="tab-all-<?php echo esc_attr( $unique_id )  ?>" class="tab-panel active">
+    								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                        <?php $this->kt_loop_product( $products, $carousel ) ?>
+                                    <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+    							</div>
+                                <?php if( count( $cate_obj ) > 0 ): ?>
+                                    <?php foreach( $cate_obj as  $term ): 
+                                        $args['tax_query'] = array(
+                                            array(
+                                    			'taxonomy' => 'product_cat',
+                                    			'field' => 'id',
+                                    			'terms' => $term->term_id
+                                    		)
+                                        );
+                                        
+                                        $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                        
+                                        if( $term_products->have_posts() ):
+                                        ?>
+            							<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
+            								<?php do_action( "woocommerce_shortcode_before_box_product_loop" ); ?>
+                                                <?php $this->kt_loop_product( $term_products, $carousel ) ?>
+                                            <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
+            							</div>
+                                        <?php else: ?>
+                                            <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel">
+                                                <?php $this->kt_tab_empty(); ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- ./box product -->
+                <!-- ./box product -->
             </div>
             <?php
             add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);

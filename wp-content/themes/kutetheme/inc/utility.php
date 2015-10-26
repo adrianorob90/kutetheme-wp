@@ -179,6 +179,11 @@ if( ! function_exists( 'kt_get_setting_menu' ) ){
         $kt_enable_vertical_menu = kt_option( 'kt_enable_vertical_menu', 'enable' );
     }
 }
+if( ! function_exists( 'kt_get_setting_service_category' ) ){
+    function kt_get_setting_service_category(){
+        return kt_option( 'kt_service_cate' );
+    }
+}
 kt_get_setting_menu();
 /**
  * Display dropdown choose language

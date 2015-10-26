@@ -214,6 +214,12 @@ class KT_Admin {
             'desc'    => __( 'Setting page about us', 'kutetheme' ),
     	) );
         
+        $cmb_options_general->add_field( array(
+    		'name'    => __( 'Category Service', 'kutetheme' ),
+    		'id'      => 'kt_service_cate',
+    		'type'    => 'text',
+            'desc'    => __( 'Setting category service in header option 7', 'kutetheme' ),
+    	) );
         
         $cmb_options_logo = new_cmb2_box( array(
 			'id'      => 'kt_logo_favicon',
@@ -284,7 +290,7 @@ class KT_Admin {
                 '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v4.jpg',
                 '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
                 '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
-       //          '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
+                '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
     		),
     	) );
 
