@@ -212,6 +212,16 @@ if( ! function_exists( 'kt_widgets_init' ) ){
         ) );
         
         register_sidebar( array(
+            'name'          => esc_attr__( 'Footer Menu 4', 'kutetheme'),
+            'id'            => 'footer-menu-4',
+            'description'   => esc_attr__( 'The footer newsletter 4 widget area on footer style 3', 'kutetheme'),
+            'before_widget' => '<div id="%1$s" class="widget-container widget-footer-menu %2$s">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h3 class="widget-title hiden introduce-title">',
+            'after_title'   => '</h3>',
+        ) );
+        
+        register_sidebar( array(
             'name'          => esc_attr__( 'Footer Social', 'kutetheme'),
             'id'            => 'footer-social',
             'description'   => esc_attr__( 'The footer social widget area', 'kutetheme'),

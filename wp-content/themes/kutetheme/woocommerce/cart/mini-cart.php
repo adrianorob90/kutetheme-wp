@@ -108,6 +108,11 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
     
         </div>
+    <?php elseif( $kt_used_header == 7 ) :?>
+        <div class="bolock-cart-topbar" id="cart-block">
+            <a title="<?php _e( 'My cart', 'kutetheme' ) ?>" href="<?php echo esc_url( $check_out_url ); ?>"><?php _e( 'Cart', 'kutetheme' ) ?><span class="count"><?php echo esc_attr( $cart_count ); ?></span></a>
+            <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+        </div>
     <?php endif;?>
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>
 </div>

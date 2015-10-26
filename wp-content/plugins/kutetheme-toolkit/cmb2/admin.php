@@ -339,7 +339,8 @@ class KT_Admin {
             'default' => '1',
             'options' => array(
                 '1'  => 'Style 1',
-                '2'  => 'Style 2'
+                '2'  => 'Style 2',
+                '3'  => 'Style 3'
             ),
             'desc'    => __( 'Setting Footer style display', 'kutetheme' ),
         ) );

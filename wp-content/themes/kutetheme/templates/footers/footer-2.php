@@ -50,7 +50,7 @@
                 $kt_footer_subscribe_newsletter_title = kt_option('kt_footer_subscribe_newsletter_title','');
                 $kt_footer_subscribe_newsletter_description = kt_option('kt_footer_subscribe_newsletter_description','');
                 ?>
-                <?php echo  do_shortcode( '[mailchimp title="'.$kt_footer_subscribe_newsletter_title.'" list="" text_before="'.$kt_footer_subscribe_newsletter_description.'" text_after="" height_option=""]Success! Check your inbox or spam folder for a message containing a confirmation link.[/mailchimp]' ); ?>
+                <?php echo  do_shortcode( '[mailchimp title="'.$kt_footer_subscribe_newsletter_title.'" list="" text_before="'.$kt_footer_subscribe_newsletter_description.'" text_after="" height_option=""]'.__( 'Success! Check your inbox or spam folder for a message containing a confirmation link.', 'kutetheme' ).'[/mailchimp]' ); ?>
              </div>
          </div>
          <div class="footer-row">
@@ -58,7 +58,7 @@
                  <div class="row">
                      <div class="col-sm-3">
                          <div class="widget-container">
-                             <h3 class="widget-title">Infomation</h3>
+                             <h3 class="widget-title"><?php _e( 'Infomation', 'kutetheme' ) ?></h3>
                              <div class="widget-body">
                                  <ul>
                                      <li><a class="location" href="#"><?php echo kt_get_html($address);?></a></li>
@@ -105,7 +105,7 @@
                         <?php if( $kt_footer_payment_logo ): ?>
                          <div class="col-sm-4">
                              <div class="footer-payment-logo">
-                                 <img src="<?php echo esc_url( $kt_footer_payment_logo ); ?>" alt="payment logo">
+                                 <img src="<?php echo esc_url( $kt_footer_payment_logo ); ?>" alt="payment logo" />
                              </div>
                          </div>
                         <?php endif;?>

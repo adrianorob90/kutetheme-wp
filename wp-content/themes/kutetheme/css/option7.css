@@ -431,6 +431,7 @@
 }
 .option7  .formsearch-option4>form{
 	border-right: 1px solid #efefef;
+    border-left: 1px solid #efefef;
 	height: 40px;
 }
 .formsearch-option4 .form-category{
@@ -1233,6 +1234,9 @@
 	background: #fff;
 	width: 100%;
 	margin-top: 15px;
+}
+.form-newsletter.hidden_title h3{
+    display: none;
 }
 .form-newsletter .form-newsletter-input{
 	height: 32px;

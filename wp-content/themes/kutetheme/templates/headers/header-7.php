@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php 
                 if( kt_is_wc() ): 
                     do_action('kt_mini_cart');
-                 endif; 
+                endif; 
              ?>
             <div class="support-link">
                 <a href="<?php kt_service_link(); ?>"><?php esc_html_e( 'Services', 'kutetheme' ) ?></a>
