@@ -1,4 +1,11 @@
 <?php 
+    remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
+
+    remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+    
+    add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+    
+    add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
     $current = 0;
     $list_banner_left = array();
     if( isset( $banner_left ) && $banner_left ): 
@@ -248,3 +255,12 @@
 </div>
 <!-- ./box product fashion -->
 </div>
+<?php 
+remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+        
+remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+
+add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
+
+add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+?>

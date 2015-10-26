@@ -308,6 +308,15 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
         ob_start();                                
         if( $products->have_posts() ):
+        
+        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
+
+        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+        
+        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+        
+        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+        
         $max_time = 0;
         ?>
         <!-- Hot deals -->
@@ -377,6 +386,13 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         </div>
         <!-- ./Hot deals -->
         <?php
+        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 5);
+        
+        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 10);
+        
+        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
+
+        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
         endif;
         return ob_get_clean();
     }

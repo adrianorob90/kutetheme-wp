@@ -42,12 +42,12 @@ if( ! function_exists( 'kt_get_hotline' )){
         ?>
             <div class="nav-top-links link-contact-us">
                 <?php if( $hotline ) : ?>
-                    <a title="<?php echo esc_attr( $hotline ); ?>">
+                    <a class="hotline" title="<?php echo esc_attr( $hotline ); ?>">
                         <span><i class="fa fa-phone"></i> <?php echo esc_attr( $hotline );?></span>
                     </a>
                 <?php endif; ?>
                 <?php if( $email && is_email( $email ) ) : ?>
-                    <a href="<?php echo esc_attr( 'mailto:'. $email );?>" title="<?php echo esc_attr( $email );?>">
+                    <a class="email" href="<?php echo esc_attr( 'mailto:'. $email );?>" title="<?php echo esc_attr( $email );?>">
                         <span><i class="fa fa-envelope"></i> <?php esc_html_e( 'Contact us today !', 'kutetheme' ) ?></span>
                     </a>
                 <?php endif; ?>

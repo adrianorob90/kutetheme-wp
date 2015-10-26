@@ -420,7 +420,9 @@ function kt_get_color_scheme_css( $colors ) {
     body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .nav-ontop,
     body .option3 .nav-ontop #box-vertical-megamenus .title,
-    body .trending .trending-title
+    body .trending .trending-title,
+    
+    .option7 .hot-deals-box .hot-deals-tab .hot-deals-title.vertical-text
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }

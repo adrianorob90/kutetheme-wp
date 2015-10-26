@@ -849,3 +849,62 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     float: left;
     border-bottom: 1px solid #eaeaea;
 }
+.enable_vm .formsearch-option4{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.option7 .formsearch-option4>form{
+    border-left: 0;
+    border-right: 0;
+}
+.option7 .formsearch-option4 .btn-search{
+    border-right-color: #efefef;
+}
+.formsearch-option4 .form-category{
+    border-left: 1px solid #efefef;
+}
+.top-header .nav-top-links,  .top-header .support-link, .top-header .top-bar-social{
+    float: right;
+}
+.option7 .bolock-cart-topbar,
+.option7 .top-header .user-info,
+.option7 .top-header .support-link{
+    float: left !important;
+}
+.option7 .top-header a{
+    border-left: 1px solid #e0e0e0;
+    border-right: 0px;
+    padding-left: 10px;
+}
+.option7 .top-header .top-bar-social a,
+.option7 .top-header .bolock-cart-topbar>a{
+    border:none;
+}
+.option7 .top-header .support-link a{
+    padding-right: 0;
+}
+.option7 .service-header .item span{
+    margin-left: 0px;
+    margin-right: 5px;
+}
+.option7 .hot-deals-box .owl-prev,
+.option7 .hot-deals-box .owl-next{
+    right: -30px;
+    left: auto;
+}
+.option7 .box-products .box-tabs li>a,
+.option7 .box-products .box-tabs{
+    float: right;
+}
+.option7 .box-produts-content .block-sub-cat ul.list-cat li a{
+    background-position: right center;
+    padding-left: 0;
+    padding-right: 15px;
+}
+.option7 .block-sub-cat .owl-controls .owl-next,
+.option7 .box-produts-content .products .product{
+    float: right;
+}
+.option7 .box-products.right .box-produts-content .products .product:nth-child(1), .option7 .box-products.right .box-produts-content .products .product:nth-child(5){
+    border-left-color: #eaeaea;
+}
