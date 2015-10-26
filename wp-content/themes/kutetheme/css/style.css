@@ -1152,6 +1152,9 @@ span.notify-right{
 .home .box-vertical-megamenus .vertical-menu-content{
   display: block;
 }
+.box-vertical-megamenus.hiden_content .vertical-menu-content{
+  display: none;
+}
 .box-vertical-megamenus .vertical-menu-list{
   border-left: 1px solid #eaeaea;
   padding: 0;
@@ -1348,6 +1351,7 @@ span.notify-right{
 }
 #main-menu .navbar-header{
   display: none;
+  text-transform: uppercase;
 }
 #main-menu .navbar{
   border: none;
@@ -1406,6 +1410,7 @@ span.notify-right{
   visibility: hidden;
   opacity: 0;
   background: #fff;
+  max-width: 100%;
 }
 #main-menu ul.dropdown-menu{
   padding: 15px 30px;

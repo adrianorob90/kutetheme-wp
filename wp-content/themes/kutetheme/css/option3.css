@@ -209,16 +209,6 @@
 	border: none;
 	padding-right: 0;
 }
-
-.option3 #main-menu .navbar-nav > li:hover .dropdown-menu {
-  -webkit-transform: translate(0,0);
-  -moz-transform: translate(0,0);
-  -o-transform: translate(0,0);
-  -ms-transform: translate(0,0);
-  transform: translate(0,0);
-  opacity: 1;
-  visibility: visible;
-}
 .option3 #main-menu li.dropdown:before{
 	content: '';
 	width: 100%;
@@ -250,6 +240,9 @@
 	padding: 0;
 	margin: 0;
 }
+.option3 #main-menu.enable_vm{
+	padding-left: 0;
+}
 .option3 #box-vertical-megamenus{
 	padding: 0;
 }
@@ -264,7 +257,7 @@
 	border-left: none;
 	border-right: none;
 }
-.option3 .box-vertical-megamenus .vertical-menu-list li{
+.option3 .box-vertical-megamenus .vertical-menu-list>li{
 	border: none;
 	padding: 0 20px;
 }
@@ -567,7 +560,6 @@
 	}
 	.option3 #box-vertical-megamenus{
 		width: 40px;
-		display: none;
 	}
 	.option3 #main-menu .navbar .navbar-nav>li>a{
 		padding: 0 10px;
@@ -663,6 +655,9 @@
 	.option3 .main-menu .navbar-nav{
 		margin-top: 0;
 	}
+	.option3 #main-menu.enable_vm{
+		padding-left: 0;
+	}
 }
 /*--------------------
 [8. Styles for devices(<=480px)]
@@ -732,6 +727,9 @@
 	}
 	.option3 .main-menu .navbar-nav{
 		margin-top: 0;
+	}
+	.option3 #main-menu.enable_vm{
+		padding: 0;
 	}
 	
 }

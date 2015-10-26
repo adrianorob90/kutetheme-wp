@@ -1369,11 +1369,11 @@
 	.option5 #main-menu .navbar-header{
 		margin: 0;
 	}
-	.option5 #box-vertical-megamenus{
-		display: none;
-	}
 	.option5 #main-menu .navbar-collapse{
 		margin-left: 0;
+	}
+	.option5 #box-vertical-megamenus{
+		width: inherit;
 	}
 
 }
