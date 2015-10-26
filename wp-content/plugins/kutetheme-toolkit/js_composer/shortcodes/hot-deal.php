@@ -226,7 +226,7 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
          global $woocommerce_loop;
         
         $elementClass = array(
-            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'hot-deals-row ', $this->settings['base'], $atts ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' option7 ', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
             'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -312,67 +312,65 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         ?>
         <!-- Hot deals -->
         <div class="<?php echo apply_filters( 'kt_class_hot_deal', $elementClass ) ?>">
-            <div class="container">
-                <div class="hot-deals-box only_countdown">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-2 col-lg-2">
-                            <div class="hot-deals-tab">
-                                <div class="hot-deals-title vertical-text">
-                                    <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
-                                        <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
-                                            <?php if( isset( $new_title[0][$i] ) ):  ?>
-                                                <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+            <div class="hot-deals-box only_countdown">
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 col-lg-2">
+                        <div class="hot-deals-tab">
+                            <div class="hot-deals-title vertical-text">
+                                <?php if( isset( $new_title[0] ) && $new_title[0] ): ?>
+                                    <?php for( $i = 0; $i < strlen( $new_title[0]); $i++ ): ?>
+                                        <?php if( isset( $new_title[0][$i] ) ):  ?>
+                                            <span><?php echo esc_html( $new_title[0][$i] ) ?></span>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                <?php endif; ?>
+                                
+                                <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
+                                    <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
+                                        <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
+                                            <?php if( isset( $new_title[$j][$i] ) ):  ?>
+                                                <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
                                             <?php endif; ?>
                                         <?php endfor; ?>
                                     <?php endif; ?>
-                                    
-                                    <?php for( $j = 1; $j < count( $new_title ); $j++ ): ?>
-                                        <?php if( isset( $new_title[$j] ) && $new_title[$j] ): ?>
-                                            <?php for( $i = 0; $i < strlen( $new_title[$j]); $i++ ): ?>
-                                                <?php if( isset( $new_title[$j][$i] ) ):  ?>
-                                                    <span class="yellow"><?php echo esc_html( $new_title[$j][$i] ) ?></span>
-                                                <?php endif; ?>
-                                            <?php endfor; ?>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
-                                </div>
-                                <div class="hot-deals-tab-box">
-                                    <div class="box-count-down">
-                                        <span class="countdown-only"></span>
-                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                            <div class="hot-deals-tab-box">
+                                <div class="box-count-down">
+                                    <span class="countdown-only"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-10 col-lg-10 hot-deals-tab-content-col">
-                            <div class="hot-deals-tab-content tab-container">
-                                <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
-                                <ul class="products owl-carousel" <?php echo apply_filters( 'kt_hot_deal_carousel', $carousel ) ; ?>>
-                                    <?php while( $products->have_posts() ): $products->the_post(); ?>
-                                        <li class="product">
-                        					<?php 
-                                                wc_get_template_part( 'content', 'product-hotdeal' );
-                                                // Get date sale 
-                                                $time = kt_get_max_date_sale( get_the_ID() );
-                                                if( $time > $max_time ){
-                                                    $max_time = $time;
-                                                }
-                                            ?>
-                                        </li>
-                        			<?php endwhile; ?>
-                                </ul>
-                                <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
-                            </div>
-                            <?php 
-                                if( $max_time > 0 ){
-                                    $y = date( 'Y', $max_time );
-                                    $m = date( 'm', $max_time );
-                                    $d = date( 'd', $max_time );
-                                    ?>
-                                    <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
-                                    <?php
-                                }
-                            ?>
+                    </div>
+                    <div class="col-sm-12 col-md-10 col-lg-10 hot-deals-tab-content-col">
+                        <div class="hot-deals-tab-content tab-container">
+                            <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
+                            <ul class="products owl-carousel" <?php echo apply_filters( 'kt_hot_deal_carousel', $carousel ) ; ?>>
+                                <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                    <li class="product">
+                    					<?php 
+                                            wc_get_template_part( 'content', 'product-hotdeal' );
+                                            // Get date sale 
+                                            $time = kt_get_max_date_sale( get_the_ID() );
+                                            if( $time > $max_time ){
+                                                $max_time = $time;
+                                            }
+                                        ?>
+                                    </li>
+                    			<?php endwhile; ?>
+                            </ul>
+                            <?php do_action( "woocommerce_shortcode_after_hot_deal_loop" ); ?>
                         </div>
+                        <?php 
+                            if( $max_time > 0 ){
+                                $y = date( 'Y', $max_time );
+                                $m = date( 'm', $max_time );
+                                $d = date( 'd', $max_time );
+                                ?>
+                                <input class="max-time-sale" data-y="<?php echo esc_attr( $y );?>" data-m="<?php echo esc_attr( $m );?>" data-d="<?php echo esc_attr( $d );?>" type="hidden" value="" />
+                                <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -54,9 +54,9 @@
                         <?php $i++; ?>
                     <?php endforeach;?>
                 </ul>
-                <div id="elevator-1" class="floor-elevator">
-                    <a href="#elevator-1" class="btn-elevator up fa fa-angle-up"></a>
-                    <a href="#elevator-2" class="btn-elevator down fa fa-angle-down"></a>
+                <div class="floor-elevator">
+                    <a class="btn-elevator up fa fa-angle-up"></a>
+                    <a class="btn-elevator down fa fa-angle-down"></a>
                 </div>
             </div>
         </div>
