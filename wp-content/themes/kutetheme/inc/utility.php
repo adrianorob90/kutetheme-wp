@@ -574,3 +574,20 @@ if( ! function_exists( 'kt_get_str' ) ) {
         return $str;
     }
 }
+
+
+// Create custom templates for homopage
+add_action( 'vc_load_default_templates_action','kt_add_custom_template_for_vc' ); // Hook in
+ 
+function kt_add_custom_template_for_vc() {
+    $data               = array(); // Create new array
+    $data['name']       = __( 'KT Home Option1', 'kutetheme' ); // Assign name for your custom template
+    $data['weight']     = 0; // Weight of your template in the template list
+    $data['image_path'] = preg_replace( '/\s/', '%20', plugins_url( 'images/custom_template_thumbnail.jpg', __FILE__ ) ); // Always use preg replace to be sure that "space" will not break logic. Thumbnail should have this dimensions: 114x154px
+    $data['custom_class'] = 'custom_template_for_vc_custom_template'; // CSS class name
+    $data['content']    = <<<CONTENT
+        [vc_row][vc_column width="1/2"][vc_single_image border_color="grey" img_link_target="_self"][vc_column_text]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.[/vc_column_text][/vc_column][vc_column width="1/2"][vc_message color="alert-info" style="rounded"]I am message box. Click edit button to change this text.[/vc_message][/vc_column][/vc_row]
+CONTENT;
+  
+    vc_add_default_templates( $data );
+}
