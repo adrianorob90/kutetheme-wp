@@ -17,9 +17,9 @@
         $list_banner_left = get_posts( $banner_left_args );
     endif;
 ?>
-<div class="option7 <?php echo esc_attr( $elementClass ); ?>">
+<div class="<?php echo esc_attr( $elementClass ); ?>">
 <!-- box product fashion -->
-<div class="box-products fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>" id="change-color-<?php echo esc_attr( $id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr( implode( ',', $main_color_rgb ) );  ?>">
+<div class="box-products option7 fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>" id="change-color-<?php echo esc_attr( $id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr( implode( ',', $main_color_rgb ) );  ?>">
     <div class="box-product-head">
         <div class="box-product-head-left">
             <div class="box-title">
