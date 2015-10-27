@@ -412,9 +412,6 @@
 .formsearch-option4{
 	height: 40px;
 }
-.enable_vm .formsearch-option4{
-	padding: 0;
-}
 .formsearch-option4>form{
 	border-right: 1px solid #efefef;
 	height: 40px;
@@ -1173,6 +1170,10 @@
 }
 .option7 .box-products.right .box-tabs{
 	padding-left: 40px;
+    float: right;
+}
+.box-products.right .box-tabs li{
+    float: right;
 }
 /** custom color **/
 .option7 .box-products a:hover{
