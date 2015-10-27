@@ -232,6 +232,7 @@
         
         /* elevator click*/ 
         $(document).on('click','a.btn-elevator',function(e){
+           
             var top_menu_height = 50;
             if($('body').hasClass('logged-in')){
                 var wpadminbar_height = $('#wpadminbar').height();
@@ -240,11 +241,15 @@
             e.preventDefault();
             var target='';
             if($(this).hasClass('up')){
+             //target = $(this).closest('.box-tab-category').css('background-color','#000');
               target = $(this).closest('.box-tab-category').prev('.box-tab-category');
             }else{
+                //alert($(this).offset());
               target = $(this).closest('.box-tab-category').next('.box-tab-category');
               
             }
+            
+            console.log(target);
             var $target = $(target);
             if(typeof($target.offset()) != 'undefined'){
                 $('html, body').stop().animate({
