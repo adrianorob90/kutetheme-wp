@@ -7,7 +7,7 @@
     $kt_footer_background = kt_option('kt_footer_background','');
 ?>
 <!-- Footer -->
-<footer id="footer2">
+<footer id="footer2" class="footer3">
      <div class="footer-top">
          <div class="container">
              <div class="row">

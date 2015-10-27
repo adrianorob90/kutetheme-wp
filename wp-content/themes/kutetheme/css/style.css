@@ -3833,11 +3833,15 @@ span.notify-right{
   right: 36px;
   left: inherit;
   bottom: inherit;
-  width: 129px;
+  width: inherit;
   height: 36px;
   background: #ff3366;
   line-height: 36px;
   position: absolute;
+  display: inline-block;
+  width: auto;
+  padding-left: 2;
+  padding-right: 15px;
 }
 .product-list.list .add-to-cart a{
   height: 36px;
@@ -6172,4 +6176,36 @@ span.notify-right{
 .ui-menu .ui-state-focus, 
 .ui-menu .ui-state-active{
   margin: 0;
+}
+
+#footer2.footer3 {
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+    background: #151515;
+    border-top: 4px solid #cd2600;
+    color: #c9c9c9;
+}
+#footer2.footer3 .footer-top>.container {
+    border-bottom: 1px solid #282828;
+    padding: 30px 0;
+}
+#footer2.footer3 .footer-top{
+  padding: 0
+}
+#footer2.footer3 .footer-row {
+    background: #151515;
+    padding: 25px 0 45px 0;
+}
+#footer2.footer3 .footer-bottom .footer-bottom-wapper {
+    border: none;
+    color: #9d9d9d;
+    text-align: center;
+}
+#footer2.footer3  .footer-row .form-subscribe, 
+#footer2.footer3  .footer-row .mailchimp-form .input-group {
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid #999;
+    line-height: normal;
 }
