@@ -19,7 +19,7 @@
 ?>
 <div class="option7">
 <!-- box product fashion -->
-<div class="box-products fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>">
+<div class="box-products <?php echo esc_attr( $elementClass ); ?> fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>">
     <div class="container">
         <div class="box-product-head">
             <div class="box-product-head-left">

@@ -706,6 +706,7 @@
 .option7 .box-product-head .box-product-head-left{
 	width: 31.7%;
 	float: left;
+    text-align: left;
 }
 .option7 .box-product-head .box-product-head-right{
 	margin-left: 31.7%;

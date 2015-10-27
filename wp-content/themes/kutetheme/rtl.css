@@ -663,7 +663,6 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     padding-right: 0;
 }
 .hot-deals-box .hot-deals-tab .box-count-down .box-count,
-.box-products .box-tabs li,
 .box-products .box-product-content .box-product-adv,
 .cart-block .cart-block-content .cart-buttons a{
     float: right;
@@ -892,18 +891,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     right: -30px;
     left: auto;
 }
-.option7 .box-products .box-tabs li>a,
-.option7 .box-products .box-tabs{
-    float: right;
-}
 .option7 .box-produts-content .block-sub-cat ul.list-cat li a{
     background-position: right center;
     padding-left: 0;
     padding-right: 15px;
-}
-.option7 .block-sub-cat .owl-controls .owl-next,
-.option7 .box-produts-content .products .product{
-    float: right;
 }
 .option7 .box-products.right .box-produts-content .products .product:nth-child(1), .option7 .box-products.right .box-produts-content .products .product:nth-child(5){
     border-left-color: #eaeaea;
