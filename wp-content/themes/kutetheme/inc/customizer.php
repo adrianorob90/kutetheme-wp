@@ -336,7 +336,11 @@ function kt_get_color_scheme_css( $colors ) {
     div.option6.header,
     body .box-vertical-megamenus .title,
     body .option5 #main-menu .navbar .navbar-nav>li:hover, 
-	body .option5 #main-menu .navbar .navbar-nav>li.active{
+	body .option5 #main-menu .navbar .navbar-nav>li.active,
+    
+    .option7 .header .top-header,
+    .option7 .header #main-menu .navbar .navbar-nav>li:hover, 
+    .option7 .header #main-menu .navbar .navbar-nav>li.active{
         background-color: <?php echo esc_attr( $colors['box_background_color'] ); ?>;
     }
     
@@ -422,7 +426,17 @@ function kt_get_color_scheme_css( $colors ) {
     body .option3 .nav-ontop #box-vertical-megamenus .title,
     body .trending .trending-title,
     
-    .option7 .hot-deals-box .hot-deals-tab .hot-deals-title.vertical-text
+    .option7 .hot-deals-box .hot-deals-tab .hot-deals-title.vertical-text,
+    
+    .option7 .products .group-tool-button a:hover, 
+    .option7 .products .group-tool-button a.compare:hover, 
+    .option7 .hot-deals-box .owl-controls .owl-prev:hover, 
+    .option7 .hot-deals-box .owl-controls .owl-next:hover,
+    .option7 .header #main-header, 
+    .option7 .header .main-header,
+    .option7 .products .search:hover,
+    .option7 .owl-controls .owl-prev:hover, 
+    .option7 .owl-controls .owl-next:hover
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }

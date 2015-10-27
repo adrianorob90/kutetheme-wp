@@ -19,7 +19,7 @@
 ?>
 <div class="option7">
 <!-- box product fashion -->
-<div class="box-products <?php echo esc_attr( $elementClass ); ?> fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>">
+<div class="box-products <?php echo esc_attr( $elementClass ); ?> fashion container-tab <?php if( $align == 'right' ) : ?> right <?php endif; ?>" id="change-color-<?php echo esc_attr( $id ); ?>" data-target="change-color" data-color="<?php echo esc_attr( $main_color ); ?>" data-rgb="<?php echo esc_attr( implode( ',', $main_color_rgb ) );  ?>">
     <div class="container">
         <div class="box-product-head">
             <div class="box-product-head-left">

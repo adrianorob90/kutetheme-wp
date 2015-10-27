@@ -502,6 +502,9 @@
                 $style.append( '#'+$id+'.option2 .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
                 $style.append( '#'+$id+'.option2 .category-featured.jewelry .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
             }
+            else if( $this.hasClass( 'tab-6' ) ){
+                
+            }
         }else if( $this.hasClass('box-products') ){
             $style.append( '#'+$id+'.box-products .box-tabs li>a:before, #'+$id+'.box-products .product-list li .add-to-cart:hover, #'+$id+'.box-products .product-list li .quick-view a:hover, #'+$id+'.box-products .owl-controls .owl-prev:hover, #'+$id+'.box-products .owl-controls .owl-next:hover{background-color: '+$color+';}' );
             $style.append( '#'+$id+'.box-products .box-tabs li>a:after{color: '+$color+';}' );

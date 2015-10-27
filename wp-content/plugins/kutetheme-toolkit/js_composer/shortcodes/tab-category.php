@@ -449,7 +449,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 }elseif( $tabs_type == 'tab-5' ){
                     $elementClass .= ' option2 tab-5';
                 }elseif( $tabs_type == 'tab-6' ){
-                    $elementClass .= ' option6 tab-6';
+                    $elementClass .= ' option7 tab-6';
                 }elseif( $tabs_type == 'tab-7' ){
                     $elementClass .= ' option7 tab-7';
                 }
