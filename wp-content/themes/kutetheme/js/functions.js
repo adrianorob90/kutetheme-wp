@@ -502,9 +502,11 @@
                 $style.append( '#'+$id+'.option2 .nav-menu .navbar-collapse{border-bottom-color:'+$color+'}' );
                 $style.append( '#'+$id+'.option2 .category-featured.jewelry .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
             }
-            else if( $this.hasClass( 'tab-6' ) ){
-                
-            }
+        }else if( $this.hasClass('option7') ){
+            $style.append( '#'+$id+'.option7 .products .group-tool-button a,#'+$id+'.option7 .products .group-tool-button a,#'+$id+'.option7 .products .group-tool-button a.compare, #'+$id+'.option7.box-products .box-product-head .box-title,  #'+$id+'.option7.box-products .box-tabs li>a:before, #'+$id+'.option7 .owl-controls .owl-prev:hover, #'+$id+'.option7 .owl-controls .owl-next:hover{background-color: '+$color+';}' );
+            $style.append( '#'+$id+'.option7.box-products .box-tabs li.active>a, #'+$id+'.option7.box-products .box-tabs li>a:hover, #'+$id+'.option7.box-products .box-tabs li>a:after, #'+$id+'.option7.box-products a:hover{color: '+$color+';}' );
+            $style.append( '#'+$id+'.option7 .products .search{background-color:rgba( '+$rgb+', 0.7 )}' );
+            $style.append( '#'+$id+'.option7 .products .group-tool-button a, #'+$id+'.option7.box-products .box-product-head, #'+$id+'.option7.box-products .box-product-head .box-title .icon{border-color:'+$color+'}' );
         }else if( $this.hasClass('box-products') ){
             $style.append( '#'+$id+'.box-products .box-tabs li>a:before, #'+$id+'.box-products .product-list li .add-to-cart:hover, #'+$id+'.box-products .product-list li .quick-view a:hover, #'+$id+'.box-products .owl-controls .owl-prev:hover, #'+$id+'.box-products .owl-controls .owl-next:hover{background-color: '+$color+';}' );
             $style.append( '#'+$id+'.box-products .box-tabs li>a:after{color: '+$color+';}' );
