@@ -1162,6 +1162,9 @@
 	border-top: 1px solid #eaeaea;
     overflow: hidden;
 }
+.box-products.right  .group-tool-button .woocommerce.product.compare-button{
+	border: none;
+}
 
 .option7 .box-products.right .box-produts-content .products .product:nth-child(1), 
 .option7 .box-products.right .box-produts-content .products .product:nth-child(5){

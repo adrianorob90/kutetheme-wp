@@ -338,7 +338,6 @@
             var width = $(window).width();
             if(width >1024){
                 if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
-                    console.log('xxx');
                     if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
                         
                     }else{
