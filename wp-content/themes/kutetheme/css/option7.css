@@ -660,10 +660,20 @@
 	right: inherit;
 	left: -30px;
 }
-.option7 .hot-deals-box .products .group-tool-button a{
+.option7 .hot-deals-box .products .group-tool-button .yith-wcwl-add-to-wishlist{
 	border: none;
 	margin-right: 1px;
 }
+.option7 .hot-deals-box .products .group-tool-button .yith-wcwl-add-to-wishlist a,
+.option7 .hot-deals-box  .products .group-tool-button .woocommerce.product.compare-button a,
+.option7 .hot-deals-box .products .group-tool-button .add-to-cart a{
+	border: none;
+	border-width: 0;
+}
+.option7 .hot-deals-box  .products .group-tool-button .woocommerce.product.compare-button{
+	margin-right: 1px;
+}
+
 .option7 .hot-deals-box .products .group-tool-button{
 	width: 103px;
 }
@@ -679,6 +689,9 @@
 .option7 .hot-deals-box .product-name{
 	background: #424242;
 	color: #fff;
+}
+.option7 .hot-deals-box .button.yith-wcqv-button{
+	display: none;
 }
 .option7 .hot-deals-box .product-name a{
 	color: #fff;
@@ -1122,7 +1135,7 @@
 	width: 12px;
 	background: none;
 	padding: 0;
-	padding-top: 4px;
+	padding-top: 15px;
 	right: 15px;
 }
 .option7 .box-products.right .box-product-head-left{
