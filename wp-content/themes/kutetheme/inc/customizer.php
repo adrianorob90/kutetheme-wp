@@ -120,7 +120,7 @@ function kt_get_color_schemes() {
 			'colors' => array(
                 '#ffffff',//Background Color.
 				'#ff3366',//Main Color
-				'#f6f6f6',//Sidebar and Box Background Color.
+				'#000000',//Sidebar and Box Background Color.
 				'#66666',//Main Text and Link Color.
                 '#ff9900',//Rate Star color
                 '#000000',//Button Color
