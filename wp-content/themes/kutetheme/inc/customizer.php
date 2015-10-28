@@ -428,8 +428,6 @@ function kt_get_color_scheme_css( $colors ) {
     
     .option7 .hot-deals-box .hot-deals-tab .hot-deals-title.vertical-text,
     
-    .option7 .products .group-tool-button a:hover, 
-    .option7 .products .group-tool-button a.compare:hover, 
     .option7 .hot-deals-box .owl-controls .owl-prev:hover, 
     .option7 .hot-deals-box .owl-controls .owl-next:hover,
     .option7 .header #main-header, 
@@ -441,6 +439,11 @@ function kt_get_color_scheme_css( $colors ) {
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
+    .option7 .products .group-tool-button a:hover, 
+    .option7 .products .group-tool-button a.compare:hover,
+    .option7 .products .search:hover{
+	    background-color: <?php echo esc_attr( $colors['main_color'] ); ?> !important;
+	}
     .page-heading span.page-heading-title,
     .popular-tabs .nav-tab li:hover, 
     .popular-tabs .nav-tab li.active,
