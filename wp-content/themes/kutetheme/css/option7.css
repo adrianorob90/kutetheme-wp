@@ -252,11 +252,11 @@
 	padding: 0
 }
 .option7 #main-menu .navbar-nav > li:hover .dropdown-menu {
-  -webkit-transform: translate(0,5px);
-  -moz-transform: translate(0,5px);
-  -o-transform: translate(0,5px);
-  -ms-transform: translate(0,5px);
-  transform: translate(0,5px);
+  -webkit-transform: translate(0);
+  -moz-transform: translate(0);
+  -o-transform: translate(0);
+  -ms-transform: translate(0);
+  transform: translate(0);
   opacity: 1;
   visibility: visible;
 }

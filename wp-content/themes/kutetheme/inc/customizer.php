@@ -436,7 +436,8 @@ function kt_get_color_scheme_css( $colors ) {
     .option7 .header .main-header,
     .option7 .products .search:hover,
     .option7 .owl-controls .owl-prev:hover, 
-    .option7 .owl-controls .owl-next:hover
+    .option7 .owl-controls .owl-next:hover,
+    #footer2.footer3 .mailchimp-wrapper .mailchimp-form .mailchimp-submit
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
