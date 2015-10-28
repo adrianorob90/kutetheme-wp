@@ -965,9 +965,6 @@
 .products .group-tool-button  .yith-wcwl-add-to-wishlist .yith-wcwl-add-button a:before{
 	display: none;
 }
-
-
-
 .products .group-tool-button a{
 	width: 33px;
 	height: 29px;
@@ -976,6 +973,7 @@
 	font-size: 0;
 	background-position: center center !important;
 	background-repeat: no-repeat !important;
+	padding: 0;
 }
 .products .group-tool-button a:hover,
 .products .group-tool-button a.compare:hover,
