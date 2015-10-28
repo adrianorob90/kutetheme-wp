@@ -887,6 +887,7 @@
 	-o-transition: all 0.45s ease;
 	-ms-transition: all 0.45s ease;
 	transition: all 0.45s ease;
+	display: table;
 }
 .products .group-tool-button .clear{
 	display: none;
@@ -947,6 +948,7 @@
 	float: left;
 	padding: 0;
 	margin: 0;
+	margin: 0 1px;
 }
 .products .group-tool-button .add-to-cart{
 	border: none;
@@ -964,28 +966,12 @@
 	display: none;
 }
 
-.products .group-tool-button .search.yith-wcqv-button{
-	border: none;
-	width: 33px;
-	height: 29px;
-	float: left;
-	padding: 0;
-	margin: 0;
-	float: left;
-	position: relative;
-	border-radius: 0;
-	top: 0;
-	left: 0;
-	opacity: 1;
-	display: none;
-}
+
 
 .products .group-tool-button a{
 	width: 33px;
 	height: 29px;
 	background-color: #7cbf42;
-	border-left: 1px solid #66a232;
-	border-right: 1px solid #8bcd51;
 	float: left;
 	font-size: 0;
 	background-position: center center !important;
@@ -1068,6 +1054,10 @@
 }
 .products .product-star .fa{
 	margin-right: 3px;
+}
+.products .group-tool-button .button.yith-wcqv-button,
+.products .group-tool-button .search.yith-wcqv-button{
+	display: none;
 }
 /** BOX PRODUCT**/
 
