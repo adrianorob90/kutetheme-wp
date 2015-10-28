@@ -34,13 +34,14 @@
                      </div>
                  </div>
                  <div class="col-sm-12 col-md-3">
-                     <div class="form-newsletter hidden_title">
-                         <?php
+                    <div class="footer-sidebar4">
+                        <?php
                             if(is_active_sidebar('footer-menu-4')){
                                 dynamic_sidebar('footer-menu-4');
                             }
                         ?>
-                     </div>
+                    </div>         
+                     
                  </div>
              </div>
          </div>

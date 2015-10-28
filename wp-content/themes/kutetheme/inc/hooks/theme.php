@@ -448,13 +448,17 @@ add_action( 'kt_show_menu_option_6', 'kt_show_menu_option_6' );
 
 
 if( ! function_exists( 'kt_show_vertical_menu_option_7' ) ){
-    function kt_show_vertical_menu_option_7(){ global $kt_enable_vertical_menu;
+    function kt_show_vertical_menu_option_7(){ 
+    global $kt_enable_vertical_menu;
+    $kt_click_open_vertical_menu = kt_option('kt_click_open_vertical_menu','disable');
+    $kt_vertical_item_visible = kt_option('kt_vertical_item_visible',11);
+
     if( $kt_enable_vertical_menu == 'enable' ) : ?>
         <div class="nav-top-menu enable_vm">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-3" id="box-vertical-megamenus">
-                        <div class="box-vertical-megamenus">
+                        <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                             <h4 class="title">
                                 <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                                 <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
