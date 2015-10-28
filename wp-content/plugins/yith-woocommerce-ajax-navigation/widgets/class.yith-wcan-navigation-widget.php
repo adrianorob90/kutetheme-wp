@@ -28,13 +28,12 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
 
 
         function widget( $args, $instance ) {
-            global $_chosen_attributes, $woocommerce, $_attributes_array;
+            global $_chosen_attributes, $woocommerce;
 
             extract( $args );
+            $_attributes_array = yit_wcan_get_product_taxonomy();
 
-            $attributes_array = ! empty( $_attributes_array ) ? $_attributes_array : array();
-
-            if ( ! is_post_type_archive( 'product' ) && ! is_tax( array_merge( $attributes_array, apply_filters( 'yith_wcan_product_taxonomy_type', array( 'product_cat', 'product_tag' ) ) ) ) ) {
+            if ( ! is_post_type_archive( 'product' ) && ! is_tax( $_attributes_array ) ) {
                 return;
             }
 
@@ -156,7 +155,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term_param;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -168,7 +167,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -335,7 +334,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -347,7 +346,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -505,7 +504,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -517,7 +516,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {
@@ -673,7 +672,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $current_filter[] = $term->term_id;
                         }
 
-                        if ( defined( 'SHOP_IS_ON_FRONT' ) || is_shop() ) {
+                        if ( defined( 'SHOP_IS_ON_FRONT' ) || ( is_shop() && ! is_product_category() && ! is_product_taxonomy() ) ) {
                             $link = get_post_type_archive_link( 'product' );
                         }
 
@@ -685,7 +684,7 @@ if ( ! class_exists( 'YITH_WCAN_Navigation_Widget' ) ) {
                             $link = get_term_link( get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
                         }
 
-                        $link = untrailingslashit( $link );
+                        $link = apply_filters( 'yith_wcan_untrailingslashit', true ) ? untrailingslashit( $link ) : $link;
 
                         // All current filters
                         if ( $_chosen_attributes ) {

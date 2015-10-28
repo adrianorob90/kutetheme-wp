@@ -88,7 +88,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <div class="item">
                         <a href="<?php the_permalink() ?>">
                             <?php if(has_post_thumbnail()):?>
-                                <?php the_post_thumbnail(array(54, 54));?>
+                                <?php the_post_thumbnail( 'full' );?>
                             <?php endif; ?>
                             <span><?php the_title() ?></span>
                         </a>

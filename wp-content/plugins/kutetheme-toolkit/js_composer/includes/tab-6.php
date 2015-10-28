@@ -67,47 +67,48 @@
         </div>
     </div>
     <div class="box-produts-content">
-        <div class="block-product-left">
-            <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="false" data-dots="false">
-                <?php $i = 1; ?>
-                <?php foreach( $subcats as $cate ): ?>
-                    <?php if( $i == 1 ): ?>
-                    <ul class="list-cat">
+        <?php if ( isset($subcats) && $subcats ) : ?>
+            <div class="block-product-left">
+                <div class="block-sub-cat owl-carousel" data-items="1" data-nav="true" data-loop="false" data-dots="false">
+                    <?php $i = 1; ?>
+                    <?php foreach( $subcats as $cate ): ?>
+                        <?php if( $i == 1 ): ?>
+                        <ul class="list-cat">
+                        <?php endif; ?>
+                        
+                        <?php $cate_link = get_term_link( $cate ); ?>
+                            <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a></li>
+                        <?php if( $i == $number_slide ): $i = 0; ?>
+                        </ul>
+                        <?php endif; ?>
+                        <?php $i ++ ; ?>
+                    <?php endforeach; ?>
+                    <?php if( $i >= 1 && $i != $number_slide ): ?>
+                        </ul>
                     <?php endif; ?>
-                    
-                    <?php $cate_link = get_term_link( $cate ); ?>
-                        <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a></li>
-                    
-                    <?php if( $i == $number_slide ): $i = 0; ?>
-                    </ul>
-                    <?php endif; ?>
-                    <?php $i ++ ; ?>
-                <?php endforeach; ?>
-                <?php if( $i >= 1 && $i != $number_slide ): ?>
-                    </ul>
-                <?php endif; ?>
-            </div>
-            
-            <?php 
-            if( isset( $banner_left ) && $banner_left ): 
-                $banner_left_args = array(
-                    'post_type' => 'attachment',
-                    'include'   => $banner_left,
-                    'orderby'   => 'post__in'
-                );
-                $list_banner_left = get_posts( $banner_left_args );
-                foreach( $list_banner_left as $l ) :
-                ?>
-                <div class="block-box-products-banner banner-img">
-                    <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
-                        <?php echo wp_get_attachment_image( $l->ID, 'full' );?>
-                    </a>
                 </div>
-                <?php
-                endforeach;
-            endif;
-            ?>
-        </div>
+                
+                <?php 
+                if( isset( $banner_left ) && $banner_left ): 
+                    $banner_left_args = array(
+                        'post_type' => 'attachment',
+                        'include'   => $banner_left,
+                        'orderby'   => 'post__in'
+                    );
+                    $list_banner_left = get_posts( $banner_left_args );
+                    foreach( $list_banner_left as $l ) :
+                    ?>
+                    <div class="block-box-products-banner banner-img">
+                        <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
+                            <?php echo wp_get_attachment_image( $l->ID, 'full' );?>
+                        </a>
+                    </div>
+                    <?php
+                    endforeach;
+                endif;
+                ?>
+            </div>
+        <?php endif; ?>
         <div class="block-product-right">
             <div class="tab-container">
                 <?php 

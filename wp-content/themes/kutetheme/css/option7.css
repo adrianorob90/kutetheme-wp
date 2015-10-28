@@ -1476,13 +1476,13 @@
 .option7 .band-logo li{
 	list-style: none;
 }
-.option7 .band-logo li a{
+.option7 .band-logo.no-product h3{
 	background: #f6f6f6;
 	border: 1px solid #eee;
 	display: block;
 	margin-bottom: 2px;
 }
-.option7 .band-logo li a:hover{
+.option7 .band-logo.no-product h3:hover{
 	background: #fff;
 	border-color: #e52e04;
 }

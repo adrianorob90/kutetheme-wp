@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: wishlist, woocommerce, products, themes, yit, e-commerce, shop, ecommerce wishlist, yith, woocommerce wishlist, woocommerce 2.3 ready, shop wishlist
 Requires at least: 4.0
 Tested up to: 4.3.1
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -84,12 +84,17 @@ Yes, of course you can. To avoid Wishlist page to show product prices, you can h
 
 = What are the main changes in plugin translation? =
 Recently YITH WooCommerce Wishlist has been selected to be included in the "translate.wordpress.org" translate programme.
-In order to import correctly the plugin strings in the new system, we had to change the text domain form 'yit' to 'yith-woocommerce-wishlist'.
-Once the plugin will be imported in the translate.wordpress.org system, the translations of other languages will be downloaded directly from WordPress, without using any .po and .mo files. Moreover, users will be able to participate in a more direct way to plugin translations, suggesting texts in their languages in the dedicated tab on translate.wordpress.org.
-During this transition step, .po and .mo files will be used as always, but in order to be recognized by WordPress, they will need to have a new nomenclature, renaming them in:
-yith-woocommerce-wishlist-<WORDPRESS LOCALE>.po
-yith-woocommerce-wishlist-<WORDPRESS LOCALE >.mo
-
+In order to import correctly the plugin strings in the new system, we had to change the text domain from 'yit' to 'yith-woocommerce-wishlist'.
+Once the plugin is imported into the translate.wordpress.org system, the translations of other languages will be downloadable directly from WordPress, without using any .po and .mo files. Moreover, users will be able to participate in a more direct way to plugin translations, suggesting texts in their languages in the dedicated tab on translate.wordpress.org.
+During this transition step, .po and .mo files will be used as usual, but in order to be recognized by WordPress, they must have a new nomenclature and be renamed as:
+yith-woocommerce-wishlist-&lt;WORDPRESS LOCALE&gt;.po
+yith-woocommerce-wishlist-&lt;WORDPRESS LOCALE&gt;.mo
+If your theme overrides plugin templates, it might happen that they are still using the old textdomain ('yit'), which is no longer used as reference for translation.
+If you are experiencing problems with translation of your YITH WooCommerce Wishlist and the theme you are using includes wishlist templates (such as add-to-wishlist.php,
+add-to-wishlist-button.php, wishlist-view,php), you could try to update them with the most recent version included in the plugin
+(never forget to make a copy of your project before you apply any change).
+If you want to keep customisations applied by the theme to wishlist templates (still using the old textdomain), then,
+you should ask theme developers to update custom templates and replace the old textdomain with the most recent one.
 
 == Screenshots ==
 
@@ -99,6 +104,13 @@ yith-woocommerce-wishlist-<WORDPRESS LOCALE >.mo
 4. The Wishlist settings page
 
 == Changelog ==
+
+= 2.0.12 =
+
+* Added: method to count all products in wishlist
+* Tweak: Added wishlist js handling on 'yith_wcwl_init' triggered on document
+* Tweak: Performance improved with new plugin core 2.0
+* Fixed: occasional fatal error for users with outdated version of plugin-fw on their theme
 
 = 2.0.11 =
 
@@ -328,10 +340,9 @@ Full documentation is available [here](http://yithemes.com/docs-plugins/yith-woo
 
 == Upgrade notice ==
 
-= 2.0.11 =
+= 2.0.12 =
 
-* Added: spanish translation (thanks to Arman S.)
-* Added: polish translation (thanks to Roan)
-* Added: swedish translation (thanks to Lallex)
-* Updated: changed text domain from yit to yith-woocommerce-wishlist
-* Updated: changed all language file for the new text domain
+* Added: method to count all products in wishlist
+* Tweak: Added wishlist js handling on 'yith_wcwl_init' triggered on document
+* Tweak: Performance improved with new plugin core 2.0
+* Fixed: occasional fatal error for users with outdated version of plugin-fw on their theme

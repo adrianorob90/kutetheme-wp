@@ -387,29 +387,31 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                     </div>
                     <?php else: ?>
                         <?php if( $line_brand == '2-line' ): ?>
-                            <!-- ./blog list -->
-                            <div class="row-brand <?php echo esc_attr( $elementClass ); ?>">
-                                <?php if( $title ): ?>
-                                    <h2 class="page-heading">
-                                        <span class="page-heading-title"><?php echo esc_html( $title ) ; ?></span>
-                                    </h2>
-                                <?php endif; ?>
-                                <ul class="band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                                    <?php for($i = 0; $i < count( $terms ); $i += 2 ): ?>
-                                        <?php if( isset( $terms[ $i ] ) && $terms[ $i ] ): ?>
-                                            <?php $term = $terms[ $i ]; ?>
-                                            <li>
-                                                <h3><?php echo esc_html( $term->name ); ?></h3>
-                                                <?php if( isset( $terms[$i + 1] ) && $terms[$i + 1] ): ?>
-                                                    <?php $term_2 = $terms[$i + 1]; ?>
-                                                    <h3><?php echo esc_html( $term_2->name ); ?></h3>
-                                                <?php endif; ?>
-                                            </li>
-                                        <?php endif; ?>
-                                    <?php endfor; ?>
-                                </ul>
+                            <div class="option7">
+                                <!-- ./blog list -->
+                                <div class="row-brand <?php echo esc_attr( $elementClass ); ?>">
+                                    <?php if( $title ): ?>
+                                        <h2 class="page-heading">
+                                            <span class="page-heading-title"><?php echo esc_html( $title ) ; ?></span>
+                                        </h2>
+                                    <?php endif; ?>
+                                    <ul class="band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                        <?php for($i = 0; $i < count( $terms ); $i += 2 ): ?>
+                                            <?php if( isset( $terms[ $i ] ) && $terms[ $i ] ): ?>
+                                                <?php $term = $terms[ $i ]; ?>
+                                                <li>
+                                                    <h3><?php echo esc_html( $term->name ); ?></h3>
+                                                    <?php if( isset( $terms[$i + 1] ) && $terms[$i + 1] ): ?>
+                                                        <?php $term_2 = $terms[$i + 1]; ?>
+                                                        <h3><?php echo esc_html( $term_2->name ); ?></h3>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endif; ?>
+                                        <?php endfor; ?>
+                                    </ul>
+                                </div>
+                                <!-- ./blog list -->
                             </div>
-                            <!-- ./blog list -->
                         <?php else: ?>
                             <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php foreach($terms as $term): ?>
