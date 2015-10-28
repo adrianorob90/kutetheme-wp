@@ -714,7 +714,7 @@
 .option7 .box-produts-content .block-sub-cat{
 	padding: 0 20px;
 	line-height: 35px;
-	padding-bottom: 30px;
+	padding-bottom: 17px;
 }
 .option7 .box-produts-content .block-sub-cat ul.list-cat{
 	overflow: hidden;
@@ -1077,7 +1077,7 @@
 .option7 .box-products .box-product-head .box-title .icon{
 	width: 50px;
 	height: 50px;
-	border-right: 1px solid #ffd286;
+	border-right: 1px solid #fff;
 	float: left;
 	text-align: center;
 	line-height: 50px;
@@ -1151,7 +1151,7 @@
 .option7 .box-products.right .box-product-head .box-title .icon{
 	float: right;
 	border-right:none;
-	border-left: 1px solid #ffd286;
+	border-left: 1px solid #fff;
 	margin-right: 0;
 }
 .option7 .box-products.right .box-product-head .box-title .text{

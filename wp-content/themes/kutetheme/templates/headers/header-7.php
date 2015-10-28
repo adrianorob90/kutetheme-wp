@@ -48,9 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 </button>
                                 <a class="navbar-brand" href="#"><?php _e( 'MENU', 'kutetheme' ) ?></a>
                             </div>
-                            <div id="navbar" class="navbar-collapse collapse">
-                                <?php kt_setting_mega_menu(); ?>
-                            </div><!--/.nav-collapse -->
+                            <?php kt_setting_mega_menu(); ?>
                         </div>
                     </nav>
                 </div>
