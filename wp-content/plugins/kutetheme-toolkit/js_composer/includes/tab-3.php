@@ -126,15 +126,19 @@ endif;
         </nav>
        <div class="product-featured clearfix" <?php echo isset($style) ? $style : '';  ?>>
             <div class="row">
-                <div class="col-sm-2 sub-category-wapper">
-                    <ul class="sub-category-list">
-                        <?php foreach( $subcats as $cate ): ?>
-                            <?php $cate_link = get_term_link($cate); ?>
-                            <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                <div class="col-sm-10 col-right-tab">
+                <?php if ( isset($subcats) && $subcats ) : ?>
+                    <div class="col-sm-2 sub-category-wapper">
+                        <ul class="sub-category-list">
+                            <?php foreach( $subcats as $cate ): ?>
+                                <?php $cate_link = get_term_link($cate); ?>
+                                <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <div class="col-sm-10 col-right-tab">
+                <?php else: ?>
+                    <div class="col-sm-12 col-right-tab">
+                <?php endif; ?>
                     <div class="product-featured-tab-content">
                         <div class="tab-container">
                             <?php 

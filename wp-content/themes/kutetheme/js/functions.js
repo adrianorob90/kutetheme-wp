@@ -507,8 +507,8 @@
                 $style.append( '#'+$id+'.option2 .category-featured.jewelry .add-to-cart{background-color:rgba( '+$rgb+', 0.7 )}' );
             }
         }else if( $this.hasClass('option7') ){
-            $style.append( '#'+$id+'.option7 .products .group-tool-button a,#'+$id+'.option7 .products .group-tool-button a,#'+$id+'.option7 .products .group-tool-button a.compare, #'+$id+'.option7.box-products .box-product-head .box-title,  #'+$id+'.option7.box-products .box-tabs li>a:before, #'+$id+'.option7 .owl-controls .owl-prev:hover, #'+$id+'.option7 .owl-controls .owl-next:hover{background-color: '+$color+';}' );
-            $style.append( '#'+$id+'.option7.box-products .box-tabs li.active>a, #'+$id+'.option7.box-products .box-tabs li>a:hover, #'+$id+'.option7.box-products .box-tabs li>a:after, #'+$id+'.option7.box-products a:hover{color: '+$color+';}' );
+            $style.append( '#'+$id+' .products .group-tool-button a,#'+$id+' .products .group-tool-button a,#'+$id+' .products .group-tool-button a.compare, #'+$id+'.option7.box-products .box-product-head .box-title,  #'+$id+'.option7.box-products .box-tabs li>a:before, #'+$id+'.option7 .owl-controls .owl-prev:hover, #'+$id+'.option7 .owl-controls .owl-next:hover{background-color: '+$color+';}' );
+            $style.append( '#'+$id+'.option7.box-products .box-tabs li.active>a{color: '+$color+';}' );
             $style.append( '#'+$id+'.option7 .products .search{background-color:rgba( '+$rgb+', 0.7 )}' );
             $style.append( '#'+$id+'.option7 .products .group-tool-button a, #'+$id+'.option7.box-products .box-product-head{border-color:'+$color+'}' );
         }else if( $this.hasClass('box-products') ){
