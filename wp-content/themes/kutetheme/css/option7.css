@@ -882,10 +882,9 @@
 	position: absolute;
 	bottom: -30px;
 	text-align: center;
-	left: 50%;
-	-ms-transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	transform: translateX(-50%);
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 	-moz-transition: all 0.45s ease;
 	-webkit-transition: all 0.45s ease;
 	-o-transition: all 0.45s ease;
@@ -1300,6 +1299,7 @@
 /*******BLOG*******/
 .option7 .page-heading{
 	font-size: 16px;
+	margin: 0;
 }
 .option7 .page-heading span.page-heading-title{
 	border-bottom: 1px solid #e62e04;
