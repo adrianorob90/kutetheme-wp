@@ -891,6 +891,7 @@
 	-ms-transition: all 0.45s ease;
 	transition: all 0.45s ease;
 	display: table;
+	width: 101px;
 }
 .products .group-tool-button .clear{
 	display: none;
