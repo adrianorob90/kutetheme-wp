@@ -575,7 +575,7 @@ class Widget_KT_Mailchimp extends WP_Widget {
         	$lists = $mcapi->lists();
             if($lists['data']){
                 foreach ($lists['data'] as $item) {
-                    $html .= '<option value="'.$item['id'].'" '.selected( $list, $item['name'] ).'>'._e($item['name'], 'kutetheme').'</option>';
+                    $html .= '<option value="'.$item['id'].'" '.selected( $list, $item['name'] ).'>'.$item['name'].'</option>';
                 }
             }
         }
