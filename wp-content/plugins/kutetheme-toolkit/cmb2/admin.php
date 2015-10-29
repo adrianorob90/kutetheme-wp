@@ -430,8 +430,15 @@ class KT_Admin {
         $cmb_options_woocommerce->add_field( array(
     		'name'    => __( 'Grid column', 'kutetheme' ),
     		'id'      => 'kt_woo_grid_column',
-    		'type'    => 'text',
+    		'type'    => 'select',
     		'default' => '3',
+            'options' => array(
+                '1' => '1 Column',
+                '2' => '2 Columns',
+                '3' => '3 Columns',
+                '4' => '4 Columns',
+                '6' => '6 Columns'
+            ),
             'desc'    => __( 'Number column to display width gird mod', 'kutetheme' ),
     	) );
         

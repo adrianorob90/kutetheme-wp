@@ -1021,19 +1021,19 @@ if ( ! function_exists( 'kt_woocommerce_image_dimensions' ) ) {
         $catalog = array(
             'width'     => '300',   // px
             'height'    => '366',   // px
-            'crop'      => 1        // true
+            'crop'      => 1        // true or false
         );
     
         $single = array(
             'width'     => '420',   // px
             'height'    => '512',   // px
-            'crop'      => 1        // true
+            'crop'      => 1        // true or false
         );
     
         $thumbnail = array(
             'width'     => '100',   // px
             'height'    => '122',   // px
-            'crop'      => 1        // false
+            'crop'      => 1        // true or false
         );
     
         // Image sizes
@@ -1370,3 +1370,16 @@ if( ! function_exists( 'kt_get_max_date_sale') ) {
         }
     }
 }
+
+// Add class columns in list product
+
+if( !function_exists( 'kt_product_list_columns_class' )){
+    function kt_product_list_columns_class($class){
+        $kt_woo_grid_column = kt_option( 'kt_woo_grid_column', '3' );
+        $class.=' columns-'.$kt_woo_grid_column;
+
+        return $class;
+    }
+}
+
+add_action( 'woocommerce_product_loop_start', 'kt_product_list_columns_class',1 );
