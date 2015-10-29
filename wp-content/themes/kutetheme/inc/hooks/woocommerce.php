@@ -1046,7 +1046,7 @@ if ( ! function_exists( 'kt_woocommerce_image_dimensions' ) ) {
      * Hook in on activation
      *
      */
-    add_action( 'init', 'kt_woocommerce_image_dimensions', 1 );
+    add_action( 'after_switch_theme', 'kt_woocommerce_image_dimensions', 1 );
 
 }
 
