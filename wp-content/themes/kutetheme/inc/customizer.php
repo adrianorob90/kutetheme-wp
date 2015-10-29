@@ -473,7 +473,8 @@ function kt_get_color_scheme_css( $colors ) {
     .option7 .brand .band-logo.no-product h3:hover{
       	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
-    .box-vertical-megamenus .vertical-menu-content{
+    .box-vertical-megamenus .vertical-menu-content,
+    footer#footer2.footer3{
         border-top-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     a:hover,
