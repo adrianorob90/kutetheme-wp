@@ -468,7 +468,11 @@ function kt_get_color_scheme_css( $colors ) {
     .header.option3  .main-header .header-search-box .form-inline,
     body .header.option4 .box-vertical-megamenus .all-category:hover span,
     body .option3 .main-header .header-search-box .form-inline,
-    body #user-info-opntop .dropdown-menu{
+    body #user-info-opntop .dropdown-menu,
+    
+    .option7 .brand .page-heading span.page-heading-title,
+    .option7 .blog-list .page-heading span.page-heading-title,
+    .option7 .brand .band-logo.no-product h3:hover{
       	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content{
@@ -485,7 +489,12 @@ function kt_get_color_scheme_css( $colors ) {
     body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a,
     body .option4 #main-menu .navbar .navbar-nav>li:hover>a, 
     body .option4 #main-menu .navbar .navbar-nav>li.active>a,
-    body .option4 a:hover{
+    
+    body .site .option4 a:hover,
+    body .footer-menu-list li a, 
+    body .woocommerce .wishlist_table ins, 
+    body footer#footer2 a:hover,
+    body #footer2 .widget-body li a:hover{
         color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     /* Text Color */
