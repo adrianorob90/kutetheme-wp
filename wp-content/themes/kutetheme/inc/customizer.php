@@ -338,9 +338,7 @@ function kt_get_color_scheme_css( $colors ) {
     body .option5 #main-menu .navbar .navbar-nav>li:hover, 
 	body .option5 #main-menu .navbar .navbar-nav>li.active,
     
-    .option7 .header .top-header,
-    .option7 .header #main-menu .navbar .navbar-nav>li:hover, 
-    .option7 .header #main-menu .navbar .navbar-nav>li.active{
+    .option7 .header .top-header{
         background-color: <?php echo esc_attr( $colors['box_background_color'] ); ?>;
     }
     
