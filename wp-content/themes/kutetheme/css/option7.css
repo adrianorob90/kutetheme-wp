@@ -727,6 +727,10 @@
 	width: 50%;
 	float: left;
 }
+.option7.right .box-produts-content .block-sub-cat ul.list-cat li{
+	width: 50%;
+	float: right;
+}
 .option7 .box-produts-content .block-sub-cat ul.list-cat li a{
 	background: url('../images/r7.png') no-repeat left center;
 	padding-left: 15px;

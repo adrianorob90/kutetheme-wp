@@ -78,13 +78,13 @@
                             
                             <?php $cate_link = get_term_link( $cate ); ?>
                                 <li><a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a></li>
-                            <?php if( $i == $number_slide ): $i = 0; ?>
-                            </ul>
-                            <?php endif; ?>
+                            <?php if( $i == $number_slide ):  ?>
+                            </ul><!--<?php echo $i; ?>-->
+                            <?php $i = 0; endif; ?>
                             <?php $i ++ ; ?>
                         <?php endforeach; ?>
-                        <?php if( $i >= 1 && $i != $number_slide ): ?>
-                            </ul>
+                        <?php if( $i > 1 && $i != $number_slide ): ?>
+                            </ul><!--end<?php echo $i; ?>-->
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>
