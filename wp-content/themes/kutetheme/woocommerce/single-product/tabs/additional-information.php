@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 global $product;
 
-$heading = apply_filters( 'woocommerce_product_additional_information_heading', esc_attr__( 'Additional Information', 'woocommerce' ) );
+$heading = apply_filters( 'woocommerce_product_additional_information_heading', esc_attr__( 'Additional Information', 'kutetheme' ) );
 
 ?>
 <?php $product->list_attributes(); ?>

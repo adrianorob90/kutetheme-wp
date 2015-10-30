@@ -30,7 +30,7 @@ $rating = intval( get_comment_meta( $comment->comment_ID, 'rating', true ) );
 
 			<?php if ( $comment->comment_approved == '0' ) : ?>
 
-				<p class="meta"><em><?php esc_html_e( 'Your comment is awaiting approval', 'woocommerce' ); ?></em></p>
+				<p class="meta"><em><?php esc_html_e( 'Your comment is awaiting approval', 'kutetheme' ); ?></em></p>
 
 			<?php else : ?>
 
@@ -39,7 +39,7 @@ $rating = intval( get_comment_meta( $comment->comment_ID, 'rating', true ) );
 
 						if ( get_option( 'woocommerce_review_rating_verification_label' ) === 'yes' )
 							if ( wc_customer_bought_product( $comment->comment_author_email, $comment->user_id, $comment->comment_post_ID ) )
-								echo '<em class="verified">(' . esc_attr__( 'verified owner', 'woocommerce' ) . ')</em> ';
+								echo '<em class="verified">(' . esc_attr__( 'verified owner', 'kutetheme' ) . ')</em> ';
 
 					?>&ndash; <time itemprop="datePublished" datetime="<?php echo get_comment_date( 'c' ); ?>"><?php echo get_comment_date( wc_date_format() ); ?></time>:
 				</p>

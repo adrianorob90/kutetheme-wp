@@ -1,9 +1,69 @@
-#1/10/2015  ## Update esc string translate
-#2/10/2015  ## Update option 5
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+#29/10/2015 ## Add setting vertical menu, css Megemenu
+#29/10/2015 ## Update shortcode mailchimp select lists
+#29/10/2015 ## Update woocommerce_image_dimensions after switch theme
+#29/10/2015 ## Fix group button tab 6 on firefox
+#29/10/2015 ## Fix percentage price in shortcode lastest deal sidebar
 
-#5/10/2015  ## Fix bug mailchimp and fix bug translate variable
-#5/10/2015  ## Fix bug vertical menu
-#5/10/2015  ## Update option 5 and fix form search
+#28/10/2015 ## Update css option 7 and RTL
+#28/10/2015 ## Fix js elevator button
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.3
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+
+#27/10/2015 ## Update css option 7
+#27/10/2015 ## Update rtl
+#27/10/2015 ## Update hotdeal css
+#27/10/2015 ## Update footer style3
+#27/10/2015 ## Update class tab 6
+#27/10/2015 ## Update option 7 color
+
+#26/10/2015 ## Update Setting Vertical Menu
+#26/10/2015 ## Update Option 7 Header
+#26/10/2015 ## Update mini cart option7
+#26/10/2015 ## Update css tab product 6, hotdeal
+#26/10/2015 ## RTL Option 7
+
+#25/10/2015 ## Fix brand
+
+#22/10/2015 ## Fix sort by in shop page
+
+#21/10/2015 ## Update option  7
+#21/10/2015 ## Fix trending option 3
+#21/10/2015 ## Update hotdeal and fix countdown
+#21/10/2015 ## Update feature product, css reponsive
+#21/10/2015 ## Update plugin recomment
+
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.2.1
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+
+#27/10/2015 ## Create default template VC
+
+#20/10/2015 ## Update RTL option 3 4
+
+#19/10/2015 ## Update search product and update recomment plugin
+
+#14/10/2015 ## Fix Mutil color on change default color
+#14/10/2015 ## Update option 3 and 4
+#14/10/2015 ## Update color header 3
+
+#13/10/2015 ## Update color tab 5 category
+
+#11/10/2015 ## Update Quickview and Fix category slider 
+
+#10/10/2015 ## Update shortcode Hot deal and RTL
+
+#9/10/2015  ## Update Qty input type and RTL
+
+#8/10/2015  ## Update header and footer option3
+
+#7/10/2015  ## Update mutil color option 5
+#7/10/2015  ## Update RTL and RGB Color all of option
 
 #6/10/2015  ## Fix thumbnail shortcode hotdeal category
 #6/10/2015  ## Fix social in top header
@@ -15,69 +75,14 @@
 #6/10/2015  ## Update destination image
 #6/10/2015  ## Fix footer widget css
 
-#7/10/2015  ## Update mutil color option 5
-#7/10/2015  ## Update RTL and RGB Color all of option
+#5/10/2015  ## Fix bug mailchimp and fix bug translate variable
+#5/10/2015  ## Fix bug vertical menu
+#5/10/2015  ## Update option 5 and fix form search
 
-#8/10/2015  ## Update header and footer option3
+#2/10/2015  ## Update option 5
 
-#9/10/2015  ## Update Qty input type and RTL
+#1/10/2015  ## Update esc string translate
 
-#10/10/2015 ## Update shortcode Hot deal and RTL
 
-#11/10/2015 ## Update Quickview and Fix category slider 
 
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-Ver 1.2.1
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 
-#13/10/2015 ## Update color tab 5 category
-
-#14/10/2015 ## Fix Mutil color on change default color
-
-#14/10/2015 ## Update option 3 and 4
-
-#14/10/2015 ## Update color header 3
-
-#19/10/2015 ## Update search product and update recomment plugin
-
-#20/10/2015 ## Update RTL option 3 4
-
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-Ver 1.3
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-
-#21/10/2015 ## Update option  7
-#21/10/2015 ## Fix trending option 3
-#21/10/2015 ## Update hotdeal and fix countdown
-#21/10/2015 ## Update feature product, css reponsive
-#21/10/2015 ## Update plugin recomment
-
-#22/10/2015 ## Fix sort by in shop page
-
-#25/10/2015 ## Fix brand
-
-#26/10/2015 ## Update Setting Vertical Menu
-#26/10/2015 ## Update Option 7 Header
-#26/10/2015 ## Update mini cart option7
-#26/10/2015 ## Update css tab product 6, hotdeal
-#26/10/2015 ## RTL Option 7
-
-#27/10/2015 ## Update css option 7
-#27/10/2015 ## Update rtl
-#27/10/2015 ## Update hotdeal css
-#27/10/2015 ## Update footer style3
-#27/10/2015 ## Update class tab 6
-#27/10/2015 ## Update option 7 color
-#27/10/2015 ## Create default template VC
-
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-Ver 1.4
-=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-
-#28/10/2015 ## Update css option 7 and RTL
-#28/10/2015 ## Fix js elevator button
-#29/10/2015 ## Add setting vertical menu, css Megemenu
-#29/10/2015 ## Update shortcode mailchimp select lists
-#29/10/2015 ## Update woocommerce_image_dimensions after switch theme
-#29/10/2015 ## Fix group button tab 6 on firefox
-#29/10/2015 ## Fix percentage price in shortcode lastest deal sidebar

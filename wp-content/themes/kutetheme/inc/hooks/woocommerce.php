@@ -384,7 +384,7 @@ if( ! function_exists('kt_get_cart_content') ){
         if ( ! WC()->cart->is_empty() ) : ?>
             <div class="cart-block">
                 <div class="cart-block-content">
-                    <h5 class="cart-title"><?php esc_html_e( sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ), 'kutetheme' ); ?></h5>
+                    <h5 class="cart-title"><?php echo sprintf (_n( '%d item in my cart', '%d items in my cart', WC()->cart->cart_contents_count, 'kutetheme' ), WC()->cart->cart_contents_count ); ?></h5>
                     <div class="cart-block-list">
                         <ul>
                             <?php 
@@ -404,7 +404,7 @@ if( ! function_exists('kt_get_cart_content') ){
                     						echo apply_filters( 'woocommerce_cart_item_remove_link', sprintf(
                     							'<a href="%s" class="remove remove_link" title="%s" data-product_id="%s" data-product_sku="%s"></a>',
                     							esc_url( WC()->cart->get_remove_url( $cart_item_key ) ),
-                    							__( 'Remove this item', 'woocommerce' ),
+                    							__( 'Remove this item', 'kutetheme' ),
                     							esc_attr( $product_id ),
                     							esc_attr( $bag_product->get_sku() )
                     						), $cart_item_key );
@@ -461,9 +461,9 @@ if( ! function_exists( 'kt_add_to_cart_message' ) ){
     	// Output success messages
     	if (get_option('woocommerce_cart_redirect_after_add')=='yes') :
     		$return_to 	= get_permalink( woocommerce_get_page_id('shop') );
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, esc_attr__( 'Continue Shopping &rarr;', 'woocommerce'), esc_attr__( 'Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', $return_to, esc_attr__( 'Continue Shopping &rarr;', 'woocommerce'), esc_attr__( 'Product successfully added to your cart.', 'kutetheme') );
     	else :
-    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), esc_attr__( 'View Cart &rarr;', 'woocommerce'), esc_attr__( 'Product successfully added to your cart.', 'woocommerce') );
+    		$message 	= sprintf('<a href="%s" class="button">%s</a> %s', get_permalink(woocommerce_get_page_id('cart')), esc_attr__( 'View Cart &rarr;', 'kutetheme'), esc_attr__( 'Product successfully added to your cart.', 'kutetheme') );
     	endif;
     		return $message;
     }

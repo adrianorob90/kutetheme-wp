@@ -64,14 +64,14 @@ class KT_Product_Brand_Taxonomies {
     public function kt_add_product_brand_fields(){
         ?>
 		<div class="form-field">
-			<label><?php _e( 'Thumbnail', 'woocommerce' ); ?></label>
+			<label><?php _e( 'Thumbnail', 'kutetheme' ); ?></label>
 			<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;">
                 <img src="<?php echo esc_url( wc_placeholder_img_src() ); ?>" width="60px" height="60px" />
             </div>
 			<div style="line-height: 60px;">
 				<input type="hidden" id="product_brand_thumbnail_id" name="product_brand_thumbnail_id" />
-				<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'woocommerce' ); ?></button>
-				<button type="button" class="remove_image_button button"><?php _e( 'Remove image', 'woocommerce' ); ?></button>
+				<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'kutetheme' ); ?></button>
+				<button type="button" class="remove_image_button button"><?php _e( 'Remove image', 'kutetheme' ); ?></button>
 			</div>
 			<script type="text/javascript">
 
@@ -95,9 +95,9 @@ class KT_Product_Brand_Taxonomies {
 
 					// Create the media frame.
 					file_frame = wp.media.frames.downloadable_file = wp.media({
-						title: '<?php _e( "Choose an image", "woocommerce" ); ?>',
+						title: '<?php _e( "Choose an image", "kutetheme" ); ?>',
 						button: {
-							text: '<?php _e( "Use image", "woocommerce" ); ?>'
+							text: '<?php _e( "Use image", "kutetheme" ); ?>'
 						},
 						multiple: false
 					});
@@ -142,15 +142,15 @@ class KT_Product_Brand_Taxonomies {
 		}
 		?>
 		<tr class="form-field">
-			<th scope="row" valign="top"><label><?php _e( 'Thumbnail', 'woocommerce' ); ?></label></th>
+			<th scope="row" valign="top"><label><?php _e( 'Thumbnail', 'kutetheme' ); ?></label></th>
 			<td>
 				<div id="product_brand_thumbnail" style="float: left; margin-right: 10px;">
                     <img src="<?php echo esc_url( $image ); ?>" width="60px" height="60px" />
                 </div>
 				<div style="line-height: 60px;">
 					<input type="hidden" id="product_brand_thumbnail_id" name="product_brand_thumbnail_id" value="<?php echo esc_attr( $thumbnail_id ); ?>" />
-					<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'woocommerce' ); ?></button>
-					<button type="button" class="remove_image_button button"><?php _e( 'Remove image', 'woocommerce' ); ?></button>
+					<button type="button" class="upload_image_button button"><?php _e( 'Upload/Add image', 'kutetheme' ); ?></button>
+					<button type="button" class="remove_image_button button"><?php _e( 'Remove image', 'kutetheme' ); ?></button>
 				</div>
 				<script type="text/javascript">
 
@@ -174,9 +174,9 @@ class KT_Product_Brand_Taxonomies {
 
 						// Create the media frame.
 						file_frame = wp.media.frames.downloadable_file = wp.media({
-							title: '<?php _e( "Choose an image", "woocommerce" ); ?>',
+							title: '<?php _e( "Choose an image", "kutetheme" ); ?>',
 							button: {
-								text: '<?php _e( "Use image", "woocommerce" ); ?>'
+								text: '<?php _e( "Use image", "kutetheme" ); ?>'
 							},
 							multiple: false
 						});
@@ -225,7 +225,7 @@ class KT_Product_Brand_Taxonomies {
 	public function kt_product_brand_columns( $columns ) {
 		$new_columns          = array();
 		$new_columns['cb']    = $columns['cb'];
-		$new_columns['thumb'] = __( 'Image', 'woocommerce' );
+		$new_columns['thumb'] = __( 'Image', 'kutetheme' );
 
 		unset( $columns['cb'] );
 
@@ -256,7 +256,7 @@ class KT_Product_Brand_Taxonomies {
 			// Ref: http://core.trac.wordpress.org/ticket/23605
 			$image = str_replace( ' ', '%20', $image );
 
-			$columns .= '<img src="' . esc_url( $image ) . '" alt="' . __( 'Thumbnail', 'woocommerce' ) . '" class="wp-post-image" height="48" width="48" />';
+			$columns .= '<img src="' . esc_url( $image ) . '" alt="' . __( 'Thumbnail', 'kutetheme' ) . '" class="wp-post-image" height="48" width="48" />';
 
 		}
 

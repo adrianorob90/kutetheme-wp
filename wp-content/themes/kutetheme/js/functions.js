@@ -2,9 +2,6 @@
     "use strict"; // Start of use strict
     var rtl = jQuery( 'body' ).hasClass( 'rtl' );
     
-    var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
-    var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text">Days</span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text">Hrs</span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text">Mins</span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text">Secs</span></span>';
-     
     var first_lazy = jQuery( '.container-tab .active .kt-template-loop .owl-lazy' );
     /**==============================
     ***  Change Color tab Category

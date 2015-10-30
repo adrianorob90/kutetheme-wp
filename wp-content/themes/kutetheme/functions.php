@@ -296,8 +296,19 @@ if( ! function_exists( 'kt_javascript_detection' ) ){
     	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
     }
 }
+if( ! function_exists( 'kt_js_variables' ) ){
+    function kt_js_variables(){ ?>
+      <script type="text/javascript">
+        var ajaxurl = <?php echo json_encode( admin_url( "admin-ajax.php" ) ); ?>;
+        var labels = ['<?php _e( 'Years' ,'kutetheme') ?>', '<?php _e( 'Months' ,'kutetheme') ?>', '<?php _e( 'Weeks' ,'kutetheme') ?>', '<?php _e( 'Days' ,'kutetheme') ?>', '<?php _e( 'Hrs' ,'kutetheme') ?>', '<?php _e( 'Mins' ,'kutetheme') ?>', '<?php _e( 'Secs' ,'kutetheme') ?>'];
+        var layout = '<span class="box-count day"><span class="number">{dnn}</span> <span class="text"><?php _e( 'Days' ,'kutetheme') ?></span></span><span class="dot">:</span><span class="box-count hrs"><span class="number">{hnn}</span> <span class="text"><?php _e( 'Hrs' ,'kutetheme') ?></span></span><span class="dot">:</span><span class="box-count min"><span class="number">{mnn}</span> <span class="text"><?php _e( 'Mins' ,'kutetheme') ?></span></span><span class="dot">:</span><span class="box-count secs"><span class="number">{snn}</span> <span class="text"><?php _e( 'Secs' ,'kutetheme') ?></span></span>';
+         
+      </script><?php
+    }
+}
 
 add_action( 'wp_head', 'kt_javascript_detection', 0 );
+add_action( 'wp_head', 'kt_js_variables', 2 );
 
 /**
  * Enqueue scripts and styles.
