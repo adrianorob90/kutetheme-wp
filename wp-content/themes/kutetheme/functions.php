@@ -129,6 +129,9 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
         add_image_size ( 'kt-post-thumb', 345, 244, true );
         add_image_size ( 'kt-post-thumb-small', 70, 49, true );
         add_image_size ( 'kt_post_blog_268x255', 268, 255, true );
+        
+        //Support woocommerce
+        add_theme_support( 'woocommerce' );
     }
 endif; // kt_setup
 add_action( 'after_setup_theme', 'kt_setup' );

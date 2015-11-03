@@ -8,4 +8,4 @@
  */
 ?>
 <div class="row">
-<ul class="<?php do_action( 'kt_custom_class_list_product' );?> <?php echo apply_filters('woocommerce_product_loop_start', 'product-list clearfix'); ?>">
+<ul class="<?php do_action( 'kt_custom_class_list_product' );?> <?php echo apply_filters('woocommerce_product_loop_start',$class="product-list clearfix"); ?>">

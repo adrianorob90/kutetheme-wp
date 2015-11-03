@@ -799,9 +799,8 @@
 .option7 .right .box-produts-content .products .product{
     float: right;
 }
-.option7 .box-produts-content .products .product:nth-child(4),
-.option7 .box-produts-content .products .product:nth-child(8){
-	
+.option7 .box-produts-content .products .product:nth-child(4n){
+	border-right: none;
 }
 /** PRODUCT LIST**/
 .products .fa{
@@ -965,7 +964,35 @@
 .products .group-tool-button .add-to-cart a{
 	background-image: url('../images/icon-cart7.png');
     border-right: none;
+    text-align: center;
+    line-height: 29px;
+    color: #fff;
 }
+.products .group-tool-button .add-to-cart a.loading{
+	background-image:none;
+}
+.products .group-tool-button .add-to-cart a.loading:before{
+	font-family:'FontAwesome';
+    content: "\f1ce";
+    font-size: 14px;
+    webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+
+.products .group-tool-button .add-to-cart a.added{
+	display: none;
+}
+.products .group-tool-button .add-to-cart a.added_to_cart {
+	font-size: 0;
+	text-align: center;
+	background-image:none;
+}
+.products .group-tool-button .add-to-cart a.added_to_cart:before{
+	font-family:'FontAwesome';
+    content: "\f00c";
+    font-size: 14px;
+}
+
 .products .group-tool-button  .yith-wcwl-add-to-wishlist .yith-wcwl-add-button a:before{
 	display: none;
 }
