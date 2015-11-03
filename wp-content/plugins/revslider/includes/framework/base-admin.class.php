@@ -151,6 +151,14 @@ class RevSliderBaseAdmin extends RevSliderBase {
 		self::$menuRole = $menuRole;
 	}
 	
+	
+	/**
+	 * get the menu role - for viewing menus
+	 */
+	public static function getMenuRole(){
+		return self::$menuRole;
+	}
+	
 	/**
 	 * 
 	 * set startup error to be shown in master view

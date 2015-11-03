@@ -111,6 +111,7 @@ class KT_Admin {
     public function admin_page_display() {
         $link = $this->page_link();
         $boxes = $this->get_option_boxes();
+
         $tab =  isset( $_GET['tab'] ) ? sanitize_key( $_GET['tab'] ) : key( $boxes );
         if ( ! isset( $boxes[ $tab ] ) ) {
             reset( $boxes );
@@ -122,7 +123,7 @@ class KT_Admin {
             <?php  if ( count( $boxes ) > 1 ) { ?>
             <h2 class="nav-tab-wrapper">
                 <?php foreach ( $boxes as $k => $mb ) { ?>
-                <a href="<?php echo  add_query_arg( array( 'tab' => esc_attr( $k ) ), esc_url($link) ) ?>" class="nav-tab <?php echo  $tab == $k ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $mb->meta_box['title'] ) ; ?></a>
+                    <a href="<?php echo  add_query_arg( array( 'tab' => esc_attr( $k ) ), esc_url($link) ) ?>" class="nav-tab <?php echo  $tab == $k ? 'nav-tab-active' : ''; ?>"><?php echo esc_html( $mb->meta_box['title'] ) ; ?></a>
                 <?php } ?>
             </h2>
             <?php } ?>

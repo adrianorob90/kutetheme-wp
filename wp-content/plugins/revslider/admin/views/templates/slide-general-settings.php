@@ -3,8 +3,9 @@
 <div class="editor_buttons_wrapper  postbox unite-postbox" style="max-width:100% !important; min-width:1040px !important;">
 	<div class="box-closed tp-accordion" style="border-bottom:5px solid #ddd;">
 		<ul class="rs-slide-settings-tabs">
-			<li data-content="#slide-main-image-settings-content" class="selected"><i style="height:45px" class="rs-mini-layer-icon rs-icon-chooser-1 rs-toolbar-icon"></i><span><?php _e("Main Background",REVSLIDER_TEXTDOMAIN); ?></span></li>
+			<li data-content="#slide-main-image-settings-content" class="selected"><i style="height:45px" class="rs-mini-layer-icon eg-icon-picture-1 rs-toolbar-icon"></i><span><?php _e("Main Background",REVSLIDER_TEXTDOMAIN); ?></span></li>
 			<li data-content="#slide-general-settings-content"><i style="height:45px" class="rs-mini-layer-icon rs-icon-chooser-2 rs-toolbar-icon"></i><?php _e("General Settings",REVSLIDER_TEXTDOMAIN); ?></li>
+			<li data-content="#slide-thumbnail-settings-content"><i style="height:45px" class="rs-mini-layer-icon eg-icon-flickr-1 rs-toolbar-icon"></i><?php _e("Thumbnail",REVSLIDER_TEXTDOMAIN); ?></li>
 			<li data-content="#slide-animation-settings-content" id="slide-animation-settings-content-tab"><i style="height:45px" class="rs-mini-layer-icon rs-icon-chooser-3 rs-toolbar-icon"></i><?php _e("Slide Animation",REVSLIDER_TEXTDOMAIN); ?></li>
 			<li data-content="#slide-seo-settings-content"><i style="height:45px" class="rs-mini-layer-icon rs-icon-advanced rs-toolbar-icon"></i><?php _e("Link & Seo",REVSLIDER_TEXTDOMAIN); ?></li>
 			<li data-content="#slide-info-settings-content"><i style="height:45px; font-size:16px;" class="rs-mini-layer-icon eg-icon-info-circled rs-toolbar-icon"></i><?php _e("Slide Info",REVSLIDER_TEXTDOMAIN); ?></li>						
@@ -32,7 +33,7 @@
 				<ul class="rs-layer-main-image-tabs" style="display:inline-block; ">
 					<li data-content="#mainbg-sub-source" class="selected"><?php _e('Source', REVSLIDER_TEXTDOMAIN); ?></li>
 					<li class="mainbg-sub-settings-selector" data-content="#mainbg-sub-setting"><?php _e('Source Settings', REVSLIDER_TEXTDOMAIN); ?></li>					
-					<li class="mainbg-sub-parallax-selector" data-content="#mainbg-sub-parallax"><?php _e('Parallax', REVSLIDER_TEXTDOMAIN); ?></li>
+					<li class="mainbg-sub-parallax-selector" data-content="#mainbg-sub-parallax"><?php _e('Parallax / 3D', REVSLIDER_TEXTDOMAIN); ?></li>
 					<li class="mainbg-sub-kenburns-selector" data-content="#mainbg-sub-kenburns"><?php _e('Ken Burns', REVSLIDER_TEXTDOMAIN); ?></li>
 				</ul>
 
@@ -59,7 +60,7 @@
 					<span class="diblock bg-settings-block">
 						<!-- IMAGE FROM MEDIAGALLERY -->												
 						<?php
-						if($slider_type == 'posts' || $slider_type == 'specific_posts'){
+						if($slider_type == 'posts' || $slider_type == 'specific_posts' || $slider_type == 'woocommerce'){
 							?>
 							<label><?php _e("Featured Image",REVSLIDER_TEXTDOMAIN); ?></label>
 							<input type="radio" name="background_type" value="image" class="bgsrcchanger" data-callid="tp-bgimagewpsrc" data-imgsettings="on" data-bgtype="image" id="radio_back_image" <?php checked($bgType, 'image'); ?>>
@@ -328,12 +329,12 @@
 							</p>
 							<p>
 								<label><?php _e('Arguments YouTube:', REVSLIDER_TEXTDOMAIN); ?></label>
-								<input type="text" id="video_arguments" style="width:350px;" value="<?php echo esc_attr($video_arguments); ?>">
+								<input type="text" id="video_arguments" name="video_arguments" style="width:350px;" value="<?php echo esc_attr($video_arguments); ?>">
 							</p>
 						</span>
 						<p id="vid-rev-vimeo-options">
 							<label><?php _e('Arguments Vimeo:', REVSLIDER_TEXTDOMAIN); ?></label>
-							<input type="text" id="video_arguments_vim" style="width:350px;" value="<?php echo esc_attr($video_arguments_vim); ?>">
+							<input type="text" id="video_arguments_vim" name="video_arguments_vim" style="width:350px;" value="<?php echo esc_attr($video_arguments_vim); ?>">
 						</p>
 					</span>
 					
@@ -387,28 +388,52 @@
 
 				<span id="mainbg-sub-parallax" style="display:none">
 					<p>
-						<label><?php _e("Parallax Level:",REVSLIDER_TEXTDOMAIN); ?></label>
-						<select name="slide_parallax_level" id="slide_parallax_level">
-							<option value="-" <?php selected($slide_parallax_level, '-'); ?>><?php _e('No Parallax', REVSLIDER_TEXTDOMAIN); ?></option>
-							<option value="1" <?php selected($slide_parallax_level, '1'); ?>>1</option>
-							<option value="2" <?php selected($slide_parallax_level, '2'); ?>>2</option>
-							<option value="3" <?php selected($slide_parallax_level, '3'); ?>>3</option>
-							<option value="4" <?php selected($slide_parallax_level, '4'); ?>>4</option>
-							<option value="5" <?php selected($slide_parallax_level, '5'); ?>>5</option>
-							<option value="6" <?php selected($slide_parallax_level, '6'); ?>>6</option>
-							<option value="7" <?php selected($slide_parallax_level, '7'); ?>>7</option>
-							<option value="8" <?php selected($slide_parallax_level, '8'); ?>>8</option>
-							<option value="9" <?php selected($slide_parallax_level, '9'); ?>>9</option>
-							<option value="10" <?php selected($slide_parallax_level, '10'); ?>>10</option>
-						</select>
+						<?php 
+						if ($use_parallax=="off") {						
+							echo '<i style="color:#c0392b">';
+							_e("Parallax Feature in Slider Settings is deactivated, parallax will be ignored.",REVSLIDER_TEXTDOMAIN); 
+							echo '</i>';
+						} else {
+						
+								if ($parallaxisddd=="off") { 
+							?>
+							<label><?php _e("Parallax Level:",REVSLIDER_TEXTDOMAIN); ?></label>
+							<select name="slide_parallax_level" id="slide_parallax_level">
+								<option value="-" <?php selected($slide_parallax_level, '-'); ?>><?php _e('No Parallax', REVSLIDER_TEXTDOMAIN); ?></option>
+								<option value="1" <?php selected($slide_parallax_level, '1'); ?>>1 - (<?php echo $parallax_level[0]; ?>%)</option>
+								<option value="2" <?php selected($slide_parallax_level, '2'); ?>>2 - (<?php echo $parallax_level[1]; ?>%)</option>
+								<option value="3" <?php selected($slide_parallax_level, '3'); ?>>3 - (<?php echo $parallax_level[2]; ?>%)</option>
+								<option value="4" <?php selected($slide_parallax_level, '4'); ?>>4 - (<?php echo $parallax_level[3]; ?>%)</option>
+								<option value="5" <?php selected($slide_parallax_level, '5'); ?>>5 - (<?php echo $parallax_level[4]; ?>%)</option>
+								<option value="6" <?php selected($slide_parallax_level, '6'); ?>>6 - (<?php echo $parallax_level[5]; ?>%)</option>
+								<option value="7" <?php selected($slide_parallax_level, '7'); ?>>7 - (<?php echo $parallax_level[6]; ?>%)</option>
+								<option value="8" <?php selected($slide_parallax_level, '8'); ?>>8 - (<?php echo $parallax_level[7]; ?>%)</option>
+								<option value="9" <?php selected($slide_parallax_level, '9'); ?>>9 - (<?php echo $parallax_level[8]; ?>%)</option>
+								<option value="10" <?php selected($slide_parallax_level, '10'); ?>>10 - (<?php echo $parallax_level[9]; ?>%)</option>
+								<option value="11" <?php selected($slide_parallax_level, '11'); ?>>11 - (<?php echo $parallax_level[10]; ?>%)</option>
+								<option value="12" <?php selected($slide_parallax_level, '12'); ?>>12 - (<?php echo $parallax_level[11]; ?>%)</option>
+								<option value="13" <?php selected($slide_parallax_level, '13'); ?>>13 - (<?php echo $parallax_level[12]; ?>%)</option>
+								<option value="14" <?php selected($slide_parallax_level, '14'); ?>>14 - (<?php echo $parallax_level[13]; ?>%)</option>
+								<option value="15" <?php selected($slide_parallax_level, '15'); ?>>15 - (<?php echo $parallax_level[14]; ?>%)</option>							
+							</select>
+							<?php } else {
+								if ($parallaxbgfreeze=="off") {
+							?>							
+								<label><?php _e("Selected 3D Depth:",REVSLIDER_TEXTDOMAIN); ?></label>
+								<input style="min-width:54px;width:54px" type="text" disabled value="<?php echo $parallax_level[15];?>%" />							
+								<span><i><?php _e('3D Parallax is Enabled via Slider Settings !', REVSLIDER_TEXTDOMAIN); ?></i></span>
+							<?php
+								} else {								
+									?>
+										<label><?php _e("Background 3D is Disabled",REVSLIDER_TEXTDOMAIN); ?></label>									
+										<span style="display: inline-block;vertical-align: middle;line-height:32px"><i><?php _e('To Enable 3D Parallax for Background please change the Option "BG 3D Disabled" to "OFF" via the Slider Settings !', REVSLIDER_TEXTDOMAIN); ?></i></span>
+									<?php
+								}
+							}
+						}
+						?>
 					</p>
-					<?php 
-					if ($use_parallax=="off") {						
-						echo '<i style="color:#c0392b">';
-						_e("Parallax Feature in Slider Settings is deactivated, parallax will be ignored.",REVSLIDER_TEXTDOMAIN); 
-						echo '</i>';
-					}
-					?>
+					
 				</span>
 
 				<span id="mainbg-sub-kenburns" style="display:none">
@@ -573,8 +598,23 @@
 					<span class="description"><?php _e("If set, slide will be visible till the date is reached.",REVSLIDER_TEXTDOMAIN); ?></span>
 				</p>
 
+				
+				<!-- SLIDE VISIBLE FROM -->
+				<p style="display:none">
+					<?php $save_performance = RevSliderFunctions::getVal($slideParams, 'save_performance','off'); ?>
+					<label><?php _e("Save Performance:",REVSLIDER_TEXTDOMAIN); ?></label>
+					<span style="display:inline-block; width:200px; margin-right:20px;">
+						<input type="checkbox" class="tp-moderncheckbox withlabel" id="save_performance" name="save_performance" data-unchecked="off" <?php checked( $save_performance, "on" ); ?>>
+					</span>
+					<span class="description"><?php _e("Slide End Transition will first start when last Layer has been removed.",REVSLIDER_TEXTDOMAIN); ?></span>
+				</p>
+
+			</div>
+
+			<!-- THUMBNAIL SETTINGS -->
+			<div id="slide-thumbnail-settings-content" style="display:none">
 				<!-- THUMBNAIL SETTINGS -->
-				<div>
+				<div style="margin-top:10px">
 					<?php $slide_thumb = RevSliderFunctions::getVal($slideParams, 'slide_thumb',''); ?>
 					<span style="display:inline-block; vertical-align: top;">
 						<label><?php _e("Thumbnail:",REVSLIDER_TEXTDOMAIN); ?></label>
@@ -599,6 +639,8 @@
 					</div>
 				</div>
 				<?php $thumb_dimension = RevSliderFunctions::getVal($slideParams, 'thumb_dimension', 'slider'); ?>
+				<?php $thumb_for_admin = RevSliderFunctions::getVal($slideParams, 'thumb_for_admin', 'off'); ?>
+
 				<p>
 					<span style="display:inline-block; vertical-align: top;">
 						<label><?php _e("Thumbnail Dimensions:",REVSLIDER_TEXTDOMAIN); ?></label>
@@ -609,16 +651,16 @@
 					</select>
 					<span class="description"><?php _e("Width and height of thumbnails can be changed in the Slider Settings -> Navigation -> Thumbs tab.",REVSLIDER_TEXTDOMAIN); ?></span>
 				</p>
-				<!-- SLIDE VISIBLE FROM -->
-				<p style="display:none">
-					<?php $save_performance = RevSliderFunctions::getVal($slideParams, 'save_performance','off'); ?>
-					<label><?php _e("Save Performance:",REVSLIDER_TEXTDOMAIN); ?></label>
-					<span style="display:inline-block; width:200px; margin-right:20px;">
-						<input type="checkbox" class="tp-moderncheckbox withlabel" id="save_performance" name="save_performance" data-unchecked="off" <?php checked( $save_performance, "on" ); ?>>
-					</span>
-					<span class="description"><?php _e("Slide End Transition will first start when last Layer has been removed.",REVSLIDER_TEXTDOMAIN); ?></span>
-				</p>
 
+				<p style="display:none;" class="show_on_thumbnail_exist">
+					<span style="display:inline-block; vertical-align: top;">
+						<label><?php _e("Thumbnail Admin Purpose:",REVSLIDER_TEXTDOMAIN); ?></label>
+					</span>
+					<span style="display:inline-block; width:200px; margin-right:20px;line-height:27px">
+						<input type="checkbox" class="tp-moderncheckbox" id="thumb_for_admin" name="thumb_for_admin" data-unchecked="off" <?php checked($thumb_for_admin, 'on'); ?>>
+					</span>
+					<span class="description"><?php _e("Use the Thumbnail also for Admin purposes. This will use the selected Thumbnail to represent the Slide in all Slider Admin area.",REVSLIDER_TEXTDOMAIN); ?></span>
+				</p>
 			</div>
 
 			<!-- SLIDE ANIMATIONS -->
@@ -627,7 +669,7 @@
 				<!-- ANIMATION / TRANSITION -->
 				<div id="slide_transition_row">
 					<?php
-						$slide_transition = RevSliderFunctions::getVal($slideParams, 'slide_transition','fade');
+						$slide_transition = RevSliderFunctions::getVal($slideParams, 'slide_transition',$def_transition);
 						if(!is_array($slide_transition))
 							$slide_transition = explode(',', $slide_transition);
 						
@@ -636,7 +678,7 @@
 					?>
 					<?php $slot_amount = (array) RevSliderFunctions::getVal($slideParams, 'slot_amount','default'); ?>
 					<?php $transition_rotation = (array) RevSliderFunctions::getVal($slideParams, 'transition_rotation','0'); ?>
-					<?php $transition_duration = (array) RevSliderFunctions::getVal($slideParams, 'transition_duration','default'); ?>
+					<?php $transition_duration = (array) RevSliderFunctions::getVal($slideParams, 'transition_duration',$def_transition_duration); ?>
 					<?php $transition_ease_in = (array) RevSliderFunctions::getVal($slideParams, 'transition_ease_in','default'); ?>
 					<?php $transition_ease_out = (array) RevSliderFunctions::getVal($slideParams, 'transition_ease_out','default'); ?>
 					<script type="text/javascript">

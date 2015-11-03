@@ -62,6 +62,42 @@ if( ! function_exists( 'kt_custom_blog_excerpt_length' ) ){
         return 23;
     }
 }
+/**
+ * Get Option settings file config
+ *
+ * Override template in your theme
+ * YOUR_THEME_DIR/settings/options.php
+ * YOUR_THEME_DIR/inc/options.php
+ * YOUR_THEME_DIR/includes/options.php
+ * YOUR_THEME_DIR/admin/options.php
+ *
+ * @since 1.0
+ * @param string file path
+ * @return string|bool
+ */
+if( ! function_exists( 'kt_get_file_config' ) ){
+    function kt_get_file_config( $file_config = '' ) {
+        $templates =  array(
+            'settings/'.$file_config.'.php',
+            'config/'.$file_config.'.php',
+            'inc/'.$file_config.'.php',
+            'includes/'.$file_config.'.php',
+            'admin/'.$file_config.'.php',
+        );
+        if ( $file = locate_template( $templates ) ) {
+            // locate_template() returns path to file
+            // if either the child theme or the parent theme have overridden the template
+            return $file;
+        } else {
+            // If neither the child nor parent theme have overridden the template,
+            // we load the template from the 'templates' directory if this plugin
+            $file =  KUTETHEME_PLUGIN_PATH.'settings/'.$file_config.'.php';
+            return ( is_file( $file ) ) ?  $file : false ;
+        }
+    }
+}
+
+
 load_plugin_textdomain( 'kutetheme', false, plugin_basename( dirname( __FILE__ ) ) . "/languages" );
 
 require_once KUTETHEME_PLUGIN_PATH.'mobile-detect/edo-mobile-detect.php';

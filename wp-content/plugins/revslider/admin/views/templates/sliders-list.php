@@ -35,6 +35,13 @@ if( !defined( 'ABSPATH') ) exit();
 					$rowClass = "class='row_alt'";
 					$numReal = $slider->getNumRealSlides();
 					$slider_type = 'posts';
+					//check if we are woocommerce
+					if($slider->getParam("source_type","gallery") == 'woocommerce'){
+						$strSource = __('WooCommerce',REVSLIDER_TEXTDOMAIN);
+						$preicon ="revicon-doc";
+						$rowClass = "class='row_alt'";
+						$slider_type = 'woocommerce';
+					}
 				}elseif($isFromStream !== false){
 					$strSource = __('Social',REVSLIDER_TEXTDOMAIN);
 					$preicon ="revicon-doc";
@@ -114,7 +121,6 @@ if( !defined( 'ABSPATH') ) exit();
 				$isFromPosts = false;
 			}
 			
-			//print_r($first_slide_image_thumb);
 			?>
 			<li class="tls-slide tls-stype-all tls-stype-<?php echo $slider_type; ?>" data-favorit="<?php echo ($is_favorite) ? 'a' : 'b'; ?>" data-id="<?php echo $id; ?>" data-name="<?php echo $title; ?>" data-type="<?php echo $slider_type; ?>">
 				<div class="tls-main-metas">

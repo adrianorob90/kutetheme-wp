@@ -540,8 +540,6 @@ var UniteCssEditorRev = new function(){
 		//make changes to database
 		UniteAdminRev.ajaxRequest(donow,data,function(response){
 			
-			jQuery("#dialog_success_message").show().html(response.message);
-			
 			UniteLayersRev.setCaptionClasses(response.arrCaptions);
 			
 			t.updateCaptionsInput(response.arrCaptions);
@@ -610,7 +608,6 @@ var UniteCssEditorRev = new function(){
 		data['type'] = cur_editing;
 		
 		UniteAdminRev.ajaxRequest("update_captions_advanced_css",data,function(response){
-			jQuery("#dialog_success_message").show().html(response.message);
 			
 			if(response.success !== false){
 				//update html select (got as "data" from response)
@@ -702,7 +699,6 @@ var UniteCssEditorRev = new function(){
 		data.new_name = new_name;
 		
 		UniteAdminRev.ajaxRequest("rename_captions_css",data,function(response){
-			jQuery("#dialog_success_message").show().html(response.message);
 			
 			UniteLayersRev.setCaptionClasses(response.arrCaptions);
 			
@@ -749,7 +745,6 @@ var UniteCssEditorRev = new function(){
 		UniteAdminRev.setErrorMessageID("dialog_error_message");
 		
 		UniteAdminRev.ajaxRequest("delete_captions_css",handle,function(response){
-			jQuery("#dialog_success_message").show().html(response.message);
 			
 			UniteLayersRev.setCaptionClasses(response.arrCaptions);
 			
@@ -930,7 +925,7 @@ var UniteCssEditorRev = new function(){
 				jQuery(selector).css('color', '#777');
 			}else{
 				jQuery(selector).addClass('differentthandefault');
-				jQuery(selector).css('color', '#F00');
+				//jQuery(selector).css('color', '#F00');
 			}
 			if(typeof(def) === 'object'){ //if object
 				var def_s = '';
@@ -970,7 +965,7 @@ var UniteCssEditorRev = new function(){
 				jQuery(selector).css('color', '#777');
 			}else{
 				jQuery(selector).addClass('differentthandefault');
-				jQuery(selector).css('color', '#F00');
+				//jQuery(selector).css('color', '#F00');
 			}
 		}else if(obj[handle] !== value && obj[handle]+suffix !== value){
 			if(typeof(value) === 'object'){
@@ -1002,11 +997,11 @@ var UniteCssEditorRev = new function(){
 					jQuery(selector).css('color', '#777');
 				}else{
 					jQuery(selector).addClass('differentthandefault');
-					jQuery(selector).css('color', '#F00');
+					//jQuery(selector).css('color', '#F00');
 				}
 			}else{
 				jQuery(selector).addClass('differentthandefault');
-				jQuery(selector).css('color', '#F00');
+				//jQuery(selector).css('color', '#F00');
 			}
 			
 		}else{

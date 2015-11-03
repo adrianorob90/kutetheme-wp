@@ -20,6 +20,8 @@ $width = RevSliderBase::getVar($arrValues, 'width', 1240);
 $width_notebook = RevSliderBase::getVar($arrValues, 'width_notebook', 1024);
 $width_tablet = RevSliderBase::getVar($arrValues, 'width_tablet', 778);
 $width_mobile = RevSliderBase::getVar($arrValues, 'width_mobile', 480);
+
+$force_activation_box = RevSliderBase::getVar($arrValues, 'force_activation_box', 'off');
 ?>
 
 <div id="dialog_general_settings" title="<?php _e("General Settings",REVSLIDER_TEXTDOMAIN); ?>" style="display:none;">
@@ -193,7 +195,7 @@ $width_mobile = RevSliderBase::getVar($arrValues, 'width_mobile', 480);
 								</div>
 							</span>
 							<div class="description_container">
-								<span class="description"><?php _e("Enable/Disable ThemePunch Notifications in the Admin Notice bar.",REVSLIDER_TEXTDOMAIN)?></span>				
+								<span class="description"><?php _e("Enable/Disable ThemePunch Notifications in the Admin Notice bar.",REVSLIDER_TEXTDOMAIN); ?></span>				
 							</div>
 						</td>
 					</tr>
@@ -218,7 +220,28 @@ $width_mobile = RevSliderBase::getVar($arrValues, 'width_mobile', 480);
 								<span class="description"><?php _e("Enable console logs for debugging.",REVSLIDER_TEXTDOMAIN); ?></span>				
 							</div>
 						</td>
-					</tr>								
+					</tr>	
+					<tr valign="top">
+						<th scope="row">
+							<?php _e("Enable Missing Activation Area:",REVSLIDER_TEXTDOMAIN); ?>
+						</th>
+						<td>
+							<span id="enable_logs_wrapper" class="radio_settings_wrapper">
+								<div class="radio_inner_wrapper">
+									<input type="radio" id="" value="on" name="force_activation_box" <?php checked($force_activation_box, 'on'); ?>>
+									<label for="" style="cursor:pointer;"><?php _e("On",REVSLIDER_TEXTDOMAIN); ?></label>
+								</div>
+				
+								<div class="radio_inner_wrapper">
+									<input type="radio" id="" value="off" name="force_activation_box" <?php checked($force_activation_box, 'off'); ?>>
+									<label for="" style="cursor:pointer;"><?php _e("Off",REVSLIDER_TEXTDOMAIN); ?></label>
+								</div>
+							</span>
+							<div class="description_container">
+								<span class="description"><?php _e("Force the Activation Area to show up if the Theme disabled it.",REVSLIDER_TEXTDOMAIN); ?></span>
+							</div>
+						</td>
+					</tr>
 				</tbody>
 			</table>				
 		</form>

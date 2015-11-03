@@ -421,7 +421,6 @@ class RevSliderSlider extends RevSliderElementsBase{
 	}
 	
 	
-	
 	/**
 	 * 
 	 * duplicate slider in datatase
@@ -552,11 +551,30 @@ class RevSliderSlider extends RevSliderElementsBase{
 				}
 			}
 		}
+		
+		//change the javascript api ID to the correct one
+		$c_slider = new RevSliderSlider();
+		$c_slider->initByID($lastID);
+		
+		$cus_js = $c_slider->getParam('custom_javascript', '');
+		
+		if(strpos($cus_js, 'revapi') !== false){
+			if(preg_match_all('/revapi[0-9]*/', $cus_js, $results)){
+				
+				if(isset($results[0]) && !empty($results[0])){
+					foreach($results[0] as $replace){
+						$cus_js = str_replace($replace, 'revapi'.$lastID, $cus_js);
+					}
+				}
+				
+				$c_slider->updateParam(array('custom_javascript' => $cus_js));
+				
+			}
+		}
 	}
 	
 	
 	/**
-	 * 
 	 * duplicate slide
 	 */
 	public function duplicateSlide($slideID){
@@ -644,219 +662,279 @@ class RevSliderSlider extends RevSliderElementsBase{
 	 * export slider from data, output a file for download
 	 */
 	public function exportSlider($useDummy = false){
-		$export_zip = true;
-		if(function_exists("unzip_file") == false){				
-			if( class_exists("ZipArchive") == false)
-				$export_zip = false;
+		
+		$this->validateInited();
+		
+		$sliderParams = $this->getParamsForExport();
+		$arrSlides = $this->getSlidesForExport($useDummy);
+		$arrStaticSlide = $this->getStaticSlideForExport($useDummy);
+		
+		$usedCaptions = array();
+		$usedAnimations = array();
+		$usedImages = array();
+		$usedVideos = array();
+		
+		$cfw = array();
+		if(!empty($arrSlides) && count($arrSlides) > 0) $cfw = array_merge($cfw, $arrSlides);
+		if(!empty($arrStaticSlide) && count($arrStaticSlide) > 0) $cfw = array_merge($cfw, $arrStaticSlide);
+
+		if(!empty($cfw) && count($cfw) > 0){
+			foreach($cfw as $key => $slide){
+				if(isset($slide['params']['image']) && $slide['params']['image'] != '') $usedImages[$slide['params']['image']] = true; //['params']['image'] background url
+				if(isset($slide['params']['background_image']) && $slide['params']['background_image'] != '') $usedImages[$slide['params']['background_image']] = true; //['params']['image'] background url
+				if(isset($slide['params']['slide_thumb']) && $slide['params']['slide_thumb'] != '') $usedImages[$slide['params']['slide_thumb']] = true; //['params']['image'] background url
+				
+				//html5 video
+				if(isset($slide['params']['background_type']) && $slide['params']['background_type'] == 'html5'){
+					if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $usedVideos[$slide['params']['slide_bg_html_mpeg']] = true;
+					if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $usedVideos[$slide['params']['slide_bg_html_webm']] = true;
+					if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $usedVideos[$slide['params']['slide_bg_html_ogv']] = true;
+				}else{
+					if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $slide['params']['slide_bg_html_mpeg'] = '';
+					if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $slide['params']['slide_bg_html_webm'] = '';
+					if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $slide['params']['slide_bg_html_ogv'] = '';
+				}
+				
+				//image thumbnail
+				if(isset($slide['layers']) && !empty($slide['layers']) && count($slide['layers']) > 0){
+					foreach($slide['layers'] as $lKey => $layer){
+						if(isset($layer['style']) && $layer['style'] != '') $usedCaptions[$layer['style']] = true;
+						if(isset($layer['animation']) && $layer['animation'] != '' && strpos($layer['animation'], 'customin') !== false) $usedAnimations[str_replace('customin-', '', $layer['animation'])] = true;
+						if(isset($layer['endanimation']) && $layer['endanimation'] != '' && strpos($layer['endanimation'], 'customout') !== false) $usedAnimations[str_replace('customout-', '', $layer['endanimation'])] = true;
+						if(isset($layer['image_url']) && $layer['image_url'] != '') $usedImages[$layer['image_url']] = true; //image_url if image caption
+						
+						if(isset($layer['type']) && $layer['type'] == 'video'){
+							
+							$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
+							
+							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
+
+								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != '') $usedImages[$video_data['urlPoster']] = true;
+								
+								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != '') $usedVideos[$video_data['urlMp4']] = true;
+								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != '') $usedVideos[$video_data['urlWebm']] = true;
+								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != '') $usedVideos[$video_data['urlOgv']] = true;
+								
+							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
+								if(isset($video_data['previewimage']) && $video_data['previewimage'] != '') $usedImages[$video_data['previewimage']] = true;
+							}
+						}
+						
+					}
+				}
+			}
 		}
 		
-		if(!class_exists('ZipArchive')) $export_zip = false;
+		/*if(!empty($arrStaticSlide) && count($arrStaticSlide) > 0){
+			foreach($arrStaticSlide as $key => $slide){
+				if(isset($slide['params']['image']) && $slide['params']['image'] != '') $usedImages[$slide['params']['image']] = true; //['params']['image'] background url
+				
+				//html5 video
+				if(isset($slide['params']['background_type']) && $slide['params']['background_type'] == 'html5'){
+					if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $usedVideos[$slide['params']['slide_bg_html_mpeg']] = true;
+					if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $usedVideos[$slide['params']['slide_bg_html_webm']] = true;
+					if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $usedVideos[$slide['params']['slide_bg_html_ogv']] = true;
+				}
+				
+				if(isset($slide['layers']) && !empty($slide['layers']) && count($slide['layers']) > 0){
+					foreach($slide['layers'] as $lKey => $layer){
+						if(isset($layer['style']) && $layer['style'] != '') $usedCaptions[$layer['style']] = true;
+						if(isset($layer['animation']) && $layer['animation'] != '' && strpos($layer['animation'], 'customin') !== false) $usedAnimations[str_replace('customin-', '', $layer['animation'])] = true;
+						if(isset($layer['endanimation']) && $layer['endanimation'] != '' && strpos($layer['endanimation'], 'customout') !== false) $usedAnimations[str_replace('customout-', '', $layer['endanimation'])] = true;
+						if(isset($layer['image_url']) && $layer['image_url'] != '') $usedImages[$layer['image_url']] = true; //image_url if image caption
+						
+						if(isset($layer['type']) && $layer['type'] == 'video'){
+							
+							$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
+							
+							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
+
+								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != '') $usedImages[$video_data['urlPoster']] = true;
+								
+								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != '') $usedVideos[$video_data['urlMp4']] = true;
+								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != '') $usedVideos[$video_data['urlWebm']] = true;
+								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != '') $usedVideos[$video_data['urlOgv']] = true;
+								
+							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
+								if(isset($video_data['previewimage']) && $video_data['previewimage'] != '') $usedImages[$video_data['previewimage']] = true;
+							}
+						}
+					}
+				}
+			}
+		}*/
 		
-		if($export_zip){
+		$arrSliderExport = array("params"=>$sliderParams,"slides"=>$arrSlides);
+		if(!empty($arrStaticSlide))
+			$arrSliderExport['static_slides'] = $arrStaticSlide;
+		
+		$strExport = serialize($arrSliderExport);
+		
+		//$strExportAnim = serialize(RevSliderOperations::getFullCustomAnimations());
+		
+		$exportname =(!empty($this->alias)) ? $this->alias.'.zip' : "slider_export.zip";
+		
+		
+		
+		$styles = '';
+		if(!empty($usedCaptions)){
+			$captions = array();
+			foreach($usedCaptions as $class => $val){
+				$cap = RevSliderOperations::getCaptionsContentArray($class);
+				//set also advanced styles here...
+				if(!empty($cap))
+					$captions[] = $cap;
+			}
+			$styles = RevSliderCssParser::parseArrayToCss($captions, "\n", true);
+		}
+		
+		$animations = '';
+		if(!empty($usedAnimations)){
+			$animation = array();
+			foreach($usedAnimations as $anim => $val){
+				$anima = RevSliderOperations::getFullCustomAnimationByID($anim);
+				if($anima !== false) $animation[] = RevSliderOperations::getFullCustomAnimationByID($anim);
+				
+			}
+			if(!empty($animation)) $animations = serialize($animation);
+		}
+		
+		$usedImages = array_merge($usedImages, $usedVideos);
+		
+		$usepcl = false;
+		if(class_exists('ZipArchive')){
 			$zip = new ZipArchive;
 			$success = $zip->open(RevSliderGlobals::$uploadsUrlExportZip, ZIPARCHIVE::CREATE | ZipArchive::OVERWRITE);
 			
 			if($success !== true)
 				throwError("Can't create zip file: ".RevSliderGlobals::$uploadsUrlExportZip);
 			
-			$this->validateInited();
+		}else{
+			//fallback to pclzip
+			require_once(ABSPATH . 'wp-admin/includes/class-pclzip.php');
 			
-			$sliderParams = $this->getParamsForExport();
-			$arrSlides = $this->getSlidesForExport($useDummy);
-			$arrStaticSlide = $this->getStaticSlideForExport($useDummy);
+			$pclzip = new PclZip(RevSliderGlobals::$uploadsUrlExportZip);
 			
-			$usedCaptions = array();
-			$usedAnimations = array();
-			$usedImages = array();
-			$usedVideos = array();
+			//either the function uses die() or all is cool
+			$usepcl = true;
+		}
+		
+		//add images to zip
+		if(!empty($usedImages)){
+			$upload_dir = RevSliderFunctionsWP::getPathUploads();
+			$upload_dir_multisiteless = wp_upload_dir();
+			$cont_url = $upload_dir_multisiteless['baseurl'];
+			$cont_url_no_www = str_replace('www.', '', $upload_dir_multisiteless['baseurl']);
+			$upload_dir_multisiteless = $upload_dir_multisiteless['basedir'].'/';
 			
-			$cfw = array();
-			if(!empty($arrSlides) && count($arrSlides) > 0) $cfw = array_merge($cfw, $arrSlides);
-			if(!empty($arrStaticSlide) && count($arrStaticSlide) > 0) $cfw = array_merge($cfw, $arrStaticSlide);
-
-			if(!empty($cfw) && count($cfw) > 0){
-				foreach($cfw as $key => $slide){
-					if(isset($slide['params']['image']) && $slide['params']['image'] != '') $usedImages[$slide['params']['image']] = true; //['params']['image'] background url
-					if(isset($slide['params']['background_image']) && $slide['params']['background_image'] != '') $usedImages[$slide['params']['background_image']] = true; //['params']['image'] background url
-					if(isset($slide['params']['slide_thumb']) && $slide['params']['slide_thumb'] != '') $usedImages[$slide['params']['slide_thumb']] = true; //['params']['image'] background url
+			foreach($usedImages as $file => $val){
+				if($useDummy == "true"){ //only use dummy images
 					
-					//html5 video
-					if(isset($slide['params']['background_type']) && $slide['params']['background_type'] == 'html5'){
-						if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $usedVideos[$slide['params']['slide_bg_html_mpeg']] = true;
-						if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $usedVideos[$slide['params']['slide_bg_html_webm']] = true;
-						if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $usedVideos[$slide['params']['slide_bg_html_ogv']] = true;
-					}else{
-						if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $slide['params']['slide_bg_html_mpeg'] = '';
-						if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $slide['params']['slide_bg_html_webm'] = '';
-						if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $slide['params']['slide_bg_html_ogv'] = '';
-					}
-					
-					//image thumbnail
-					if(isset($slide['layers']) && !empty($slide['layers']) && count($slide['layers']) > 0){
-						foreach($slide['layers'] as $lKey => $layer){
-							if(isset($layer['style']) && $layer['style'] != '') $usedCaptions[$layer['style']] = true;
-							if(isset($layer['animation']) && $layer['animation'] != '' && strpos($layer['animation'], 'customin') !== false) $usedAnimations[str_replace('customin-', '', $layer['animation'])] = true;
-							if(isset($layer['endanimation']) && $layer['endanimation'] != '' && strpos($layer['endanimation'], 'customout') !== false) $usedAnimations[str_replace('customout-', '', $layer['endanimation'])] = true;
-							if(isset($layer['image_url']) && $layer['image_url'] != '') $usedImages[$layer['image_url']] = true; //image_url if image caption
-							
-							if(isset($layer['type']) && $layer['type'] == 'video'){
-								
-								$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
-								
-								if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
-
-									if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != '') $usedImages[$video_data['urlPoster']] = true;
-									
-									if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != '') $usedVideos[$video_data['urlMp4']] = true;
-									if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != '') $usedVideos[$video_data['urlWebm']] = true;
-									if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != '') $usedVideos[$video_data['urlOgv']] = true;
-									
-								}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
-									if(isset($video_data['previewimage']) && $video_data['previewimage'] != '') $usedImages[$video_data['previewimage']] = true;
-								}
-							}
-							
-						}
-					}
-				}
-			}
-			
-			/*if(!empty($arrStaticSlide) && count($arrStaticSlide) > 0){
-				foreach($arrStaticSlide as $key => $slide){
-					if(isset($slide['params']['image']) && $slide['params']['image'] != '') $usedImages[$slide['params']['image']] = true; //['params']['image'] background url
-					
-					//html5 video
-					if(isset($slide['params']['background_type']) && $slide['params']['background_type'] == 'html5'){
-						if(isset($slide['params']['slide_bg_html_mpeg']) && $slide['params']['slide_bg_html_mpeg'] != '') $usedVideos[$slide['params']['slide_bg_html_mpeg']] = true;
-						if(isset($slide['params']['slide_bg_html_webm']) && $slide['params']['slide_bg_html_webm'] != '') $usedVideos[$slide['params']['slide_bg_html_webm']] = true;
-						if(isset($slide['params']['slide_bg_html_ogv']) && $slide['params']['slide_bg_html_ogv'] != '') $usedVideos[$slide['params']['slide_bg_html_ogv']] = true;
-					}
-					
-					if(isset($slide['layers']) && !empty($slide['layers']) && count($slide['layers']) > 0){
-						foreach($slide['layers'] as $lKey => $layer){
-							if(isset($layer['style']) && $layer['style'] != '') $usedCaptions[$layer['style']] = true;
-							if(isset($layer['animation']) && $layer['animation'] != '' && strpos($layer['animation'], 'customin') !== false) $usedAnimations[str_replace('customin-', '', $layer['animation'])] = true;
-							if(isset($layer['endanimation']) && $layer['endanimation'] != '' && strpos($layer['endanimation'], 'customout') !== false) $usedAnimations[str_replace('customout-', '', $layer['endanimation'])] = true;
-							if(isset($layer['image_url']) && $layer['image_url'] != '') $usedImages[$layer['image_url']] = true; //image_url if image caption
-							
-							if(isset($layer['type']) && $layer['type'] == 'video'){
-								
-								$video_data = (isset($layer['video_data'])) ? (array) $layer['video_data'] : array();
-								
-								if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
-
-									if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != '') $usedImages[$video_data['urlPoster']] = true;
-									
-									if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != '') $usedVideos[$video_data['urlMp4']] = true;
-									if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != '') $usedVideos[$video_data['urlWebm']] = true;
-									if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != '') $usedVideos[$video_data['urlOgv']] = true;
-									
-								}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
-									if(isset($video_data['previewimage']) && $video_data['previewimage'] != '') $usedImages[$video_data['previewimage']] = true;
-								}
-							}
-						}
-					}
-				}
-			}*/
-			
-			$arrSliderExport = array("params"=>$sliderParams,"slides"=>$arrSlides);
-			if(!empty($arrStaticSlide))
-				$arrSliderExport['static_slides'] = $arrStaticSlide;
-			
-			$strExport = serialize($arrSliderExport);
-			
-			//$strExportAnim = serialize(RevSliderOperations::getFullCustomAnimations());
-			
-			$exportname =(!empty($this->alias)) ? $this->alias.'.zip' : "slider_export.zip";
-			
-			
-			
-			$styles = '';
-			if(!empty($usedCaptions)){
-				$captions = array();
-				foreach($usedCaptions as $class => $val){
-					$cap = RevSliderOperations::getCaptionsContentArray($class);
-					//set also advanced styles here...
-					if(!empty($cap))
-						$captions[] = $cap;
-				}
-				$styles = RevSliderCssParser::parseArrayToCss($captions, "\n", true);
-			}
-			
-			$animations = '';
-			if(!empty($usedAnimations)){
-				$animation = array();
-				foreach($usedAnimations as $anim => $val){
-					$anima = RevSliderOperations::getFullCustomAnimationByID($anim);
-					if($anima !== false) $animation[] = RevSliderOperations::getFullCustomAnimationByID($anim);
-					
-				}
-				if(!empty($animation)) $animations = serialize($animation);
-			}
-			
-			$usedImages = array_merge($usedImages, $usedVideos);
-			//add images to zip
-			if(!empty($usedImages)){
-				$upload_dir = RevSliderFunctionsWP::getPathUploads();
-				$upload_dir_multisiteless = wp_upload_dir();
-				$cont_url = $upload_dir_multisiteless['baseurl'];
-				$cont_url_no_www = str_replace('www.', '', $upload_dir_multisiteless['baseurl']);
-				$upload_dir_multisiteless = $upload_dir_multisiteless['basedir'].'/';
-				
-				
-				foreach($usedImages as $file => $val){
-					if($useDummy == "true"){ //only use dummy images
+				}else{ //use the real images
+					if(strpos($file, 'http') !== false){
+						$remove = false;
+						$checkpath = str_replace(array($cont_url, $cont_url_no_www), '', $file);
 						
-					}else{ //use the real images
-						if(strpos($file, 'http') !== false){
-							$remove = false;
-							$checkpath = str_replace(array($cont_url, $cont_url_no_www), '', $file);
-							
-							if(is_file($upload_dir.$checkpath)){
+						if(is_file($upload_dir.$checkpath)){
+							if(!$usepcl){
 								$zip->addFile($upload_dir.$checkpath, 'images/'.$checkpath);
-								$remove = true;
-							}elseif(is_file($upload_dir_multisiteless.$checkpath)){
+							}else{
+								$v_list = $pclzip->add($upload_dir.$checkpath, PCLZIP_OPT_REMOVE_PATH, $upload_dir, PCLZIP_OPT_ADD_PATH, 'images/');
+							}
+							$remove = true;
+						}elseif(is_file($upload_dir_multisiteless.$checkpath)){
+							if(!$usepcl){
 								$zip->addFile($upload_dir_multisiteless.$checkpath, 'images/'.$checkpath);
-								$remove = true;
+							}else{
+								$v_list = $pclzip->add($upload_dir_multisiteless.$checkpath, PCLZIP_OPT_REMOVE_PATH, $upload_dir_multisiteless, PCLZIP_OPT_ADD_PATH, 'images/');
 							}
-							
-							if($remove){ //as its http, remove this from strexport
-								$strExport = str_replace(array($cont_url.$checkpath, $cont_url_no_www.$checkpath), $checkpath, $strExport);
-							}
-						}else{
-							if(is_file($upload_dir.$file)){
+							$remove = true;
+						}
+						
+						if($remove){ //as its http, remove this from strexport
+							$strExport = str_replace(array($cont_url.$checkpath, $cont_url_no_www.$checkpath), $checkpath, $strExport);
+						}
+					}else{
+						if(is_file($upload_dir.$file)){
+							if(!$usepcl){
 								$zip->addFile($upload_dir.$file, 'images/'.$file);
-							}elseif(is_file($upload_dir_multisiteless.$file)){
+							}else{
+								$v_list = $pclzip->add($upload_dir.$file, PCLZIP_OPT_REMOVE_PATH, $upload_dir, PCLZIP_OPT_ADD_PATH, 'images/');
+							}
+						}elseif(is_file($upload_dir_multisiteless.$file)){
+							if(!$usepcl){
 								$zip->addFile($upload_dir_multisiteless.$file, 'images/'.$file);
+							}else{
+								$v_list = $pclzip->add($upload_dir_multisiteless.$file, PCLZIP_OPT_REMOVE_PATH, $upload_dir_multisiteless, PCLZIP_OPT_ADD_PATH, 'images/');
 							}
 						}
 					}
 				}
 			}
-			
+		}
+		
+		if(!$usepcl){
 			$zip->addFromString("slider_export.txt", $strExport); //add slider settings
-			if(strlen(trim($animations)) > 0) $zip->addFromString("custom_animations.txt", $animations); //add custom animations
-			if(strlen(trim($styles)) > 0) $zip->addFromString("dynamic-captions.css", $styles); //add dynamic styles
+		}else{
+			$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'slider_export.txt',PCLZIP_ATT_FILE_CONTENT => $strExport)));
+			if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
 			
-			$static_css = RevSliderOperations::getStaticCss();
-			$zip->addFromString("static-captions.css", $static_css); //add slider settings
-			
-			$enable_slider_pack = apply_filters('revslider_slider_pack_export', false);
-			if($enable_slider_pack){ //allow for slider packs the automatic creation of the info.cfg
-				$zip->addFromString('info.cfg', md5($this->alias)); //add slider settings
+		}
+		if(strlen(trim($animations)) > 0){
+			if(!$usepcl){
+				$zip->addFromString("custom_animations.txt", $animations); //add custom animations
+			}else{
+				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'custom_animations.txt',PCLZIP_ATT_FILE_CONTENT => $animations)));
+				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
 			}
-			
+		}
+		if(strlen(trim($styles)) > 0){
+			if(!$usepcl){
+				$zip->addFromString("dynamic-captions.css", $styles); //add dynamic styles
+			}else{
+				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'dynamic-captions.css',PCLZIP_ATT_FILE_CONTENT => $styles)));
+				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
+			}
+		}
+		
+		$static_css = RevSliderOperations::getStaticCss();
+		if(trim($static_css) !== ''){
+			if(!$usepcl){
+				$zip->addFromString("static-captions.css", $static_css); //add slider settings
+			}else{
+				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'static-captions.css',PCLZIP_ATT_FILE_CONTENT => $static_css)));
+				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
+			}
+		}
+		$enable_slider_pack = apply_filters('revslider_slider_pack_export', false);
+		
+		if($enable_slider_pack){ //allow for slider packs the automatic creation of the info.cfg
+			if(!$usepcl){
+				$zip->addFromString('info.cfg', md5($this->alias)); //add slider settings
+			}else{
+				$list = $pclzip->add(array(array( PCLZIP_ATT_FILE_NAME => 'info.cfg',PCLZIP_ATT_FILE_CONTENT => md5($this->alias))));
+				if ($list == 0) { die("ERROR : '".$pclzip->errorInfo(true)."'"); }
+			}
+		}
+		
+		if(!$usepcl){
 			$zip->close();
-			
-			header("Content-type: application/zip");
-			header("Content-Disposition: attachment; filename=".$exportname);
-			header("Pragma: no-cache");
-			header("Expires: 0");
-			readfile(RevSliderGlobals::$uploadsUrlExportZip);
-			
-			@unlink(RevSliderGlobals::$uploadsUrlExportZip); //delete file after sending it to user
-		}else{ //fallback, do old export
+		}else{
+			//do nothing
+		}
+		
+		
+		header("Content-type: application/zip");
+		header("Content-Disposition: attachment; filename=".$exportname);
+		header("Pragma: no-cache");
+		header("Expires: 0");
+		readfile(RevSliderGlobals::$uploadsUrlExportZip);
+		
+		@unlink(RevSliderGlobals::$uploadsUrlExportZip); //delete file after sending it to user
+		
+		exit();
+		
+		/*else{ //fallback, do old export
 			$this->validateInited();
 		
 			$sliderParams = $this->getParamsForExport();
@@ -870,9 +948,10 @@ class RevSliderSlider extends RevSliderElementsBase{
 				$filename = $this->alias.".txt";
 			else
 				$filename = "slider_export.txt";
-			
+			 
 			RevSliderFunctions::downloadFile($strExport,$filename);
-		}
+		}*/
+		
 	}
 	
 	
@@ -909,42 +988,30 @@ class RevSliderSlider extends RevSliderElementsBase{
 			}
 			
 			if(file_exists($filepath) == false)
-				RevSliderFunctions::throwError("Import file not found!!!");
+				RevSliderFunctions::throwError(__('Import file not found!!!', REVSLIDER_TEXTDOMAIN));
 			
-			//check if zip file or fallback to old, if zip, check if all files exist
-			if(!class_exists("ZipArchive")){
-				$importZip = false;
-			}else{
-				$zip = new ZipArchive;
-				$importZip = $zip->open($filepath, ZIPARCHIVE::CREATE);
+			$importZip = false;
+			
+			WP_Filesystem();
+			
+			global $wp_filesystem;
+			
+			$upload_dir = wp_upload_dir();
+			$d_path = $upload_dir['basedir'].'/rstemp/';
+			$unzipfile = unzip_file( $filepath, $d_path);
+			if ( $unzipfile ) {
+				$importZip = true; //raus damit..
 				
-				// Added by ThemeFuzz ( Stefan )
-				if ( $importZip === 0 || !$zip->getStream('slider_export.txt') ) {
-					if(!$zip->getStream('slider_export.txt')){
-						$upload_dir = wp_upload_dir();
-						$new_path =  $upload_dir['basedir'].'/'.$_FILES['import_file']['name'];
-						move_uploaded_file( $_FILES["import_file"]["tmp_name"], $new_path);
-						$importZip = $zip->open( $new_path, ZIPARCHIVE::CREATE);
-					}
+				//read all files needed
+				$content = ( $wp_filesystem->exists( $d_path.'slider_export.txt' ) ) ? $wp_filesystem->get_contents( $d_path.'slider_export.txt' ) : '';
+				if($content == ''){
+					RevSliderFunctions::throwError(__('slider_export.txt does not exist!', REVSLIDER_TEXTDOMAIN));
 				}
+				$animations = ( $wp_filesystem->exists( $d_path.'custom_animations.txt' ) ) ? $wp_filesystem->get_contents( $d_path.'custom_animations.txt' ) : '';
+				$dynamic = ( $wp_filesystem->exists( $d_path.'dynamic-captions.css' ) ) ? $wp_filesystem->get_contents( $d_path.'dynamic-captions.css' ) : '';
+				$static = ( $wp_filesystem->exists( $d_path.'static-captions.css' ) ) ? $wp_filesystem->get_contents( $d_path.'static-captions.css' ) : '';
 				
-			}
-			
-			if($is_template !== false && $importZip !== true){
-				return(array("success"=>false,"error"=>__('Please select the correct zip file', REVSLIDER_TEXTDOMAIN)));
-			}
-			
-			if($importZip === true){ //true or integer. If integer, its not a correct zip file
-				
-				//check if files all exist in zip
-				$slider_export = $zip->getStream('slider_export.txt');
-				$custom_animations = $zip->getStream('custom_animations.txt');
-				$dynamic_captions = $zip->getStream('dynamic-captions.css');
-				$static_captions = $zip->getStream('static-captions.css');
-				
-				$uid_file = $zip->getStream('info.cfg');
-				$uid_check = '';
-				if($uid_file){ while (!feof($uid_file)) $uid_check .= fread($uid_file, 1024); }
+				$uid_check = ( $wp_filesystem->exists( $d_path.'info.cfg' ) ) ? $wp_filesystem->get_contents( $d_path.'info.cfg' ) : '';
 				
 				if($is_template !== false){
 					if($uid_check != $is_template){
@@ -966,32 +1033,6 @@ class RevSliderSlider extends RevSliderElementsBase{
 					}
 				}
 				
-				
-				if(!$slider_export)  RevSliderFunctions::throwError("slider_export.txt does not exist!");
-				
-				$content = '';
-				$animations = '';
-				$dynamic = '';
-				$static = '';
-				
-				while (!feof($slider_export)) $content .= fread($slider_export, 1024);
-				if($custom_animations){ while (!feof($custom_animations)) $animations .= fread($custom_animations, 1024); }
-				if($dynamic_captions){ while (!feof($dynamic_captions)) $dynamic .= fread($dynamic_captions, 1024); }
-				if($static_captions){ while (!feof($static_captions)) $static .= fread($static_captions, 1024); }
-
-				fclose($slider_export);
-				if($custom_animations){ fclose($custom_animations); }
-				if($dynamic_captions){ fclose($dynamic_captions); }
-				if($static_captions){ fclose($static_captions); }
-				
-				//check for images!
-				
-			}else{ //check if fallback
-				//get content array
-				$content = @file_get_contents($filepath);
-			}
-			
-			if($importZip === true){ //we have a zip
 				$db = new RevSliderDB();
 				
 				//update/insert custom animations
@@ -1041,6 +1082,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 						RevSliderOperations::updateStaticCss($static);
 					}
 				}
+				
 				//overwrite/create dynamic-captions.css
 				//parse css to classes
 				$dynamicCss = RevSliderCssParser::parseCssToArray($dynamic);
@@ -1090,19 +1132,32 @@ class RevSliderSlider extends RevSliderElementsBase{
 				}else{
 					dmp(__("no dynamic styles found, if slider uses dynamic styles, the provided export may be broken...",REVSLIDER_TEXTDOMAIN));
 				}
+				
+			}else{
+				if($is_template !== false){
+					$wp_filesystem->delete($d_path, true);
+					
+					return(array("success"=>false,"error"=>__('Please select the correct zip file', REVSLIDER_TEXTDOMAIN)));
+					RevSliderFunctions::throwError(__('unzipping failed', REVSLIDER_TEXTDOMAIN));
+				}
+				
+				//get content array, we assume it is only the old slider_export.txt file
+				$content = ( $wp_filesystem->exists( $filepath ) ) ? $wp_filesystem->get_contents( $filepath ) : '';
 			}
 			
 			//$content = preg_replace('!s:(\d+):"(.*?)";!e', "'s:'.strlen('$2').':\"$2\";'", $content); //clear errors in string //deprecated in newest php version
-			$content = preg_replace_callback('!s:(\d+):"(.*?)";!', array('RevSlider', 'clear_error_in_string') , $content); //clear errors in string
+			$content = preg_replace_callback('!s:(\d+):"(.*?)";!', array('RevSliderSlider', 'clear_error_in_string') , $content); //clear errors in string
 			
 			$arrSlider = @unserialize($content);
-			if(empty($arrSlider))
-				RevSliderFunctions::throwError("Wrong export slider file format! This could be caused because the ZipArchive extension is not enabled.");
+			if(empty($arrSlider)){
+				RevSliderFunctions::throwError(__('Wrong export slider file format! Please make sure that the uploaded file is either a zip file with a correct slider_export.txt in the root of it or an valid slider_export.txt file.', REVSLIDER_TEXTDOMAIN));
+				$wp_filesystem->delete($d_path, true);
+			}
 			
 			//update slider params
 			$sliderParams = $arrSlider["params"];
 			
-			if($sliderExists){					
+			if($sliderExists){
 				$sliderParams["title"] = $this->arrParams["title"];
 				$sliderParams["alias"] = $this->arrParams["alias"];
 				$sliderParams["shortcode"] = $this->arrParams["shortcode"];
@@ -1174,33 +1229,33 @@ class RevSliderSlider extends RevSliderElementsBase{
 				//convert params images:
 				if($importZip === true){ //we have a zip, check if exists
 					if(isset($params["image"])){
-						$params["image"] = RevSliderBase::check_file_in_zip($zip, $params["image"], $filepath, $sliderParams["alias"], $alreadyImported);
+						$params["image"] = RevSliderBase::check_file_in_zip($d_path, $params["image"], $sliderParams["alias"], $alreadyImported);
 						$params["image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["image"]);
 					}
 					
 					if(isset($params["background_image"])){
-						$params["background_image"] = RevSliderBase::check_file_in_zip($zip, $params["background_image"], $filepath, $sliderParams["alias"], $alreadyImported);
+						$params["background_image"] = RevSliderBase::check_file_in_zip($d_path, $params["background_image"], $sliderParams["alias"], $alreadyImported);
 						$params["background_image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["background_image"]);
 					}
 					
 					if(isset($params["slide_thumb"])){
-						$params["slide_thumb"] = RevSliderBase::check_file_in_zip($zip, $params["slide_thumb"], $filepath, $sliderParams["alias"], $alreadyImported);
+						$params["slide_thumb"] = RevSliderBase::check_file_in_zip($d_path, $params["slide_thumb"], $sliderParams["alias"], $alreadyImported);
 						$params["slide_thumb"] = RevSliderFunctionsWP::getImageUrlFromPath($params["slide_thumb"]);
 					}
 					
 					if(isset($params["show_alternate_image"])){
-						$params["show_alternate_image"] = RevSliderBase::check_file_in_zip($zip, $params["show_alternate_image"], $filepath, $sliderParams["alias"], $alreadyImported);
+						$params["show_alternate_image"] = RevSliderBase::check_file_in_zip($d_path, $params["show_alternate_image"], $sliderParams["alias"], $alreadyImported);
 						$params["show_alternate_image"] = RevSliderFunctionsWP::getImageUrlFromPath($params["show_alternate_image"]);
 					}
 					if(isset($params['background_type']) && $params['background_type'] == 'html5'){
 						if(isset($params['slide_bg_html_mpeg']) && $params['slide_bg_html_mpeg'] != ''){
-							$params['slide_bg_html_mpeg'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $params["slide_bg_html_mpeg"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+							$params['slide_bg_html_mpeg'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_mpeg"], $sliderParams["alias"], $alreadyImported, true));
 						}
 						if(isset($params['slide_bg_html_webm']) && $params['slide_bg_html_webm'] != ''){
-							$params['slide_bg_html_webm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $params["slide_bg_html_webm"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+							$params['slide_bg_html_webm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_webm"], $sliderParams["alias"], $alreadyImported, true));
 						}
 						if(isset($params['slide_bg_html_ogv'])  && $params['slide_bg_html_ogv'] != ''){
-							$params['slide_bg_html_ogv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $params["slide_bg_html_ogv"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+							$params['slide_bg_html_ogv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $params["slide_bg_html_ogv"], $sliderParams["alias"], $alreadyImported, true));
 						}
 					}
 				}
@@ -1210,7 +1265,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 					//import if exists in zip folder
 					if($importZip === true){ //we have a zip, check if exists
 						if(isset($layer["image_url"])){
-							$layer["image_url"] = RevSliderBase::check_file_in_zip($zip, $layer["image_url"], $filepath, $sliderParams["alias"], $alreadyImported);
+							$layer["image_url"] = RevSliderBase::check_file_in_zip($d_path, $layer["image_url"], $sliderParams["alias"], $alreadyImported);
 							$layer["image_url"] = RevSliderFunctionsWP::getImageUrlFromPath($layer["image_url"]);
 						}
 						if(isset($layer['type']) && $layer['type'] == 'video'){
@@ -1220,22 +1275,22 @@ class RevSliderSlider extends RevSliderElementsBase{
 							if(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] == 'html5'){
 
 								if(isset($video_data['urlPoster']) && $video_data['urlPoster'] != ''){
-									$video_data['urlPoster'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $video_data["urlPoster"], $filepath, $sliderParams["alias"], $alreadyImported));
+									$video_data['urlPoster'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlPoster"], $sliderParams["alias"], $alreadyImported));
 								}
 								
 								if(isset($video_data['urlMp4']) && $video_data['urlMp4'] != ''){
-									$video_data['urlMp4'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $video_data["urlMp4"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+									$video_data['urlMp4'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlMp4"], $sliderParams["alias"], $alreadyImported, true));
 								}
 								if(isset($video_data['urlWebm']) && $video_data['urlWebm'] != ''){
-									$video_data['urlWebm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $video_data["urlWebm"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+									$video_data['urlWebm'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlWebm"], $sliderParams["alias"], $alreadyImported, true));
 								}
 								if(isset($video_data['urlOgv']) && $video_data['urlOgv'] != ''){
-									$video_data['urlOgv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $video_data["urlOgv"], $filepath, $sliderParams["alias"], $alreadyImported, true));
+									$video_data['urlOgv'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["urlOgv"], $sliderParams["alias"], $alreadyImported, true));
 								}
 								
 							}elseif(!empty($video_data) && isset($video_data['video_type']) && $video_data['video_type'] != 'html5'){ //video cover image
 								if(isset($video_data['previewimage']) && $video_data['previewimage'] != ''){
-									$video_data['previewimage'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($zip, $video_data["previewimage"], $filepath, $sliderParams["alias"], $alreadyImported));
+									$video_data['previewimage'] = RevSliderFunctionsWP::getImageUrlFromPath(RevSliderBase::check_file_in_zip($d_path, $video_data["previewimage"], $sliderParams["alias"], $alreadyImported));
 								}
 							}
 							
@@ -1385,21 +1440,20 @@ class RevSliderSlider extends RevSliderElementsBase{
 						}else{
 							if(trim($params["image"]) !== ''){
 								if($importZip === true){ //we have a zip, check if exists
-									$image = $zip->getStream('images/'.$params["image"]);
+									$image = $wp_filesystem->exists( $d_path.'images/'.$params["image"] );
 									if(!$image){
 										echo $params["image"].__(' not found!<br>', REVSLIDER_TEXTDOMAIN);
-
 									}else{
-										if(!isset($alreadyImported['zip://'.$filepath."#".'images/'.$params["image"]])){
-											$importImage = RevSliderFunctionsWP::import_media('zip://'.$filepath."#".'images/'.$params["image"], $sliderParams["alias"].'/');
+										if(!isset($alreadyImported['images/'.$params["image"]])){
+											$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$params["image"], $sliderParams["alias"].'/');
 
 											if($importImage !== false){
-												$alreadyImported['zip://'.$filepath."#".'images/'.$params["image"]] = $importImage['path'];
+												$alreadyImported['images/'.$params["image"]] = $importImage['path'];
 												
 												$params["image"] = $importImage['path'];
 											}
 										}else{
-											$params["image"] = $alreadyImported['zip://'.$filepath."#".'images/'.$params["image"]];
+											$params["image"] = $alreadyImported['images/'.$params["image"]];
 										}
 
 
@@ -1418,20 +1472,20 @@ class RevSliderSlider extends RevSliderElementsBase{
 								if(strpos($layer["image_url"], 'http') !== false){
 								}else{
 									if($importZip === true){ //we have a zip, check if exists
-										$image_url = $zip->getStream('images/'.$layer["image_url"]);
+										$image_url = $wp_filesystem->exists( $d_path.'images/'.$layer["image_url"] );
 										if(!$image_url){
 											echo $layer["image_url"].__(' not found!<br>');
 										}else{
-											if(!isset($alreadyImported['zip://'.$filepath."#".'images/'.$layer["image_url"]])){
-												$importImage = RevSliderFunctionsWP::import_media('zip://'.$filepath."#".'images/'.$layer["image_url"], $sliderParams["alias"].'/');
+											if(!isset($alreadyImported['images/'.$layer["image_url"]])){
+												$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$layer["image_url"], $sliderParams["alias"].'/');
 												
 												if($importImage !== false){
-													$alreadyImported['zip://'.$filepath."#".'images/'.$layer["image_url"]] = $importImage['path'];
+													$alreadyImported['images/'.$layer["image_url"]] = $importImage['path'];
 													
 													$layer["image_url"] = $importImage['path'];
 												}
 											}else{
-												$layer["image_url"] = $alreadyImported['zip://'.$filepath."#".'images/'.$layer["image_url"]];
+												$layer["image_url"] = $alreadyImported['images/'.$layer["image_url"]];
 											}
 										}
 									}
@@ -1539,7 +1593,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 			
 			if(strpos($cus_js, 'revapi') !== false){
 				if(preg_match_all('/revapi[0-9]*/', $cus_js, $results)){
-
+					
 					if(isset($results[0]) && !empty($results[0])){
 						foreach($results[0] as $replace){
 							$cus_js = str_replace($replace, 'revapi'.$sliderID, $cus_js);
@@ -1587,9 +1641,15 @@ class RevSliderSlider extends RevSliderElementsBase{
 				}
 			}
 			
+			$wp_filesystem->delete($d_path, true);
+			
 			
 		}catch(Exception $e){
 			$errorMessage = $e->getMessage();
+			
+			if(isset($d_path)){
+				$wp_filesystem->delete($d_path, true);
+			}
 			return(array("success"=>false,"error"=>$errorMessage,"sliderID"=>$sliderID));
 		}
 		
@@ -1864,6 +1924,37 @@ class RevSliderSlider extends RevSliderElementsBase{
 	
 	
 	/**
+	 * get all used fonts in the current Slider
+	 * @since: 5.1.0
+	 */
+	public function getUsedFonts($full = false){
+		$this->validateInited();
+		$gf = array();
+		
+		$mslides = $this->getSlides(true);
+		if(!empty($mslides)){
+			foreach($mslides as $ms){
+				$mf = $ms->getUsedFonts($full);
+				if(!empty($mf)){
+					foreach($mf as $mfk => $mfv){
+						if(!isset($gf[$mfk])){
+							$gf[$mfk] = $mfv;
+						}else{
+							foreach($mfv['variants'] as $mfvk => $mfvv){
+								$gf[$mfk]['variants'][$mfvk] = true;
+							}
+						}
+						$gf[$mfk]['slide'][] = array('id' => $ms->getID(), 'title' => $ms->getTitle());
+					}
+				}
+			}
+		}
+		
+		return $gf;
+	}
+	
+	
+	/**
 	 * get slides from gallery
 	 * force from gallery - get the slide from the gallery only
 	 */
@@ -1872,6 +1963,48 @@ class RevSliderSlider extends RevSliderElementsBase{
 		$arrSlides = $this->getSlidesFromGallery($publishedOnly);
 		
 		return($arrSlides);
+	}
+	
+	
+	/**
+	 * get slides from gallery respecting wpml
+	 * force from gallery - get the slide from the gallery only
+	 */
+	public function getSlidesWPML($publishedOnly = false, $slide){
+		
+		$arrSlides = $this->getSlides($publishedOnly);
+		
+		$mslide_list = array();
+		
+		//check if WPML is active and change the ID of Slide depending on that.
+		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){
+			$lang = $slide->getParam('lang', 'all');
+			
+			if(!empty($arrSlides)){
+				foreach($arrSlides as $at_slide){
+					$langs = $at_slide->getArrChildrenLangs();
+					
+					if(!empty($langs) && is_array($langs)){
+						foreach($langs as $l){
+							if($l['lang'] == $lang){
+								$mslide_list[] = array('id' => $l['slideid'], 'title' => $at_slide->getParam('title', 'Slide'));
+							}
+						}
+					}
+				}
+			}
+			//get cur lang of slide
+		}else{
+			if(!empty($arrSlides)){
+				foreach($arrSlides as $at_slide){
+					$mslID = $at_slide->getID();
+					
+					$mslide_list[] = array('id' => $mslID, 'title' => $at_slide->getParam('title', 'Slide'));
+				}
+			}
+		}
+		
+		return($mslide_list);
 	}
 	
 	
@@ -1892,6 +2025,9 @@ class RevSliderSlider extends RevSliderElementsBase{
 			break;
 			case "specific_posts":
 				$arrPosts = $this->getPostsFromSpecificList();
+			break;
+			case 'woocommerce':
+				$arrPosts = $this->getProductsFromCategories($publishedOnly);
 			break;
 			default:
 				RevSliderFunctions::throwError("getSlidesFromPosts error: This source type must be from posts.");
@@ -1952,6 +2088,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 					$additions['fb_type'] = 'timeline'; //SET TEMPORARY TO TIMELINE ALWAYS $this->getParam('facebook-type-source','timeline');
 					$additions['fb_user_id'] = $user_id;
 				//}
+				
 				if(!empty($arrPosts)){
 					foreach($arrPosts as $k => $p){
 						if(!isset($p->status_type)) continue;
@@ -2168,10 +2305,14 @@ class RevSliderSlider extends RevSliderElementsBase{
 		$isSlidesFromStream = $this->isSlidesFromStream();
 		
 		
-		if(RevSliderWpml::isWpmlExists()){
+		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){
 			global $sitepress;
 			$cur_lang = ICL_LANGUAGE_CODE;
 			$sitepress->switch_lang($lang);
+			/* NEW: 
+			$wpml_current_language = apply_filters( 'wpml_current_language', null );
+			do_action( 'wpml_switch_language', $lang );
+			*/
 		}
 		
 		if($isSlidesFromPosts){
@@ -2182,9 +2323,12 @@ class RevSliderSlider extends RevSliderElementsBase{
 			$arrParentSlides = $this->getSlides($publishedOnly);
 		}
 		
-		if(RevSliderWpml::isWpmlExists()){ //switch language back
+		if(RevSliderWpml::isWpmlExists() && $this->getParam('use_wpml', 'off') == 'on'){ //switch language back
 			global $sitepress;
 			$sitepress->switch_lang($cur_lang);
+			
+			
+			// NEW: do_action( 'wpml_switch_language', $wpml_current_language );
 		}
 		
 		if($lang == 'all' || $isSlidesFromPosts || $isSlidesFromStream)
@@ -2594,7 +2738,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 	public function isSlidesFromPosts(){
 		$this->validateInited();
 		$sourceType = $this->getParam("source_type","gallery");
-		if($sourceType == "posts" || $sourceType == "specific_posts")
+		if($sourceType == "posts" || $sourceType == "specific_posts" || $sourceType == "woocommerce")
 			return(true);
 		
 		return(false);
@@ -2607,7 +2751,7 @@ class RevSliderSlider extends RevSliderElementsBase{
 	public function isSlidesFromStream(){
 		$this->validateInited();
 		$sourceType = $this->getParam("source_type","gallery");
-		if($sourceType != "posts" && $sourceType != "specific_posts" && $sourceType != "gallery")
+		if($sourceType != "posts" && $sourceType != "specific_posts" && $sourceType != "woocommerce" && $sourceType != "gallery")
 			return($sourceType);
 		
 		return(false);
@@ -2655,6 +2799,46 @@ class RevSliderSlider extends RevSliderElementsBase{
 		
 		return($arrPosts);
 	}  
+	
+	
+	/**
+	 * get products from categories (by the slider params).
+	 * @since: 5.1.0
+	 */
+	private function getProductsFromCategories($publishedOnly = false){
+		$this->validateInited();
+		
+		$catIDs = $this->getParam("product_category");
+		$data = RevSliderFunctionsWP::getCatAndTaxData($catIDs);
+		
+		$taxonomies = $data["tax"];
+		$catIDs = $data["cats"];
+		
+		$sortBy = $this->getParam("product_sortby",self::DEFAULT_POST_SORTBY);
+		$sortDir = $this->getParam("product_sort_direction",self::DEFAULT_POST_SORTDIR);
+		$maxPosts = $this->getParam("max_slider_products","30");
+		if(empty($maxPosts) || !is_numeric($maxPosts))
+			$maxPosts = -1;
+		
+		$postTypes = $this->getParam("product_types","any");
+			
+		//set direction for custom order
+		if($sortBy == RevSliderFunctionsWP::SORTBY_MENU_ORDER)
+			$sortDir = RevSliderFunctionsWP::ORDER_DIRECTION_ASC;
+		
+		//Events integration
+		$arrAddition = array();
+		if($publishedOnly == true)			
+			$arrAddition["post_status"] = RevSliderFunctionsWP::STATE_PUBLISHED;
+		
+		
+		$arrAddition = array_merge($arrAddition, RevSliderWooCommerce::getMetaQuery($this->getParams()));
+		
+		$slider_id = $this->getID();
+		$arrPosts = RevSliderFunctionsWP::getPostsByCategory($slider_id, $catIDs,$sortBy,$sortDir,$maxPosts,$postTypes,$taxonomies,$arrAddition);
+		
+		return($arrPosts);
+	}
 	
 	
 	/**

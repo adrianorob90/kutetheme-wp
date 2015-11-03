@@ -11,7 +11,7 @@ define("REVSLIDER_TEXTDOMAIN","revslider");
 
 class RevSliderGlobals{
 
-	const SLIDER_REVISION = '5.0.9';
+	const SLIDER_REVISION = '5.1';
 	const TABLE_SLIDERS_NAME = "revslider_sliders";
 	const TABLE_SLIDES_NAME = "revslider_slides";
 	const TABLE_STATIC_SLIDES_NAME = "revslider_static_slides";
@@ -41,10 +41,8 @@ class RevSliderGlobals{
 	public static $filepath_backup;
 	public static $filepath_captions;
 	public static $filepath_dynamic_captions;
-	public static $filepath_static_captions;
 	public static $filepath_captions_original;
 	public static $urlCaptionsCSS;
-	public static $urlStaticCaptionsCSS;
 	public static $uploadsUrlExportZip;
 	public static $isNewVersion;
 

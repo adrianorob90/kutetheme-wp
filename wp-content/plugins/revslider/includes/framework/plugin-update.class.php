@@ -232,8 +232,12 @@ class RevSliderPluginUpdate {
 			$idle = json_decode($attr['params'], true);
 			$hover = json_decode($attr['hover'], true);
 			
+			//check if in styles, there is type, then change the type text to something else
+			$the_type = 'text';
+			
 			if(!empty($idle)){
 				foreach($idle as $style => $value){
+					if($style == 'type') $the_type = $value;
 					if(!isset($cs[$style])){
 						$adv['idle'][$style] = $value;
 						unset($idle[$style]);
@@ -251,7 +255,9 @@ class RevSliderPluginUpdate {
 			}
 			
 			$settings['translated'] = 5.0; //set the style version to 5.0
-			$settings['type'] = 'text'; //set the type version to text, since 5.0 we also have buttons and shapes, so we need to differentiate from now on
+			$settings['type'] = $the_type; //set the type version to text, since 5.0 we also have buttons and shapes, so we need to differentiate from now on
+			
+			
 			
 			if(!isset($settings['version'])){
 				if(isset($default_classes[$styles[$key]['handle']])){

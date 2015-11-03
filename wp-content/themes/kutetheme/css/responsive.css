@@ -918,6 +918,7 @@
 	.product-featured .banner-featured{
 		display: none;
 	}
+    .box-tab-category .product-featured .product-featured-content .product-featured-list.has_attachment,
 	.product-featured .product-featured-content .product-featured-list{
 		margin-left: 0;
 	}

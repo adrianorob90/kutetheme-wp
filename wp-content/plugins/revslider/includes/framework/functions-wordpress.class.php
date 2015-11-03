@@ -431,6 +431,7 @@ class RevSliderFunctionsWP{
 		
 		$query = array(
 			'post_type'=>"any",
+			'ignore_sticky_posts' => 1,
 			'post__in' => $arr
 		);
 		
@@ -486,6 +487,7 @@ class RevSliderFunctionsWP{
 		
 		$query = array(
 			'order'=>$direction,
+			'ignore_sticky_posts' => 1,
 			'posts_per_page'=>$numPosts,
 			'showposts'=>$numPosts,
 			'post_type'=>$postTypes

@@ -144,8 +144,7 @@ if(isset($_REQUEST['update_shop'])){
 
 	/* SHOW A WAIT FOR PROGRESS */
 	function showWaitAMinute(obj) {
-		var wm = jQuery('#waitaminute');
-
+		var wm = jQuery('#waitaminute');		
 		// SHOW AND HIDE WITH DELAY
 		if (obj.delay!=undefined) {
 
@@ -162,12 +161,12 @@ if(isset($_REQUEST['update_shop'])){
 		// SHOW IT
 		if (obj.fadeIn != undefined) {
 			punchgs.TweenLite.to(wm,obj.fadeIn/1000,{autoAlpha:1,ease:punchgs.Power3.easeInOut});
-			punchgs.TweenLite.set(wm,{display:"block"});
-			
+			punchgs.TweenLite.set(wm,{display:"block"});			
 		}
 
 		// HIDE IT
 		if (obj.fadeOut != undefined) {
+
 			punchgs.TweenLite.to(wm,obj.fadeOut/1000,{autoAlpha:0,ease:punchgs.Power3.easeInOut,onComplete:function() {
 					punchgs.TweenLite.set(wm,{display:"block"});	
 				}});  

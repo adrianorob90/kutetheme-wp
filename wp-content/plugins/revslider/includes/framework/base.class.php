@@ -487,23 +487,35 @@ class RevSliderBase {
 	 * check if file is in zip
 	 * @since: 5.0
 	 */
-	public static function check_file_in_zip($zip, $image, $filepath, $alias, &$alreadyImported, $add_path = false){
+	public static function check_file_in_zip($d_path, $image, $alias, &$alreadyImported, $add_path = false){
+		global $wp_filesystem;
+		
 		if(trim($image) !== ''){
 			if(strpos($image, 'http') !== false){
 			}else{
-				$zimage = $zip->getStream('images/'.$image);
+				$strip = false;
+				$zimage = $wp_filesystem->exists( $d_path.'images/'.$image );
+				if(!$zimage){
+					$zimage = $wp_filesystem->exists( str_replace('//', '/', $d_path.'images/'.$image) );
+					$strip = true;
+				}
+				
 				if(!$zimage){
 					echo $image.__(' not found!<br>', REVSLIDER_TEXTDOMAIN);
 				}else{
-					if(!isset($alreadyImported['zip://'.$filepath."#".'images/'.$image])){
-						$importImage = RevSliderFunctionsWP::import_media('zip://'.$filepath."#".'images/'.$image, $alias.'/');
+					if(!isset($alreadyImported['images/'.$image])){
+						if($strip == true){ //pclzip
+							$importImage = RevSliderFunctionsWP::import_media($d_path.str_replace('//', '/', 'images/'.$image), $alias.'/');
+						}else{
+							$importImage = RevSliderFunctionsWP::import_media($d_path.'images/'.$image, $alias.'/');
+						}
 						if($importImage !== false){
-							$alreadyImported['zip://'.$filepath."#".'images/'.$image] = $importImage['path'];
+							$alreadyImported['images/'.$image] = $importImage['path'];
 							
 							$image = $importImage['path'];
 						}
 					}else{
-						$image = $alreadyImported['zip://'.$filepath."#".'images/'.$image];
+						$image = $alreadyImported['images/'.$image];
 					}
 				}
 				if($add_path){

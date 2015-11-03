@@ -1,12 +1,10 @@
 /********************************************
  * REVOLUTION 5.0 EXTENSION - VIDEO FUNCTIONS
- * @version: 1.0.9 (21.09.2015)
+ * @version: 1.1.0 (01.10.2015)
  * @requires jquery.themepunch.revolution.js
  * @author ThemePunch
 *********************************************/
-
 (function($) {
-
 var _R = jQuery.fn.revolution,
 	_ISM = _R.is_mobile();
 
@@ -186,10 +184,11 @@ jQuery.extend(true,_R, {
 		var ifr = nextcaption.find('iframe, video'),
 			wa = asprat.split(':')[0],
 			ha = asprat.split(':')[1],
-			od = opt.width/opt.height,															
+			li = nextcaption.closest('.tp-revslider-slidesli'),
+			od = li.width()/li.height(),
 			vd = wa/ha,
 			nvh = (od/vd)*100,
-			nvw = (vd/od)*100;					
+			nvw = (vd/od)*100;			
 		if (od>vd) 																
 			punchgs.TweenLite.to(ifr,0.001,{height:nvh+"%", width:"100%", top:-(nvh-100)/2+"%",left:"0px",position:"absolute"});
 		else 

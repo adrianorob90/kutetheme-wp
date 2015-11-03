@@ -37,7 +37,7 @@ class RevSliderUpdate {
 	
 		$this->_check_updates();
 
-		if(!isset($transient->response)) {
+		if(isset($transient) && !isset($transient->response)) {
 			$transient->response = array();
 		}
 

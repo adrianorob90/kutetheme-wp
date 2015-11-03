@@ -44,7 +44,7 @@ if($slider->isSlidesFromPosts() == false){
 }else{	//slides from posts
 	
 	$sourceType = $slider->getParam('source_type', 'posts');
-	$showSortBy = ($sourceType == 'posts')? true : false;
+	$showSortBy = ($sourceType == 'posts' || $sourceType == 'woocommerce')? true : false;
 	
 	//get button links
 	$urlNewPost = RevSliderFunctionsWP::getUrlNewPost();

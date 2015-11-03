@@ -106,6 +106,11 @@ if($the_slidertype == 'hero'){
 
 				$c_isvisible = $t_slide->getParam('state', 'published');
 
+				$c_thumb_for_admin = $t_slide->getParam('thumb_for_admin', 'off');
+				$c_real_thumbURL = $t_slide->getParam('slide_thumb','');
+
+
+
 				$c_bgStyle = ' ';
 				if($c_bgFit == 'percentage'){
 					$c_bgStyle .= "background-size: ".$c_bgFitX.'% '.$c_bgFitY.'%;';
@@ -128,6 +133,9 @@ if($the_slidertype == 'hero'){
 					switch($slider_type){
 						case 'posts':
 							$c_urlImageForView = RS_PLUGIN_URL.'public/assets/assets/sources/post.png';
+						break;
+						case 'woocommerce':
+							$c_urlImageForView = RS_PLUGIN_URL.'public/assets/assets/sources/wc.png';
 						break;
 						case 'facebook':
 							$c_urlImageForView = RS_PLUGIN_URL.'public/assets/assets/sources/fb.png';
@@ -157,6 +165,9 @@ if($the_slidertype == 'hero'){
 					$c_bg_fullstyle =' style="background-color:'.$c_bgColor.';" ';
 				if ($c_bgType == 'trans')
 					$c_bg_extraClass = 'mini-transparent';
+
+				if ($c_thumb_for_admin=="on")
+					$c_bg_fullstyle =' style="background-image:url('.$c_real_thumbURL.');background-size:cover;background-position:center center" ';
 
 				/* END OF BG SETTINGS */
 				$slidecounter++;
@@ -349,6 +360,7 @@ if($the_slidertype == 'hero'){
 		// OPEN THE TEMPLATE LIST ON CLICK OF ADD SLIDE TEMPLATE
 		jQuery('#rs_copy_slide_from_slider').click(function() {
 			jQuery('#template_area').addClass("show");
+			scrollTA();
 			return true;
 		});
 

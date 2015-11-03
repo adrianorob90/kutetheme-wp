@@ -168,6 +168,9 @@ $stable_version = get_option('revslider-stable-version', '4.1');
 			
 		</div>
 		
+	<?php
+	}
+	?>
 		<div style="width:100%;height:50px"></div>
 		
 		<div class="title_line nobgnopd"><div class="view_title"><?php _e("Requirements & Recommendations",REVSLIDER_TEXTDOMAIN); ?></div></div>
@@ -180,14 +183,6 @@ $stable_version = get_option('revslider-stable-version', '4.1');
 				echo '<i class="revgreenicon eg-icon-ok-squared"></i>';
 			}else{
 				echo '<i class="revredicon eg-icon-info-circled"></i><span style="margin-left:15px">'. __('Please set the write permission (755) to your wp-content/uploads folders.', REVSLIDER_TEXTDOMAIN).'</span>';
-			}
-			?><br>
-			<span class="slideravailableversion"><?php _e('ZipArchive Extension:', REVSLIDER_TEXTDOMAIN); ?></span><?php
-			//check if ZipArchive exists
-			if(class_exists("ZipArchive")){
-				echo '<i class="revgreenicon eg-icon-ok-squared"></i>';
-			}else{
-				echo '<i class="revredicon eg-icon-info-circled"></i><span style="margin-left:15px">'. __('Please enable the ZipArchive extension for PHP on your server.', REVSLIDER_TEXTDOMAIN).'</span>';
 			}
 			?><br>
 			<span class="slideravailableversion"><?php _e('Contact ThemePunch Server:', REVSLIDER_TEXTDOMAIN); ?></span><?php
@@ -253,7 +248,9 @@ $stable_version = get_option('revslider-stable-version', '4.1');
 
 			?>
 		</div>
-
+	<?php
+	if(!$revSliderAsTheme){
+		?>
 		<!--
 		ACTIVATE THIS PRODUCT
 		-->

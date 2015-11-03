@@ -78,15 +78,6 @@ class Widget_KT_Social extends WP_Widget {
         <div class="introduce-title"><?php echo esc_attr($wtitle) ?></div>
         <div class="social-link">
             <?php
-                $allowed_html = array(
-                    'a' => array(
-                        'href' => array (),
-                        'title' => array()
-                    ),
-                    'i' => array(
-                        'classs' => array()
-                    )
-                );
                 echo kt_get_html( $social_icons );
             ?>
         </div>

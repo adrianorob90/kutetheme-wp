@@ -490,7 +490,6 @@ function kt_get_color_scheme_css( $colors ) {
     body .option4 #main-menu .navbar .navbar-nav>li.active>a,
     
     body .site .option4 a:hover,
-    body .footer-menu-list li a, 
     body .woocommerce .wishlist_table ins, 
     body footer#footer2 a:hover,
     body #footer2 .widget-body li a:hover{

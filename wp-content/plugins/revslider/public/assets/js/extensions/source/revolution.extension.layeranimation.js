@@ -1,6 +1,6 @@
 /********************************************
  * REVOLUTION 5.0 EXTENSION - LAYER ANIMATION
- * @version: 1.1.2 (16.09.2015)
+ * @version: 1.1.4 (19.10.2015)
  * @requires jquery.themepunch.revolution.js
  * @author ThemePunch
 *********************************************/
@@ -169,8 +169,10 @@ jQuery.extend(true,_R, {
 
 			
 		var handlecaption=0,
-			layervisible =  makeArray(_nc.data('visibility'),opt)[opt.curWinRange] || makeArray(_nc.data('visibility'),opt) || "on";
+			layervisible =  makeArray(_nc.data('visibility'),opt)[opt.forcedWinRange] || makeArray(_nc.data('visibility'),opt) || "on";
 		
+		
+
 		// HIDE CAPTION IF RESOLUTION IS TOO LOW			
 		if (layervisible=="off" || (_gw<opt.hideCaptionAtLimit && _nc.data('captionhidden')=="on") || (_gw<opt.hideAllCaptionAtLimit)) 
 			_nc.addClass("tp-hidden-caption");											

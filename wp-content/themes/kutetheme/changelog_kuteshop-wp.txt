@@ -1,6 +1,8 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+#3/11/2015 ## Fix responsive tab category
+
 #29/10/2015 ## Add setting vertical menu, css Megemenu
 #29/10/2015 ## Update shortcode mailchimp select lists
 #29/10/2015 ## Update woocommerce_image_dimensions after switch theme

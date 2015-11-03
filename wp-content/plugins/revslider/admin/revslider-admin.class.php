@@ -34,9 +34,7 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 		RevSliderGlobals::$filepath_backup = RS_PLUGIN_PATH.'backup/';
 		RevSliderGlobals::$filepath_captions = RS_PLUGIN_PATH.'public/assets/css/captions.css';
 		RevSliderGlobals::$urlCaptionsCSS = RS_PLUGIN_URL.'public/assets/css/captions.php';
-		RevSliderGlobals::$urlStaticCaptionsCSS = RS_PLUGIN_URL.'public/assets/css/static-captions.css';
 		RevSliderGlobals::$filepath_dynamic_captions = RS_PLUGIN_PATH.'public/assets/css/dynamic-captions.css';
-		RevSliderGlobals::$filepath_static_captions = RS_PLUGIN_PATH.'public/assets/css/static-captions.css';
 		RevSliderGlobals::$filepath_captions_original = RS_PLUGIN_PATH.'public/assets/css/captions-original.css';
 		
 		$wp_upload_dir = wp_upload_dir();
@@ -58,10 +56,15 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 		$general_settings = $operations->getGeneralSettingsValues();
 		
 		$role = RevSliderBase::getVar($general_settings, 'role', 'admin');
+		$force_activation_box = RevSliderBase::getVar($general_settings, 'force_activation_box', 'off');
+		
+		if($force_activation_box == 'on'){ //force the notifications and more
+			$revSliderAsTheme = false;
+		}
 		
 		self::setMenuRole($role);
 
-		self::addMenuPage('Revolution Slider', "adminPages");
+		self::addMenuPage('Slider Revolution', "adminPages");
 		
 		self::addSubMenuPage(__('Navigation Editor', REVSLIDER_TEXTDOMAIN), 'display_plugin_submenu_page_navigation', 'revslider_navigation');
 		
@@ -78,6 +81,7 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 		$stablev = get_option('revslider-stable-version', '0');
 		
 		$upgrade = new RevSliderUpdate( GlobalsRevSlider::SLIDER_REVISION );
+		
 		
 		if(!$revSliderAsTheme || version_compare($latestv, $stablev, '<')){
 			if($validated === 'false' && $notice === 'true'){
@@ -121,7 +125,7 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 	public static function include_custom_css(){
 		
 		$type = (isset($_GET['view'])) ? $_GET['view'] : '';
-		$page = @$_GET['page'];
+		$page = (isset($_GET['page'])) ? $_GET['page'] : '';
 		
 		if($page !== 'slider' && $page !== 'revslider_navigation') return false; //showbiz fix
 		
@@ -285,6 +289,9 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 			'toggle_video' => __('Toggle Video', REVSLIDER_TEXTDOMAIN),
 			'last_slide' => __('Last Slide', REVSLIDER_TEXTDOMAIN),
 			'simulate_click' => __('Simulate Click', REVSLIDER_TEXTDOMAIN),
+			'togglefullscreen' => __('Toggle FullScreen', REVSLIDER_TEXTDOMAIN),
+			'gofullscreen' => __('Go FullScreen', REVSLIDER_TEXTDOMAIN),
+			'exitfullscreen' => __('Exit FullScreen', REVSLIDER_TEXTDOMAIN),
 			'toggle_class' => __('Toogle Class', REVSLIDER_TEXTDOMAIN),
 			'copy_styles_to_hover_from_idle' => __('Copy hover styles to idle?', REVSLIDER_TEXTDOMAIN),
 			'copy_styles_to_idle_from_hover' => __('Copy idle styles to hover?', REVSLIDER_TEXTDOMAIN),
@@ -294,7 +301,12 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 			'name_is_default_animations_cant_be_changed' => __('Given animation name is a default animation. These can not be changed.', REVSLIDER_TEXTDOMAIN),
 			'override_animation' => __('Animation exists, override existing animation?', REVSLIDER_TEXTDOMAIN),
 			'this_feature_only_if_activated' => __('This feature is only available if you activate Slider Revolution for this installation', REVSLIDER_TEXTDOMAIN),
-			'unsaved_data_will_be_lost_proceed' => __('Unsaved data will be lost, proceed?', REVSLIDER_TEXTDOMAIN)
+			'unsaved_data_will_be_lost_proceed' => __('Unsaved data will be lost, proceed?', REVSLIDER_TEXTDOMAIN),
+			'is_loading' => __('is Loading...', REVSLIDER_TEXTDOMAIN),
+			'google_fonts_loaded' => __('Google Fonts Loaded', REVSLIDER_TEXTDOMAIN),
+			'delete_layer' => __('Delete Layer?', REVSLIDER_TEXTDOMAIN),
+			'this_template_requires_version' => __('This template requires at least version', REVSLIDER_TEXTDOMAIN),
+			'of_slider_revolution' => __('of Slider Revolution to work.', REVSLIDER_TEXTDOMAIN)
 		);
 
 		return $lang;
@@ -336,7 +348,9 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 		$operations = new RevSliderOperations();
 		$general_settings = $operations->getGeneralSettingsValues();
 		
-		
+		//check permissions here
+		if(!current_user_can('administrator')) return true;
+
 		$enable_newschannel = RevSliderBase::getVar($general_settings, 'enable_newschannel', 'on');
 		
 		$enable_newschannel = apply_filters('revslider_set_notifications', $enable_newschannel);
@@ -845,7 +859,7 @@ class RevSliderAdmin extends RevSliderBaseAdmin{
 
 					$newSliderID = $slider->createSliderFromOptions($data);
 
-					self::ajaxResponseSuccessRedirect(__("Slider created",REVSLIDER_TEXTDOMAIN), self::getViewUrl("sliders"));
+					self::ajaxResponseSuccessRedirect(__("Slider created",REVSLIDER_TEXTDOMAIN), self::getViewUrl(self::VIEW_SLIDE, 'id=new&slider='.esc_attr($newSliderID))); //redirect to slide now
 
 				break;
 				case "update_slider":

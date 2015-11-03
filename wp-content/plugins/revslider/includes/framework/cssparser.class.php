@@ -237,6 +237,8 @@ class RevSliderCssParser{
 	public static function parseArrayToCss($cssArray, $nl = "\n\r", $adv = false){
 		$css = '';
 		foreach($cssArray as $id => $attr){
+			$setting = (array)$attr['settings'];
+			
 			$advanced = (array)$attr['advanced'];
 			$stripped = '';
 			if(strpos($attr['handle'], '.tp-caption') !== false){
@@ -249,6 +251,9 @@ class RevSliderCssParser{
 			
 			if($adv && isset($advanced['idle'])){
 				$styles = array_merge($styles, (array)$advanced['idle']);
+				if(isset($setting['type'])){
+					$styles['type'] = $setting['type'];
+				}
 			}
 			
 			if(is_array($styles) && !empty($styles)){
@@ -267,7 +272,6 @@ class RevSliderCssParser{
 			$css.= "}".$nl.$nl;
 			
 			//add hover
-			$setting = (array)$attr['settings'];
 			if(isset($setting['hover']) && $setting['hover'] == 'true'){
 				$hover = (array)$attr['hover'];
 				if($adv && isset($advanced['hover'])){

@@ -176,7 +176,7 @@ $font_families = $rsopr->getArrFontFamilys();
 												<?php
 												foreach($font_families as $handle => $name){
 													?>
-													<option value="<?php echo esc_attr($name); ?>"><?php echo esc_attr($name); ?></option>
+													<option value="<?php echo esc_attr($name['label']); ?>"><?php echo esc_attr($name['label']); ?></option>
 													<?php
 												}
 												?>

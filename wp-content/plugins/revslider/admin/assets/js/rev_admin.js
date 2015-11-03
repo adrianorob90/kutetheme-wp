@@ -196,24 +196,33 @@ var RevSliderAdmin = new function(){
 			var arrTypes = jQuery(this).val();
 
 			//replace the categories in multi select
+			var mysel = [];
+			jQuery("#"+catSettingName+' option').each(function(){
+				if(jQuery(this).prop('selected') == true){
+					mysel.push(jQuery(this).val());
+				}
+			});
+			
 			jQuery("#"+catSettingName).empty();
 			jQuery(arrTypes).each(function(index,postType){
 				var objCats = g_postTypesWithCats[postType];
 
-				var flagFirst = true;
-				for(catIndex in objCats){
+				//var flagFirst = true;
+				for(var catIndex in objCats){
 					var catTitle = objCats[catIndex];
 					//add option to cats select
 					var opt = new Option(catTitle, catIndex);
 
-					if(catIndex.indexOf("option_disabled") == 0)
+					if(catIndex.indexOf("option_disabled") == 0){
 						jQuery(opt).prop("disabled","disabled");
-					else{
+					}else{
 						//select first option:
-						if(flagFirst == true){
-							jQuery(opt).prop("selected","selected");
-							flagFirst = false;
-						}
+						//if(flagFirst == true){
+							if(jQuery.inArray(jQuery(opt).val(),mysel) !== -1){
+								jQuery(opt).prop("selected","selected");
+							}
+							//flagFirst = false;
+						//}
 					}
 
 					jQuery("#"+catSettingName).append(opt);
@@ -222,6 +231,7 @@ var RevSliderAdmin = new function(){
 
 			});
 		});
+		jQuery("#"+typeSettingName).change();
 	}
 
 
@@ -235,6 +245,7 @@ var RevSliderAdmin = new function(){
 
 
 		updateCatByPostTypes("post_types","post_category");
+		updateCatByPostTypes("product_types","product_category");
 
 		jQuery("input[name='source_type']").click(function(){ //check for post click
 			if(jQuery(this).val() == 'posts'){ //jQuery(this).val() == 'specific_posts' ||
@@ -269,14 +280,23 @@ var RevSliderAdmin = new function(){
 			}
 			
 			jQuery('.rs-settings-wrapper').hide();
-			if(jQuery(this).val() == 'posts' || jQuery(this).val() == 'specific_posts'){
+			if(jQuery(this).val() == 'posts' || jQuery(this).val() == 'specific_posts' ||  jQuery(this).val() == 'woocommerce'){
 				jQuery('#rs-post-settings-wrapper').show();
+				jQuery('.rs-specific-posts-wrap').hide();
+				jQuery('.rs-woocommerce-product-wrap').hide();
+				jQuery('.rs-post-types-wrapper').hide();
+				jQuery('.rs-show-for-wc').hide();
+				jQuery('.rs-hide-for-wc').show();
 				if(jQuery(this).val() == 'posts'){
 					jQuery('.rs-post-types-wrapper').show();
 					jQuery('.rs-specific-posts-wrap').hide();
-				}else{
+				}else if(jQuery(this).val() == 'specific_posts'){
 					jQuery('.rs-post-types-wrapper').hide();
 					jQuery('.rs-specific-posts-wrap').show();
+				}else if(jQuery(this).val() == 'woocommerce'){
+					jQuery('.rs-woocommerce-product-wrap').show();
+					jQuery('.rs-show-for-wc').show();
+					jQuery('.rs-hide-for-wc').hide();
 				}
 			}else{
 				jQuery('#rs-post-settings-wrapper').hide();
@@ -763,7 +783,7 @@ var RevSliderAdmin = new function(){
 			
 			var data = {sliderid: jQuery("#sliderid").val()};
 			
-			if(jQuery('input[name="reset-transitions"]').is(':checked')) data['slide_transition'] = jQuery('select[name="def-transitions"] option:selected').val();
+			if(jQuery('input[name="reset-slide_transition"]').is(':checked')) data['slide_transition'] = jQuery('select[name="def-slide_transition"] option:selected').val();
 			if(jQuery('input[name="reset-transition_duration"]').is(':checked')) data['transition_duration'] = jQuery('input[name="def-transition_duration"]').val();
 			if(jQuery('input[name="reset-image_source_type"]').is(':checked')) data['image_source_type'] = jQuery('select[name="def-image_source_type"] option:selected').val(); 
 			if(jQuery('input[name="reset-background_fit"]').is(':checked')){
@@ -931,6 +951,12 @@ var RevSliderAdmin = new function(){
 		 * add Template Slider through Import. Check for zip name
 		 **/
 		jQuery('body').on('click', '.template_slider_item_import', function(){
+			
+			if(jQuery(this).hasClass('deny_download')){
+				alert(rev_lang.this_template_requires_version+' '+jQuery(this).data('versionneed')+' '+rev_lang.of_slider_revolution);
+				return false;
+			}
+			
 			//modify the dialog with some informations 
 			jQuery('.rs-zip-name').text(jQuery(this).data('zipname'));
 			jQuery('.rs-uid').val(jQuery(this).data('uid'));
@@ -1005,7 +1031,7 @@ var RevSliderAdmin = new function(){
 					'Import':function(){
 						if(jQuery('#rs-duplicate-animation').val() == '') return false;
 						
-						UniteAdminRev.ajaxRequest('duplicate_slider' ,{sliderid:slider_id,title:jQuery('#rs-duplicate-animation').val()}, function(response){
+						UniteAdminRev.ajaxRequest('duplicate_slider', {sliderid:slider_id,title:jQuery('#rs-duplicate-animation').val()}, function(response){
 							jQuery('#close-template').click();
 						});
 					}
@@ -1481,6 +1507,7 @@ var RevSliderAdmin = new function(){
 				case 'gallery':
 				break;
 				case 'posts':
+				case 'woocommerce':
 				case 'facebook':
 				case 'twitter':
 				case 'instagram':
@@ -1547,8 +1574,14 @@ var RevSliderAdmin = new function(){
 		 * add Template Slider through Import, then add specific slide to current Slider and open it. Check for zip name
 		 **/
 		jQuery('body').on('click', '.template_slide_item_import', function(){
+			var data = jQuery(this).find('.template_slide_item_img');
+			
+			if(data.hasClass('deny_download')){
+				alert(rev_lang.this_template_requires_version+' '+data.data('versionneed')+' '+rev_lang.of_slider_revolution);
+				return false;
+			}
+			
 			if(confirm(rev_lang.unsaved_data_will_be_lost_proceed)){
-				var data = jQuery(this).find('.template_slide_item_img');
 				
 				//modify the dialog with some informations 
 				jQuery('.rs-zip-name').text(data.data('zipname'));
@@ -1817,7 +1850,8 @@ var RevSliderAdmin = new function(){
 			if(bgType == "solid"){
 				var bgColor = jQuery("#slide_bg_color").val();
 				jQuery("#divbgholder").css("background-color",bgColor);
-			}
+				jQuery('#slide_selector .list_slide_links li.selected .slide-media-container ').css({backgroundColor:bgColor});
+			}					
 		});
 
 
@@ -2201,6 +2235,7 @@ var RevSliderAdmin = new function(){
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_allowfullscreen"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_force_rewind"]'));
 		RevSliderSettings.onoffStatus(jQuery('input[name="video_mute"]'));
+		RevSliderSettings.onoffStatus(jQuery('input[name="thumb_for_admin"]'));
 		
 		jQuery('#video_force_cover').change(function(){
 			if(jQuery(this).is(':checked')){
@@ -2294,6 +2329,7 @@ var RevSliderAdmin = new function(){
 				jQuery("#divbgholder").removeClass("trans_bg");
 				var bgColor = jQuery("#slide_bg_color").val();
 				jQuery("#divbgholder").css("background-color",bgColor);
+				jQuery('#slide_selector .list_slide_links li.selected .slide-media-container ').css({backgroundColor:bgColor});
 			break;
 			case "external":
 				var urlImage = jQuery("#slide_bg_external").val();
@@ -2457,8 +2493,6 @@ var RevSliderAdmin = new function(){
 							data = jQuery("#textarea_edit_static").val();
 
 						UniteAdminRev.ajaxRequest("update_static_css",data,function(response){
-							jQuery("#dialog_success_message").show().html(response.message);
-
 							if(g_codemirrorCssStatic != null)
 								g_codemirrorCssStatic.setValue(response.css);
 							else
