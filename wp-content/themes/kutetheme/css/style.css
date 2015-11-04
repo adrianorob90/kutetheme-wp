@@ -3872,11 +3872,11 @@ span.notify-right{
   padding-right: 15px;
 }
 .product-list.list .add-to-cart a{
-  height: 36px;
-  background: url("../images/cart.png") no-repeat left center;
-  margin-left: 15px;
-  padding-left: 15px;
-  width: 114px;
+	height: 36px;
+	background: url("../images/cart.png") no-repeat left center;
+	margin-left: 15px;
+	padding-left: 30px;
+	width: auto;
 }
 .product-list.list .quick-view{
   width: 129px;
