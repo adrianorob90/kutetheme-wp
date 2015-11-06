@@ -153,9 +153,10 @@ class CMB2_Types {
 	public function is_valid_img_ext( $file ) {
 		$file_ext = $this->get_file_ext( $file );
 
-		$is_valid_types = (array) apply_filters( 'cmb2_valid_img_types', array( 'jpg', 'jpeg', 'png', 'gif', 'ico', 'icon' ) );
+		$is_valid_types = apply_filters( 'cmb2_valid_img_types', array( 'jpg', 'jpeg', 'png', 'gif', 'ico', 'icon' ) );
+		$is_valid = $file_ext && in_array( $file_ext, (array) $is_valid_types );
 
-		return ( $file_ext && in_array( $file_ext, $is_valid_types ) );
+		return (bool) apply_filters( 'cmb2_' . $this->field->id() . '_is_valid_img_ext', $is_valid, $file, $file_ext );
 	}
 
 	/**
@@ -258,10 +259,28 @@ class CMB2_Types {
 			'value' => $this->field->escaped_value(),
 			'label' => '',
 		) );
-
+        
 		return sprintf( "\t" . '<li><input%s/> <label for="%s">%s</label></li>' . "\n", $this->concat_attrs( $a, array( 'label' ) ), $a['id'], $a['label'] );
 	}
-
+    /**
+     * Customize by Angels.IT
+	 * Generates html for list item with input
+	 * @since  1.1.0
+	 * @param  array  $args Override arguments
+	 * @param  int    $i    Iterator value
+	 * @return string       Gnerated list item html
+	 */
+    public function list_image( $args = array(), $i ) {
+        $a = $this->parse_args( $args, 'list_input', array(
+			'type'  => 'radio',
+			'class' => 'cmb2-option',
+			'name'  => $this->_name(),
+			'id'    => $this->_id( $i ),
+			'value' => $this->field->escaped_value(),
+			'label' => '',
+		) );
+		return sprintf( "\t" . '<li><input%s/><label for="%s"><img src="%s" /></label></li>' . "\n", $this->concat_attrs( $a, array( 'label' ) ), $a['id'], $a['label'] );
+    }
 	/**
 	 * Generates html for list item with checkbox input
 	 * @since  1.1.0
@@ -453,7 +472,7 @@ class CMB2_Types {
 	public function text() {
 		return $this->input();
 	}
-
+    
 	public function hidden() {
 		return $this->input( array( 'type' => 'hidden', 'desc' => '', 'class' => false ) );
 	}
@@ -485,7 +504,96 @@ class CMB2_Types {
 	public function textarea_code() {
 		return sprintf( '<pre>%s', $this->textarea( array( 'class' => 'cmb2-textarea-code', 'desc' => '</pre>' . $this->_desc( true ) ) ) );
 	}
+    
+    /**
+     * Customize Type 
+     */
+    public function numeric() {
+		return $this->input( array( 'type' => 'number', 'desc' => '', 'class' => false ) );
+	}
+    
+    public function sidebar_select() {
+        global $wp_registered_sidebars;
+        
+		$saved_term = is_wp_error( $this->field->value ) || empty( $this->field->value ) ? $this->field->args( 'default' ) : $this->field->value;
+		$options    = '';
 
+		$option_none  = $this->field->args( 'show_option_none' );
+		if ( ! empty( $option_none ) ) {
+			$option_none_value = apply_filters( 'cmb2_sidebar_select_default_value', '' );
+			$option_none_value = apply_filters( "cmb2_sidebar_select_{$this->_id()}_default_value", $option_none_value );
+
+			$options .= $this->select_option( array(
+				'label'   => $option_none,
+				'value'   => $option_none_value,
+				'checked' => $saved_term == $option_none_value,
+			) );
+		}
+
+		foreach ( $wp_registered_sidebars as $sidebar ) {
+			$options .= $this->select_option( array(
+				'label'   => $sidebar['name'],
+				'value'   => $sidebar['id'],
+				'checked' => $saved_term == $sidebar['id'],
+			) );
+		}
+
+		return $this->select( array( 'options' => $options ) );
+	}
+    
+    public function page_select() {
+		$saved_term = is_wp_error( $this->field->value ) || empty( $this->field->value ) ? $this->field->args( 'default' ) : $this->field->value;
+		$options    = '';
+
+		$option_none  = $this->field->args( 'show_option_none' );
+        
+        $defaults = array(
+    		'depth' => 0, 'child_of' => 0,
+    		'selected' => 0, 'echo' => 1,
+    		'name' => 'page_id', 'id' => '',
+    		'class' => '',
+    		'show_option_none' => '', 'show_option_no_change' => '',
+    		'option_none_value' => '',
+    		'value_field' => 'ID',
+    	);
+        $defaults['selected'] = $saved_term;
+    	$r = wp_parse_args( $this->field->args, $defaults );
+    
+    	$pages = get_pages( $r );
+        
+    	// Back-compat with old system where both id and name were based on $name argument
+    	if ( empty( $r['id'] ) ) {
+    		$r['id'] = $r['name'];
+    	}
+        
+		if ( ! empty( $option_none ) ) {
+			$option_none_value = apply_filters( 'cmb2_page_select_default_value', '' );
+			$option_none_value = apply_filters( "cmb2_page_select_{$this->_id()}_default_value", $option_none_value );
+
+			$options .= $this->select_option( array(
+				'label'   => $option_none,
+				'value'   => $option_none_value,
+				'checked' => $saved_term == $option_none_value,
+			) );
+		}
+        if ( ! empty( $pages ) ) {
+    		$options .= walk_page_dropdown_tree( $pages, $r['depth'], $r );
+    	}
+
+		return $this->select( array( 'options' => $options ) );
+	}
+    
+	public function radio_image( $args = array(), $type = 'radio' ) {
+		$a = $this->parse_args( $args, $type, array(
+			'class'   => 'cmb2-radio-image cmb2-list-image',
+			'options' => $this->concat_items( array( 'label' => 'test', 'method' => 'list_image' ) ),
+			'desc'    => $this->_desc( true ),
+		) );
+		return sprintf( '<ul class="%s">%s</ul>%s', $a['class'], $a['options'], $a['desc'] );
+	}
+    /**
+     * End customize
+     * */
 	public function wysiwyg( $args = array() ) {
 		$a = $this->parse_args( $args, 'input', array(
 			'id'      => $this->_id(),
@@ -712,15 +820,29 @@ class CMB2_Types {
 	}
 
 	public function multicheck_inline() {
-		$this->multicheck( 'multicheck_inline' );
+		return $this->multicheck( 'multicheck_inline' );
 	}
 
-	public function checkbox() {
+	public function checkbox( $args = array(), $is_checked = null ) {
+		$defaults = array(
+			'type'  => 'checkbox',
+			'class' => 'cmb2-option cmb2-list',
+			'value' => 'on',
+			'desc'  => '',
+		);
+
 		$meta_value = $this->field->escaped_value();
-		$args = array( 'type' => 'checkbox', 'class' => 'cmb2-option cmb2-list', 'value' => 'on', 'desc' => '' );
-		if ( ! empty( $meta_value ) ) {
-			$args['checked'] = 'checked';
+
+		$is_checked = is_null( $is_checked )
+			? ! empty( $meta_value )
+			: $is_checked;
+
+		if ( $is_checked ) {
+			$defaults['checked'] = 'checked';
 		}
+
+		$args = $this->parse_args( $args, 'checkbox', $defaults );
+
 		return sprintf( '%s <label for="%s">%s</label>', $this->input( $args ), $this->_id(), $this->_desc() );
 	}
 
@@ -765,7 +887,7 @@ class CMB2_Types {
 	}
 
 	public function taxonomy_radio_inline() {
-		$this->taxonomy_radio();
+		return $this->taxonomy_radio();
 	}
 
 	public function taxonomy_multicheck() {
@@ -806,7 +928,7 @@ class CMB2_Types {
 	}
 
 	public function taxonomy_multicheck_inline() {
-		$this->taxonomy_multicheck();
+		return $this->taxonomy_multicheck();
 	}
 
 	public function oembed() {
@@ -834,12 +956,14 @@ class CMB2_Types {
 		$meta_value = $this->field->escaped_value();
 		$name       = $this->_name();
 		$img_size   = $this->field->args( 'preview_size' );
+		$query_args = $this->field->args( 'query_args' );
 
 		echo $this->input( array(
 			'type'  => 'hidden',
 			'class' => 'cmb2-upload-file cmb2-upload-list',
 			'size'  => 45, 'desc'  => '', 'value'  => '',
 			'data-previewsize' => is_array( $img_size ) ? sprintf( '[%s]', implode( ',', $img_size ) ) : 50,
+			'data-queryargs'   => ! empty( $query_args ) ? json_encode( $query_args ) : '',
 		) ),
 		$this->input( array(
 			'type'  => 'button',
@@ -892,6 +1016,7 @@ class CMB2_Types {
 		$meta_value = $this->field->escaped_value();
 		$options    = (array) $this->field->options();
 		$img_size   = $this->field->args( 'preview_size' );
+		$query_args = $this->field->args( 'query_args' );
 
 		// if options array and 'url' => false, then hide the url field
 		$input_type = array_key_exists( 'url', $options ) && false === $options['url'] ? 'hidden' : 'text';
@@ -902,6 +1027,7 @@ class CMB2_Types {
 			'size'  => 45,
 			'desc'  => '',
 			'data-previewsize' => is_array( $img_size ) ? '[' . implode( ',', $img_size ) . ']' : 350,
+			'data-queryargs'   => ! empty( $query_args ) ? json_encode( $query_args ) : '',
 		) );
 
 		printf( '<input class="cmb2-upload-button button" type="button" value="%s" />', esc_attr( $this->_text( 'add_upload_file_text', __( 'Add or Upload File', 'cmb2' ) ) ) );
@@ -909,9 +1035,11 @@ class CMB2_Types {
 		$this->_desc( true, true );
 
 		$cached_id = $this->_id();
+
 		// Reset field args for attachment ID
 		$args = $this->field->args();
-		$args['id'] = $cached_id . '_id';
+		// If we're looking at a file in a group, we need to get the non-prefixed id
+		$args['id'] = ( $this->field->group ? $this->field->args( '_id' ) : $cached_id ) . '_id';
 		unset( $args['_id'], $args['_name'] );
 
 		// And get new field object
@@ -997,7 +1125,7 @@ class CMB2_Types {
 			esc_html( $this->_text( 'file_text', __( 'File:', 'cmb2' ) ) ),
 			$this->get_file_name_from_path( $args['value'] ),
 			$args['value'],
-			esc_html( $this->_text( 'file-download-text', __( 'Download', 'cmb2' ) ) ),
+			esc_html( $this->_text( 'file_download_text', __( 'Download', 'cmb2' ) ) ),
 			isset( $args['cached_id'] ) ? ' rel="' . $args['cached_id'] . '"' : '',
 			esc_html( $this->_text( 'remove_text', __( 'Remove', 'cmb2' ) ) ),
 			isset( $args['id_input'] ) ? $args['id_input'] : ''
