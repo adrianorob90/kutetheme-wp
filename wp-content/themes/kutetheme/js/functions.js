@@ -200,6 +200,8 @@
         // auto width megamenu
         auto_width_megamenu();
         resizeTopmenu();
+        autoHeight_product_grid();
+        auto_height_product_list();
     });
     /* ---------------------------------------------
      Scripts ready
@@ -641,7 +643,12 @@
             kt_lazy( $lazy );
         });
         
-        kt_lazy( first_lazy )
+        kt_lazy( first_lazy );
+
+        $(document).on('click','.mobile-navigation',function(){
+          $(this).closest('.main-menu-wapper').find('.navigation-main-menu').toggle();
+          return false;
+        })
     });
     /* ---------------------------------------------
      Scripts resize
@@ -669,7 +676,7 @@
         var h = $(window).scrollTop();
         var max_h = $('#header').height() + $('#top-banner').height();
         var width = $(window).width();
-        if(width > 767){
+        if(width > 991){
             if( h > (max_h + vertical_menu_height)-50){
                 // fix top menu
                 $('#nav-top-menu').addClass('nav-ontop');

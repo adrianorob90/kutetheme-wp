@@ -157,11 +157,11 @@ if( ! function_exists( 'kt_setting_vertical_menu' ) ){
         wp_nav_menu( array(
             'menu'              => 'vertical',
             'theme_location'    => 'vertical',
-            'depth'             => 2,
+            'depth'             => 0,
             'container'         => '',
             'container_class'   => '',
             'container_id'      => '',
-            'menu_class'        => 'vertical-menu-list',
+            'menu_class'        => 'navigation  vertical-menu-list',
             'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
             'walker'            => new wp_bootstrap_navwalker())
         );
@@ -173,11 +173,11 @@ if( ! function_exists( 'kt_setting_mega_menu' ) ){
         wp_nav_menu( array(
             'menu'              => 'primary',
             'theme_location'    => 'primary',
-            'depth'             => 2,
-            'container'         => 'div',
-            'container_class'   => 'collapse navbar-collapse',
-            'container_id'      => 'navbar',
-            'menu_class'        => 'nav navbar-nav',
+            'depth'             => 0,
+            'container'         => '',
+            'container_class'   => '',
+            'container_id'      => '',
+            'menu_class'        => 'navigation navigation-main-menu',
             'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
             'walker'            => new wp_bootstrap_navwalker())
         );
@@ -189,9 +189,9 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
         $kt_click_open_vertical_menu = kt_option('kt_click_open_vertical_menu','disable');
         $kt_vertical_item_visible = kt_option('kt_vertical_item_visible',11);
         ?>
-        <div class="row">
+        <div class="top-main-menu">
             <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
-            <div class="col-xs-6 col-sm-3" id="box-vertical-megamenus">
+            <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
                         <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
@@ -203,21 +203,10 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
                     </div>
                 </div>
             </div>
-            <div id="main-menu" class="col-xs-6 col-sm-9 main-menu enable_vm">
-            <?php else: ?>
-            <div id="main-menu" class="col-sm-12 main-menu">
             <?php endif; ?>
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                        </div>
-                        <?php kt_setting_mega_menu(); ?>
-                    </div>
-                </nav>
+            <div class="main-menu main-menu-wapper">
+                <?php kt_setting_mega_menu(); ?>
+                <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
             </div>
         </div>
         <?php
@@ -231,38 +220,28 @@ if( ! function_exists( 'kt_show_menu_option_2' ) ){
         $kt_click_open_vertical_menu = kt_option('kt_click_open_vertical_menu','disable');
         $kt_vertical_item_visible = kt_option('kt_vertical_item_visible',11);
         ?>
-        <div class="row">
-            <?php if ( $kt_enable_vertical_menu == 'enable' ) : ?>
-            <div class="col-xs-6 col-sm-3" id="box-vertical-megamenus">
-                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus style2 <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
+        <div class="top-main-menu style2">
+            <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
+            <div id="box-vertical-megamenus" class="vertical-wapper">
+                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
                         <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
                     </h4>
-                    <div class="vertical-menu-content is-home">
-                        <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                    <div class="vertical-menu-content">
+                        <?php kt_setting_vertical_menu(); ?>
                         <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
-            <div id="main-menu" class="col-xs-6 col-sm-9 main-menu enable_vm">
-            <?php else: ?>
-            <div id="main-menu" class="col-sm-12 main-menu">
             <?php endif; ?>
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                        </div>
-                        <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
-                    </div>
-                </nav>
+            <div class="main-menu main-menu-wapper">
+                <?php kt_setting_mega_menu(); ?>
+                <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
             </div>
         </div>
-    <?php }
+    <?php 
+    }
 }
 add_action( 'kt_show_menu_option_2', 'kt_show_menu_option_2' );
 
@@ -272,35 +251,24 @@ if( ! function_exists( 'kt_show_menu_option_3' ) ){
         $kt_click_open_vertical_menu = kt_option('kt_click_open_vertical_menu','disable');
         $kt_vertical_item_visible = kt_option('kt_vertical_item_visible',11);
         ?>
-        <div class="row main-header-menu">
+        <div class="top-main-menu style3">
             <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
-            <div class="col-xs-6 col-sm-3" id="box-vertical-megamenus">
-                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus style2 <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
+            <div id="box-vertical-megamenus" class="vertical-wapper">
+                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
                         <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile pull-right home-page"><i class="fa fa-bars"></i></span>
                     </h4>
-                    <div class="vertical-menu-content is-home">
-                        <?php kt_setting_vertical_menu(); ?><!--/.nav-collapse -->
+                    <div class="vertical-menu-content">
+                        <?php kt_setting_vertical_menu(); ?>
                         <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
-            <div id="main-menu" class="col-xs-6  col-sm-12 col-md-9 main-menu enable_vm">
-            <?php else: ?>
-            <div id="main-menu" class="col-sm-12 main-menu">
             <?php endif; ?>
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                        </div>
-                        <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
-                    </div>
-                </nav>
+            <div class="main-menu main-menu-wapper">
+                <?php kt_setting_mega_menu(); ?>
+                <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
             </div>
         </div>
     <?php }

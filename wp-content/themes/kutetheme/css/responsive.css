@@ -383,11 +383,7 @@
 		margin-left:0; 
 		width: 100%;
 	}
-	#box-vertical-megamenus{
-		width: 50%;
-		height: 50px;`
-		float: left;
-	}
+	
 	#box-vertical-megamenus .box-vertical-megamenus{
 		right: 0px;
 		padding-bottom:0;
@@ -820,11 +816,7 @@
 	.nav-top-menu{
 		background: transparent;
 	}
-	#box-vertical-megamenus{
-		width: 50%;
-		height: 50px;
-		float: left;
-	}
+	
 	#box-vertical-megamenus .box-vertical-megamenus{
 		right: 0px;
 		padding-bottom:0;
@@ -1293,12 +1285,6 @@
 	    width: 100%!important;
 	    overflow: hidden;
 	    border: none;
-		border-bottom: 1px solid #eaeaea;
-		border-left: 1px solid #eaeaea;
-	}
-	.vertical-menu-list .megamenu{
-		padding: 15px;
-		border: none;
 		border-bottom: 1px solid #eaeaea;
 		border-left: 1px solid #eaeaea;
 	}

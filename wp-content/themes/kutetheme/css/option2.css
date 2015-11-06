@@ -129,14 +129,6 @@
 	margin-right: 40px;
 	border-left: 1px solid #eaeaea;
 }
-
-.option2 .main-header .header-search-box .form-inline .btn-search{
-	background-color: #958457;
-}
-
-.option2 .nav-top-menu.nav-ontop{
-	background: #958457;
-}
 .option2 #main-menu .navbar{
 	border-radius: 0;
 	background: #958457;
@@ -169,17 +161,12 @@
 .option2 #main-menu li.dropdown:hover:before{
 	display: none;
 }
-
-.option2 .box-vertical-megamenus .title{
-	background: #4c311d;
-}
 .option2 .box-vertical-megamenus .vertical-menu-content{
 	border-top: none;
 	padding-bottom: 1px;
 }
 
 .option2 .nav-ontop #box-vertical-megamenus .title{
-	background: #958457;
 	color: #fff;
 	border-left: none;
 }

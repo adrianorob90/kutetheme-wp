@@ -337,8 +337,8 @@ function kt_get_color_scheme_css( $colors ) {
     body .box-vertical-megamenus .title,
     body .option5 #main-menu .navbar .navbar-nav>li:hover, 
 	body .option5 #main-menu .navbar .navbar-nav>li.active,
-    
-    .option7 .header .top-header{
+    .option7 .header .top-header,
+    .option2 .nav-ontop #box-vertical-megamenus .title{
         background-color: <?php echo esc_attr( $colors['box_background_color'] ); ?>;
     }
     
@@ -433,7 +433,9 @@ function kt_get_color_scheme_css( $colors ) {
     .option7 .products .search:hover,
     .option7 .owl-controls .owl-prev:hover, 
     .option7 .owl-controls .owl-next:hover,
-    #footer2.footer3 .mailchimp-wrapper .mailchimp-form .mailchimp-submit
+    #footer2.footer3 .mailchimp-wrapper .mailchimp-form .mailchimp-submit,
+    .top-main-menu.style2 .main-menu-wapper,
+    .option2 .nav-top-menu.nav-ontop
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
