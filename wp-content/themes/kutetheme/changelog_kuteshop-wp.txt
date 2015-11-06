@@ -1,7 +1,19 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.2
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+#02/11/2015 ## Fix button added cart and border 0ption7
+#3/11/2015 	## Fix responsive tab category
+#4/11/2015	## Fix button add cart list view products
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.1
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+#29/10/2015 ## Update woocommerce_image_dimensions after switch theme
+#29/10/2015 ## Fix grid view list product
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-#3/11/2015 ## Fix responsive tab category
 
 #29/10/2015 ## Add setting vertical menu, css Megemenu
 #29/10/2015 ## Update shortcode mailchimp select lists
@@ -84,6 +96,7 @@ Ver 1.2.1
 #2/10/2015  ## Update option 5
 
 #1/10/2015  ## Update esc string translate
+
 
 
 

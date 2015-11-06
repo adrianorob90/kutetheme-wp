@@ -470,7 +470,9 @@ function kt_get_color_scheme_css( $colors ) {
     
     .option7 .brand .page-heading span.page-heading-title,
     .option7 .blog-list .page-heading span.page-heading-title,
-    .option7 .brand .band-logo.no-product h3:hover{
+    .option7 .brand .band-logo.no-product h3:hover,
+    .latest-deals-product .product-list li:hover,
+    body .count-down-time2 .box-count{
       	border-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     .box-vertical-megamenus .vertical-menu-content,
@@ -492,7 +494,8 @@ function kt_get_color_scheme_css( $colors ) {
     body .site .option4 a:hover,
     body .woocommerce .wishlist_table ins, 
     body footer#footer2 a:hover,
-    body #footer2 .widget-body li a:hover{
+    body #footer2 .widget-body li a:hover,
+    body .count-down-time2 .box-count{
         color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
     /* Text Color */

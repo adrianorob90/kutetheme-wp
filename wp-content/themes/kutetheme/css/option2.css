@@ -40,9 +40,6 @@
   padding-bottom: 5px;
   margin-bottom: 1px;
 }
-.latest-deals-product .product-list li:hover{
-  border: 1px solid #958457;
-}
 .latest-deals-product .owl-next{
   top: -40px;
 }

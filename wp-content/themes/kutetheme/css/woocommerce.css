@@ -159,7 +159,7 @@
     width: 38px;
     text-align: center;
     float: right;
-    height: 29px;
+    height: 28px;
     border-left: 1px solid #eaeaea;
     background: #fafafa;
     line-height: 28px;
@@ -1530,6 +1530,64 @@ span.sku_wrapper{
 		float: left;
 		padding: 0;
 	}
+}
+
+.sidebar-left .product-list.columns-4.grid,
+.sidebar-left .product-list.columns-5.grid,
+.sidebar-left .product-list.columns-6.grid,
+.sidebar-right .product-list.columns-4.grid,
+.sidebar-right .product-list.columns-5.grid,
+.sidebar-right .product-list.columns-6.grid,
+.sidebar-full .product-list.columns-6.grid{
+	padding: 0 10px;
+}
+.sidebar-left .product-list.columns-4.grid li.product,
+.sidebar-left .product-list.columns-5.grid li.product,
+.sidebar-left .product-list.columns-6.grid li.product,
+.sidebar-right .product-list.columns-4.grid li.product,
+.sidebar-right .product-list.columns-5.grid li.product,
+.sidebar-right .product-list.columns-6.grid li.product,
+.sidebar-full .product-list.columns-6.grid li.product{
+	text-align: center;
+	padding: 0 5px;
+}
+.sidebar-left .product-list.columns-4.grid li.product .content_price del,
+.sidebar-left .product-list.columns-4.grid li.product .content_price ins,
+.sidebar-left .product-list.columns-5.grid li.product .content_price del,
+.sidebar-left .product-list.columns-5.grid li.product .content_price ins,
+.sidebar-left .product-list.columns-6.grid li.product .content_price del,
+.sidebar-left .product-list.columns-6.grid li.product .content_price ins,
+.sidebar-right .product-list.columns-4.grid li.product .content_price del,
+.sidebar-right .product-list.columns-4.grid li.product .content_price ins,
+.sidebar-right .product-list.columns-5.grid li.product .content_price del,
+.sidebar-right .product-list.columns-5.grid li.product .content_price ins,
+.sidebar-right .product-list.columns-6.grid li.product .content_price del,
+.sidebar-right .product-list.columns-6.grid li.product .content_price ins,
+.sidebar-full .product-list.columns-6.grid li.product .content_price del,
+.sidebar-full .product-list.columns-6.grid li.product .content_price ins{
+	float: none;
+	margin: 0;
+	width: 100%;\
+}
+.sidebar-left .product-list.columns-4.grid li.product .content_price .price,
+.sidebar-left .product-list.columns-5.grid li.product .content_price .price,
+.sidebar-left .product-list.columns-6.grid li.product .content_price .price,
+.sidebar-right .product-list.columns-4.grid li.product .content_price .price,
+.sidebar-right .product-list.columns-5.grid li.product .content_price .price,
+.sidebar-right .product-list.columns-6.grid li.product .content_price .price,
+.sidebar-full .product-list.columns-6.grid li.product .content_price .price{
+	width: 100%;
+}
+.sidebar-left .product-list.columns-4.grid li.product .product-star,
+.sidebar-left .product-list.columns-5.grid li.product .product-star,
+.sidebar-left .product-list.columns-6.grid li.product .product-star,
+.sidebar-right .product-list.columns-4.grid li.product .product-star,
+.sidebar-right .product-list.columns-5.grid li.product .product-star,
+.sidebar-right .product-list.columns-6.grid li.product .product-star,
+.sidebar-full .product-list.columns-6.grid li.product .product-star{
+	width: 100%;
+	float: none;
+	text-align: center;
 }
 /*--------------------
 [14. Styles for devices(>=481px and <=767px)]

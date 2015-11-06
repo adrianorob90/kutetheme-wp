@@ -89,6 +89,8 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
     	register_nav_menus( array(
     		'primary'   => esc_attr__( 'Primary Menu', 'kutetheme' ),
     		'vertical'  => esc_attr__( 'Vertical Menu', 'kutetheme' ),
+            'topbar_menuleft'  => esc_attr__( 'Top bar Menu left', 'kutetheme' ),
+            'topbar_menuright'  => esc_attr__( 'Top bar Menu right', 'kutetheme' ),
             'custom_header_menu'  => esc_attr__( 'Custom Header Menu', 'kutetheme' ),
             'custom_footer_menu'  => esc_attr__( 'Custom Footer Menu', 'kutetheme' ),
     	) );
@@ -392,6 +394,8 @@ if( ! function_exists( 'kt_scripts' ) ){
         
         wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ), '1.0.16',true );
         
+        wp_enqueue_script( 'kt-Modernizr-script', get_template_directory_uri() . '/js/Modernizr.js', array( 'jquery' ), '1.0.1', true );
+
     	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.1', true );
     
     	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '1.0.1', true );

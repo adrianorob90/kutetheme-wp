@@ -234,9 +234,9 @@
                         if ( $products->have_posts() ) :?>
                             <!-- tab product -->
                             <div class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" id="<?php echo 'tab-' . $id . '-' . $i; ?>">
-                                <ul class="products">
+                                <ul class="products autoHeight">
                                     <?php while ( $products->have_posts() ) : $products->the_post();?>
-                                        <li class="product">
+                                        <li class="product autoHeight-item">
                                             <?php wc_get_template_part( 'content', 'product-tab6' ); ?>
                                         </li>
                                     <?php endwhile; // end of the loop. ?>

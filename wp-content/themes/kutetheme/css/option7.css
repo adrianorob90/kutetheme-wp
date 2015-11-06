@@ -795,6 +795,7 @@
 	border-right: 1px solid #eaeaea;
 	border-top: 1px solid #eaeaea;
 	padding-top: 18px;
+	overflow: hidden;
 }
 .option7 .right .box-produts-content .products .product{
     float: right;
@@ -856,19 +857,19 @@
 	color: #e62e04;
 	font-weight: bold;
 	font-size: 16px;
-	line-height: 16px;
-	width: auto;
+	line-height: 24px;
 	display: inline-block;
 }
 .products .price ins{
 	text-decoration: none;
 	float: left;
+	margin-right: 5px;
 }
 .products .price del{
 	font-size: 14px;
 	color: #666;
     text-decoration: line-through;
-    margin-left: 5px;
+    
     font-weight: normal;
 }
 .products .old-price{

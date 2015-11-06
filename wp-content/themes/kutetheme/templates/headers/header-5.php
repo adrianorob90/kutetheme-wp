@@ -2,17 +2,7 @@
 <div id="header" class="header option5">
     <div class="top-header">
         <div class="container">
-            <!--Currency-->
-            <?php echo kt_get_wpml(); ?>
-            <div class="top-bar-social">
-                <?php kt_get_social_header();?>
-            </div>
-            <div class="support-link">
-                <a href="<?php kt_about_us_link(); ?>"><?php esc_html_e( 'Abount Us', 'kutetheme' ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php esc_html_e( 'Support', 'kutetheme' ) ?></a>
-            </div>
-
-            <?php echo kt_menu_my_account(); ?>
+            <?php kt_topbar_menu();?>
         </div>
     </div>
     <!--/.top-header -->

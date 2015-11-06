@@ -1383,3 +1383,56 @@ if( !function_exists( 'kt_product_list_columns_class' )){
 }
 
 add_action( 'woocommerce_product_loop_start', 'kt_product_list_columns_class',1 );
+
+
+add_filter( 'wp_nav_menu_items', 'kt_myaccount_menu_link', 10, 2 );
+
+function kt_myaccount_menu_link( $items, $args ) {
+   ob_start();
+   if ($args->theme_location == 'topbar_menuright') {
+    ?>
+        <?php if( kt_is_wc() ):?>
+            <?php
+            $myaccount_page_id = get_option( 'woocommerce_myaccount_page_id' );
+            $myaccount_link = get_permalink( get_option('woocommerce_myaccount_page_id') );
+            ?>
+            <?php if( is_user_logged_in()): ?>
+                <?php
+                
+                if ( $myaccount_page_id ) {
+                      $logout_url = wp_logout_url( get_permalink( woocommerce_get_page_id( 'shop' ) ) );
+                      if ( get_option( 'woocommerce_force_ssl_checkout' ) == 'yes' ){
+                        $logout_url = str_replace( 'http:', 'https:', $logout_url );
+                      }
+                }
+                ?>
+                <li class="menu-item menu-item-has-children">
+                    <a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account');?></a>
+                    <ul class="sub-menu">
+                        <?php 
+                        if( function_exists( 'YITH_WCWL' ) ):
+                            $wishlist_url = YITH_WCWL()->get_wishlist_url();
+                        ?>
+                        <li><a href="<?php echo esc_attr( $wishlist_url );?>"><?php _e('Wishlists','kutetheme');?></a></li>
+                        <?php endif;?>
+                        <?php if(defined( 'YITH_WOOCOMPARE' )): 
+                            global $yith_woocompare; 
+                            $count = count($yith_woocompare->obj->products_list); ?>
+                        <li><a href="#" class="yith-woocompare-open"><?php esc_html_e( "Compare", 'kutetheme') ?><span>(<?php echo esc_attr( $count ); ?>)</span></a></li>
+                        <?php endif; ?>
+                        <?php if(isset($logout_url) && $logout_url):?>
+                        <li><a href="<?php echo esc_url( $logout_url );?>"><?php _e('Logout','kutetheme');?></a></li>
+                        <?php endif;?>
+                    </ul>
+                </li>
+            <?php else:?>
+                <li class="menu-item login-item"><a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('Login/Register','kutetheme');?></a></li>
+            <?php endif;?>
+        <?php endif;?>
+   <?php
+   }
+   $item = ob_get_contents();
+   $items = $item.$items;
+   ob_clean();
+   return $items;
+}

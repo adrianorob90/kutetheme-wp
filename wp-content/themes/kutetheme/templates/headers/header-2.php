@@ -16,14 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="header" class="header option2">
     <div class="top-header">
         <div class="container">
-            <?php echo kt_get_hotline(); ?>
-            <?php echo kt_get_wpml(); ?>
-            
-            <div class="support-link">
-                <a href="<?php kt_service_link(); ?>"><?php esc_html_e( 'Services', 'kutetheme' ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php esc_html_e( 'Support', 'kutetheme' ) ?></a>
-            </div>
-            <?php echo kt_menu_my_account(); ?>
+            <?php kt_topbar_menu();?>
         </div>
     </div>
     <!--/.top-header -->

@@ -17,18 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="header" class="header">
     <div class="top-header">
         <div class="container">
-            <?php echo kt_get_hotline(); ?>
-            <?php kt_get_social_header();?>
             <?php 
-                if( kt_is_wc() ): 
-                    do_action('kt_mini_cart');
-                endif; 
-             ?>
-            <div class="support-link">
-                <a href="<?php kt_service_link(); ?>"><?php esc_html_e( 'Services', 'kutetheme' ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php esc_html_e( 'Support', 'kutetheme' ) ?></a>
-            </div>
-            <?php echo kt_menu_my_account(); ?>
+            if( kt_is_wc() ): 
+                do_action('kt_mini_cart');
+            endif; 
+            ?>
+            <?php kt_topbar_menu();?>
         </div>
     </div>
     <!--/.top-header -->

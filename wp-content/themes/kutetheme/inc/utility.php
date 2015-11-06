@@ -236,7 +236,7 @@ if( ! function_exists('kt_menu_my_account')){
                 <ul class="dropdown-menu mega_dropdown" role="menu">
                     <?php if ( ! is_user_logged_in() ):  ?>
                         <?php if( kt_is_wc() ): 
-                                $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
+                            $url = get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>
                             <li><a href="<?php echo esc_url( $url ); ?>" title="<?php esc_html_e( 'Login / Register', 'kutetheme' ) ?>"><?php esc_html_e('Login / Register', 'kutetheme'); ?></a></li>
                         <?php else: 
                             $url = wp_login_url();
@@ -604,4 +604,45 @@ CONTENT;
   
     vc_add_default_templates( $data );
 
+}
+
+function kt_topbar_menu(){
+    $menuleft = array(
+        'theme_location'  => 'topbar_menuleft',
+        'menu'            => 'topbar_menuleft',
+        'container'       => '',
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_class'      => 'navigation top-bar-menu left',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => '',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => ''
+    );
+    $menuright = array(
+        'theme_location'  => 'topbar_menuright',
+        'menu'            => 'topbar_menuright',
+        'container'       => '',
+        'container_class' => '',
+        'container_id'    => '',
+        'menu_class'      => 'navigation top-bar-menu right',
+        'menu_id'         => '',
+        'echo'            => true,
+        'fallback_cb'     => '',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+        'depth'           => 0,
+        'walker'          => ''
+    );
+    wp_nav_menu( $menuleft );
+    wp_nav_menu( $menuright );
 }

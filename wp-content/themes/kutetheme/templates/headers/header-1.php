@@ -16,14 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div id="header" class="header">
     <div class="top-header">
         <div class="container">
-            <?php echo kt_get_hotline(); ?>
-            <?php echo kt_get_wpml(); ?>
-            
-            <div class="support-link">
-                <a href="<?php kt_service_link(); ?>"><?php esc_html_e( 'Services', 'kutetheme' ) ?></a>
-                <a href="<?php kt_support_link(); ?>"><?php esc_html_e( 'Support', 'kutetheme' ) ?></a>
-            </div>
-            <?php echo kt_menu_my_account(); ?>
+            <?php kt_topbar_menu();?>
         </div>
     </div>
     <!--/.top-header -->
@@ -49,9 +42,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php do_action( 'kt_show_menu_option_1' ); ?>
             <!-- userinfo on top-->
             <div id="form-search-opntop">
-            </div>
-            <!-- userinfo on top-->
-            <div id="user-info-opntop">
             </div>
             <?php if( kt_is_wc() ):  ?>
             <!-- CART ICON ON MMENU -->
