@@ -3,14 +3,16 @@
 Plugin Name: KutethemeToolkit
 Plugin URI: http://kutethemes.com/demo/kuteshop/
 Description: A Toolkit for Kute theme
-Version: 1.1.3
+Version: 1.2
 Author: KuteTheme
 Author URI: http://kutethemes.com/
 Text Domain: kutetheme
 @package Kutetheme toolkit
 @author KuteTheme
 */
- 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 define("KUTETHEME_PLUGIN_PATH", trailingslashit( plugin_dir_path(__FILE__) ) );
 define("KUTETHEME_PLUGIN_URL", trailingslashit( plugin_dir_url(__FILE__) ) );
 
@@ -77,23 +79,10 @@ if( ! function_exists( 'kt_custom_blog_excerpt_length' ) ){
  */
 if( ! function_exists( 'kt_get_file_config' ) ){
     function kt_get_file_config( $file_config = '' ) {
-        $templates =  array(
-            'settings/'.$file_config.'.php',
-            'config/'.$file_config.'.php',
-            'inc/'.$file_config.'.php',
-            'includes/'.$file_config.'.php',
-            'admin/'.$file_config.'.php',
-        );
-        if ( $file = locate_template( $templates ) ) {
-            // locate_template() returns path to file
-            // if either the child theme or the parent theme have overridden the template
-            return $file;
-        } else {
-            // If neither the child nor parent theme have overridden the template,
-            // we load the template from the 'templates' directory if this plugin
-            $file =  KUTETHEME_PLUGIN_PATH.'settings/'.$file_config.'.php';
-            return ( is_file( $file ) ) ?  $file : false ;
-        }
+        // If neither the child nor parent theme have overridden the template,
+        // we load the template from the 'templates' directory if this plugin
+        $file =  KUTETHEME_PLUGIN_PATH.'settings/'.$file_config.'.php';
+        return ( is_file( $file ) ) ?  $file : false ;
     }
 }
 
@@ -107,11 +96,16 @@ if( ! class_exists( 'KT_Mailchimp' ) ){
 }
 
 //CMB2
-require_once KUTETHEME_PLUGIN_PATH .'cmb2/init.php';
-require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_header_field_type.php';
-require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_page_field_type.php';
-require_once KUTETHEME_PLUGIN_PATH .'option_post_type.php';
-require_once KUTETHEME_PLUGIN_PATH .'cmb2/admin.php';
+if( is_admin() ){
+    require_once KUTETHEME_PLUGIN_PATH .'cmb2/init.php';
+    //require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_category_field_type.php';
+    //require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_header_field_type.php';
+    //require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_page_field_type.php';
+    //require_once KUTETHEME_PLUGIN_PATH .'cmb2/kt_sidebar_field_type.php';
+    //require_once KUTETHEME_PLUGIN_PATH .'option_post_type.php';
+    require_once KUTETHEME_PLUGIN_PATH .'cmb2/admin.php';
+}
+
 
 // Woocommerce products filter
 //require_once KUTETHEME_PLUGIN_PATH.'woocommerce-products-filter/index.php';

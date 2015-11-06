@@ -24,10 +24,18 @@
  */
 function kt_cmb2_render_page_field_callback( $field, $value, $object_id, $object_type, $field_type_object ) {
     $args = array( 'name' => $field->args['id'], 'id' => $field->args['id'] );
-    if($field->value){
+    
+    if( $field->value ){
         $args['selected'] = $field->value;
     }
+    $option_none  = $this->field->args( 'show_option_none' );
+	if ( ! empty( $option_none ) ) {
+		$args['show_option_none'] = $option_none;
+	}
     wp_dropdown_pages($args);
+    if( isset( $field->args ['description'] ) && $field->args ['description'] ){
+        echo '<p class="cmb2-metabox-description">'.( $field->args ['description'] ).'</p>';
+    }
 }
 
 add_filter( 'cmb2_render_page', 'kt_cmb2_render_page_field_callback', 10, 5 );

@@ -4,7 +4,7 @@ Contributors: yithemes
 Tags: wc, shop, woocommerce, compare, compare products, product compare, widget, comparison, product comparison, compare table
 Requires at least: 3.5.1
 Tested up to: 4.3
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,11 @@ yith-woocommerce-compare-<WORDPRESS LOCALE >.mo
 3. The settings of plugin
 
 == Changelog ==
+
+= 2.0.5 =
+
+* Fixed: After you remove product from compare, you can re-add it without reload page
+* Updated: Plugin Core
 
 = 2.0.4 =
 
@@ -199,8 +204,7 @@ Full documentation is available [here](http://yithemes.com/docs-plugins/yith-woo
 
 == Upgrade notice ==
 
-= 2.0.4 =
+= 2.0.5 =
 
-* Fixed: JS error when loading compare window
-* Updated: Changed Text Domain from 'yith-wcmp' to 'yith-woocommerce-compare'
-* Updated: Plugin Core Framework
+* Fixed: After you remove product from compare, you can re-add it without reload page
+* Updated: Plugin Core

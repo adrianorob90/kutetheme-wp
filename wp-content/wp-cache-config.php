@@ -19,7 +19,7 @@ $cache_time_interval = '600'; //Added by WP-Cache Manager
 $cache_schedule_type = 'interval'; //Added by WP-Cache Manager
 $cache_page_secret = '5a788af2477613ac5ec6b94564e83e98'; //Added by WP-Cache Manager
 $wp_cache_home_path = '/kutetheme-wp/'; //Added by WP-Cache Manager
-$wp_cache_slash_check = 0; //Added by WP-Cache Manager
+$wp_cache_slash_check = 1; //Added by WP-Cache Manager
 if ( ! defined('WPCACHEHOME') )
 	define( 'WPCACHEHOME', WP_CONTENT_DIR . "/plugins/wp-super-cache/" ); //Added by WP-Cache Manager
 
