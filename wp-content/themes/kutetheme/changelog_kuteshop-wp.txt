@@ -2,8 +2,11 @@
 Ver 1.4.2
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 #02/11/2015 ## Fix button added cart and border 0ption7
-#3/11/2015 	## Fix responsive tab category
-#4/11/2015	## Fix button add cart list view products
+#3/11/2015 ## Fix responsive tab category
+#4/11/2015 ## Fix button add cart list view products
+#4/11/2015 # Update topbar menu and Main menu. Support 3 levels
+#5/11/2015 # Update Theme options
+
 
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.1
