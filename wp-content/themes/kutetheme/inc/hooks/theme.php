@@ -189,7 +189,7 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
         $kt_click_open_vertical_menu = kt_option('kt_click_open_vertical_menu','disable');
         $kt_vertical_item_visible = kt_option('kt_vertical_item_visible',11);
         ?>
-        <div class="top-main-menu">
+        <div class="top-main-menu style1">
             <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">

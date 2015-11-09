@@ -148,7 +148,7 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 }
 #form-search-opntop{
     right: auto;
-    left: 100px;
+    left: 50px;
 }
 #form-search-opntop .input-serach{
     float: right;
@@ -203,6 +203,54 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     margin-left: 15px;
     margin-right: 0;
 }
+.navigation-main-menu>li{
+    float: right;
+}
+.navigation-main-menu .sub-menu{
+    right: 0;
+    left: inherit;
+}
+.navigation-main-menu .sub-menu .sub-menu{
+    right: 100%;
+}
+.navigation-main-menu .sub-menu>.menu-item-has-children>a:after{
+        content: "\f104";
+}
+.navigation-main-menu>.menu-item-has-children>a:after{
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+}
+.navigation-main-menu .sub-menu>.menu-item-has-children>a:after{
+    float: left;
+}
+.box-vertical-megamenus .title .title-menu{
+    text-align: right;
+    float: right;
+}
+.vertical-menu-list .sub-menu{
+    left:inherit;
+    right: 100%;
+}
+.vertical-menu-list .menu-item-has-children>a:before{
+    right: inherit;
+    left: 8px;
+    content: "\f104";
+}
+.top-bar-menu>li.menu-item-has-children>a:after{
+    float: left;
+    margin-left: 0;
+    margin-right: 10px;
+}
+.top-bar-menu .sub-menu{
+    left: inherit;
+    right: 0;
+}
+.nav-ontop #box-vertical-megamenus .vertical-menu-content{
+    right: 0;
+    left: inherit;
+}
+
 /** ================================================
     6. Visual Composer
 *** ================================================*/
