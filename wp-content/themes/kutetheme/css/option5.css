@@ -108,10 +108,6 @@
 .option5 #form-search-opntop .btn-search .fa{
 	display: none;
 }
-.option5 #box-vertical-megamenus{
-	width: 85px;
-	padding: 0;
-}
 
 .option5 #main-menu .navbar{
 	border-radius: 0;
@@ -1316,9 +1312,6 @@
 	}
 	.option5 #main-menu .navbar-collapse{
 		margin-left: 0;
-	}
-	.option5 #box-vertical-megamenus{
-		width: inherit;
 	}
 
 }

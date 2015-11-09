@@ -34,16 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?php echo kt_get_logo(); ?>
                 </div>
                 <div id="main-menu" class="col-sm-12 col-md-9 main-menu">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                                <a class="navbar-brand" href="#"><?php _e( 'MENU', 'kutetheme' ) ?></a>
-                            </div>
-                            <?php kt_setting_mega_menu(); ?>
-                        </div>
+                    <nav class="main-menu-style7 main-menu-wapper">
+                        <?php kt_setting_mega_menu(); ?>
+                        <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
                     </nav>
                 </div>
             </div>
@@ -95,7 +88,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     wp_reset_postdata();
     wp_reset_query();
     ?>
-    <?php do_action( 'kt_show_menu_option_7' ) ?>
+    <div class="container">
+        <?php do_action( 'kt_show_menu_option_7' ) ?>
+    </div>
 </div>
 <!-- end header -->
 </div>

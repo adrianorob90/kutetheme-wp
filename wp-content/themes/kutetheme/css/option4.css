@@ -122,9 +122,9 @@
 	border-bottom: 1px solid #ccc;
 }
 .option4 .box-vertical-megamenus .title{
-	height: 42px;
-	line-height: 42px;
-	background: #0088cc;
+	height: 41px;
+	line-height: 41px;
+	margin-top: -1px;
 }
 .option4 .box-vertical-megamenus .title .btn-open-mobile{
 	line-height: 40px;
@@ -317,9 +317,10 @@
 	padding-right: 0;
 }
 .formsearch-option4>form{
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	height: 40px;
+    height: 40px;
+    position: relative;
+    display: table;
+    width: 100%;
 }
 .enable_vm .formsearch-option4>form{
 	border-left: none;
@@ -327,6 +328,8 @@
 .formsearch-option4 .form-category{
 	height: 40px;
 	min-width: 150px;
+	display: table-cell;
+	vertical-align: middle;
 }
 .formsearch-option4 .select2-container--default,
 .formsearch-option4 .select2-selection--single{
@@ -353,11 +356,16 @@
 }
 .formsearch-option4 .input-serach{
 	padding-left: 10px;
+	width: 100%;
+	display: table-cell;
+	vertical-align: middle;
 }
 .formsearch-option4 .input-serach input{
     outline-width: 0;
     border-width: 0;
     background-color: transparent;
+    width: 100%;
+    margin-top: -5px;
 }
 .formsearch-option4 .btn-search{
 	width: 50px;
@@ -365,7 +373,11 @@
     background-color: transparent;
     border-width: 0;
 	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
 	color: #666;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 .formsearch-option4 .btn-search:before{
     display: inline-block;
@@ -378,7 +390,9 @@
     content: "\f002";
 }
 
-
+.formsearch-option4 .btn-search:hover{
+	background-color: transparent!important;
+}
 .option4 .group-banner4{
 	background: #fff;
 	padding: 32px 0;
@@ -654,30 +668,14 @@
 	.option4 .nav-top-menu{
 		border: none;
 	}
-	.option4 #box-vertical-megamenus{
-		width: 100%;
-	}
-	.formsearch-option4{
-		width: 100%;
-		float: left;
-		margin-top: 25px;
-		padding: 0 15px;
-	}
+	
 	.formsearch-option4 .form-category{
 		display: none;
-	}
-	.formsearch-option4>form{
-		border: 1px solid #ccc;
 	}
 	.group-link-main-menu{
 		width: 100%;
 		float: left;
 		margin-top: 25px;
-	}
-	.formsearch-option4 .btn-search{
-		position: absolute;
-		top: 0;
-		right: 20px;
 	}
 	.formsearch-option4 .form-group{
 		margin: 0;

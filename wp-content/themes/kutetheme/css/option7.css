@@ -199,12 +199,11 @@
 	border-bottom: 1px solid #efefef;
 }
 .option7 .box-vertical-megamenus .title{
-	height: 42px;
-	line-height: 42px;
+	height: 40px;
+	line-height: 40px;
 	background: #434343;
 	padding: 0;
 	text-align: right;
-	padding-right: 20px;
 }
 .option7 .box-vertical-megamenus .title .btn-open-mobile{
 	line-height: 41px;
@@ -299,10 +298,6 @@
 	border-bottom: 1px dotted #eaeaea;
 	line-height: 36px;
 }
-.option7 .box-vertical-megamenus{
-	top: -1px;
-}
-
 .option7 .box-vertical-megamenus .vertical-menu-list>li:hover>a{
 	border-color: transparent;
 }
@@ -390,16 +385,7 @@
 	padding-bottom: 50px;
 }
 
-
-.formsearch-option4{
-	height: 40px;
-}
-.formsearch-option4>form{
-	border-right: 1px solid #efefef;
-	height: 40px;
-}
 .option7  .formsearch-option4>form{
-	border-right: 1px solid #efefef;
 	height: 40px;
 }
 .formsearch-option4 .form-category{
@@ -1887,30 +1873,13 @@
 	.option7 .nav-top-menu{
 		border: none;
 	}
-	.option7 #box-vertical-megamenus{
-		width: 100%;
-	}
-	.formsearch-option4{
-		width: 100%;
-		float: left;
-		margin-top: 25px;
-		padding: 0 15px;
-	}
 	.formsearch-option4 .form-category{
 		display: none;
-	}
-	.formsearch-option4>form{
-		border: 1px solid #ccc;
 	}
 	.group-link-main-menu{
 		width: 100%;
 		float: left;
 		margin-top: 25px;
-	}
-	.formsearch-option4 .btn-search{
-		position: absolute;
-		top: 0;
-		right: 20px;
 	}
 	.formsearch-option4 .form-group{
 		margin: 0;
@@ -1923,9 +1892,7 @@
 		border: 1px solid #ccc;
 		margin-left: -1px;
 	}
-	.option7 #box-vertical-megamenus .box-vertical-megamenus{
-		right: 15px;
-	}
+	
 	.option7 .group-button-header .btn-cart{
 		display: none;
 	}

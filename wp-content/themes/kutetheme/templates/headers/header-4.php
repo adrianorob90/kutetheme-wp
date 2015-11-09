@@ -14,16 +14,9 @@
                     <?php echo kt_get_logo(); ?>
                 </div>
                 <div id="main-menu" class="col-sm-10 col-md-10 col-lg-8 main-menu">
-                    <nav class="navbar navbar-default">
-                        <div class="container-fluid">
-                            <div class="navbar-header">
-                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                    <i class="fa fa-bars"></i>
-                                </button>
-                                <a class="navbar-brand" href="#"><?php esc_html_e( 'Menu', 'kutetheme' ) ?></a>
-                            </div>
-                            <?php kt_setting_mega_menu(); ?><!--/.nav-collapse -->
-                        </div>
+                    <nav class="main-menu-style4 main-menu-wapper">
+                        <?php kt_setting_mega_menu(); ?>
+                        <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
                     </nav>
                 </div>
                 <?php 

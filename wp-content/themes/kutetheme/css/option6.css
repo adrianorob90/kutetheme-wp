@@ -202,11 +202,6 @@
 .option6 #form-search-opntop .btn-search .fa{
 	display: none;
 }
-.option6 #box-vertical-megamenus{
-	width: 85px;
-	padding: 0;
-}
-
 .option6 #main-menu .navbar{
 	border-radius: 0;
 	background: #007176;
@@ -1646,9 +1641,7 @@
 	.option6 #main-menu .navbar-header{
 		margin: 0;
 	}
-	.option6 #box-vertical-megamenus{
-		display: none;
-	}
+	
 	.option6 #main-menu .navbar-collapse{
 		margin-left: 0;
 	}

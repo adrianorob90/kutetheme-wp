@@ -224,11 +224,6 @@
 	background: #0088cc;
 	border: none;
 }
-.option3 .nav-ontop #box-vertical-megamenus .title {
-	background: #0088cc;
-	color: #fff;
-	border:none;
-}
 .option3 .main-header-menu{
 	margin: 0;
 }
@@ -307,7 +302,7 @@
 	background: #0088cc;
 }
 .option3 .nav-ontop #box-vertical-megamenus {
-	width: 60px;
+	width: 40px;
 }
 .option3 .nav-ontop #main-menu .navbar .navbar-nav>li>a{
 	color: #fff;

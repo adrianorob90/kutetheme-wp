@@ -408,12 +408,10 @@ function kt_get_color_scheme_css( $colors ) {
     body .box-vertical-megamenus .all-category span:hover,
 
     .header.option3 .main-header .header-search-box .form-inline .btn-search,
-    .header.option3 .nav-top-menu .box-vertical-megamenus .title,
     .header.option3 .box-vertical-megamenus .vertical-menu-list>li:hover,
     .header.option3 .box-vertical-megamenus .all-category:hover>span,
     .hot-deals-box .hot-deals-tab .hot-deals-tab-box .box-count-down .box-count:before,
     body .header.option3 .nav-ontop,
-    body .header.option3 .nav-ontop #box-vertical-megamenus .title,
     body .header.option4 .box-vertical-megamenus .title,
     body .header.option4 .box-vertical-megamenus .vertical-menu-list>li:hover,
     body .header.option4 .box-vertical-megamenus .all-category:hover span,
@@ -421,7 +419,6 @@ function kt_get_color_scheme_css( $colors ) {
     body .option4 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .cart-block .cart-block-content .cart-buttons a.btn-check-out,
     body .option3 .nav-ontop,
-    body .option3 .nav-ontop #box-vertical-megamenus .title,
     body .trending .trending-title,
     
     .option7 .hot-deals-box .hot-deals-tab .hot-deals-title.vertical-text,
@@ -435,7 +432,9 @@ function kt_get_color_scheme_css( $colors ) {
     .option7 .owl-controls .owl-next:hover,
     #footer2.footer3 .mailchimp-wrapper .mailchimp-form .mailchimp-submit,
     .top-main-menu.style2 .main-menu-wapper,
-    .option2 .nav-top-menu.nav-ontop
+    .option2 .nav-top-menu.nav-ontop,
+    .top-main-menu.style5 .main-menu-wapper,
+    .top-main-menu.style6 .main-menu-wapper
     {
         background-color: <?php echo esc_attr( $colors['main_color'] ); ?>;
     }
