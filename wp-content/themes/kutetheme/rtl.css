@@ -947,3 +947,9 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .option7 .box-products.right .box-produts-content .products .product:nth-child(1), .option7 .box-products.right .box-produts-content .products .product:nth-child(5){
     border-left-color: #eaeaea;
 }
+
+
+@media (max-width: 991px){
+.product-featured .product-featured-content .product-featured-list.has_attachment {
+    margin-right: 0;
+}
