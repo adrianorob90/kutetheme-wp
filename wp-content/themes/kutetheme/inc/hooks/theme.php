@@ -192,7 +192,7 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
         <div class="top-main-menu style1">
             <?php if( $kt_enable_vertical_menu == 'enable' ): ?>
             <div id="box-vertical-megamenus" class="vertical-wapper">
-                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
+                <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' ); else echo esc_attr( 'show_content' );?>">
                     <h4 class="title">
                         <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>

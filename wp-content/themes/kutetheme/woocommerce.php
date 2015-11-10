@@ -14,6 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header(); 
 
 $kt_sidebar_are = kt_option( 'kt_woo_shop_sidebar_are', 'left' );
+if(is_product()){
+    $kt_sidebar_are = kt_option( 'kt_woo_single_sidebar_are', 'left' );
+ }
 
 $sidebar_are_layout = 'sidebar-'.$kt_sidebar_are;
 

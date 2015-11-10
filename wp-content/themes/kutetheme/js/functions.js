@@ -502,34 +502,43 @@
         );
 
         // OWl related product
-        $('.related.products .product-list,.upsells.products .product-list').owlCarousel(
-            {
-                dots:false,
-                nav:true,
-                navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-                responsive : {
-                  // breakpoint from 0 up
-                  0 : {
-                      items : 1,
-                  },
-                  // breakpoint from 480 up
-                  480 : {
-                      items : 2,
-                  },
-                  // breakpoint from 768 up
-                  768 : {
-                      items : 2,
-                  },
-                  1000 : {
-                      items : 3,
-                  },
-                  1025 : {
-                      items : 3,
-                  }
-              },
-              rtl: rtl
+         $('.related.products .product-list,.upsells.products .product-list').each(function(){
+            var t = $(this).closest('.products');
+            var desktop_item = 3;
+            var ipad_item = 2;
+            if(t.hasClass('full-layout')){
+              desktop_item = 4;
+              ipad_item = 3;
             }
-        );
+            $(this).owlCarousel(
+                {
+                    dots:false,
+                    nav:true,
+                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+                    responsive : {
+                      // breakpoint from 0 up
+                      0 : {
+                          items : 1,
+                      },
+                      // breakpoint from 480 up
+                      480 : {
+                          items : ipad_item,
+                      },
+                      // breakpoint from 768 up
+                      768 : {
+                          items : ipad_item,
+                      },
+                      1000 : {
+                          items : desktop_item,
+                      },
+                      1025 : {
+                          items : desktop_item,
+                      }
+                  },
+                  rtl: rtl
+                }
+            );
+         })
 
       // Category product
       $(document).on('click','.widget_product_categories a',function(){

@@ -34,10 +34,14 @@ $args = apply_filters( 'woocommerce_related_products_args', array(
 $products = new WP_Query( $args );
 
 $woocommerce_loop['columns'] = $columns;
-
+$kt_sidebar_are = kt_option( 'kt_woo_single_sidebar_are', 'left' );
+$class[]='related products';
+if($kt_sidebar_are =='full'){
+	$class[]='full-layout';
+}
 if ( $products->have_posts() ) : ?>
 
-	<div class="related products">
+	<div class="<?php echo esc_attr( implode(' ', $class) );?>">
 
 		<h2><?php esc_html_e( 'Related Products', 'kutetheme' ); ?></h2>
 

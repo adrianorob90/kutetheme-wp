@@ -697,7 +697,22 @@
 .upsells.products .owl-controls .owl-next{
 	right: 15px;
 }
-
+.upsells.products .search.yith-wcqv-button,
+.related.products .search.yith-wcqv-button{
+	position: static;
+	top: inherit;
+	right: inherit;
+	left: inherit;
+	bottom: inherit;
+	-ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+.upsells.products .woocommerce.product.compare-button,
+.related.products .woocommerce.product.compare-button{
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
 .summary.entry-summary{
 	line-height: 24px;
 }
@@ -1588,6 +1603,14 @@ span.sku_wrapper{
 	width: 100%;
 	float: none;
 	text-align: center;
+}
+.woocommerce #content div.product div.images, .woocommerce #content div.product div.summary, .woocommerce div.product div.images, .woocommerce div.product div.summary, .woocommerce-page #content div.product div.images, .woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.images, .woocommerce-page div.product div.summary{
+	width: 48%;
+	float: left;
+}
+.woocommerce #content div.product div.summary,
+.woocommerce-page div.product div.summary{
+	float: right;
 }
 /*--------------------
 [14. Styles for devices(>=481px and <=767px)]

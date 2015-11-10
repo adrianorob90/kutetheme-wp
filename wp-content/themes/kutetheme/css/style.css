@@ -1161,6 +1161,7 @@ span.notify-right{
 .home .box-vertical-megamenus .vertical-menu-content{
   display: block;
 }
+
 .box-vertical-megamenus.hiden_content .vertical-menu-content{
   display: none;
 }
@@ -6703,7 +6704,9 @@ span.notify-right{
   .navigation-main-menu>li>a{
     padding: 0 15px;
   }
-
+  .product-featured .product-featured-content .product-featured-list.has_attachment{
+    margin-left: 0;
+  }
 }
 @media(max-width: 767px){
   .top-main-menu .vertical-wapper{
