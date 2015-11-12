@@ -114,14 +114,14 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
     	) );
         */
     
-    	$color_scheme  = kt_get_color_scheme();
-    	$default_color = trim( $color_scheme[0], '#' );
+    	// $color_scheme  = kt_get_color_scheme();
+    	// $default_color = trim( $color_scheme[0], '#' );
     
-    	// Setup the WordPress core custom background feature.
-    	add_theme_support( 'custom-background', apply_filters( 'kt_custom_background_args', array(
-    		'default-color'      => $default_color,
-    		'default-attachment' => 'fixed',
-    	) ) );
+    	// // Setup the WordPress core custom background feature.
+    	// add_theme_support( 'custom-background', apply_filters( 'kt_custom_background_args', array(
+    	// 	'default-color'      => $default_color,
+    	// 	'default-attachment' => 'fixed',
+    	// ) ) );
     
     	/*
     	 * This theme styles the visual editor to resemble the theme style,
@@ -505,7 +505,7 @@ require THEME_DIR . '/inc/breadcrumbs.php';
  *
  * @since Kute Theme 1.0
  */
-require THEME_DIR . '/inc/customizer.php';
+//require THEME_DIR . '/inc/customizer.php';
 
 /**
  * Function utility
