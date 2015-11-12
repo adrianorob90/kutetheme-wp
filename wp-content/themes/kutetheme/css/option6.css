@@ -86,9 +86,6 @@
 .option6 .cart-block{
 	margin-top: 5px;
 }
-.option6 .cart-block .cart-block-content .product-info .p-right .p-rice{
-	  color:#f96d10;
-}
 .option6 #shopping-cart-box-ontop .cart-block{
 	margin-top: 0;
 }
@@ -134,7 +131,6 @@
 .option6 .main-header .header-search-box .form-inline .btn-search{
 	color: #fff;
 	font-size: 16px;
-	background-color: #007176;
 }
 .option6 .select2-container--default .select2-selection--single .select2-selection__rendered{
 	color: #fff;
@@ -256,8 +252,6 @@
 	top: 1px;
 }
 .option6 .nav-ontop #box-vertical-megamenus .title{
-	background: #000;
-	color: #fff;
 	border-left: none;
 	text-align: center;
 	height: 51px;
@@ -441,12 +435,6 @@
 }
 .option6 .box-vertical-megamenus .vertical-menu-content ul>li>a.parent:before{
 	right: 20px;
-}
-.option6 .vertical-dropdown-menu .mega-products .mega-product .product-price .new-price{
-	  color: #f96d10;
-}
-.option6 .cart-block .cart-block-content .cart-buttons a.btn-check-out{
-	background: #007176;
 }
 
 .option6 .page-heading{

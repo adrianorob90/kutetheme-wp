@@ -95,6 +95,9 @@
 /*---------------
 [2. Main header]
 */
+.main-menu-style7.main-menu-wapper{
+	overflow: hidden;
+}
 .service-header{
 	background: #f8f8f8;
 	border: 1px solid #efefef;
@@ -322,16 +325,6 @@
 	  content: "\f101";
 	  font-size: 16px;
 	  font-weight: normal;
-}
-.option7 .vertical-dropdown-menu .mega-group-header span{
-	border-color: #f04923;
-}
-.option7 .box-vertical-megamenus .all-category:hover span {
-	background: #f04923;
-	border-color: #f04923;
-}
-.option7 #main-menu .dropdown-menu .block-container .group_header>a {
-  border-color: #f04923;
 }
 .option7 .box-vertical-megamenus .vertical-menu-content ul>li>a.parent:before{
 	right: 20px;

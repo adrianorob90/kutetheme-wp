@@ -497,7 +497,8 @@ function kt_themne_color(){
     body #footer2.footer3,
     body .view-product-list .page-title span,
     body .page-heading span.page-heading-title,
-    body .count-down-time2 .box-count{
+    body .count-down-time2 .box-count,
+    body  .option3 .main-header .header-search-box .form-inline{
         border-color: {$main_color};
     }
     body .product-list li .add-to-cart:hover{
@@ -583,6 +584,7 @@ CSS;
         .header.style1 .nav-top-menu.nav-ontop{
             background-color: {$h1_mega_menu_bg};
         }
+        
 CSS;
     }
     /* HEADER STYLE 2*/
@@ -631,8 +633,220 @@ CSS;
 
 CSS;
     }
+    if( $kt_used_header == 3 ){
+        $h3_topbar_bg = kt_option('h3_topbar_bg','#f6f6f6');
+        $h3_box_category_bg = kt_option('h3_box_category_bg','#0088cc');
+        $h3_mega_menu_bg_ontop = kt_option('h3_mega_menu_bg_ontop','#0088cc');
+        $h3_topbar_text_color = kt_option('h3_topbar_text_color','#666');
+        $h3_mege_menu_text_color_ontop = kt_option('h3_mege_menu_text_color_ontop','#fff');
+        $h3_box_category_text_color = kt_option('h3_box_category_text_color','#fff');
+        $h3_topbar_text_hover_color = kt_option('h3_topbar_text_hover_color','#0088cc');
+        $h3_mege_menu_text_hover_color = kt_option('h3_mege_menu_text_hover_color','#0088cc');
+        $h3_mege_menu_hover_text_color_ontop = kt_option('h3_mege_menu_hover_text_color_ontop','#fff');
+        $h3_item_mege_menu_bg_hover_color = kt_option('h3_item_mege_menu_bg_hover_color','#31a5df');
+
+        $css .= <<<CSS
+        .header.option3 .top-header{
+            background-color: {$h3_topbar_bg};
+            color:{$h3_topbar_text_color};
+        }
+        .header.option3 .top-bar-menu>li>a{
+            color:{$h3_topbar_text_color};
+        }
+        .header.option3 .top-bar-menu>li>a:hover{
+            color:{$h3_topbar_text_hover_color};
+        }
+        .header.option3 .box-vertical-megamenus .title{
+            background-color: {$h3_box_category_bg};
+            color:{$h3_box_category_text_color};
+        }
+        .header.option3 .nav-ontop{
+            background-color: {$h3_mega_menu_bg_ontop};
+        }
+        .header.option3 .nav-top-menu.nav-ontop .top-main-menu.style3 .navigation-main-menu>li>a{
+            color: {$h3_mege_menu_text_color_ontop};
+        }
+CSS;
+    }
+    if( $kt_used_header == 4 ){
+        $h4_topbar_bg = kt_option('h4_topbar_bg','#f6f6f6');
+        $h4_box_category_bg = kt_option('h4_box_category_bg','#0088cc');
+        $h4_topbar_text_color = kt_option('h4_topbar_text_color','#666');
+        $h4_mege_menu_text_color = kt_option('h4_mege_menu_text_color','#333');
+        $h4_box_category_text_color = kt_option('h4_box_category_text_color','#fff');
+        $h4_topbar_text_hover_color = kt_option('h4_topbar_text_hover_color','#0088cc');
+        $h4_mege_menu_text_hover_color = kt_option('h4_mege_menu_text_hover_color','#0088cc');
+        $css .=<<<CSS
+        .header.option4 .top-header{
+            background-color: {$h4_topbar_bg};
+            color:{$h4_topbar_text_color};
+        }
+        .header.option4 .top-bar-menu>li>a{
+            color:{$h4_topbar_text_color};
+        }
+        .header.option4 .top-bar-menu>li>a:hover{
+            color:{$h4_topbar_text_hover_color};
+        }
+        .header.option4 .box-vertical-megamenus .title{
+            background-color: {$h4_box_category_bg};
+            color:{$h4_box_category_text_color};
+        }
+CSS;
+    }
+    if( $kt_used_header == 5 ){
+        $h5_topbar_bg = kt_option('h5_topbar_bg','#f6f6f6');
+        $h5_mega_menu_bg = kt_option('h5_mega_menu_bg','#eee');
+        $h5_nav_mega_menu_bg = kt_option('h5_nav_mega_menu_bg','#f96d10');
+        $h5_box_category_bg = kt_option('h5_box_category_bg','#e80000');
+        $h5_topbar_text_color = kt_option('h5_topbar_text_color','#666');
+        $h5_mege_menu_text_color = kt_option('h5_mege_menu_text_color','#fff');
+        $h5_box_category_text_color = kt_option('h5_box_category_text_color','#fff');
+        $h5_topbar_text_hover_color = kt_option('h5_topbar_text_hover_color','#f96d10');
+        $h5_mege_menu_text_hover_color = kt_option('h5_mege_menu_text_hover_color','#fff');
+        $h5_item_mege_menu_bg_hover_color = kt_option('h5_item_mege_menu_bg_hover_color','#e80000');
+        $css .= <<<CSS
+        .header.option5 .top-header{
+            background-color: {$h5_topbar_bg};
+            color:{$h5_topbar_text_color};
+        }
+        .header.option5 .top-bar-menu>li>a{
+            color:{$h5_topbar_text_color};
+        }
+        .header.option5 .top-bar-menu>li>a:hover{
+            color:{$h5_topbar_text_hover_color};
+        }
+        .header.option5 .box-vertical-megamenus .title{
+            background-color: {$h5_box_category_bg};
+            color:{$h5_box_category_text_color};
+        }
+        .header.option5 .top-main-menu .main-menu-wapper{
+            background-color: {$h5_nav_mega_menu_bg};
+        }
+        .header.option5  .nav-top-menu{
+            background-color: {$h5_mega_menu_bg};
+        }
+        .header.option5 .top-main-menu.style5 .navigation-main-menu>li:hover, 
+        .header.option5 .top-main-menu.style5 .navigation-main-menu>li.active{
+             background-color: {$h5_item_mege_menu_bg_hover_color};
+        }
+        .header.option5 .top-main-menu.style5 .navigation-main-menu>li>a{
+            color: {$h5_mege_menu_text_color};
+        }
+        .header.option5 .top-main-menu.style5 .navigation-main-menu>li:hover>a, 
+        .header.option5 .top-main-menu.style5 .navigation-main-menu>li.active>a{
+            color: {$h5_mege_menu_text_hover_color};
+        }
+        .option5.header .nav-top-menu.nav-ontop{
+            background-color: {$h5_nav_mega_menu_bg};
+        }
+CSS;
+    }
+    if( $kt_used_header == 6 ){
+        $h6_topbar_bg = kt_option('h6_topbar_bg','#007176');
+        $h6_mega_menu_bg = kt_option('h6_mega_menu_bg','#008a90');
+        $h6_nav_mega_menu_bg = kt_option('h6_nav_mega_menu_bg','#007176');
+        $h6_box_category_bg = kt_option('h6_box_category_bg','#000');
+        $h6_search_box_bg = kt_option('h6_search_box_bg','#00abb3');
+        $h6_topbar_text_color = kt_option('h6_topbar_text_color','#fff');
+        $h6_mege_menu_text_color = kt_option('h6_mege_menu_text_color','#fff');
+        $h6_box_category_text_color = kt_option('h6_box_category_text_color','#fff');
+        $h6_topbar_text_hover_color = kt_option('h6_topbar_text_hover_color','#ccc');
+        $h6_mege_menu_text_hover_color = kt_option('h6_mege_menu_text_hover_color','#fff');
+        $h6_item_mege_menu_bg_hover_color = kt_option('h6_item_mege_menu_bg_hover_color','#00abb3');
+        $h6_header_bg = kt_option('h6_header_bg','#008a90');
+        $css .= <<<CSS
+        .header.option6 .top-header{
+            background-color: {$h6_topbar_bg};
+            color:{$h6_topbar_text_color};
+        }
+        .header.option6 .top-bar-menu>li>a{
+            color:{$h6_topbar_text_color};
+        }
+        .header.option6 .top-bar-menu>li>a:hover{
+            color:{$h6_topbar_text_hover_color};
+        }
+        .header.option6 .box-vertical-megamenus .title{
+            background-color: {$h6_box_category_bg};
+            color:{$h6_box_category_text_color};
+        }
+        .header.option6 .top-main-menu .main-menu-wapper{
+            background-color: {$h6_nav_mega_menu_bg};
+        }
+        .header.option6 .top-main-menu.style6 .navigation-main-menu>li:hover, 
+        .header.option6 .top-main-menu.style6 .navigation-main-menu>li.active{
+             background-color: {$h6_item_mege_menu_bg_hover_color};
+        }
+        .header.option6 .top-main-menu.style6 .navigation-main-menu>li>a{
+            color: {$h6_mege_menu_text_color};
+        }
+        .header.option6 .top-main-menu.style6 .navigation-main-menu>li:hover>a, 
+        .header.option6 .top-main-menu.style6 .navigation-main-menu>li.active>a{
+            color: {$h6_mege_menu_text_hover_color};
+        }
+        body .option6.header{
+            background-color: {$h6_header_bg};
+        }
+        .option6.header .main-header .header-search-box .form-inline,
+        .option6.header .main-header .header-search-box .form-inline .form-category{
+            background-color: {$h6_search_box_bg};
+        }
+        .option6.header .nav-top-menu.nav-ontop{
+            background-color: {$h6_nav_mega_menu_bg};
+        }
+CSS;
+    }
+    if( $kt_used_header == 7 ){
+        $h7_topbar_bg = kt_option('h7_topbar_bg','#cd2600');
+        $h7_mega_menu_bg = kt_option('h7_mega_menu_bg','#e62e04');
+        $h7_box_category_bg = kt_option('h7_box_category_bg','#434343');
+        $h7_button_box_category_bg = kt_option('h7_button_box_category_bg','#2a2a2a');
+        $h7_topbar_text_color = kt_option('h7_topbar_text_color','#fff');
+        $h7_mege_menu_text_color = kt_option('h7_mege_menu_text_color','#fff');
+        $h7_box_category_text_color = kt_option('h7_box_category_text_color','#fff');
+        $h7_topbar_text_hover_color = kt_option('h7_topbar_text_hover_color','#ccc');
+        $h7_mege_menu_text_hover_color = kt_option('h7_mege_menu_text_hover_color','#fff');
+        $h7_item_mege_menu_bg_hover_color = kt_option('h7_item_mege_menu_bg_hover_color','#f04923');
+        $h7_header_bg = kt_option('h7_header_bg','#e62e04');
+        $css .= <<<CSS
+        .header.style7 .top-header{
+            background-color: {$h7_topbar_bg};
+            color:{$h7_topbar_text_color};
+        }
+        .header.style7 .top-bar-menu>li>a{
+            color:{$h7_topbar_text_color};
+        }
+        .header.style7 .top-bar-menu>li>a:hover{
+            color:{$h7_topbar_text_hover_color};
+        }
+        .header.style7 .box-vertical-megamenus .title{
+            background-color: {$h7_box_category_bg};
+            color:{$h7_box_category_text_color};
+        }
+        body .header.style7 .main-header{
+            background-color: {$h7_header_bg};
+        }
+        body .main-menu-style7.main-menu-wapper{
+            background-color: {$h7_mega_menu_bg};
+        }
+        body .main-menu-style7 .navigation-main-menu>li>a{
+            color: {$h7_mege_menu_text_color};
+        }
+        body .main-menu-style7 .navigation-main-menu>li:hover, 
+        body .main-menu-style7 .navigation-main-menu>li.active{
+            background-color: {$h7_item_mege_menu_bg_hover_color};
+        }
+        body .main-menu-style7 .navigation-main-menu>li:hover>a,
+        body .main-menu-style7 .navigation-main-menu>li.active>a{
+            color: {$h7_mege_menu_text_hover_color};
+        }
+        body .option7 .box-vertical-megamenus .title .btn-open-mobile{
+            background-color: {$h7_button_box_category_bg};
+        }
+
+CSS;
+    }
     ?>
-    <style id="edo-theme-color" type="text/css">
+    <style id="kt-theme-color" type="text/css">
         <?php echo apply_filters( 'kt_customize_css', $css );?>
     </style>
     <?php

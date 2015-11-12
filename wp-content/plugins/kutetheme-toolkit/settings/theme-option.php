@@ -660,7 +660,6 @@ $config = array(
                         'default' => '#333',
                     ),
                     
-                    
                     array(
                         'name'    => 'Box Category Text Color',
                         'id'      => 'h4_box_category_text_color',

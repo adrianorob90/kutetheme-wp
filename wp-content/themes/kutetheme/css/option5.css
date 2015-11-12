@@ -82,12 +82,7 @@
 	padding-top: 0px;
     width: calc(100% - 41px);
 }
-.option5 .main-header .header-search-box .form-inline .btn-search{
-	background: none;
-	border-left: 1px solid #eaeaea;
-	font-size: 16px;
-    background: #f96d10 url("../images/search.png") no-repeat center center;
-}
+
 .option5 .main-header .header-search-box .form-inline .btn-search .fa{
 	line-height: inherit;
 }
@@ -158,8 +153,6 @@
 	margin-top: -1px;
 }
 .option5 .nav-ontop #box-vertical-megamenus .title{
-	background: #e80000;
-	color: #fff;
 	border-left: none;
 	text-align: center;
 	height: 51px;
@@ -234,16 +227,6 @@
 	border: none;
 	padding: 0 20px;
 }
-.option5 .box-vertical-megamenus .vertical-menu-list>li:hover{
-	background: #f96d10;
-}
-.option5 .box-vertical-megamenus .vertical-menu-list>li:hover>a{
-	color: #fff;
-	border-color: transparent;
-}
-.option5 .box-vertical-megamenus .vertical-menu-list>li:hover>a:before{
-	color: #fff;
-}
 .option5 .box-vertical-megamenus .vertical-menu-list:li:last-child>a{
 	border:none;
 }
@@ -263,14 +246,6 @@
 	margin-top: 0px;
 	padding-right: 0;
 }
-.option5 .vertical-dropdown-menu .mega-group-header span{
-	border-color: #f96d10;
-}
-.option5 .box-vertical-megamenus .all-category span:hover{
-	background: #f96d10;
-	color: #fff;
-	border-color: #f96d10;
-}
 .option5 .box-vertical-megamenus .all-category span:after{
 	  content: "\f101";
 	  font-size: 16px;
@@ -281,9 +256,6 @@
 }
 .option5 .vertical-dropdown-menu .mega-products .mega-product .product-price .new-price{
 	  color: #f96d10;
-}
-.option5 .cart-block .cart-block-content .cart-buttons a.btn-check-out{
-	background: #f96d10;
 }
 
 .option5 .page-heading{

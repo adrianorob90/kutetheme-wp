@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="option7">
 <!-- HEADER -->
-<div id="header" class="header">
+<div id="header" class="header style7">
     <div class="top-header">
         <div class="container">
             <?php 
