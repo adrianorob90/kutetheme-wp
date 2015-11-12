@@ -246,7 +246,6 @@ $config = array(
     $prefix . 'footer' => array(
         'title'   => 'Footer',
         'type'    => 'wrapper',
-        
         'cmb'     => array (
             $prefix . 'default_footer' => array(
                 'setting' => array( 
@@ -319,6 +318,263 @@ $config = array(
                         'type'    => 'text',
                         'default' => 'You a Client , large or small, and want to participate in this adventure, please send us an email to support@kuteshop.com'
                     )
+                )
+            ),
+		),
+    ),
+    //Color
+    $prefix . 'color' => array(
+        'title'   => 'Color',
+        'type'    => 'wrapper',
+        'cmb'     => array (
+            $prefix . 'general_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'general_color',
+        			'hookup'  => false,
+                    'title'   => 'General',
+        			'show_on' => array(
+        				// These are important, don't remove
+        				'key'   => 'options-page',
+        				'value' => array( $key )
+        			) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Main Color',
+                        'id'      => 'main_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff3366',
+                    ),
+                    array(
+                        'name'    => 'Background Color',
+                        'id'      => 'main_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    )
+                )
+            ),
+            
+            $prefix . 'vm_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'vm_color',
+        			'hookup'  => false,
+                    'title'   => 'Vertical Menu',
+        			'show_on' => array(
+        				// These are important, don't remove
+        				'key'   => 'options-page',
+        				'value' => array( $key )
+        			) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Background Color',
+                        'id'      => 'vm_bg_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Text Color',
+                        'id'      => 'vm_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#666',
+                    ),
+                    array(
+                        'name'    => 'Menu Item Hover Bg Color ',
+                        'id'      => 'vm_bg_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff3366',
+                    ),
+                    array(
+                        'name'    => 'Text Hover Color',
+                        'id'      => 'vm_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    )
+                )
+            ),
+            //Color Header 1
+            $prefix . 'header_1_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_1_color',
+        			'hookup'  => false,
+                    'title'   => 'Header 1',
+        			'show_on' => array(
+        				// These are important, don't remove
+        				'key'   => 'options-page',
+        				'value' => array( $key )
+        			) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'TopBar Bg Color',
+                        'id'      => 'h1_topbar_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f6f6f6',
+                    ),
+                    array(
+                        'name'    => 'Mega Menu Bg Color',
+                        'id'      => 'h1_mega_menu_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#eee',
+                    ),
+                    
+                    array(
+                        'name'    => 'Search Box Bg Color',
+                        'id'      => 'h1_search_box_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#eaeaea',
+                    ),
+                    
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h1_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#000',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Color',
+                        'id'      => 'h1_mege_menu_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#666',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Hover Color',
+                        'id'      => 'h1_mege_menu_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    
+                    array(
+                        'name'    => 'Menu Item Hover Bg Color ',
+                        'id'      => 'h1_bg_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff3366',
+                    ),
+                )
+            ),
+            //Color Header 2
+            $prefix . 'header_2_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_2_color',
+        			'hookup'  => false,
+                    'title'   => 'Header 2',
+        			'show_on' => array(
+        				// These are important, don't remove
+        				'key'   => 'options-page',
+        				'value' => array( $key )
+        			) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'TopBar Bg Color',
+                        'id'      => 'h2_topbar_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f6f6f6',
+                    ),
+                    array(
+                        'name'    => 'Mega Menu Bg Color',
+                        'id'      => 'h2_mega_menu_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#eee',
+                    ),
+                    
+                    array(
+                        'name'    => 'Search Box Bg Color',
+                        'id'      => 'h2_search_box_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f6f6f6',
+                    ),
+                    
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h2_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#4c311d',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Color',
+                        'id'      => 'h2_mege_menu_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Hover Color',
+                        'id'      => 'h2_mege_menu_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    
+                    array(
+                        'name'    => 'Menu Item Hover Bg Color ',
+                        'id'      => 'h2_bg_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ab9d77',
+                    ),
+                )
+            ),
+            //Color Header 3
+            $prefix . 'header_3_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_3_color',
+        			'hookup'  => false,
+                    'title'   => 'Header 3',
+        			'show_on' => array(
+        				// These are important, don't remove
+        				'key'   => 'options-page',
+        				'value' => array( $key )
+        			) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'TopBar Bg Color',
+                        'id'      => 'h3_topbar_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f6f6f6',
+                    ),
+                    array(
+                        'name'    => 'Search Box Bg Color',
+                        'id'      => 'h3_search_box_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f6f6f6',
+                    ),
+                    
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h3_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#0088cc',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Hover Color',
+                        'id'      => 'h3_mege_menu_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#0088cc',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Bg Color(OnTop)',
+                        'id'      => 'h3_mega_menu_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#0088cc',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Color(OnTop)',
+                        'id'      => 'h3_mege_menu_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Menu Item Hover Bg Color(OnTop)',
+                        'id'      => 'h3_bg_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#31a5df',
+                    ),
                 )
             ),
 		),
