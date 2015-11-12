@@ -554,7 +554,7 @@ function kt_get_color_scheme_css( $colors ) {
 	}
     <?php
     $css = ob_get_clean();
-	return $css;
+	//return $css;
 }
 
 /**

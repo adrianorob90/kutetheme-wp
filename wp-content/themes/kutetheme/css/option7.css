@@ -582,9 +582,7 @@
 	width: 38px;
 	font-size: 24px;
 }
-.option7 .hot-deals-box .hot-deals-tab .hot-deals-title{
-	background: #e62e04;
-}
+
 .option7 .hot-deals-box .hot-deals-tab .hot-deals-tab-box{
 	padding: 0;
 	padding-left: 15px;
@@ -622,7 +620,6 @@
 
 .option7 .hot-deals-box .owl-prev{
 	left: -30px;
-	color: #7cbf42;
 	margin-top: -31px;
 }
 .option7 .hot-deals-box .owl-next{
@@ -995,9 +992,7 @@
 	padding: 0;
 }
 .products .group-tool-button a:hover,
-.products .group-tool-button a.compare:hover,
-.option7 .hot-deals-box .owl-prev:hover,
-.option7 .hot-deals-box .owl-next:hover{
+.products .group-tool-button a.compare:hover{
 	background-color: #e62e04;
 }
 .products .group-tool-button a.search{

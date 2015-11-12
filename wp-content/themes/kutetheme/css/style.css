@@ -857,7 +857,10 @@ img.alignright{
 .main-header .header-search-box .form-inline .btn-search{
     width: 41px;
     height: 41px;
-    background: #ff3366 url("../images/search.png") no-repeat center center;
+    background-color: #ff3366;
+    background-image: url("../images/search.png");
+    background-repeat: no-repeat;
+    background-position: center center;
     border: none;
     border-radius: 0;
     color: #fff;
@@ -911,7 +914,10 @@ img.alignright{
     content: '';
     width: 41px;
     height: 41px;
-    background: #ff3366 url('../images/cart.png') no-repeat center center;
+    background-color: #ff3366;
+    background-image: url('../images/cart.png');
+    background-position: center center;
+    background-repeat: no-repeat;
     position: absolute;
     top: -1px;
     right: -1px;
@@ -3459,10 +3465,8 @@ span.notify-right{
 .products-block .link-all{
   height: 35px;
   width: 120px;
-  border: 1px solid #ff3366;
-  line-height: 33px;
+  line-height: 35px;
   font-size: 14px;
-  color: #ff3366;
   display: block;
   margin: 0 auto;
   text-align: center;

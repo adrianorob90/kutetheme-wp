@@ -400,5 +400,165 @@ if( ! function_exists( 'kt_show_vertical_menu_option_7' ) ){
     }
 }
 add_action( 'kt_show_menu_option_7', 'kt_show_vertical_menu_option_7' );
+
+
+
+function kt_themne_color(){
+    $kt_used_header = kt_option('kt_used_header',1);
+    $main_color = kt_option('main_color','#ff3366');
+    $bg_color = kt_option('bg_color','#fff');
+    $price_color = kt_option('price_color','#ff3366');
+    $rgba_main_color = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.5)', kt_hex2rgb( $main_color ) );
+    /* Main color */
+    $css = <<<CSS
+    html body{
+        background-color: {$bg_color};
+    }
+    body a:hover,
+    body a:focus,
+    body a:active,
+    body.woocommerce .summary .yith-wcwl-add-to-wishlist .show a:hover,
+    body.woocommerce .summary .compare:hover,
+    body.woocommerce .woocommerce-breadcrumb a:hover,
+    body .blog-list .blog-list-wapper ul li .readmore a,
+    body .count-down-time2 .box-count,
+    body .trending .trending-product li .product-price,
+    body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a{
+        color: {$main_color}
+    }
+    body .main-header .header-search-box .form-inline .btn-search,
+    body .main-header .shopping-cart-box a.cart-link:after,
+    body .cart-block .cart-block-content .cart-buttons a.btn-check-out,
+    body .main-bg,
+    body .box-vertical-megamenus .vertical-menu-list>li:hover,
+    body .megamenu .widget .widgettitle:before,
+    body .megamenu .widget .widgettitle:before,
+    body .owl-controls .owl-prev:hover, 
+    body .owl-controls .owl-next:hover,
+    body .box-vertical-megamenus .all-category span:hover,
+    body .product-list li .quick-view a:hover,
+    body .product-list li .quick-view a:hover,
+    body .scroll_top:hover,
+    body .cate-box .cate-link:hover,
+    body #footer2.footer3 .mailchimp-wrapper .mailchimp-form .mailchimp-submit,
+    body.woocommerce div.product form.cart .button,
+    body.woocommerce .summary .yith-wcwl-add-to-wishlist .show a:hover:before,
+    body.woocommerce .summary .compare:hover:before,
+    body.woocommerce #respond input#submit:hover, 
+    body.woocommerce a.button:hover, 
+    body.woocommerce button.button:hover, 
+    body.woocommerce input.button:hover,
+    body .display-product-option li.selected span, 
+    body .display-product-option li:hover span,
+    body .nav-links a:hover, 
+    body .nav-links .current,
+    body .product-list.list .add-to-cart,
+    body.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content,
+    body .owl-controls .owl-dots .owl-dot.active,
+    body .products-block .link-all,
+    body .widget_kt_on_sale .product-list li .add-to-cart,
+    body .woocommerce #respond input#submit.alt, 
+    body .woocommerce a.button.alt, 
+    body .woocommerce button.button.alt, 
+    body .woocommerce input.button.alt,
+    body .woocommerce #respond input#submit:hover, 
+    body .woocommerce a.button:hover, 
+    body .woocommerce button.button:hover, 
+    body .woocommerce input.button:hover,
+    body .woocommerce #respond input#submit.alt:hover, 
+    body .woocommerce a.button.alt:hover, 
+    body .woocommerce button.button.alt:hover, 
+    body .woocommerce input.button.alt:hover,
+    body .ui-selectmenu-menu .ui-state-hover, 
+    body .ui-selectmenu-menu .ui-widget-content .ui-selectmenu-menu .ui-state-hover, 
+    body .ui-selectmenu-menu .ui-widget-header, 
+    body .ui-selectmenu-menu .ui-state-hover, 
+    body .ui-selectmenu-menu .ui-state-focus, 
+    body .ui-selectmenu-menu .ui-widget-content .ui-state-focus, 
+    body .ui-selectmenu-menu .ui-widget-header .ui-state-focus,
+    body .trending .trending-title,
+    body .hot-deals-box .hot-deals-tab .hot-deals-title,
+    body .block-popular-cat .more,
+    body .block-popular-cat .sub-categories>ul>li>a:before,
+    body .hot-deals-box .hot-deals-tab .box-count-down .box-count:before,
+    body .products .group-tool-button a:hover, 
+    body .products .group-tool-button a.compare:hover,
+    body .option7 .products .group-tool-button a:hover, 
+    body .option7 .products .group-tool-button a.compare:hover, 
+    body .option7 .products .search:hover{
+        background-color: {$main_color};
+    }
+    body .box-vertical-megamenus .vertical-menu-content,
+    body .popular-tabs .nav-tab li:hover, 
+    body .popular-tabs .nav-tab li.active,
+    body .latest-deals .latest-deal-content,
+    body .box-vertical-megamenus .all-category span:hover,
+    body .brand-showcase .brand-showcase-title,
+    body .group-title span,
+    body #footer2.footer3,
+    body .view-product-list .page-title span,
+    body .page-heading span.page-heading-title,
+    body .count-down-time2 .box-count{
+        border-color: {$main_color};
+    }
+    body .product-list li .add-to-cart:hover{
+        background-color: {$rgba_main_color}
+    }
+    body .product-list li .content_price,
+    body.woocommerce div.product p.price,
+    body.woocommerce div.product span.price,
+    body .cart-block .cart-block-content .product-info .p-right .p-rice{
+        color: {$price_color}
+    }
+CSS;
+    /* Header color */
+    if( $kt_used_header == 1 ){
+        $h1_topbar_bg = kt_option('h1_topbar_bg','#f6f6f6');
+        $h1_mega_menu_bg = kt_option('h1_mega_menu_bg','#eee');
+        $h1_box_category_bg = kt_option('h1_box_category_bg','#000');
+        $h1_mege_menu_text_color = kt_option('h1_mege_menu_text_color','#000');
+        $h1_mege_menu_text_hover_color = kt_option('h1_mege_menu_text_hover_color','#fff');
+        $h1_bg_hover_color = kt_option('h1_bg_hover_color','#ff3366');
+        $h1_topbar_text_color = kt_option('h1_topbar_text_color','#666');
+        $h1_box_category_text_color = kt_option('h1_box_category_text_color','#fff');
+        $h1_topbar_text_hover_color = kt_option('h1_topbar_text_hover_color','#ff3366');
+        $css .= <<<CSS
+        .header.style1 .top-header{
+            background-color: {$h1_topbar_bg};
+            color:{$h1_topbar_text_color};
+        }
+        .header.style1 .top-bar-menu>li>a{
+            color: {$h1_topbar_text_color};
+        }
+        .header.style1 .top-bar-menu>li>a:hover{
+            color: {$h1_topbar_text_hover_color};
+        }
+        .header.style1 .box-vertical-megamenus .title{
+            background-color: {$h1_box_category_bg};
+            color:{$h1_box_category_text_color};
+        }
+        .header.style1 .top-main-menu .main-menu-wapper{
+            background-color: {$h1_mega_menu_bg};
+        }
+        .header.style1 .navigation-main-menu>li:hover>a, 
+        .header.style1 .navigation-main-menu>li.active>a{
+            color: {$h1_mege_menu_text_hover_color};
+        }
+        .header.style1 .navigation-main-menu>li:hover, 
+        .header.style1 .navigation-main-menu>li.active{
+            background-color: {$h1_bg_hover_color};
+        }
+        .header.style1 .navigation-main-menu>li>a{
+            color: {#h1_mege_menu_text_color};
+        }
+CSS;
+    }
+    ?>
+    <style id="edo-theme-color" type="text/css">
+        <?php echo apply_filters( 'kt_customize_css', $css );?>
+    </style>
+    <?php
+}
+add_action( 'wp_enqueue_scripts', 'kt_themne_color',100 );
     
 
