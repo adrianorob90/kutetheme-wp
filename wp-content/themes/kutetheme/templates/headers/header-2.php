@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <!-- HEADER -->
-<div id="header" class="header option2">
+<div id="header" class="header option2 style2">
     <div class="top-header">
         <div class="container">
             <?php kt_topbar_menu();?>

@@ -435,7 +435,6 @@ function kt_themne_color(){
     body .megamenu .widget .widgettitle:before,
     body .owl-controls .owl-prev:hover, 
     body .owl-controls .owl-next:hover,
-    body .box-vertical-megamenus .all-category span:hover,
     body .product-list li .quick-view a:hover,
     body .product-list li .quick-view a:hover,
     body .scroll_top:hover,
@@ -488,11 +487,11 @@ function kt_themne_color(){
     body .option7 .products .search:hover{
         background-color: {$main_color};
     }
+
     body .box-vertical-megamenus .vertical-menu-content,
     body .popular-tabs .nav-tab li:hover, 
     body .popular-tabs .nav-tab li.active,
     body .latest-deals .latest-deal-content,
-    body .box-vertical-megamenus .all-category span:hover,
     body .brand-showcase .brand-showcase-title,
     body .group-title span,
     body #footer2.footer3,
@@ -511,6 +510,31 @@ function kt_themne_color(){
         color: {$price_color}
     }
 CSS;
+    /* Vertical menu */
+    $vm_bg_color = kt_option('vm_bg_color','#fff');
+    $vm_text_color = kt_option('vm_text_color','#666');
+    $vm_bg_hover_color = kt_option('vm_bg_hover_color','#ff3366');
+    $vm_text_hover_color = kt_option('vm_text_hover_color','#fff');
+    $css .= <<<CSS
+    body .box-vertical-megamenus .vertical-menu-content{
+        background-color: {$vm_bg_color};
+    }
+    body .box-vertical-megamenus .all-category span:hover{
+        border-color: {$vm_bg_hover_color};
+        color: {$vm_text_hover_color};
+    }
+    body .box-vertical-megamenus .vertical-menu-list>li:hover,
+    body .box-vertical-megamenus .all-category span:hover{
+        background-color: {$vm_bg_hover_color};
+    }
+    body .box-vertical-megamenus .vertical-menu-list>li>a{
+        color: {$vm_text_color};
+    }
+    body .box-vertical-megamenus .vertical-menu-list>li:hover>a,
+    body .box-vertical-megamenus .vertical-menu-list>li:hover>a:before{
+        color: {$vm_text_hover_color}
+    }
+CSS;
     /* Header color */
     if( $kt_used_header == 1 ){
         $h1_topbar_bg = kt_option('h1_topbar_bg','#f6f6f6');
@@ -518,10 +542,11 @@ CSS;
         $h1_box_category_bg = kt_option('h1_box_category_bg','#000');
         $h1_mege_menu_text_color = kt_option('h1_mege_menu_text_color','#000');
         $h1_mege_menu_text_hover_color = kt_option('h1_mege_menu_text_hover_color','#fff');
-        $h1_bg_hover_color = kt_option('h1_bg_hover_color','#ff3366');
+        $h1_item_mege_menu_bg_hover_color = kt_option('h1_item_mege_menu_bg_hover_color','#ff3366');
         $h1_topbar_text_color = kt_option('h1_topbar_text_color','#666');
         $h1_box_category_text_color = kt_option('h1_box_category_text_color','#fff');
         $h1_topbar_text_hover_color = kt_option('h1_topbar_text_hover_color','#ff3366');
+        $h1_mega_menu_border = kt_option('h1_mega_menu_border','#cacaca');
         $css .= <<<CSS
         .header.style1 .top-header{
             background-color: {$h1_topbar_bg};
@@ -543,14 +568,67 @@ CSS;
         .header.style1 .navigation-main-menu>li:hover>a, 
         .header.style1 .navigation-main-menu>li.active>a{
             color: {$h1_mege_menu_text_hover_color};
+            border-color: transparent;
         }
         .header.style1 .navigation-main-menu>li:hover, 
         .header.style1 .navigation-main-menu>li.active{
-            background-color: {$h1_bg_hover_color};
+            background-color: {$h1_item_mege_menu_bg_hover_color};
         }
         .header.style1 .navigation-main-menu>li>a{
-            color: {#h1_mege_menu_text_color};
+            color: {$h1_mege_menu_text_color};
         }
+        .header.style1 .navigation-main-menu>li>a{
+            border-color: {$h1_mega_menu_border};
+        }
+        .header.style1 .nav-top-menu.nav-ontop{
+            background-color: {$h1_mega_menu_bg};
+        }
+CSS;
+    }
+    /* HEADER STYLE 2*/
+    if( $kt_used_header == 2){
+        $h2_topbar_bg = kt_option('h2_topbar_bg','#f6f6f6');
+        $h2_mega_menu_bg = kt_option('h2_mega_menu_bg','#eee');
+        $h2_box_category_bg = kt_option('h2_box_category_bg','#4c311d');
+        $h2_topbar_text_color = kt_option('h2_topbar_text_color','#666');
+        $h2_mege_menu_text_color = kt_option('h2_mege_menu_text_color','#fff');
+        $h2_box_category_text_color = kt_option('h2_box_category_text_color','#fff');
+        $h2_topbar_text_hover_color = kt_option('h2_topbar_text_hover_color','#4c311d');
+        $h2_mege_menu_text_hover_color = kt_option('h2_mege_menu_text_hover_color','#fff');
+        $h2_item_mege_menu_bg_hover_color = kt_option('h2_item_mege_menu_bg_hover_color','#ab9d77');
+    $css .= <<<CSS
+    .header.style2 .top-header{
+        background-color: {$h2_topbar_bg};
+        color:{$h2_topbar_text_color};
+    }
+    .header.style2 .top-bar-menu>li>a{
+        color:{$h2_topbar_text_color};
+    }
+    .header.style2 .top-bar-menu>li>a:hover{
+        color:{$h2_topbar_text_hover_color};
+    }
+    .header.style2 .box-vertical-megamenus .title{
+        background-color: {$h2_box_category_bg};
+        color:{$h2_box_category_text_color};
+    }
+    body .top-main-menu.style2 .main-menu-wapper{
+        background-color: {$h2_mega_menu_bg};
+    }
+    .header.style2 .top-main-menu.style2 .navigation-main-menu>li:hover, 
+    .header.style2 .top-main-menu.style2 .navigation-main-menu>li.active{
+        background-color: {$h2_item_mege_menu_bg_hover_color};
+    }
+    .header.style2 .top-main-menu.style2 .navigation-main-menu>li>a{
+        color: {$h2_mege_menu_text_color};
+    }
+    .header.style2 .navigation-main-menu>li:hover>a, 
+    .header.style2 .navigation-main-menu>li.active>a{
+        color: {$h2_mege_menu_text_hover_color};
+    }
+    .header.style2 .nav-top-menu.nav-ontop{
+        background-color: {$h2_mega_menu_bg};
+    }
+
 CSS;
     }
     ?>
