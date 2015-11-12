@@ -786,6 +786,12 @@ $config = array(
                     ),
                     
                     array(
+                        'name'    => 'Header Bg Color',
+                        'id'      => 'h6_header_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#008a90',
+                    ),
+                    array(
                         'name'    => 'Mega Menu Bg Color',
                         'id'      => 'h6_mega_menu_bg',
                         'type'    => 'colorpicker',
@@ -875,6 +881,12 @@ $config = array(
                     ),
                     
                     array(
+                        'name'    => 'Header Bg Color',
+                        'id'      => 'h7_header_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#e62e04',
+                    ),
+                    array(
                         'name'    => 'Mega Menu Bg Color',
                         'id'      => 'h7_mega_menu_bg',
                         'type'    => 'colorpicker',
@@ -889,7 +901,7 @@ $config = array(
                     
                     array(
                         'name'    => 'Button Box Category Bg Color',
-                        'id'      => 'h7_box_category_bg',
+                        'id'      => 'h7_button_box_category_bg',
                         'type'    => 'colorpicker',
                         'default' => '#2a2a2a',
                     ),
