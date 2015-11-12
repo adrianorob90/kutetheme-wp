@@ -155,6 +155,32 @@ $config = array(
                 	)
                 )
             ),
+            $prefix . 'enable_hook' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'enable_hook',
+                    'hookup'  => false,
+                    'title'   => 'Enable hook',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => __( 'My Account box', 'kutetheme' ),
+                        'id'      => 'kt_enable_myaccount_box',
+                        'type'    => 'select',
+                        'desc'    => __( 'Setting My Account box display', 'kutetheme' ),
+                        'show_option_none' => 0,
+                        'default' => 'enable',
+                        'options' => array(
+                            'enable'  => 'Enable',
+                            'disable'  => 'Disable'
+                        ),
+                    )
+                )
+            ),
             $prefix . 'vertical_menu' => array(
                 'setting' => array( 
                     'id'      => $prefix . 'vertical_menu',

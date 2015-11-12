@@ -122,8 +122,18 @@
 .cmb2-list-image input[type="radio"]{
     display: none;
 }
+.cmb-td ul.cmb2-list-image{
+    width: 100%;
+    float: left;
+}
 ul.cmb2-list-image li{
     margin-bottom: 15px;
+    width: 45%;
+    float: left;
+    margin-right: 20px;
+}
+ul.cmb2-list-image li:nth-child(2n+1){
+    clear: left;
 }
 .cmb2-list-image input[type="radio"]:checked + label{
     outline: 3px solid #007176;
@@ -131,6 +141,11 @@ ul.cmb2-list-image li{
 }
 ul.cmb2-list-image li img{
     max-width:100%;
+}
+.cmb2-list-image input[type="radio"] + label{
+    outline: 3px solid #ccc;
+    overflow: hidden;
+    display: inline-block;
 }
 /**
 *RTL

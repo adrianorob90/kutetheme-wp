@@ -484,7 +484,8 @@ function kt_themne_color(){
     body .products .group-tool-button a.compare:hover,
     body .option7 .products .group-tool-button a:hover, 
     body .option7 .products .group-tool-button a.compare:hover, 
-    body .option7 .products .search:hover{
+    body .option7 .products .search:hover,
+    body .woocommerce div.product form.cart .button{
         background-color: {$main_color};
     }
 
@@ -507,7 +508,9 @@ function kt_themne_color(){
     body .product-list li .content_price,
     body.woocommerce div.product p.price,
     body.woocommerce div.product span.price,
-    body .cart-block .cart-block-content .product-info .p-right .p-rice{
+    body .cart-block .cart-block-content .product-info .p-right .p-rice,
+    .woocommerce div.product p.price, 
+    .woocommerce div.product span.price{
         color: {$price_color}
     }
 CSS;

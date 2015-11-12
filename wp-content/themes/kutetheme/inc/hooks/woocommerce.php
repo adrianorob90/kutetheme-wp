@@ -219,7 +219,7 @@ function kt_get_rating_html($rating_html, $rating){
     }
     //if($rating <=0) return'';
     $rating_html  = '<div class="product-star" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
-    for($i = 1;$i <= 5 ;$i++){
+    for($i = 0; $i < 5 ;$i++){
         if($rating >= $i){
             if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
                 $rating_html .= '<i class="fa fa-star-half-o"></i>';    
@@ -1388,6 +1388,10 @@ add_action( 'woocommerce_product_loop_start', 'kt_product_list_columns_class',1 
 add_filter( 'wp_nav_menu_items', 'kt_myaccount_menu_link', 10, 2 );
 
 function kt_myaccount_menu_link( $items, $args ) {
+   $kt_enable_myaccount_box = kt_option('kt_enable_myaccount_box','enable');
+   if( $kt_enable_myaccount_box == 'disable'){
+     return $items;
+   }
    ob_start();
    if ($args->theme_location == 'topbar_menuright') {
     ?>
@@ -1407,7 +1411,7 @@ function kt_myaccount_menu_link( $items, $args ) {
                 }
                 ?>
                 <li class="menu-item menu-item-has-children">
-                    <a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account');?></a>
+                    <a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account','kutetheme');?></a>
                     <ul class="sub-menu">
                         <?php 
                         if( function_exists( 'YITH_WCWL' ) ):
