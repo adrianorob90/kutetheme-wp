@@ -13,16 +13,20 @@
 
 get_header();
 
-$id = get_the_ID();
+
+// Start the loop.
+while ( have_posts() ) : the_post();
+    $id = get_the_ID();
+endwhile;
+
 // Default option
 $kt_sidebar_are = kt_option( 'kt_sidebar_are', 'left' );
 
 // Page option
-$kt_page_layout = kt_get_post_meta( $id, 'kt_page_layout', 'none' );
-
+$kt_page_layout = kt_get_post_meta( $id, 'kt_page_layout', '' );
 $kt_show_page_breadcrumb = kt_get_post_meta( $id, 'kt_show_page_breadcrumb', 'show' );
 
-if( $kt_page_layout != "none" ){
+if( $kt_page_layout != "" ){
 	$kt_sidebar_are = $kt_page_layout;
 }
 

@@ -9,9 +9,7 @@
 ?>
 <?php 
     $kt_page_comment = kt_get_post_meta( get_the_ID(), 'kt_enable_page_comment', 'show' );
-    
     $kt_show_page_title = kt_get_post_meta( get_the_ID(), 'kt_show_page_title', 'show');
-
     $kt_page_extra_class = kt_get_post_meta( get_the_ID(), 'kt_page_extra_class', 'show');
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class( $kt_page_extra_class ); ?>>

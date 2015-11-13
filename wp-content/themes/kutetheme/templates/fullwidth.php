@@ -12,8 +12,6 @@
     	<?php
     	// Start the loop.
     	while ( have_posts() ) : the_post();
-    		// Include the page content template.
-    		get_template_part( 'content', 'page' );
             ?>
             <div class="container"><?php the_content( );?></div>
             <?php

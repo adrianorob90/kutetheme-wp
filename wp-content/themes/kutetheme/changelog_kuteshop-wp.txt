@@ -4,6 +4,7 @@ Ver 1.4.3
 12/11/2015 Update Theme setting color
 12/11/2015 Fix Review star display
 12/11/2015 Fix Category display
+12/11/2015 Fix Main menu on firefox
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.2
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*

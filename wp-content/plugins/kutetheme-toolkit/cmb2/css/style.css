@@ -26,20 +26,21 @@
 }
 .kt_sidebar  ul  li{
     margin-bottom: 0;
+    overflow: hidden;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color:rgba(255,255,255,0.1); 
+    position: relative; 
 }
 .kt_sidebar ul a{
     text-decoration: none;
     display: block;
-    padding: 10px 5px;
-    margin-bottom: 1px;
+    padding: 10px 15px;
     color: #fff;
     transition: background-color 0.5s ease-in-out;
 }
 .kt_sidebar ul ul{
     margin-left: 10px;
-    height: 0;
-    max-height: 0;
-    overflow: hidden;
     -webkit-transition: height 0.5s ease-in;
     -moz-transition: height 0.5s ease-in;
     -o-transition: height 0.5s ease-in;
@@ -75,12 +76,11 @@
     overflow: hidden;
     padding-left: 10px;
 }
-.kt_group_menu .menu-item-active > a,
-.kt_group_menu .active > a,
-.kt_group_menu li:hover > a{
-    background-color: #00abb3;
+.kt_group_menu .menu-item-active>a,
+.kt_group_menu .active>a{
+    font-weight: bold;
 }
-.kt_group_menu a:before{
+/*.kt_group_menu a:before{
     content: "\f159";
     display: inline-block;
     width: 20px;
@@ -101,21 +101,51 @@
 .kt_group_menu li.has_child > a:before{
     content: "\f139";
     font-size: 20px;
-}
-.kt_group_menu li.has_child.menu-item-active > a:before,
+}*/
+/*.kt_group_menu li.has_child.menu-item-active > a:before,
 .rtl .kt_group_menu li.has_child.menu-item-active > a:before{
     content: "\f140";
     font-size: 20px;
 }
 .kt_group_menu li.has_child:hover > a:before{
     content: "\f140" !important;
+}*/
+.kt_group_menu .arow{
+    width: 39px;
+    height: 39px;
+    text-align: center;
+    line-height: 40px;
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
-.kt_group_menu li.has_child:hover ul,
-.kt_group_menu .menu-item-active ul{
-    height: auto;
-    max-height: none;
+.kt_group_menu .arow:before{
+    content: "\f140";
+    font-family: 'dashicons';
+    display: inline-block;
+    color: #fff;
 }
-
+.kt_group_menu .has_child>.kt_menu{
+    display: none;
+}
+.kt_group_menu .menu-item-active>.kt_menu{
+    display: block;
+}
+.kt_group_menu .kt_menu>li{
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color:rgba(255,255,255,0.1);  
+    border-bottom: none;
+}
+.kt_group_menu .show-submenu>.kt_menu{
+    display: block;
+}
+.kt_group_menu .kt_item_menu.menu-item-active>a,
+.kt_group_menu .kt_item_menu.show-submenu>a{
+    background-color: #10A0A6;
+}
 /**
 * TYPE radio_image
 */

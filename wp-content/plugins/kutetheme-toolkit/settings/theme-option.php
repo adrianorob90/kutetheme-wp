@@ -16,7 +16,6 @@ $config = array(
     $prefix . 'generals' => array(
         'title'   => 'General',
         'type'    => 'wrapper',
-        
         'cmb'     => array (
             $prefix . 'default_page' => array(
                 'setting' => array( 
@@ -522,7 +521,7 @@ $config = array(
                         'name'    => 'Mega Menu Bg Color',
                         'id'      => 'h2_mega_menu_bg',
                         'type'    => 'colorpicker',
-                        'default' => '#eee',
+                        'default' => '#958457',
                     ),
                     array(
                         'name'    => 'Box Category Bg Color',

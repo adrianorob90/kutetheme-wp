@@ -509,7 +509,8 @@ function kt_themne_color(){
     body.woocommerce div.product span.price,
     body .cart-block .cart-block-content .product-info .p-right .p-rice,
     .woocommerce div.product p.price, 
-    .woocommerce div.product span.price{
+    .woocommerce div.product span.price,
+    body .vertical-menu-list .mega-product .price{
         color: {$price_color}
     }
 CSS;
@@ -592,7 +593,7 @@ CSS;
     /* HEADER STYLE 2*/
     if( $kt_used_header == 2){
         $h2_topbar_bg = kt_option('h2_topbar_bg','#f6f6f6');
-        $h2_mega_menu_bg = kt_option('h2_mega_menu_bg','#eee');
+        $h2_mega_menu_bg = kt_option('h2_mega_menu_bg','#958457');
         $h2_box_category_bg = kt_option('h2_box_category_bg','#4c311d');
         $h2_topbar_text_color = kt_option('h2_topbar_text_color','#666');
         $h2_mege_menu_text_color = kt_option('h2_mege_menu_text_color','#fff');

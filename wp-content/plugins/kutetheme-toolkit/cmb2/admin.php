@@ -69,6 +69,7 @@ class KT_Admin {
     function kt_admin_styles() {
         wp_register_style( 'add_stylesheet', KUTETHEME_PLUGIN_URL . '/cmb2/css/style.css' );
         wp_enqueue_style( 'add_stylesheet' );
+        wp_enqueue_script( 'kt-theme-option-js', KUTETHEME_PLUGIN_URL . '/cmb2/js/custom.js', array( 'jquery' ), '1.0', true );
     }
     /**
      * Get all meta boxes that added for page options
@@ -151,8 +152,9 @@ class KT_Admin {
                         <ul class="kt_group_menu">
                             <?php foreach( $config as $k => $c ) : ?>
                                 <?php if( isset( $c['type'] ) && $c['type'] == 'wrapper' ): ?>
-                                    <li class="kt_item_menu has_child <?php echo  $wrap == $k ? 'menu-item-active' : ''; ?>">
+                                    <li class="kt_item_menu has_child <?php echo  $wrap == $k ? 'menu-item-active show-submenu' : ''; ?>">
                                         <a href="<?php echo  add_query_arg( array( 'wrap' => esc_attr( $k ) ), esc_url($link) ) ?>"><?php echo $c['title']; ?></a>
+                                        <span class="arow"></span>
                                         <ul class="kt_menu">
                                             <?php foreach( $c['cmb'] as $cmb ): ?>
                                                  <li class="kt_item_menu kt_chil_item <?php echo  $tab == $cmb['setting']['id'] ? 'active' : ''; ?>"><a href="<?php echo  add_query_arg( array( 'wrap' => esc_attr( $k ), 'tab' => esc_attr( $cmb['setting']['id'] ) ), esc_url($link) ) ?>"><?php echo esc_attr( $cmb['setting']['title'] ); ?></a></li>

@@ -6741,6 +6741,15 @@ span.notify-right{
     width: 100%;
     border-bottom: 1px solid #ccc;
   }
+  .navigation-main-menu>li:hover, 
+  .navigation-main-menu>li.active{
+    color: #333!important;
+    background-color: transparent!important;
+  }
+  .navigation-main-menu>li:hover>a, 
+  .navigation-main-menu>li.active>a{
+    color: #333!important;
+  }
   .navigation-main-menu>li>a{
     width: 100%;
     border: none;
@@ -6816,7 +6825,7 @@ span.notify-right{
     color: #333;
   }
   .box-vertical-megamenus .vertical-menu-list li:hover>a{
-    color: #333;
+    color: #333!important;
   }
   .box-vertical-megamenus .vertical-menu-list>li{
     border-bottom: 1px solid #eaeaea;

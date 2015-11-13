@@ -414,7 +414,6 @@
             })
             return false;
         })
-
         /// tre menu category
         $(document).on('click','.tree-menu li span',function(){
             $(this).closest('li').children('ul').slideToggle();
@@ -426,7 +425,7 @@
         /* Open menu on mobile */
         $(document).on('click','.btn-open-mobile',function(){
             var width = $(window).width();
-            if(width >1024){
+            if(width > 1024){
                 if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
                     if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
                         
@@ -437,6 +436,10 @@
             }
             $(this).closest('.box-vertical-megamenus').find('.vertical-menu-content').slideToggle();
             $(this).closest('.title').toggleClass('active');
+            if( width < 768 ){
+              $('.main-menu .navigation-main-menu').hide();
+            }
+            
             return false;
         })
         /* Product qty */
@@ -655,6 +658,7 @@
 
         $(document).on('click','.mobile-navigation',function(){
           $(this).closest('.main-menu-wapper').find('.navigation-main-menu').toggle();
+          $('#box-vertical-megamenus .vertical-menu-content').hide();
           return false;
         })
     });
