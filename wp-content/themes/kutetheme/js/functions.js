@@ -185,12 +185,11 @@
           }); 
           // On Desktop
           }else{
-              $(document).on('mousemove','.navigation .menu-item-has-children',function(){
-                  $(this).addClass('show-submenu');
-              })
-              $(document).on('mouseout','.navigation .menu-item-has-children',function(){
-                  $(this).removeClass('show-submenu');
-              })
+              $('.navigation .menu-item-has-children').hover(function(){
+                $(this).addClass('show-submenu');
+              }, function(){
+                $(this).removeClass('show-submenu'); 
+              });
           }
      }
     /* ---------------------------------------------
