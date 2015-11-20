@@ -151,6 +151,7 @@ $config = array(
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                             '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
+                            '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
                 		),
                 	)
                 )
@@ -296,6 +297,7 @@ $config = array(
                 			'1' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv1.jpg',
                 			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv2.jpg',
                 			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv3.jpg',
+                            '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv4.jpg',
                 		)
                 	),
                     array(
