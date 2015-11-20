@@ -51,7 +51,6 @@ if ( $products->have_posts() ) : ?>
 			<?php while ( $products->have_posts() ) : $products->the_post(); ?>
 
 				<?php wc_get_template_part( 'content', 'product' ); ?>
-
 			<?php endwhile; // end of the loop. ?>
 
 		<?php woocommerce_product_loop_end(); ?>

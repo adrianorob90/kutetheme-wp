@@ -619,11 +619,11 @@
     ***  Effect tab category
     ===============================**/
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-            var $this = jQuery(this);
-            var $container = $this.closest('.container-tab');
-            var $href = $this.attr('href');
-            var $tab_active = $container.find($href);
-            var $item_active = $tab_active.find( '.owl-item.active' );
+            var $this            = jQuery(this);
+            var $container       = $this.closest('.container-tab');
+            var $href            = $this.attr('href');
+            var $tab_active      = $container.find($href);
+            var $item_active     = $tab_active.find( '.owl-item.active' );
             var $carousel_active = $tab_active.find('.owl-carousel');
             
             if( $carousel_active.length > 0 ){
@@ -631,10 +631,10 @@
                   settingCarousel( $carousel_active );
                 }else{
                     $item_active.each( function ( $i ) {
-                        var $item = jQuery(this);
+                        var $item  = jQuery(this);
                         var $style = $item.attr("style");
-                        $style    = ( $style == undefined ) ? '' : $style;
-                        var delay = $i * 300;
+                        $style     = ( $style == undefined ) ? '' : $style;
+                        var delay  = $i * 300;
                         $item.attr("style", $style +
                                   ";-webkit-animation-delay:" + delay + "ms;"
                                 + "-moz-animation-delay:" + delay + "ms;"
@@ -661,6 +661,24 @@
           $('#box-vertical-megamenus .vertical-menu-content').hide();
           return false;
         })
+
+        //
+        //
+        $(document).on('click','.header.style8 .form-search .icon',function(){
+            $(this).closest('.form-search').find('form').fadeIn(600);
+        })
+        $(document).on('click','.header.style8 .form-search .close-form',function(){
+            $(this).closest('form').fadeOut(600);
+        })
+        if( $('.fancybox').length >0 ){
+          $(".fancybox").fancybox({
+            'transitionIn'  : 'elastic',
+            'transitionOut' : 'elastic',
+            'speedIn'   : 600, 
+            'speedOut'    : 200, 
+            'overlayShow' : false
+          });
+        }
     });
     /* ---------------------------------------------
      Scripts resize
@@ -688,6 +706,10 @@
         var h = $(window).scrollTop();
         var max_h = $('#header').height() + $('#top-banner').height();
         var width = $(window).width();
+        var vertical_menu_height = 0;
+        if( $('#box-vertical-megamenus' ).length >0 ){
+          vertical_menu_height = $('#box-vertical-megamenus .vertical-menu-content').innerHeight();
+        }
         if(width > 991){
             if( h > (max_h + vertical_menu_height)-50){
                 // fix top menu

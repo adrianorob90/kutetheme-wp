@@ -484,7 +484,12 @@ function kt_themne_color(){
     body .option7 .products .group-tool-button a:hover, 
     body .option7 .products .group-tool-button a.compare:hover, 
     body .option7 .products .search:hover,
-    body .woocommerce div.product form.cart .button{
+    body .woocommerce div.product form.cart .button,
+    .banner-text .banner-button:hover,
+    .products-style8 .add-to-cart:hover,
+    .products-style8 .product.compare-button .compare:hover,
+    .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
+    .lock-boock-button a:hover{
         background-color: {$main_color};
     }
 
@@ -498,10 +503,17 @@ function kt_themne_color(){
     body .view-product-list .page-title span,
     body .page-heading span.page-heading-title,
     body .count-down-time2 .box-count,
-    body  .option3 .main-header .header-search-box .form-inline{
+    body  .option3 .main-header .header-search-box .form-inline,
+    .banner-text .banner-button:hover,
+    .products-style8 .add-to-cart:hover,
+    .products-style8 .product.compare-button .compare:hover,
+    .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
+    .lock-boock-button a:hover{
         border-color: {$main_color};
+
     }
-    body .product-list li .add-to-cart:hover{
+    body .product-list li .add-to-cart:hover,
+    body .products-style8 .product-thumb .yith-wcqv-button{
         background-color: {$rgba_main_color}
     }
     body .product-list li .content_price,
@@ -821,11 +833,11 @@ CSS;
         .header.style7 .top-bar-menu>li>a:hover{
             color:{$h7_topbar_text_hover_color};
         }
-        .header.style7 .box-vertical-megamenus .title{
+        .header.style7 #main-header{
             background-color: {$h7_box_category_bg};
-            color:{$h7_box_category_text_color};
         }
-        body .header.style7 .main-header{
+        body .header.style7 .main-header,
+        body .header.style7 #main-header{
             background-color: {$h7_header_bg};
         }
         body .main-menu-style7.main-menu-wapper{

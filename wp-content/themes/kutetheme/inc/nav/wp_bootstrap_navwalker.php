@@ -158,7 +158,7 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
                 }
                 //$item_output .= '<div style="width:' . intval($menu_with) . 'px" class="sub-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'">';
                 
-            	$item_output .= '<div style="width:' . intval($menu_with) . 'px" class="sub-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'"">'. apply_filters( 'the_content', $megamenu_item->post_content ).'</div>';
+            	$item_output .= '<div style="width:' . intval($menu_with) . 'px" class="sub-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'"">'.do_shortcode( $megamenu_item->post_content ).'</div>';
                 // if($pages->have_posts()):
                 //     ob_start();
                 //     while($pages->have_posts()): $pages->the_post();

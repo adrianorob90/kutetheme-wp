@@ -16,6 +16,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'tab_producs', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'taxonomy'       => '',
+            'style'          =>'1',
             'per_page'       => 12,
             'columns'        => 4,
             'border_heading' => '',
@@ -42,7 +43,11 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         extract($atts);
 
         global $woocommerce_loop;
+        $is_phone = false;
         
+        if( function_exists( 'kt_is_phone' ) && kt_is_phone() ){
+            $is_phone = true;
+        }
         $elementClass = array(
             'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'popular-tabs ', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
@@ -83,7 +88,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         $uniqeID = uniqid();
         ob_start();
         ?>
-        <div class="<?php echo esc_attr( $elementClass ); ?> container-tab">
+        <div class="<?php echo esc_attr( $elementClass ); ?> container-tab style<?php echo esc_attr( $style );?>">
             <ul class="nav-tab">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $k => $v ): ?>
@@ -150,6 +155,8 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     }
                     //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     ?>
+                    <!-- Style 1 -->
+                    <?php if( $style == 1 ):?>
                     <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
                         <ul class="product-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
                             <?php while( $products->have_posts() ): $products->the_post(); ?>
@@ -157,6 +164,73 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                             <?php endwhile; ?>
                         </ul>
                     </div>
+                    <!-- ./Style 1 -->
+                    <?php endif;?>
+                    <!-- Style 2 -->
+                    <?php if( $style == 2 ):?>
+                        <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
+                        <?php if( $is_phone ):?>
+                        <ul class="products-style8 autoHeight owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
+                        <?php else:?>
+                        <ul class="products-style8 autoHeight columns-<?php echo esc_attr( $columns );?>">
+                        <?php endif;?>
+                            <?php while( $products->have_posts() ): 
+                            $products->the_post(); 
+                            ?>
+                                <li class="product autoHeight-item">
+                                    <div class="product-container kt-template-loop">
+                                        <div class="product-thumb owl-lazy">
+                                                <?php
+                                                global $product;
+                                                $attachment_ids = $product->get_gallery_attachment_ids();
+                                                $secondary_image = '';
+                                                if( $attachment_ids ){
+                                                    $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
+                                                }
+
+                                                if( has_post_thumbnail() ){
+                                                    ?>
+                                                    <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+                                                    <?php
+                                                }
+                                                if( $secondary_image != "" ){
+                                                    ?>
+                                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
+                                                    <?php
+                                                }else{
+                                                    ?>
+                                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+                                                    <?php
+                                                }
+
+                                                ?>
+                                            <?php kt_get_tool_quickview();?>
+                                            <div class="product-label"><?php do_action( 'kt_loop_product_label' ); ?></div>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="product-name">
+                                                <a href="<?php the_permalink();?>"> <?php the_title();?></a>
+                                            </div>
+                                            <div class="box-price">
+                                                <?php do_action( 'kt_after_shop_loop_item_title' );?>
+                                            </div>
+                                            <div class="button-control">
+                                                <?php kt_get_tool_compare();?>
+                                                <?php do_action( 'woocommerce_after_shop_loop_item' );?>
+                                                <?php kt_get_tool_wishlish ();?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </div>
+                    <?php endif;?>
+                    <!-- ./Style 2 -->
                     <?php 
                     //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
                     endif; 
@@ -196,6 +270,16 @@ vc_map( array(
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
         array(
+           'type'        => 'dropdown',
+            'heading'     => __( 'Style display', 'kutetheme' ),
+            'param_name'  => 'style',
+            'admin_label' => false,
+            'value'       => array(
+                __( 'Style 1', 'kutetheme' )      => '1',
+                __( 'Style 2', 'kutetheme' )      => '2',
+            ),
+        ),
+        array(
             'type'        => 'textfield',
             'heading'     => __( 'Per page', 'js_composer' ),
             'value'       => 12,
@@ -204,14 +288,19 @@ vc_map( array(
             'admin_label' => false,
 		),
         array(
-            'type'        => 'textfield',
+            'type'        => 'dropdown',
             'heading'     => __( 'Columns', 'js_composer' ),
-            'value'       => 4,
+            'value'       => array(
+                __( '3 Colmns', 'kutetheme' )      => '3',
+                __( '4 Colmns', 'kutetheme' )      => '4',
+                __( '5 Colmns', 'kutetheme' )      => '5',
+                __( '6 Colmns', 'kutetheme' )      => '6',
+            ),
+            'default'     =>'4',
             'param_name'  => 'columns',
             'description' => __( 'The columns attribute controls how many columns wide the products should be before wrapping.', 'js_composer' ),
             'admin_label' => false,
 		),
-        
         array(
             'type'        => 'dropdown',
             'heading'     => __( 'CSS Animation', 'js_composer' ),

@@ -128,7 +128,20 @@ function kt_register_demo_metabox() {
 		'type' => 'textarea_small',
 	) );
 
-
+	/**
+	 * Look books option
+	 */
+	$service_option = new_cmb2_box( array(
+		'id'            => $prefix . 'look_books_metabox',
+		'title'         => __( 'Look books Option', 'kutetheme' ),
+		'object_types'  => array( 'look-books' )
+	) );
+    
+	$service_option->add_field( array(
+		'name' => __( 'Location', 'kutetheme' ),
+		'id'   => $prefix . 'lookbook_location',
+		'type' => 'text',
+	) );
 	/**
 	 * Product
 	 */

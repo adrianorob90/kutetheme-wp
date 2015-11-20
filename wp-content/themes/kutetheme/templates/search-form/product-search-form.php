@@ -17,6 +17,7 @@ $args = array(
   <div class="form-group input-serach">
     <input type="hidden" name="post_type" value="product" />
     <input value="<?php echo esc_attr( get_search_query() );?>" type="text" name="s"  placeholder="<?php esc_attr_e( 'Keyword here...', 'kutetheme' ); ?>" />
+    <i class="hide close-form fa fa-times"></i>
   </div>
   <button type="submit" class="pull-right btn-search"></button>
 </form>

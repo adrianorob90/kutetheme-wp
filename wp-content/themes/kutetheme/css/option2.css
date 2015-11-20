@@ -1,6 +1,5 @@
 /*------------------------------------------------------------------
 [Table of contents]
-
 1. Group button on top menu
 2. Latest deals products
 3. Products list
@@ -18,7 +17,6 @@
 15. Styles for devices(<=480px)
 
 -------------------------------------------------------------------*/
-
 /*-------------------
 [2. Latest deals products]
 */
@@ -89,7 +87,6 @@
 .option2 .product-list li .quick-view{
 	right: 10px;
 }
-
 
 /*
 [4. Header ]

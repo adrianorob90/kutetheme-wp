@@ -13,6 +13,8 @@ require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/service.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/look_books.php';
 if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-category.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-product.php';

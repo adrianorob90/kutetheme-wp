@@ -150,6 +150,7 @@ $config = array(
                             '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v5.jpg',
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
+                            '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                 		),
                 	)
                 )

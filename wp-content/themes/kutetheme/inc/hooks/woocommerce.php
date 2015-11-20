@@ -220,7 +220,7 @@ function kt_get_rating_html($rating_html, $rating){
     //if($rating <=0) return'';
     $rating_html  = '<div class="product-star" title="' . sprintf( esc_attr__( 'Rated %s out of 5', 'kutetheme' ), $rating > 0 ? $rating : 0  ) . '">';
     for($i = 0; $i < 5 ;$i++){
-        if($rating >= $i){
+        if($rating >= $i && $rating > 0 ){
             if( ( $rating - $i ) > 0 && ( $rating - $i ) < 1 ){
                 $rating_html .= '<i class="fa fa-star-half-o"></i>';    
             }else{
@@ -1389,6 +1389,7 @@ add_filter( 'wp_nav_menu_items', 'kt_myaccount_menu_link', 10, 2 );
 
 function kt_myaccount_menu_link( $items, $args ) {
    $kt_enable_myaccount_box = kt_option('kt_enable_myaccount_box','enable');
+   $kt_used_header = kt_option('kt_used_header', '1');
    if( $kt_enable_myaccount_box == 'disable'){
      return $items;
    }
@@ -1409,10 +1410,12 @@ function kt_myaccount_menu_link( $items, $args ) {
                         $logout_url = str_replace( 'http:', 'https:', $logout_url );
                       }
                 }
+                $currentUser = wp_get_current_user();
                 ?>
                 <li class="menu-item menu-item-has-children">
-                    <a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account','kutetheme');?></a>
+                    <a href="<?php echo esc_url( $myaccount_link );?>"><i class="fa fa-user"></i> <?php echo esc_html( $currentUser->user_login);?></a>
                     <ul class="sub-menu">
+                        <li><a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account','kutetheme');?></a></li>
                         <?php 
                         if( function_exists( 'YITH_WCWL' ) ):
                             $wishlist_url = YITH_WCWL()->get_wishlist_url();
@@ -1436,7 +1439,20 @@ function kt_myaccount_menu_link( $items, $args ) {
    <?php
    }
    $item = ob_get_contents();
-   $items = $item.$items;
+   if( $kt_used_header == 8){
+        $items = $items.$item;
+   }else{
+        $items = $item.$items;
+   }
+   
    ob_clean();
    return $items;
+}
+
+ add_filter('woocommerce_placeholder_img_src', 'kt_custom_woocommerce_placeholder_img_src');
+   
+function kt_custom_woocommerce_placeholder_img_src( $src ) {
+   
+    $src = THEME_URL . 'images/placeholder.jpg';
+    return $src;
 }

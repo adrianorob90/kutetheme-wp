@@ -104,6 +104,38 @@ function register_post_type_init() {
         'menu_icon'          => 'dashicons-update'
     );
     register_post_type( 'service', $args );
+
+    /* Look Boock */
+    $labels = array(
+        'name'               => __( 'Look Boocks', 'kutetheme' ),
+        'singular_name'      => __( 'Look Boocks', 'kutetheme'),
+        'add_new'            => __( 'Add New', 'kutetheme' ),
+        'all_items'          => __( 'Look Boock', 'kutetheme' ),
+        'add_new_item'       => __( 'Add New Look Boock', 'kutetheme' ),
+        'edit_item'          => __( 'Edit Look Boock', 'kutetheme' ),
+        'new_item'           => __( 'New Look Boock', 'kutetheme' ),
+        'view_item'          => __( 'View Look Boock', 'kutetheme' ),
+        'search_items'       => __( 'Search Look Boock', 'kutetheme' ),
+        'not_found'          => __( 'No Look Boocks found', 'kutetheme' ),
+        'not_found_in_trash' => __( 'No Look Boocks found in Trash', 'kutetheme' ),
+        'parent_item_colon'  => __( 'Parent Look Boock', 'kutetheme' ),
+        'menu_name'          => __( 'Look Boocks', 'kutetheme' )
+    );
+    $args = array(
+        'labels'             => $labels,
+        'hierarchical'       => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => false,
+        'supports'           => array( 'title', 'thumbnail', 'editor' ),
+        'rewrite'            => true,
+        'query_var'          => true,
+        'publicly_queryable' => true,
+        'public'             => true,
+        'has_archive'        => true,
+        'menu_icon'          => 'dashicons-update'
+    );
+    register_post_type( 'look-books', $args );
     flush_rewrite_rules();
 }
 
