@@ -367,7 +367,7 @@
             $(this).closest('.vertical-menu-content').find('li.cat-link-orther').each(function(){
                 $(this).slideDown();
             });
-            $(this).addClass('colse-cate').removeClass('open-cate').html('Close');
+            $(this).addClass('colse-cate').removeClass('open-cate').html( $html_close );
         })
         /* Close category */
         $(document).on('click','.colse-cate',function(){

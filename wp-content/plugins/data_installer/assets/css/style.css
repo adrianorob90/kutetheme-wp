@@ -1,0 +1,26 @@
+.container-box{
+    overflow: hidden;
+}
+.container-box li.box-item{
+    float: left;
+    width: 250px;
+    background: #fff;
+    padding: 5px;
+}
+.item-button{
+    text-align: right;
+    padding: 5px 10px;
+}
+.rtl .box-vertical-megamenus .vertical-menu-content{
+    right: 0;
+    top: auto;
+}
+.rtl .main-header .header-search-box{
+    padding-right: 0;
+    padding-left: 45px;
+}
+@media (min-width: 993px) and (max-width: 1200px) {
+    .product-featured .banner-featured{
+        display: block !important;
+    }
+}

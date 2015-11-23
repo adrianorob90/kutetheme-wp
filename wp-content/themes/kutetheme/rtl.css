@@ -103,6 +103,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 /** ================================================
     4. Main Menu
 *** ================================================*/
+.box-vertical-megamenus .vertical-menu-content{
+    right: 0;
+    top: auto;
+}
 .box-vertical-megamenus .title .btn-open-mobile{
     float: left !important;
 }
@@ -948,7 +952,10 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
     border-left-color: #eaeaea;
 }
 
-
+.main-header .header-search-box{
+    padding-right: 0;
+    padding-left: 45px;
+}
 @media (max-width: 991px){
 .product-featured .product-featured-content .product-featured-list.has_attachment {
     margin-right: 0;

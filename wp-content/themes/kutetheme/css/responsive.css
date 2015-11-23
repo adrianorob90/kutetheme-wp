@@ -117,7 +117,7 @@
 		padding-bottom: 5px;
 	}
 	.product-featured .banner-featured {
-		display: none;
+		/*display: none;*/
 	}
 	.product-featured .product-featured-content .product-featured-list{
 		margin-left: 0;

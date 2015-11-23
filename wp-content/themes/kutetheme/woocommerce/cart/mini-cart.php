@@ -119,6 +119,16 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
             <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
         </div>
+    <?php elseif( $kt_used_header == 12 ): ?>
+        <div class="mini-cart">
+            <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+                <span class="icon">2</span>
+                <span class="title"><?php esc_html_e( 'Cart: ', 'kutetheme' ); ?></span>
+                <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ), 'kutetheme' ), esc_attr( $cart_count ) ) ?></span>
+                <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
+            </a>
+            <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+        </div>
     <?php endif;?>
 
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>

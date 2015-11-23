@@ -40,6 +40,56 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             </div>
         </div>
+    </div><!--./ End top menu-->
+    <div class="container main-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 logo">
+                <?php echo kt_get_logo(); ?>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-9">
+                <div id="main-menu" class="main-menu menu-option11">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <a class="navbar-brand" href="#"><?php _e( 'MENU', 'kutetheme' ); ?></a>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <?php kt_setting_mega_menu(); ?>
+                            </div><!--/.nav-collapse -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--./End Main Header-->
+    
+    <div class="container">
+        <div class="header-control">
+            <div class="vertical-menu-wapper">
+                <div class="box-vertical-megamenus">
+                    <h4 class="title">
+                        <span class="title-menu">Categories</span>
+                        <span class="btn-open-mobile pull-right home-page"><i class="fa fa-angle-down"></i></span>
+                    </h4>
+                    <div class="vertical-menu-content is-home">
+                        <?php kt_setting_vertical_menu(); ?>
+                        <div class="all-category"><span class="open-cate"><?php _e( 'All Categories', 'kutetheme' ); ?></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-search-wapper">
+                <?php kt_search_form();  ?>
+            </div>
+            <?php 
+                if( kt_is_wc() ): 
+                    do_action('kt_mini_cart');
+                 endif; 
+             ?>
+        </div>
     </div>
 </div>
 <!--./ END HEADER -->

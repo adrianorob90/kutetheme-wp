@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kutetheme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: Fri Oct 30 2015 09:09:21 GMT+0700 (SE Asia Standard Time)\n"
-"PO-Revision-Date: Thu Nov 05 2015 16:34:44 GMT+0700 (SE Asia Standard Time)\n"
+"POT-Creation-Date: Mon Nov 23 2015 14:42:08 GMT+0700 (SE Asia Standard Time)\n"
+"PO-Revision-Date: Mon Nov 23 2015 14:42:25 GMT+0700 (SE Asia Standard Time)\n"
 "Last-Translator: admin <thanhtd91@gmail.com>\n"
 "Language-Team: \n"
 "Language: Vietnamese\n"
@@ -28,6 +28,14 @@ msgstr ""
 
 #: ../404.php:19 ../woocommerce/404.php:31
 msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+
+#: ../archive-look-books.php:4
+msgid "Look Books"
+msgstr ""
+
+#: ../archive-look-books.php:35
+msgid "No Look book item."
 msgstr ""
 
 #: ../comments.php:28
@@ -66,11 +74,11 @@ msgid ""
 "searching can help."
 msgstr ""
 
-#: ../content-page.php:29 ../single-service.php:38 ../single.php:44
+#: ../content-page.php:27 ../single-service.php:38 ../single.php:44
 msgid "Pages:"
 msgstr ""
 
-#: ../content-page.php:33
+#: ../content-page.php:31
 msgid "Page"
 msgstr ""
 
@@ -91,141 +99,157 @@ msgid "Vertical Menu"
 msgstr ""
 
 #: ../functions.php:92
-msgid "Custom Header Menu"
+msgid "Top bar Menu left"
 msgstr ""
 
 #: ../functions.php:93
+msgid "Top bar Menu right"
+msgstr ""
+
+#: ../functions.php:94
+msgid "Custom Header Menu"
+msgstr ""
+
+#: ../functions.php:95
 msgid "Custom Footer Menu"
 msgstr ""
 
-#: ../functions.php:155
+#: ../functions.php:161
 msgid "Widget Area"
 msgstr ""
 
-#: ../functions.php:157 ../functions.php:166 ../functions.php:176
+#: ../functions.php:163 ../functions.php:172 ../functions.php:182
 msgid "Add widgets here to appear in your sidebar."
 msgstr ""
 
-#: ../functions.php:164
+#: ../functions.php:170
 msgid "Widget Shop Area"
 msgstr ""
 
-#: ../functions.php:174
+#: ../functions.php:180
 msgid "Widget Shop single Area"
 msgstr ""
 
-#: ../functions.php:185
+#: ../functions.php:191
 msgid "Footer Menu 1"
 msgstr ""
 
-#: ../functions.php:187
+#: ../functions.php:193
 msgid "The footer menu 1 widget area"
 msgstr ""
 
-#: ../functions.php:195
+#: ../functions.php:201
 msgid "Footer Menu 2"
 msgstr ""
 
-#: ../functions.php:197
+#: ../functions.php:203
 msgid "The footer menu 2 widget area"
 msgstr ""
 
-#: ../functions.php:205
+#: ../functions.php:211
 msgid "Footer Menu 3"
 msgstr ""
 
-#: ../functions.php:207
+#: ../functions.php:213
 msgid "The footer menu 3 widget area"
 msgstr ""
 
-#: ../functions.php:215
+#: ../functions.php:221
 msgid "Footer Menu 4"
 msgstr ""
 
-#: ../functions.php:217
+#: ../functions.php:223
 msgid "The footer newsletter 4 widget area on footer style 3"
 msgstr ""
 
-#: ../functions.php:225
+#: ../functions.php:231
 msgid "Footer Social"
 msgstr ""
 
-#: ../functions.php:227
+#: ../functions.php:233
 msgid "The footer social widget area"
 msgstr ""
 
-#: ../functions.php:235
+#: ../functions.php:241
 msgid "Footer Payment"
 msgstr ""
 
-#: ../functions.php:237
+#: ../functions.php:243
 msgid "The footer payment widget area"
 msgstr ""
 
-#: ../functions.php:245
+#: ../functions.php:251
 msgid "Footer Bottom"
 msgstr ""
 
-#: ../functions.php:247
+#: ../functions.php:253
 msgid "The footer bottom widget area"
 msgstr ""
 
-#: ../functions.php:255
+#: ../functions.php:261
 msgid "Footer Menu Bottom"
 msgstr ""
 
-#: ../functions.php:257
+#: ../functions.php:263
 msgid "The footer menu bottom widget area"
 msgstr ""
 
-#: ../functions.php:303
+#: ../functions.php:309
 msgid "Years"
-msgstr "Năm"
+msgstr ""
 
-#: ../functions.php:303
+#: ../functions.php:309
 msgid "Months"
-msgstr "Tháng"
+msgstr ""
 
-#: ../functions.php:303
+#: ../functions.php:309
 msgid "Weeks"
-msgstr "Tuần"
+msgstr ""
 
-#: ../functions.php:303 ../functions.php:304
+#: ../functions.php:309 ../functions.php:310
+msgid "Days"
+msgstr ""
+
+#: ../functions.php:309 ../functions.php:310
 msgid "Hrs"
-msgstr "Giờ"
+msgstr ""
 
-#: ../functions.php:303 ../functions.php:304
+#: ../functions.php:309 ../functions.php:310
 msgid "Mins"
-msgstr "Phút"
+msgstr ""
 
-#: ../functions.php:303 ../functions.php:304
+#: ../functions.php:309 ../functions.php:310
 msgid "Secs"
-msgstr "Giây"
+msgstr ""
 
-#: ../functions.php:403
+#: ../functions.php:311
+msgid "Close"
+msgstr "Đóng"
+
+#: ../functions.php:414
 msgid "expand child menu"
 msgstr ""
 
-#: ../functions.php:404
+#: ../functions.php:415
 msgid "collapse child menu"
 msgstr ""
 
-#: ../functions.php:426 ../inc/widgets/kt_image.php:82 ../inc/widgets/slider.php:
+#: ../functions.php:437 ../inc/widgets/kt_image.php:82 ../inc/widgets/slider.php:
 #: 170 ../inc/widgets/slider.php:198 ../inc/widgets/slider.php:229 ..
-#: inc/widgets/trademark-payment.php:120 ../inc/widgets/trademark-payment.php:
+#: /inc/widgets/trademark-payment.php:120 ../inc/widgets/trademark-payment.php:
 #: 148 ../inc/widgets/trademark-payment.php:179
 msgid "Select your image"
 msgstr ""
 
-#: ../functions.php:552
+#: ../functions.php:563
 msgid "Showing"
 msgstr ""
 
-#: ../functions.php:553
+#: ../functions.php:564
 msgid "of"
 msgstr ""
 
-#: ../functions.php:553
+#: ../functions.php:564
 msgid "posts"
 msgstr ""
 
@@ -262,6 +286,13 @@ msgstr ""
 #: ../inc/breadcrumbs.php:62 ../inc/breadcrumbs.php:230
 #, php-format
 msgid "Page %s"
+msgstr ""
+
+#. Translators: Minute archive title. %s is the minute time format.
+#. Translators: Minute archive title. %s is the minute time format.
+#: ../inc/breadcrumbs.php:64 ../inc/breadcrumbs.php:232
+#, php-format
+msgid "Minute %s"
 msgstr ""
 
 #. Translators: Weekly archive title. %s is the week date format.
@@ -385,7 +416,8 @@ msgstr ""
 msgid "Contact us today !"
 msgstr ""
 
-#: ../inc/utility.php:234 ../woocommerce/cart/mini-cart.php:59
+#: ../inc/utility.php:234 ../inc/hooks/woocommerce.php:1418 ..
+#: /woocommerce/cart/mini-cart.php:59
 msgid "My Account"
 msgstr ""
 
@@ -402,20 +434,22 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ../inc/utility.php:248
+#: ../inc/utility.php:248 ../inc/hooks/woocommerce.php:1431
 msgid "Logout"
 msgstr ""
 
-#: ../inc/utility.php:251 ../woocommerce/cart/mini-cart.php:43 ..
-#: woocommerce/cart/mini-cart.php:67 ../woocommerce/cart/mini-cart.php:67 ..
-#: woocommerce/cart/mini-cart.php:86 ../woocommerce/cart/mini-cart.php:86 ..
-#: woocommerce/cart/mini-cart.php:102 ../woocommerce/cart/mini-cart.php:102
+#: ../inc/utility.php:251 ../inc/hooks/woocommerce.php:1423 ..
+#: /woocommerce/cart/mini-cart.php:43 ../woocommerce/cart/mini-cart.php:67 ..
+#: /woocommerce/cart/mini-cart.php:67 ../woocommerce/cart/mini-cart.php:86 ..
+#: /woocommerce/cart/mini-cart.php:86 ../woocommerce/cart/mini-cart.php:102 ..
+#: /woocommerce/cart/mini-cart.php:102
 msgid "Wishlists"
 msgstr ""
 
-#: ../inc/utility.php:257 ../woocommerce/cart/mini-cart.php:39 ..
-#: woocommerce/cart/mini-cart.php:81 ../woocommerce/cart/mini-cart.php:81 ..
-#: woocommerce/cart/mini-cart.php:98 ../woocommerce/cart/mini-cart.php:98
+#: ../inc/utility.php:257 ../inc/hooks/woocommerce.php:1428 ..
+#: /woocommerce/cart/mini-cart.php:39 ../woocommerce/cart/mini-cart.php:81 ..
+#: /woocommerce/cart/mini-cart.php:81 ../woocommerce/cart/mini-cart.php:98 ..
+#: /woocommerce/cart/mini-cart.php:98
 msgid "Compare"
 msgstr ""
 
@@ -455,8 +489,28 @@ msgstr ""
 msgid "01 KT Home Style 1"
 msgstr ""
 
-#: ../inc/utility.php:596
+#: ../inc/utility.php:597
 msgid "02 KT Home Style 2"
+msgstr ""
+
+#: ../inc/utility.php:610
+msgid "03 KT Home Style 3"
+msgstr ""
+
+#: ../inc/utility.php:621
+msgid "04 KT Home Style 4"
+msgstr ""
+
+#: ../inc/utility.php:632
+msgid "05 KT Home Style 5"
+msgstr ""
+
+#: ../inc/utility.php:642
+msgid "06 KT Home Style 6"
+msgstr ""
+
+#: ../inc/utility.php:652
+msgid "07 KT Home Style 7"
 msgstr ""
 
 #: ../inc/hooks/class-tgm-plugin-activation.php:333
@@ -914,22 +968,24 @@ msgstr ""
 msgid "Installing Plugin %1$s (%2$d/%3$d)"
 msgstr ""
 
-#: ../inc/hooks/theme.php:197 ../inc/hooks/theme.php:239 ../inc/hooks/theme.php:
-#: 280 ../inc/hooks/theme.php:420 ../inc/hooks/theme.php:464
+#: ../inc/hooks/theme.php:196 ../inc/hooks/theme.php:227 ../inc/hooks/theme.php:
+#: 258 ../inc/hooks/theme.php:288 ../inc/hooks/theme.php:320 ../inc/hooks/theme.
+#: php:351 ../inc/hooks/theme.php:382
 msgid "Categories"
 msgstr ""
 
-#: ../inc/hooks/theme.php:202 ../inc/hooks/theme.php:244 ../inc/hooks/theme.php:
-#: 285 ../inc/hooks/theme.php:326 ../inc/hooks/theme.php:380 ../inc/hooks/theme.
-#: php:424 ../inc/hooks/theme.php:468 ../templates/search-form/product-search-
-#: form.php:3
+#: ../inc/hooks/theme.php:201 ../inc/hooks/theme.php:232 ../inc/hooks/theme.php:
+#: 263 ../inc/hooks/theme.php:293 ../inc/hooks/theme.php:325 ../inc/hooks/theme.
+#: php:356 ../inc/hooks/theme.php:387 ../templates/headers/header-12.php:80 ..
+#: /templates/search-form/product-search-form.php:3
 msgid "All Categories"
 msgstr ""
 
-#: ../inc/hooks/theme.php:216 ../inc/hooks/theme.php:258 ../inc/hooks/theme.php:
-#: 299 ../inc/hooks/theme.php:394 ../inc/hooks/theme.php:438 ..
-#: templates/headers/header-4.php:28
-msgid "Menu"
+#: ../inc/hooks/theme.php:208 ../inc/hooks/theme.php:239 ../inc/hooks/theme.php:
+#: 270 ../inc/hooks/theme.php:332 ../inc/hooks/theme.php:363 ..
+#: /templates/headers/header-4.php:19 ../templates/headers/header-7.php:39 ..
+#: /templates/headers/header-8.php:21
+msgid "Main menu"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:175 ../inc/hooks/woocommerce.php:206
@@ -1005,11 +1061,11 @@ msgstr ""
 msgid "list"
 msgstr ""
 
-#: ../inc/hooks/woocommerce.php:815 ../woocommerce/content-product.php:107
+#: ../inc/hooks/woocommerce.php:815 ../woocommerce/content-product.php:113
 msgid "In stock"
 msgstr ""
 
-#: ../inc/hooks/woocommerce.php:816 ../woocommerce/content-product.php:107
+#: ../inc/hooks/woocommerce.php:816 ../woocommerce/content-product.php:113
 msgid "Out of stock"
 msgstr ""
 
@@ -1017,7 +1073,7 @@ msgstr ""
 msgid "Item Code"
 msgstr ""
 
-#: ../inc/hooks/woocommerce.php:824 ../woocommerce/content-product.php:107
+#: ../inc/hooks/woocommerce.php:824 ../woocommerce/content-product.php:113
 msgid "Availability"
 msgstr ""
 
@@ -1050,63 +1106,67 @@ msgid " .."
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1176 ../inc/hooks/woocommerce.php:1241 ..
-#: inc/widgets/social.php:41
+#: /inc/widgets/social.php:41
 msgid "Facebook"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1179 ../inc/hooks/woocommerce.php:1244 ..
-#: inc/widgets/social.php:44
+#: /inc/widgets/social.php:44
 msgid "Twitter"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1182 ../inc/hooks/woocommerce.php:1247 ..
-#: inc/widgets/social.php:47
+#: /inc/widgets/social.php:47
 msgid "Dribbble"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1185 ../inc/hooks/woocommerce.php:1250 ..
-#: inc/widgets/social.php:50
+#: /inc/widgets/social.php:50
 msgid "Vimeo"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1188 ../inc/hooks/woocommerce.php:1253 ..
-#: inc/widgets/social.php:53
+#: /inc/widgets/social.php:53
 msgid "Tumblr"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1191 ../inc/hooks/woocommerce.php:1256 ..
-#: inc/widgets/social.php:56
+#: /inc/widgets/social.php:56
 msgid "Skype"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1194 ../inc/hooks/woocommerce.php:1259 ..
-#: inc/widgets/social.php:59
+#: /inc/widgets/social.php:59
 msgid "Linkedin"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1197 ../inc/hooks/woocommerce.php:1262 ..
-#: inc/widgets/social.php:62
+#: /inc/widgets/social.php:62
 msgid "Google Plus"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1200 ../inc/hooks/woocommerce.php:1265 ..
-#: inc/widgets/social.php:65
+#: /inc/widgets/social.php:65
 msgid "Youtube"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1203 ../inc/hooks/woocommerce.php:1268 ..
-#: inc/widgets/social.php:68
+#: /inc/widgets/social.php:68
 msgid "Pinterest"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1206 ../inc/hooks/woocommerce.php:1271 ..
-#: inc/widgets/social.php:71
+#: /inc/widgets/social.php:71
 msgid "Instagram"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1210 ../inc/hooks/woocommerce.php:1275 ..
-#: inc/widgets/social.php:75
+#: /inc/widgets/social.php:75
 msgid "Vk"
+msgstr ""
+
+#: ../inc/hooks/woocommerce.php:1436
+msgid "Login/Register"
 msgstr ""
 
 #: ../inc/nav/nav_edit_custom_walker.php:90
@@ -1210,10 +1270,10 @@ msgid "Image preview"
 msgstr ""
 
 #: ../inc/nav/nav_menu_custom_fields.php:36 ../inc/widgets/seo-keyword.php:95 ..
-#: inc/widgets/seo-keyword.php:116 ../inc/widgets/seo-keyword.php:139 ..
-#: inc/widgets/slider.php:164 ../inc/widgets/slider.php:192 ..
-#: inc/widgets/slider.php:222 ../inc/widgets/trademark-payment.php:114 ..
-#: inc/widgets/trademark-payment.php:142 ../inc/widgets/trademark-payment.php:172
+#: /inc/widgets/seo-keyword.php:116 ../inc/widgets/seo-keyword.php:139 ..
+#: /inc/widgets/slider.php:164 ../inc/widgets/slider.php:192 ..
+#: /inc/widgets/slider.php:222 ../inc/widgets/trademark-payment.php:114 ..
+#: /inc/widgets/trademark-payment.php:142 ../inc/widgets/trademark-payment.php:172
 msgid "X"
 msgstr ""
 
@@ -1233,7 +1293,7 @@ msgstr ""
 msgid "Choose Menu Page"
 msgstr ""
 
-#: ../inc/nav/wp_bootstrap_navwalker.php:250
+#: ../inc/nav/wp_bootstrap_navwalker.php:251
 msgid "Add a menu"
 msgstr ""
 
@@ -1246,24 +1306,24 @@ msgid "KT Best Seller"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:24 ../inc/widgets/best-seller.php:91 ..
-#: inc/widgets/best-seller.php:108
+#: /inc/widgets/best-seller.php:108
 msgid "Best Sellers"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:121 ../inc/widgets/on-sale.php:105 ..
-#: inc/widgets/product-special-sidebar.php:103 ../inc/widgets/seo-keyword.php:79
+#: /inc/widgets/product-special-sidebar.php:103 ../inc/widgets/seo-keyword.php:79 
 #: ../inc/widgets/seo-keyword.php:97 ../inc/widgets/seo-keyword.php:118 ..
-#: inc/widgets/seo-keyword.php:141 ../inc/widgets/slider.php:166 ..
-#: inc/widgets/slider.php:194 ../inc/widgets/slider.php:224 ..
-#: inc/widgets/social.php:108 ../inc/widgets/testimonial.php:121 ..
-#: inc/widgets/trademark-payment.php:91 ../inc/widgets/trademark-payment.php:116
+#: /inc/widgets/seo-keyword.php:141 ../inc/widgets/slider.php:166 ..
+#: /inc/widgets/slider.php:194 ../inc/widgets/slider.php:224 ..
+#: /inc/widgets/social.php:99 ../inc/widgets/testimonial.php:121 ..
+#: /inc/widgets/trademark-payment.php:91 ../inc/widgets/trademark-payment.php:116 
 #: ../inc/widgets/trademark-payment.php:144 ../inc/widgets/trademark-payment.php:
 #: 174
 msgid "Title:"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:126 ../inc/widgets/on-sale.php:109 ..
-#: inc/widgets/testimonial.php:137
+#: /inc/widgets/testimonial.php:137
 msgid "Number:"
 msgstr ""
 
@@ -1296,34 +1356,34 @@ msgid "Capture:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:93 ../inc/widgets/seo-keyword.php:101 ..
-#: inc/widgets/seo-keyword.php:122 ../inc/widgets/seo-keyword.php:146 ..
-#: inc/widgets/slider.php:177 ../inc/widgets/slider.php:205 ..
-#: inc/widgets/slider.php:238 ../inc/widgets/trademark-payment.php:127 ..
-#: inc/widgets/trademark-payment.php:155 ../inc/widgets/trademark-payment.php:188
+#: /inc/widgets/seo-keyword.php:122 ../inc/widgets/seo-keyword.php:146 ..
+#: /inc/widgets/slider.php:177 ../inc/widgets/slider.php:205 ..
+#: /inc/widgets/slider.php:238 ../inc/widgets/trademark-payment.php:127 ..
+#: /inc/widgets/trademark-payment.php:155 ../inc/widgets/trademark-payment.php:188
 msgid "Link:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:97 ../inc/widgets/seo-keyword.php:105 ..
-#: inc/widgets/seo-keyword.php:126 ../inc/widgets/seo-keyword.php:151 ..
-#: inc/widgets/slider.php:181 ../inc/widgets/slider.php:209 ..
-#: inc/widgets/slider.php:243 ../inc/widgets/trademark-payment.php:131 ..
-#: inc/widgets/trademark-payment.php:159 ../inc/widgets/trademark-payment.php:193
+#: /inc/widgets/seo-keyword.php:126 ../inc/widgets/seo-keyword.php:151 ..
+#: /inc/widgets/slider.php:181 ../inc/widgets/slider.php:209 ..
+#: /inc/widgets/slider.php:243 ../inc/widgets/trademark-payment.php:131 ..
+#: /inc/widgets/trademark-payment.php:159 ../inc/widgets/trademark-payment.php:193
 msgid "Target:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:100 ../inc/widgets/seo-keyword.php:108 ..
-#: inc/widgets/seo-keyword.php:129 ../inc/widgets/seo-keyword.php:154 ..
-#: inc/widgets/slider.php:184 ../inc/widgets/slider.php:212 ..
-#: inc/widgets/slider.php:246 ../inc/widgets/trademark-payment.php:134 ..
-#: inc/widgets/trademark-payment.php:162 ../inc/widgets/trademark-payment.php:196
+#: /inc/widgets/seo-keyword.php:129 ../inc/widgets/seo-keyword.php:154 ..
+#: /inc/widgets/slider.php:184 ../inc/widgets/slider.php:212 ..
+#: /inc/widgets/slider.php:246 ../inc/widgets/trademark-payment.php:134 ..
+#: /inc/widgets/trademark-payment.php:162 ../inc/widgets/trademark-payment.php:196
 msgid "Stay in Window"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:101 ../inc/widgets/seo-keyword.php:107 ..
-#: inc/widgets/seo-keyword.php:128 ../inc/widgets/seo-keyword.php:153 ..
-#: inc/widgets/slider.php:183 ../inc/widgets/slider.php:211 ..
-#: inc/widgets/slider.php:245 ../inc/widgets/trademark-payment.php:133 ..
-#: inc/widgets/trademark-payment.php:161 ../inc/widgets/trademark-payment.php:195
+#: /inc/widgets/seo-keyword.php:128 ../inc/widgets/seo-keyword.php:153 ..
+#: /inc/widgets/slider.php:183 ../inc/widgets/slider.php:211 ..
+#: /inc/widgets/slider.php:245 ../inc/widgets/trademark-payment.php:133 ..
+#: /inc/widgets/trademark-payment.php:161 ../inc/widgets/trademark-payment.php:195
 msgid "Open New Window"
 msgstr ""
 
@@ -1525,24 +1585,7 @@ msgstr ""
 msgid "payment logo"
 msgstr ""
 
-#: ../templates/headers/header-1.php:23 ../templates/headers/header-2.php:23 ..
-#: templates/headers/header-3.php:11 ../templates/headers/header-6.php:23 ..
-#: templates/headers/header-7.php:28
-msgid "Services"
-msgstr ""
-
-#: ../templates/headers/header-1.php:24 ../templates/headers/header-2.php:24 ..
-#: templates/headers/header-3.php:12 ../templates/headers/header-4.php:8 ..
-#: templates/headers/header-5.php:12 ../templates/headers/header-6.php:24 ..
-#: templates/headers/header-7.php:29
-msgid "Support"
-msgstr ""
-
-#: ../templates/headers/header-4.php:7 ../templates/headers/header-5.php:11
-msgid "Abount Us"
-msgstr ""
-
-#: ../templates/headers/header-7.php:49
+#: ../templates/headers/header-12.php:57
 msgid "MENU"
 msgstr ""
 
@@ -1555,7 +1598,7 @@ msgstr ""
 msgid "Shopping cart"
 msgstr ""
 
-#: ../woocommerce/cart/mini-cart.php:28
+#: ../woocommerce/cart/mini-cart.php:28 ../woocommerce/cart/mini-cart.php:127
 #, php-format
 msgid "%d item"
 msgid_plural "%d items"
@@ -1567,20 +1610,25 @@ msgid "-"
 msgstr ""
 
 #: ../woocommerce/cart/mini-cart.php:46 ../woocommerce/cart/mini-cart.php:54 ..
-#: woocommerce/cart/mini-cart.php:73 ../woocommerce/cart/mini-cart.php:73 ..
-#: woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
-#: woocommerce/cart/mini-cart.php:113
+#: /woocommerce/cart/mini-cart.php:73 ../woocommerce/cart/mini-cart.php:73 ..
+#: /woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
+#: /woocommerce/cart/mini-cart.php:113 ../woocommerce/cart/mini-cart.php:118 ..
+#: /woocommerce/cart/mini-cart.php:118
 msgid "My cart"
 msgstr ""
 
 #: ../woocommerce/cart/mini-cart.php:46 ../woocommerce/cart/mini-cart.php:54 ..
-#: woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
-#: woocommerce/cart/mini-cart.php:113
+#: /woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
+#: /woocommerce/cart/mini-cart.php:113
 msgid "Cart"
 msgstr ""
 
 #: ../woocommerce/cart/mini-cart.php:61
 msgid "Account"
+msgstr ""
+
+#: ../woocommerce/cart/mini-cart.php:126
+msgid "Cart: "
 msgstr ""
 
 #: ../woocommerce/global/quantity-input.php:19
@@ -1611,7 +1659,7 @@ msgid_plural "%s customer reviews"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../woocommerce/single-product/related.php:42
+#: ../woocommerce/single-product/related.php:46
 msgid "Related Products"
 msgstr ""
 
@@ -1621,6 +1669,10 @@ msgstr ""
 
 #: ../woocommerce/single-product/review.php:42
 msgid "verified owner"
+msgstr ""
+
+#: ../woocommerce/single-product/up-sells.php:47
+msgid "You may also like&hellip;"
 msgstr ""
 
 #: ../woocommerce/single-product/tabs/additional-information.php:16
@@ -1650,14 +1702,3 @@ msgstr ""
 #. Author of the theme
 msgid "KuteTheme"
 msgstr ""
-
-#. Translators: Minute archive title. %s is the minute time format.
-#. Translators: Minute archive title. %s is the minute time format.
-#: ../inc/breadcrumbs.php:64 ../inc/breadcrumbs.php:232
-#, php-format
-msgid "Minute %s"
-msgstr "Phút %s"
-
-#: ../functions.php:303 ../functions.php:304
-msgid "Days"
-msgstr "Ngày"
