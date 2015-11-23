@@ -679,6 +679,38 @@
             'overlayShow' : false
           });
         }
+
+        //
+        //testimonial-carousel
+        if($('.testimonial-carousel').length >0){
+            var owl = $('.testimonial-carousel');
+            owl.owlCarousel(
+                {
+                    margin:30,
+                    autoplay:true,
+                    dots:false,
+                    loop:true,
+                    items:3,
+                    nav:true,
+                    smartSpeed:1000,
+                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']
+                }
+            );
+            owl.trigger('next.owl.carousel');
+            owl.on('changed.owl.carousel', function(event) {
+                owl.find('.owl-item.active').removeClass('item-center');
+                var caption=owl.find('.owl-item.active').first().next().find('.info').html();
+                owl.closest('.block-testimonials').find('.testimonial-caption').html(caption).addClass('zoomIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('zoomIn animated');
+                });;
+                setTimeout(function(){
+                    owl.find('.owl-item.active').first().next().addClass('item-center');
+                    owl.find('.owl-item.active').first().next().addClass('zoomIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('zoomIn animated');
+                    });
+                }, 100);
+            })
+        }
     });
     /* ---------------------------------------------
      Scripts resize

@@ -131,17 +131,32 @@ function kt_register_demo_metabox() {
 	/**
 	 * Look books option
 	 */
-	$service_option = new_cmb2_box( array(
+	$Lookbooks_option = new_cmb2_box( array(
 		'id'            => $prefix . 'look_books_metabox',
 		'title'         => __( 'Look books Option', 'kutetheme' ),
 		'object_types'  => array( 'look-books' )
 	) );
     
-	$service_option->add_field( array(
+	$Lookbooks_option->add_field( array(
 		'name' => __( 'Location', 'kutetheme' ),
 		'id'   => $prefix . 'lookbook_location',
 		'type' => 'text',
 	) );
+	/**
+	 * Colections option
+	 */
+	$colection_option = new_cmb2_box( array(
+		'id'            => $prefix . 'colections_metabox',
+		'title'         => __( 'Colections Option', 'kutetheme' ),
+		'object_types'  => array( 'colection' )
+	) );
+    
+	$colection_option->add_field( array(
+		'name' => __( 'Design', 'kutetheme' ),
+		'id'   => $prefix . 'colection_design',
+		'type' => 'text',
+	) );
+
 	/**
 	 * Product
 	 */
