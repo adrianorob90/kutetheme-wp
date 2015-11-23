@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 vc_map( array(
-    "name"        => __( "Kute Featured Products", 'kutetheme'),
+    "name"        => __( "KT Featured Products", 'kutetheme'),
     "base"        => "kt_featured_products",
     "category"    => __('Kute Theme', 'kutetheme' ),
     "description" => __( "Display Featured Products", 'kutetheme'),

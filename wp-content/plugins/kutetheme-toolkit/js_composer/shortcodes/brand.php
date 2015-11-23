@@ -37,8 +37,9 @@ vc_map( array(
         array(
             'type'  => 'dropdown',
             'value' => array(
-                __( '1 Line', 'js_composer' )  => '1-line',
-                __( '2 Line', 'js_composer' )  => '2-line',
+                __( '1 Line', 'js_composer' )    => '1-line',
+                __( '2 Line', 'js_composer' )    => '2-line',
+                __( 'Show logo', 'js_composer' ) => 'show-logo',
             ),
             'heading'     => __( 'Line', 'kutetheme' ),
             'param_name'  => 'line_brand',
@@ -386,39 +387,58 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                         </div>
                     </div>
                     <?php else: ?>
-                        <?php if( $line_brand == '2-line' ): ?>
-                            <div class="option7">
-                                <!-- ./blog list -->
-                                <div class="row-brand <?php echo esc_attr( $elementClass ); ?>">
-                                    <?php if( $title ): ?>
-                                        <h2 class="page-heading">
-                                            <span class="page-heading-title"><?php echo esc_html( $title ) ; ?></span>
-                                        </h2>
-                                    <?php endif; ?>
-                                    <ul class="band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                                        <?php for($i = 0; $i < count( $terms ); $i += 2 ): ?>
-                                            <?php if( isset( $terms[ $i ] ) && $terms[ $i ] ): ?>
-                                                <?php $term = $terms[ $i ]; ?>
-                                                <li>
-                                                    <h3><?php echo esc_html( $term->name ); ?></h3>
-                                                    <?php if( isset( $terms[$i + 1] ) && $terms[$i + 1] ): ?>
-                                                        <?php $term_2 = $terms[$i + 1]; ?>
-                                                        <h3><?php echo esc_html( $term_2->name ); ?></h3>
-                                                    <?php endif; ?>
-                                                </li>
-                                            <?php endif; ?>
-                                        <?php endfor; ?>
-                                    </ul>
-                                </div>
-                                <!-- ./blog list -->
+                    <?php if( $line_brand == '2-line' ): ?>
+                        <div class="option7">
+                            <!-- ./blog list -->
+                            <div class="row-brand <?php echo esc_attr( $elementClass ); ?>">
+                                <?php if( $title ): ?>
+                                    <h2 class="page-heading">
+                                        <span class="page-heading-title"><?php echo esc_html( $title ) ; ?></span>
+                                    </h2>
+                                <?php endif; ?>
+                                <ul class="band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                    <?php for($i = 0; $i < count( $terms ); $i += 2 ): ?>
+                                        <?php if( isset( $terms[ $i ] ) && $terms[ $i ] ): ?>
+                                            <?php $term = $terms[ $i ]; ?>
+                                            <li>
+                                                <h3><?php echo esc_html( $term->name ); ?></h3>
+                                                <?php if( isset( $terms[$i + 1] ) && $terms[$i + 1] ): ?>
+                                                    <?php $term_2 = $terms[$i + 1]; ?>
+                                                    <h3><?php echo esc_html( $term_2->name ); ?></h3>
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endfor; ?>
+                                </ul>
                             </div>
-                        <?php else: ?>
-                            <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                            <!-- ./blog list -->
+                        </div>
+                    <?php elseif( $line_brand =='show-logo'):?>
+                        <div class="block-manufacturer-logo <?php echo esc_attr( $elementClass ); ?>">
+                            <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php foreach($terms as $term): ?>
-                                    <h3><?php echo esc_html( $term->name ); ?></h3>
+                                    <?php
+                                    $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+    
+                                    if ( $thumbnail_id ) {
+                                      $image = wp_get_attachment_image( intval( $thumbnail_id ), 'full' );
+                                    } else {
+                                        $image = "";
+                                    }
+                                    ?>
+                                    <?php if($image):?>
+                                    <li><a href="#"><?php echo $image;?></a></li>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
+                            </ul>
+                        </div>
+                    <?php else: ?>
+                        <div class="<?php echo esc_attr( $elementClass ); ?> band-logo no-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                            <?php foreach($terms as $term): ?>
+                                <h3><?php echo esc_html( $term->name ); ?></h3>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                     <?php
                 endif;
             endif;

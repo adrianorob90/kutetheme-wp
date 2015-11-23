@@ -136,6 +136,37 @@ function register_post_type_init() {
         'menu_icon'          => 'dashicons-update'
     );
     register_post_type( 'look-books', $args );
+    /* COLLECTIONS  */
+    $labels = array(
+        'name'               => __( 'Colections', 'kutetheme' ),
+        'singular_name'      => __( 'Colections', 'kutetheme'),
+        'add_new'            => __( 'Add New', 'kutetheme' ),
+        'all_items'          => __( 'Colections', 'kutetheme' ),
+        'add_new_item'       => __( 'Add New Colection', 'kutetheme' ),
+        'edit_item'          => __( 'Edit Colection', 'kutetheme' ),
+        'new_item'           => __( 'New Colection', 'kutetheme' ),
+        'view_item'          => __( 'View Colection', 'kutetheme' ),
+        'search_items'       => __( 'Search Colection', 'kutetheme' ),
+        'not_found'          => __( 'No Colection found', 'kutetheme' ),
+        'not_found_in_trash' => __( 'No Colection found in Trash', 'kutetheme' ),
+        'parent_item_colon'  => __( 'Parent Colection', 'kutetheme' ),
+        'menu_name'          => __( 'Colections', 'kutetheme' )
+    );
+    $args = array(
+        'labels'             => $labels,
+        'hierarchical'       => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'show_in_nav_menus'  => false,
+        'supports'           => array( 'title', 'thumbnail', 'editor','excerpt' ),
+        'rewrite'            => true,
+        'query_var'          => true,
+        'publicly_queryable' => true,
+        'public'             => true,
+        'menu_icon'          => 'dashicons-update'
+    );
+    register_post_type( 'colection', $args );
+    
     flush_rewrite_rules();
 }
 
@@ -171,4 +202,29 @@ function create_service_taxonomies() {
 	);
 
 	register_taxonomy( 'service_cat', 'service', $args );
+
+    // Add new taxonomy, make it hierarchical (like categories)
+    $labels = array(
+        'name'              => __( 'Categories', 'kutetheme' ),
+        'singular_name'     => __( 'Categories', 'kutetheme' ),
+        'search_items'      => __( 'Search Categories', 'kutetheme' ),
+        'all_items'         => __( 'All Categories', 'kutetheme' ),
+        'parent_item'       => __( 'Parent Categories', 'kutetheme' ),
+        'parent_item_colon' => __( 'Parent Categories:', 'kutetheme' ),
+        'edit_item'         => __( 'Edit Categories', 'kutetheme' ),
+        'update_item'       => __( 'Update Categories', 'kutetheme' ),
+        'add_new_item'      => __( 'Add New Categories', 'kutetheme' ),
+        'new_item_name'     => __( 'New Categories Name', 'kutetheme' ),
+        'menu_name'         => __( 'Categories', 'kutetheme' ),
+    );
+
+    $args = array(
+        'hierarchical'      => true,
+        'labels'            => $labels,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array( 'slug' => 'colection_cat' ),
+    );
+    register_taxonomy( 'colection_cat', 'colection', $args );
 }

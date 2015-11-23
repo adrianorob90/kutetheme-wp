@@ -15,6 +15,8 @@ require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/look_books.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/colection.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/testimonial.php';
 if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-category.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-product.php';

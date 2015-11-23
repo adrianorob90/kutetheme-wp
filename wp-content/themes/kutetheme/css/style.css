@@ -5213,6 +5213,9 @@ span.notify-right{
 .blog-list{
   margin-top: 30px;
 }
+.blog-list .post-title{
+  margin: 0;
+}
 .blog-list .page-heading{
   text-transform: uppercase;
 }
@@ -7365,6 +7368,317 @@ span.notify-right{
 }
 .block-trending .product{
   padding: 0;
+}
+/* COLECTION */
+.block-collections .nav-tab {
+    margin-top: 30px;
+    overflow: hidden;
+    padding: 0;
+}
+.block-collections .nav-tab li {
+    display: inline;
+    width: 100%;
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    background: #ccc;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    list-style: none;
+}
+.block-collections .nav-tab.tab-column-2 li{
+  width: 50%;
+}
+.block-collections .nav-tab.tab-column-3 li{
+  width: 33.333333%;
+}
+.block-collections .nav-tab.tab-column-4 li{
+  width: 25%;
+}
+.block-collections .nav-tab.tab-column-5 li{
+  width: 20%;
+}
+.block-collections .nav-tab.tab-column-6 li{
+  width: 16.66666666%;
+}
+.block-collections .nav-tab li a {
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+.block-collections .nav-tab li.active, 
+.block-collections .nav-tab li:hover {
+    background: #999999;
+}
+.block-collections .nav-tab li:last-child {
+    border-right: none;
+}
+.block-collections .nav-tab li.active a, .block-collections .nav-tab li:hover a {
+    color: #fff;
+}
+.block-collections .tab-container {
+    margin-top: 35px;
+}
+.block-collections .collection-list{
+  padding: 0;
+}
+.block-collections .collection-list .item {
+    background: none;
+}
+.block-collections .collection-list .info {
+    text-align: center;
+    margin: 27px;
+    line-height: 18px;
+}
+.block-collections .collection-list .info .title {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.block-collections .collection-list .info .desc {
+    margin-top: 18px;
+    color: #666;
+}
+.block-collections .collection-list .info .author {
+    margin-top: 18px;
+    color: #999999;
+}
+.block-collections .collection-list .info .collection-button a {
+    height: 36px;
+    border: 1px solid #666666;
+    line-height: 35px;
+    display: inline-block;
+    padding: 0 25px;
+    margin-top: 20px;
+}
+.block-collections .collection-list .info .collection-button a:hover {
+    color: #fff;
+}
+.block-collections .owl-controls .owl-prev, 
+.block-collections .owl-controls .owl-next {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid #eaeaea;
+    line-height: 35px;
+    color: #333;
+    top: 35%;
+    -moz-transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+    -o-transition: all 0.45s ease;
+    -ms-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.block-collections .owl-controls .owl-prev:hover, 
+.block-collections .owl-controls .owl-next:hover{
+  color: #fff;
+}
+.block-collections .owl-controls .owl-next {
+    right: -36px;
+}
+.block-collections .owl-controls .owl-prev {
+    left: -36px;
+}
+.block-collections .owl-carousel:hover .owl-controls .owl-prev {
+    left: -18px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-collections .owl-carousel:hover .owl-controls .owl-next {
+    right: -18px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-testimonials .testimonial-wapper {
+    position: relative;
+}
+.block-testimonials .testimonials {
+    padding-top: 18px;
+    max-width: 375px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 0;
+}
+.block-testimonials .testimonial {
+    position: static;
+}
+.block-testimonials .testimonials .testimonial li {
+    padding: 45px 0;
+}
+.block-testimonials .testimonials .testimonial li a {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.block-testimonials .testimonials li a:before {
+    content: '';
+    background: #000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 90%;
+    z-index: 2;
+    opacity: 0.5;
+}
+.block-testimonials .testimonials li img {
+    border: 3px solid #bcbdbe;
+    border-radius: 90%;
+}
+.block-testimonials .testimonial .info {
+    display: none;
+}
+.block-testimonials .testimonial-caption {
+    text-align: center;
+    max-width: 940px;
+    margin: 0 auto;
+    color: #fff;
+    line-height: 24px;
+    padding-top: 12px;
+}
+.block-testimonials .testimonials .owl-item.item-center li img {
+    opacity: 1;
+}
+.block-testimonials .owl-controls .owl-prev, .block-testimonials .owl-controls .owl-next {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid #eaeaea;
+    line-height: 35px;
+    color: #333;
+    top: 52.5%;
+    -moz-transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+    -o-transition: all 0.45s ease;
+    -ms-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    opacity: 0;
+    visibility: hidden;
+    color: #fff;
+}
+.block-testimonials .owl-controls .owl-prev {
+    left: -36px;
+}
+.block-testimonials .owl-controls .owl-next {
+    right: -36px;
+}
+.block-testimonials .testimonial-wapper:hover .owl-controls .owl-prev {
+    left: 0px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-testimonials .testimonial-wapper:hover .owl-controls .owl-next {
+    right: 0px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-testimonials .section-title {
+    color: #fff;
+}
+.block-testimonials .section-title:after, .block-testimonials .section-title:before {
+    background: #fff;
+}
+.block-testimonials .section-title:after, .block-testimonials .section-title:before {
+    background: #fff;
+}
+.block-testimonials .testimonials .owl-item.item-center li {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    z-index: 2;
+    top: -25px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.block-testimonials .testimonials .owl-item.item-center li a:before {
+    opacity: 0;
+}
+.block-testimonials .testimonials li a {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.block-blogs .blog-list-wapper .owl-controls .owl-prev, .block-blogs .blog-list-wapper .owl-controls .owl-next {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid #eaeaea;
+    line-height: 35px;
+    color: #333;
+    top: inherit;
+    top: 38%;
+    -moz-transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+    -o-transition: all 0.45s ease;
+    -ms-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.block-blogs .blog-list-wapper .owl-carousel:hover .owl-controls .owl-prev {
+    left: -18px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-blogs .blog-list-wapper .owl-carousel:hover .owl-controls .owl-next {
+    right: -18px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-blogs .blog-list-wapper .owl-controls .owl-prev {
+    left: -36px;
+    right: inherit;
+}
+.block-blogs .blog-list-wapper .owl-controls .owl-next {
+    right: -36px;
+}
+.block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
+.block-blogs .blog-list-wapper .owl-controls .owl-next:hover{
+    color: #fff;
+}
+
+.block-manufacturer-logo .owl-controls .owl-prev, 
+.block-manufacturer-logo .owl-controls .owl-next {
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1px solid #eaeaea;
+    line-height: 35px;
+    color: #333;
+    top: inherit;
+    top: 50%;
+    -moz-transition: all 0.45s ease;
+    -webkit-transition: all 0.45s ease;
+    -o-transition: all 0.45s ease;
+    -ms-transition: all 0.45s ease;
+    transition: all 0.45s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+.block-manufacturer-logo .owl-controls .owl-prev:hover, 
+.block-manufacturer-logo .owl-controls .owl-next:hover{
+  color: #fff;
+}
+.block-manufacturer-logo .owl-controls .owl-prev {
+    left: -36px;
+    right: inherit;
+}
+.block-manufacturer-logo .owl-controls .owl-next {
+    right: -36px;
+}
+.block-manufacturer-logo .owl-carousel:hover .owl-controls .owl-prev {
+    left: -18px;
+    opacity: 1;
+    visibility: inherit;
+}
+.block-manufacturer-logo .owl-carousel:hover .owl-controls .owl-next {
+    right: -18px;
+    opacity: 1;
+    visibility: inherit;
 }
 /* REPONSIVE */
 

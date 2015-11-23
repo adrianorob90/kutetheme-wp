@@ -489,7 +489,8 @@ function kt_themne_color(){
     .products-style8 .add-to-cart:hover,
     .products-style8 .product.compare-button .compare:hover,
     .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
-    .lock-boock-button a:hover{
+    .lock-boock-button a:hover,
+    .block-collections .collection-list .info .collection-button a:hover{
         background-color: {$main_color};
     }
 
@@ -508,7 +509,8 @@ function kt_themne_color(){
     .products-style8 .add-to-cart:hover,
     .products-style8 .product.compare-button .compare:hover,
     .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
-    .lock-boock-button a:hover{
+    .lock-boock-button a:hover,
+    .block-collections .collection-list .info .collection-button a:hover{
         border-color: {$main_color};
 
     }

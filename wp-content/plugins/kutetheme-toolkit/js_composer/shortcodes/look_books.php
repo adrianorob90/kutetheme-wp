@@ -42,7 +42,7 @@ vc_map( array(
                 __( '0.7', 'kutetheme' )      => '0.7',
                 __( '0.8', 'kutetheme' )      => '0.8',
                 __( '0.9', 'kutetheme' )      => '0.9',
-                __( '1', 'kutetheme' )      => '1',
+                __( '1', 'kutetheme' )        => '1',
             ),
             'default'     =>'0.7',
             'param_name'  => 'overlay_opacity',
