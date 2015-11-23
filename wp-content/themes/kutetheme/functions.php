@@ -134,6 +134,7 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
         add_image_size ( 'lookbook-thumb', 270, 270, true );
         add_image_size ( 'lookbook-thumb-masonry', 375, 375, false );
         add_image_size ( 'colection-thumb', 380, 532, true );
+        add_image_size ( 'colection_small_thumb', 250, 349, true );
         add_image_size ( 'testimonial-thumb', 140, 140, true );
         //Support woocommerce
         add_theme_support( 'woocommerce' );

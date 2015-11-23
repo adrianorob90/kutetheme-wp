@@ -50,10 +50,19 @@ vc_map( array(
         ),
         array(
             "type"        => "textfield",
+            "heading"     => __( "Link submit photos", 'kutetheme' ),
+            "param_name"  => "link_submit",
+            "value"       => "#",
+            "admin_label" => true,
+            'description' => __( "You can set the custom link you want.", 'kutetheme' ),
+        ),
+        array(
+            "type"        => "textfield",
             "heading"     => __( "Extra class name", "js_composer" ),
             "param_name"  => "el_class",
             "description" => __( "If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.", "js_composer" ),
             'admin_label' => false,
+
         ),
         // Carousel
         array(
@@ -175,6 +184,7 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             'title'           => 'LOOK BOOKS',
             'sub_title'       => '',
             'columns'         => 4,
+            'link_submit'     =>'#',
             'overlay_opacity' =>'0.7',
             'overlay_color'   =>'#000000',
             'el_class'        => '',
@@ -274,7 +284,7 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
                     <?php endwhile;?>
                 </ul>
                 <div class="lock-boock-button">
-                    <a href="#"><?php _e('Submit Your Photos','kutetheme');?></a>
+                    <a href="<?php echo esc_url( $link_submit );?>"><?php _e('Submit Your Photos','kutetheme');?></a>
                     <a href="<?php echo get_post_type_archive_link( 'look-books' ); ?>"><?php _e('View All','kutethme');?></a>
                 </div>
                 <?php else:?>

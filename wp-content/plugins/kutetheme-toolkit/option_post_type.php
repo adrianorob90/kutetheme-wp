@@ -152,10 +152,21 @@ function kt_register_demo_metabox() {
 	) );
     
 	$colection_option->add_field( array(
-		'name' => __( 'Design', 'kutetheme' ),
+		'name' => __( 'Designer', 'kutetheme' ),
 		'id'   => $prefix . 'colection_design',
 		'type' => 'text',
 	) );
+	$colection_option->add_field( array(
+    'name'    => 'Gallery colection',
+    'desc'    => 'Upload an image or enter an URL.',
+    'id'      => $prefix .'gallery_colection',
+    'type'    => 'file_list',
+    // Optional:
+    'options' => array(
+        'url' => false, // Hide the text input for the url
+        'add_upload_file_text' => 'Add colection gallery images' // Change upload button text. Default: "Add or Upload File"
+    ),
+) );
 
 	/**
 	 * Product

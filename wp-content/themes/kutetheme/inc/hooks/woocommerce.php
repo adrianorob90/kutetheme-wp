@@ -1413,7 +1413,11 @@ function kt_myaccount_menu_link( $items, $args ) {
                 $currentUser = wp_get_current_user();
                 ?>
                 <li class="menu-item menu-item-has-children">
+                    <?php if( $kt_used_header ==8 ):?>
                     <a href="<?php echo esc_url( $myaccount_link );?>"><i class="fa fa-user"></i> <?php echo esc_html( $currentUser->user_login);?></a>
+                    <?php else:?>
+                    <a href="<?php echo esc_url( $myaccount_link );?>"><i class="fa fa-user"></i> <?php echo esc_html( $currentUser->user_login);?></a>
+                    <?php endif;?>
                     <ul class="sub-menu">
                         <li><a href="<?php echo esc_url( $myaccount_link );?>"><?php _e('My Account','kutetheme');?></a></li>
                         <?php 

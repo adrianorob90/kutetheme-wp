@@ -170,16 +170,17 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     <?php if( $style == 2 ):?>
                         <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
                         <?php if( $is_phone ):?>
-                        <ul class="products-style8 autoHeight owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
+                        <!-- <ul class="products-style8 autoHeight owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>> -->
                         <?php else:?>
-                        <ul class="products-style8 autoHeight columns-<?php echo esc_attr( $columns );?>">
+                        <!-- <ul class="products-style8 autoHeight columns-<?php echo esc_attr( $columns );?>"> -->
                         <?php endif;?>
+                        <ul class="products-style8 columns-<?php echo esc_attr( $columns );?>">
                             <?php while( $products->have_posts() ): 
                             $products->the_post(); 
                             ?>
-                                <li class="product autoHeight-item">
-                                    <div class="product-container kt-template-loop">
-                                        <div class="product-thumb owl-lazy">
+                                <li class="product">
+                                    <div class="product-container">
+                                        <div class="product-thumb">
                                                 <?php
                                                 global $product;
                                                 $attachment_ids = $product->get_gallery_attachment_ids();

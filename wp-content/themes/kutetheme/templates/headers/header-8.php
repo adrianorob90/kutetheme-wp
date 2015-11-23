@@ -15,14 +15,14 @@
                 <div class="col-xs-12 col-sm-3 logo">
                     <?php echo kt_get_logo(); ?>
                 </div>
-                <div id="main-menu" class="col-sm-10 col-md-7 col-lg-8 main-menu">
+                <div id="main-menu" class="col-xs-12 col-sm-10 col-md-7 col-lg-8 main-menu">
                     <nav class="main-menu-style8 main-menu-wapper">
                         <?php kt_setting_mega_menu(); ?>
                         <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
                     </nav>
                     
                 </div>
-                <div class="col-sm-2 col-md-2 col-lg-1">
+                <div class="col-xs-12 col-sm-2 col-md-2 col-lg-1">
                     <div class="mini-cart">
                         <?php 
                         if( kt_is_wc() ): 

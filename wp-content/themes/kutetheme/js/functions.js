@@ -711,6 +711,17 @@
                 }, 100);
             })
         }
+
+        // Single colection
+        $(document).on('click','.colection-thumb .thumb-item',function(){
+          var src = $(this).attr('href');
+          $(this).closest('.colection-thumb').find('.thumb-item').each(function(){
+            $(this).removeClass('selected');
+          })
+          $(this).addClass('selected');
+          $('.colection-images .main-image').find('img').attr('src',src);
+          return false;
+        })
     });
     /* ---------------------------------------------
      Scripts resize

@@ -485,12 +485,12 @@ function kt_themne_color(){
     body .option7 .products .group-tool-button a.compare:hover, 
     body .option7 .products .search:hover,
     body .woocommerce div.product form.cart .button,
-    .banner-text .banner-button:hover,
-    .products-style8 .add-to-cart:hover,
-    .products-style8 .product.compare-button .compare:hover,
-    .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
-    .lock-boock-button a:hover,
-    .block-collections .collection-list .info .collection-button a:hover{
+    body .banner-text .banner-button:hover,
+    body .products-style8 .add-to-cart:hover,
+    body .products-style8 .product.compare-button .compare:hover,
+    body .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
+    body .lock-boock-button a:hover,
+    body .block-collections .collection-list .info .collection-button a:hover{
         background-color: {$main_color};
     }
 
@@ -504,13 +504,13 @@ function kt_themne_color(){
     body .view-product-list .page-title span,
     body .page-heading span.page-heading-title,
     body .count-down-time2 .box-count,
-    body  .option3 .main-header .header-search-box .form-inline,
-    .banner-text .banner-button:hover,
-    .products-style8 .add-to-cart:hover,
-    .products-style8 .product.compare-button .compare:hover,
-    .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
-    .lock-boock-button a:hover,
-    .block-collections .collection-list .info .collection-button a:hover{
+    body .option3 .main-header .header-search-box .form-inline,
+    body .banner-text .banner-button:hover,
+    body .products-style8 .add-to-cart:hover,
+    body .products-style8 .product.compare-button .compare:hover,
+    body .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
+    body .lock-boock-button a:hover,
+    body .block-collections .collection-list .info .collection-button a:hover{
         border-color: {$main_color};
 
     }
