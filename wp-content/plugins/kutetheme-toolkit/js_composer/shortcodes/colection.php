@@ -210,12 +210,11 @@ class WPBakeryShortCode_Kt_colection extends WPBakeryShortCode {
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' section8 block-collections ', '' ), implode( ' ', $elementClass ) );
         $data_carousel = array(
             "autoplay"           => $autoplay,
-            "navigation"         => $navigation,
+            "nav"                => $navigation,
             "margin"             => $margin,
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
-            'nav'                => 'true',
             'dots'               => 'false',
             'loop'               => $loop,
             'autoplayTimeout'    => 1000,

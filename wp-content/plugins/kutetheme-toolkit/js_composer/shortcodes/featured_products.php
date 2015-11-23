@@ -199,7 +199,6 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
             'slidespeed'     => 200,
             'css'            => '',
             'el_class'       => '',
-            'nav'            => 'true',
             'loop'           => 'false',
             //Default
             'use_responsive' => 1,
@@ -219,12 +218,11 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         $data_carousel = array(
             "autoplay"           => $autoplay,
-            "navigation"         => $navigation,
+            "nav"                => $navigation,
             "margin"             => $margin,
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
-            'nav'                => 'true',
             'dots'               => 'false',
             'loop'               => $loop,
             'autoplayTimeout'    => 1000,

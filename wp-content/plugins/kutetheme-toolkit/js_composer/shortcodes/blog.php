@@ -200,7 +200,6 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'css'            => '',
             'css_animation'  => '',
             'el_class'       => '',
-            'nav'            => 'true',
             'loop'           => 'true',
             //Default
             'use_responsive' => 1,
@@ -222,12 +221,11 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         
         $data_carousel = array(
             "autoplay"           => $autoplay,
-            "navigation"         => $navigation,
+            "nav"         => $navigation,
             "margin"             => $margin,
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
-            'nav'                => 'true',
             'dots'               => 'false',
             'loop'               => $loop,
             'autoplayTimeout'    => 1000,

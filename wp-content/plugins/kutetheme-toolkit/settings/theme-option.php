@@ -151,7 +151,7 @@ $config = array(
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                             '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v8.jpg',
-                            '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
+                            //'12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
                 		),
                 	)
                 )

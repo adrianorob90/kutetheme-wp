@@ -5,7 +5,7 @@ if ( !defined('ABSPATH')) exit;
 vc_map( array(
     "name" => __( "KT Look Books", 'kutetheme'),
     "base" => "kt_look_books",
-    "category" => __('Kute theme', 'kutetheme' ),
+    "category" => __('Kute Theme', 'kutetheme' ),
     "description" => __( 'Display a banner text', 'kutetheme' ),
     "params" => array(
         array(
@@ -68,8 +68,8 @@ vc_map( array(
         array(
             'type'  => 'dropdown',
             'value' => array(
-                __( 'Yes', 'js_composer' ) => 'true',
-                __( 'No', 'js_composer' )  => 'false'
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
             ),
             'std'         => 'false',
             'heading'     => __( 'AutoPlay', 'kutetheme' ),
@@ -80,8 +80,8 @@ vc_map( array(
         array(
             'type'  => 'dropdown',
             'value' => array(
-                __( 'Yes', 'js_composer' ) => 'true',
-                __( 'No', 'js_composer' )  => 'false'
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
             ),
             'std'         => 'false',
             'heading'     => __( 'Navigation', 'kutetheme' ),
@@ -93,8 +93,8 @@ vc_map( array(
         array(
             'type'  => 'dropdown',
             'value' => array(
-                __( 'Yes', 'js_composer' ) => 'true',
-                __( 'No', 'js_composer' )  => 'false'
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
             ),
             'std'         => 'false',
             'heading'     => __( 'Loop', 'kutetheme' ),
@@ -190,14 +190,13 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             'el_class'        => '',
             'css'             => '',
             //Carousel            
-            'autoplay'       => 'false', 
-            'navigation'     => 'false',
+            'autoplay'       => 0, 
+            'navigation'     => 0,
             'margin'         => 30,
             'slidespeed'     => 200,
             'css'            => '',
             'el_class'       => '',
-            'nav'            => 'true',
-            'loop'           => 'false',
+            'loop'           => 0,
             //Default
             'use_responsive' => 1,
             'items_destop'   => 3,
@@ -206,6 +205,7 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             
         ), $atts );
         extract($atts);
+        
         $elementClass = array(
             'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' ', $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
@@ -221,16 +221,16 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
               'posts_per_page' => $columns,
         );
         $look_book_query = new WP_Query(  $args );
+        
         $data_carousel = array(
-            "autoplay"           => $autoplay,
-            "navigation"         => $navigation,
+            "autoplay"           => ($autoplay == 1 ? "true" : "false"),
+            "nav"                => ($navigation == 1 ? "true" : "false"),
             "margin"             => $margin,
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
-            'nav'                => 'true',
             'dots'               => 'false',
-            'loop'               => $loop,
+            'loop'               => ($loop == 1 ? "true" : "false"),
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );

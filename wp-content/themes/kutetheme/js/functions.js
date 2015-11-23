@@ -57,11 +57,11 @@
     }
     function kt_lazy( $lazy ){
         $lazy.each( function($index, $element){
-            $element = jQuery( $element);
-            var $item = $element.closest( 'li' );
+            $element   = jQuery( $element);
+            var $item  = $element.closest( 'li' );
             var $style = $item.attr("style");
-            $style    = ( $style == undefined ) ? '' : $style;
-            var delay = $index * 300;
+            $style     = ( $style == undefined ) ? '' : $style;
+            var delay  = $index * 300;
             $item.attr("style", $style +
                       ";-webkit-animation-delay:" + delay + "ms;"
                     + "-moz-animation-delay:" + delay + "ms;"
@@ -74,11 +74,16 @@
             
             if( $element.is( 'img' ) ){
                 var $url = $element.data('src');
-                $element.attr( 'src', $url );
+                if( $url !="undefined" ){
+                  $element.attr( 'src', $url );
+                }
+                
             }else{
                 var $url = $element.data('src');
-                $element.addClass( 'kt-lazy-background' );
-                $element.css( 'background', 'url("'+ $url+'")' );
+                if( $url != "undefined" ){
+                  $element.addClass( 'kt-lazy-background' );
+                  $element.css( 'background', 'url("'+ $url+'")' );
+                }
             }
         } );
     }
@@ -367,14 +372,17 @@
             $(this).closest('.vertical-menu-content').find('li.cat-link-orther').each(function(){
                 $(this).slideDown();
             });
-            $(this).addClass('colse-cate').removeClass('open-cate').html( $html_close );
+            var close_text = $(this).data('close_text');
+            $(this).addClass('colse-cate').removeClass('open-cate').html( close_text );
         })
+
         /* Close category */
         $(document).on('click','.colse-cate',function(){
             $(this).closest('.vertical-menu-content').find('li.cat-link-orther').each(function(){
                 $(this).slideUp();
             });
-            $(this).addClass('open-cate').removeClass('colse-cate').html('All Categories');
+            var open_text = $(this).data('open_text');
+            $(this).addClass('open-cate').removeClass('colse-cate').html(open_text);
             return false;
         })
         // bar ontop click

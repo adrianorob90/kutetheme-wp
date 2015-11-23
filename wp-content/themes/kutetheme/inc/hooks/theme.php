@@ -193,12 +193,12 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' ); else echo esc_attr( 'show_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
@@ -224,12 +224,12 @@ if( ! function_exists( 'kt_show_menu_option_2' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <<div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
@@ -255,12 +255,12 @@ if( ! function_exists( 'kt_show_menu_option_3' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
@@ -285,12 +285,12 @@ if( ! function_exists( 'kt_show_vertical_menu_option_4' ) ){
         <div id="box-vertical-megamenus" class="vertical-wapper">
             <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                 <h4 class="title">
-                    <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                     <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                 </h4>
                 <div class="vertical-menu-content">
                     <?php kt_setting_vertical_menu(); ?>
-                    <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                 </div>
             </div>
         </div>
@@ -317,12 +317,12 @@ if( ! function_exists( 'kt_show_menu_option_5' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
@@ -348,12 +348,12 @@ if( ! function_exists( 'kt_show_menu_option_6' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>
@@ -379,12 +379,12 @@ if( ! function_exists( 'kt_show_vertical_menu_option_7' ) ){
         <div id="box-vertical-megamenus" class="vertical-wapper">
             <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                 <h4 class="title">
-                    <span class="title-menu"><?php esc_html_e( 'Categories', 'kutetheme' ) ?></span>
+                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
                     <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                 </h4>
                 <div class="vertical-menu-content">
                     <?php kt_setting_vertical_menu(); ?>
-                    <div class="all-category"><span class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                    <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                 </div>
             </div>
         </div>
@@ -490,7 +490,9 @@ function kt_themne_color(){
     body .products-style8 .product.compare-button .compare:hover,
     body .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
     body .lock-boock-button a:hover,
-    body .block-collections .collection-list .info .collection-button a:hover{
+    body .block-collections .collection-list .info .collection-button a:hover,
+    body .block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
+    body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover{
         background-color: {$main_color};
     }
 
@@ -510,7 +512,15 @@ function kt_themne_color(){
     body .products-style8 .product.compare-button .compare:hover,
     body .products-style8 .yith-wcwl-add-to-wishlist>div:hover,
     body .lock-boock-button a:hover,
-    body .block-collections .collection-list .info .collection-button a:hover{
+    body .block-collections .collection-list .info .collection-button a:hover,
+    body .block-loock-bocks .owl-controls .owl-next:hover, 
+    body .block-loock-bocks .owl-controls .owl-prev:hover,
+    body .block-testimonials .owl-controls .owl-prev:hover, 
+    body .block-testimonials .owl-controls .owl-next:hover,
+    body .block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
+    body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover,
+    body .block-manufacturer-logo .owl-controls .owl-prev:hover, 
+    body .block-manufacturer-logo .owl-controls .owl-next:hover{
         border-color: {$main_color};
 
     }

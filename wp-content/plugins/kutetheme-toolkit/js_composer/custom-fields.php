@@ -32,10 +32,18 @@ function kt_add_vc_global_params(){
     vc_add_params( 'vc_column_inner', $vc_setting_column_inner );
     
     
-    add_shortcode_param( 'kt_select_image', 'vc_kt_select_image_settings_field' );
-    add_shortcode_param( 'kt_categories', 'vc_kt_categories_settings_field' );
-    add_shortcode_param('kt_number' , 'vc_ktnumber_settings_field');
-    add_shortcode_param('kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+    if( function_exists( 'vc_add_shortcode_param')){
+        vc_add_shortcode_param( 'kt_select_image', 'vc_kt_select_image_settings_field' );
+        vc_add_shortcode_param( 'kt_categories', 'vc_kt_categories_settings_field' );
+        vc_add_shortcode_param('kt_number' , 'vc_ktnumber_settings_field');
+        vc_add_shortcode_param('kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+    }else{
+        add_shortcode_param( 'kt_select_image', 'vc_kt_select_image_settings_field' );
+        add_shortcode_param( 'kt_categories', 'vc_kt_categories_settings_field' );
+        add_shortcode_param('kt_number' , 'vc_ktnumber_settings_field');
+        add_shortcode_param('kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+    }
+    
 }
 /**
  * Tabs type dropdown

@@ -178,8 +178,8 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                             <?php while( $products->have_posts() ): 
                             $products->the_post(); 
                             ?>
-                                <li class="product">
-                                    <div class="product-container">
+                                <li class="product kt-template-loop">
+                                    <div class="product-container ">
                                         <div class="product-thumb">
                                                 <?php
                                                 global $product;
@@ -191,20 +191,20 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
 
                                                 if( has_post_thumbnail() ){
                                                     ?>
-                                                    <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
+                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
                                                     <?php
                                                 }else{
                                                     ?>
-                                                    <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
                                                     <?php
                                                 }
                                                 if( $secondary_image != "" ){
                                                     ?>
-                                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
+                                                    <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
                                                     <?php
                                                 }else{
                                                     ?>
-                                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+                                                    <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
                                                     <?php
                                                 }
 

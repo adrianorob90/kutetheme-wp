@@ -5480,6 +5480,7 @@ span.notify-right{
 }
 #footer2 ul li{
   list-style-type: none;
+  line-height: 30px;
 }
 #footer2 ul li ul{
   padding-left: 20px;

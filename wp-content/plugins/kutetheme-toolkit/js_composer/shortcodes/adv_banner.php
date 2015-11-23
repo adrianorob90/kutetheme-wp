@@ -5,7 +5,7 @@ if ( !defined('ABSPATH')) exit;
 vc_map( array(
     "name" => __( "KT Banner text", 'kutetheme'),
     "base" => "kt_banner_text",
-    "category" => __('Kute theme', 'kutetheme' ),
+    "category" => __('Kute Theme', 'kutetheme' ),
     "description" => __( 'Display a banner text', 'kutetheme' ),
     "params" => array(
         array(
