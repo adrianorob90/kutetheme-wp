@@ -18,6 +18,7 @@
             config.animateIn="fadeIn";    
         }
         config.rtl = rtl;
+        console.log(config);
         config.onInitialized = function( event ){
             var $item_active = $this.find( '.owl-item.active' );
             $item_active.each( function ( $i ) {
@@ -433,7 +434,7 @@
         /* Open menu on mobile */
         $(document).on('click','.btn-open-mobile',function(){
             var width = $(window).width();
-            if(width > 1024){
+            if(width > 1200){
                 if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
                     if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
                         
@@ -447,7 +448,6 @@
             if( width < 768 ){
               $('.main-menu .navigation-main-menu').hide();
             }
-            
             return false;
         })
         /* Product qty */
@@ -719,6 +719,37 @@
                 }, 100);
             })
         }
+        //testimonial-carousel
+        if($('.testimonial-carousel-rtl').length >0){
+            var owl = $('.testimonial-carousel-rtl');
+            owl.owlCarousel(
+                {
+                    margin:30,
+                    autoplay:true,
+                    dots:false,
+                    loop:true,
+                    items:3,
+                    rtl:true,
+                    nav:true,
+                    smartSpeed:1000,
+                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']
+                }
+            );
+            owl.trigger('next.owl.carousel');
+            owl.on('changed.owl.carousel', function(event) {
+                owl.find('.owl-item.active').removeClass('item-center');
+                var caption=owl.find('.owl-item.active').first().next().find('.info').html();
+                owl.closest('.block-testimonials').find('.testimonial-caption').html(caption).addClass('zoomIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('zoomIn animated');
+                });;
+                setTimeout(function(){
+                    owl.find('.owl-item.active').first().next().addClass('item-center');
+                    owl.find('.owl-item.active').first().next().addClass('zoomIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('zoomIn animated');
+                    });
+                }, 100);
+            })
+        }
 
         // Single colection
         $(document).on('click','.colection-thumb .thumb-item',function(){
@@ -789,6 +820,18 @@
                 $('#shopping-cart-box-ontop').fadeOut();
                 $('#user-info-opntop #user-info-top').appendTo('.top-header .container');
                 $('#form-search-opntop form').appendTo('#header .header-search-box');
+            }
+        }
+
+        // Menu ontop header 8
+        /* Main menu on top */
+        var h = $(window).scrollTop();
+        var width = $(window).width();
+        if(width > 991){
+            if(h > 35){
+                $('.header.style8').addClass('ontop');
+            }else{
+                $('.header.style8').removeClass('ontop');
             }
         }
     });

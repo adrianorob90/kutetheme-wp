@@ -107,7 +107,7 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
                     <?php if( $testimonial_query->have_posts()): ?>
                     <div class="testimonial-wapper">
                         <div class="testimonials">
-                            <ul class="testimonial testimonial-carousel">
+                            <ul class="testimonial <?php echo is_rtl() ? 'testimonial-carousel-rtl' :'testimonial-carousel';?> ">
                             <?php
                             while ( $testimonial_query->have_posts()) {
                                 $testimonial_query->the_post();

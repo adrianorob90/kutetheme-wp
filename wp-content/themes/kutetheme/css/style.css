@@ -6716,10 +6716,13 @@ span.notify-right{
   padding: 20px 0;
 }
 .header.style8 .mini-cart{
-  padding-top: 27px;
+  padding-top: 24px;
 }
 .header.style8 .mini-cart .btn-cart{
   position: relative;
+}
+.header.style8 .mini-cart .btn-cart .cart-link{
+  line-height: 25px;
 }
 .header.style8 .btn-cart .notify-right{
     background: url('../images/notify-right-red.png') no-repeat;
@@ -6733,7 +6736,7 @@ span.notify-right{
   width: 17px;
   height: 22px;
   display: inline-block;
-  vertical-align: middle;
+  vertical-align: top;
   margin-right: 5px;
 }
 .header.style8 .top-header .form-search {
@@ -6785,6 +6788,38 @@ span.notify-right{
     display: inline-block!important;
     font-size: 0;
 }
+.header.style8.ontop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 1px 1px 0 rgba(50, 50, 50, 0.1);
+  border: none;
+}
+.header.style8.ontop .top-header{
+  display: none;
+}
+.admin-bar .header.style8.ontop{
+  top: 32px;
+}
+.header.style8.ontop .logo  img{
+  width: 70%;
+}
+.header.style8.ontop .main-menu-style8{
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+.header.style8.ontop .main-header{
+  padding: 10px 0;
+}
+.header.style8.ontop .mini-cart {
+    padding-top: 12px;
+}
+
+
 .banner-text {
     position: relative;
 }
