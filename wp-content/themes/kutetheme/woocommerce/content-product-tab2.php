@@ -15,14 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="right-block">
 	<?php
-    $product_name = get_the_title();
+    // $product_name = get_the_title();
     
-    if( strlen($product_name) > 18 ){
-        $product_name = substr( $product_name, 0, 18 );
-        $product_name = trim( $product_name ) . "...";
-    }
+    // if( strlen($product_name) > 18 ){
+    //     $product_name = substr( $product_name, 0, 18 );
+    //     $product_name = trim( $product_name ) . "...";
+    // }
     ?>
-    <h5 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php echo esc_html( $product_name ); ?></a></h5>
+    <h5 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php the_title( ); ?></a></h5>
     <div class="content_price">
         <span class="price product-price">
             <?php woocommerce_template_loop_price(); ?>

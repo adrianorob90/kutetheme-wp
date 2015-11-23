@@ -59,16 +59,16 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
     <div class="right-block">
         <?php
-        $product_name = get_the_title();
+        // $product_name = get_the_title();
+        // // echo  strlen($product_name);
         
-        if( strlen($product_name) > 25 ){
-            $product_name = substr( $product_name, 0, 25 );
-            $product_name = trim( $product_name ) . "...";
-        }
+        // // if( strlen($product_name) > 25 ){
+        // //     echo $product_name = substr( $product_name, 0, 25 );
+        // //     $product_name = trim( $product_name ) . "...";
+        // // }
         ?>
         <h5 class="product-name">
-            <a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>">
-            <?php echo esc_html( $product_name ) ; ?></a>
+            <a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
         </h5>
         <div class="content_price">
         <?php

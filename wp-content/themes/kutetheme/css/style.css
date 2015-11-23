@@ -2239,6 +2239,9 @@ span.notify-right{
 .product-list li .product-name{
     padding-bottom: 5px;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .product-list li .product-info{
     padding: 0 5px;
@@ -6907,6 +6910,9 @@ span.notify-right{
 .products-style8 .product-info .product-name{
   font-size: 14px;
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .products-style8 .product-thumb .yith-wcqv-button {
     position: absolute;

@@ -648,6 +648,9 @@
 .option7 .hot-deals-box .product-name{
 	background: #424242;
 	color: #fff;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .option7 .hot-deals-box .button.yith-wcqv-button{
 	display: none;
@@ -824,6 +827,9 @@
 .products .product-name{
 	line-height: 24px;
 	margin: 0;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .products .product-rating{
 	color: #fac872;
