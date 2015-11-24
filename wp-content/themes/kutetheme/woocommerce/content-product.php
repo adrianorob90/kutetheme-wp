@@ -110,7 +110,7 @@ if( $kt_woo_shop_sidebar_are =="full"){
         		?>
             </div>
             <div class="info-orther">
-                <p class="availability"><?php esc_html_e( 'Availability', 'kutetheme' );?>: <span class="instock"><?php esc_html_e( 'In stock', 'kutetheme' );?></span><span class="outofstock"><?php esc_html_e( 'Out of stock', 'kutetheme' );?></span></p>
+                <p class="availability"><?php _e( 'Availability', 'kutetheme' );?>: <span class="instock"><?php _e( 'In stock', 'kutetheme' );?></span><span class="outofstock"><?php _e( 'Out of stock', 'kutetheme' );?></span></p>
                 <div class="product-desc"><?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ) ?></div>
             </div>
         </div>

@@ -411,6 +411,7 @@ if( ! function_exists( 'kt_scripts' ) ){
         
         if(is_rtl()){
             wp_enqueue_style( 'bootstrap-rtl-css', get_template_directory_uri() . '/libs/bootstrap/css/bootstrap-rtl.css', array());
+            wp_enqueue_style( 'kt-rtl', get_template_directory_uri() . '/rtl.css', array());
         }
         
     	wp_localize_script( 'kt-script', 'screenReaderText', array(
