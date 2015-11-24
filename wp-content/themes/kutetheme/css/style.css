@@ -1127,6 +1127,7 @@ span.notify-right{
     overflow: hidden;
     margin: 0;
     text-align: right;
+    cursor: pointer;
 }
 .box-vertical-megamenus .title .title-menu{
   text-align: left;
@@ -1144,7 +1145,6 @@ span.notify-right{
     border-top: 3px solid #ff3366;
     background: #fff;
     display: none;
-    padding-bottom: 15px;
 }
 .box-vertical-megamenus .vertical-menu-content{
   display: none;
@@ -1242,6 +1242,13 @@ span.notify-right{
     text-align: center;
     margin-top: 16px;
     padding-right: 20px;
+    display: none;
+}
+.box-vertical-megamenus.show-button-all .all-category{
+  display: block;
+}
+.box-vertical-megamenus.show-button-all .vertical-menu-content{
+  padding-bottom: 15px;
 }
 .box-vertical-megamenus .all-category span{
     height: 40px;

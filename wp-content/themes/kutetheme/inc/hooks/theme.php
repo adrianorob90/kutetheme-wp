@@ -229,7 +229,7 @@ if( ! function_exists( 'kt_show_menu_option_2' ) ){
                     </h4>
                     <div class="vertical-menu-content">
                         <?php kt_setting_vertical_menu(); ?>
-                        <<div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
+                        <div class="all-category"><span data-open_text="<?php _e( 'All Categories','kutetheme' );?>" data-close_text="<?php _e( 'Close','kutetheme' );?>" class="open-cate"><?php esc_html_e( 'All Categories', 'kutetheme' ) ?></span></div>
                     </div>
                 </div>
             </div>

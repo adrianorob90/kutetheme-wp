@@ -432,7 +432,7 @@
             return false;
         })
         /* Open menu on mobile */
-        $(document).on('click','.btn-open-mobile',function(){
+        $(document).on('click','.btn-open-mobile,.box-vertical-megamenus .title',function(){
             var width = $(window).width();
             if(width > 1200){
                 if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
@@ -927,11 +927,16 @@
       if( $( '.box-vertical-megamenus' ).length > 0 ){
           var all_item = 0;
           var limit_item = $('.box-vertical-megamenus').data('items')-1;
+
           if($('.box-vertical-megamenus').hasClass('style2')){
             if( $(window).width() <= 1024){
               limit_item = 8;
             }
             
+          }
+          var all_item = $('.box-vertical-megamenus .vertical-menu-list>li').length;
+          if( all_item > (limit_item + 1) ){
+             $('.box-vertical-megamenus').addClass('show-button-all');
           }
 
           $('.box-vertical-megamenus').find('.vertical-menu-list>li').each(function(i){
