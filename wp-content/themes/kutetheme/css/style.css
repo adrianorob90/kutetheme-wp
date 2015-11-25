@@ -7762,6 +7762,176 @@ span.notify-right{
 .colection-thumb .selected img{
   opacity: 1;
 }
+
+/* HEADER 12*/
+.header.style12 .top-header{
+  background-color: transparent;
+}
+.header.style12 .top-header-inner{
+  display: table;
+  width: 100%;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(220,220,220,0.3);
+  padding: 3px 0;
+}
+.header.style12 .main-header {
+    padding: 40px 0 65px 0;
+}
+.main-menu-style12{
+  float: right;
+}
+
+.main-menu-style12 .navigation-main-menu>li>a{
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 0 10px;
+  font-weight: 700;
+}
+.main-menu-style12 .navigation-main-menu>li:last-child>a{
+  padding-right: 0;
+}
+.main-menu-style12 .navigation-main-menu>li:hover,
+.main-menu-style12 .navigation-main-menu>li.active{
+  background-color: transparent;
+}
+.main-menu-style12 .navigation-main-menu>li>a:before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background-color: #fff;
+    display: block;
+    margin: 0 auto;
+    display: none;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.main-menu-style12 .navigation-main-menu>li:hover>a:before,
+.main-menu-style12 .navigation-main-menu>li.active>a:before{
+  display: block;
+}
+.block-header-top12 {
+    display: table;
+    padding: 13px 20px;
+    margin-top: -34px;
+    width: 100%;
+}
+.block-header-top12 .block-vertical, 
+.block-header-top12 .block-search, 
+.block-header-top12 .block-mini-cart {
+    display: table-cell;
+    position: relative;
+    vertical-align: middle;
+}
+.block-header-top12 .block-vertical {
+    width: 250px;
+    height: 44px;
+}
+.block-header-top12 .block-search {
+    width: 690px;
+    background-color: #fff;
+}
+.block-header-top12 .block-search form{
+  display: table;
+  width: 100%;
+  vertical-align: middle;
+}
+.block-header-top12 .block-search .input-serach,
+.block-header-top12 .block-search .form-category,
+.block-header-top12 .block-search .btn-search{
+  display: table-cell;
+  vertical-align: middle;
+}
+.block-header-top12 .block-search .btn-search {
+    width: 56px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    background-color: #394264;
+    border: none;
+}
+.block-header-top12 .block-search .input-serach{
+  width: 100%;
+}
+.block-header-top12 .block-search .form-category{
+  width: 250px;
+}
+.block-mini-cart {
+    background-color: #11a8ab;
+    color: #fff;
+    
+}
+.block-header-top12 .box-vertical-megamenus .title{
+  height: 44px;
+  line-height: 44px;
+}
+.block-header-top12 .box-vertical-megamenus .btn-open-mobile {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #fff;
+    text-align: center;
+    line-height: 14px;
+    font-size: 12px;
+    margin-top: 14px;
+    display: inline-block;
+}
+.block-header-top12 .box-vertical-megamenus .vertical-menu-content{
+  border-top:none;
+  left: -20px;
+  right: 0;
+  top: 59px;
+  border: 1px solid #eee;
+  border-top: none;
+}
+.block-header-top12 .box-vertical-megamenus .vertical-menu-list{
+  border: none;
+}
+.block-header-top12 .box-vertical-megamenus .vertical-menu-list>li {
+    padding: 0 20px;
+}
+.block-header-top12 .box-vertical-megamenus .vertical-menu-list>li>a{
+  padding: 0;
+  border-bottom: 1px solid #eee;
+  line-height: 41px;
+  position: relative;
+}
+body .block-header-top12  .box-vertical-megamenus .vertical-menu-list>li:hover, 
+body .block-header-top12  .box-vertical-megamenus .all-category span:hover{
+  background-color: transparent;
+  color: #999999;
+}
+
+body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a, 
+body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:before{
+  color: #333;
+}
+.block-header-top12 .vertical-menu-list>li>a:before {
+    right: 0;
+    color: #333;
+    top: 12px;
+}
+.block-header-top12 .box-vertical-megamenus .all-category {
+    padding: 0;
+}
+.block-header-top12 .box-vertical-megamenus .all-category span {
+    border: none;
+    font-weight: 700;
+    color: #999999;
+    height: inherit;
+    font-family: 'Oswald', sans-serif;
+    line-height: normal;
+}
+.block-header-top12 .box-vertical-megamenus .all-category span:after {
+    display: block;
+    margin: 0 auto;
+    content: "\f107";
+}
 /* REPONSIVE */
 
 @media(max-width: 1200px){

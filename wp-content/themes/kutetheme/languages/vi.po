@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Kutetheme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: Mon Nov 23 2015 14:42:08 GMT+0700 (SE Asia Standard Time)\n"
-"PO-Revision-Date: Mon Nov 23 2015 14:42:25 GMT+0700 (SE Asia Standard Time)\n"
+"PO-Revision-Date: Tue Nov 24 2015 14:24:21 GMT+0700 (SE Asia Standard Time)\n"
 "Last-Translator: admin <thanhtd91@gmail.com>\n"
 "Language-Team: \n"
 "Language: Vietnamese\n"
@@ -222,10 +222,6 @@ msgstr ""
 msgid "Secs"
 msgstr ""
 
-#: ../functions.php:311
-msgid "Close"
-msgstr "Đóng"
-
 #: ../functions.php:414
 msgid "expand child menu"
 msgstr ""
@@ -236,7 +232,7 @@ msgstr ""
 
 #: ../functions.php:437 ../inc/widgets/kt_image.php:82 ../inc/widgets/slider.php:
 #: 170 ../inc/widgets/slider.php:198 ../inc/widgets/slider.php:229 ..
-#: /inc/widgets/trademark-payment.php:120 ../inc/widgets/trademark-payment.php:
+#: inc/widgets/trademark-payment.php:120 ../inc/widgets/trademark-payment.php:
 #: 148 ../inc/widgets/trademark-payment.php:179
 msgid "Select your image"
 msgstr ""
@@ -417,7 +413,7 @@ msgid "Contact us today !"
 msgstr ""
 
 #: ../inc/utility.php:234 ../inc/hooks/woocommerce.php:1418 ..
-#: /woocommerce/cart/mini-cart.php:59
+#: woocommerce/cart/mini-cart.php:59
 msgid "My Account"
 msgstr ""
 
@@ -439,17 +435,17 @@ msgid "Logout"
 msgstr ""
 
 #: ../inc/utility.php:251 ../inc/hooks/woocommerce.php:1423 ..
-#: /woocommerce/cart/mini-cart.php:43 ../woocommerce/cart/mini-cart.php:67 ..
-#: /woocommerce/cart/mini-cart.php:67 ../woocommerce/cart/mini-cart.php:86 ..
-#: /woocommerce/cart/mini-cart.php:86 ../woocommerce/cart/mini-cart.php:102 ..
-#: /woocommerce/cart/mini-cart.php:102
+#: woocommerce/cart/mini-cart.php:43 ../woocommerce/cart/mini-cart.php:67 ..
+#: woocommerce/cart/mini-cart.php:67 ../woocommerce/cart/mini-cart.php:86 ..
+#: woocommerce/cart/mini-cart.php:86 ../woocommerce/cart/mini-cart.php:102 ..
+#: woocommerce/cart/mini-cart.php:102
 msgid "Wishlists"
 msgstr ""
 
 #: ../inc/utility.php:257 ../inc/hooks/woocommerce.php:1428 ..
-#: /woocommerce/cart/mini-cart.php:39 ../woocommerce/cart/mini-cart.php:81 ..
-#: /woocommerce/cart/mini-cart.php:81 ../woocommerce/cart/mini-cart.php:98 ..
-#: /woocommerce/cart/mini-cart.php:98
+#: woocommerce/cart/mini-cart.php:39 ../woocommerce/cart/mini-cart.php:81 ..
+#: woocommerce/cart/mini-cart.php:81 ../woocommerce/cart/mini-cart.php:98 ..
+#: woocommerce/cart/mini-cart.php:98
 msgid "Compare"
 msgstr ""
 
@@ -977,14 +973,14 @@ msgstr ""
 #: ../inc/hooks/theme.php:201 ../inc/hooks/theme.php:232 ../inc/hooks/theme.php:
 #: 263 ../inc/hooks/theme.php:293 ../inc/hooks/theme.php:325 ../inc/hooks/theme.
 #: php:356 ../inc/hooks/theme.php:387 ../templates/headers/header-12.php:80 ..
-#: /templates/search-form/product-search-form.php:3
+#: templates/search-form/product-search-form.php:3
 msgid "All Categories"
 msgstr ""
 
 #: ../inc/hooks/theme.php:208 ../inc/hooks/theme.php:239 ../inc/hooks/theme.php:
 #: 270 ../inc/hooks/theme.php:332 ../inc/hooks/theme.php:363 ..
-#: /templates/headers/header-4.php:19 ../templates/headers/header-7.php:39 ..
-#: /templates/headers/header-8.php:21
+#: templates/headers/header-4.php:19 ../templates/headers/header-7.php:39 ..
+#: templates/headers/header-8.php:21
 msgid "Main menu"
 msgstr ""
 
@@ -1063,11 +1059,11 @@ msgstr ""
 
 #: ../inc/hooks/woocommerce.php:815 ../woocommerce/content-product.php:113
 msgid "In stock"
-msgstr ""
+msgstr "In stock"
 
 #: ../inc/hooks/woocommerce.php:816 ../woocommerce/content-product.php:113
 msgid "Out of stock"
-msgstr ""
+msgstr "Hết hàng"
 
 #: ../inc/hooks/woocommerce.php:821
 msgid "Item Code"
@@ -1075,7 +1071,7 @@ msgstr ""
 
 #: ../inc/hooks/woocommerce.php:824 ../woocommerce/content-product.php:113
 msgid "Availability"
-msgstr ""
+msgstr "Sẵn có"
 
 #: ../inc/hooks/woocommerce.php:840
 msgid "Available Options"
@@ -1106,62 +1102,62 @@ msgid " .."
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1176 ../inc/hooks/woocommerce.php:1241 ..
-#: /inc/widgets/social.php:41
+#: inc/widgets/social.php:41
 msgid "Facebook"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1179 ../inc/hooks/woocommerce.php:1244 ..
-#: /inc/widgets/social.php:44
+#: inc/widgets/social.php:44
 msgid "Twitter"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1182 ../inc/hooks/woocommerce.php:1247 ..
-#: /inc/widgets/social.php:47
+#: inc/widgets/social.php:47
 msgid "Dribbble"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1185 ../inc/hooks/woocommerce.php:1250 ..
-#: /inc/widgets/social.php:50
+#: inc/widgets/social.php:50
 msgid "Vimeo"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1188 ../inc/hooks/woocommerce.php:1253 ..
-#: /inc/widgets/social.php:53
+#: inc/widgets/social.php:53
 msgid "Tumblr"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1191 ../inc/hooks/woocommerce.php:1256 ..
-#: /inc/widgets/social.php:56
+#: inc/widgets/social.php:56
 msgid "Skype"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1194 ../inc/hooks/woocommerce.php:1259 ..
-#: /inc/widgets/social.php:59
+#: inc/widgets/social.php:59
 msgid "Linkedin"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1197 ../inc/hooks/woocommerce.php:1262 ..
-#: /inc/widgets/social.php:62
+#: inc/widgets/social.php:62
 msgid "Google Plus"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1200 ../inc/hooks/woocommerce.php:1265 ..
-#: /inc/widgets/social.php:65
+#: inc/widgets/social.php:65
 msgid "Youtube"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1203 ../inc/hooks/woocommerce.php:1268 ..
-#: /inc/widgets/social.php:68
+#: inc/widgets/social.php:68
 msgid "Pinterest"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1206 ../inc/hooks/woocommerce.php:1271 ..
-#: /inc/widgets/social.php:71
+#: inc/widgets/social.php:71
 msgid "Instagram"
 msgstr ""
 
 #: ../inc/hooks/woocommerce.php:1210 ../inc/hooks/woocommerce.php:1275 ..
-#: /inc/widgets/social.php:75
+#: inc/widgets/social.php:75
 msgid "Vk"
 msgstr ""
 
@@ -1270,10 +1266,10 @@ msgid "Image preview"
 msgstr ""
 
 #: ../inc/nav/nav_menu_custom_fields.php:36 ../inc/widgets/seo-keyword.php:95 ..
-#: /inc/widgets/seo-keyword.php:116 ../inc/widgets/seo-keyword.php:139 ..
-#: /inc/widgets/slider.php:164 ../inc/widgets/slider.php:192 ..
-#: /inc/widgets/slider.php:222 ../inc/widgets/trademark-payment.php:114 ..
-#: /inc/widgets/trademark-payment.php:142 ../inc/widgets/trademark-payment.php:172
+#: inc/widgets/seo-keyword.php:116 ../inc/widgets/seo-keyword.php:139 ..
+#: inc/widgets/slider.php:164 ../inc/widgets/slider.php:192 ..
+#: inc/widgets/slider.php:222 ../inc/widgets/trademark-payment.php:114 ..
+#: inc/widgets/trademark-payment.php:142 ../inc/widgets/trademark-payment.php:172
 msgid "X"
 msgstr ""
 
@@ -1306,24 +1302,24 @@ msgid "KT Best Seller"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:24 ../inc/widgets/best-seller.php:91 ..
-#: /inc/widgets/best-seller.php:108
+#: inc/widgets/best-seller.php:108
 msgid "Best Sellers"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:121 ../inc/widgets/on-sale.php:105 ..
-#: /inc/widgets/product-special-sidebar.php:103 ../inc/widgets/seo-keyword.php:79 
+#: inc/widgets/product-special-sidebar.php:103 ../inc/widgets/seo-keyword.php:79
 #: ../inc/widgets/seo-keyword.php:97 ../inc/widgets/seo-keyword.php:118 ..
-#: /inc/widgets/seo-keyword.php:141 ../inc/widgets/slider.php:166 ..
-#: /inc/widgets/slider.php:194 ../inc/widgets/slider.php:224 ..
-#: /inc/widgets/social.php:99 ../inc/widgets/testimonial.php:121 ..
-#: /inc/widgets/trademark-payment.php:91 ../inc/widgets/trademark-payment.php:116 
+#: inc/widgets/seo-keyword.php:141 ../inc/widgets/slider.php:166 ..
+#: inc/widgets/slider.php:194 ../inc/widgets/slider.php:224 ..
+#: inc/widgets/social.php:99 ../inc/widgets/testimonial.php:121 ..
+#: inc/widgets/trademark-payment.php:91 ../inc/widgets/trademark-payment.php:116
 #: ../inc/widgets/trademark-payment.php:144 ../inc/widgets/trademark-payment.php:
 #: 174
 msgid "Title:"
 msgstr ""
 
 #: ../inc/widgets/best-seller.php:126 ../inc/widgets/on-sale.php:109 ..
-#: /inc/widgets/testimonial.php:137
+#: inc/widgets/testimonial.php:137
 msgid "Number:"
 msgstr ""
 
@@ -1356,34 +1352,34 @@ msgid "Capture:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:93 ../inc/widgets/seo-keyword.php:101 ..
-#: /inc/widgets/seo-keyword.php:122 ../inc/widgets/seo-keyword.php:146 ..
-#: /inc/widgets/slider.php:177 ../inc/widgets/slider.php:205 ..
-#: /inc/widgets/slider.php:238 ../inc/widgets/trademark-payment.php:127 ..
-#: /inc/widgets/trademark-payment.php:155 ../inc/widgets/trademark-payment.php:188
+#: inc/widgets/seo-keyword.php:122 ../inc/widgets/seo-keyword.php:146 ..
+#: inc/widgets/slider.php:177 ../inc/widgets/slider.php:205 ..
+#: inc/widgets/slider.php:238 ../inc/widgets/trademark-payment.php:127 ..
+#: inc/widgets/trademark-payment.php:155 ../inc/widgets/trademark-payment.php:188
 msgid "Link:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:97 ../inc/widgets/seo-keyword.php:105 ..
-#: /inc/widgets/seo-keyword.php:126 ../inc/widgets/seo-keyword.php:151 ..
-#: /inc/widgets/slider.php:181 ../inc/widgets/slider.php:209 ..
-#: /inc/widgets/slider.php:243 ../inc/widgets/trademark-payment.php:131 ..
-#: /inc/widgets/trademark-payment.php:159 ../inc/widgets/trademark-payment.php:193
+#: inc/widgets/seo-keyword.php:126 ../inc/widgets/seo-keyword.php:151 ..
+#: inc/widgets/slider.php:181 ../inc/widgets/slider.php:209 ..
+#: inc/widgets/slider.php:243 ../inc/widgets/trademark-payment.php:131 ..
+#: inc/widgets/trademark-payment.php:159 ../inc/widgets/trademark-payment.php:193
 msgid "Target:"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:100 ../inc/widgets/seo-keyword.php:108 ..
-#: /inc/widgets/seo-keyword.php:129 ../inc/widgets/seo-keyword.php:154 ..
-#: /inc/widgets/slider.php:184 ../inc/widgets/slider.php:212 ..
-#: /inc/widgets/slider.php:246 ../inc/widgets/trademark-payment.php:134 ..
-#: /inc/widgets/trademark-payment.php:162 ../inc/widgets/trademark-payment.php:196
+#: inc/widgets/seo-keyword.php:129 ../inc/widgets/seo-keyword.php:154 ..
+#: inc/widgets/slider.php:184 ../inc/widgets/slider.php:212 ..
+#: inc/widgets/slider.php:246 ../inc/widgets/trademark-payment.php:134 ..
+#: inc/widgets/trademark-payment.php:162 ../inc/widgets/trademark-payment.php:196
 msgid "Stay in Window"
 msgstr ""
 
 #: ../inc/widgets/kt_image.php:101 ../inc/widgets/seo-keyword.php:107 ..
-#: /inc/widgets/seo-keyword.php:128 ../inc/widgets/seo-keyword.php:153 ..
-#: /inc/widgets/slider.php:183 ../inc/widgets/slider.php:211 ..
-#: /inc/widgets/slider.php:245 ../inc/widgets/trademark-payment.php:133 ..
-#: /inc/widgets/trademark-payment.php:161 ../inc/widgets/trademark-payment.php:195
+#: inc/widgets/seo-keyword.php:128 ../inc/widgets/seo-keyword.php:153 ..
+#: inc/widgets/slider.php:183 ../inc/widgets/slider.php:211 ..
+#: inc/widgets/slider.php:245 ../inc/widgets/trademark-payment.php:133 ..
+#: inc/widgets/trademark-payment.php:161 ../inc/widgets/trademark-payment.php:195
 msgid "Open New Window"
 msgstr ""
 
@@ -1610,16 +1606,16 @@ msgid "-"
 msgstr ""
 
 #: ../woocommerce/cart/mini-cart.php:46 ../woocommerce/cart/mini-cart.php:54 ..
-#: /woocommerce/cart/mini-cart.php:73 ../woocommerce/cart/mini-cart.php:73 ..
-#: /woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
-#: /woocommerce/cart/mini-cart.php:113 ../woocommerce/cart/mini-cart.php:118 ..
-#: /woocommerce/cart/mini-cart.php:118
+#: woocommerce/cart/mini-cart.php:73 ../woocommerce/cart/mini-cart.php:73 ..
+#: woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
+#: woocommerce/cart/mini-cart.php:113 ../woocommerce/cart/mini-cart.php:118 ..
+#: woocommerce/cart/mini-cart.php:118
 msgid "My cart"
 msgstr ""
 
 #: ../woocommerce/cart/mini-cart.php:46 ../woocommerce/cart/mini-cart.php:54 ..
-#: /woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
-#: /woocommerce/cart/mini-cart.php:113
+#: woocommerce/cart/mini-cart.php:90 ../woocommerce/cart/mini-cart.php:105 ..
+#: woocommerce/cart/mini-cart.php:113
 msgid "Cart"
 msgstr ""
 
@@ -1646,7 +1642,7 @@ msgstr ""
 
 #: ../woocommerce/loop/new-flash.php:24
 msgid "New"
-msgstr ""
+msgstr "Mới"
 
 #: ../woocommerce/loop/sale-flash.php:19
 msgid "Sale"
@@ -1702,3 +1698,7 @@ msgstr ""
 #. Author of the theme
 msgid "KuteTheme"
 msgstr ""
+
+#: ../functions.php:311
+msgid "Close"
+msgstr "Đóng"

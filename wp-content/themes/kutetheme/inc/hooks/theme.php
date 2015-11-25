@@ -193,7 +193,7 @@ if( ! function_exists( 'kt_show_menu_option_1' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' ); else echo esc_attr( 'show_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
@@ -224,7 +224,7 @@ if( ! function_exists( 'kt_show_menu_option_2' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
@@ -255,7 +255,7 @@ if( ! function_exists( 'kt_show_menu_option_3' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
@@ -285,7 +285,7 @@ if( ! function_exists( 'kt_show_vertical_menu_option_4' ) ){
         <div id="box-vertical-megamenus" class="vertical-wapper">
             <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                 <h4 class="title">
-                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                     <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                 </h4>
                 <div class="vertical-menu-content">
@@ -317,7 +317,7 @@ if( ! function_exists( 'kt_show_menu_option_5' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
@@ -348,7 +348,7 @@ if( ! function_exists( 'kt_show_menu_option_6' ) ){
             <div id="box-vertical-megamenus" class="vertical-wapper">
                 <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                     <h4 class="title">
-                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                        <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                         <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                     </h4>
                     <div class="vertical-menu-content">
@@ -379,7 +379,7 @@ if( ! function_exists( 'kt_show_vertical_menu_option_7' ) ){
         <div id="box-vertical-megamenus" class="vertical-wapper">
             <div data-items="<?php echo esc_attr( $kt_vertical_item_visible );?>" class="box-vertical-megamenus <?php if( $kt_click_open_vertical_menu =="enable") echo esc_attr( 'hiden_content' );?>">
                 <h4 class="title">
-                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ) ?></span>
+                    <span class="title-menu"><?php _e( 'Categories', 'kutetheme' ); ?></span>
                     <span class="btn-open-mobile home-page"><i class="fa fa-bars"></i></span>
                 </h4>
                 <div class="vertical-menu-content">
@@ -822,6 +822,7 @@ CSS;
         }
 CSS;
     }
+
     if( $kt_used_header == 7 ){
         $h7_topbar_bg = kt_option('h7_topbar_bg','#cd2600');
         $h7_mega_menu_bg = kt_option('h7_mega_menu_bg','#e62e04');
@@ -872,6 +873,49 @@ CSS;
 
 CSS;
     }
+        if( $kt_used_header == 12 ){
+            $h12_header_bg = kt_option('h12_header_bg','#394264');
+            $h12_box_category_bg = kt_option('h12_box_category_bg','#ff3366');
+            $h12_topbar_text_color = kt_option('h12_topbar_text_color','#9099b7');
+            $h12_mege_menu_text_color = kt_option('h12_mege_menu_text_color','#9099b7');
+            $h12_box_category_text_color = kt_option('h12_box_category_text_color','#ffffff');
+            $h12_topbar_text_hover_color = kt_option('h12_topbar_text_hover_color','#9099b7');
+            $h12_mege_menu_text_hover_color = kt_option('h12_mege_menu_text_hover_color','#fff');
+            $h12_box_header_bg_color = kt_option('h12_box_header_bg_color','#50597b');
+        $css .= <<<CSS
+        body .header.style12 .top{
+            background-color: {$h12_header_bg};
+        }
+        body  .top-bar-menu>li>a{
+            color: {$h12_topbar_text_color};
+            border-color:{$h12_topbar_text_color};
+        }
+        body  .top-bar-menu>li>a:hover{
+            color: {$h12_topbar_text_hover_color};
+        }
+        body .main-menu-style12 .navigation-main-menu>li>a{
+            color: {$h12_mege_menu_text_color};
+        }
+        body .main-menu-style12 .navigation-main-menu>li>a:hover,
+        body .main-menu-style12 .navigation-main-menu>li.active>a{
+            color: {$h12_mege_menu_text_hover_color};
+        }
+        body .main-menu-style12 .navigation-main-menu>li>a:before{
+            background-color: {$h12_mege_menu_text_hover_color};
+        }
+        body .block-header-top12{
+            background-color: {$h12_box_header_bg_color};
+        }
+        body .box-vertical-megamenus .title{
+            background-color: {$h12_box_category_bg};
+            color:{$h12_box_category_text_color};
+        }
+        body .block-header-top12 .box-vertical-megamenus .btn-open-mobile{
+            border-color: {$h12_box_category_text_color};
+        }
+CSS;
+    }
+
     ?>
     <style id="kt-theme-color" type="text/css">
         <?php echo apply_filters( 'kt_customize_css', $css );?>

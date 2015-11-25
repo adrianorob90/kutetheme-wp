@@ -151,7 +151,7 @@ $config = array(
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                             '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v8.jpg',
-                            //'12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
+                            '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
                 		),
                 	)
                 )
@@ -972,6 +972,72 @@ $config = array(
                         'id'      => 'h7_item_mege_menu_bg_hover_color',
                         'type'    => 'colorpicker',
                         'default' => '#f04923',
+                    ),
+                )
+            ),
+            //Color Header 12
+            $prefix . 'header_12_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_12_color',
+                    'hookup'  => false,
+                    'title'   => 'Header 12',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Header Bg Color',
+                        'id'      => 'h12_header_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#394264',
+                    ),
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h12_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff3366',
+                    ),
+                    array(
+                        'name'    => 'TopBar Text Color',
+                        'id'      => 'h12_topbar_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#9099b7',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Color',
+                        'id'      => 'h12_mege_menu_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#9099b7',
+                    ),
+                    
+                    array(
+                        'name'    => 'Box Category Text Color',
+                        'id'      => 'h12_box_category_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'TopBar Text Hover Color',
+                        'id'      => 'h12_topbar_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#9099b7',
+                    ),
+                    
+                    array(
+                        'name'    => 'Mega Menu Text Hover Color',
+                        'id'      => 'h12_mege_menu_text_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Box header bg color',
+                        'id'      => 'h12_box_header_bg_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#50597b',
                     ),
                 )
             ),

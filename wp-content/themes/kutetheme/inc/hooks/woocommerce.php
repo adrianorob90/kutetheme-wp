@@ -863,8 +863,8 @@ if( ! function_exists( 'kt_utilities_single_product' ) ){
         ?>
         <div class="utilities">
             <ul>
-                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php esc_html_e( 'Print', 'kutetheme' );?></a></li>
-                <li><a href="<?php echo esc_url('mailto:?subject='. esc_html( get_the_title() ) );?>"><i class="fa fa-envelope-o"></i> <?php esc_html_e( 'Send to a friend', 'kutetheme' );?></a></li>
+                <li><a href="javascript:print();"><i class="fa fa-print"></i> <?php _e( 'Print', 'kutetheme' );?></a></li>
+                <li><a href="<?php echo esc_url('mailto:?subject='. esc_html( get_the_title() ) );?>"><i class="fa fa-envelope-o"></i> <?php _e( 'Send to a friend', 'kutetheme' );?></a></li>
             </ul>
         </div>
         <?php

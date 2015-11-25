@@ -1,4 +1,15 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.4
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+13/11/2015 Fix Main menu in firefox
+13/11/2015 Fix menu on mobile, Update theme option
+20/11/2015 Update header 8, Update shortcode banner text, look books, brands, colections
+23/11/2015 Update VC 4.8.1, Fix OWL setting on shortcode,Fix translate Vertical menu
+24/11/2015 Fix vertical menu on ipad, RTL option 8
+24/11/2015 Change short product name use css, Fix load rtl use WPML, add child theme
+24/11/2015 Update display button all category vertical menu
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.3
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 12/11/2015 Update Theme setting color
