@@ -166,6 +166,10 @@ function kt_add_category( $cat ) {
         
         $ids [ $category->term_id ] = $new_cat_id;
         
+        wp_update_term( $new_cat_id, 'category', array(
+            'taxonomy' => $category->taxonomy
+        ) );
+        
         $categories_id = $ids;
         
         update_option('kt_demo_categories', $categories_id);
