@@ -327,7 +327,7 @@ add_action( 'wp_head', 'kt_js_variables', 2 );
 if( ! function_exists( 'kt_scripts' ) ){
     function kt_scripts() {
     	// Add custom fonts, used in the main stylesheet.
-    
+        
     	// Load the Internet Explorer specific stylesheet.
     	wp_enqueue_style( 'kt-ie', get_template_directory_uri() . '/css/ie.css', array( 'kt-style' ), '1.0' );
     	wp_style_add_data( 'kt-ie', 'conditional', 'lt IE 9' );

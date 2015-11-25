@@ -51,7 +51,11 @@
             <div class="block-search">
                 <?php kt_search_form();?>
             </div>
-            <div class="block-mini-cart"></div>
+            <?php if( kt_is_wc() ): ?>
+            <div class="block-mini-cart">
+                <?php do_action('kt_mini_cart'); ?>
+            </div>
+            <?php endif;?>
         </div>
     </div>
 </div>

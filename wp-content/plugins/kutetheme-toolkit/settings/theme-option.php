@@ -1043,6 +1043,46 @@ $config = array(
             ),
 		),
     ),
+    //Logo
+    $prefix . 'kt_fonts' =>  array(
+        'setting' => array(
+            'id'      => $prefix . 'kt_fonts',
+            'title'   => 'Fonts',
+            'hookup'  => false,
+            'show_on' => array(
+                // These are important, don't remove
+                'key'   => 'options-page',
+                'value' => array( $key )
+            )
+        ),
+        'fields'    => array(
+            array(
+                'name'    => __( 'Main Fonts', 'kutetheme' ),
+                'id'      => 'kt_main_font',
+                'type'    => 'select',
+                'default' => 'Arial',
+                'options' => array(
+                    'Arial' => 'Arial, Helvetica, sans-serif',
+                    'Arimo' => 'Arimo',
+                    'Montserrat' => 'Montserrat',
+                    'Oswald'=>'Oswald'
+                ),
+                'desc'    => __( 'Specify the body font properties.', 'kutetheme' ),
+            ),
+            array(
+                'name'    => __( 'Secondary font', 'kutetheme' ),
+                'id'      => 'kt_secondary_font',
+                'type'    => 'select',
+                'default' => 'Arial',
+                'options' => array(
+                    'Arial' => 'Arial, Helvetica, sans-serif',
+                    'Arimo' => 'Arimo',
+                    'Montserrat' => 'Montserrat',
+                    'Oswald'=>'Oswald'
+                ),
+            ),
+        )
+    ),
     //Woocommerce
     $prefix . 'woocommerce' => array(
         'title'   => 'Woocommerce',

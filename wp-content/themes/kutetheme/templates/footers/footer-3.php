@@ -69,7 +69,7 @@
                             if(is_active_sidebar('footer-menu-1')){
                                 dynamic_sidebar('footer-menu-1');
                             }
-                        ?>
+                         ?>
                      </div>
                  </div>
                  <div class="col-sm-3 col-md-2">

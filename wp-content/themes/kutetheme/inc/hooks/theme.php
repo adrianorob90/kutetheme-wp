@@ -492,7 +492,9 @@ function kt_themne_color(){
     body .lock-boock-button a:hover,
     body .block-collections .collection-list .info .collection-button a:hover,
     body .block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
-    body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover{
+    body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover,
+    body .block-mini-cart,
+    body .footer4 .mailchimp-form .mailchimp-submit{
         background-color: {$main_color};
     }
 

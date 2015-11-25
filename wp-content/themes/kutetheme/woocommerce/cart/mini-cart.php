@@ -16,10 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php do_action( 'woocommerce_before_mini_cart' ); ?>
 <div class="widget_shopping_cart_content">
-    <?php  
+    <?php 
+        global $woocommerce; 
         $cart_count =  WC()->cart->cart_contents_count ;
         $check_out_url = WC()->cart->get_cart_url();
         $kt_used_header = kt_option('kt_used_header', '1');
+        $cart_subtotal = $woocommerce->cart->get_cart_subtotal();
     ?>
     <?php if( $kt_used_header == 1 ):?>
     <div id="cart-block" class="shopping-cart-box col-xs-5 col-sm-5 col-md-2">
@@ -120,15 +122,13 @@ if ( ! defined( 'ABSPATH' ) ) {
             <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
         </div>
     <?php elseif( $kt_used_header == 12 ): ?>
-        <div class="mini-cart">
-            <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
-                <span class="icon">2</span>
-                <span class="title"><?php esc_html_e( 'Cart: ', 'kutetheme' ); ?></span>
-                <span class="total"><?php echo sprintf ( _n( '%d item', '%d items', esc_attr( $cart_count ), 'kutetheme' ), esc_attr( $cart_count ) ) ?></span>
-                <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
-            </a>
-            <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
-        </div>
+        <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+            <span class="icon">
+                <span class="count"><?php echo esc_html( $cart_count );?></span>
+            </span>
+            <span class="total"><?php _e('Cart','kutetheme');?>: <?php echo kt_get_html( $cart_subtotal );?></span>
+        </a>
+        <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
     <?php endif;?>
 
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>
