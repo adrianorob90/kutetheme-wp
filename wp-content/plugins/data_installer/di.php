@@ -60,7 +60,7 @@ class KT_Data_Installer{
 	public function __construct() {
         $this->paths = dirname( __FILE__ );
         $this->url = plugin_dir_url( __FILE__ );
-        
+        @ini_set('memory_limit', '-1');
         add_action('admin_menu', array( &$this, 'data_installer_menu' ));
         
         // Add hooks
@@ -103,6 +103,7 @@ class KT_Data_Installer{
     }
     
     public function kt_ajax_demo_install(){
+        @ini_set('memory_limit', '-1');
         @set_time_limit(600);
         $packet = 'default';
         $action = 'install';

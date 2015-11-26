@@ -122,6 +122,15 @@ if ( isset( $term ) && $term ) {
 
 	unset( $categories, $custom_taxonomies, $custom_terms );
 }
+echo '// Option theme';
+echo "\r";
+$kt_options = get_option('kt_options');
+echo "kt_add_options( '". base64_encode( serialize( $kt_options ) ) ."' );\r\r";
+
+$taxonomies = get_taxonomies(array(), 'objects');
+echo '// Taxonomies';
+echo "\r";
+echo "kt_add_taxonomies( '". base64_encode( serialize( $taxonomies ) ) ."' );\r\r";
 
 if( ! empty( $cats ) ) {
     echo '// Categories';
@@ -272,6 +281,9 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
             echo "\r";
             foreach( $list_product as $post ):
                 $meta = get_post_meta( $post->ID );
+                $post_categories = wp_get_object_terms($post->ID, 'product_cat', array('fields' => 'ids') );
+                
+                $post_categories = implode( ',', $post_categories );
                 echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
@@ -280,6 +292,8 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
             echo "\r";
             foreach( $list_product_variation as $post ):
                 $meta = get_post_meta( $post->ID );
+                $post_categories = wp_get_object_terms($post->ID, 'product_cat', array('fields' => 'ids') );
+                $post_categories = implode( ',', $post_categories );
                 echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
@@ -289,6 +303,20 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
             echo "\r";
             foreach( $list_other as $post ):
                 $meta = get_post_meta( $post->ID );
+                $taxonomies = get_object_taxonomies( $post->post_type, 'objects' );
+                $post_categories = array();
+                
+                if( ! empty( $taxonomies ) ){
+                    foreach( $taxonomies as $tax ){
+                        $cat_ids = wp_get_object_terms($post->ID, $tax->name, array('fields' => 'ids') );
+                        if( ! empty( $cat_ids ) ){
+                            foreach( $cat_ids as $c ){
+                                $post_categories[] = $c;
+                            }
+                        }
+                    }
+                }
+                $post_categories = implode( ',', $post_categories );
                 echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }

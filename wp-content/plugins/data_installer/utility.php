@@ -113,6 +113,34 @@ function kt_remove_attachment() {
         }
     }
 }
+function kt_add_taxonomies( $taxonomy ){
+    $tax = unserialize( base64_decode( $taxonomy ) );
+    if( is_array( $tax ) ) {
+        foreach( $tax as $k => $v ) {
+            if ( ! taxonomy_exists( $k ) ) {
+                register_taxonomy( $k, $v->object_type,
+        			array(
+        				'hierarchical'          => $v->hierarchical,
+        				'update_count_callback' => $update_count_callback->update_count_callback,
+        				'label'                 => $v->label,
+        				'labels'                => (array)$v->labels,
+        				'show_ui'               => $v->show_ui,
+        				'query_var'             => $v->query_var,
+        				'capabilities'          => (array) $v->cap,
+        				'rewrite'               => $v->rewrite,
+        			)
+        		);
+            }
+        }
+    }
+}
+
+function kt_add_options( $options ){
+    $options = unserialize( base64_decode( $options ) );
+    if( is_array( $options ) && ! empty( $options ) ) {
+        update_option( 'kt_options', $options );
+    }
+}
 /**
  * Add category
  * 
@@ -129,7 +157,142 @@ function kt_add_category( $cat ) {
     if( ! $new_cat_id ) {
         //all categories
         $ids = $categories_id;
-        
+        if ( ! taxonomy_exists( $category->taxonomy ) ) {
+            if( $category->taxonomy == 'product_type' ){
+                register_taxonomy( 'product_type',
+        			apply_filters( 'woocommerce_taxonomy_objects_product_type', array( 'product' ) ),
+        			apply_filters( 'woocommerce_taxonomy_args_product_type', array(
+        				'hierarchical'      => false,
+        				'show_ui'           => false,
+        				'show_in_nav_menus' => false,
+        				'query_var'         => is_admin(),
+        				'rewrite'           => false,
+        				'public'            => false
+        			) )
+        		);
+            }
+            if( $category->taxonomy == 'product_type' ){
+                register_taxonomy( 'product_type',
+        			apply_filters( 'woocommerce_taxonomy_objects_product_type', array( 'product' ) ),
+        			apply_filters( 'woocommerce_taxonomy_args_product_type', array(
+        				'hierarchical'      => false,
+        				'show_ui'           => false,
+        				'show_in_nav_menus' => false,
+        				'query_var'         => is_admin(),
+        				'rewrite'           => false,
+        				'public'            => false
+        			) )
+        		);
+            } 
+            if( $category->taxonomy == 'product_cat' ){
+                register_taxonomy( 'product_cat',
+        			apply_filters( 'woocommerce_taxonomy_objects_product_cat', array( 'product' ) ),
+        			apply_filters( 'woocommerce_taxonomy_args_product_cat', array(
+        				'hierarchical'          => true,
+        				'update_count_callback' => '_wc_term_recount',
+        				'label'                 => __( 'Product Categories', 'woocommerce' ),
+        				'labels' => array(
+        						'name'              => __( 'Product Categories', 'woocommerce' ),
+        						'singular_name'     => __( 'Product Category', 'woocommerce' ),
+        						'menu_name'         => _x( 'Categories', 'Admin menu name', 'woocommerce' ),
+        						'search_items'      => __( 'Search Product Categories', 'woocommerce' ),
+        						'all_items'         => __( 'All Product Categories', 'woocommerce' ),
+        						'parent_item'       => __( 'Parent Product Category', 'woocommerce' ),
+        						'parent_item_colon' => __( 'Parent Product Category:', 'woocommerce' ),
+        						'edit_item'         => __( 'Edit Product Category', 'woocommerce' ),
+        						'update_item'       => __( 'Update Product Category', 'woocommerce' ),
+        						'add_new_item'      => __( 'Add New Product Category', 'woocommerce' ),
+        						'new_item_name'     => __( 'New Product Category Name', 'woocommerce' )
+        					),
+        				'show_ui'               => true,
+        				'query_var'             => true,
+        				'capabilities'          => array(
+        					'manage_terms' => 'manage_product_terms',
+        					'edit_terms'   => 'edit_product_terms',
+        					'delete_terms' => 'delete_product_terms',
+        					'assign_terms' => 'assign_product_terms',
+        				),
+        				'rewrite'               => array(
+        					'slug'         => empty( $permalinks['category_base'] ) ? _x( 'product-category', 'slug', 'woocommerce' ) : $permalinks['category_base'],
+        					'with_front'   => false,
+        					'hierarchical' => true,
+        				),
+        			) )
+        		);
+            }
+            if( $category->taxonomy == 'product_tag' ){
+                register_taxonomy( 'product_tag',
+        			apply_filters( 'woocommerce_taxonomy_objects_product_tag', array( 'product' ) ),
+        			apply_filters( 'woocommerce_taxonomy_args_product_tag', array(
+        				'hierarchical'          => false,
+        				'update_count_callback' => '_wc_term_recount',
+        				'label'                 => __( 'Product Tags', 'woocommerce' ),
+        				'labels'                => array(
+        						'name'                       => __( 'Product Tags', 'woocommerce' ),
+        						'singular_name'              => __( 'Product Tag', 'woocommerce' ),
+        						'menu_name'                  => _x( 'Tags', 'Admin menu name', 'woocommerce' ),
+        						'search_items'               => __( 'Search Product Tags', 'woocommerce' ),
+        						'all_items'                  => __( 'All Product Tags', 'woocommerce' ),
+        						'edit_item'                  => __( 'Edit Product Tag', 'woocommerce' ),
+        						'update_item'                => __( 'Update Product Tag', 'woocommerce' ),
+        						'add_new_item'               => __( 'Add New Product Tag', 'woocommerce' ),
+        						'new_item_name'              => __( 'New Product Tag Name', 'woocommerce' ),
+        						'popular_items'              => __( 'Popular Product Tags', 'woocommerce' ),
+        						'separate_items_with_commas' => __( 'Separate Product Tags with commas', 'woocommerce'  ),
+        						'add_or_remove_items'        => __( 'Add or remove Product Tags', 'woocommerce' ),
+        						'choose_from_most_used'      => __( 'Choose from the most used Product tags', 'woocommerce' ),
+        						'not_found'                  => __( 'No Product Tags found', 'woocommerce' ),
+        					),
+        				'show_ui'               => true,
+        				'query_var'             => true,
+        				'capabilities'          => array(
+        					'manage_terms' => 'manage_product_terms',
+        					'edit_terms'   => 'edit_product_terms',
+        					'delete_terms' => 'delete_product_terms',
+        					'assign_terms' => 'assign_product_terms',
+        				),
+        				'rewrite'               => array(
+        					'slug'       => empty( $permalinks['tag_base'] ) ? _x( 'product-tag', 'slug', 'woocommerce' ) : $permalinks['tag_base'],
+        					'with_front' => false
+        				),
+        			) )
+        		);
+            }
+            if( $category->taxonomy == 'product_shipping_class' ){
+                register_taxonomy( 'product_shipping_class',
+        			apply_filters( 'woocommerce_taxonomy_objects_product_shipping_class', array('product', 'product_variation') ),
+        			apply_filters( 'woocommerce_taxonomy_args_product_shipping_class', array(
+        				'hierarchical'          => true,
+        				'update_count_callback' => '_update_post_term_count',
+        				'label'                 => __( 'Shipping Classes', 'woocommerce' ),
+        				'labels' => array(
+        						'name'              => __( 'Shipping Classes', 'woocommerce' ),
+        						'singular_name'     => __( 'Shipping Class', 'woocommerce' ),
+        						'menu_name'         => _x( 'Shipping Classes', 'Admin menu name', 'woocommerce' ),
+        						'search_items'      => __( 'Search Shipping Classes', 'woocommerce' ),
+        						'all_items'         => __( 'All Shipping Classes', 'woocommerce' ),
+        						'parent_item'       => __( 'Parent Shipping Class', 'woocommerce' ),
+        						'parent_item_colon' => __( 'Parent Shipping Class:', 'woocommerce' ),
+        						'edit_item'         => __( 'Edit Shipping Class', 'woocommerce' ),
+        						'update_item'       => __( 'Update Shipping Class', 'woocommerce' ),
+        						'add_new_item'      => __( 'Add New Shipping Class', 'woocommerce' ),
+        						'new_item_name'     => __( 'New Shipping Class Name', 'woocommerce' )
+        					),
+        				'show_ui'               => false,
+        				'show_in_nav_menus'     => false,
+        				'query_var'             => is_admin(),
+        				'capabilities'          => array(
+        					'manage_terms' => 'manage_product_terms',
+        					'edit_terms'   => 'edit_product_terms',
+        					'delete_terms' => 'delete_product_terms',
+        					'assign_terms' => 'assign_product_terms',
+        				),
+        				'rewrite'               => false,
+        			) )
+        		);      
+            }                                                          
+                        
+        }
         if( ! $category->parent ){
             $new_cat_id = wp_insert_term(
                 $category->name, // the term 
@@ -163,16 +326,21 @@ function kt_add_category( $cat ) {
                 update_option('kt_demo_categories_add_before', $cate_add_after);
             }
         }
+        if( ! is_wp_error( $new_cat_id ) ){
+            if( is_array( $new_cat_id ) && isset( $new_cat_id['term_id'] ) ){
+                $ids [ $category->term_id ] = $new_cat_id['term_id'];
+            }else{
+                $ids [ $category->term_id ] = $new_cat_id;
+            }
         
-        $ids [ $category->term_id ] = $new_cat_id;
+            $categories_id = $ids;
+            
+            update_option('kt_demo_categories', $categories_id);
+        }
+        else{
+            return;
+        }
         
-        wp_update_term( $new_cat_id, 'category', array(
-            'taxonomy' => $category->taxonomy
-        ) );
-        
-        $categories_id = $ids;
-        
-        update_option('kt_demo_categories', $categories_id);
     }
     return $new_cat_id;
 }
@@ -328,16 +496,18 @@ function remove_page(){
  * 
  * 
  */
+ 
 function kt_other_post_type( $id, $post_type, $post_parent = 0 ,$post_title, $post_content, $guid, $post_category, $comment_status = "open", $meta = ''
  ) {
     global $posts_id;
+    global $categories_id;
     $new_id = kt_get_post_id( $id, $post_type, "kt_demo_{$post_type}" );
     
     if( ! $new_id ) {
         $list_category = array();
         $categories = explode( ',', $post_category );
         
-        $option_ids = get_option('kt_demo_categories');
+        $option_ids = $categories_id;
         
         if( is_array( $categories ) && count( $categories ) ){
             foreach( $categories as  $cate_id_old ) {
@@ -362,9 +532,12 @@ function kt_other_post_type( $id, $post_type, $post_parent = 0 ,$post_title, $po
             'comment_status' => $comment_status,
             'post_category'  => $list_category, //adding category to this post
             'guid'           => $guid,
-            'post_parent'    => $parent_id
+            'post_parent'    => $parent_id,
+            'tax_input' => array(
+                'product_cat' => $list_category
+            ),
         );
-    
+        
         //new post / page
         $post_id = wp_insert_post($new_post);
         
