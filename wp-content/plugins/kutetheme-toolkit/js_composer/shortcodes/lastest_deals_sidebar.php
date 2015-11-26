@@ -24,6 +24,17 @@ vc_map( array(
             'description' => __( 'Display title lastest deal box, It\'s hidden when empty', 'kutetheme' )
         ),
         array(
+            "type"        => "dropdown",
+        	"heading"     => __("Type", 'kutetheme'),
+        	"param_name"  => "type",
+            "admin_label" => true,
+            'std'         => 'style-1',
+            'value'       => array(
+        		__( 'Style 1', 'kutetheme' )    => 'style-1',
+                __( 'Style 2', 'kutetheme' )    => 'style-2',
+        	),
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
@@ -140,7 +151,8 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'lastest_deals_sidebar', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'title'         => '',
-            'taxonomy'       => '',
+            'type'          => 'style-1',
+            'taxonomy'      => '',
             'number'        => 12,
             //Carousel            
             'autoplay'      => "false",
@@ -218,6 +230,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
             );
             add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
             add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+            if( $type == 'style-1' ):
             ?>
             <div class="<?php echo esc_attr( $elementClass ); ?>">
                 <h2 class="latest-deal-title"><?php echo esc_html( $title ); ?></h2>
@@ -234,6 +247,24 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
                 </div>
             </div>
             <?php
+            else:
+            remove_action( 'kt_loop_product_function', 'kt_get_tool_quickview' );
+            ?>
+            <div class="block-hotdeal-week option12 <?php echo esc_attr( $elementClass ); ?>">
+                <div class="title"><?php echo esc_html( $title ); ?></div>
+                <div class="inner">
+                    <ul class="hotdeal-product owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
+                        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                            <li class="product">
+                                <?php wc_get_template_part( 'content', 'product-sidebar-2' ); ?>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                </div>
+            </div>
+            <?php
+            add_action( 'kt_loop_product_function_quickview' , 'kt_get_tool_quickview', 10);
+            endif;
             remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
             remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
         endif;

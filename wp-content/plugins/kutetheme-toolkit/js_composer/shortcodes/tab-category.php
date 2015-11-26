@@ -46,7 +46,7 @@ vc_map( array(
                 __( 'Tab 4', 'kutetheme' ) => 'tab-4',
                 __( 'Tab 5', 'kutetheme' ) => 'tab-5',
                 __( 'Tab 6', 'kutetheme' ) => 'tab-6',
-                /*__( 'Tab 7', 'kutetheme' ) => 'tab-7',*/
+                __( 'Tab 7', 'kutetheme' ) => 'tab-7',
         	),
         ),
         
@@ -116,7 +116,7 @@ vc_map( array(
             'type'        => 'attach_images',
             'heading'     => __( 'Banner left', 'kutetheme' ),
             'param_name'  => 'banner_left',
-            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6')),
+            "dependency"  => array("element" => "tabs_type","value" => array('tab-1', 'tab-2', 'tab-3', 'tab-4', 'tab-5', 'tab-6', 'tab-7')),
             'description' => __( 'Setup image on  left of the tab', 'kutetheme' )
     	),
         
@@ -451,9 +451,11 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 }elseif( $tabs_type == 'tab-6' ){
                     $elementClass .= ' option7 tab-6';
                 }elseif( $tabs_type == 'tab-7' ){
-                    $elementClass .= ' option7 tab-7';
+                    $elementClass .= ' option12 tab-7';
                 }
+                ob_start();
                 @include( KUTETHEME_PLUGIN_PATH . 'js_composer/includes/'.$tabs_type.'.php' );
+                return ob_get_clean();
             }
         endif;
     }

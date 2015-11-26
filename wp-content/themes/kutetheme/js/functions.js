@@ -18,7 +18,6 @@
             config.animateIn="fadeIn";    
         }
         config.rtl = rtl;
-        console.log(config);
         config.onInitialized = function( event ){
             var $item_active = $this.find( '.owl-item.active' );
             $item_active.each( function ( $i ) {
@@ -375,7 +374,7 @@
             });
             var close_text = $(this).data('close_text');
             $(this).addClass('colse-cate').removeClass('open-cate').html( close_text );
-        })
+        });
 
         /* Close category */
         $(document).on('click','.colse-cate',function(){
@@ -385,7 +384,7 @@
             var open_text = $(this).data('open_text');
             $(this).addClass('open-cate').removeClass('colse-cate').html(open_text);
             return false;
-        })
+        });
         // bar ontop click
         $(document).on('click','.vertical-megamenus-ontop-bar',function(){
             $('#vertical-megamenus-ontop').find('.box-vertical-megamenus').slideToggle();
@@ -407,7 +406,7 @@
                auto_height_product_list();
             })
             return false;
-        })
+        });
         // View list list product 
         $(document).on('click','.display-product-option .view-as-list',function(){
             $(this).closest('.display-product-option').find('li').removeClass('selected');
@@ -422,7 +421,7 @@
                 //console.log(response);
             })
             return false;
-        })
+        });
         /// tre menu category
         $(document).on('click','.tree-menu li span',function(){
             $(this).closest('li').children('ul').slideToggle();
@@ -430,7 +429,7 @@
                 $(this).toggleClass('open');
             }
             return false;
-        })
+        });
         /* Open menu on mobile */
         $(document).on('click','.btn-open-mobile,.box-vertical-megamenus .title',function(){
             var width = $(window).width();
@@ -449,7 +448,7 @@
               $('.main-menu .navigation-main-menu').hide();
             }
             return false;
-        })
+        });
         /* Product qty */
         $(document).on('click','.btn-plus-down',function(){
             var value = parseInt($('#option-product-qty').val());
@@ -457,14 +456,14 @@
             if(value <=0) return false;
             $('#option-product-qty').val(value);
             return false;
-        })
+        });
         $(document).on('click','.btn-plus-up',function(){
             var value = parseInt($('#option-product-qty').val());
             value = value +1;
             if(value <=0) return false;
             $('#option-product-qty').val(value);
             return false;
-        })
+        });
         //Close vertical 
         $(document).on('click','*',function(e){
             var container = $("#box-vertical-megamenus");
@@ -478,7 +477,7 @@
                 container.find('.vertical-menu-content').hide();
                 container.find('.title').removeClass('active');
             }
-        })
+        });
         
         // OWL Product thumb
         $('.product .thumbnails').owlCarousel(
@@ -548,7 +547,7 @@
                   rtl: rtl
                 }
             );
-         })
+         });
 
       // Category product
       $(document).on('click','.widget_product_categories a',function(){
@@ -562,7 +561,7 @@
             $(this).closest('li').children('ul').slideToggle();
             return false;
         }
-      })
+      });
       // count downt
       if($('.countdown-lastest, .count-down-time').length >0){
           //var labels = ['Years', 'Months', 'Weeks', 'Days', 'Hrs', 'Mins', 'Secs'];
@@ -668,16 +667,18 @@
           $(this).closest('.main-menu-wapper').find('.navigation-main-menu').toggle();
           $('#box-vertical-megamenus .vertical-menu-content').hide();
           return false;
-        })
+        });
 
         //
         //
         $(document).on('click','.header.style8 .form-search .icon',function(){
             $(this).closest('.form-search').find('form').fadeIn(600);
-        })
+        });
+        
         $(document).on('click','.header.style8 .form-search .close-form',function(){
             $(this).closest('form').fadeOut(600);
-        })
+        });
+        
         if( $('.fancybox').length >0 ){
           $(".fancybox").fancybox({
             'transitionIn'  : 'elastic',
@@ -690,7 +691,7 @@
 
         //
         //testimonial-carousel
-        if($('.testimonial-carousel').length >0){
+        if( $('.testimonial-carousel').length >0) {
             var owl = $('.testimonial-carousel');
             owl.owlCarousel(
                 {
@@ -750,6 +751,36 @@
                 }, 100);
             })
         }
+        
+        if($('.testimonial-carousel2').length >0){
+            var owl = $('.testimonial-carousel2');
+            owl.owlCarousel(
+                {
+                    margin:0,
+                    autoplay:true,
+                    dots:false,
+                    loop:true,
+                    items:3,
+                    nav:false,
+                    smartSpeed:1000,
+                    navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']
+                }
+            );
+            owl.trigger('next.owl.carousel');
+            owl.on('changed.owl.carousel', function(event) {
+                owl.find('.owl-item.active').removeClass('item-center');
+                var caption=owl.find('.owl-item.active').first().next().find('.info').html();
+                owl.closest('.block-testimonials,.block-testimonials2').find('.testimonial-caption').html(caption).addClass('fadeIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('fadeIn animated');
+                });;
+                setTimeout(function(){
+                    owl.find('.owl-item.active').first().next().addClass('item-center');
+                    owl.find('.owl-item.active').first().next().addClass('fadeIn animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                         $(this).removeClass('fadeIn animated');
+                    });
+                }, 100);
+            })
+        }
 
         // Single colection
         $(document).on('click','.colection-thumb .thumb-item',function(){
@@ -760,7 +791,12 @@
           $(this).addClass('selected');
           $('.colection-images .main-image').find('img').attr('src',src);
           return false;
-        })
+        });
+        
+        $(document).on('click','.block-tab-category .bar',function(){
+            $(this).toggleClass('active');
+            $(this).closest('.block-tab-category').find('.tab-cat').toggleClass('show');
+        });
     });
     /* ---------------------------------------------
      Scripts resize
