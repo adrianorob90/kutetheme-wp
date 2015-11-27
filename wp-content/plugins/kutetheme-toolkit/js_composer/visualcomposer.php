@@ -29,4 +29,5 @@ if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/hot-deal.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/box_product.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/featured_products.php';
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/products_sidebar.php';
 }

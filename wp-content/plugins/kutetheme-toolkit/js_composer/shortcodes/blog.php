@@ -28,11 +28,19 @@ vc_map( array(
             "value"      => array(
                 __('Style 1', 'kutetheme') => 'style-1',
                 __('Style 2', 'kutetheme') => 'style-2',
-                __('Style 3', 'kutetheme') => 'style-3'
+                __('Style 3', 'kutetheme') => 'style-3',
+                __('Style 4', 'kutetheme') => 'style-4'
         	),
             'std'         => 'DESC',
             "description" => __("Show blog carousel by difference style.",'kutetheme')
         ),
+        array(
+            'type'  => 'textfield',
+            'heading'     => __( 'Subtitle', 'kutetheme' ),
+            'param_name'  => 'subtitle',
+            'admin_label' => false,
+            "dependency"  => array("element" => "style","value" => array('style-4')),
+		),
         array(
             "type"        => "textfield",
             "heading"     => __( "Number Post", 'kutetheme' ),
@@ -187,6 +195,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'blog_carousel', $atts ) : $atts;
         extract( shortcode_atts( array(
             'title'          => __( 'From the blog', 'kutetheme' ),
+            'subtitle'       => '',
             'per_page'       => 10,
             'orderby'        => 'date',
             'order'          => 'desc',
@@ -377,7 +386,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             ?>
             <div class="block-blogs <?php echo esc_attr( $elementClass ); ?>">
                 <?php if( $title ):?>
-                <h3 class="section-title">Lastest Posts</h3>
+                <h3 class="section-title"><?php echo esc_html( $title ) ?></h3>
                 <?php endif; ?>
                 <div class="blog-list">
                     <div class="blog-list-wapper">
@@ -412,6 +421,35 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                         </ul>
                     </div>
                 </div>
+            </div>
+            <?php
+            endif;
+            if( $style == 'style-4'):
+            ?>
+            <div class="section-blog-12 option12 <?php echo esc_attr( $elementClass ); ?>">
+                <div class="section-title-12"><?php echo esc_html( $title ) ?>
+                    <?php if( ! empty( $subtitle ) ): ?>
+                        <span class="sub-title"><?php echo esc_html( $subtitle ); ?></span>
+                    <?php endif; ?>
+                </div>
+                <?php if( $posts->have_posts() ): ?>
+                    <div class="blogs-list owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                        <?php while( $posts->have_posts() ): $posts->the_post(); ?>
+                        <div class="blog12">
+                            <?php if( has_post_thumbnail( ) ): ?>
+                                <div class="thumb">
+                                    <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'lookbook-thumb' );?></a>
+                                </div>
+                            <?php endif; ?>
+                            <div class="info">
+                                <span class="date"><?php echo get_the_date('j F');?></span>
+                                <h2 class="blog-title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h2>
+                                <a href="<?php the_permalink();?>" class="read-more"><?php _e( 'Read more', 'kutetheme' ) ?></a>
+                            </div>
+                        </div>
+                        <?php endwhile; ?>
+                    </div>
+                <?php endif; ?>
             </div>
             <?php
             endif;
