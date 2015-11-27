@@ -150,26 +150,11 @@ class wp_bootstrap_navwalker extends Walker_Nav_Menu {
             	$menu_with = kt_get_post_meta( $this->megamenu_menu_page, 'kt_megamenu_width', 830 );
 
                 if( post_type_exists('megamenu') ){
-                    //$pages = new WP_Query( array( 'post_type' => 'megamenu', 'p' => intval( $this->megamenu_menu_page ) ));
                     $megamenu_item = get_post( $this->megamenu_menu_page );
                 }else{
-                    //$pages = new WP_Query( array( 'post_type' => 'page', 'page' => intval( $this->megamenu_menu_page ) ));
                     $megamenu_item = get_post( $this->megamenu_menu_page);
                 }
-                //$item_output .= '<div style="width:' . intval($menu_with) . 'px" class="sub-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'">';
-                
             	$item_output .= '<div style="width:' . intval($menu_with) . 'px" class="sub-menu megamenu menu_page mega-menu-' . intval( $depth ) . ' p-'.$this->megamenu_menu_page.'"">'.do_shortcode( $megamenu_item->post_content ).'</div>';
-                // if($pages->have_posts()):
-                //     ob_start();
-                //     while($pages->have_posts()): $pages->the_post();
-                //         the_content();
-                //     endwhile;
-                //     $item_output .= ob_get_contents();
-                //     ob_end_clean();
-                //     wp_reset_query();
-                //     wp_reset_postdata();
-                // endif;
-                // $item_output .='</div><!--End Mega-->';
             }
             
 			$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );

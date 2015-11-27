@@ -5,6 +5,7 @@
     $copyright = kt_get_info_copyrights();
     $kt_footer_payment_logo = kt_option('kt_footer_payment_logo','');
     $kt_footer_background = kt_option('kt_footer_background','');
+    $kt_footer_payment_logos = kt_option('kt_footer_payment_logos',false);
 ?>
 <footer class="footer4">
      <div class="container">
@@ -43,7 +44,18 @@
              </div>
          </div>
          <div class="footer-middle">
-             <img src="assets/data/option12/payment.jpg" alt="">
+            <?php if($kt_footer_payment_logos):?>
+            <div class="payment-logos">
+                <?php
+                foreach( $kt_footer_payment_logos as $logo){
+                    ?>
+                    <img src="<?php echo esc_url( $logo );?>" alt="">
+                    <?php
+                }
+                ?>
+            </div>
+            
+            <?php endif;?>
          </div>
          <div class="footer-bottom">
               <?php
