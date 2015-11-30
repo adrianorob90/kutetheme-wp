@@ -615,6 +615,11 @@
             $style.append( '#'+$id+'.option7.box-products .box-tabs li.active>a, #'+$id+'.option7.box-products .box-tabs li>a:after, #'+$id+'.option7.box-products .box-tabs li.active>a, #'+$id+'.option7.box-products .box-tabs li>a:hover, #'+$id+'.option7.box-products a:hover{color: '+$color+';}' );
             $style.append( '#'+$id+'.option7 .products .search{background-color:rgba( '+$rgb+', 0.7 )}' );
             $style.append( '#'+$id+'.option7 .products .group-tool-button a, #'+$id+'.option7.box-products .box-product-head{border-color:'+$color+'}' );
+        }else if( $this.hasClass('option12') ){
+            $style.append( '#'+$id+'.option12.tab-7.block-tab-category .head .title .bar.active, #'+$id+'.option12.tab-7.block-tab-category .product-style3 .group-button-control .yith-wcwl-add-to-wishlist:hover, #'+$id+'.option12.tab-7.block-tab-category .product-style3 .group-button-control .compare-button:hover, #'+$id+'.option12.tab-7.block-tab-category .product-style3 .group-button-control .yith-wcqv-button:hover, #'+$id+'.option12.tab-7.block-tab-category .product-style3 .add-to-cart:hover{background-color: '+$color+';}' );
+            $style.append( '#'+$id+'.option12.tab-7.block-tab-category .box-tabs li a:hover, #'+$id+'.option12.tab-7.block-tab-category .box-tabs li.active a{color: '+$color+';}' );
+            $style.append( '#'+$id+'.option12.tab-7.block-tab-category .tab-cat{background-color:rgba( '+$rgb+', 0.8 )}' );
+            $style.append( '#'+$id+'.option12.tab-7.block-tab-category .head{border-color:'+$color+'}' );
         }else if( $this.hasClass('box-products') ){
             $style.append( '#'+$id+'.box-products .box-tabs li>a:before, #'+$id+'.box-products .product-list li .add-to-cart:hover, #'+$id+'.box-products .product-list li .quick-view a:hover, #'+$id+'.box-products .owl-controls .owl-prev:hover, #'+$id+'.box-products .owl-controls .owl-next:hover{background-color: '+$color+';}' );
             $style.append( '#'+$id+'.box-products .box-tabs li>a:after{color: '+$color+';}' );
