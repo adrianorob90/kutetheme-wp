@@ -333,7 +333,7 @@ if( $args['content'] == 'nav_menu_item' || $args['content'] == 'all' ){
         foreach ( $menus as $menu ) {
             $location = false;
             foreach( $nav_menu_locations as $k => $v ){
-                if( $v = $menu->term_id ){
+                if( $v == $menu->term_id ){
                     $location = $k;
                 }
             }

@@ -328,9 +328,15 @@ function kt_add_category( $cat ) {
         }
         if( ! is_wp_error( $new_cat_id ) ){
             if( is_array( $new_cat_id ) && isset( $new_cat_id['term_id'] ) ){
-                $ids [ $category->term_id ] = $new_cat_id['term_id'];
+                $ids [ $category->term_id ] = array( 
+                    'id'  => $new_cat_id['term_id'],
+                    'tax' => $category->taxonomy
+                );
             }else{
-                $ids [ $category->term_id ] = $new_cat_id;
+                $ids [ $category->term_id ] = array( 
+                    'id'  => $new_cat_id,
+                    'tax' => $category->taxonomy
+                );
             }
         
             $categories_id = $ids;
@@ -344,7 +350,10 @@ function kt_add_category( $cat ) {
     }
     return $new_cat_id;
 }
-
+/**
+ * Get all category added
+ * @since 1.0
+ */
 function kt_get_all_categories_added(){
     global $categories_id;
     $categories_id = get_option('kt_demo_categories');
@@ -357,9 +366,11 @@ function kt_get_all_categories_added(){
  */
 function kt_remove_cate() {
     global $categories_id;
-    if (is_array($categories_id)) :
+    if ( is_array( $categories_id ) ) :
         foreach( $categories_id as $id ) :
-            wp_delete_category( $id );
+            if( isset( $id['id'] ) && isset( $id['tax'] ) && intval( $id['id'] ) && $id['tax'] ){
+                wp_delete_term( $id['id'], $id['tax'] );
+            }
         endforeach;
     endif;
 }
@@ -372,9 +383,10 @@ function kt_remove_cate() {
  */
 function kt_get_cate_id( $cate_id_old ){
     global $categories_id;
-    $ids = $categories_id;
-    if( is_array($ids) && isset( $ids [$cate_id_old] ) && $ids [$cate_id_old] ){
-        return $ids [$cate_id_old];
+    if( is_array( $categories_id ) && isset( $categories_id [ $cate_id_old ] ) && $categories_id [ $cate_id_old ] ){
+        if( isset( $categories_id [ $cate_id_old ][ 'id' ] ) && intval( $categories_id [ $cate_id_old ][ 'id' ] ) ) {
+            return $categories_id [ $cate_id_old ][ 'id' ];
+        }
     }
     return false;
 }
@@ -500,19 +512,18 @@ function remove_page(){
 function kt_other_post_type( $id, $post_type, $post_parent = 0 ,$post_title, $post_content, $guid, $post_category, $comment_status = "open", $meta = ''
  ) {
     global $posts_id;
-    global $categories_id;
     $new_id = kt_get_post_id( $id, $post_type, "kt_demo_{$post_type}" );
     
     if( ! $new_id ) {
         $list_category = array();
         $categories = explode( ',', $post_category );
         
-        $option_ids = $categories_id;
-        
         if( is_array( $categories ) && count( $categories ) ){
             foreach( $categories as  $cate_id_old ) {
-                if( is_array($option_ids) && isset( $option_ids [$cate_id_old] ) && $option_ids [$cate_id_old] ){
-                    $list_category[] = $option_ids [$cate_id_old];
+                $new_cate_id = kt_get_cate_id( $cate_id_old );
+                
+                if( $new_cate_id ) {
+                    $list_category[] = $new_cate_id;
                 }
             }
         }
