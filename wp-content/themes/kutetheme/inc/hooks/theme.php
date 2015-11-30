@@ -506,7 +506,8 @@ function kt_themne_color(){
     .option12.block-hotdeal-week .add-to-cart,
     .option12.block-hotdeal-week .add-to-cart:hover,
     .option12.block-hotdeal-week .yith-wcwl-add-to-wishlist:hover,
-    .option12.block-hotdeal-week .compare-button:hover{
+    .option12.block-hotdeal-week .compare-button:hover,
+    .option12.section-blog-12 .blog12 .date{
         background-color: {$main_color};
     }
 

@@ -437,7 +437,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                         <?php while( $posts->have_posts() ): $posts->the_post(); ?>
                         <div class="blog12">
                             <?php if( has_post_thumbnail( ) ): ?>
-                                <div class="thumb">
+                                <div class="thumb banner-boder-zoom2">
                                     <a href="<?php the_permalink();?>"><?php the_post_thumbnail( 'lookbook-thumb' );?></a>
                                 </div>
                             <?php endif; ?>

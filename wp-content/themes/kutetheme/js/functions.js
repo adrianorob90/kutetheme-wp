@@ -759,6 +759,10 @@
         
         if($('.testimonial-carousel2').length >0){
             var owl = $('.testimonial-carousel2');
+            var rtl = false;
+            if( $('body').hasClass('rtl')){
+              rtl = true;
+            }
             owl.owlCarousel(
                 {
                     margin:0,
@@ -768,6 +772,7 @@
                     items:3,
                     nav:false,
                     smartSpeed:1000,
+                    rtl:rtl,
                     navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>']
                 }
             );
@@ -870,9 +875,9 @@
         var width = $(window).width();
         if(width > 991){
             if(h > 35){
-                $('.header.style8').addClass('ontop');
+                $('.header.style8,.header.style12').addClass('ontop');
             }else{
-                $('.header.style8').removeClass('ontop');
+                $('.header.style8,.header.style12').removeClass('ontop');
             }
         }
     });

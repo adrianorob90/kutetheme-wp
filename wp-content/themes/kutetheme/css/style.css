@@ -7855,12 +7855,6 @@ span.notify-right{
   margin-top: 12px;
   overflow: hidden;
 }
-
-.block-new-product12 .product .image{
-  width: 80px;
-  height: 80px;
-  float: left;
-}
 .block-new-product12 .product .info{
   margin-left: 105px;
 }
@@ -7938,7 +7932,6 @@ span.notify-right{
 .option12.section-blog-12 .blog12 .date{
   padding: 5px 12px;
   display: inline-block;
-  background-color: #ff3366;
   color: #fff;
   font-size: 16px;
 }
@@ -8099,7 +8092,6 @@ span.notify-right{
 
 .block-new-product12 .product .image{
   width: 80px;
-  height: 80px;
   float: left;
   overflow: hidden;
 }
@@ -8958,7 +8950,25 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     margin: 0 auto;
     content: "\f107";
 }
-
+.header.style12.ontop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+.admin-bar .header.style12.ontop{
+  top: 32px;
+}
+.header.style12.ontop .top-header {
+    display: none;
+}
+.header.style12.ontop .main-header{
+  padding: 15px 0;
+}
+.header.style12.ontop .block-header-top12{
+  display: none;
+}
 /* Footer 4 */
 .footer4 {
     border-top: 5px solid #eee;
