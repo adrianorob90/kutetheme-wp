@@ -7722,7 +7722,6 @@ span.notify-right{
 .block-testimonials2{
   background-color: #394264;
   color: #fff;
-  margin-top: 30px;
   padding: 20px;
   overflow: hidden;
 }
@@ -7777,7 +7776,6 @@ span.notify-right{
 }
 .block-new-product12{
   border: 1px solid #eee;
-  margin-top: 30px;
 }
 .block-new-product12 .title {
     padding: 13px 24px;
@@ -8009,7 +8007,6 @@ span.notify-right{
 /*NEW PRODUCT*/
 .block-new-product12{
   border: 1px solid #eee;
-  margin-top: 30px;
 }
 .block-new-product12 .title {
     padding: 13px 24px;
@@ -8064,6 +8061,7 @@ span.notify-right{
 .block-new-product12 .product .product-name{
   font-size: 14px;
   margin-bottom: 10px;
+  margin-top: 0;
 }
 .block-new-product12 .owl-controls{
   text-align: center;
@@ -9052,6 +9050,7 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     opacity: 1;
     visibility: inherit;
 }
+
 /* REPONSIVE */
 
 @media(max-width: 1200px){
@@ -9072,6 +9071,12 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
   }
   .top-main-menu.style7 .vertical-wapper{
     width: 40px;
+  }
+  .block-header-top12 .block-vertical {
+      width: 44px;
+  }
+  .block-header-top12 .block-search{
+    width: 70%;
   }
 }
 @media(max-width: 991px){
@@ -9244,11 +9249,61 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
 }
 
 @media(max-width: 1200px){
-  
+  .option12.tab-7.block-tab-category .block-banner .banner-img{
+    display: none;
+  }
+  .option12.tab-7.block-tab-category .block-banner{
+    width: 100%;
+  }
+  .option12.tab-7.block-tab-category .tab-cat{
+    bottom: inherit;
+  }
+  .option12.tab-7.block-tab-category .tab-cat>li{
+    width: 50%;
+    float: left;
+  }
+  .option12.tab-7.block-tab-category .block-content{
+    width: 100%;
+  }
+  .option12.block-hotdeal-week .countdown-lastest .box-count{
+    width: auto;
+    margin-right: 10px;
+    font-size: 14px;
+
+
+  }
+  .option12.block-hotdeal-week .countdown-lastest .box-count .number{
+    font-size: 12px;
+    padding: 5px 5px;
+    height: auto;
+    line-height: normal;
+  }
+  .option12.block-hotdeal-week .add-to-cart{
+    padding: 0 7px;
+  }
+  .option12.block-hotdeal-week .add-to-cart:before{
+    margin-top: 9px;
+  }
+  .option12.block-hotdeal-week .add-to-cart a{
+    font-size: 0;
+  }
 }
 @media(max-width: 991px){
   .popular-tabs.style2 .products-style8 .product{
     width: 33.3333%;
+  }
+  .main-menu-style12{
+    padding-top: 30px;
+    float: none;
+  }
+  .option12.tab-7.block-tab-category .box-tabs{
+    float: left;
+  }
+  .option12.tab-7.block-tab-category .tab-products .product-style3{
+    width: 50%;
+  }
+  .option12.tab-7.block-tab-category .box-tabs li a{
+    padding: 15px 10px;
   }
 }
 @media(max-width: 767px){
@@ -9269,6 +9324,48 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
   .block-testimonials .testimonials .owl-item.item-center li{
     width: 110px;
     height: 110px;
+  }
+  .header.style12 .main-header{
+        padding: 40px 15px 65px 15px;
+  }
+  .header.style12 .mobile-navigation{
+    background-color: #50597b;
+  }
+  .main-menu-style12{
+    position: relative;
+  }
+  .main-menu-style12 .navigation-main-menu>li>a:before{
+    display: none!important;
+  }
+  .block-header-top12 .block-search {
+      width: 100%;
+      float: left;
+      margin-bottom: 10px;
+  }
+  .block-header-top12 .block-search .form-category{
+    display: none;
+  }
+  .block-header-top12 .block-vertical{
+    vertical-align: top;
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .block-header-top12 .block-mini-cart {
+      display: inline-block;
+      width: 100%;
+      float: left;
+      padding: 13px;
+  }
+  .block-header-top12 .block-search .input-serach{
+    width: 100%;
+  }
+  .main-content{
+      padding: 0;
+  }
+  .footer4 .footer-top .left, 
+  .footer4 .footer-top .right{
+    width: 100%;
   }
 }
 
@@ -9311,4 +9408,11 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
       font-size: 14px;
       font-weight: bold;
     }
+  .option12.tab-7.block-tab-category .tab-products .product-style3{
+    width: 100%;
+  }
+  .option12.section-blog-12 .blog12 .thumb, .option12.section-blog-12 .blog12 .info{
+    width: 100%;
+  }
+
 }
