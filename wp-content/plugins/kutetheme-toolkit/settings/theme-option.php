@@ -348,6 +348,30 @@ $config = array(
                     )
                 )
             ),
+            $prefix . 'footer_4' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'footer_4',
+                    'hookup'  => false,
+                    'title'   => 'Footer 4',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => __( 'Footer Payment logos', 'kutetheme' ),
+                        'id'      => 'kt_footer_payment_logos',
+                        'type'    => 'file_list',
+                        'desc'    => __( 'Display payment logos on footer style 4', 'kutetheme' ),
+                        'options' => array(
+                            'url' => false, // Hide the text input for the url
+                            'add_upload_file_text' => 'Add payment images' // Change upload button text. Default: "Add or Upload File"
+                        ),
+                    ),
+                )
+            ),
 		),
     ),
     //Color

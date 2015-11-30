@@ -39,7 +39,8 @@ vc_map( array(
             'value' => array(
                 __( '1 Line', 'js_composer' )    => '1-line',
                 __( '2 Line', 'js_composer' )    => '2-line',
-                __( 'Show logo', 'js_composer' ) => 'show-logo',
+                __( 'Show logo style 1', 'js_composer' ) => 'show-logo',
+                __( 'Show logo style 2', 'js_composer' ) => 'show-logo2',
             ),
             'heading'     => __( 'Line', 'kutetheme' ),
             'param_name'  => 'line_brand',
@@ -77,7 +78,9 @@ vc_map( array(
         	),
             'std'         => 'DESC',
             "description" => __("Designates the ascending or descending order.",'kutetheme')
-        ),// Carousel
+        ),
+
+        // Carousel
         array(
             'type'  => 'dropdown',
             'value' => array(
@@ -426,7 +429,26 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                     }
                                     ?>
                                     <?php if($image):?>
-                                    <li><a href="#"><?php echo $image;?></a></li>
+                                    <li><a href="<?php echo get_term_link( $term); ?> "><?php echo $image;?></a></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                    <?php elseif( $line_brand=="show-logo2"):?>
+                        <div class="block-brands <?php echo esc_attr( $elementClass ); ?>">
+                            <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                <?php foreach($terms as $term): ?>
+                                    <?php
+                                    $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+    
+                                    if ( $thumbnail_id ) {
+                                      $image = wp_get_attachment_image( intval( $thumbnail_id ), 'full' );
+                                    } else {
+                                        $image = "";
+                                    }
+                                    ?>
+                                    <?php if($image):?>
+                                    <li><a href="<?php echo get_term_link( $term); ?> "><?php echo $image;?></a></li>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
                             </ul>
