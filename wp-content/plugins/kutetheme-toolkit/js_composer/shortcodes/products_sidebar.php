@@ -163,14 +163,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                     <li class="product">
                         <div class="image">
                             <a href="<?php the_permalink(); ?>">
-                                <?php
-                        			/**
-                        			 * kt_loop_product_thumbnail hook
-                        			 *
-                        			 * @hooked woocommerce_template_loop_product_thumbnail - 10
-                        			 */
-                        			do_action( 'kt_loop_product_thumbnail' );
-                        		?>
+                                <?php echo kt_get_product_thumbnail( 'shop_thumbnail' ); ?>
                             </a>
                         </div>
                         <div class="info">
