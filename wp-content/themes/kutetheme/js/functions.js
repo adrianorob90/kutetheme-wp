@@ -825,7 +825,7 @@
         var max_h = $('#header').height() + $('#top-banner').height();
         var width = $(window).width();
         var vertical_menu_height = 0;
-        if( $('#box-vertical-megamenus' ).length >0 ){
+        if( $('#box-vertical-megamenus' ).length > 0 ){
           vertical_menu_height = $('#box-vertical-megamenus .vertical-menu-content').innerHeight();
         }
         if(width > 991){

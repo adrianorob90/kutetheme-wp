@@ -33,6 +33,13 @@ vc_map( array(
         	),
         ),
         array(
+            'type'        => 'attach_image',
+            'heading'     => __( 'Box background', 'kutetheme' ),
+            'param_name'  => 'box_background',
+            "dependency"  => array("element" => "type","value" => array('style-2')),
+            'description' => __( 'Setup background for the box', 'kutetheme' )
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
@@ -97,6 +104,7 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         extract( shortcode_atts( array(
             'title'         => '',
             'type'          => 'style-1',
+            'box_background'=> 0,
             'taxonomy'      => '',
             'per_page'      => 5,
             'orderby'       => 'date',
@@ -131,15 +139,20 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
     		} else {
     			$image = "";
     		}
-            
+            // get bg
+            $bg = wp_get_attachment_image_src( $box_background, 'full');
             $args = array(
                'hierarchical'     => 1,
                'show_option_none' => '',
-               'hide_empty'       => 1,
+               'hide_empty'       => 0,
                'parent'           => $term->term_id,
                'taxonomy'         => 'product_cat',
                'number'           => $per_page
             );
+            if( $bg ){
+                $image = $bg[0];
+            }
+
             $subcats = get_categories($args);
             if( $type == 'style-1' ): ?>
                 <div class="block-popular-cat <?php echo esc_attr( $elementClass ); ?>">
