@@ -155,9 +155,9 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                 <div class="title"><?php echo esc_html( $title ); ?></div>
             <?php endif; ?>
             <div class="inner owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                <?php $i = 0; ?>
+                <?php $i = 1; ?>
                 <?php  while ( $products->have_posts() ) : $products->the_post(); ?>
-                <?php if( $i== 0 ): ?>
+                <?php if( $i== 1 ): ?>
                 <ul class="list-product">
                 <?php endif;?>
                     <li class="product">
@@ -186,7 +186,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                     		?>
                         </div>
                     </li>
-                <?php if( $i == 6 ): ?>
+                <?php if( $i == $per_page ): $i = 0; ?>
                 </ul><!--End Ul-->
                 <?php endif;?>
                 <?php $i++; endwhile; ?>

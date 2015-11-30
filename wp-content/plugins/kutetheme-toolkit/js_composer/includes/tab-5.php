@@ -110,16 +110,18 @@ endif;
                     			'ignore_sticky_posts'	=> 1,
                     			'posts_per_page' 		=> $per_page,
                     			'meta_query' 			=> $meta_query,
-                                'suppress_filter'       => true,
-                                'tax_query'             => array(
+                                'suppress_filter'       => true
+                    		);
+                            if( $term ){
+                                $args [ 'tax_query' ] = array(
                                     array(
                                         'taxonomy' => 'product_cat',
                                         'field'    => 'id',
                                         'terms'    => $term->term_id,
                                         'operator' => 'IN'
-                                    ),
-                                )
-                    		);
+                                    )
+                                );
+                            }
                             $i = 0; ?>
                             <?php foreach( $tabs as $tab ): ?>
                             <?php 

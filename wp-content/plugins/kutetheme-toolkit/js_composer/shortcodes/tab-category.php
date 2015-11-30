@@ -360,6 +360,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             'per_page'       => 10,
             'column'         => 4,
             'category'       => 0,
+            'term_link'     => '',
             'main_color'     => '#ff3366',
             'icon'           => '',
             'bg_cate'        => '',
@@ -412,10 +413,6 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
         
         $tabs = kt_get_all_attributes( 'tab_section', $content );
         
-        $id = uniqid($category);
-        
-        $term = get_term( $category, 'product_cat' );
-        
         if( isset( $bg_cate ) && $bg_cate ): 
             $att_bg = wp_get_attachment_image_src( $bg_cate , 'full' );  
             $att_bg_url =  is_array($att_bg) ? esc_url($att_bg[0]) : ""; 
@@ -423,21 +420,28 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 $style = "style='background: #fff url(".$att_bg_url.") no-repeat left bottom;'";
             }
         endif; 
-        if( count( $tabs ) >0 && $term ):
-            $term_link = get_term_link($term);
-            if( ! $is_phone ){
-                $args = array(
-                   'hierarchical' => 1,
-                   'show_option_none' => '',
-                   'hide_empty' => 0,
-                   'parent' => $term->term_id,
-                   'taxonomy' => 'product_cat'
-                );
-                $subcats = get_categories($args);
-            }
-            
+        if( count( $tabs ) > 0 ):
+            $id = uniqid($category);
+            $args = array(
+               'hierarchical' => 1,
+               'show_option_none' => '',
+               'hide_empty' => 0,
+               'taxonomy' => 'product_cat'
+            );
+            $term = get_term( $category, 'product_cat' );
             
             if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/includes/'.$tabs_type.'.php' ) ){
+                
+                if( ! is_wp_error( $term ) ){
+                    $args [ 'parent' ] = $term->term_id;
+                    $term_link = get_term_link( $term );
+                }else{
+                    $term = false;
+                }
+                if( ! $is_phone ){
+                    $subcats = get_categories($args);
+                }
+                
                 if( $tabs_type == 'tab-1' ){
                     $elementClass .= ' option1 tab-1';
                 }elseif( $tabs_type == 'tab-2' ){

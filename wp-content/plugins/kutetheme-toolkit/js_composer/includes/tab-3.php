@@ -54,6 +54,16 @@ if( ! $is_phone ):
             ),
         )
     );
+    if( $term ){
+        $deal_args [ 'tax_query' ] = array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field'    => 'id',
+                'terms'    => $term->term_id,
+                'operator' => 'IN'
+            )
+        );
+    }
     $deal_product = new WP_Query( $deal_args );
     if( $deal_product->have_posts() ){
         //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
@@ -148,16 +158,18 @@ endif;
                     			'ignore_sticky_posts'	=> 1,
                     			'posts_per_page' 		=> $per_page,
                     			'meta_query' 			=> $meta_query,
-                                'suppress_filter'       => true,
-                                'tax_query'             => array(
+                                'suppress_filter'       => true
+                    		);
+                            if( $term ){
+                                $args [ 'tax_query' ] = array(
                                     array(
                                         'taxonomy' => 'product_cat',
                                         'field'    => 'id',
                                         'terms'    => $term->term_id,
                                         'operator' => 'IN'
-                                    ),
-                                )
-                    		);
+                                    )
+                                );
+                            }
                             $i = 0; ?>
                             <?php foreach( $tabs as $tab ): ?>
                             <?php 
