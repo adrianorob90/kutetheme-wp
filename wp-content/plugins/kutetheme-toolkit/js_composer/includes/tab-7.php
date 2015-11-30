@@ -55,17 +55,23 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="block-banner">
                 <ul class="tab-cat">
                     <?php foreach( $subcats as $cate ): ?>
-                        <?php $cate_link = get_term_link( $cate ); ?>
-                        <li>
-                            <a href="<?php echo esc_url( $cate_link ); ?>">
-                                <img class="img-1" src="assets/data/option12/12.png" alt="" />
-                                <img class="img-2" src="assets/data/option12/1.png" alt="" />
-                                <?php echo esc_html( $cate->name ); ?>
-                            </a>
-                        </li>
+                        <?php 
+                            $cate_link = get_term_link( $cate ); 
+                            $thumbnail_id = get_woocommerce_term_meta( $cate->term_id, 'thumbnail_id', true );
+                            $image = wp_get_attachment_url( $thumbnail_id, array( 18, 18 ) );
+                        ?>
+                        <?php if( ! is_wp_error( $image ) && $image ) : ?>
+                            <li class="has-thumbnail">
+                                <a href="<?php echo esc_url( $cate_link ); ?>"><img class="img-1" src="<?php echo esc_url( $image ) ; ?>" alt="<?php echo esc_html( $cate->name ); ?>" /><?php echo esc_html( $cate->name ); ?></a>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a href="<?php echo esc_url( $cate_link ); ?>"><?php echo esc_html( $cate->name ); ?></a>
+                            </li>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
-                <?php if( ! $is_phone ): 
+                <?php if( ! $is_phone && $banner_left ): 
                     $banner_left_args = array(
                         'post_type' => 'attachment',
                         'include'   => $banner_left,
