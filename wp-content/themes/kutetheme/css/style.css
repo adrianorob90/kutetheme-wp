@@ -7324,12 +7324,7 @@ span.notify-right{
   background-color: #fff;
   color: #333;
 }
-.option12.tab-7.block-tab-category .tab-cat li>a:hover .img-1{
-  display: none;
-}
-.option12.tab-7.block-tab-category .tab-cat li>a:hover .img-2{
-  display: inline-block;
-}
+
 .option12.tab-7.block-tab-category .block-content{
   width: 68.9%;
   float: left;

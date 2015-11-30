@@ -979,6 +979,38 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .products-style8 .yith-wcwl-add-to-wishlist{
     float: none;
 }
+.block-mini-cart .cart-link .icon{
+    float: right;
+}
+.block-mini-cart .cart-block{
+    left: 0;
+    right: inherit;
+}
+.block-header-top12 .form-category .ui-selectmenu-button span.ui-selectmenu-text{
+    border: none;
+    border-right: 1px solid #eee;
+}
+.main-menu-style12{
+    float: left;
+}
+.main-menu-style12 .navigation-main-menu>li:last-child>a{
+    padding-left: 0;
+    padding-right: 10px;
+}
+.block-header-top12 .vertical-menu-list>li>a:before{
+    left: 0;
+    right: inherit;
+}
+.block-header-top12 .box-vertical-megamenus .all-category span:before{
+    display: none;
+}
+.block-header-top12 .box-vertical-megamenus .vertical-menu-content{
+    left: 0;
+    right: -20px;
+}
+.block-header-top12 .box-vertical-megamenus.show-button-all .all-category{
+    margin-top: 16px;
+}
 @media (max-width: 991px){
 .product-featured .product-featured-content .product-featured-list.has_attachment {
     margin-right: 0;

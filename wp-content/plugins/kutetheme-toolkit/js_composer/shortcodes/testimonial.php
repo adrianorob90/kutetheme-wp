@@ -38,7 +38,8 @@ vc_map( array(
             "heading"     => __( "Overlay color", 'kutetheme' ),
             "param_name"  => "overlay_color",
             "admin_label" => true,
-            "default"     =>'#000000'
+            "default"     =>'#000000',
+            "dependency"  => array("element" => "type","value" => array('style-1')),
         ),
         array(
             'type'        => 'dropdown',
@@ -58,6 +59,7 @@ vc_map( array(
             'default'     =>'0.7',
             'param_name'  => 'overlay_opacity',
             'admin_label' => false,
+            "dependency"  => array("element" => "type","value" => array('style-1')),
         ),
         array(
             "type"        => "textfield",
