@@ -435,7 +435,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             </ul>
                         </div>
                     <?php elseif( $line_brand=="show-logo2"):?>
-                        <div class="block-brands <?php echo esc_attr( $elementClass ); ?>">
+                        <div class="section-band-logo style2 <?php echo esc_attr( $elementClass ); ?>">
                             <ul class="owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                                 <?php foreach($terms as $term): ?>
                                     <?php

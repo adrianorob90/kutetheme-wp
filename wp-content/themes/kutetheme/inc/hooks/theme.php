@@ -494,7 +494,19 @@ function kt_themne_color(){
     body .block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
     body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover,
     body .block-mini-cart,
-    body .footer4 .mailchimp-form .mailchimp-submit{
+    body .footer4 .mailchimp-form .mailchimp-submit,
+    body .section-band-logo.style2 .owl-controls .owl-prev:hover, 
+    body .section-band-logo.style2 .owl-controls .owl-next:hover,
+    body .option12.section-blog-12 .owl-controls .owl-prev:hover, 
+    body .option12.section-blog-12 .owl-controls .owl-next:hover,
+    .block-new-product12 .owl-controls .owl-prev:hover, 
+    .block-new-product12 .owl-controls .owl-next:hover,
+    .option12.block-hotdeal-week .owl-controls .owl-prev:hover, 
+    .option12.block-hotdeal-week .owl-controls .owl-next:hover,
+    .option12.block-hotdeal-week .add-to-cart,
+    .option12.block-hotdeal-week .add-to-cart:hover,
+    .option12.block-hotdeal-week .yith-wcwl-add-to-wishlist:hover,
+    .option12.block-hotdeal-week .compare-button:hover{
         background-color: {$main_color};
     }
 
@@ -522,7 +534,16 @@ function kt_themne_color(){
     body .block-blogs .blog-list-wapper .owl-controls .owl-prev:hover, 
     body .block-blogs .blog-list-wapper .owl-controls .owl-next:hover,
     body .block-manufacturer-logo .owl-controls .owl-prev:hover, 
-    body .block-manufacturer-logo .owl-controls .owl-next:hover{
+    body .block-manufacturer-logo .owl-controls .owl-next:hover,
+    body .section-band-logo.style2 .owl-controls .owl-prev:hover, 
+    body .section-band-logo.style2 .owl-controls .owl-next:hover,
+    body .option12.section-blog-12 .owl-controls .owl-prev:hover, 
+    body .option12.section-blog-12 .owl-controls .owl-next:hover,
+    .block-new-product12 .owl-controls .owl-prev:hover, 
+    .block-new-product12 .owl-controls .owl-next:hover,
+    .option12.block-hotdeal-week .owl-controls .owl-prev:hover, 
+    .option12.block-hotdeal-week .owl-controls .owl-next:hover,
+    {
         border-color: {$main_color};
 
     }
