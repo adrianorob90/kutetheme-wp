@@ -75,12 +75,15 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </ul>
                     </div>
                     <?php
-                        $banner_left_args = array(
-                            'post_type' => 'attachment',
-                            'include'   => $banner_left,
-                            'orderby'   => 'post__in'
-                        );
-                        $list_banner_left = get_posts( $banner_left_args );
+                        $list_banner_left = false;
+                        if( $banner_left ){
+                            $banner_left_args = array(
+                                'post_type' => 'attachment',
+                                'include'   => $banner_left,
+                                'orderby'   => 'post__in'
+                            );
+                            $list_banner_left = get_posts( $banner_left_args );
+                        }
                      ?>  
                     <?php if( is_array( $list_banner_left ) && $list_banner_left ): ?>
                         <?php $number_per_slide = 8; ?>

@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         </div>
         <div class="inner">
             <?php if( ! $is_phone ): ?>
-            <div class="block-banner">
+            <div class="block-banner <?php echo ( ! $is_phone && $banner_left ) ? 'has_thumbnail_left' : '' ?>">
                 <ul class="tab-cat">
                     <?php foreach( $subcats as $cate ): ?>
                         <?php 
@@ -82,7 +82,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     if ( $attachments ) {
                         foreach ( $attachments as $attachment ) {
                             ?>
-                            <div class="banner-img">
+                            <div class="banner-img has_thumbnail">
                                 <a href="<?php echo  $term_link ? esc_url( $term_link ) : ''; ?>">
                                     <?php echo wp_get_attachment_image( $attachment->ID, 'full' ); ?>
                                 </a>
