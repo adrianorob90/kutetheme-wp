@@ -160,15 +160,15 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
                         <li>
                             <?php if( has_post_thumbnail( )):?>
                                 <div class="image">
-                                    <a href="<?php echo get_the_permalink(); ?>">
+                                    <a href="#">
                                         <?php the_post_thumbnail('testimonial-thumb');?>
                                     </a>
                                 </div>
                             <?php endif;?>
                             <div class="info">
-                                <p class="text">
+                                <div class="text">
                                     <?php the_content();?>
-                                </p>
+                                </div>
                                 <span class="name">- <?php the_title( );?> -</span>
                             </div>
                         </li>

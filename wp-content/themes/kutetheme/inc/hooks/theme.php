@@ -544,7 +544,7 @@ function kt_themne_color(){
     .block-new-product12 .owl-controls .owl-next:hover,
     .option12.block-hotdeal-week .owl-controls .owl-prev:hover, 
     .option12.block-hotdeal-week .owl-controls .owl-next:hover,
-    {
+    body .vertical-menu-list .mega-group-header span{
         border-color: {$main_color};
 
     }
@@ -558,7 +558,10 @@ function kt_themne_color(){
     body .cart-block .cart-block-content .product-info .p-right .p-rice,
     .woocommerce div.product p.price, 
     .woocommerce div.product span.price,
-    body .vertical-menu-list .mega-product .price{
+    body .vertical-menu-list .mega-product .price,
+    .option12.tab-7.block-tab-category .product-style3 .price,
+    .option12.block-hotdeal-week .price,
+    .block-new-product12 .price{
         color: {$price_color}
     }
 CSS;
