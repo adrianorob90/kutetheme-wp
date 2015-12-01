@@ -432,7 +432,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
             
             if( file_exists( KUTETHEME_PLUGIN_PATH . '/js_composer/includes/'.$tabs_type.'.php' ) ){
                 
-                if( ! is_wp_error( $term ) ){
+                if( ! is_wp_error( $term ) && $term ){
                     $args [ 'parent' ] = $term->term_id;
                     $term_link = get_term_link( $term );
                 }else{
