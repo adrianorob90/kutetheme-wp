@@ -732,63 +732,61 @@ function kt_add_widget( $name, $location, $pos = 0, $data = '', $default_pos = 0
     if( ! in_array( $name .'-'. $default_pos . '-' . $location,  $kt_demo_widget) ){
         $widgets = wp_get_sidebars_widgets();
         
-        if( isset( $widgets[ $location ] ) ){
-            
-            if( ! is_array( $widgets[ $location ] ) ){
-                $widgets[ $location ] = array();
-            }
-            if( empty( $widgets[ $location ] ) or ! in_array( $mark, $widgets[ $location ] ) ){
-                $widgets[ $location ][] = $mark;
-                $default_data = get_option( 'widget_' . $name, array());
-                if( ! isset( $default_data[ $pos ] ) ){
-                    //Add widget to sidebar
-                    update_option('sidebars_widgets', $widgets);
-                    //Update setting
-                    $default_data[ $pos ] = unserialize( base64_decode( $data ) ) ;
-                    update_option( 'widget_' . $name, $default_data );
+        if( isset( $widgets[ $location ] ) && ! is_array( $widgets[ $location ] ) ){
+            $widgets[ $location ] = array();
+        }
+        if( empty( $widgets[ $location ] ) or ! in_array( $mark, $widgets[ $location ] ) ){
+            $widgets[ $location ][] = $mark;
+            $default_data = get_option( 'widget_' . $name, array());
+            if( ! isset( $default_data[ $pos ] ) ){
+                //Add widget to sidebar
+                update_option('sidebars_widgets', $widgets);
+                //Update setting
+                $default_data[ $pos ] = unserialize( base64_decode( $data ) ) ;
+                update_option( 'widget_' . $name, $default_data );
+                
+                //sticky
+                $kt_demo_widget[] = $name .'-'. $default_pos . '-' . $location;
                     
-                    //sticky
-                    if( $default_pos ) {
-                        $kt_demo_widget[] = $name .'-'. $default_pos . '-' . $location;
-                        
-                        update_option( 'kt_demo_widget', $kt_demo_widget );
-                        //support delete
-                        $kt_demo_new_widget = get_option( 'kt_demo_new_widget', array() );
-                        
-                        $kt_demo_new_widget[] = array( 
-                            'mark'     => $mark,
-                            'name'     => $name,
-                            'pos'      => $pos,
-                            'location' => $location
-                        );
-                        update_option( 'kt_demo_new_widget', $kt_demo_new_widget );
-                    }
-                }else{
-                    kt_add_widget( $name, $location, $pos + 1, $data, $default_pos);
-                }
+                update_option( 'kt_demo_widget', $kt_demo_widget );
+                
+                //support delete
+                $kt_demo_new_widget = get_option( 'kt_demo_new_widget', array() );
+                
+                $kt_demo_new_widget[] = array( 
+                    'mark'     => $mark,
+                    'name'     => $name,
+                    'pos'      => $pos,
+                    'location' => $location,
+                    'old_pos'  => $default_pos
+                );
+                update_option( 'kt_demo_new_widget', $kt_demo_new_widget );
             }else{
-                kt_add_widget( $name, $location, $pos + 1, $data, $default_post);
+                kt_add_widget( $name, $location, $pos + 1, $data, $default_pos);
             }
+        }else{
+            kt_add_widget( $name, $location, $pos + 1, $data, $default_post);
         }
     }
     
 }
 function remove_widget(){
     $kt_demo_new_widget = get_option( 'kt_demo_new_widget', array() );
+    
     if( ! empty( $kt_demo_new_widget ) ){
         $widgets = wp_get_sidebars_widgets();
         
         foreach( $kt_demo_new_widget as $w ){
             if( isset( $widgets[ $w['location'] ] ) && is_array( $widgets[ $w['location'] ] ) && ! empty( $widgets[ $w['location'] ] ) ){
-                foreach( $widgets[ $w['location'] ] as $wl ){
-                    if( $wl == $widget['mark'] ) {
+                foreach( $widgets[ $w['location'] ] as $k => $wl ){
+                    if( $wl == $w['mark'] ) {
                         //Delete widget
-                        unset( $wl );
+                        unset( $widgets[ $w['location'] ][$k] );
                         update_option('sidebars_widgets', $widgets);
                         //Update value
-                        $data = get_option( 'widget_' . $widget['name'] );
-                        unset( $data[ $widget[ 'pos' ] ] );
-                        update_option( 'widget_' . $widget['name'], $data );
+                        $data = get_option( 'widget_' . $w['name'] );
+                        unset( $data[ $w[ 'pos' ] ] );
+                        update_option( 'widget_' . $w['name'], $data );
                     }
                 }
             }

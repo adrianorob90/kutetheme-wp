@@ -1,0 +1,85 @@
+<?php
+ // Widgets
+kt_add_widget( 'search', 'sidebar-primary', '2', 'YToxOntzOjU6InRpdGxlIjtzOjA6IiI7fQ==', '2' );
+
+kt_add_widget( 'wpp', 'sidebar-primary', '2', 'YToxNTp7czo1OiJ0aXRsZSI7czoxMzoiUG9wdWxhciBwb3N0cyI7czo1OiJsaW1pdCI7czoyOiIxMCI7czo1OiJyYW5nZSI7czozOiJhbGwiO3M6ODoib3JkZXJfYnkiO3M6MzoiYXZnIjtzOjk6InBvc3RfdHlwZSI7czo5OiJwb3N0LHBhZ2UiO3M6OToiZnJlc2huZXNzIjtiOjE7czozOiJwaWQiO3M6MDoiIjtzOjM6ImNhdCI7czowOiIiO3M6NjoiYXV0aG9yIjtzOjA6IiI7czoxMzoic2hvcnRlbl90aXRsZSI7YTozOntzOjU6IndvcmRzIjtzOjE6IjAiO3M6NjoiYWN0aXZlIjtiOjA7czo2OiJsZW5ndGgiO3M6MjoiMjUiO31zOjEyOiJwb3N0LWV4Y2VycHQiO2E6NDp7czoxMToia2VlcF9mb3JtYXQiO2I6MDtzOjU6IndvcmRzIjtzOjE6IjAiO3M6NjoiYWN0aXZlIjtiOjA7czo2OiJsZW5ndGgiO3M6MjoiNTUiO31zOjk6InRodW1ibmFpbCI7YTo1OntzOjY6ImFjdGl2ZSI7YjoxO3M6NToid2lkdGgiO2k6NzA7czo2OiJoZWlnaHQiO2k6NDk7czo1OiJidWlsZCI7czoxMDoicHJlZGVmaW5lZCI7czo0OiJjcm9wIjtiOjE7fXM6NjoicmF0aW5nIjtiOjA7czo5OiJzdGF0c190YWciO2E6NTp7czoxMzoiY29tbWVudF9jb3VudCI7YjowO3M6NToidmlld3MiO2I6MDtzOjY6ImF1dGhvciI7YjowO3M6NDoiZGF0ZSI7YToyOntzOjY6ImFjdGl2ZSI7YjoxO3M6NjoiZm9ybWF0IjtzOjU6ImQvbS9ZIjt9czo4OiJjYXRlZ29yeSI7YjowO31zOjY6Im1hcmt1cCI7YTo2OntzOjExOiJjdXN0b21faHRtbCI7YjowO3M6OToid3BwLXN0YXJ0IjtzOjM3OiImbHQ7dWwgY2xhc3M9JnF1b3Q7d3BwLWxpc3QmcXVvdDsmZ3Q7IjtzOjc6IndwcC1lbmQiO3M6MTE6IiZsdDsvdWwmZ3Q7IjtzOjk6InBvc3QtaHRtbCI7czo0NDoiJmx0O2xpJmd0O3t0aHVtYn0ge3RpdGxlfSB7c3RhdHN9Jmx0Oy9saSZndDsiO3M6MTE6InRpdGxlLXN0YXJ0IjtzOjA6IiI7czo5OiJ0aXRsZS1lbmQiO3M6MDoiIjt9fQ==', '2' );
+
+kt_add_widget( 'recent-posts', 'sidebar-primary', '2', 'YToyOntzOjU6InRpdGxlIjtzOjA6IiI7czo2OiJudW1iZXIiO2k6NTt9', '2' );
+
+kt_add_widget( 'recent-comments', 'sidebar-primary', '2', 'YToyOntzOjU6InRpdGxlIjtzOjA6IiI7czo2OiJudW1iZXIiO2k6NTt9', '2' );
+
+kt_add_widget( 'archives', 'sidebar-primary', '2', 'YTozOntzOjU6InRpdGxlIjtzOjA6IiI7czo1OiJjb3VudCI7aTowO3M6ODoiZHJvcGRvd24iO2k6MDt9', '2' );
+
+kt_add_widget( 'categories', 'sidebar-primary', '2', 'YTo0OntzOjU6InRpdGxlIjtzOjA6IiI7czo1OiJjb3VudCI7aTowO3M6MTI6ImhpZXJhcmNoaWNhbCI7aTowO3M6ODoiZHJvcGRvd24iO2k6MDt9', '2' );
+
+kt_add_widget( 'meta', 'sidebar-primary', '2', 'YToxOntzOjU6InRpdGxlIjtzOjA6IiI7fQ==', '2' );
+
+kt_add_widget( 'tag_cloud', 'sidebar-primary', '4', 'YToyOntzOjU6InRpdGxlIjtzOjA6IiI7czo4OiJ0YXhvbm9teSI7czo4OiJwb3N0X3RhZyI7fQ==', '4' );
+
+kt_add_widget( 'widget_kt_best_seller', 'sidebar-primary', '4', 'YTo2OntzOjU6InRpdGxlIjtzOjEyOiJCZXN0IFNlbGxlcnMiO3M6NjoibnVtYmVyIjtzOjE6IjYiO3M6NzoicGVycGFnZSI7czoxOiIzIjtzOjU6InNwZWVkIjtzOjM6IjI1MCI7czo4OiJhdXRvcGxheSI7czo1OiJmYWxzZSI7czo0OiJsb29wIjtzOjU6ImZhbHNlIjt9', '4' );
+
+kt_add_widget( 'woocommerce_product_categories', 'sidebar-shop', '2', 'YTo2OntzOjU6InRpdGxlIjtzOjEzOiJQUk9EVUNUIFRZUEVTIjtzOjc6Im9yZGVyYnkiO3M6NDoibmFtZSI7czo4OiJkcm9wZG93biI7aTowO3M6NToiY291bnQiO2k6MDtzOjEyOiJoaWVyYXJjaGljYWwiO3M6MToiMSI7czoxODoic2hvd19jaGlsZHJlbl9vbmx5IjtpOjA7fQ==', '2' );
+
+kt_add_widget( 'woocommerce_price_filter', 'sidebar-shop', '2', 'YToxOntzOjU6InRpdGxlIjtzOjE1OiJGaWx0ZXIgYnkgcHJpY2UiO30=', '2' );
+
+kt_add_widget( 'woocommerce_layered_nav_filters', 'sidebar-shop', '2', 'YToxOntzOjU6InRpdGxlIjtzOjE0OiJBY3RpdmUgRmlsdGVycyI7fQ==', '2' );
+
+kt_add_widget( 'yith-woo-ajax-navigation', 'sidebar-shop', '3', 'YTo4OntzOjU6InRpdGxlIjtzOjY6IkZpbHRlciI7czo5OiJhdHRyaWJ1dGUiO3M6NToiY29sb3IiO3M6MTA6InF1ZXJ5X3R5cGUiO3M6MzoiYW5kIjtzOjQ6InR5cGUiO3M6NToiY29sb3IiO3M6NjoiY29sb3JzIjthOjEyOntpOjQ0O3M6NzoiIzFlNzNiZSI7aTozOTtzOjc6IiM4MjgyODIiO2k6NDU7czo3OiIjZWVlZTIyIjtpOjM1O3M6MDoiIjtpOjM2O3M6MDoiIjtpOjQwO3M6MDoiIjtpOjM3O3M6MDoiIjtpOjQyO3M6MDoiIjtpOjQzO3M6MDoiIjtpOjM4O3M6MDoiIjtpOjQxO3M6MDoiIjtpOjQ2O3M6MDoiIjt9czoxMDoibXVsdGljb2xvciI7YTowOnt9czo2OiJsYWJlbHMiO2E6MDp7fXM6NzoiZGlzcGxheSI7czozOiJhbGwiO30=', '3' );
+
+kt_add_widget( 'yith-woo-ajax-navigation', 'sidebar-shop', '4', 'YTo4OntzOjU6InRpdGxlIjtzOjE0OiJGaWx0ZXIgYnkgU2l6ZSI7czo5OiJhdHRyaWJ1dGUiO3M6NDoic2l6ZSI7czoxMDoicXVlcnlfdHlwZSI7czozOiJhbmQiO3M6NDoidHlwZSI7czo0OiJsaXN0IjtzOjY6ImNvbG9ycyI7YTowOnt9czoxMDoibXVsdGljb2xvciI7YTowOnt9czo2OiJsYWJlbHMiO2E6MDp7fXM6NzoiZGlzcGxheSI7czozOiJhbGwiO30=', '4' );
+
+kt_add_widget( 'woocommerce_layered_nav', 'sidebar-shop', '2', 'YTo0OntzOjU6InRpdGxlIjtzOjE1OiJGaWx0ZXIgYnkgQ29sb3IiO3M6OToiYXR0cmlidXRlIjtzOjU6ImNvbG9yIjtzOjEyOiJkaXNwbGF5X3R5cGUiO3M6NDoibGlzdCI7czoxMDoicXVlcnlfdHlwZSI7czozOiJhbmQiO30=', '2' );
+
+kt_add_widget( 'widget_kt_testimonial', 'sidebar-shop', '2', 'YTo3OntzOjU6InRpdGxlIjtzOjExOiJUZXN0aW1vbmlhbCI7czo4OiJhdXRvcGxheSI7YjoxO3M6NDoibG9vcCI7YjoxO3M6MTA6InNsaWRlc3BlZWQiO3M6MzoiMjAwIjtzOjY6Im51bWJlciI7czoxOiIyIjtzOjc6Im9yZGVyYnkiO3M6NDoiZGF0ZSI7czo1OiJvcmRlciI7czo0OiJkZXNjIjt9', '2' );
+
+kt_add_widget( 'woocommerce_product_tag_cloud', 'sidebar-shop', '2', 'YToxOntzOjU6InRpdGxlIjtzOjEyOiJQcm9kdWN0IFRhZ3MiO30=', '2' );
+
+kt_add_widget( 'widget_kt_slider', 'sidebar-shop', '2', 'YTo3OntzOjEwOiJzbGlkZXNwZWVkIjtzOjM6IjIwMCI7czo1OiJ0aXRsZSI7YToyOntpOjA7czowOiIiO2k6MTtzOjA6IiI7fXM6NToiaW1hZ2UiO2E6Mjp7aTowO3M6MzoiNjczIjtpOjE7czozOiI2NzUiO31zOjQ6ImxpbmsiO2E6Mjp7aTowO3M6MToiIyI7aToxO3M6MToiIyI7fXM6NjoidGFyZ2V0IjtOO3M6ODoiYXV0b3BsYXkiO2I6MDtzOjQ6Imxvb3AiO2I6MDt9', '2' );
+
+kt_add_widget( 'woocommerce_product_tag_cloud', 'sidebar-shop', '3', 'YToxOntzOjU6InRpdGxlIjtzOjEyOiJQcm9kdWN0IFRhZ3MiO30=', '3' );
+
+kt_add_widget( 'widget_kt_testimonial', 'sidebar-shop', '3', 'YTo3OntzOjU6InRpdGxlIjtzOjExOiJUZXN0aW1vbmlhbCI7czo4OiJhdXRvcGxheSI7YjoxO3M6NDoibG9vcCI7YjoxO3M6MTA6InNsaWRlc3BlZWQiO3M6MzoiMjAwIjtzOjY6Im51bWJlciI7czoxOiIzIjtzOjc6Im9yZGVyYnkiO3M6NDoiZGF0ZSI7czo1OiJvcmRlciI7czo0OiJkZXNjIjt9', '3' );
+
+kt_add_widget( 'widget_kt_product_special', 'sidebar-shop', '2', 'YTo0OntzOjU6InRpdGxlIjtzOjE2OiJTUEVDSUFMIFBST0RVQ1RTIjtzOjc6Im9yZGVyYnkiO3M6NDoiZGF0ZSI7czo1OiJvcmRlciI7czo0OiJkZXNjIjtzOjE0OiJwb3N0c19wZXJfcGFnZSI7czoxOiIzIjt9', '2' );
+
+kt_add_widget( 'widget_kt_on_sale', 'sidebar-shop', '2', 'YTo0OntzOjU6InRpdGxlIjtzOjY6Ik9uc2FsZSI7czo2OiJudW1iZXIiO2k6MztzOjc6Im9yZGVyYnkiO3M6NDoiZGF0ZSI7czo1OiJvcmRlciI7czo0OiJkZXNjIjt9', '2' );
+
+kt_add_widget( 'widget_kt_best_seller', 'sidebar-shop', '2', 'YTozOntzOjU6InRpdGxlIjtzOjEyOiJCZXN0IFNlbGxlcnMiO3M6NjoibnVtYmVyIjtzOjE6IjYiO3M6NzoicGVycGFnZSI7czoxOiIzIjt9', '2' );
+
+kt_add_widget( 'kt_image', 'sidebar-shop', '2', 'YTo0OntzOjQ6ImxpbmsiO3M6MDoiIjtzOjY6InRhcmdldCI7czo1OiJfc2VsZiI7czo0OiJzaXplIjtOO3M6MTA6ImF0dGFjaG1lbnQiO2k6Njc0O30=', '2' );
+
+kt_add_widget( 'yith-woo-ajax-navigation', 'sidebar-shop', '5', 'YTo4OntzOjU6InRpdGxlIjtzOjA6IiI7czo5OiJhdHRyaWJ1dGUiO3M6NToiY29sb3IiO3M6MTA6InF1ZXJ5X3R5cGUiO3M6MzoiYW5kIjtzOjQ6InR5cGUiO3M6NDoibGlzdCI7czo2OiJjb2xvcnMiO2E6MDp7fXM6MTA6Im11bHRpY29sb3IiO2E6MDp7fXM6NjoibGFiZWxzIjthOjA6e31zOjc6ImRpc3BsYXkiO3M6MzoiYWxsIjt9', '5' );
+
+kt_add_widget( 'woocommerce_product_categories', 'sidebar-shop-single', '3', 'YTo2OntzOjU6InRpdGxlIjtzOjE4OiJQcm9kdWN0IENhdGVnb3JpZXMiO3M6Nzoib3JkZXJieSI7czo0OiJuYW1lIjtzOjg6ImRyb3Bkb3duIjtpOjA7czo1OiJjb3VudCI7aTowO3M6MTI6ImhpZXJhcmNoaWNhbCI7czoxOiIxIjtzOjE4OiJzaG93X2NoaWxkcmVuX29ubHkiO3M6MToiMSI7fQ==', '3' );
+
+kt_add_widget( 'widget_kt_best_seller', 'sidebar-shop-single', '3', 'YTozOntzOjU6InRpdGxlIjtzOjEyOiJCZXN0IFNlbGxlcnMiO3M6NjoibnVtYmVyIjtzOjE6IjYiO3M6NzoicGVycGFnZSI7czoxOiIzIjt9', '3' );
+
+kt_add_widget( 'widget_kt_on_sale', 'sidebar-shop-single', '3', 'YTo0OntzOjU6InRpdGxlIjtzOjc6Ik9uIHNhbGUiO3M6NjoibnVtYmVyIjtpOjM7czo3OiJvcmRlcmJ5IjtzOjQ6ImRhdGUiO3M6NToib3JkZXIiO3M6NDoiZGVzYyI7fQ==', '3' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-1', '2', 'YToyOntzOjU6InRpdGxlIjtzOjc6IkNvbXBhbnkiO3M6ODoibmF2X21lbnUiO2k6Njk7fQ==', '2' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-2', '3', 'YToyOntzOjU6InRpdGxlIjtzOjEwOiJNeSBBY2NvdW50IjtzOjg6Im5hdl9tZW51IjtpOjcwO30=', '3' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-3', '4', 'YToyOntzOjU6InRpdGxlIjtzOjc6IlN1cHBvcnQiO3M6ODoibmF2X21lbnUiO2k6NzE7fQ==', '4' );
+
+kt_add_widget( 'widget_kt_mailchimp', 'footer-menu-4', '3', 'YToxMTp7czo1OiJ0aXRsZSI7czowOiIiO3M6NDoibGlzdCI7czowOiIiO3M6Njoib3B0X2luIjtzOjM6InllcyI7czoxMToidGV4dF9iZWZvcmUiO3M6MDoiIjtzOjEwOiJ0ZXh0X2FmdGVyIjtzOjA6IiI7czo3OiJjb250ZW50IjtzOjg3OiJTdWNjZXNzISAgQ2hlY2sgeW91ciBpbmJveCBvciBzcGFtIGZvbGRlciBmb3IgYSBtZXNzYWdlIGNvbnRhaW5pbmcgYSBjb25maXJtYXRpb24gbGluay4iO3M6NjoibGF5b3V0IjtzOjM6Im9uZSI7czoxNDoiaGVpZ2h0X2Rlc2t0b3AiO2k6MDtzOjEzOiJoZWlnaHRfdGFibGV0IjtpOjA7czoxMzoiaGVpZ2h0X21vYmlsZSI7aTowO3M6MzoiY3NzIjtzOjA6IiI7fQ==', '3' );
+
+kt_add_widget( 'widget_kt_mailchimp', 'footer-social', '4', 'YToxMTp7czo1OiJ0aXRsZSI7czo2OiJzZGFkYXMiO3M6NDoibGlzdCI7czowOiIiO3M6Njoib3B0X2luIjtzOjI6Im5vIjtzOjExOiJ0ZXh0X2JlZm9yZSI7czowOiIiO3M6MTA6InRleHRfYWZ0ZXIiO3M6MDoiIjtzOjc6ImNvbnRlbnQiO3M6ODc6IlN1Y2Nlc3MhICBDaGVjayB5b3VyIGluYm94IG9yIHNwYW0gZm9sZGVyIGZvciBhIG1lc3NhZ2UgY29udGFpbmluZyBhIGNvbmZpcm1hdGlvbiBsaW5rLiI7czo2OiJsYXlvdXQiO3M6Mzoib25lIjtzOjE0OiJoZWlnaHRfZGVza3RvcCI7aTowO3M6MTM6ImhlaWdodF90YWJsZXQiO2k6MDtzOjEzOiJoZWlnaHRfbW9iaWxlIjtpOjA7czozOiJjc3MiO3M6MDoiIjt9', '4' );
+
+kt_add_widget( 'widget_kt_social', 'footer-social', '2', 'YToxOntzOjY6Ind0aXRsZSI7czoxNToiTEVUJ1MgU09DSUFMSVpFIjt9', '2' );
+
+kt_add_widget( 'widget_kt_trademark_payment', 'footer-payment', '2', 'YTo1OntzOjY6Ind0aXRsZSI7czoyNDoiQUNDRVBURUQgUEFZTUVOVCBNRVRIT0RTIjtzOjU6InRpdGxlIjthOjk6e2k6MDtzOjE3OiJQcmVmZXJyZWQgY2FycmllciI7aToxO3M6NDoiUWl3aSI7aToyO3M6MTM6Ildlc3Rlcm4gVW5pb24iO2k6MztzOjEzOiLkuK3lm70g6ZO26KGMIjtpOjQ7czo0OiJWaXNhIjtpOjU7czoxMDoiTWFzdGVyY2FyZCI7aTo2O3M6MzoiRW1zIjtpOjc7czozOiJEaGwiO2k6ODtzOjEzOiJGZWRleCBleHByZXNzIjt9czo1OiJpbWFnZSI7YTo5OntpOjA7czozOiIzOTAiO2k6MTtzOjM6IjM5MSI7aToyO3M6MzoiMzkyIjtpOjM7czozOiIzOTMiO2k6NDtzOjM6IjM5NCI7aTo1O3M6MzoiMzk1IjtpOjY7czozOiIzOTYiO2k6NztzOjM6IjM5NyI7aTo4O3M6MzoiMzk4Ijt9czo0OiJsaW5rIjthOjk6e2k6MDtzOjE6IiMiO2k6MTtzOjE6IiMiO2k6MjtzOjE6IiMiO2k6MztzOjE6IiMiO2k6NDtzOjE6IiMiO2k6NTtzOjE6IiMiO2k6NjtzOjE6IiMiO2k6NztzOjE6IiMiO2k6ODtzOjE6IiMiO31zOjY6InRhcmdldCI7Tjt9', '2' );
+
+kt_add_widget( 'widget_kt_seo_keyword', 'footer-bottom', '2', 'YTo0OntzOjY6Ind0aXRsZSI7czoyMToiSE9UIFNFQVJDSEVEIEtFWVdPUkRTIjtzOjU6InRpdGxlIjthOjg6e2k6MDtzOjExOiJYaWFvbWlvIE1pMyI7aToxO3M6Mjc6IkRpZ2lmbGlwbyBQcm8gWFQgNzEyIFRhYmxldCI7aToyO3M6MTE6Ik1pIDMgUGhvbmVzIjtpOjM7czoxNDoiSXBob25lbyA2IFBsdXMiO2k6NDtzOjI3OiJXb21lbiYjMDM5O3MgTWVzc2VuZ2VyIEJhZ3MiO2k6NTtzOjc6IldhbGxldHMiO2k6NjtzOjIxOiJXb21lbiYjMDM5O3MgQ2x1dGNoZXMiO2k6NztzOjE1OiJCYWNrcGFja3MgVG90ZXMiO31zOjQ6ImxpbmsiO2E6ODp7aTowO3M6MToiIyI7aToxO3M6MToiIyI7aToyO3M6MToiIyI7aTozO3M6MToiIyI7aTo0O3M6MToiIyI7aTo1O3M6MToiIyI7aTo2O3M6MToiIyI7aTo3O3M6MToiIyI7fXM6NjoidGFyZ2V0IjtOO30=', '2' );
+
+kt_add_widget( 'widget_kt_seo_keyword', 'footer-bottom', '3', 'YTo0OntzOjY6Ind0aXRsZSI7czozOiJUVlMiO3M6NToidGl0bGUiO2E6MTI6e2k6MDtzOjg6IlNvbnlvIFRWIjtpOjE7czoxMDoiU2Ftc2luZyBUViI7aToyO3M6NjoiTEdHIFRWIjtpOjM7czo5OiJPbmlkYWkgVFYiO2k6NDtzOjExOiJUb3NoaWJhbyBUViI7aTo1O3M6MTE6IlBoaWxpcHNpIFRWIjtpOjY7czoxMjoiTWljcm9tYXhvIFRWIjtpOjc7czo2OiJMRUQgVFYiO2k6ODtzOjY6IkxDRCBUViI7aTo5O3M6OToiUGxhc21hIFRWIjtpOjEwO3M6NToiM0QgVFYiO2k6MTE7czo4OiJTbWFydCBUViI7fXM6NDoibGluayI7YToxMjp7aTowO3M6MToiIyI7aToxO3M6MToiIyI7aToyO3M6MToiIyI7aTozO3M6MToiIyI7aTo0O3M6MToiIyI7aTo1O3M6MToiIyI7aTo2O3M6MToiIyI7aTo3O3M6MToiIyI7aTo4O3M6MToiIyI7aTo5O3M6MToiIyI7aToxMDtzOjE6IiMiO2k6MTE7czoxOiIjIjt9czo2OiJ0YXJnZXQiO047fQ==', '3' );
+
+kt_add_widget( 'widget_kt_seo_keyword', 'footer-bottom', '4', 'YTo0OntzOjY6Ind0aXRsZSI7czo3OiJNT0JJTEVTIjtzOjU6InRpdGxlIjthOjk6e2k6MDtzOjY6Ik1vdG8gRSI7aToxO3M6MTQ6IlNhbXNpbmcgTW9iaWxlIjtpOjI7czoxNjoiTWljcm9tYXhpIE1vYmlsZSI7aTozO3M6MTM6Ik5va2lhbiBNb2JpbGUiO2k6NDtzOjExOiJIVENpIE1vYmlsZSI7aTo1O3M6MTI6IlNvbnlvIE1vYmlsZSI7aTo2O3M6MTM6IkFwcGxlbyBNb2JpbGUiO2k6NztzOjEwOiJMR0cgTW9iaWxlIjtpOjg7czoxNToiS2FyYm9ubmkgTW9iaWxlIjt9czo0OiJsaW5rIjthOjk6e2k6MDtzOjE6IiMiO2k6MTtzOjE6IiMiO2k6MjtzOjE6IiMiO2k6MztzOjE6IiMiO2k6NDtzOjE6IiMiO2k6NTtzOjE6IiMiO2k6NjtzOjE6IiMiO2k6NztzOjE6IiMiO2k6ODtzOjE6IiMiO31zOjY6InRhcmdldCI7Tjt9', '4' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-bottom', '8', 'YToxOntzOjg6Im5hdl9tZW51IjtpOjc5O30=', '8' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-bottom', '9', 'YToxOntzOjg6Im5hdl9tZW51IjtpOjgwO30=', '9' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-bottom', '10', 'YToxOntzOjg6Im5hdl9tZW51IjtpOjgxO30=', '10' );
+
+kt_add_widget( 'nav_menu', 'footer-menu-bottom', '11', 'YToxOntzOjg6Im5hdl9tZW51IjtpOjgyO30=', '11' );

@@ -229,7 +229,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                     preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png)\b/i', $post->guid, $matches );
                     
                     if( isset( $matches[0] ) && ! empty( $matches[0] ) ) {
-                        echo "kt_download_media(" .$post->ID. ", '" . $post->post_title . "', '" . $post->guid . "');\r\r";
+                        echo "kt_download_media(" .$post->ID. ", '" . addslashes( $post->post_title ) . "', '" . $post->guid . "');\r\r";
                     }
                 }else if( $post->post_type == 'page' ){
                     $post->template = get_post_meta( $post->ID, '_wp_page_template', 'page.php' );
@@ -263,7 +263,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                 if ( false === $format ) {
                 	$format = 'standard';
                 }
-                echo "kt_add_post(" .$post->ID. ", '" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '" .$format. "', '" . $post->post_thumnail . "', '" .serialize( $meta ). "' );\r\r";
+                echo "kt_add_post(" .$post->ID. ", '" . addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '" .$format. "', '" . $post->post_thumnail . "', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
         if( count( $list_page > 0 ) ) {
@@ -272,7 +272,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
             
             foreach( $list_page as $post ):
                 $meta = get_post_meta( $post->ID );
-                echo "kt_add_page(" .$post->ID. ", '" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '" .$post->guid. "', '" .$post->template. "', '" .$post->comment_status. "', '" .serialize( $meta ). "' );\r\r";
+                echo "kt_add_page(" .$post->ID. ", '" .addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '" .$post->guid. "', '" .$post->template. "', '" .$post->comment_status. "', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
         
@@ -284,7 +284,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                 $post_categories = wp_get_object_terms($post->ID, 'product_cat', array('fields' => 'ids') );
                 
                 $post_categories = implode( ',', $post_categories );
-                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
+                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" . addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
         if( count( $list_product_variation > 0 ) ) {
@@ -294,7 +294,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                 $meta = get_post_meta( $post->ID );
                 $post_categories = wp_get_object_terms($post->ID, 'product_cat', array('fields' => 'ids') );
                 $post_categories = implode( ',', $post_categories );
-                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
+                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
         
@@ -308,7 +308,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                 
                 if( ! empty( $taxonomies ) ){
                     foreach( $taxonomies as $tax ){
-                        $cat_ids = wp_get_object_terms($post->ID, $tax->name, array('fields' => 'ids') );
+                        $cat_ids = wp_get_object_terms($post->ID, addslashes( $tax->name ), array('fields' => 'ids') );
                         if( ! empty( $cat_ids ) ){
                             foreach( $cat_ids as $c ){
                                 $post_categories[] = $c;
@@ -317,7 +317,7 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
                     }
                 }
                 $post_categories = implode( ',', $post_categories );
-                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" .$post->post_title. "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
+                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" . addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
             endforeach;
         }
         
@@ -339,7 +339,7 @@ if( $args['content'] == 'nav_menu_item' || $args['content'] == 'all' ){
             }
             echo "//Menu\r";
             echo '$menu_id ';
-            echo "= kt_add_menu( $menu->term_id, '" .$menu->name. "', '$location' );\r";
+            echo "= kt_add_menu( $menu->term_id, '" .addslashes( $menu->name ) . "', '$location' );\r";
             echo "\r // Menu Item\r";
             $items = wp_get_nav_menu_items( $menu->term_id );
             if( count($items) > 0 ){
@@ -357,7 +357,7 @@ if( $args['content'] == 'nav_menu_item' || $args['content'] == 'all' ){
                     if( $megamenu_img_icon ){
                         $item->megamenu_icon = $megamenu_img_icon;
                     }
-                    echo "kt_add_menu_item( $item->ID, " .'$menu_id'.", $item->menu_item_parent, '$item->title', '$item->object', $item->object_id, '$item->type', '$item->url', '$megamenu_enable', '$megamenu_menu_page', '$megamenu_img_icon' );\r\r";
+                    echo "kt_add_menu_item( $item->ID, " .'$menu_id'.", $item->menu_item_parent, '".addslashes( $item->title )."', '$item->object', $item->object_id, '$item->type', '$item->url', '$megamenu_enable', '$megamenu_menu_page', '$megamenu_img_icon' );\r\r";
                 }
             }
             

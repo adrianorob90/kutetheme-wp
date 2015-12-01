@@ -20,6 +20,7 @@ class KT_Data_Installer{
 	private $paths;
     
     private $url;
+    
     /**
 	 * Core singleton class
 	 * @var Singleton self - pattern realization
@@ -35,8 +36,55 @@ class KT_Data_Installer{
     private $data = array(
         'default' => array(
             'title'      => 'Default demo',
-            'screenshot' => 'http://localhost/wordpress/wp-content/themes/Newsmag/includes/demos/default/screenshot.png',
-            'file'       => 'default'
+            'screenshot' => 'screenshot.jpg',
+            'files'       => array(
+                'options'           => 'option',
+                'taxonomies'        => 'taxonomy',
+                'categories'        => 'category',
+                'terms'             => 'term',
+                'tags'              => 'tag',
+                'attachment-1'      => 'attachment-1',
+                'attachment-2'      => 'attachment-2',
+                'attachment-3'      => 'attachment-3',
+                'attachment-4'      => 'attachment-4',
+                'attachment-5'      => 'attachment-5',
+                'attachment-6'      => 'attachment-6',
+                'attachment-7'      => 'attachment-7',
+                'attachment-8'      => 'attachment-8',
+                'attachment-9'      => 'attachment-9',
+                'attachment-10'     => 'attachment-10',
+                'attachment-11'     => 'attachment-11',
+                'attachment-12'     => 'attachment-12',
+                'attachment-13'     => 'attachment-13',
+                'attachment-14'     => 'attachment-14',
+                'attachment-15'     => 'attachment-15',
+                'posts'             => 'post',
+                'pages'             => 'page',
+                'product'           => 'product',
+                'product_variation' => 'product_variation',
+                'other-post-type'   => 'other-post-type',
+                'menu-1'            => 'menu-1',
+                'menu-2'            => 'menu-2',
+                'menu-3'            => 'menu-3',
+                'menu-4'            => 'menu-4',
+                'menu-5'            => 'menu-5',
+                'menu-6'            => 'menu-6',
+                'menu-7'            => 'menu-7',
+                'menu-8'            => 'menu-8',
+                'menu-9'            => 'menu-9',
+                'menu-10'           => 'menu-10',
+                'menu-11'           => 'menu-11',
+                'menu-12'           => 'menu-12',
+                'menu-13'           => 'menu-13',
+                'menu-14'           => 'menu-14',
+                'menu-15'           => 'menu-15',
+                'menu-16'           => 'menu-16',
+                'menu-17'           => 'menu-17',
+                'menu-18'           => 'menu-18',
+                'menu-19'           => 'menu-19',
+                'menu-20'           => 'menu-20',
+                'widget'            => 'widget' 
+            )
         ),//
     );
     /**
@@ -119,20 +167,35 @@ class KT_Data_Installer{
             $current = get_option( 'kt_demo_packet' );
             if( $current && $current != $action ){
                 $this->remove_all();
+                
             }
-            $this->install( $packet );
+            return $this->install( $packet );
         }else{
             $this->remove_all();
             delete_option( 'kt_demo_packet' );
+            return true;
         }
     }
     public function install( $packet ){
-        if( isset( $this->data[ $packet ]['file'] ) and ! empty( $this->data[ $packet ]['file'] ) ){
-            $file = $this->data[ $packet ]['file'];
-            require_once( $this->paths . "/data/{$packet}/{$file}.php");
-            update_option( 'kt_demo_packet', $packet );
+        if( isset( $this->data[ $packet ]['files'] ) and ! empty( $this->data[ $packet ]['files'] ) ){
+            $file = $this->data[ $packet ]['files'];
+            if( is_array( $file ) ){
+                foreach( $file as $k => $v ) {
+                    $is_mark = get_option( "kt_mark_step", array() );
+                    if( empty( $is_mark ) || ! in_array( $k, $is_mark ) ){
+                        require_once( $this->paths . "/data/{$packet}/{$v}.php");
+                        $is_mark[] = $k;
+                        update_option( "kt_mark_step", $is_mark );
+                    }
+                    
+                }
+                update_option( 'kt_demo_packet', $packet );
+                return true;
+            }
         }
+        return false;
     }
+    
     /**
 	 * Callback function for WP init action hook. Sets kt data installer mode and loads required objects.
 	 *
@@ -172,6 +235,10 @@ class KT_Data_Installer{
         
         kt_remove_menu_items();
         remove_widget();
+        $this->remove_mark();
+    }
+    public function remove_mark(){
+        delete_option( 'kt_mark_step' );
     }
     /**
      * Create admin page kt_data_installer_page
@@ -190,7 +257,7 @@ class KT_Data_Installer{
                     <li class="box-item">
                         <?php if( isset( $d['screenshot'] ) ): ?>
                         <div class="item-thumbnail">
-                            <img src="<?php echo $d['screenshot']; ?>" alt="screenshot" />
+                            <img src="<?php echo $this->url . "/data/$k/" . $d['screenshot']; ?>" alt="screenshot" />
                         </div>
                         <?php endif; ?>
                         <?php if( isset( $d['title'] ) ): ?>
