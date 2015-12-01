@@ -7344,9 +7344,6 @@ span.notify-right{
     color: #333;
     font-size: 14px;
 }
-.option12.tab-7.block-tab-category .product-style3 .price {
-    color: #ff3366;
-}
 .option12.tab-7.block-tab-category .product-style3 .product-thumb a{
     display: block;
 }
@@ -7369,9 +7366,7 @@ span.notify-right{
   font-size: 14px;
   
 }
-.option12.tab-7.block-tab-category .product-style3 .price{
-  color: #ff3366;
-}
+
 .option12.tab-7.block-tab-category .product-style3 .price ins{
   text-decoration: none;
   float: left;
@@ -7592,7 +7587,6 @@ span.notify-right{
   margin: 0 auto;
 }
 .option12.block-hotdeal-week .price{
-    color: #ff3366;
     text-decoration: none;
     margin-bottom: 10px;
     display: inline-block;
@@ -7837,7 +7831,6 @@ span.notify-right{
   padding: 10px 25px;
 }
 .block-new-product12 .price{
-    color: #ff3366;
     text-decoration: none;
     display: inline-block;
 }
@@ -7985,8 +7978,11 @@ span.notify-right{
 .section-band-logo.style2{
   background-color: transparent;
   padding: 0;
-  padding-bottom: 30px;
 }
+ .section-band-logo.style2 li a{
+  padding: 0 1px;
+  display: inline-block;
+ }
 /* Block cat */
 .section-bolock-cat.option12 .block-cat{
   border: 1px solid #eee;
@@ -8068,11 +8064,6 @@ span.notify-right{
     list-style: none;
     padding: 0;
     margin: 0;
-}
-.block-new-product12 .price{
-    color: #ff3366;
-    text-decoration: none;
-    display: inline-block;
 }
 .block-new-product12  .price ins{
   text-decoration: none;
@@ -9008,6 +8999,7 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
 }
 .footer4 ul li{
   list-style: none;
+  line-height: 28px;
 }
 .footer4 .widget-container {
     margin-top: 30px;

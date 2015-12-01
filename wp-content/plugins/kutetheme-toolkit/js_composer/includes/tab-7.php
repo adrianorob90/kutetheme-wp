@@ -221,10 +221,10 @@ if ( ! defined( 'ABSPATH' ) ) {
                     //$woocommerce_loop['columns'] = $atts['columns'];
             
                     if ( $products->have_posts() ) :?>
-                    <div id="<?php echo 'tab-' . $id . '-' . $i; ?>"" class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" >
-                        <ul class="tab-products autoHeight">
+                    <div id="<?php echo 'tab-' . $id . '-' . $i; ?>" class="tab-panel <?php echo ( $i == 0) ? 'active' : ''; ?>" >
+                        <ul class="tab-products">
                             <?php while ( $products->have_posts() ) : $products->the_post(); ?>
-                                <li class="product-style3 autoHeight-item">
+                                <li class="product-style3">
                                     <?php wc_get_template_part( 'content', 'product-tab12' ); ?>
                                 </li>
                             <?php endwhile; // end of the loop. ?>
