@@ -243,7 +243,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                         <?php 
                                         while ( $products->have_posts() ) : $products->the_post();
                                             ?>
-                                            <li class="col-sm-4 autoHeight-item">
+                                            <li class="col-sm-4">
                                             <?php
                                                 wc_get_template_part( 'content', 'product-tab2' );
                                             ?>
