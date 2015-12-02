@@ -2066,6 +2066,9 @@ span.notify-right{
   margin: 0;
   float: left;
   width: 100%;
+  flex-flow: row wrap;
+  display: flex;
+  clear: both;
 }
 .product-list li{
   list-style: none;
@@ -9144,11 +9147,199 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     opacity: 1;
     visibility: inherit;
 }
-/* REPONSIVE */
 
+/* OPTION 11*/
+.header.style11 .top-header{
+  background-color: transparent;
+}
+.header.style11 .top-header-inner{
+  padding-right: 100px;
+  display: table;
+  width: 100%;
+  position: relative;
+}
+.header.style11 .main-header{
+  padding: 0;
+}
+.header.style11 .block-header-top12{
+  margin: 0;
+}
+.header.style11 .main-menu-style12{
+  padding-right: 90px;
+  position: relative;
+}
+.header.style11 .navigation-main-menu>li{
+  padding-bottom: 10px;
+}
+.header.style11 .main-menu-style12 .navigation-main-menu>li>a{
+  padding: 0 10px;
+}
+.header.style11 .main-menu-style12 .navigation-main-menu>li>a:before{
+  display: none;
+}
+.header.style11 .block-mini-cart{
+  position: absolute;
+  top: 0;
+  right: 0;
+  max-width: 70px;
+  min-width: 70px;
+  
+  z-index: 2;
+}
+.header.style11 .block-mini-cart .cart-link{
+  padding: 0;
+  border: none;
+  padding-top: 17px;
+  text-transform: none;
+  text-align: center;
+}
+.header.style11 .block-mini-cart .cart-link .total{
+  padding: 10px 0 15px 0;
+  width: 100%;
+}
+.header.style11 .block-mini-cart .cart-link
+.header.style11 .block-mini-cart .cart-link .total .amount{
+  font-size: 14px;
+  font-weight: bold;
+}
+.header.style11 .block-mini-cart .cart-link .icon{
+  display: block;
+  padding: 0;
+  float: none;
+  margin: 0 auto;
+}
+.header.style11 .block-mini-cart .cart-link .icon .count{
+  left: inherit;
+  top: -15px;
+  right: -10px;
+  font-weight: normal;
+  font-size: 10px;
+}
+.header.style11 .block-mini-cart:after{
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 7px solid #fff;
+  border-right: 35px solid transparent;
+  border-left: 35px solid transparent;
+}
+.header.style11 .block-header-top12{
+  margin: 0;
+}
+.header.style11 .block-header-top12 .inner{
+  display: table;
+  width: 100%;
+}
+.header.style11 .block-header-top12 .block-vertical{
+  width: 200px;
+  padding-right: 12px;
+}
+.header.style11 .form-category .ui-selectmenu-button span.ui-selectmenu-text{
+  border-right: 1px solid #eee;
+  border-left: none;
+}
+.header.style11 .block-search .btn-search{
+  width: 44px;
+}
+.header.style11 .block-search .btn-search:before{
+  content: "\f002";
+  font-family: 'FontAwesome';
+}
+.header.style11 .block-header-top12 .block-search{
+  width: 570px;
+}
+.header.style11 .block-header-top12 .contact-info{
+  display: table-cell;
+  width: 365px;
+  padding-left: 12px;
+}
+.header.style11 .block-header-top12 .contact-info .inner{
+  height: 44px;
+  vertical-align: middle;
+  padding: 9px 0;
+  text-align: center;
+}
+.header.style11 .block-header-top12 .contact-info .fa {
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    text-align: center;
+    line-height: 24px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.header.style11 .block-header-top12 .hotline{
+  border-right: 1px solid #7e7e7e;
+  padding-right: 10px;
+  display: inline-block;
+}
+.header.style11 .block-header-top12 .top-bar-social{
+  display: inline-block;
+  padding-left: 10px;
+}
+.header.style11 .cart-block .cart-block-content .cart-buttons a{
+  margin-left: 0;
+}
+.footer4.style2{
+  border-top: none;
+  background-color: #191919;
+  color: #999;
+}
+.footer4.style2 .widget-container .widget-title, 
+.footer4.style2 .widget-container .block-heading h3, 
+.footer4.style2 .widget-container .introduce-title{
+  font-family: inherit;
+  font-weight: normal;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.footer4.style2 .social-link .fa{
+  border-width: 1px;
+  border-color: #8c8c8c;
+  color: #8c8c8c;
+}
+.footer4.style2 .mailchimp-form .input-group{
+  border-color: #505050;
+}
+.footer4.style2 .mailchimp-form input{
+  background-color: transparent;
+}
+.footer4.style2 .mailchimp-form .mailchimp-submit{
+  font-family: inherit;
+  background-color: #505050;
+  color: #fff;
+  font-size: 14px;
+}
+.footer4.style2 .widget-container{
+  margin-top: 40px;
+}
+.footer4.style2 .footer-bottom{
+  margin-top: 40px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: rgba(80,80,80,0.6);
+}
+.footer4.style2 .footer-coppyright{
+  padding: 0;
+  display: inline-block;
+  float: left;
+  font-family: inherit;
+  font-weight: normal;
+  color: #999;
+}
+.footer4 .payment-logos{
+  padding: 0;
+  display: inline-block; float: right;
+}
+/* REPONSIVE */
 @media(max-width: 1200px){
   .navigation-main-menu>li>a{
-    padding: 0 20px;
+    padding: 0 20px!important;
   }
   .top-main-menu .vertical-wapper{
     width: 50px;
@@ -9452,9 +9643,6 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
   }
   .block-header-top12 .block-search .input-serach{
     width: 100%;
-  }
-  .main-content{
-      padding: 0;
   }
   .footer4 .footer-top .left, 
   .footer4 .footer-top .right{

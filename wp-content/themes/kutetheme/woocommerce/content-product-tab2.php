@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 ?>
-<div class="right-block autoHeight-item">
+<div class="right-block">
 	<?php
     // $product_name = get_the_title();
     

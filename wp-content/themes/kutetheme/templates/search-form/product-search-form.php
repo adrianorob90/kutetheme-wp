@@ -11,7 +11,7 @@ $args = array(
 );
 $kt_used_header = kt_option('kt_used_header',1);
 ?>
-<?php if( $kt_used_header == 12 ):?>
+<?php if( $kt_used_header == 12  ):?>
 <form class="form-inline woo-search" method="get" action="<?php echo esc_url( home_url( '/' ) ) ?>">
   
   <div class="form-group input-serach">

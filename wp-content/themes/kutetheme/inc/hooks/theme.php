@@ -507,7 +507,8 @@ function kt_themne_color(){
     .option12.block-hotdeal-week .add-to-cart:hover,
     .option12.block-hotdeal-week .yith-wcwl-add-to-wishlist:hover,
     .option12.block-hotdeal-week .compare-button:hover,
-    .option12.section-blog-12 .blog12 .date{
+    .option12.section-blog-12 .blog12 .date,
+    .header.style11 .block-mini-cart .cart-link .icon .count{
         background-color: {$main_color};
     }
 
@@ -939,6 +940,37 @@ CSS;
         }
         body .block-header-top12 .box-vertical-megamenus .btn-open-mobile{
             border-color: {$h12_box_category_text_color};
+        }
+CSS;
+    }
+    if( $kt_used_header == 11){
+        $h11_box_category_bg = kt_option('h11_box_category_bg','#ff6633');
+        $h11_box_category_text_color = kt_option('h11_box_category_text_color','#fff');
+        $h11_box_header_bg_color = kt_option('h11_box_header_bg_color','#333');
+        $h11_box_contact_info_bg_color  = kt_option('h11_box_contact_info_bg_color','#666666');
+        $h11_box_contact_info_color = kt_option('h11_box_contact_info_color','#fff');
+
+        $css .= <<<CSS
+        .header.style11 .block-header-top12,
+        .header.style11 .navigation-main-menu>li:hover, 
+        .header.style11 .navigation-main-menu>li.active,
+        .header.style11 .block-mini-cart{
+            background-color: {$h11_box_header_bg_color};
+        }
+        .header.style11 .box-vertical-megamenus .title,
+        .header.style11 .block-search .btn-search{
+            background-color: {$h11_box_category_bg};
+            color:{$h11_box_category_text_color};
+        }
+        .header.style11 .block-header-top12 .contact-info .inner{
+            background-color: {$h11_box_contact_info_bg_color};
+            color:{$h11_box_contact_info_color};
+        }
+        .header.style11 .block-header-top12 .top-bar-social a{
+            color:{$h11_box_contact_info_color};
+        }
+        body .header.style11 .block-header-top12 .contact-info .fa{
+            border-color: {$h11_box_contact_info_color};
         }
 CSS;
     }

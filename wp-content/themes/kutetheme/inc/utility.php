@@ -708,6 +708,11 @@ function kt_topbar_menu(){
         'depth'           => 0,
         'walker'          => ''
     );
-    wp_nav_menu( $menuleft );
-    wp_nav_menu( $menuright );
+    $kt_used_header = kt_option('kt_used_header',1);
+    if( $kt_used_header == 11){
+        wp_nav_menu( $menuright );
+    }else{
+         wp_nav_menu( $menuleft );
+         wp_nav_menu( $menuright );
+    }
 }

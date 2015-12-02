@@ -121,12 +121,21 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="notify notify-right"><?php echo esc_attr( $cart_count ); ?></span>
             <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
         </div>
-    <?php elseif( $kt_used_header == 12 ): ?>
+    <?php elseif( $kt_used_header == 12): ?>
         <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
             <span class="icon">
                 <span class="count"><?php echo esc_html( $cart_count );?></span>
             </span>
             <span class="total"><?php _e('Cart','kutetheme');?>: <?php echo kt_get_html( $cart_subtotal );?></span>
+        </a>
+        <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+
+    <?php elseif( $kt_used_header == 11): ?>
+        <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+            <span class="icon">
+                <span class="count"><?php echo esc_html( $cart_count );?></span>
+            </span>
+            <span class="total"><?php _e('Cart','kutetheme');?></span>
         </a>
         <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
     <?php endif;?>

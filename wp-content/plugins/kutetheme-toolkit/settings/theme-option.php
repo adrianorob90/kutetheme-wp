@@ -151,6 +151,7 @@ $config = array(
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                             '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v8.jpg',
+                            '11' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v11.jpg',
                             '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
                 		),
                 	)
@@ -266,6 +267,50 @@ $config = array(
                         'show_option_none' => 'Choose Category'
                 	)
                 )
+            ),
+            $prefix . 'header_11' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_11',
+                    'hookup'  => false,
+                    'title'   => 'Header 11',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => __( 'Enable Box contact info', 'kutetheme' ),
+                        'id'      => 'kt_enable_box_contact_info11',
+                        'type'    => 'select',
+                        'default' => 'enable',
+                        'options' => array(
+                            'enable'  => 'Enable',
+                            'disable'  => 'Disable'
+                        ),
+                    ),
+                    array(
+                        'name'    => __( 'Enable Hot line on contact info', 'kutetheme' ),
+                        'id'      => 'kt_enable_hotline_contact_info11',
+                        'type'    => 'select',
+                        'default' => 'enable',
+                        'options' => array(
+                            'enable'  => 'Enable',
+                            'disable'  => 'Disable'
+                        ),
+                    ),
+                    array(
+                        'name'    => __( 'Enable Social on contact info', 'kutetheme' ),
+                        'id'      => 'kt_enable_social_contact_info11',
+                        'type'    => 'select',
+                        'default' => 'enable',
+                        'options' => array(
+                            'enable'  => 'Enable',
+                            'disable'  => 'Disable'
+                        ),
+                    ),
+                )
             )
 		),
     ),
@@ -298,6 +343,7 @@ $config = array(
                 			'2' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv2.jpg',
                 			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv3.jpg',
                             '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv4.jpg',
+                            '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv5.jpg',
                 		)
                 	),
                     array(
@@ -352,7 +398,7 @@ $config = array(
                 'setting' => array( 
                     'id'      => $prefix . 'footer_4',
                     'hookup'  => false,
-                    'title'   => 'Footer 4',
+                    'title'   => 'Footer 4, 5',
                     'show_on' => array(
                         // These are important, don't remove
                         'key'   => 'options-page',
@@ -364,7 +410,7 @@ $config = array(
                         'name'    => __( 'Footer Payment logos', 'kutetheme' ),
                         'id'      => 'kt_footer_payment_logos',
                         'type'    => 'file_list',
-                        'desc'    => __( 'Display payment logos on footer style 4', 'kutetheme' ),
+                        'desc'    => __( 'Display payment logos on footer style 4, 5', 'kutetheme' ),
                         'options' => array(
                             'url' => false, // Hide the text input for the url
                             'add_upload_file_text' => 'Add payment images' // Change upload button text. Default: "Add or Upload File"
@@ -996,6 +1042,51 @@ $config = array(
                         'id'      => 'h7_item_mege_menu_bg_hover_color',
                         'type'    => 'colorpicker',
                         'default' => '#f04923',
+                    ),
+                )
+            ),
+            //Color Header 11
+            $prefix . 'header_11_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_11_color',
+                    'hookup'  => false,
+                    'title'   => 'Header 11',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h11_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff6633',
+                    ),
+                    array(
+                        'name'    => 'Box Category Text Color',
+                        'id'      => 'h11_box_category_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Box header bg color',
+                        'id'      => 'h11_box_header_bg_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#333',
+                    ),
+                    array(
+                        'name'    => 'Box Contact info bg color',
+                        'id'      => 'h11_box_contact_info_bg_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#666666',
+                    ),
+                    array(
+                        'name'    => 'Box Contact info text color',
+                        'id'      => 'h11_box_contact_info_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
                     ),
                 )
             ),

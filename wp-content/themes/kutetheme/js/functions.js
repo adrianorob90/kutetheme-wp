@@ -116,15 +116,15 @@
       }
     // Auto height product list
     function auto_height_product_list(){
-        var max = 0;
-        $('.product-list.grid li.product').each(function(){
-            var item_height = $(this).height();
-            if( item_height > max ){
-                max = item_height;
-            }
-            $(this).addClass('product-autoheight');
-        }) 
-        $('.product-autoheight .product-container').css('min-height',max+"px");
+        // var max = 0;
+        // $('.product-list.grid li.product').each(function(){
+        //     var item_height = $(this).height();
+        //     if( item_height > max ){
+        //         max = item_height;
+        //     }
+        //     $(this).addClass('product-autoheight');
+        // }) 
+        // $('.product-autoheight .product-container').css('min-height',max+"px");
     }
 
     function autoHeight_product_grid(){
