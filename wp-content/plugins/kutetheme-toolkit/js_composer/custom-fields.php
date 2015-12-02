@@ -35,13 +35,15 @@ function kt_add_vc_global_params(){
     if( function_exists( 'vc_add_shortcode_param')){
         vc_add_shortcode_param( 'kt_select_image', 'vc_kt_select_image_settings_field' );
         vc_add_shortcode_param( 'kt_categories', 'vc_kt_categories_settings_field' );
-        vc_add_shortcode_param('kt_number' , 'vc_ktnumber_settings_field');
-        vc_add_shortcode_param('kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+        vc_add_shortcode_param( 'kt_number' , 'vc_ktnumber_settings_field');
+        vc_add_shortcode_param( 'kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+        vc_add_shortcode_param( 'kt_datetimepicker' , 'vc_kt_datetimepicker_settings_field');
     }else{
         add_shortcode_param( 'kt_select_image', 'vc_kt_select_image_settings_field' );
         add_shortcode_param( 'kt_categories', 'vc_kt_categories_settings_field' );
-        add_shortcode_param('kt_number' , 'vc_ktnumber_settings_field');
-        add_shortcode_param('kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+        add_shortcode_param( 'kt_number' , 'vc_ktnumber_settings_field' );
+        add_shortcode_param( 'kt_taxonomy', 'vc_kt_taxonomy_settings_field', KUTETHEME_PLUGIN_URL.'/js_composer/js/chosen/chosen.jquery.min.js');
+        add_shortcode_param( 'kt_datetimepicker' , 'vc_kt_datetimepicker_settings_field' );
     }
     
 }
@@ -165,5 +167,21 @@ function vc_kt_taxonomy_settings_field($settings, $value) {
 	}
     
     return $output;
+}
+
+function vc_kt_datetimepicker_settings_field($settings, $value)
+{
+	$dependency = '';
+	$param_name = isset($settings['param_name']) ? $settings['param_name'] : '';
+	$type = isset($settings['type']) ? $settings['type'] : '';
+	$class = isset($settings['class']) ? $settings['class'] : '';
+	$uni = uniqid();
+	$output = '<div id="kt-date-time'.$uni.'" class="ult-datetime"><input data-format="yyyy/MM/dd hh:mm:ss" class="wpb_vc_param_value ' . $param_name . ' ' . $type . ' ' . $class . '" name="' . $param_name . '" style="width:258px;" value="'.$value.'" '.$dependency.'/><div class="add-on" >  <i data-time-icon="Defaults-time" data-date-icon="Defaults-time"></i></div></div>';
+	$output .= '<script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery("#kt-date-time'.$uni.'").datetimepicker();
+		})
+		</script>';
+	return $output;
 }
 

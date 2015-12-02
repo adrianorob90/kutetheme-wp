@@ -282,9 +282,11 @@ if( $args['content'] != 'nav_menu_item' && $args['content'] != 'widget' ){
             foreach( $list_product as $post ):
                 $meta = get_post_meta( $post->ID );
                 $post_categories = wp_get_object_terms($post->ID, 'product_cat', array('fields' => 'ids') );
-                
                 $post_categories = implode( ',', $post_categories );
-                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" . addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" .serialize( $meta ). "' );\r\r";
+                //Thumbnail id
+                //Thumbnail id
+                $post_thumbnail_id = get_post_thumbnail_id( $post->ID );
+                echo "kt_other_post_type(" .$post->ID. ", '". $post->post_type ."', ".$post->post_parent." ,'" . addslashes( $post->post_title ). "', '" .base64_encode( $post->post_content ). "', '".$post->guid."', '". $post_categories ."', '". $post->comment_status ."', '" . serialize( $meta ) . "', '" . $post_thumbnail_id . "' );\r\r";
             endforeach;
         }
         if( count( $list_product_variation > 0 ) ) {

@@ -8,15 +8,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+$style_banner = array(
+	__( 'Style 1', 'kutetheme' ) => 'style-1',
+    __( 'Style 2', 'kutetheme' ) => 'style-2',
+);
 
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/service.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/look_books.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/colection.php';
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/testimonial.php';
+
 if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-category.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/tab-product.php';
@@ -30,4 +27,20 @@ if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/box_product.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/featured_products.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/products_sidebar.php';
+    $style_banner = array(
+    	__( 'Style 1', 'kutetheme' ) => 'style-1',
+        __( 'Style 2', 'kutetheme' ) => 'style-2',
+        __( 'Style 3', 'kutetheme' ) => 'style-3',
+    );
+
 }
+
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/service.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/adv_banner.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/look_books.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/colection.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/testimonial.php';
+require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/banner-title.php';
