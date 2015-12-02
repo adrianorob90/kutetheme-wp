@@ -71,6 +71,7 @@ vc_map( array(
             "value"       => array(
                 'Style 1'   => '1',
                 'Style 2'   => '2',
+                'Style 3'   => '3',
             ),
             "std"         => 1,
             "description" => __("The description", 'kutetheme')
@@ -150,7 +151,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
         }
         $service_query = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
         if( $service_query->have_posts() ){
-            if($style==1):
+            if($style == 1):
             ?>
             <div class="service-wapper">
                 <div class="service <?php echo esc_attr( $elementClass ); ?>">
@@ -179,7 +180,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                     ?>
                 </div>
             </div>
-        <?php elseif($style==2):?>
+        <?php elseif($style == 2):?>
         <!-- Show display style 2 -->
         <div class="col-sm-12">            
             <div class="services2 <?php echo esc_attr( $elementClass ); ?>">
@@ -215,7 +216,39 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             </div>
         </div>            
         <?php endif;?>
-            <?php
+        <?php if( $style == 3):?>
+        <?php if($service_query->have_posts() ): ?>
+        <div class="service3 <?php echo esc_attr( $elementClass ); ?>"> 
+            <div class="row">
+                <?php
+                while ($service_query->have_posts()) {
+                    $service_query->the_post();
+                    $_kt_page_service_desc = get_post_meta(get_the_ID(),'_kt_page_service_desc',true);
+                    $bootstrapColumn = round( 12 / $items );
+                ?>
+                <div class="col-sm-3 col-md-<?php echo esc_attr( $bootstrapColumn );?>">
+                    <div class="service-item">
+                        <?php if(has_post_thumbnail()):?>
+                            <div class="icon">
+                                <?php the_post_thumbnail(array(50, 50));?>
+                            </div>
+                        <?php endif;?>
+                        <div class="service-info">
+                            <h3 class="service-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+                            <?php if( $_kt_page_service_desc): ?>
+                            <div class="service-desc"><?php echo esc_html( $_kt_page_service_desc );?></div>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+            </div>
+         </div>
+        <?php endif;?>
+        <?php endif;?>
+        <?php
         }
         wp_reset_postdata();
         wp_reset_query();

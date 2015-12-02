@@ -9336,6 +9336,24 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
   padding: 0;
   display: inline-block; float: right;
 }
+.service3 .service-item {
+    margin-top: 30px;
+}
+.service3 .service-item .icon {
+    width: 50px;
+    float: left;
+}
+.service3 .service-item .service-info {
+    padding-left: 73px;
+    display: block;
+    padding-top: 8px;
+}
+.service3 .service-item .service-title{
+  margin: 0;
+}
+.service3 .service-item .service-desc {
+    color: #999;
+}
 /* REPONSIVE */
 @media(max-width: 1200px){
   .navigation-main-menu>li>a{
