@@ -22,10 +22,10 @@ $kt_enable_social_contact_info11 = kt_option('kt_enable_social_contact_info11','
         <div id="main-header">
             <div class="container main-header">
                 <div class="row">
-                    <div class="col-sm-12 col-md-3 logo">
+                    <div class="col-sm-12 col-md-12 col-lg-3 logo">
                         <?php echo kt_get_logo(); ?>
                     </div>
-                    <div id="main-menu" class="col-sm-12 col-md-9">
+                    <div id="main-menu" class="col-sm-12 col-md-12 col-lg-9">
                         <nav class="main-menu-style12 main-menu-wapper">
                             <?php kt_setting_mega_menu(); ?>
                             <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>

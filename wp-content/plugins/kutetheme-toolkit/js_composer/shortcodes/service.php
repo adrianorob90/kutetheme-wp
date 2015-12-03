@@ -162,8 +162,9 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                         $service_query->the_post();
                         
                         $meta = get_post_meta( get_the_ID());
+                        $bootstrapColumn = round( 12 / $items );
                         ?>
-                        <div class="col-xs-12 com-sm-6 col-md-3 service-item">
+                        <div class="col-xs-12 com-sm-6 col-md-<?php echo esc_attr( $bootstrapColumn );?> service-item">
                             <?php if(has_post_thumbnail()):?>
                             <div class="icon">
                                 <?php the_post_thumbnail(array(40, 40));?>
@@ -227,7 +228,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                     $_kt_page_service_desc = get_post_meta(get_the_ID(),'_kt_page_service_desc',true);
                     $bootstrapColumn = round( 12 / $items );
                 ?>
-                <div class="col-sm-3 col-md-<?php echo esc_attr( $bootstrapColumn );?>">
+                <div class="col-sm-12 col-md-<?php echo esc_attr( $bootstrapColumn );?>">
                     <div class="service-item">
                         <?php if(has_post_thumbnail()):?>
                             <div class="icon">
