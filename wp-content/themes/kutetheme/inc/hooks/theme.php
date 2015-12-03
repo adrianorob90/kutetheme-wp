@@ -413,6 +413,9 @@ function kt_themne_color(){
     html body{
         background-color: {$bg_color};
     }
+    body .header.style11 .block-mini-cart::after{
+        border-bottom-color: {$bg_color};
+    }
     body a:hover,
     body a:focus,
     body a:active,
@@ -422,7 +425,8 @@ function kt_themne_color(){
     body .blog-list .blog-list-wapper ul li .readmore a,
     body .count-down-time2 .box-count,
     body .trending .trending-product li .product-price,
-    body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a{
+    body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a,
+    body .lasttest-blog11 .item-blog .readmore{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -550,7 +554,8 @@ function kt_themne_color(){
 
     }
     body .product-list li .add-to-cart:hover,
-    body .products-style8 .product-thumb .yith-wcqv-button{
+    body .products-style8 .product-thumb .yith-wcqv-button,
+    body .lasttest-blog11 .item-blog .cat{
         background-color: {$rgba_main_color}
     }
     body .product-list li .content_price,

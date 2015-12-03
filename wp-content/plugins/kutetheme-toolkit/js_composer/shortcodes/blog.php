@@ -29,7 +29,8 @@ vc_map( array(
                 __('Style 1', 'kutetheme') => 'style-1',
                 __('Style 2', 'kutetheme') => 'style-2',
                 __('Style 3', 'kutetheme') => 'style-3',
-                __('Style 4', 'kutetheme') => 'style-4'
+                __('Style 4', 'kutetheme') => 'style-4',
+                __('Style 5', 'kutetheme') => 'style-5'
         	),
             'std'         => 'DESC',
             "description" => __("Show blog carousel by difference style.",'kutetheme')
@@ -39,7 +40,7 @@ vc_map( array(
             'heading'     => __( 'Subtitle', 'kutetheme' ),
             'param_name'  => 'subtitle',
             'admin_label' => false,
-            "dependency"  => array("element" => "style","value" => array('style-4')),
+            "dependency"  => array("element" => "style","value" => array('style-4','style-5')),
 		),
         array(
             "type"        => "textfield",
@@ -451,8 +452,57 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                     </div>
                 <?php endif; ?>
             </div>
-            <?php
-            endif;
+            <?php endif;?>
+            <?php if( $style == 'style-5' ):?>
+            <div class="<?php echo esc_attr( $elementClass );?>">
+                <?php if( $title && $subtitle ):?>
+                <div class="section-title-2">
+                    <h2><?php echo esc_html( $title );?></h2>
+                    <span class="subtitle"><?php echo esc_html( $subtitle );?></span>
+                </div>
+                <?php endif;?>
+                <?php if($posts->have_posts()):?>
+                <div class="lasttest-blog11 owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                    <?php $i = 1; while( $posts->have_posts()): $posts->the_post(); ?>
+                    <?php if( $i%2 ):?>
+                    <div class="item-blog">
+                        <?php if( has_post_thumbnail()):?>
+                        <div class="thumb">
+                            <a href="<?php the_permalink();?>">
+                            <?php the_post_thumbnail( 'lookbook-thumb');?>
+                            </a>
+                            <span class="cat"><?php echo get_the_date('F j, Y');?></span>
+                        </div>
+                        <?php endif;?>
+                        <div class="info">
+                            <h2 class="title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h2>
+                            <div class="desc"><?php the_excerpt(); ?></div>
+                            <a class="readmore" href="<?php the_permalink();?>"><?php _e('Readmore','kutetheme');?></a>
+                        </div>
+                    </div>
+                    <?php else: ?>
+                    <div class="item-blog">
+                        <div class="info">
+                            <h2 class="title"><a href="<?php the_permalink();?>"><?php the_title( );?></a></h2>
+                            <div class="desc"><?php the_excerpt(); ?></div>
+                            <a class="readmore" href="<?php the_permalink();?>"><?php _e('Readmore','kutetheme');?></a>
+                        </div>
+                        <?php if( has_post_thumbnail()):?>
+                        <div class="thumb">
+                            <a href="<?php the_permalink();?>">
+                            <?php the_post_thumbnail( 'lookbook-thumb');?>
+                            </a>
+                            <span class="cat"><?php echo get_the_date('F j, Y');?></span>
+                        </div>
+                        <?php endif;?>
+                    </div>
+                    <?php endif;?>
+                    <?php $i++; endwhile;?>
+                </div>
+                <?php endif;?>
+            </div>
+            <?php endif;?>
+        <?php
         endif;
         wp_reset_query();
         wp_reset_postdata();

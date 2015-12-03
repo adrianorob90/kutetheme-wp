@@ -875,9 +875,9 @@
         var width = $(window).width();
         if(width > 991){
             if(h > 35){
-                $('.header.style8,.header.style12').addClass('ontop');
+                $('.header.style8,.header.style12,.header.style11').addClass('ontop');
             }else{
-                $('.header.style8,.header.style12').removeClass('ontop');
+                $('.header.style8,.header.style12,.header.style11').removeClass('ontop');
             }
         }
     });
