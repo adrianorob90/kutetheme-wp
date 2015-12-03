@@ -269,6 +269,12 @@ add_action( 'kt_loop_product_function' , 'kt_get_tool_quickview', 10);
 
 add_action( 'kt_loop_product_function_quickview' , 'kt_get_tool_quickview', 10);
 
+add_action( 'kt_loop_product_cart_function', 'kt_get_tool_quickview', 1 ); 
+
+add_action( 'kt_loop_product_cart_function', 'woocommerce_template_loop_add_to_cart', 5 );
+
+add_action( 'kt_loop_product_cart_function', 'kt_get_tool_compare', 10 );
+
 add_action( 'kt_loop_product_label', 'kt_show_product_loop_new_flash', 5 );
 
 add_action( 'kt_loop_product_label', 'woocommerce_show_product_loop_sale_flash', 10 );

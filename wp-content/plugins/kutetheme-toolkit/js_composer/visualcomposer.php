@@ -8,6 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+if( is_admin() ){
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
+}
 $style_banner = array(
 	__( 'Style 1', 'kutetheme' ) => 'style-1',
     __( 'Style 2', 'kutetheme' ) => 'style-2',
@@ -35,7 +38,7 @@ if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
 
 }
 
-require_once KUTETHEME_PLUGIN_PATH . '/js_composer/custom-fields.php';
+
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/service.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/brand.php';
 require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/blog.php';
