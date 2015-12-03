@@ -239,16 +239,16 @@ if ( ! defined( 'ABSPATH' ) ) {
                 
                         if ( $products->have_posts() ) :
                             $data_carousel = array(
-                                "autoplay" => $autoplay,
-                                "navigation" => $navigation,
-                                "margin"    => $margin,
-                                "slidespeed" => $slidespeed,
-                                "theme" => 'style-navigation-bottom',
-                                "autoheight" => 'false',
-                                'nav' => 'true',
-                                'dots' => 'false',
-                                'loop' => $loop,
-                                'autoplayTimeout' => 1000,
+                                "autoplay"      => $autoplay,
+                                "navigation"    => $navigation,
+                                "margin"        => $margin,
+                                "slidespeed"    => $slidespeed,
+                                "theme"         => 'style-navigation-bottom',
+                                "autoheight"    => 'false',
+                                'nav'           => $navigation,
+                                'dots'          => 'false',
+                                'loop'          => $loop,
+                                'autoplayTimeout'    => 1000,
                                 'autoplayHoverPause' => 'true'
                             );
                             

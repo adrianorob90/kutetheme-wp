@@ -56,9 +56,6 @@ vc_map( array(
             "param_name"  => "category",
             "admin_label" => true,
         ),
-        
-        
-        // Carousel
         array(
             'type'  => 'dropdown',
             'value' => array(

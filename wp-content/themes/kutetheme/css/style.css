@@ -7393,6 +7393,91 @@ span.notify-right{
   margin-right: 0;
   display: block;
 }
+.option11.hot-cat-section11{
+	padding: 60px 0;
+	background: 50% 0 no-repeat fixed; 
+  	position: relative;
+}
+.option11.hot-cat-section11 .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+}
+.option11.hot-cat-section11 .hot-cat-9{
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+
+
+.option11.hot-cat-section11 .hot-cat-9 .cat-item .cat-title{
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item .cat-title a{
+  color: #fff;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .cat-title a{
+  color: #ff6633;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item .icon{
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item .icon .hot-cate-thumbnail{
+    transition:all 1s ease;
+    -webkit-transition:all 1s ease;
+    -moz-transition:all 1s ease;
+    -o-transition:all 1s ease;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item .info{
+  margin-top: 15px;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item:hover{
+  color: #ff6633;
+}
+.option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .icon .hot-cate-thumbnail{
+   transform: rotate(360deg) ;
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+}
+
+.option11 .owl-controls .owl-dots{
+	position: relative;
+	margin-top: 20px;
+}
+.option11 .owl-controls .owl-dots .owl-dot{
+	background-color: transparent;
+	border: 2px solid #ccc;
+}
+.option11 .owl-controls .owl-dots .owl-dot.active{
+	background-color: #fff;
+	border-color: #fff;
+}
+
+.option11  .owl-controls .owl-prev, 
+.option11  .owl-controls .owl-next{
+	height: 40px;
+    width: 40px;
+    background-color: #97979d;
+    line-height: 40px;
+    font-size: 27px;
+    color: #50524b;
+}
+
+.option11 .section-slide .owl-dots{
+	position: absolute;
+	bottom: 30px;
+}
 
 /**
 * STYLE 12

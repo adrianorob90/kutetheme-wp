@@ -251,7 +251,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                <div class="row">
                                     <div class="col-sm-12 category-list-product">
                                         <?php if( $is_phone ): ?>
-                                            <ul class="product-list owl-carousel" data-autoplay="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
+                                            <ul class="product-list owl-carousel" data-autoplay="false" data-nav="false" data-navigation="false" data-margin="0" data-slidespeed="250" data-theme="style-navigation-bottom" data-autoheight="false" data-nav="true" data-dots="false" data-items="1">
                                         <?php else: ?>
                                             <ul class="product-list row">                                    
                                         <?php endif; ?>  
