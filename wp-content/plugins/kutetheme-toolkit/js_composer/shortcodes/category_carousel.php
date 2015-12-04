@@ -16,6 +16,18 @@ vc_map( array(
     "description" => __( "Display box categories same hot categories in option 11", 'kutetheme'),
     "params"      => array(
         array(
+            "type"        => "textfield",
+            "heading"     => __("Title", 'kutetheme'),
+            "param_name"  => "title",
+            "admin_label" => true,
+        ),
+        array(
+            "type"        => "textfield",
+            "heading"     => __("Sub title", 'kutetheme'),
+            "param_name"  => "subtitle",
+            "admin_label" => false,
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
@@ -195,6 +207,8 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'category_carousel', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
+            'title'         =>'',
+            'subtitle'      =>'',
             'taxonomy'      => '',
             'banner_image'  => '',
             'number'        => 3,
@@ -294,6 +308,14 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
                     } 
                     
                 ?>
+                <?php if($title):?>
+                <div class="section-title-2">
+                    <h2><?php echo esc_html( $title );?></h2>
+                    <?php if( $subtitle):?>
+                    <span class="subtitle"><?php echo esc_html( $subtitle );?></span>
+                    <?php endif;?>
+                </div>
+            <?php endif;?>
                 <div class="hot-cat-9 owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
                    <?php foreach($product_categories as $term): 
                         $term_link = esc_attr(get_term_link( $term ) );

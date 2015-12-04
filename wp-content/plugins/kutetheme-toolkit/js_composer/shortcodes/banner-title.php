@@ -38,7 +38,7 @@ vc_map( array(
 		),
         
         array(
-            "type"        => "textarea_html",
+            "type"        => "textarea",
             "heading"     => __( "Title", 'kutetheme' ),
             "param_name"  => "title",
             "admin_label" => false,
@@ -78,7 +78,13 @@ vc_map( array(
             'admin_label' => false,
             "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1' )),
 		),
-        
+        array(
+            "type"        => "textfield",
+            "heading"     => __("Countdown text", 'kutetheme'),
+            "param_name"  => "countdown_text",
+            "admin_label" => false,
+            "dependency"  => array( "element" => "enable_countdown", "value" => array( 'on')),
+        ),
         array(
             'type'  => 'kt_datetimepicker',
             'heading'     => __( 'Time', 'kutetheme' ),
@@ -110,17 +116,18 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'kt_banner', $atts ) : $atts;
         $atts = shortcode_atts( array(
-            'banner_style'  => '',
-            'title'         => '',
-            'sub_title'     => '',
-            'hide_bg'       => 'style1',
-            'product_id'    => '',
-            'banner_image'  => '',
-            'link'          => '#',
+            'banner_style'     => '',
+            'title'            => '',
+            'sub_title'        => '',
+            'hide_bg'          => 'style1',
+            'product_id'       => '',
+            'banner_image'     => '',
+            'link'             => '#',
             'enable_countdown' => 'off',
-            'time'          => '',
-            'el_class'      => '',
-            'css'           => ''
+            'countdown_text'   =>'',
+            'time'             => '',
+            'el_class'         => '',
+            'css'              => ''
             
         ), $atts );
         extract($atts);
@@ -156,7 +163,9 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                 <?php endif; ?>
                 <?php if( $enable_countdown == 'on' && $y > 1970 ): ?>
                     <div class="box-countdown">
-                        <h2 class="box-title"><?php _e( 'Hot deal', 'kutetheme' ) ?></h2>
+                        <?php if( $countdown_text): ?>
+                        <h2 class="box-title"><?php echo esc_html( $countdown_text ); ?></h2>
+                        <?php endif; ?>
                         <div class="box-countdown-inner countdown-lastest" data-y="<?php _e( esc_attr( $y ) ) ?>" data-m="<?php _e( esc_attr( $m ) ) ?>" data-d="<?php _e( esc_attr( $d ) ) ?>" data-h="<?php _e( esc_attr( $h  ) ) ?>" data-i="<?php _e( esc_attr( $mi ) ) ?>" data-s="<?php _e( esc_attr( $s ) ) ?>"></div>
                     </div>
                 <?php endif; ?>

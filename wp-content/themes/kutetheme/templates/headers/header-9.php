@@ -23,24 +23,26 @@ if( $kt_enable_header9_postion =="enable"){
                     <div class="col-sm-12 col-md-12 col-lg-3 logo">
                         <?php echo kt_get_logo(); ?>
                     </div>
-                    <div id="main-menu" class="col-sm-12 col-md-12 col-lg-8">
-                        <nav class="main-menu-wapper">
-                            <?php kt_setting_mega_menu(); ?>
-                            <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
-                        </nav>
-                    </div>
-                    <div class="col-lg-1">
-                    	<div class="form-search-9">
-                    		<span class="icon"><i class="fa fa-search"></i></span>
-                    		<div class="form-search-inner">
-                    			<?php kt_search_form();?>
-                    		</div>
-                    	</div>
-                    	<?php if( kt_is_wc() ): ?>
-			            <div class="block-mini-cart-9">
-			                <?php do_action('kt_mini_cart'); ?>
-			            </div>
-			            <?php endif;?>
+                    <div id="main-menu" class="col-sm-12 col-md-12 col-lg-9">
+                        <div class="inner">
+                            <div class="header-control">
+                                <div class="form-search-9">
+                                    <span class="icon"><i class="fa fa-search"></i></span>
+                                    <div class="form-search-inner">
+                                        <?php kt_search_form();?>
+                                    </div>
+                                </div>
+                                <?php if( kt_is_wc() ): ?>
+                                <div class="block-mini-cart-9">
+                                    <?php do_action('kt_mini_cart'); ?>
+                                </div>
+                                <?php endif;?>
+                            </div>
+                            <nav class="main-menu-wapper">
+                                <?php kt_setting_mega_menu(); ?>
+                                <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
