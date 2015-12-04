@@ -327,7 +327,8 @@ add_action( 'wp_head', 'kt_js_variables', 2 );
 if( ! function_exists( 'kt_scripts' ) ){
     function kt_scripts() {
     	// Add custom fonts, used in the main stylesheet.
-        wp_enqueue_style( 'kt-Oswald-font','https://fonts.googleapis.com/css?family=Oswald:400,300,700', array( 'kt-style' ), '1.0' );
+        wp_enqueue_style( 'kt-Oswald-font','https://fonts.googleapis.com/css?family=Oswald:400,300,700', array( ), '1.0' );
+        wp_enqueue_style( 'kt-Montserrat-font','https://fonts.googleapis.com/css?family=Montserrat:400,700', array( ), '1.0' );
 
     	// Load the Internet Explorer specific stylesheet.
     	wp_enqueue_style( 'kt-ie', get_template_directory_uri() . '/css/ie.css', array( 'kt-style' ), '1.0' );

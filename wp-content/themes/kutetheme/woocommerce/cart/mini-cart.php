@@ -138,6 +138,11 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="total"><?php _e('Cart','kutetheme');?></span>
         </a>
         <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+    <?php elseif( $kt_used_header == 9): ?>
+        <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+            <span class="count"><?php echo esc_html( $cart_count );?></span>
+        </a>
+        <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
     <?php endif;?>
 
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>

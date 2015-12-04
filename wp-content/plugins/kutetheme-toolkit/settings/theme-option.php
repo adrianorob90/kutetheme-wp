@@ -151,6 +151,7 @@ $config = array(
                             '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v6.jpg',
                             '7' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v7.jpg',
                             '8' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v8.jpg',
+                            '9' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v9.jpg',
                             '11' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v11.jpg',
                             '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
                 		),
@@ -266,6 +267,30 @@ $config = array(
                         'desc'       => __( 'Setting category service in header 7', 'kutetheme' ),
                         'show_option_none' => 'Choose Category'
                 	)
+                )
+            ),
+            $prefix . 'header_9' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_9',
+                    'hookup'  => false,
+                    'title'   => 'Header 9',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => __( 'Enable Header postion', 'kutetheme' ),
+                        'id'      => 'kt_enable_header9_postion',
+                        'type'    => 'select',
+                        'default' => 'enable',
+                        'options' => array(
+                            'enable'  => 'Enable',
+                            'disable'  => 'Disable'
+                        ),
+                    ),
                 )
             ),
             $prefix . 'header_11' => array(
@@ -1045,6 +1070,93 @@ $config = array(
                     ),
                 )
             ),
+            //Color Header 9
+            $prefix . 'header_9_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_9_color',
+                    'hookup'  => false,
+                    'title'   => 'Header 9',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Header Bg Color',
+                        'id'      => 'h9_header_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#000',
+                    ),
+                    array(
+                        'name'    => __( 'Header Overlay opacity', 'kutetheme' ),
+                        'id'      => 'h9_header_opacity',
+                        'type'    => 'select',
+                        'default' => '0.6',
+                        'options' => array(
+                            '0.1' => '0.1',
+                            '0.2' => '0.2',
+                            '0.3' => '0.3',
+                            '0.4' => '0.4',
+                            '0.5' => '0.5',
+                            '0.6' => '0.6',
+                            '0.7' => '0.7',
+                            '0.8' => '0.8',
+                            '0.9' => '0.9',
+                            '1'   => '1',
+                        )
+                    ),
+                    array(
+                        'name'    => 'Topbar color',
+                        'id'      => 'h9_header_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Topbar hover color',
+                        'id'      => 'h9_header_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff6633',
+                    ),
+                    array(
+                        'name'    => 'Topbar bg color',
+                        'id'      => 'h9_topbar_bg_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#000',
+                    ),
+                    array(
+                        'name'    => __( 'Topbar Overlay opacity', 'kutetheme' ),
+                        'id'      => 'h9_topbar_opacity',
+                        'type'    => 'select',
+                        'default' => '0.4',
+                        'options' => array(
+                            '0.1' => '0.1',
+                            '0.2' => '0.2',
+                            '0.3' => '0.3',
+                            '0.4' => '0.4',
+                            '0.5' => '0.5',
+                            '0.6' => '0.6',
+                            '0.7' => '0.7',
+                            '0.8' => '0.8',
+                            '0.9' => '0.9',
+                            '1'   => '1',
+                        )
+                    ),
+                    array(
+                        'name'    => 'Topbar color',
+                        'id'      => 'h9_topbar_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
+                    ),
+                    array(
+                        'name'    => 'Topbar hover color',
+                        'id'      => 'h9_topbar_hover_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#ff6633',
+                    )
+                )
+            ),
             //Color Header 11
             $prefix . 'header_11_color' => array(
                 'setting' => array( 
@@ -1159,45 +1271,45 @@ $config = array(
 		),
     ),
     //Logo
-    $prefix . 'kt_fonts' =>  array(
-        'setting' => array(
-            'id'      => $prefix . 'kt_fonts',
-            'title'   => 'Fonts',
-            'hookup'  => false,
-            'show_on' => array(
-                // These are important, don't remove
-                'key'   => 'options-page',
-                'value' => array( $key )
-            )
-        ),
-        'fields'    => array(
-            array(
-                'name'    => __( 'Main Fonts', 'kutetheme' ),
-                'id'      => 'kt_main_font',
-                'type'    => 'select',
-                'default' => 'Arial',
-                'options' => array(
-                    'Arial' => 'Arial, Helvetica, sans-serif',
-                    'Arimo' => 'Arimo',
-                    'Montserrat' => 'Montserrat',
-                    'Oswald'=>'Oswald'
-                ),
-                'desc'    => __( 'Specify the body font properties.', 'kutetheme' ),
-            ),
-            array(
-                'name'    => __( 'Secondary font', 'kutetheme' ),
-                'id'      => 'kt_secondary_font',
-                'type'    => 'select',
-                'default' => 'Arial',
-                'options' => array(
-                    'Arial' => 'Arial, Helvetica, sans-serif',
-                    'Arimo' => 'Arimo',
-                    'Montserrat' => 'Montserrat',
-                    'Oswald'=>'Oswald'
-                ),
-            ),
-        )
-    ),
+    // $prefix . 'kt_fonts' =>  array(
+    //     'setting' => array(
+    //         'id'      => $prefix . 'kt_fonts',
+    //         'title'   => 'Fonts',
+    //         'hookup'  => false,
+    //         'show_on' => array(
+    //             // These are important, don't remove
+    //             'key'   => 'options-page',
+    //             'value' => array( $key )
+    //         )
+    //     ),
+    //     'fields'    => array(
+    //         array(
+    //             'name'    => __( 'Main Fonts', 'kutetheme' ),
+    //             'id'      => 'kt_main_font',
+    //             'type'    => 'select',
+    //             'default' => 'Arial',
+    //             'options' => array(
+    //                 'Arial' => 'Arial, Helvetica, sans-serif',
+    //                 'Arimo' => 'Arimo',
+    //                 'Montserrat' => 'Montserrat',
+    //                 'Oswald'=>'Oswald'
+    //             ),
+    //             'desc'    => __( 'Specify the body font properties.', 'kutetheme' ),
+    //         ),
+    //         array(
+    //             'name'    => __( 'Secondary font', 'kutetheme' ),
+    //             'id'      => 'kt_secondary_font',
+    //             'type'    => 'select',
+    //             'default' => 'Arial',
+    //             'options' => array(
+    //                 'Arial' => 'Arial, Helvetica, sans-serif',
+    //                 'Arimo' => 'Arimo',
+    //                 'Montserrat' => 'Montserrat',
+    //                 'Oswald'=>'Oswald'
+    //             ),
+    //         ),
+    //     )
+    // ),
     //Woocommerce
     $prefix . 'woocommerce' => array(
         'title'   => 'Woocommerce',

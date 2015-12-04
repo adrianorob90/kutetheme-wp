@@ -980,6 +980,41 @@ CSS;
 CSS;
     }
 
+    if( $kt_used_header == "9"){
+        $h9_header_bg = kt_option('h9_header_bg','#000');
+        $h9_header_opacity = kt_option('h9_header_opacity','0.6');
+        $h9_header_color = kt_option('h9_header_color','#fff');
+        $h9_header_hover_color = kt_option('h9_header_hover_color','#ff6633');
+        $h9_topbar_bg_color = kt_option('h9_topbar_bg_color','#fff');
+        $h9_topbar_opacity = kt_option('h9_topbar_opacity','0.4');
+        $h9_topbar_color = kt_option('h9_topbar_color','#fff');
+        $h9_topbar_hover_color = kt_option('h9_topbar_hover_color','#ff6633');
+
+        $h9_header_bg_rgb = vsprintf( 'rgba( %1$s, %2$s, %3$s,'.$h9_header_opacity.')', kt_hex2rgb( $h9_header_bg ) );
+        $h9_topbar_bg_color_rgb = vsprintf( 'rgba( %1$s, %2$s, %3$s,'.$h9_topbar_opacity.')', kt_hex2rgb( $h9_topbar_bg_color ) );
+        $css .= <<<CSS
+        body .header.style9{
+            background-color: {$h9_header_bg_rgb};
+        }
+        body .header.style9 .top-header{
+            background-color: {$h9_topbar_bg_color_rgb};
+        }
+        .header.style9 .top-bar-menu > li > a{
+            color: {$h9_topbar_color};
+        }
+        .header.style9 .top-bar-menu > li > a:hover{
+            color: {$h9_topbar_hover_color};
+        }
+        .header.style9 .navigation-main-menu > li:hover>a, 
+        .header.style9 .navigation-main-menu > li.active>a{
+            color: {$h9_header_hover_color};
+        }
+        .header.style9 .navigation-main-menu > li > a:after{
+            background-color: {$h9_header_hover_color};
+        }
+CSS;
+    }
+
     ?>
     <style id="kt-theme-color" type="text/css">
         <?php echo apply_filters( 'kt_customize_css', $css );?>
