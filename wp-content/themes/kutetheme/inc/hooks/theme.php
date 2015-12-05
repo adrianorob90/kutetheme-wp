@@ -408,6 +408,7 @@ function kt_themne_color(){
     $bg_color = kt_option('bg_color','#fff');
     $price_color = kt_option('price_color','#ff3366');
     $rgba_main_color = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.5)', kt_hex2rgb( $main_color ) );
+    $rgba_main_color_08 = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.8)', kt_hex2rgb( $main_color ) );
     /* Main color */
     $css = <<<CSS
     html body{
@@ -561,9 +562,11 @@ function kt_themne_color(){
     }
     body .product-list li .add-to-cart:hover,
     body .products-style8 .product-thumb .yith-wcqv-button,
-    body .lasttest-blog11 .item-blog .cat,
-    body .option11.featured-banner .box-small-banner .banner:before{
+    body .lasttest-blog11 .item-blog .cat{
         background-color: {$rgba_main_color}
+    }
+    body .option11.featured-banner .box-small-banner .banner:before{
+        background-color: {$rgba_main_color_08};
     }
     body .product-list li .content_price,
     body.woocommerce div.product p.price,
@@ -1033,7 +1036,6 @@ CSS;
         }
 CSS;
     }
-
     ?>
     <style id="kt-theme-color" type="text/css">
         <?php echo apply_filters( 'kt_customize_css', $css );?>

@@ -182,9 +182,9 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                         </a>
                     <?php endif; ?>
                     <div class="text-content">
-                        <h3 class="title">
+                        <div class="title">
                             <?php echo apply_filters( 'kt_shortcode_banner_title' ,$title  ); ?>
-                        </h3>
+                        </div>
                         <span class="sub-title">
                             <?php echo esc_textarea( $sub_title ); ?>
                         </span>                        
@@ -222,7 +222,7 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                                 </a>
                             <?php endif; ?>
                             <div class="text-content">
-                                <h3 class="title"><?php the_title(); ?></h3>
+                                <div class="title"><?php the_title(); ?></div>
                                 <span class="sub-title">
                                     <?php
                             			/**
