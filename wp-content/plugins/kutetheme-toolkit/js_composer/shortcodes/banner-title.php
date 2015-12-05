@@ -29,6 +29,7 @@ vc_map( array(
             'value' => array(
                 __( 'Show', 'js_composer' )  => 'style1',
                 __( 'Hide', 'js_composer' )  => 'style2',
+                __( 'Show text and background', 'js_composer' )  => 'style3',
             ),
             'std'         => 'style1',
             'heading'     => __( 'Hide Background', 'kutetheme' ),
@@ -155,7 +156,7 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
         
         if( $banner_style == 'style-1' ): ?>
         <div class="featured-banner option11">
-            <div class="banner-box">
+            <div class="banner-box banner-boder-zoom2">
                 <?php if( $banner_url ): ?>
                     <a href="<?php echo esc_html( $link ) ?>">
                         <img src="<?php echo esc_url( $banner_url ) ?>" alt="" />

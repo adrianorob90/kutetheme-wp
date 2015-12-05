@@ -426,7 +426,10 @@ function kt_themne_color(){
     body .count-down-time2 .box-count,
     body .trending .trending-product li .product-price,
     body .hot-deals-box .hot-deals-tab .hot-deals-tab-box .nav-tab li.active>a,
-    body .lasttest-blog11 .item-blog .readmore{
+    body .lasttest-blog11 .item-blog .readmore,
+    body .footer4.style2 .social-link .fa:hover,
+    .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover,
+    .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .cat-title a{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -512,7 +515,9 @@ function kt_themne_color(){
     .option12.block-hotdeal-week .yith-wcwl-add-to-wishlist:hover,
     .option12.block-hotdeal-week .compare-button:hover,
     .option12.section-blog-12 .blog12 .date,
-    .header.style11 .block-mini-cart .cart-link .icon .count{
+    .header.style11 .block-mini-cart .cart-link .icon .count,
+    html body .footer4.style2 .mailchimp-form .mailchimp-submit:hover,
+    body .block-mini-cart-9 .cart-link .count{
         background-color: {$main_color};
     }
 
@@ -549,13 +554,15 @@ function kt_themne_color(){
     .block-new-product12 .owl-controls .owl-next:hover,
     .option12.block-hotdeal-week .owl-controls .owl-prev:hover, 
     .option12.block-hotdeal-week .owl-controls .owl-next:hover,
-    body .vertical-menu-list .mega-group-header span{
+    body .vertical-menu-list .mega-group-header span,
+    body .footer4.style2 .social-link .fa:hover{
         border-color: {$main_color};
 
     }
     body .product-list li .add-to-cart:hover,
     body .products-style8 .product-thumb .yith-wcqv-button,
-    body .lasttest-blog11 .item-blog .cat{
+    body .lasttest-blog11 .item-blog .cat,
+    body .option11.featured-banner .box-small-banner .banner:before{
         background-color: {$rgba_main_color}
     }
     body .product-list li .content_price,
@@ -977,6 +984,12 @@ CSS;
         body .header.style11 .block-header-top12 .contact-info .fa{
             border-color: {$h11_box_contact_info_color};
         }
+        .header.style11 .block-header-top12 .top-bar-social a:hover{
+            color: {$h11_box_category_bg};
+        }
+        .header.style11 .block-header-top12 .top-bar-social a:hover .fa{
+            border-color: {$h11_box_category_bg};
+        }
 CSS;
     }
 
@@ -992,6 +1005,7 @@ CSS;
 
         $h9_header_bg_rgb = vsprintf( 'rgba( %1$s, %2$s, %3$s,'.$h9_header_opacity.')', kt_hex2rgb( $h9_header_bg ) );
         $h9_topbar_bg_color_rgb = vsprintf( 'rgba( %1$s, %2$s, %3$s,'.$h9_topbar_opacity.')', kt_hex2rgb( $h9_topbar_bg_color ) );
+        $h9_header_color_rgb = vsprintf( 'rgba( %1$s, %2$s, %3$s,0.2)', kt_hex2rgb( $h9_header_color ) );
         $css .= <<<CSS
         body .header.style9{
             background-color: {$h9_header_bg_rgb};
@@ -1010,6 +1024,11 @@ CSS;
             color: {$h9_header_hover_color};
         }
         .header.style9 .navigation-main-menu > li > a:after{
+            background-color: {$h9_header_hover_color};
+        }
+        .header.style9 .form-search-9 .icon:hover, 
+        .block-mini-cart-9 .cart-link:hover,
+        .header.style9 .form-search-9 .btn-search{
             background-color: {$h9_header_hover_color};
         }
 CSS;

@@ -467,7 +467,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                     <?php if( $i%2 ):?>
                     <div class="item-blog">
                         <?php if( has_post_thumbnail()):?>
-                        <div class="thumb">
+                        <div class="thumb banner-boder-zoom2">
                             <a href="<?php the_permalink();?>">
                             <?php the_post_thumbnail( 'lookbook-thumb');?>
                             </a>
@@ -488,7 +488,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
                             <a class="readmore" href="<?php the_permalink();?>"><?php _e('Readmore','kutetheme');?></a>
                         </div>
                         <?php if( has_post_thumbnail()):?>
-                        <div class="thumb">
+                        <div class="thumb banner-boder-zoom2">
                             <a href="<?php the_permalink();?>">
                             <?php the_post_thumbnail( 'lookbook-thumb');?>
                             </a>
