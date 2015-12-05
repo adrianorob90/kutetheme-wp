@@ -168,7 +168,6 @@ img.alignright{
 .autoHeight{
   flex-flow: row wrap;
   display: flex;
-  clear: both;
 }
 
 .container{
@@ -2070,7 +2069,6 @@ span.notify-right{
   width: 100%;
   flex-flow: row wrap;
   display: flex;
-  clear: both;
 }
 .product-list li{
   list-style: none;

@@ -217,9 +217,7 @@ endif;
                                 $newargs['orderby']  = 'meta_value_num';
                             }
                             $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $newargs, $atts ) );
-                            echo "<pre>";
-                            print_r($products);
-                            echo "</pre>";
+                            
                             if( $key == 'most-review'){
                                 remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
                             }
