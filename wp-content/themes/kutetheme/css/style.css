@@ -165,6 +165,11 @@ img.alignright{
   content: "";
   display: table;
 }
+.autoHeight{
+  flex-flow: row wrap;
+  display: flex;
+  clear: both;
+}
 
 .container{
     padding-left: 0;
@@ -9493,7 +9498,6 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
 }
 .header.style11 .main-menu-style12{
   padding-right: 90px;
-  position: relative;
 }
 .header.style11 .navigation-main-menu>li{
   padding-bottom: 10px;
@@ -9877,7 +9881,7 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
 .header.style9 .form-search-9 .form-search-inner{
   position: absolute;
   top: 0;
-  right: 0;
+  right: 5px;
   z-index: 10;
   min-width: 460px;
   display: none;
@@ -10383,6 +10387,7 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
   }
   .header.style9 .form-search-9 .form-search-inner{
     min-width: 290px;
+    right: 0;
   }
 }
 

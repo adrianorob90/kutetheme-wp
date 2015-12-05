@@ -128,18 +128,18 @@
     }
 
     function autoHeight_product_grid(){
-        $('.autoHeight').each(function(){
-            var max = 0;
-            $(this).find('.autoHeight-item').each(function(){
-                var item_height = $(this).innerHeight();
-                if(item_height > max ){
-                    max = item_height;
+        // $('.autoHeight').each(function(){
+        //     var max = 0;
+        //     $(this).find('.autoHeight-item').each(function(){
+        //         var item_height = $(this).innerHeight();
+        //         if(item_height > max ){
+        //             max = item_height;
                     
-                }
-                $(this).addClass('item-set-height');
-            })
-            $(this).find('.item-set-height').css('height',max+"px");
-        })
+        //         }
+        //         $(this).addClass('item-set-height');
+        //     })
+        //     $(this).find('.item-set-height').css('height',max+"px");
+        // })
     }
     /* ---------------------------------------------
      MENU REPONSIIVE
