@@ -102,7 +102,7 @@
                     }
                 ?>
                 <?php if( $copyright ): ?>
-                    <p class="text-center"><?php echo get_html( $copyright ) ; ?></p>
+                    <p class="text-center"><?php echo kt_get_html( $copyright ) ; ?></p>
                 <?php endif; ?>
             </div><!-- /#footer-menu-box -->
         </div> 

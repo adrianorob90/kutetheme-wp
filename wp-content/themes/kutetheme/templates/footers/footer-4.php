@@ -63,7 +63,7 @@
                       dynamic_sidebar('footer-menu-bottom');
                   }
               ?>
-             <div class="footer-coppyright"><?php echo get_html($copyright);?></div>
+             <div class="footer-coppyright"><?php echo kt_get_html($copyright);?></div>
          </div>
      </div>
 </footer>
