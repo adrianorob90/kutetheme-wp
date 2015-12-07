@@ -44,7 +44,7 @@
              </div>
          </div>
          <div class="footer-bottom">
-             <div class="footer-coppyright"><?php echo esc_textarea($copyright);?></div>
+             <div class="footer-coppyright"><?php echo get_html($copyright);?></div>
              <?php if($kt_footer_payment_logos):?>
                 <div class="payment-logos">
                     <?php

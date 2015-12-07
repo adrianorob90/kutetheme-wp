@@ -102,7 +102,7 @@
                     }
                 ?>
                 <?php if( $copyright ): ?>
-                    <p class="text-center"><?php echo esc_textarea( $copyright ) ; ?></p>
+                    <p class="text-center"><?php echo get_html( $copyright ) ; ?></p>
                 <?php endif; ?>
             </div><!-- /#footer-menu-box -->
         </div> 
