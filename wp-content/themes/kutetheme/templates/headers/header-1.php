@@ -47,9 +47,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- CART ICON ON MMENU -->
             <div id="shopping-cart-box-ontop">
                 <i class="fa fa-shopping-cart"></i>
-                <div class="shopping-cart-box-ontop-content">
-                
-                </div>
+                <div class="shopping-cart-box-ontop-content"></div>
             </div>
             <?php endif;?>
         </div>

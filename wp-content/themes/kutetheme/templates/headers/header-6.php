@@ -46,9 +46,6 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- userinfo on top-->
             <div id="form-search-opntop">
             </div>
-            <!-- userinfo on top-->
-            <div id="user-info-opntop">
-            </div>
             <?php if( kt_is_wc() ):  ?>
             <!-- CART ICON ON MMENU -->
             <div id="shopping-cart-box-ontop">

@@ -162,7 +162,7 @@
 
 .option2 #form-search-opntop:hover form{
   border: 1px solid #dfdfdf;
-  background: #958457;
+  background-color: transparent;
 }
 .option2 #user-info-opntop a.current-open:before {
   color: #fff;

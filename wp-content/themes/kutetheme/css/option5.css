@@ -177,7 +177,7 @@
 
 .option5 #form-search-opntop:hover form{
   border: 1px solid #dfdfdf;
-  background: #f96d10;
+  background-color: transparent;
 }
 .option5 #user-info-opntop a.current-open:before {
   color: #fff;

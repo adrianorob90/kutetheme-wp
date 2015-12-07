@@ -691,7 +691,7 @@ img.alignright{
 }
 #form-search-opntop:hover form{
     border: 1px solid #dfdfdf;
-    background: #fff;
+    background-color: transparent;
 }
 #form-search-opntop:hover .input-serach input{
   width: 220px;
@@ -10228,6 +10228,12 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     border-top: 1px solid #eaeaea;
     width: 100%!important;
     max-width: 100%!important;
+  }
+  .navigation-main-menu>li:nth-last-child(1) .sub-menu .sub-menu, 
+  .navigation-main-menu>li:nth-last-child(2) .sub-menu .sub-menu, 
+  .navigation-main-menu>li:nth-last-child(3) .sub-menu .sub-menu{
+    right: inherit;
+    position: static;
   }
   .top-main-menu.style4 .vertical-wapper{
     width: 40px;

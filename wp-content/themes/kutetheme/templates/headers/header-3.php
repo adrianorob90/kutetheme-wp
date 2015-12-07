@@ -58,9 +58,6 @@ $kt_header_message = kt_option('kt_header_message','');
             <!-- userinfo on top-->
             <div id="form-search-opntop">
             </div>
-            <!-- userinfo on top-->
-            <div id="user-info-opntop">
-            </div>
             <!-- CART ICON ON MMENU -->
             <div id="shopping-cart-box-ontop">
                 <i class="fa fa-shopping-cart"></i>
