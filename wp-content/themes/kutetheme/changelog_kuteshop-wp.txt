@@ -1,13 +1,50 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.7
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+05/12/2015Fix auto height list product, Update template home page 9,11,12
+05/12/2015 Update, short code banner, hot category, header 9
+04/12/2015 Update header 9
+03/12/2015 Category Carousel
+03/12/2015 Shortcode banner title option 11
+03/12/2015 Reponsive, rtl option11
+03/12/2015 Update shortcode service style3, Blog style 5
+02/12/2015 Add header 11, footer 11
+02/12/2015 Banner title shortcode
+02/12/2015 Update shortcode service style 3
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.6
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+01/12/2015 Update auto height product item
+01/12/2015 Data Installer
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.5
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+01/12/2015 Fix Error Non-object 436 tab category
+30/11/2015 Update Ontop menu
+30/11/2015 Update rtl option 12
+30/11/2015 Update size product_sidebar shortcode
+30/11/2015 Update Color tab category 7
+28/11/2015 Update color option12
+28/11/2015 Thumbnail Tab Category
+28/11/2015 Update thumbnail tab 7 - tab category
+28/11/2015 Update css reponsive option12
+28/11/2015 Update tab category
+28/11/2015 Update css, Update short code Popular category
+27/11/2015 Update payment logos footer 4
+26/11/2015 Build option 12
+26/11/2015 Option 12 Category tab, lastest deal sidebar, testinominal
+25/11/2015 Update header and footer style 4
+25/11/2015 Add header 12
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.4
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-13/11/2015 Fix Main menu in firefox
-13/11/2015 Fix menu on mobile, Update theme option
-20/11/2015 Update header 8, Update shortcode banner text, look books, brands, colections
-23/11/2015 Update VC 4.8.1, Fix OWL setting on shortcode,Fix translate Vertical menu
 24/11/2015 Fix vertical menu on ipad, RTL option 8
 24/11/2015 Change short product name use css, Fix load rtl use WPML, add child theme
 24/11/2015 Update display button all category vertical menu
+23/11/2015 Update VC 4.8.1, Fix OWL setting on shortcode,Fix translate Vertical menu
+20/11/2015 Update header 8, Update shortcode banner text, look books, brands, colections
+13/11/2015 Fix Main menu in firefox
+13/11/2015 Fix menu on mobile, Update theme option
 
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.3
@@ -19,13 +56,11 @@ Ver 1.4.3
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.2
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
-#02/11/2015 ## Fix button added cart and border 0ption7
-#3/11/2015 ## Fix responsive tab category
+#5/11/2015 # Update Theme options
 #4/11/2015 ## Fix button add cart list view products
 #4/11/2015 # Update topbar menu and Main menu. Support 3 levels
-#5/11/2015 # Update Theme options
-
-
+#3/11/2015 ## Fix responsive tab category
+#02/11/2015 ## Fix button added cart and border 0ption7
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.1
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
