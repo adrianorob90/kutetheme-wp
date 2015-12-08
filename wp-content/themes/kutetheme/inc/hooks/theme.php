@@ -433,7 +433,10 @@ function kt_themne_color(){
     .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .cat-title a,
     .footer4 .social-link a:hover .fa,
     .header.style14 .navigation-main-menu>li:hover>a, 
-    .header.style14 .navigation-main-menu>li.active>a{
+    .header.style14 .navigation-main-menu>li.active>a,
+    .footer5 .social-link a:hover .fa,
+    .footer5 .address-list .tit-name,
+    .footer5 a:hover {
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -526,7 +529,9 @@ function kt_themne_color(){
     .main-menu-style13 .navigation-main-menu>li>a:before,
     body .mobile-navigation,
     .header.style14 .navigation-main-menu>li>a:before,
-    .block-minicart14 .cart-link .count{
+    .block-minicart14 .cart-link .count,
+    .footer5 .widget_kt_mailchimp .mailchimp-submit,
+    .footer5 .tagcloud a:hover{
         background-color: {$main_color};
     }
 
@@ -566,7 +571,9 @@ function kt_themne_color(){
     body .vertical-menu-list .mega-group-header span,
     body .footer4.style2 .social-link .fa:hover,
     .header.style13 .header-search-inner form,
-    .footer4 .social-link a:hover .fa{
+    .footer4 .social-link a:hover .fa,
+    .footer5 .social-link a:hover .fa,
+    .footer5 .tagcloud a:hover{
         border-color: {$main_color};
 
     }

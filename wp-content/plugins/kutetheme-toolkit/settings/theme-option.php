@@ -371,6 +371,7 @@ $config = array(
                 			'3' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv3.jpg',
                             '4' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv4.jpg',
                             '5' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv5.jpg',
+                            '6' => KUTETHEME_PLUGIN_URL .'/assets/imgs/fv6.jpg',
                 		)
                 	),
                     array(

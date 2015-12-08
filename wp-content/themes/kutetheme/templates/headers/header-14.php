@@ -5,7 +5,7 @@
 			  <div class="col-sm-12 text-center logo2">
 			  		<?php echo kt_get_logo(); ?>
 			  </div>
-			  <div class="col-lg-4 col-md-7 main-menu-col">
+			  <div class="col-lg-4 col-md-7 col-sm-6 col-xs-12 main-menu-col">
 			  		<nav class="main-menu-wapper">
 	                    <?php kt_setting_mega_menu(); ?>
 	                    <a href="#" class="mobile-navigation"><?php _e('Main menu','kutetheme');?><i class="fa fa-bars"></i></a>
@@ -14,7 +14,7 @@
 			  <div class="col-md-3 text-center logo1">
 			  		<?php echo kt_get_logo(); ?>
 			  </div>
-			  <div class="col-lg-4 col-md-5">
+			  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
 	            	<div class="top-header-inner">
 	            		<div class="form-search">
 	            			<span class="icon fa fa-search"></span>

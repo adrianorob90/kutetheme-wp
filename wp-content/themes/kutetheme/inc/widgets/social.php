@@ -75,7 +75,9 @@ class Widget_KT_Social extends WP_Widget {
             $social_icons .= '<a href="https://vk.com/'.esc_attr( $vk ).'" title ="'.__( 'Vk', 'kutetheme' ).'" ><i class="fa fa-vk"></i></a>';
         }
         ?>
+        <?php if($wtitle): ?>
         <div class="introduce-title"><?php echo esc_attr($wtitle) ?></div>
+        <?php endif;?>
         <div class="social-link">
             <?php
                 echo kt_get_html( $social_icons );

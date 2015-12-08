@@ -888,9 +888,9 @@
         var width = $(window).width();
         if(width > 991){
             if(h > 100){
-                $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13').addClass('ontop');
+                $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13,.header.style14').addClass('ontop');
             }else{
-                $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13').removeClass('ontop');
+                $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13,.header.style14').removeClass('ontop');
             }
         }
     });
