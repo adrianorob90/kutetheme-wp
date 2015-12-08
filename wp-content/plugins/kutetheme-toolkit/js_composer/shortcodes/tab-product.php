@@ -48,8 +48,13 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         if( function_exists( 'kt_is_phone' ) && kt_is_phone() ){
             $is_phone = true;
         }
+        if( $style == 3 ):
+            $base_class = 'tab-product-13 option-13 style1 ';
+        else:
+            $base_class = 'popular-tabs ';
+        endif;
         $elementClass = array(
-            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'popular-tabs ', $this->settings['base'], $atts ),
+            'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, $base_class, $this->settings['base'], $atts ),
             'extra'            => $this->getExtraClass( $el_class ),
             'css_animation'    => $this->getCSSAnimation( $css_animation ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
@@ -88,7 +93,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
         $uniqeID = uniqid();
         ob_start();
         ?>
-        <div class="<?php echo esc_attr( $elementClass ); ?> container-tab style<?php echo esc_attr( $style );?>">
+        <div class="<?php echo esc_attr( $elementClass ); ?> top-nav container-tab style<?php echo esc_attr( $style );?>">
             <ul class="nav-tab">
                 <?php $i = 0; ?>
                 <?php foreach( $tabs as $k => $v ): ?>
@@ -99,7 +104,44 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                 <?php endforeach; ?>
             </ul>
             <div class="tab-container">
-                <?php $i = 0; ?>
+                <?php 
+                $data_carousel = array(
+                    "autoplay"           => $autoplay,
+                    "navigation"         => $navigation,
+                    "margin"             => $margin,
+                    "slidespeed"         => $slidespeed,
+                    "theme"              => 'style-navigation-bottom',
+                    "autoheight"         => 'false',
+                    'nav'                => $navigation,
+                    'dots'               => 'false',
+                    'loop'               => $loop,
+                    'autoplayTimeout'    => 1000,
+                    'autoplayHoverPause' => 'true'
+                );
+                if( $use_responsive){
+                    $arr = array(
+                        '0' => array(
+                            "items" => $items_mobile
+                        ), 
+                        '768' => array(
+                            "items" => $items_tablet
+                        ), 
+                        '992' => array(
+                            "items" => $items_destop
+                        )
+                    );
+                    $data_responsive = json_encode($arr);
+                    $data_carousel["responsive"] = $data_responsive;
+                }else{
+                     if( $style == 3 ):
+                        $data_carousel['items'] =  4;
+                    else:
+                        $data_carousel['items'] =  3;
+                    endif;
+                }
+                $carousel = _data_carousel( $data_carousel );
+                $i = 0; 
+                ?>
                 <?php foreach( $tabs as $k => $v ): ?>
                     <?php 
                     $newargs = $args;
@@ -118,47 +160,14 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                         $newargs['orderby']  = 'date';
                         $newargs['order'] 	 = 'DESC';
                     }
-                     
+                    
                     $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $newargs, $atts ) );
                     
-                    if ( $products->have_posts() ) :
-                    
-                    $data_carousel = array(
-                        "autoplay"           => $autoplay,
-                        "navigation"         => $navigation,
-                        "margin"             => $margin,
-                        "slidespeed"         => $slidespeed,
-                        "theme"              => 'style-navigation-bottom',
-                        "autoheight"         => 'false',
-                        'nav'                => 'true',
-                        'dots'               => 'false',
-                        'loop'               => $loop,
-                        'autoplayTimeout'    => 1000,
-                        'autoplayHoverPause' => 'true'
-                    );
-                    if( $use_responsive){
-                        $arr = array(
-                            '0' => array(
-                                "items" => $items_mobile
-                            ), 
-                            '768' => array(
-                                "items" => $items_tablet
-                            ), 
-                            '992' => array(
-                                "items" => $items_destop
-                            )
-                        );
-                        $data_responsive = json_encode($arr);
-                        $data_carousel["responsive"] = $data_responsive;
-                    }else{
-                        $data_carousel['items'] =  3;
-                    }
-                    //add_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
-                    ?>
+                    if ( $products->have_posts() ) : ?>
                     <!-- Style 1 -->
                     <?php if( $style == 1 ):?>
                     <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
-                        <ul class="product-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
+                        <ul class="product-list owl-carousel" <?php echo apply_filters( 'kt_shortcode_tab_product_carousel', $carousel ); ?>>
                             <?php while( $products->have_posts() ): $products->the_post(); ?>
                                 <?php wc_get_template_part( 'content', 'product-tab' ); ?>
                             <?php endwhile; ?>
@@ -167,24 +176,20 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     <!-- ./Style 1 -->
                     <?php endif;?>
                     <!-- Style 2 -->
-                    <?php if( $style == 2 ):?>
+                    <?php if( $style == 2 ): ?>
                         <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
-                        <?php if( $is_phone ):?>
-                        <!-- <ul class="products-style8 autoHeight owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>> -->
-                        <?php else:?>
-                        <!-- <ul class="products-style8 autoHeight columns-<?php echo esc_attr( $columns );?>"> -->
-                        <?php endif;?>
                         <ul class="products-style8 columns-<?php echo esc_attr( $columns );?>">
-                            <?php while( $products->have_posts() ): 
-                            $products->the_post(); 
-                            ?>
+                            <?php while( $products->have_posts() ): $products->the_post();  ?>
                                 <li class="product kt-template-loop">
                                     <div class="product-container ">
                                         <div class="product-thumb">
-                                                <?php
+                                            <?php
                                                 global $product;
+                                                
                                                 $attachment_ids = $product->get_gallery_attachment_ids();
+                                                
                                                 $secondary_image = '';
+                                                
                                                 if( $attachment_ids ){
                                                     $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
                                                 }
@@ -208,7 +213,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                                                     <?php
                                                 }
 
-                                                ?>
+                                            ?>
                                             <?php kt_get_tool_quickview();?>
                                             <div class="product-label"><?php do_action( 'kt_loop_product_label' ); ?></div>
                                         </div>
@@ -232,10 +237,20 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     </div>
                     <?php endif;?>
                     <!-- ./Style 2 -->
-                    <?php 
-                    //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size' ) );
-                    endif; 
-                    ?>
+                    <!-- Style 3 -->
+                    <?php if( $style == 3 ):?>
+                        <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
+                            <ul class="tab-products owl-carousel" <?php echo apply_filters( 'kt_shortcode_tab_product_carousel', $carousel ); ?>>
+                                <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                    <li class="product-style3">
+                                        <?php wc_get_template_part( 'content', 'product-style3' ); ?>
+                                    </li>
+                                <?php endwhile; ?>
+                            </ul>
+                        </div>
+                    <?php endif;?>
+                    <!-- ./Style 3 -->
+                    <?php endif; ?>
                     <?php 
                         wp_reset_query();
                         wp_reset_postdata();
@@ -278,6 +293,7 @@ vc_map( array(
             'value'       => array(
                 __( 'Style 1', 'kutetheme' )      => '1',
                 __( 'Style 2', 'kutetheme' )      => '2',
+                __( 'Style 3', 'kutetheme' )      => '3',
             ),
         ),
         array(
