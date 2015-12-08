@@ -143,7 +143,23 @@ if ( ! defined( 'ABSPATH' ) ) {
             <span class="count"><?php echo esc_html( $cart_count );?></span>
         </a>
         <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+    <?php elseif( $kt_used_header == 13): ?>
+        <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+            <span class="icon">
+                <span class="count"><?php echo esc_html( $cart_count );?></span>
+            </span>
+            <?php _e('Cart:','kutetheme');?>
+            <?php echo kt_get_html( $cart_subtotal );?>
+        </a>
+        <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
+    <?php elseif( $kt_used_header == 14): ?>
+        <a class="cart-link" href="<?php echo esc_url( $check_out_url ); ?>">
+            <span class="icon">
+                <span class="count"><?php echo esc_html( $cart_count );?></span>
+            </span>
+            <?php _e('Cart','kutetheme');?>
+        </a>
+        <?php do_action( 'kt_mini_cart_content', esc_url( $check_out_url ) ); ?>
     <?php endif;?>
-
     <?php do_action( 'woocommerce_after_mini_cart' ); ?>
 </div>

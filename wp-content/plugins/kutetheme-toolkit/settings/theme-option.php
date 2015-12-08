@@ -154,6 +154,8 @@ $config = array(
                             '9' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v9.jpg',
                             '11' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v11.jpg',
                             '12' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v12.jpg',
+                            '13' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v13.jpg',
+                            '14' => KUTETHEME_PLUGIN_URL .'/assets/imgs/v14.jpg',
                 		),
                 	)
                 )
@@ -1171,6 +1173,12 @@ $config = array(
                 ),
                 'fields'    => array(
                     array(
+                        'name'    => 'Header Bg Color',
+                        'id'      => 'h11_header_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#f5f5f5',
+                    ),
+                    array(
                         'name'    => 'Box Category Bg Color',
                         'id'      => 'h11_box_category_bg',
                         'type'    => 'colorpicker',
@@ -1265,6 +1273,33 @@ $config = array(
                         'id'      => 'h12_box_header_bg_color',
                         'type'    => 'colorpicker',
                         'default' => '#50597b',
+                    ),
+                )
+            ),
+            //Color Header 13
+            $prefix . 'header_13_color' => array(
+                'setting' => array( 
+                    'id'      => $prefix . 'header_13_color',
+                    'hookup'  => false,
+                    'title'   => 'Header 13',
+                    'show_on' => array(
+                        // These are important, don't remove
+                        'key'   => 'options-page',
+                        'value' => array( $key )
+                    ) 
+                ),
+                'fields'    => array(
+                    array(
+                        'name'    => 'Box Category Bg Color',
+                        'id'      => 'h13_box_category_bg',
+                        'type'    => 'colorpicker',
+                        'default' => '#000',
+                    ),
+                    array(
+                        'name'    => 'Box Category Text Color',
+                        'id'      => 'h13_box_category_text_color',
+                        'type'    => 'colorpicker',
+                        'default' => '#fff',
                     ),
                 )
             ),

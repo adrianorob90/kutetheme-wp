@@ -780,7 +780,7 @@ function kt_topbar_menu(){
         'walker'          => ''
     );
     $kt_used_header = kt_option('kt_used_header',1);
-    if( $kt_used_header == 11){
+    if( $kt_used_header == 11 || $kt_used_header == 14){
         wp_nav_menu( $menuright );
     }else{
          wp_nav_menu( $menuleft );

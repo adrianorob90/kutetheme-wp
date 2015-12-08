@@ -430,7 +430,10 @@ function kt_themne_color(){
     body .lasttest-blog11 .item-blog .readmore,
     body .footer4.style2 .social-link .fa:hover,
     .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover,
-    .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .cat-title a{
+    .option11.hot-cat-section11 .hot-cat-9 .cat-item:hover .cat-title a,
+    .footer4 .social-link a:hover .fa,
+    .header.style14 .navigation-main-menu>li:hover>a, 
+    .header.style14 .navigation-main-menu>li.active>a{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -518,7 +521,12 @@ function kt_themne_color(){
     .option12.section-blog-12 .blog12 .date,
     .header.style11 .block-mini-cart .cart-link .icon .count,
     html body .footer4.style2 .mailchimp-form .mailchimp-submit:hover,
-    body .block-mini-cart-9 .cart-link .count{
+    body .block-mini-cart-9 .cart-link .count,
+    .header.style13 .header-search-inner form .btn-search,
+    .main-menu-style13 .navigation-main-menu>li>a:before,
+    body .mobile-navigation,
+    .header.style14 .navigation-main-menu>li>a:before,
+    .block-minicart14 .cart-link .count{
         background-color: {$main_color};
     }
 
@@ -556,7 +564,9 @@ function kt_themne_color(){
     .option12.block-hotdeal-week .owl-controls .owl-prev:hover, 
     .option12.block-hotdeal-week .owl-controls .owl-next:hover,
     body .vertical-menu-list .mega-group-header span,
-    body .footer4.style2 .social-link .fa:hover{
+    body .footer4.style2 .social-link .fa:hover,
+    .header.style13 .header-search-inner form,
+    .footer4 .social-link a:hover .fa{
         border-color: {$main_color};
 
     }
@@ -964,6 +974,7 @@ CSS;
         $h11_box_header_bg_color = kt_option('h11_box_header_bg_color','#333');
         $h11_box_contact_info_bg_color  = kt_option('h11_box_contact_info_bg_color','#666666');
         $h11_box_contact_info_color = kt_option('h11_box_contact_info_color','#fff');
+        $h11_header_bg = kt_option('h11_header_bg','#f5f5f5');
 
         $css .= <<<CSS
         .header.style11 .block-header-top12,
@@ -971,6 +982,9 @@ CSS;
         .header.style11 .navigation-main-menu>li.active,
         .header.style11 .block-mini-cart{
             background-color: {$h11_box_header_bg_color};
+        }
+        .header.style11{
+            background-color: {$h11_header_bg};
         }
         .header.style11 .box-vertical-megamenus .title,
         .header.style11 .block-search .btn-search{
@@ -1033,6 +1047,19 @@ CSS;
         .block-mini-cart-9 .cart-link:hover,
         .header.style9 .form-search-9 .btn-search{
             background-color: {$h9_header_hover_color};
+        }
+CSS;
+    }
+    if( $kt_used_header == 13){
+        $h13_box_category_bg = kt_option('h13_box_category_bg','#000');
+        $h13_box_category_text_color = kt_option('h13_box_category_text_color','#fff');
+        $css .= <<<CSS
+        .block-header-top13 .box-vertical-megamenus .title{
+          background-color: {$h13_box_category_bg};
+          color:{$h13_box_category_text_color};
+        }
+        body .block-header-top13 .box-vertical-megamenus .btn-open-mobile{
+            border-color: {$h13_box_category_text_color};
         }
 CSS;
     }
