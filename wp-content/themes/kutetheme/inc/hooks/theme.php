@@ -531,7 +531,15 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li>a:before,
     .block-minicart14 .cart-link .count,
     .footer5 .widget_kt_mailchimp .mailchimp-submit,
-    .footer5 .tagcloud a:hover{
+    .footer5 .tagcloud a:hover,
+    .option-13.tab-product-13 .nav-tab li a:after,
+    .option-13 .product-style3 .yith-wcwl-add-button:hover, 
+    .option-13 .product-style3 .compare-button:hover a, 
+    .option-13 .product-style3 .search:hover,
+    .option-13 .owl-controls .owl-prev:hover, 
+    .option-13 .owl-controls .owl-next:hover,
+    .option-13.block-top-brands .head .title,
+    .option-13 .product-style3 .add-to-cart:hover{
         background-color: {$main_color};
     }
 
@@ -573,7 +581,11 @@ function kt_themne_color(){
     .header.style13 .header-search-inner form,
     .footer4 .social-link a:hover .fa,
     .footer5 .social-link a:hover .fa,
-    .footer5 .tagcloud a:hover{
+    .footer5 .tagcloud a:hover,
+    .option-13 .owl-controls .owl-prev:hover, 
+    .option-13 .owl-controls .owl-next:hover,
+    .option-13.block-top-brands .list-brand .item:hover, 
+    .option-13.block-top-brands .list-brand .item.active{
         border-color: {$main_color};
 
     }

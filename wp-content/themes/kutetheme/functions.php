@@ -349,7 +349,10 @@ if( ! function_exists( 'kt_scripts' ) ){
         
         wp_enqueue_style( 'kt-fancyBox', get_template_directory_uri() . '/libs/fancyBox/jquery.fancybox.css' );
         
+        wp_enqueue_style( 'kt-jquery.bxslider', get_template_directory_uri() . '/libs/jquery.bxslider/jquery.bxslider.css' );
+        
         wp_enqueue_style( 'kt-jquery-ui', get_template_directory_uri() . '/libs/jquery-ui/jquery-ui.css' );
+        
         wp_enqueue_style( 'kt-style', get_template_directory_uri() . '/css/style.css', 
             array( 
                 'kt-bootstrap', 
@@ -401,15 +404,16 @@ if( ! function_exists( 'kt_scripts' ) ){
         wp_enqueue_script( 'kt-actual', get_template_directory_uri() . '/js/jquery.actual.min.js', array( 'jquery' ), '1.0.16',true );
         
         wp_enqueue_script( 'kt-Modernizr-script', get_template_directory_uri() . '/js/Modernizr.js', array( 'jquery' ), '1.0.1', true );
+        
         wp_enqueue_script( 'kt-isotope-script', get_template_directory_uri() . '/js/isotope.pkgd.js', array( 'jquery' ), '1.0', true );
+        
         wp_enqueue_script( 'kt-isotope-packery-mode-script', get_template_directory_uri() . '/js/packery-mode.pkgd.min.js', array( 'jquery' ), '1.0', true );
-
-    	wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.1', true );
-        wp_enqueue_script( 'kt-lookbook-script', get_template_directory_uri() . '/js/lookbook.js', array( 'jquery' ), '1.0.1', true );
-    
+	
     	wp_enqueue_script( 'kt-count-down-plugin', get_template_directory_uri() . '/libs/countdown/jquery.plugin.js', array( 'jquery' ), '1.0.1', true );
     	
         wp_enqueue_script( 'kt-count-down-jq', get_template_directory_uri() . '/libs/countdown/jquery.countdown.js', array( 'jquery' ), '2.0.2', true );
+        
+        wp_enqueue_script( 'kt-bx-slider', get_template_directory_uri() . '/libs/jquery.bxslider/jquery.bxslider.min.js', array( 'jquery' ), '4.1.2', true );
         
         if(is_rtl()){
             wp_enqueue_style( 'bootstrap-rtl-css', get_template_directory_uri() . '/libs/bootstrap/css/bootstrap-rtl.css', array());
@@ -424,6 +428,10 @@ if( ! function_exists( 'kt_scripts' ) ){
             'security' => wp_create_nonce( 'screenReaderText' ),
             'current_date' => date_i18n('Y-m-d H:i:s')
     	) );
+        
+        wp_enqueue_script( 'kt-script', get_template_directory_uri() . '/js/functions.js', array( 'jquery' ), '1.0.1', true );
+        wp_enqueue_script( 'kt-lookbook-script', get_template_directory_uri() . '/js/lookbook.js', array( 'jquery' ), '1.0.1', true );
+    
     
     }
 }

@@ -819,7 +819,14 @@
             if (!container.is(e.target) && container.has(e.target).length === 0 && !icon.is(e.target) && icon.has(e.target).length === 0){
                 container.find('.form-search-inner').fadeOut(600);
             }
-        })
+        });
+        $('.list-brand').bxSlider({
+          mode: 'vertical',
+            minSlides: 4,
+            maxSlides: 4,
+            pager:false,
+            useCSS:false
+        });
     });
     /* ---------------------------------------------
      Scripts resize
