@@ -16,6 +16,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'product_sidebar', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'title'          => __( 'NEW PRODUCTS', 'kutetheme' ),
+            'style'          => 'style-1',
             'target'         => 'best-seller',
             'orderby'        => 'date',
             'order'          => 'DESC',
@@ -149,46 +150,49 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
         $uniqeID = uniqid();
         ob_start();
         if ( $products->have_posts() ) :
-        ?>
-        <div class="block-new-product12 <?php echo esc_attr( $elementClass ); ?>">
-            <?php if( $title ): ?>
-                <div class="title"><?php echo esc_html( $title ); ?></div>
-            <?php endif; ?>
-            <div class="inner owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
-                <?php $i = 1; ?>
-                <?php  while ( $products->have_posts() ) : $products->the_post(); ?>
-                <?php if( $i== 1 ): ?>
-                <ul class="list-product">
-                <?php endif;?>
-                    <li class="product">
-                        <div class="image">
-                            <a href="<?php the_permalink(); ?>">
-                                <?php echo kt_get_product_thumbnail( 'shop_thumbnail' ); ?>
-                            </a>
-                        </div>
-                        <div class="info">
-                            <h3 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                            <?php
-                    			/**
-                    			 * woocommerce_after_shop_loop_item_title hook
-                                 * 
-                    			 * @hooked woocommerce_template_loop_price - 5
-                    			 * @hooked woocommerce_template_loop_rating - 10
-                    			 */
-                    			do_action( 'kt_after_shop_loop_item_title' );
-                    		?>
-                        </div>
-                    </li>
-                <?php if( $i == $per_page ): $i = 0; ?>
-                </ul><!--End Ul-->
-                <?php endif;?>
-                <?php $i++; endwhile; ?>
-                <?php if( $i > 1 ): ?>
-                </ul><!--./ End ul-->
-                <?php endif;?>
+            if( $style == 'style-1' ):
+            ?>
+            <div class="block-new-product12 <?php echo esc_attr( $elementClass ); ?>">
+                <?php if( $title ): ?>
+                    <div class="title"><?php echo esc_html( $title ); ?></div>
+                <?php endif; ?>
+                <div class="inner owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                    <?php $i = 1; ?>
+                    <?php  while ( $products->have_posts() ) : $products->the_post(); ?>
+                    <?php if( $i== 1 ): ?>
+                    <ul class="list-product">
+                    <?php endif;?>
+                        <li class="product">
+                            <div class="image">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php echo kt_get_product_thumbnail( 'shop_thumbnail' ); ?>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <h3 class="product-name"><a title="<?php echo esc_attr( get_the_title() );?>" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                <?php
+                        			/**
+                        			 * woocommerce_after_shop_loop_item_title hook
+                                     * 
+                        			 * @hooked woocommerce_template_loop_price - 5
+                        			 * @hooked woocommerce_template_loop_rating - 10
+                        			 */
+                        			do_action( 'kt_after_shop_loop_item_title' );
+                        		?>
+                            </div>
+                        </li>
+                    <?php if( $i == $per_page ): $i = 0; ?>
+                    </ul><!--End Ul-->
+                    <?php endif;?>
+                    <?php $i++; endwhile; ?>
+                    <?php if( $i > 1 ): ?>
+                    </ul><!--./ End ul-->
+                    <?php endif;?>
+                </div>
             </div>
-        </div>
-        <?php
+            <?php else: ?>
+                
+            <?php endif;
         endif;
         add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10 );
         wp_reset_query();
@@ -211,6 +215,17 @@ vc_map( array(
             "param_name"  => "title",
             "admin_label" => true,
         ),
+        array(
+            "type"       => "dropdown",
+            "heading"    => __("Style", 'kutetheme'),
+            "param_name" => "style",
+            "value"      => array(
+                __( 'Style 1', 'kutetheme' )  => 'style-1',
+                __( 'Style 2', 'kutetheme' )  => 'style-2'
+        	),
+            'std'         => 'style-1',
+        ),
+        
         array(
             "type"        => "dropdown",
             "heading"     => __("Target", 'kutetheme'),
