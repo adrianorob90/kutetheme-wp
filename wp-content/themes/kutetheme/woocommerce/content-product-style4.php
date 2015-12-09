@@ -45,12 +45,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	?>
 	<div class="group-button-control">
-		<?php kt_get_tool_quickview();?>
-		<?php kt_get_tool_compare();?>
 	    <?php kt_get_tool_wishlish ();?>
+	    <?php kt_get_tool_compare();?>
+	    <?php kt_get_tool_quickview();?>
 	</div>
-
 	<div class="product-label"><?php do_action( 'kt_loop_product_label' ); ?></div>
+	<?php
+	woocommerce_template_loop_add_to_cart();
+	?>
 </div>
 <div class="product-info">
 	<div class="product-name">

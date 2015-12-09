@@ -614,6 +614,10 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                             if( $term_products->have_posts() ):?>
                             <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php if( $i == 1 ): ?> active <?php endif; ?>">
                                 <div class="row">
+                                    <?php
+                                    remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                    ?>
                                     <?php while( $term_products->have_posts() ): $term_products->the_post(); ?>
                                         <div class="col-sm-4 col-md-3">
                                             <div class="product-style4">

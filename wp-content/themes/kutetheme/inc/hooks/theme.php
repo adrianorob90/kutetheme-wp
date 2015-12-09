@@ -532,7 +532,12 @@ function kt_themne_color(){
     .block-minicart14 .cart-link .count,
     .footer5 .widget_kt_mailchimp .mailchimp-submit,
     .footer5 .tagcloud a:hover,
-    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active{
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-add-button:hover, 
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse:hover, 
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse:hover,
+    .product-style4 .compare-button:hover,
+    .product-style4 .yith-wcqv-button:hover{
         background-color: {$main_color};
     }
 
@@ -577,7 +582,12 @@ function kt_themne_color(){
     .footer5 .tagcloud a:hover,
     body .block-testimonials3 .owl-controls .owl-dots .owl-dot,
     .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
-    .product-style4:hover{
+    .product-style4:hover,
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-add-button:hover, 
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse:hover, 
+    .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse:hover,
+    .product-style4 .compare-button:hover,
+    .product-style4 .yith-wcqv-button:hover{
         border-color: {$main_color};
 
     }
@@ -586,7 +596,8 @@ function kt_themne_color(){
     body .lasttest-blog11 .item-blog .cat{
         background-color: {$rgba_main_color}
     }
-    body .option11.featured-banner .box-small-banner .banner:before{
+    body .option11.featured-banner .box-small-banner .banner:before,
+    .product-style4 .add_to_cart_button, .product-style4 .added_to_cart{
         background-color: {$rgba_main_color_08};
     }
     body .product-list li .content_price,
