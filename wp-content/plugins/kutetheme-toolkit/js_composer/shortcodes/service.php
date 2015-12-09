@@ -72,6 +72,7 @@ vc_map( array(
                 'Style 1'   => '1',
                 'Style 2'   => '2',
                 'Style 3'   => '3',
+                'Style 4'   => '4',
             ),
             "std"         => 1,
             "description" => __("The description", 'kutetheme')
@@ -218,6 +219,7 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
             </ul>
         </div>            
         <?php endif;?>
+
         <?php if( $style == 3):?>
         <?php if($service_query->have_posts() ): ?>
         <div class="service3 <?php echo esc_attr( $elementClass ); ?>"> 
@@ -233,6 +235,39 @@ class WPBakeryShortCode_Service extends WPBakeryShortCode {
                         <?php if(has_post_thumbnail()):?>
                             <div class="icon">
                                 <?php the_post_thumbnail(array(50, 50));?>
+                            </div>
+                        <?php endif;?>
+                        <div class="service-info">
+                            <h3 class="service-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+                            <?php if( $_kt_page_service_desc): ?>
+                            <div class="service-desc"><?php echo esc_html( $_kt_page_service_desc );?></div>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                </div>
+                <?php
+                }
+                ?>
+            </div>
+         </div>
+        <?php endif;?>
+        <?php endif;?>
+
+        <?php if( $style == 4):?>
+        <?php if($service_query->have_posts() ): ?>
+        <div class="service4 <?php echo esc_attr( $elementClass ); ?>"> 
+            <div class="row">
+                <?php
+                while ($service_query->have_posts()) {
+                    $service_query->the_post();
+                    $_kt_page_service_desc = get_post_meta(get_the_ID(),'_kt_page_service_desc',true);
+                    $bootstrapColumn = round( 12 / $items );
+                ?>
+                <div class="col-sm-12 col-md-<?php echo esc_attr( $bootstrapColumn );?>">
+                    <div class="service-item">
+                        <?php if(has_post_thumbnail()):?>
+                            <div class="icon">
+                                <?php the_post_thumbnail(array(70, 70));?>
                             </div>
                         <?php endif;?>
                         <div class="service-info">

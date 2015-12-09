@@ -5913,7 +5913,8 @@ span.notify-right{
 .vertical-menu-list>li{
   list-style: none;
 }
-.vertical-menu-list>li>a>img{
+.vertical-menu-list>li>a>img,
+.vertical-menu-list .sub-menu>li>a>img{
   vertical-align: middle;
   margin-right: 15px;
 }
@@ -10477,6 +10478,7 @@ body .block-header-top13 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
 }
 .footer5 .address-list .no-margin{
   display: table;
+  margin: 0;
 }
 .footer5 .address-list .tit-name {
     float: left;
@@ -10568,6 +10570,9 @@ footer.footer5 a{
 .footer5 .footer-menu-list li{
   border-color: #999;
 }
+.footer5 .footer-menu-list li a{
+  font-size: 12px;
+}
 
 .footer5 .widget_recent_entries li {
     line-height: 24px;
@@ -10589,6 +10594,28 @@ footer.footer5 a{
   display: block;
   font-style: italic;
   color: #ccc;
+}
+.service4 .icon {
+    width: 70px;
+    float: left;
+}
+.service4 .service-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.service4 .service-info {
+    margin-left: 90px;
+    font-size: 12px;
+    font-weight: 300;
+    color: #999;
+}
+.service4 .service-item{
+  margin-bottom: 30px;
+  display: inline-block;
 }
 /* REPONSIVE */
 @media(max-width: 1200px){
