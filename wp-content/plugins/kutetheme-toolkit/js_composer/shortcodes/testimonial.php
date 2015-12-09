@@ -63,6 +63,22 @@ vc_map( array(
             "dependency"  => array("element" => "type","value" => array('style-1')),
         ),
         array(
+            "type"        => "colorpicker",
+            "heading"     => __( "Main color", 'kutetheme' ),
+            "param_name"  => "main_color",
+            "admin_label" => true,
+            "default"     =>'#f2e9e0',
+            "dependency"  => array("element" => "type","value" => array('style-3')),
+        ),
+        array(
+            "type"        => "colorpicker",
+            "heading"     => __( "Text color", 'kutetheme' ),
+            "param_name"  => "box_text_color",
+            "admin_label" => true,
+            "default"     =>'#333333',
+            "dependency"  => array("element" => "type","value" => array('style-3')),
+        ),
+        array(
             "type"        => "textfield",
             "heading"     => __( "Extra class name", "js_composer" ),
             "param_name"  => "el_class",
@@ -90,6 +106,8 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
             'columns'         => 4,
             'overlay_opacity' =>'0.7',
             'overlay_color'   =>'#000000',
+            'main_color'      =>'#f2e9e0',
+            'box_text_color'      =>'#333333',
             'el_class'        => '',
             'css'             => '',
             
@@ -160,13 +178,19 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
         </div>
         <?php elseif( $type == 'style-3'): ?>
         <?php if( $testimonial_query->have_posts()): ?>
-        <div class="block-testimonials3 <?php echo esc_attr( $elementClass );?>">
-            <ul class="list owl-carousel" data-nav="false" data-dots="true" data-items="1">
+        <?php
+        $loop = "false";
+        if( $testimonial_query->post_count > 1){
+            $loop ="true";
+        }
+        ?>
+        <div style="background-color:<?php echo esc_attr( $main_color );?>; color:<?php echo esc_attr( $box_text_color);?>;" data-color="<?php echo esc_attr( $main_color );?>" class="testtimonial-color block-testimonials3 <?php echo esc_attr( $elementClass );?>">
+            <ul class="list owl-carousel" data-nav="false" data-dots="true" data-items="1" data-autoplay="true" data-loop="<?php echo $loop;?>">
                 <?php while ( $testimonial_query->have_posts()) : $testimonial_query->the_post(); ?>
                         <li>
                         <div class="blank"></div>
                         <?php if( has_post_thumbnail( )):?>
-                            <div class="image">
+                            <div class="image" style="border-color:<?php echo esc_attr( $main_color );?>">
                                     <?php the_post_thumbnail('testimonial-thumb');?>
                             </div>
                         <?php endif;?>

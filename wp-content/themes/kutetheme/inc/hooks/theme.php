@@ -541,7 +541,8 @@ function kt_themne_color(){
     .option-13 .owl-controls .owl-next:hover,
     .option-13.block-top-brands .head .title,
     .option-13 .product-style3 .add-to-cart:hover,
-    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover{
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover,
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active{
         background-color: {$main_color};
     }
 
@@ -588,7 +589,10 @@ function kt_themne_color(){
     .option-13 .owl-controls .owl-next:hover,
     .option-13.block-top-brands .list-brand .item:hover, 
     .option-13.block-top-brands .list-brand .item.active,
-    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover{
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover,
+    body .block-testimonials3 .owl-controls .owl-dots .owl-dot,
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
+    .product-style4:hover{
         border-color: {$main_color};
 
     }
