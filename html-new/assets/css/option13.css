@@ -23,9 +23,11 @@
 }
 .option13 .owl-controls .owl-prev .fa:before{
 	content: "\f0d9";
+	padding-right: 2px;
 } 
 .option13 .owl-controls .owl-next .fa:before{
     content: "\f0da";
+    padding-left: 2px;
 }
 .option13 .product-style3 .group-button-control a:hover,
 .option13 .product-style3 .btn-add-to-cart:hover{
@@ -81,4 +83,10 @@
 .option13 .cart-block .cart-block-content .product-info .p-right .p-rice,
 .option13 .vertical-dropdown-menu .mega-products .mega-product .product-price .new-price{
 	color: #333;
+}
+.option13 .blog12 .date{
+	background-color: #ffae00;
+}
+.option13 .top-header .dropdown-menu{
+	border-color: #ffae00;
 }

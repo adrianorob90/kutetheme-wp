@@ -222,7 +222,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
         extract($atts);
         // Get products on sale
 		$product_ids_on_sale = wc_get_product_ids_on_sale();
-
+        
 		$meta_query = WC()->query->get_meta_query();
         
         $args = array(
