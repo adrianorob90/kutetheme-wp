@@ -8401,8 +8401,6 @@ span.notify-right{
   visibility: inherit;
 }
 .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover{
-  background-color: #ffae00;
-  border-color: #ffae00;
   color: #fff;
 }
 .option-13.block-top-brands .bx-wrapper .bx-prev{
@@ -8468,13 +8466,9 @@ span.notify-right{
     color: #333;
     font-size: 14px;
 }
-.option-13 .product-style3 .content_price .price{
-    color: #ff3366;
-}
 .option-13 .product-style3 .product-star{
     display: table;
     font-size: 13px;
-    color: #ffae00;
     margin-top: 5px;
 }
 .option-13 .product-style3 .product-star .fa{

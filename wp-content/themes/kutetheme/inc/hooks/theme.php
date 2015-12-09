@@ -436,7 +436,8 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li.active>a,
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
-    .footer5 a:hover {
+    .footer5 a:hover,
+    .product-style3 .product-star{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -539,7 +540,8 @@ function kt_themne_color(){
     .option-13 .owl-controls .owl-prev:hover, 
     .option-13 .owl-controls .owl-next:hover,
     .option-13.block-top-brands .head .title,
-    .option-13 .product-style3 .add-to-cart:hover{
+    .option-13 .product-style3 .add-to-cart:hover,
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover{
         background-color: {$main_color};
     }
 
@@ -585,7 +587,8 @@ function kt_themne_color(){
     .option-13 .owl-controls .owl-prev:hover, 
     .option-13 .owl-controls .owl-next:hover,
     .option-13.block-top-brands .list-brand .item:hover, 
-    .option-13.block-top-brands .list-brand .item.active{
+    .option-13.block-top-brands .list-brand .item.active,
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover{
         border-color: {$main_color};
 
     }
@@ -606,7 +609,8 @@ function kt_themne_color(){
     body .vertical-menu-list .mega-product .price,
     .option12.tab-7.block-tab-category .product-style3 .price,
     .option12.block-hotdeal-week .price,
-    .block-new-product12 .price{
+    .block-new-product12 .price,
+    .option-13 .product-style3 .content_price .price{
         color: {$price_color}
     }
 CSS;
