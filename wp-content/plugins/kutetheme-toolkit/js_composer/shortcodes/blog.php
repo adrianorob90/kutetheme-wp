@@ -231,7 +231,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         
         $data_carousel = array(
             "autoplay"           => $autoplay,
-            "nav"         => $navigation,
+            "nav"                => $navigation,
             "margin"             => $margin,
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',

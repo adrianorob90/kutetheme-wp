@@ -260,7 +260,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 "loop"          => $loop,
                 "theme"         => 'style-navigation-bottom',
                 "autoheight"    => "false",
-                'nav'           => "true",
+                'nav'           => $navigation,
                 'dots'          => "false"
             );
             if( $use_responsive ){

@@ -267,7 +267,7 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
             "slidespeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
-            'nav'                => 'true',
+            'nav'                => $navigation,
             'dots'               => 'false',
             'loop'               => $loop,
             'autoplayTimeout'    => 1000,

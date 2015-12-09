@@ -223,7 +223,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
                 "autoheight"         => "false",
                 "loop"               => $loop,
                 "dots"               => "false",
-                'nav'                => "true",
+                'nav'                => $navigation,
                 "autoplayTimeout"    => 1000,
                 "autoplayHoverPause" => "true",
                 'items'              => 1,
