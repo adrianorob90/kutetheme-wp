@@ -23,6 +23,7 @@ vc_map( array(
             'value'       => array(
         		__( 'Style 1', 'kutetheme' )    => 'style-1',
                 __( 'Style 2', 'kutetheme' )    => 'style-2',
+                __( 'Style 3', 'kutetheme' )    => 'style-3',
         	),
         ),
         array(
@@ -99,10 +100,15 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
             'extra'            => $this->getExtraClass( $el_class ),
             'shortcode_custom' => vc_shortcode_custom_css_class( $css, ' ' )
         );
+
         if( $type == 'style-1' ) :
             $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( 'section8 block-testimonials ', '' ), implode( ' ', $elementClass ) );
-        else:
+        endif;
+        if( $type == 'style-2'):
             $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( 'block-testimonials2 option12 ', '' ), implode( ' ', $elementClass ) );
+        endif;
+        if( $type == 'style-3'):
+            $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         endif;
         if( $overlay_color == "" ) $overlay_color ="#000000";
         $overlay_color = kt_hex2rgb( $overlay_color );
@@ -152,12 +158,36 @@ class WPBakeryShortCode_kt_testimonial extends WPBakeryShortCode {
                     <?php endif;?>
             </div>
         </div>
+        <?php elseif( $type == 'style-3'): ?>
+        <?php if( $testimonial_query->have_posts()): ?>
+        <div class="block-testimonials3 <?php echo esc_attr( $elementClass );?>">
+            <ul class="list owl-carousel" data-nav="false" data-dots="true" data-items="1">
+                <?php while ( $testimonial_query->have_posts()) : $testimonial_query->the_post(); ?>
+                        <li>
+                        <div class="blank"></div>
+                        <?php if( has_post_thumbnail( )):?>
+                            <div class="image">
+                                    <?php the_post_thumbnail('testimonial-thumb');?>
+                            </div>
+                        <?php endif;?>
+                        <div class="info">
+                            <div class="text">
+                                <?php the_content();?>
+                            </div>
+                            <span class="name">- <?php the_title( );?> -</span>
+                        </div>
+                    </li>
+                    <?php endwhile; ?>
+            </ul>
+        </div>
+        <?php endif;?>
         <?php  else: ?>
             <?php if( $testimonial_query->have_posts()): ?>
                 <div class="<?php echo esc_attr( $elementClass );?>">
                     <ul class="list testimonial-carousel2" data-nav="false" data-dots="true" data-items="3">
                         <?php while ( $testimonial_query->have_posts()) : $testimonial_query->the_post(); ?>
                         <li>
+
                             <?php if( has_post_thumbnail( )):?>
                                 <div class="image">
                                     <a href="#">
