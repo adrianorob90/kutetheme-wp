@@ -522,7 +522,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             </div>
                             <div class="col-sm-9">
                                 <div class="tab-container">
-                                <?php $i = 0;
+                                <?php $i = 1;
                                     foreach($terms as $term):
                                         $meta_query = WC()->query->get_meta_query();
                                         $args = array(
@@ -561,7 +561,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                             wp_reset_query();
                                             wp_reset_postdata();
                                         ?>
-                                        <?php $i ++ ; ?>
+                                        <?php $i++ ; ?>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
