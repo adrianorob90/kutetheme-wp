@@ -191,7 +191,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                 </div>
             </div>
             <?php else: ?>
-                <div class="block-static">
+                <div class="block-static option-14">
                     <?php if( $title ): ?>
                         <h3 class="title"><span><?php echo esc_html( $title ); ?></span></h3>
                     <?php endif; ?>
@@ -219,10 +219,10 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                             			do_action( 'kt_after_shop_loop_item_title' );
                             		?>
                                     <div class="group-button-control">
-                                        <a class="btn-add-to-cart" href="#">Add to cart</a>
-                                        <a class="wishlist" href="#">Wishlist</a>
-                                        <a class="compare" href="#">Compare</a>
-                                        <a class="quickview" href="#">Quickview</a>
+                                        <?php woocommerce_template_loop_add_to_cart(); ?>
+                                        <?php kt_get_tool_wishlish ();?>
+                                        <?php kt_get_tool_compare();?>
+                                        <?php kt_get_tool_quickview();?>
                                     </div>
                                 </div>
                             </li>
