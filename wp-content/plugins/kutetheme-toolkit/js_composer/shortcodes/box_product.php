@@ -402,14 +402,14 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         
         $carousel = _data_carousel($data_carousel);
         
-        add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-        add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
-        remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
         if( $taxonomy ){
             $cate_ids = explode( ",", $taxonomy );
         }
         
         if( $style == "style-1" or $style == "style-2" ):
+            add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+            add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+            remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
             
             if( count( $cate_ids ) > 0 ) {
                 $args['tax_query'] = array(
@@ -520,6 +520,11 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     <!-- ./box product -->
                 </div>
                 <?php endif; ?>
+                <?php 
+                    add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                    remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                ?>
             <?php endif;?>
             <?php if( $style == "style-3"): ?>
             <div class="tab-product-13 option-13 style2">
@@ -643,9 +648,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         if( $type == 'most-review' ){
             remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
         }
-        add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
-        remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-        remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+        
         return ob_get_clean();
     }
     /**

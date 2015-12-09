@@ -436,7 +436,8 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li.active>a,
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
-    .footer5 a:hover {
+    .footer5 a:hover,
+    .product-style3 .product-star{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -537,7 +538,17 @@ function kt_themne_color(){
     .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse:hover, 
     .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse:hover,
     .product-style4 .compare-button:hover,
-    .product-style4 .yith-wcqv-button:hover{
+    .product-style4 .yith-wcqv-button:hover,
+    .option-13.tab-product-13 .nav-tab li a:after,
+    .option-13 .product-style3 .yith-wcwl-add-button:hover, 
+    .option-13 .product-style3 .compare-button:hover a, 
+    .option-13 .product-style3 .search:hover,
+    .option-13 .owl-controls .owl-prev:hover, 
+    .option-13 .owl-controls .owl-next:hover,
+    .option-13.block-top-brands .head .title,
+    .option-13 .product-style3 .add-to-cart:hover,
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover,
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active{
         background-color: {$main_color};
     }
 
@@ -580,6 +591,11 @@ function kt_themne_color(){
     .footer4 .social-link a:hover .fa,
     .footer5 .social-link a:hover .fa,
     .footer5 .tagcloud a:hover,
+    .option-13 .owl-controls .owl-prev:hover, 
+    .option-13 .owl-controls .owl-next:hover,
+    .option-13.block-top-brands .list-brand .item:hover, 
+    .option-13.block-top-brands .list-brand .item.active,
+    .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover,
     body .block-testimonials3 .owl-controls .owl-dots .owl-dot,
     .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
     .product-style4:hover,
@@ -609,7 +625,8 @@ function kt_themne_color(){
     body .vertical-menu-list .mega-product .price,
     .option12.tab-7.block-tab-category .product-style3 .price,
     .option12.block-hotdeal-week .price,
-    .block-new-product12 .price{
+    .block-new-product12 .price,
+    .option-13 .product-style3 .content_price .price{
         color: {$price_color}
     }
 CSS;
