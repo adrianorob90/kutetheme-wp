@@ -38,6 +38,7 @@ vc_map( array(
         		__( 'Style 1', 'kutetheme' ) => 'style-1',
                 __( 'Style 2', 'kutetheme' ) => 'style-2',
                 __( 'Style 3', 'kutetheme' ) => 'style-3',
+                __( 'Style 4', 'kutetheme' ) => 'style-4',
         	),
         ),
         array(
@@ -519,7 +520,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     <!-- ./box product -->
                 </div>
                 <?php endif; ?>
-            <?php else: ?>
+            <?php endif;?>
+            <?php if( $style == "style-3"): ?>
             <div class="tab-product-13 option-13 style2">
                 <div class="head">
                     <h3 class="title"><?php echo esc_html( $title ) ?></h3>
@@ -542,7 +544,6 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 <div class="tab-content">
                     <div class="tab-container">
                         <?php if( count( $cate_obj ) > 0 ): $i = 1; ?>
-                    
                         <?php foreach( $cate_obj as  $term ): 
                             $args['tax_query'] = array(
                                 array(
@@ -575,7 +576,65 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 </div>
             </div>
             <?php endif; ?>
-            
+
+            <!-- Style 4 -->
+            <?php if( $style == "style-4"):?>
+                <div class="block-tab-category14">
+                    <div class="head">
+                        <span class="bar"><i class="fa fa-bars"></i></span>
+                        <?php if( isset( $cate_ids) && $cate_ids): $i = 1;?>
+                        <ul class="box-tabs nav-tab">   
+                            <?php foreach( $cate_ids as $id ):   ?>
+                                <?php $term = get_term( $id, 'product_cat' ); ?>
+                                <?php if( ! is_wp_error( $term ) ): $cate_obj[] = $term; ?>
+                                    <li <?php if( $i == 1 ): ?> class="active" <?php endif; ?>>
+                                        <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
+                                            <?php echo esc_html( $term->name ); ?>
+                                        </a>
+                                    </li>
+                                    <?php $i++;  ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </ul>
+                        <?php endif;?>
+                        <a class="link-all" href="#">View all</a>
+                    </div>
+                    <div class="tab-container">
+                        <?php if( isset( $cate_obj ) && $cate_obj ): $i = 1; ?>
+                        <?php foreach( $cate_obj as  $term ): 
+                            $args['tax_query'] = array(
+                                array(
+                                    'taxonomy' => 'product_cat',
+                                    'field' => 'id',
+                                    'terms' => $term->term_id
+                                )
+                            );
+                            $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                            
+                            if( $term_products->have_posts() ):?>
+                            <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php if( $i == 1 ): ?> active <?php endif; ?>">
+                                <div class="row">
+                                    <?php while( $term_products->have_posts() ): $term_products->the_post(); ?>
+                                        <div class="col-sm-4 col-md-3">
+                                            <div class="product-style4">
+                                                <?php wc_get_template_part( 'content', 'product-style4' ); ?>
+                                            </div>
+                                        </div>
+                                    <?php endwhile; ?>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                            <?php
+                                wp_reset_query();
+                                wp_reset_postdata(); 
+                            ?>
+                            <?php $i++; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endif;?>
+            <!-- ./Style 4 -->
         <?php 
         if( $type == 'most-review' ){
             remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );

@@ -531,7 +531,8 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li>a:before,
     .block-minicart14 .cart-link .count,
     .footer5 .widget_kt_mailchimp .mailchimp-submit,
-    .footer5 .tagcloud a:hover{
+    .footer5 .tagcloud a:hover,
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active{
         background-color: {$main_color};
     }
 
@@ -573,7 +574,10 @@ function kt_themne_color(){
     .header.style13 .header-search-inner form,
     .footer4 .social-link a:hover .fa,
     .footer5 .social-link a:hover .fa,
-    .footer5 .tagcloud a:hover{
+    .footer5 .tagcloud a:hover,
+    body .block-testimonials3 .owl-controls .owl-dots .owl-dot,
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
+    .product-style4:hover{
         border-color: {$main_color};
 
     }

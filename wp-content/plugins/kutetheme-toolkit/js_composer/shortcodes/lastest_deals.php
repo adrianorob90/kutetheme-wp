@@ -109,6 +109,7 @@ vc_map( array(
             'group'       => __( 'Carousel settings', 'kutetheme' ),
             'admin_label' => false,
 		),
+        
         array(
             'type'  => 'dropdown',
             'value' => array(

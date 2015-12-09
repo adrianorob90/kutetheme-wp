@@ -1,0 +1,62 @@
+<?php
+/**
+ * The template for displaying product content within loops.
+ *
+ *
+ * @author 		KuteTheme
+ * @package 	THEME/WooCommerce
+ * @version     KuteTheme 1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+?>
+<div class="product-thumb">
+	<?php
+    global $product;
+    
+    $attachment_ids = $product->get_gallery_attachment_ids();
+    
+    $secondary_image = '';
+    
+    if( $attachment_ids ){
+        $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
+    }
+
+    if( has_post_thumbnail() ){
+        ?>
+        <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
+        <?php
+    }else{
+        ?>
+        <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+        <?php
+    }
+    if( $secondary_image != "" ){
+        ?>
+        <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
+        <?php
+    }else{
+        ?>
+        <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+        <?php
+    }
+
+	?>
+	<div class="group-button-control">
+		<?php kt_get_tool_quickview();?>
+		<?php kt_get_tool_compare();?>
+	    <?php kt_get_tool_wishlish ();?>
+	</div>
+
+	<div class="product-label"><?php do_action( 'kt_loop_product_label' ); ?></div>
+</div>
+<div class="product-info">
+	<div class="product-name">
+	    <a href="<?php the_permalink();?>"> <?php the_title();?></a>
+	</div>
+	<div class="box-price">
+	    <?php do_action( 'kt_after_shop_loop_item_title' );?>
+	</div>
+</div>
