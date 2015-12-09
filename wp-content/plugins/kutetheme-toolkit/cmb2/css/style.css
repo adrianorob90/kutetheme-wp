@@ -9,7 +9,7 @@
 }
 .container-option .kt_sidebar{
     float: left;
-    width: 250px;
+    width: 25%;
     height: 100%;
     position: relative;
     z-index: 10;
@@ -48,7 +48,8 @@
     transition: height 0.5s ease-in;
 }
 .content-page-option{
-    padding-left: 250px;
+    width: 75%;
+    float: left;
     position: relative;
 }
 .content-page-option .content-tab{
