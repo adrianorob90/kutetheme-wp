@@ -436,8 +436,7 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li.active>a,
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
-    .footer5 a:hover,
-    .product-style3 .product-star{
+    .footer5 a:hover{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
