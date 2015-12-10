@@ -827,6 +827,18 @@
         pager:false,
         useCSS:false
     });
+    $(document).on('click','.block-top-brands2 .list-brands a',function(){
+        var tab = $(this).attr('href');
+        $(this).closest('.list-brands').find('a.tab-nav').each(function(){
+            $(this).removeClass('active');
+        })
+        $(this).addClass('active');
+        $(this).closest('.block-top-brands2').find('.brand-products .tab-panel').each(function(){
+            $(this).removeClass('active');
+        })
+        $(tab).addClass('active');
+        return false;
+    })
 });
 /* ---------------------------------------------
  Scripts resize

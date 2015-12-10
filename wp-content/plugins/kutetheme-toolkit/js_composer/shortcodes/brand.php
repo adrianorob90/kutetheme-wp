@@ -39,7 +39,8 @@ vc_map( array(
             'value' => array(
                 __( 'Style 1', 'js_composer' ) => 'true',
                 __( 'Style 2', 'js_composer' )  => 'false',
-                __( 'Style 3', 'js_composer' )  => 'style3'
+                __( 'Style 3', 'js_composer' )  => 'style3',
+                __( 'Style 4', 'js_composer' )  => 'style4'
             ),
             'std'         => 'true',
             'heading'     => __( 'Style', 'kutetheme' ),
@@ -195,6 +196,111 @@ vc_map( array(
             'group'       => __( 'Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
 	  	),
+        
+        
+        // Carousel
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'AutoPlay', 'kutetheme' ),
+            'param_name'  => 'autoplay2',
+            'group'       => __( 'Product Carousel settings', 'kutetheme' ),
+            'admin_label' => false
+		),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'Navigation', 'kutetheme' ),
+            'param_name'  => 'navigation2',
+            'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
+            'group'       => __( 'Product Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 'true',
+                __( 'No', 'js_composer' )  => 'false'
+            ),
+            'std'         => 'false',
+            'heading'     => __( 'Loop', 'kutetheme' ),
+            'param_name'  => 'loop2',
+            'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
+            'group'       => __( 'Product Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("Slide Speed", 'kutetheme'),
+            "param_name"  => "slidespeed2",
+            "value"       => "250",
+            "suffix"      => __("milliseconds", 'kutetheme'),
+            "description" => __('Slide speed in milliseconds', 'kutetheme'),
+            'group'       => __( 'Product Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("Margin", 'kutetheme'),
+            "param_name"  => "margin2",
+            "value"       => 30,
+            "suffix"      => __("px", 'kutetheme'),
+            "description" => __('Distance( or space) between 2 item', 'kutetheme'),
+            'group'       => __( 'Product Carousel settings', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            'type'  => 'dropdown',
+            'value' => array(
+                __( 'Yes', 'js_composer' ) => 1,
+                __( 'No', 'js_composer' )  => 0
+            ),
+            'std'         => 1,
+            'heading'     => __( 'Use Carousel Responsive', 'kutetheme' ),
+            'param_name'  => 'use_responsive2',
+            'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
+            'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+		),
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("The items on destop (Screen resolution of device >= 992px )", 'kutetheme'),
+            "param_name"  => "items_destop2",
+            "value"       => "4",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("The items on tablet (Screen resolution of device >=768px and < 992px )", 'kutetheme'),
+            "param_name"  => "items_tablet2",
+            "value"       => "2",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The number of items on destop', 'kutetheme'),
+            'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        array(
+            "type"        => "kt_number",
+            "heading"     => __("The items on mobile (Screen resolution of device < 768px)", 'kutetheme'),
+            "param_name"  => "items_mobile2",
+            "value"       => "1",
+            "suffix"      => __("item", 'kutetheme'),
+            "description" => __('The numbers of item on destop', 'kutetheme'),
+            'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
+            'admin_label' => false,
+	  	),
+        
         array(
             'type'           => 'css_editor',
             'heading'        => __( 'Css', 'js_composer' ),
@@ -221,26 +327,40 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'show_product'   => 'true',
             'orderby'        => 'date',
             'order'          => 'desc',
-            'css_animation'  => '',
-            'el_class'       => '',
-            'css'            => '',
             
             //Carousel            
             'autoplay'       => 'false', 
             'navigation'     => 'false',
             'margin'         => 1,
             'slidespeed'     => 250,
-            'css'            => '',
-            'css_animation'  => '',
-            'el_class'       => '',
             'nav'            => 'true',
             'loop'           => 'true',
-            
             //Default
             'use_responsive' => 1,
             'items_destop'   => 8,
             'items_tablet'   => 6,
             'items_mobile'   => 4,
+            
+            
+            //Carousel  Product          
+            'autoplay2'       => 'false', 
+            'navigation2'     => 'true',
+            'margin2'         => 30,
+            'slidespeed2'     => 250,
+            'nav2'            => 'true',
+            'loop2'           => 'true',
+            
+            //Default
+            'use_responsive2' => 1,
+            'items_destop2'   => 4,
+            'items_tablet2'   => 2,
+            'items_mobile2'   => 1,
+            
+            
+            
+            'css'            => '',
+            'css_animation'  => '',
+            'el_class'       => '',
             
         ), $atts );
         extract($atts);
@@ -483,7 +603,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                 <?php endforeach; ?>
                             </div>
                         <?php endif; ?>
-                <?php else: //Style 3 ?>
+                <?php elseif( $show_product == "style3" ) : ?>
                     <div class="block-top-brands option-13">
                         <div class="row">
                             <div class="col-sm-3">
@@ -565,6 +685,79 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                     <?php endforeach; ?>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                <?php else: //Style 4 ?>
+                    <div class="block-top-brands2 option-14">
+                        <?php if( $title ): ?>    
+                            <h2 class="title"><?php echo esc_html( $title ) ?></h2>
+                        <?php endif; ?>
+                        <div class="list-brands owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                            <?php $i = 1; ?>
+                            <?php foreach($terms as $term): ?>
+                                <?php
+                                $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
+
+                                if ( $thumbnail_id ) {
+                                  $image = wp_get_attachment_image( intval( $thumbnail_id ), 'full' );
+                                } else {
+                                    $image = "";
+                                }
+                                ?>
+                                <?php if($image):?>
+                                    <a class="tab-nav <?php if( $i == 1 ): ?> active<?php endif; ?>" href="#brand14-<?php echo esc_attr( $term->term_id ) ?>">
+                                        <?php echo apply_filters( 'kt_shortcode_brand_thumbnail', $image );?>
+                                    </a>
+                                    <?php $i ++ ; ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </div>
+                        <div class="tab-container brand-products">
+                            <?php $i = 1;
+                            remove_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10 );
+                            foreach($terms as $term):
+                                $meta_query = WC()->query->get_meta_query();
+                                $args = array(
+                        			'post_type'				=> 'product',
+                        			'post_status'			=> 'publish',
+                        			'ignore_sticky_posts'	=> 1,
+                        			'posts_per_page' 		=> 5,
+                        			'meta_query' 			=> $meta_query,
+                                    'suppress_filter'       => true,
+                                    'tax_query'             => array(
+                                        array(
+                                            'taxonomy' => 'product_brand',
+                                            'field'    => 'id',
+                                            'terms'    => $term->term_id,
+                                            'operator' => 'IN'
+                                        ),
+                                    )
+                        		);
+                                $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                if( $products->have_posts() ): ?>
+                                    <div id="brand14-<?php echo esc_attr( $term->term_id ) ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                        <ul class="list-bran-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                            <?php while( $products->have_posts() ): $products->the_post(); ?>
+                                            <li class="product-style4">
+                                                <?php wc_get_template_part( 'content', 'product-style4' ); ?>
+                                            </li>
+                                            <?php endwhile; ?>
+                                        </ul>
+                                    </div>
+                                <?php else: ?>
+                                    <div id="brand-<?php echo esc_attr( $term->term_id ) ?>" class="tab-panel empty_product <?php if( $i ==1 ): ?>active<?php endif; ?>">
+                                        <h6><?php _e( 'Empty Product', 'kutetheme' ); ?></h6>
+                                    </div>
+                                <?php endif; ?>
+                                <?php 
+                                    wp_reset_query();
+                                    wp_reset_postdata();
+                                ?>
+                                <?php $i++ ; ?>
+                            <?php 
+                            endforeach; 
+                            add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10 );
+                            ?>
                         </div>
                     </div>
                 <?php endif;//if( $show_product == "true" ) :

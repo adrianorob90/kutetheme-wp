@@ -8878,7 +8878,6 @@ span.notify-right{
 .option-14 .block-deal .title{
   font-size: 18px;
   font-weight: 800;
-  color: #cc9933;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
@@ -8923,7 +8922,6 @@ span.notify-right{
   margin-bottom: 25px;
 }
 .option-14 .block-deal .price{
-  color: #cc9933;
   font-weight: 700;
   font-size: 24px;
   line-height: 18px;
@@ -8948,9 +8946,13 @@ span.notify-right{
   float: left;
   font-size: 0;
   margin-right: 5px;
+  transition: background-color 0.3s ease-in-out;
+  -moz-transition: background-color 0.3s ease-in-out;
+  -webkit-transition: background-color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out;
 }
 .option-14 .block-deal .add-to-cart a{
-  background:#cc9933 url('../images/cart12.png') no-repeat center center
+  background: url('../images/cart12.png') no-repeat center center;
 }
 .option-14 .block-deal .add-to-cart a:hover{
   opacity: 0.8;
@@ -8961,10 +8963,6 @@ span.notify-right{
   background-repeat: no-repeat;
   background-position: center center;
 }
-.option-14 .block-deal .yith-wcwl-add-to-wishlist:hover{
-  background-color: #cc9933;
-  border-color: #cc9933;
-}
 .option-14 .block-deal .yith-wcwl-add-to-wishlist a{
     margin: 0;
     display: block;
@@ -8973,6 +8971,105 @@ span.notify-right{
 .option-14 .block-deal .yith-wcwl-add-to-wishlist a:before{
     display: none;
 }
+
+.option-14.block-top-brands2{
+    
+}
+.option-14.block-top-brands2 .title{
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+.option-14.block-top-brands2 .list-brands{
+  max-width: 887px;
+  display: block;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.option-14.block-top-brands2 .list-brands .tab-nav{
+    display: block;
+}
+.option-14.block-top-brands2 .list-brands img{
+  border: 1px solid #eee;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.option-14.block-top-brands2 .list-brands a:hover img{
+  border-color: #cc9933;
+}
+.option-14.block-top-brands2 .list-brands a.active img{
+  border-color: #cc9933;
+  border-width: 2px;
+}
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-prev, 
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-next{
+  position: static;
+  left: inherit;
+  top: inherit;
+  right: inherit;
+  bottom: inherit;
+  -ms-transform: translateY(0);
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+  display: inline-block;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #eee;
+  background-color: transparent;
+  line-height: 16px;
+  font-size: 12px;
+  margin: 0 3px;
+}
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-next .fa:before{
+    content: "\f0da";
+}
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-prev .fa:before{
+    content: "\f0d9";
+}
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
+.option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover{
+  background-color: #cc9933;
+  border-color: #cc9933;
+}
+.option-14.block-top-brands2 .list-brands .owl-nav{
+  position: absolute;
+  left: 50%;
+  top: -9px;
+  background-color: #fff;
+  padding: 0 10px;
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-prev, 
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-next{
+  width: 44px;
+  height: 44px;
+  background-color: #e5e5e5;
+  border-color: #dfdfdf;
+  font-size: 20px;
+  line-height: 42px;
+  top: 40%;
+}
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover{
+  background-color: #cc9933;
+  border-color: #cc9933;
+}
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-next{
+  right: -63px;
+}
+.option-14.block-top-brands2 .brand-products .owl-controls .owl-prev{
+  left: -63px;
+}
+
 /* Block testamial*/
 .block-testimonials2{
   background-color: #394264;

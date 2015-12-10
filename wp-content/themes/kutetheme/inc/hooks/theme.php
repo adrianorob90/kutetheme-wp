@@ -436,7 +436,8 @@ function kt_themne_color(){
     .header.style14 .navigation-main-menu>li.active>a,
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
-    .footer5 a:hover{
+    .footer5 a:hover,
+    .option-14 .block-deal .title{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -551,7 +552,9 @@ function kt_themne_color(){
     .option-14.block-static ul.list li .group-button-control .yith-wcwl-add-to-wishlist:hover,
     .option-14.block-static ul.list li .group-button-control .compare-button a:hover,
     .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
-    .option-14.block-static ul.list .group-button-control .add-to-cart a{
+    .option-14.block-static ul.list .group-button-control .add-to-cart a,
+    .option-14 .block-deal .group-button-control .add-to-cart a,
+    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover{
         background-color: {$main_color};
     }
 
@@ -611,7 +614,8 @@ function kt_themne_color(){
     .option-14.block-static ul.list li .group-button-control .compare-button a:hover,
     .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
     .option-14.block-static ul.list .group-button-control .add-to-cart a,
-    .option-14.block-static .block-static-products ul.list li:hover .product-thumb
+    .option-14.block-static .block-static-products ul.list li:hover .product-thumb,
+    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover
     {
         border-color: {$main_color};
 
@@ -635,7 +639,8 @@ function kt_themne_color(){
     .option12.tab-7.block-tab-category .product-style3 .price,
     .option12.block-hotdeal-week .price,
     .block-new-product12 .price,
-    .option-13 .product-style3 .content_price .price{
+    .option-13 .product-style3 .content_price .price,
+    .option-14 .block-deal .price{
         color: {$price_color}
     }
 CSS;
