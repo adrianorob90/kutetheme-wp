@@ -835,8 +835,13 @@
         $(this).addClass('active');
         $(this).closest('.block-top-brands2').find('.brand-products .tab-panel').each(function(){
             $(this).removeClass('active');
-        })
-        $(tab).addClass('active');
+        });
+        var $tab_activate = $(tab);
+        $tab_activate.addClass('active');
+        
+        var $lazy = $tab_activate.find( '.primary_image img' );
+            
+        kt_lazy( $lazy );
         return false;
     })
 });

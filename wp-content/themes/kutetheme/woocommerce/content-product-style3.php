@@ -41,16 +41,9 @@ if ( ! defined( 'ABSPATH' ) ) {
     </div>
 </div>
 <div class="group-button-control">
-    <?php
-		/**
-		 * kt_loop_product_function hook
-		 *
-		 * @hooked kt_get_tool_wishlish - 1
-         * @hooked kt_get_tool_compare - 5
-         * @hooked kt_get_tool_quickview - 10
-		 */
-		do_action( 'kt_loop_product_function' );
-	?>
+        <?php kt_get_tool_wishlish ();?>
+	    <?php kt_get_tool_compare();?>
+	    <?php kt_get_tool_quickview();?>
 </div>
 <?php
 	/**

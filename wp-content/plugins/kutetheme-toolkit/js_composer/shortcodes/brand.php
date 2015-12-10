@@ -209,7 +209,13 @@ vc_map( array(
             'heading'     => __( 'AutoPlay', 'kutetheme' ),
             'param_name'  => 'autoplay2',
             'group'       => __( 'Product Carousel settings', 'kutetheme' ),
-            'admin_label' => false
+            'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 		),
         array(
             'type'  => 'dropdown',
@@ -223,6 +229,12 @@ vc_map( array(
             'description' => __( "Show buton 'next' and 'prev' buttons.", 'kutetheme' ),
             'group'       => __( 'Product Carousel settings', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 		),
         array(
             'type'  => 'dropdown',
@@ -236,6 +248,12 @@ vc_map( array(
             'description' => __( "Inifnity loop. Duplicate last and first items to get loop illusion.", 'kutetheme' ),
             'group'       => __( 'Product Carousel settings', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 		),
         array(
             "type"        => "kt_number",
@@ -246,6 +264,12 @@ vc_map( array(
             "description" => __('Slide speed in milliseconds', 'kutetheme'),
             'group'       => __( 'Product Carousel settings', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 	  	),
         array(
             "type"        => "kt_number",
@@ -256,6 +280,12 @@ vc_map( array(
             "description" => __('Distance( or space) between 2 item', 'kutetheme'),
             'group'       => __( 'Product Carousel settings', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 	  	),
         array(
             'type'  => 'dropdown',
@@ -269,6 +299,12 @@ vc_map( array(
             'description' => __( "Try changing your browser width to see what happens with Items and Navigations", 'kutetheme' ),
             'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 		),
         array(
             "type"        => "kt_number",
@@ -279,6 +315,12 @@ vc_map( array(
             "description" => __('The number of items on destop', 'kutetheme'),
             'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 	  	),
         array(
             "type"        => "kt_number",
@@ -289,6 +331,12 @@ vc_map( array(
             "description" => __('The number of items on destop', 'kutetheme'),
             'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 	  	),
         array(
             "type"        => "kt_number",
@@ -299,6 +347,12 @@ vc_map( array(
             "description" => __('The numbers of item on destop', 'kutetheme'),
             'group'       => __( 'Product Carousel responsive', 'kutetheme' ),
             'admin_label' => false,
+            "dependency"  => array(
+                "element" => "show_product",
+                "value" => array( 
+                    'style4' 
+                )
+             ),
 	  	),
         
         array(
@@ -401,6 +455,39 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         }else{
             $data_carousel['items'] = 8;
         }
+        
+        $data_carousel2 = array(
+            "autoplay"           => $autoplay2,
+            "nav"                => $navigation2,
+            "margin"             => $margin2,
+            "slidespeed"         => $slidespeed2,
+            "theme"              => 'style-navigation-bottom',
+            "autoheight"         => 'false',
+            'dots'               => 'false',
+            'loop'               => $loop2,
+            'autoplayTimeout'    => 1000,
+            'autoplayHoverPause' => 'true'
+        );
+        
+        if( $use_responsive2 ){
+            $arr = array( 
+                '0'   => array( 
+                    "items" => $items_mobile2 
+                ), 
+                '768' => array( 
+                    "items" => $items_tablet2 
+                ), 
+                '992' => array(
+                    "items" => $items_destop2
+                )
+            );
+            $data_responsive = json_encode($arr);
+            $data_carousel2["responsive"] = $data_responsive;
+        }else{
+            $data_carousel2['items'] = 4;
+        }
+        
+        
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         ob_start();
         //Set up the taxonomy object and get terms
@@ -604,7 +691,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                             </div>
                         <?php endif; ?>
                 <?php elseif( $show_product == "style3" ) : ?>
-                    <div class="block-top-brands option-13">
+                    <div class="block-top-brands option-13 container-tab">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="head">
@@ -688,7 +775,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                         </div>
                     </div>
                 <?php else: //Style 4 ?>
-                    <div class="block-top-brands2 option-14">
+                    <div class="block-top-brands2 option-14 container-tab">
                         <?php if( $title ): ?>    
                             <h2 class="title"><?php echo esc_html( $title ) ?></h2>
                         <?php endif; ?>
@@ -736,7 +823,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                 $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
                                 if( $products->have_posts() ): ?>
                                     <div id="brand14-<?php echo esc_attr( $term->term_id ) ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
-                                        <ul class="list-bran-product owl-carousel" <?php echo _data_carousel($data_carousel); ?>>
+                                        <ul class="list-bran-product owl-carousel" <?php echo _data_carousel($data_carousel2); ?>>
                                             <?php while( $products->have_posts() ): $products->the_post(); ?>
                                             <li class="product-style4">
                                                 <?php wc_get_template_part( 'content', 'product-style4' ); ?>

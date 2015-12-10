@@ -11939,6 +11939,15 @@ footer.footer5 a{
     transition: all 0.45s ease;
     width: inherit;
 }
+.product-style4 .add_to_cart_button:before,
+.product-style4 .added_to_cart:before{
+  content: '';
+  width: 20px;
+  height: 16px;
+  display: inline-block;
+  background: url('../images/cart12.png') no-repeat center center;
+  margin-right: 5px;
+}
 .product-style4:hover .add_to_cart_button,
 .product-style4:hover .added_to_cart{
   bottom: 0;

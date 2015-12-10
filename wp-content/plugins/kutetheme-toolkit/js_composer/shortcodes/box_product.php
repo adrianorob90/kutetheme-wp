@@ -527,7 +527,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 ?>
             <?php endif;?>
             <?php if( $style == "style-3"): ?>
-            <div class="tab-product-13 option-13 style2">
+            <div class="tab-product-13 option-13 style2 container-tab">
                 <div class="head">
                     <h3 class="title"><?php echo esc_html( $title ) ?></h3>
                     <ul class="box-tabs nav-tab">
@@ -584,7 +584,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
 
             <!-- Style 4 -->
             <?php if( $style == "style-4"):?>
-                <div class="block-tab-category14">
+                <div class="block-tab-category14 container-tab">
                     <div class="head">
                         <span class="bar"><i class="fa fa-bars"></i></span>
                         <?php if( isset( $cate_ids) && $cate_ids): $i = 1;?>
