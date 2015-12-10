@@ -438,7 +438,8 @@ function kt_themne_color(){
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
     .footer5 a:hover,
-    .option-14 .block-deal .title{
+    .option-14 .block-deal .title,
+    .option12.section-blog-12 .blog12 .blog-title a:hover{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,

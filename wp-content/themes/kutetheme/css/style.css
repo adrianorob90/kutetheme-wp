@@ -8867,11 +8867,9 @@ span.notify-right{
 }
 
 .option-14.section-block-deal{
-  padding: 70px 0 70px 0;
   background-image: url('../images/bg-hotdeal.jpg');
   background-position: top;
   background-repeat: no-repeat;
-  margin-top: 50px;
 }
 .option-14 .block-deal{
   overflow: hidden;
@@ -9255,9 +9253,6 @@ span.notify-right{
   color: #333;
 }
 
-.option12.section-blog-12 .blog12 .blog-title a:hover{
-  color: #ff3366;
-}
 .option12.section-blog-12 .blog12 .read-more{
   font-family: 'Oswald';
   font-weight: 300;
