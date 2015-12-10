@@ -408,6 +408,7 @@ function kt_themne_color(){
     $bg_color = kt_option('bg_color','#fff');
     $price_color = kt_option('price_color','#ff3366');
     $rgba_main_color = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.5)', kt_hex2rgb( $main_color ) );
+    $rgba_main_color_07 = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.7)', kt_hex2rgb( $main_color ) );
     $rgba_main_color_08 = vsprintf( 'rgba( %1$s, %2$s, %3$s, 0.8)', kt_hex2rgb( $main_color ) );
     /* Main color */
     $css = <<<CSS
@@ -554,7 +555,9 @@ function kt_themne_color(){
     .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
     .option-14.block-static ul.list .group-button-control .add-to-cart a,
     .option-14 .block-deal .group-button-control .add-to-cart a,
-    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover{
+    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover,
+    .product-style4 .add_to_cart_button:hover, .product-style4 .added_to_cart:hover
+    {
         background-color: {$main_color};
     }
 
@@ -625,9 +628,11 @@ function kt_themne_color(){
     body .lasttest-blog11 .item-blog .cat{
         background-color: {$rgba_main_color}
     }
-    body .option11.featured-banner .box-small-banner .banner:before,
-    .product-style4 .add_to_cart_button, .product-style4 .added_to_cart{
+    body .option11.featured-banner .box-small-banner .banner:before{
         background-color: {$rgba_main_color_08};
+    }
+    .product-style4 .add_to_cart_button, .product-style4 .added_to_cart{
+        background-color: {$rgba_main_color_07};
     }
     body .product-list li .content_price,
     body.woocommerce div.product p.price,

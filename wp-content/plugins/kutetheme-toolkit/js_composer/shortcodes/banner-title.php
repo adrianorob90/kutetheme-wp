@@ -58,7 +58,7 @@ vc_map( array(
             "param_name"  => "banner_image",
             "admin_label" => false,
             'description' => __( 'It shows the image of banner', 'kutetheme' ),
-            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2', 'style-3' )),
+            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2', 'style-3', 'style-4' )),
         ),
         array(
             "type"        => "textfield",
