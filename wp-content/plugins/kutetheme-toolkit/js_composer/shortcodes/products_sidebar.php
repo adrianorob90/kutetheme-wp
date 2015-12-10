@@ -243,6 +243,31 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
         wp_reset_postdata();
         return ob_get_clean();
     }
+    /**
+     * order_by_rating_post_clauses function.
+     *
+     * @access public
+     * @param array $args
+     * @return array
+     */
+    public function order_by_rating_post_clauses( $args ) {
+    	global $wpdb;
+    
+    	$args['fields'] .= ", AVG( $wpdb->commentmeta.meta_value ) as average_rating ";
+    
+    	$args['where'] .= " AND ( $wpdb->commentmeta.meta_key = 'rating' OR $wpdb->commentmeta.meta_key IS null ) ";
+    
+    	$args['join'] .= "
+    		LEFT OUTER JOIN $wpdb->comments ON($wpdb->posts.ID = $wpdb->comments.comment_post_ID)
+    		LEFT JOIN $wpdb->commentmeta ON($wpdb->comments.comment_ID = $wpdb->commentmeta.comment_id)
+    	";
+    
+    	$args['orderby'] = "average_rating DESC, $wpdb->posts.post_date DESC";
+    
+    	$args['groupby'] = "$wpdb->posts.ID";
+    
+    	return $args;
+    }
 }
 
 

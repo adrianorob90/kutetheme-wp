@@ -36,6 +36,7 @@ if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     	__( 'Style 1', 'kutetheme' ) => 'style-1',
         __( 'Style 2', 'kutetheme' ) => 'style-2',
         __( 'Style 3', 'kutetheme' ) => 'style-3',
+        __( 'Style 4', 'kutetheme' ) => 'style-4'
     );
 
 }

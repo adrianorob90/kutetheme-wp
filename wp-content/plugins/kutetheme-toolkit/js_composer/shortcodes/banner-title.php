@@ -22,7 +22,7 @@ vc_map( array(
             "heading"     => __( "Product ID", 'kutetheme' ),
             "param_name"  => "product_id",
             "admin_label" => true,
-            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-3' ) ),
+            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-3', 'style-4' ) ),
         ),
         array(
             'type'  => 'dropdown',
@@ -66,7 +66,7 @@ vc_map( array(
             "param_name"  => "link",
             "admin_label" => false,
             'description' => __( 'It shows the link.', 'kutetheme' ),
-            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2' )),
+            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2', 'style-4' )),
         ),
         array(
             'type'  => 'dropdown',
@@ -77,7 +77,7 @@ vc_map( array(
             'heading'     => __( 'Enable CountDown', 'kutetheme' ),
             'param_name'  => 'enable_countdown',
             'admin_label' => false,
-            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1' )),
+            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-4' )),
 		),
         array(
             "type"        => "textfield",
@@ -192,8 +192,7 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                 </div>
             </div>
         </div>
-        <?php
-        else:
+        <?php elseif( $banner_style == 'style-3' ) :
             $meta_query = WC()->query->get_meta_query();
             
             $ids = explode( ',', $product_id );
@@ -251,9 +250,72 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                     </div>
                 <?php
                 endwhile; // end of the loop.
+                wp_reset_query();
+                wp_reset_postdata();
                 add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating' );
             endif;
-        endif;
+        else: ?>
+            <div class="section-block-deal option-14" <?php if( $banner_url ) : ?>style="background-image: url('<?php echo esc_url( $banner_url ) ?>');"<?php endif; ?>>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 col-lg-4 col-sm-offset-0 col-md-offset-7 col-lg-offset-8">
+                            <div class="block-deal">
+                                <?php if( $enable_countdown == 'on' && $y > 1970 ): ?>
+                                        <?php if( $countdown_text): ?>
+                                            <h3 class="title"><?php echo esc_html( $countdown_text ); ?></h3>
+                                        <?php endif; ?>
+                                        <span class="countdown-lastest" data-y="<?php _e( esc_attr( $y ) ) ?>" data-m="<?php _e( esc_attr( $m ) ) ?>" data-d="<?php _e( esc_attr( $d ) ) ?>" data-h="<?php _e( esc_attr( $h  ) ) ?>" data-i="<?php _e( esc_attr( $mi ) ) ?>" data-s="<?php _e( esc_attr( $s ) ) ?>"></span>
+                                <?php endif; ?>
+                                <?php $meta_query = WC()->query->get_meta_query();
+            
+                                $ids = explode( ',', $product_id );
+                                
+                                $args = array(
+                        			'post_type'			  => 'product',
+                        			'post_status'		  => 'publish',
+                        			'ignore_sticky_posts' => 1,
+                        			'posts_per_page' 	  => 1,
+                        			'meta_query' 		  => $meta_query,
+                                    'suppress_filter'     => true,
+                        		);
+                                if( is_array( $ids ) && ! empty( $ids ) ){
+                                    $args[ 'post__in' ] = $ids;
+                                    $args [ 'orderby' ] = 'post__in';
+                                }
+                                $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                if ( $products->have_posts() ) :
+                                    remove_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating' );
+                                    while ( $products->have_posts() ) : $products->the_post(); ?>
+                                        <div class="product-info">
+                                            <h4 class="product-name"><?php the_title(); ?></h4>
+                                            <div class="desc"><?php the_excerpt() ?></div>
+                                            <?php
+                                    			/**
+                                    			 * woocommerce_after_shop_loop_item_title hook
+                                                 * 
+                                    			 * @hooked woocommerce_template_loop_price - 5
+                                    			 * @hooked woocommerce_template_loop_rating - 10
+                                    			 */
+                                    			do_action( 'kt_after_shop_loop_item_title' );
+                                    		?>
+                                            <div class="group-button-control">
+                                                <?php woocommerce_template_loop_add_to_cart(); ?>
+                                                <?php kt_get_tool_wishlish ();?>
+                                            </div>
+                                        </div>
+                                <?php  endwhile; // end of the loop.
+                                    wp_reset_query();
+                                    wp_reset_postdata();
+                                    add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating' );
+                                endif;
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <?php endif;
         return ob_get_clean();
     }
     

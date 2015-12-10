@@ -8801,15 +8801,10 @@ span.notify-right{
   margin-top: 30px;
   overflow: hidden;
 }
-
 .option-14.block-static .block-static-products ul.list{
     margin: 0;
     padding: 0;
     overflow: hidden;
-}
-
-.option-14.block-static .block-static-products ul.list li:hover .product-thumb{
-  border-color: #d1a347;
 }
 .option-14.block-static .group-button-control .yith-wcwl-add-to-wishlist,
 .option-14.block-static .group-button-control .compare-button a,
@@ -8819,8 +8814,9 @@ span.notify-right{
   width: 40px;
   height: 34px;
   float: left;
-  background-color: #e5e5e5;
-  border: 1px solid #dfdfdf;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dfdfdf;
   font-size: 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
@@ -8830,6 +8826,9 @@ span.notify-right{
   filter: alpha(opacity=0);
   margin-right: 3px;
   z-index: 1;
+  background-color: #e5e5e5;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .option-14.block-static .group-button-control .yith-wcwl-add-to-wishlist a{
     margin: 0;
@@ -8851,37 +8850,20 @@ span.notify-right{
     -webkit-transform: scale(1);
     transform: scale(1);
 }
-.option-14.block-static .group-button-control .yith-wcwl-add-to-wishlist a:hover,
-.option-14.block-static .group-button-control .compare-button a:hover,
-.option-14.block-static .group-button-control .search.yith-wcqv-button:hover,
-{
-    background-color: #d1a347;
-    border-color: #d1a347;
-}
-.option-14.block-static .group-button-control .yith-wcwl-add-to-wishlist a{
+.option-14.block-static .group-button-control .yith-wcwl-add-to-wishlist{
   background-image: url('../images/wishlist12.png');
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 .option-14.block-static .group-button-control .compare-button a{
   background-image: url('../images/compare12.png');
-  background-repeat: no-repeat;
-  background-position: center center;
 }
 .option-14.block-static .group-button-control .search.yith-wcqv-button{
   background-image: url('../images/quickview12.png');
-  background-repeat: no-repeat;
-  background-position: center center;
   margin: 0;
 }
 .option-14.block-static .group-button-control .add-to-cart a{
   background-image: url('../images/cart12.png');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: #d1a347;
-  border-color: #d1a347;
 }
->>>>>>> origin/master
+
 /* Block testamial*/
 .block-testimonials2{
   background-color: #394264;

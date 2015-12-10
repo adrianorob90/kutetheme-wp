@@ -547,7 +547,11 @@ function kt_themne_color(){
     .option-13.block-top-brands .head .title,
     .option-13 .product-style3 .add-to-cart:hover,
     .option-13.block-top-brands .bx-wrapper .bx-controls-direction a:hover,
-    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active{
+    .block-testimonials3 .owl-controls .owl-dots .owl-dot.active,
+    .option-14.block-static ul.list li .group-button-control .yith-wcwl-add-to-wishlist:hover,
+    .option-14.block-static ul.list li .group-button-control .compare-button a:hover,
+    .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
+    .option-14.block-static ul.list .group-button-control .add-to-cart a{
         background-color: {$main_color};
     }
 
@@ -602,7 +606,13 @@ function kt_themne_color(){
     .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse:hover, 
     .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse:hover,
     .product-style4 .compare-button:hover,
-    .product-style4 .yith-wcqv-button:hover{
+    .product-style4 .yith-wcqv-button:hover,
+    .option-14.block-static ul.list li .group-button-control .yith-wcwl-add-to-wishlist:hover,
+    .option-14.block-static ul.list li .group-button-control .compare-button a:hover,
+    .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
+    .option-14.block-static ul.list .group-button-control .add-to-cart a,
+    .option-14.block-static .block-static-products ul.list li:hover .product-thumb
+    {
         border-color: {$main_color};
 
     }
