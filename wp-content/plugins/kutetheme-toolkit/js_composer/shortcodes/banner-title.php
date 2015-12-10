@@ -66,7 +66,7 @@ vc_map( array(
             "param_name"  => "link",
             "admin_label" => false,
             'description' => __( 'It shows the link.', 'kutetheme' ),
-            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2', 'style-4' )),
+            "dependency"  => array( "element" => "banner_style", "value" => array( 'style-1', 'style-2' )),
         ),
         array(
             'type'  => 'dropdown',
@@ -255,7 +255,7 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                 add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating' );
             endif;
         else: ?>
-            <div class="section-block-deal option-14" <?php if( $banner_url ) : ?>style="background-image: url('<?php echo esc_url( $banner_url ) ?>');"<?php endif; ?>>
+            <div class="section-block-deal option-14 <?php if( $enable_countdown == 'on' && $y > 1970 ): ?> has_countdown <?php endif; ?>" <?php if( $banner_url ) : ?>style="background-image: url('<?php echo esc_url( $banner_url ) ?>');"<?php endif; ?>>
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12 col-md-5 col-lg-4 col-sm-offset-0 col-md-offset-7 col-lg-offset-8">
@@ -287,7 +287,7 @@ class WPBakeryShortCode_Kt_Banner extends WPBakeryShortCode {
                                     remove_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating' );
                                     while ( $products->have_posts() ) : $products->the_post(); ?>
                                         <div class="product-info">
-                                            <h4 class="product-name"><?php the_title(); ?></h4>
+                                            <h4 class="product-name"><a href="<?php the_permalink(); ?>" title="<?php the_title() ?>"></a><?php the_title(); ?></h4>
                                             <div class="desc"><?php the_excerpt() ?></div>
                                             <?php
                                     			/**
