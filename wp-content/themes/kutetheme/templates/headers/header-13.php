@@ -1,4 +1,4 @@
-<div class="header style13">
+<div id="header" class="header style13">
     <div class="top">
         <div class="top-header">
             <div class="container">

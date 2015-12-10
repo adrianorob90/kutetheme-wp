@@ -435,7 +435,7 @@
             var width = $(window).width();
             if(width > 1200){
                 if($('body').hasClass('home') && !$('.box-vertical-megamenus').is('.hiden_content')){
-                    if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') ){
+                    if($('#nav-top-menu').hasClass('nav-ontop') || $('#header').hasClass('option6') || $('#header').hasClass('option5') || $('#header').hasClass('ontop')){
                         
                     }else{
                         return false;
