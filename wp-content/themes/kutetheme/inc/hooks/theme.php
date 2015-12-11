@@ -568,7 +568,8 @@ function kt_themne_color(){
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
     .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
-    .option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover
+    .option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover,
+    .block-tab-category14 .box-tabs li a::after
     {
         background-color: {$main_color};
     }

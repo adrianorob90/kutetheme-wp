@@ -5726,7 +5726,8 @@ span.notify-right{
   display: block;
 }
 .container-tab{
-  overflow: hidden;
+  width:100%;
+  display: block;
 }
 .box-products .box-product-content{
   margin-top: 20px;
@@ -8738,11 +8739,13 @@ span.notify-right{
   display: block;
   width: 100%;
   float: left;
+
 }
 .option-14.block-static .block-static-products .product-thumb{
   width: 100px;
   float: left;
   border: 1px solid transparent;
+  padding-bottom: 1px;
 }
 .option-14.block-static .block-static-products .product-info{
   margin-left: 120px;
@@ -8762,7 +8765,7 @@ span.notify-right{
   height: 17px;
   border: 1px solid #eee;
   background-color: transparent;
-  line-height: 16px;
+  line-height: 15px;
   font-size: 12px;
   margin: 0 3px;
 }
@@ -8860,8 +8863,38 @@ span.notify-right{
   background-image: url('../images/quickview12.png');
   margin: 0;
 }
-.option-14.block-static .group-button-control .add-to-cart a{
+.option-14.block-static .group-button-control .add_to_cart_button{
   background-image: url('../images/cart12.png');
+  text-align: center;
+  line-height: 34px;
+  text-align: center;
+}
+.option-14.block-static .group-button-control .add_to_cart_button.added{
+  display: none;
+}
+.option-14.block-static .group-button-control .added_to_cart:before{
+   font-family: 'FontAwesome';
+  content: "\f00c";
+  background: none;
+  font-size: 14px;
+  color: #fff;
+}
+.option-14.block-static .group-button-control .added_to_cart{
+    text-align: center;
+    line-height: 34px;
+}
+.option-14.block-static .group-button-control .add_to_cart_button.loading{
+  background-image: none;
+}
+.option-14.block-static .group-button-control .add_to_cart_button.loading:before{
+  font-family:'FontAwesome';
+  content: "\f1ce"!important;
+  webkit-animation: fa-spin 2s infinite linear;
+  animation: fa-spin 2s infinite linear;
+  display: inline-block;
+  background: none;
+  font-size: 14px;
+  color: #fff;
 }
 
 .option-14.section-block-deal{
@@ -9030,6 +9063,7 @@ span.notify-right{
 }
 .option-14.block-top-brands2 .list-brands .tab-nav{
     display: block;
+    padding: 0 2px;
 }
 .option-14.block-top-brands2 .list-brands img{
   border: 1px solid #eee;
@@ -9057,7 +9091,7 @@ span.notify-right{
   height: 17px;
   border: 1px solid #eee;
   background-color: transparent;
-  line-height: 16px;
+  line-height: 15px;
   font-size: 12px;
   margin: 0 3px;
 }
@@ -9252,6 +9286,7 @@ span.notify-right{
   border: 1px solid #eee;
   display: table;
   width: 100%;
+  margin-bottom: 2px;
 }
 .option12.section-blog-12 .blog12 .thumb,
 .option12.section-blog-12 .blog12 .info{
@@ -11541,7 +11576,8 @@ footer.footer5 a{
 .footer5 ol ol{
   padding-left: 20px;
 }
-.footer5 .tagcloud a {
+.footer5 .tagcloud a ,
+.footer5 .widget_product_tag_cloud .tagcloud a{
     border-width: 1px;
     border-style: solid;
     display: inline-block;
@@ -11732,7 +11768,6 @@ footer.footer5 a{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #cc9933;
     opacity: 0;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
@@ -11994,11 +12029,13 @@ footer.footer5 a{
   webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear;
   display: inline-block;
+  background: none;
 }
 .product-style4 .added_to_cart:before{
   font-family: 'FontAwesome';
   content: "\f00c";
   margin-right: 10px;
+  background: none;
 }
 .product-style4 .product-info {
     padding-top: 25px;
