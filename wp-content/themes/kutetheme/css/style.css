@@ -12077,6 +12077,9 @@ footer.footer5 a{
     background-color: transparent;
     border-color: #cfcfcf;
 }
+.block-newsletter.style2 .block-heading h3{
+  margin-top: 0;
+}
 /* REPONSIVE */
 @media(max-width: 1200px){
   .navigation-main-menu>li>a{
@@ -12457,6 +12460,10 @@ footer.footer5 a{
     width: 100%;
     float: left;
     margin-top: 30px;
+  }
+  .block-tab-category14 .bar,
+  .block-tab-category14 .link-all{
+    display: none;
   }
 }
 
