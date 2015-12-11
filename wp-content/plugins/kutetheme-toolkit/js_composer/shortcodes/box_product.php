@@ -462,12 +462,14 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                 
                                 <?php if( count( $cate_ids ) ): ?>
                                     <?php foreach( $cate_ids as $id ):  ?>
-                                        <?php $term = get_term( $id, 'product_cat' ); $cate_obj[] = $term;  ?>
-                                        <li>
-                                            <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
-                                                <?php echo esc_html( $term->name )   ?>
-                                            </a>
-                                        </li>
+                                        <?php $term = get_term( $id, 'product_cat' );?>
+                                        <?php if( ! is_wp_error( $term ) && $term ): $cate_obj[] = $term; ?>
+                                            <li>
+                                                <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
+                                                    <?php echo esc_html( $term->name )   ?>
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </ul>
@@ -487,7 +489,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                             <?php $this->kt_loop_product( $products, $carousel ) ?>
                                         <?php do_action( "woocommerce_shortcode_after_box_product_loop" ); ?>
         							</div>
-                                    <?php if( count( $cate_obj ) > 0 ): ?>
+                                    <?php if( isset( $cate_obj ) && count( $cate_obj ) > 0 ): ?>
                                         <?php foreach( $cate_obj as  $term ): 
                                             $args['tax_query'] = array(
                                                 array(
@@ -534,7 +536,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                         <?php if( count( $cate_ids ) ): $i = 1; ?>
                             <?php foreach( $cate_ids as $id ):  ?>
                                 <?php $term = get_term( $id, 'product_cat' ); ?>
-                                <?php if( ! is_wp_error( $term ) ): $cate_obj[] = $term; ?>
+                                <?php if( ! is_wp_error( $term ) && $term ): $cate_obj[] = $term; ?>
                                     <li <?php if( $i == 1 ): ?> class="active" <?php endif; ?>>
                                         <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
                                             <?php echo esc_html( $term->name ); ?>
@@ -548,7 +550,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                 </div>
                 <div class="tab-content">
                     <div class="tab-container">
-                        <?php if( count( $cate_obj ) > 0 ): $i = 1; ?>
+                        <?php if( isset( $cate_obj ) &&  count( $cate_obj ) > 0 ): $i = 1; ?>
                         <?php foreach( $cate_obj as  $term ): 
                             $args['tax_query'] = array(
                                 array(
@@ -593,7 +595,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                         <ul class="box-tabs nav-tab">   
                             <?php foreach( $cate_ids as $id ):   ?>
                                 <?php $term = get_term( $id, 'product_cat' ); ?>
-                                <?php if( ! is_wp_error( $term ) ): $cate_obj[] = $term; ?>
+                                <?php if( ! is_wp_error( $term ) && $term ): $cate_obj[] = $term; ?>
                                     <li <?php if( $i == 1 ): ?> class="active" <?php endif; ?>>
                                         <a data-toggle="tab" href="#tab-<?php echo esc_attr( $term->term_id . '-' . $unique_id )  ?>">
                                             <?php echo esc_html( $term->name ); ?>
