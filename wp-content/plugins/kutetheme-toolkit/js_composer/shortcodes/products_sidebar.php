@@ -196,7 +196,9 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
                     <?php endif;?>
                 </div>
             </div>
-            <?php else: ?>
+            <?php else: 
+            add_action( 'kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10 );
+            ?>
                 <div class="block-static option-14">
                     <?php if( $title ): ?>
                         <h3 class="title"><span><?php echo esc_html( $title ); ?></span></h3>

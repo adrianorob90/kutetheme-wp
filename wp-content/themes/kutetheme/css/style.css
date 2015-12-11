@@ -7956,6 +7956,9 @@ span.notify-right{
   display: inline-block;
   margin-right: 15px;
 }
+.option12.block-hotdeal-week .countdown-lastest .box-count:last-child{
+  margin-right: 0;
+}
 .option12.block-hotdeal-week .countdown-lastest .box-count .number{
   color: #fff;
   font-size: 16px;
@@ -8008,6 +8011,10 @@ span.notify-right{
 .option12.block-hotdeal-week  .product-name{
   font-size: 14px;
   margin-bottom: 10px;
+}
+.option12.block-hotdeal-week .product-function{
+  display: inline-block;
+  width: auto;
 }
 .option12.block-hotdeal-week .add-to-cart{
   padding: 0 13px;
@@ -8783,6 +8790,19 @@ span.notify-right{
   font-size: 14px;
   margin: 0 0 5px 0;
 }
+.option-14.block-static .product-star{
+    display: table;
+    font-size: 13px;
+    margin-top: 5px;
+    color: #ffae00;
+    width: 100%;
+}
+.option-14.block-static .product-star .fa{
+  margin-right: 3px;
+}
+.option-14.block-static .product-star .fa:last-child{
+  margin-right: 0;
+}
 .option-14.block-static .price{
   font-size: 16px;
 }
@@ -8795,7 +8815,7 @@ span.notify-right{
   color: #999;
 }
 .option-14.block-static .group-button-control{
-  margin-top: 30px;
+  margin-top: 24px;
   overflow: hidden;
 }
 .option-14.block-static .block-static-products ul.list{
@@ -11708,6 +11728,7 @@ footer.footer5 a{
 .block-testimonials3 .name {
     text-align: right;
     float: right;
+    font-size: 15px;
 }
 .block-testimonials3 .owl-controls .owl-dots {
     position: static;
