@@ -8765,7 +8765,7 @@ span.notify-right{
   height: 17px;
   border: 1px solid #eee;
   background-color: transparent;
-  line-height: 15px;
+  line-height: 16px;
   font-size: 12px;
   margin: 0 3px;
 }
@@ -9049,6 +9049,11 @@ span.notify-right{
   border-radius: 0;
   text-align: center;
 }
+.block-deal .yith-wcwl-add-to-wishlist .yith-wcwl-add-button:hover,
+.block-deal .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistaddedbrowse a:hover,
+.block-deal .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse a:hover{
+  color: #fff;
+}
 .option-14.block-top-brands2{
     overflow: visible;
 }
@@ -9104,7 +9109,7 @@ span.notify-right{
   height: 17px;
   border: 1px solid #eee;
   background-color: transparent;
-  line-height: 15px;
+  line-height: 16px;
   font-size: 12px;
   margin: 0 3px;
 }
@@ -11473,6 +11478,9 @@ body .block-header-top13 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     z-index: 100;
     box-shadow: 0 1px 1px 0 rgba(50, 50, 50, 0.1);
     padding: 15px 0;
+}
+.admin-bar .header.style14.ontop{
+  top: 32px;
 }
 .header.style14.ontop .main-header{
   padding: 0;
