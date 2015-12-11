@@ -8772,11 +8772,6 @@ span.notify-right{
 .option-14.block-static .owl-controls .owl-prev .fa:before{
     content: "\f0d9";
 }
-.option-14.block-static .owl-controls .owl-prev:hover, 
-.option-14.block-static .owl-controls .owl-next:hover{
-  background-color: #cc9933;
-  border-color: #cc9933;
-}
 .option-14.block-static .owl-nav{
   position: absolute;
   right: 0;
