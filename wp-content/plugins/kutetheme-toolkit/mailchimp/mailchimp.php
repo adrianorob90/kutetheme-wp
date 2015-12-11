@@ -61,6 +61,7 @@ class KT_Mailchimp{
         
         $atts = shortcode_atts( array(
             'title' => '',
+            'style' =>'',
     		'list' => '',
     		'opt_in' => 'yes',
             'text_before' => '',
@@ -83,7 +84,7 @@ class KT_Mailchimp{
         $this->atts = $atts;
         
         $output = '';
-        
+        $output .='<div class="block-newsletter '.$style.'">';
         $output .= '<div class="mailchimp-wrapper '.esc_attr($elementClass).'" id="'.esc_attr($this->uniqeID).'">';
         
         if($title){
@@ -127,10 +128,6 @@ class KT_Mailchimp{
                 $output .= '<div class="mailchimp-success">'.$content.'</div>';
                 $output .= '<div class="mailchimp-error"></div>';
             $output .= '</form>';
-
-
-
-
         }else{
             $output .= sprintf(
                             "Please enter your mailchimp API key in <a href='%s'>%s</a>",
@@ -141,7 +138,7 @@ class KT_Mailchimp{
         
         $output .= ($text_after) ? '<div class="mailchimp-after">'.$text_after.'</div>' : '';
         $output .= '</div><!-- .mailchimp-wrapper -->';
-        
+        $output .='</div>';
     	return $output.$height_option;
         
     }
@@ -417,6 +414,16 @@ if ( class_exists( 'Vc_Manager', false ) ) {
             		__( 'Two line', 'kt_mailchimp' ) => "two"
             	),
             	'description' => __( 'Select your layout', 'kt_mailchimp' )
+            ),
+            array(
+                'type' => 'dropdown',
+                'heading' => __( 'Display style', 'kt_mailchimp' ),
+                'param_name' => 'style',
+                'admin_label' => false,
+                'value' => array(
+                    __( 'Style 1', 'kt_mailchimp' ) => 'style1',
+                    __( 'Style 2', 'kt_mailchimp' ) => "style2"
+                )
             ),
             array(
             	'type' => 'dropdown',

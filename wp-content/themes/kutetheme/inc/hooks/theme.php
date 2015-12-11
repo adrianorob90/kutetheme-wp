@@ -438,7 +438,9 @@ function kt_themne_color(){
     .footer5 .social-link a:hover .fa,
     .footer5 .address-list .tit-name,
     .footer5 a:hover,
-    .option-14 .block-deal .title{
+    .option-14 .block-deal .title,
+    .option12.section-blog-12 .blog12 .blog-title a:hover,
+    body .block-deal .title{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,
@@ -561,6 +563,8 @@ function kt_themne_color(){
     .option-14.block-static .owl-controls .owl-next:hover,
     .option-14 .block-deal .group-button-control .add-to-cart a,
     .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover,
+     body .block-deal .add-to-cart a,
+    .product-style4 .add_to_cart_button:hover, .product-style4 .added_to_cart:hover,
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
     .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
@@ -627,6 +631,8 @@ function kt_themne_color(){
     .option-14.block-static ul.list .group-button-control .add-to-cart a,
     .option-14.block-static .block-static-products ul.list li:hover .product-thumb,
     .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover,
+    
+    .option-14.block-static .owl-controls .owl-prev:hover, 
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
     .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
@@ -661,7 +667,10 @@ function kt_themne_color(){
     .option12.block-hotdeal-week .price,
     .block-new-product12 .price,
     .option-13 .product-style3 .content_price .price,
-    .option-14 .block-deal .price{
+    .option-14 .block-deal .price,
+    .block-deal .price,
+    .product-style4 .price,
+    .option-14.block-static .price{
         color: {$price_color}
     }
 CSS;

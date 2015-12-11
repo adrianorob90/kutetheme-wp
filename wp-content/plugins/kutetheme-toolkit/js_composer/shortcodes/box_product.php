@@ -583,7 +583,9 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             <?php endif; ?>
 
             <!-- Style 4 -->
-            <?php if( $style == "style-4"):?>
+            <?php if( $style == "style-4"):
+            $shop_page_url = get_permalink( woocommerce_get_page_id( 'shop' ) );
+            ?>
                 <div class="block-tab-category14 container-tab">
                     <div class="head">
                         <span class="bar"><i class="fa fa-bars"></i></span>
@@ -602,7 +604,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                             <?php endforeach; ?>
                         </ul>
                         <?php endif;?>
-                        <a class="link-all" href="#">View all</a>
+                        <a class="link-all" href="<?php echo esc_url( $shop_page_url );?>"><?php _e('View all','kutetheme');?></a>
                     </div>
                     <div class="tab-container">
                         <?php if( isset( $cate_obj ) && $cate_obj ): $i = 1; ?>

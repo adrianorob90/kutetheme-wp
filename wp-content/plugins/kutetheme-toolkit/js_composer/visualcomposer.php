@@ -31,6 +31,7 @@ if ( kt_check_active_plugin( 'woocommerce/woocommerce.php' ) ) {
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/featured_products.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/products_sidebar.php';
     require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/category_carousel.php';
+    require_once KUTETHEME_PLUGIN_PATH . '/js_composer/shortcodes/kt-product.php';
     
     $style_banner = array(
     	__( 'Style 1', 'kutetheme' ) => 'style-1',
