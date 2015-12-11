@@ -540,6 +540,7 @@ function kt_themne_color(){
     .product-style4 .yith-wcwl-add-to-wishlist .yith-wcwl-wishlistexistsbrowse:hover,
     .product-style4 .compare-button:hover,
     .product-style4 .yith-wcqv-button:hover,
+    .product-style4 .product-new,
     .option-13.tab-product-13 .nav-tab li a:after,
     .option-13 .product-style3 .yith-wcwl-add-button:hover, 
     .option-13 .product-style3 .compare-button:hover, 
@@ -556,7 +557,11 @@ function kt_themne_color(){
     .option-14.block-static ul.list .group-button-control .add-to-cart a,
     .option-14 .block-deal .group-button-control .add-to-cart a,
     .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover,
-    .product-style4 .add_to_cart_button:hover, .product-style4 .added_to_cart:hover
+    .product-style4 .add_to_cart_button:hover, .product-style4 .added_to_cart:hover,
+    .option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
+    .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
+    .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
+    .option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover
     {
         background-color: {$main_color};
     }
@@ -618,7 +623,13 @@ function kt_themne_color(){
     .option-14.block-static ul.list li .group-button-control .search.yith-wcqv-button:hover,
     .option-14.block-static ul.list .group-button-control .add-to-cart a,
     .option-14.block-static .block-static-products ul.list li:hover .product-thumb,
-    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover
+    .option-14 .block-deal .yith-wcwl-add-to-wishlist:hover,
+    .option-14.block-top-brands2 .brand-products .owl-controls .owl-prev:hover, 
+    .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
+    .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
+    .option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover,
+    .option-14.block-top-brands2 .list-brands a.active img,
+    .option-14.block-top-brands2 .list-brands a:hover img
     {
         border-color: {$main_color};
 
