@@ -14,7 +14,7 @@
 			  <div class="col-md-3 text-center logo1">
 			  		<?php echo kt_get_logo(); ?>
 			  </div>
-			  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+			  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
 	            	<div class="top-header-inner">
 	            		<div class="form-search">
 	            			<span class="icon fa fa-search"></span>
