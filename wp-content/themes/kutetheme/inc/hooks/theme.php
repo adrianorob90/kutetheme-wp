@@ -569,7 +569,8 @@ function kt_themne_color(){
     .option-14.block-top-brands2 .brand-products .owl-controls .owl-next:hover,
     .option-14.block-top-brands2 .list-brands .owl-controls .owl-prev:hover, 
     .option-14.block-top-brands2 .list-brands .owl-controls .owl-next:hover,
-    .block-tab-category14 .box-tabs li a::after
+    .block-tab-category14 .box-tabs li a::after,
+    body .widget_product_tag_cloud .tagcloud a:hover
     {
         background-color: {$main_color};
     }
@@ -641,7 +642,8 @@ function kt_themne_color(){
     .option-14.block-static .owl-controls .owl-prev:hover, 
     .option-14.block-static .owl-controls .owl-next:hover,
     .option-14.block-top-brands2 .list-brands a.active img,
-    .option-14.block-top-brands2 .list-brands a:hover img
+    .option-14.block-top-brands2 .list-brands a:hover img,
+     body .widget_product_tag_cloud .tagcloud a:hover
     {
         border-color: {$main_color};
 
