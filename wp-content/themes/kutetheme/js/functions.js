@@ -837,11 +837,11 @@
             $(this).removeClass('active');
         });
         var $tab_activate = $(tab);
-        $tab_activate.addClass('active');
         
-        var $lazy = $tab_activate.find( '.primary_image img' );
-            
+        $tab_activate.addClass('active');
+        var $lazy = $tab_activate.find( '.active .primary_image img' );
         kt_lazy( $lazy );
+       
         return false;
     })
 });
