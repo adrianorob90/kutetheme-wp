@@ -125,8 +125,9 @@ class WPBakeryShortCode_Popular_Category extends WPBakeryShortCode {
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         $term = get_term( $taxonomy, 'product_cat' );
         
-        if( ! is_wp_error($term) ):
+        if( ! is_wp_error($term) && $term ):
             $link = get_term_link($term);
+            
             $thumbnail_id = absint( get_woocommerce_term_meta( $term->term_id, 'thumbnail_id', true ) );
     		
             if ( $thumbnail_id ) {

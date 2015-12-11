@@ -45,22 +45,24 @@ $d = date( 'd', $time );
 		do_action( 'kt_after_loop_item_title' );
 	?>
 </div>
-<?php
-	/**
-	 * woocommerce_after_shop_loop_item hook
-	 *
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
-
-?>
-<?php
-	/**
-	 * kt_loop_product_function hook
-	 *
-	 * @hooked kt_get_tool_wishlish - 1
-     * @hooked kt_get_tool_compare - 5
-     * @hooked kt_get_tool_quickview - 10
-	 */
-	do_action( 'kt_loop_product_function' );
-?>
+<div class="product-function">
+    <?php
+    	/**
+    	 * woocommerce_after_shop_loop_item hook
+    	 *
+    	 * @hooked woocommerce_template_loop_add_to_cart - 10
+    	 */
+    	do_action( 'woocommerce_after_shop_loop_item' );
+    
+    ?>
+    <?php
+    	/**
+    	 * kt_loop_product_function hook
+    	 *
+    	 * @hooked kt_get_tool_wishlish - 1
+         * @hooked kt_get_tool_compare - 5
+         * @hooked kt_get_tool_quickview - 10
+    	 */
+    	do_action( 'kt_loop_product_function' );
+    ?>
+</div>

@@ -35,6 +35,13 @@ vc_map( array(
         	),
         ),
         array(
+            "type"        => "colorpicker",
+            "heading"     => __("Countdown Color", 'kutetheme'),
+            "param_name"  => "countdown_color",
+            "admin_label" => true,
+            "dependency"  => array("element" => "type","value" => array( 'style-2' )),
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
@@ -46,7 +53,6 @@ vc_map( array(
             'placeholder' => __('Choose categoy', 'kutetheme'),
             "description" => __("Note: Selected categories will be hide if it empty. Only selected categories will be displayed.", 'kutetheme')
         ),
-        
         array(
             "type"        => "kt_number",
             "heading"     => __("Number Product", 'kutetheme'),
@@ -152,6 +158,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
         $atts = shortcode_atts( array(
             'title'         => '',
             'type'          => 'style-1',
+            'countdown_color' => '#ff3366',
             'taxonomy'      => '',
             'number'        => 12,
             //Carousel            
@@ -167,7 +174,9 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
             
         ), $atts );
         extract($atts);
-        
+        if( ! $countdown_color ){
+            $countdown_color = '#ff3366';
+        }
         
         $elementClass = array(
         	'base' => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'latest-deals ', $this->settings['base'], $atts ),
@@ -250,7 +259,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
             else:
             remove_action( 'kt_loop_product_function', 'kt_get_tool_quickview' );
             ?>
-            <div class="block-hotdeal-week option12 <?php echo esc_attr( $elementClass ); ?>">
+            <div class="block-hotdeal-week option12 <?php echo esc_attr( $elementClass ); ?>" data-color="<?php echo esc_attr( $countdown_color ) ?>">
                 <div class="title"><?php echo esc_html( $title ); ?></div>
                 <div class="inner">
                     <ul class="hotdeal-product owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
