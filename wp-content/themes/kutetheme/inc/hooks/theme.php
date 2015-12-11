@@ -440,7 +440,9 @@ function kt_themne_color(){
     .footer5 a:hover,
     .option-14 .block-deal .title,
     .option12.section-blog-12 .blog12 .blog-title a:hover,
-    body .block-deal .title{
+    body .block-deal .title,
+    .service4 .service-title a:hover,
+    .footer5 .footer-coppyright{
         color: {$main_color}
     }
     body .main-header .header-search-box .form-inline .btn-search,

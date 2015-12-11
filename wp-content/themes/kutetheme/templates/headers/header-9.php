@@ -6,7 +6,7 @@ if( $kt_enable_header9_postion =="enable"){
 	$header_class[] = 'postion';
 }
 ?>
-<div class="<?php echo esc_attr( implode(' ',$header_class) );?>">
+<div id="header" class="<?php echo esc_attr( implode(' ',$header_class) );?>">
     <div class="top">
         <div class="top-header">
             <div class="container">

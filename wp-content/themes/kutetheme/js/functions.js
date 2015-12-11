@@ -879,6 +879,7 @@ $(window).scroll(function(){
         if( h > (max_h + vertical_menu_height)-50){
             // fix top menu
             $('#nav-top-menu').addClass('nav-ontop');
+            $('#header').addClass('ontop');
             //$('#nav-top-menu').find('.vertical-menu-content').hide();
             //$('#nav-top-menu').find('.title').removeClass('active');
             // add cart box on top menu
@@ -903,6 +904,8 @@ $(window).scroll(function(){
             $('#shopping-cart-box-ontop').fadeOut();
             $('#user-info-opntop #user-info-top').appendTo('.top-header .container');
             $('#form-search-opntop form').appendTo('#header .header-search-box');
+
+            $('#header').removeClass('ontop');
         }
     }
 
@@ -912,9 +915,9 @@ $(window).scroll(function(){
     var width = $(window).width();
     if(width > 991){
         if(h > 100){
-            $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13,.header.style14').addClass('ontop');
+            $('.header.style8,.header.style11,.header.style9,.header.style14').addClass('ontop');
         }else{
-            $('.header.style8,.header.style12,.header.style11,.header.style9,.header.style13,.header.style14').removeClass('ontop');
+            $('.header.style8,.header.style11,.header.style9,.header.style14').removeClass('ontop');
         }
     }
 });
