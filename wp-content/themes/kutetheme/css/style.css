@@ -11933,10 +11933,11 @@ footer.footer5 a{
 .product-style4 .added_to_cart:before{
   content: '';
   width: 20px;
-  height: 16px;
+  height: 20px;
   display: inline-block;
   background: url('../images/cart12.png') no-repeat center center;
   margin-right: 5px;
+  vertical-align: bottom;
 }
 .product-style4:hover .add_to_cart_button,
 .product-style4:hover .added_to_cart{
