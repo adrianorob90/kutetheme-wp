@@ -1,4 +1,20 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.8
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+11/12/2015 Update shortcode mailchip
+10/12/2015 Update Brand shortcode
+09/12/2015 Update Box product and products_sidebar
+09/12/2015 Update box product style 4
+09/12/2015 Update carousel in all of shortcode
+09/12/2015 Update shortcode testimonial
+08/12/2015 Update VC 4.9
+08/12/2015 Update brand shortcode
+08/12/2015 Add footer style 5
+08/12/2015 Add header style 13,14
+07/12/2015 Update allow display html coppyright for footer 1,2,3,4,5
+07/12/2015 Fix form search on top, Fix main menu on mobile
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.7
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 05/12/2015Fix auto height list product, Update template home page 9,11,12
