@@ -770,10 +770,12 @@
 	margin-left: 15px;
 }
 
-.product-meta{
+.product-meta,
+.summary .product_meta{
 	border-bottom: 1px solid #eaeaea;
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 	margin-bottom: 10px;
+	margin-top: 0;
 }
 
 .woocommerce div.product .available-options{
@@ -1491,8 +1493,38 @@ del span.amount{
 
 span.sku_wrapper{
 	margin-top: 0;
-	margin-bottom: 10px;
 	display: block;
+}
+.woocommerce div.product p.stock{
+	font-size: 14px;
+}
+.woocommerce div.product form.cart table{
+	border-width: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eaeaea;
+    margin-top: 3px;
+}
+.woocommerce div.product form.cart .group_table td{
+	padding: 0;
+	border-bottom-width: 1px;
+
+}
+.woocommerce div.product form.cart .group_table div.quantity{
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+.woocommerce div.product form.cart .group_table .quantity-label{
+	display: none;
+}
+.woocommerce div.product form.cart .group_table .quantity .qty{
+	width: 40px;
+}
+.woocommerce div.product form.cart .group_table .price ins{
+	text-decoration: none;
+}
+.woocommerce div.product form.cart .group_table .price del{
+	color: #999;
 }
 /** REPONSIVE **/
 /*----------------

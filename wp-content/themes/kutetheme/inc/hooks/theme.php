@@ -681,7 +681,8 @@ function kt_themne_color(){
     .option-14 .block-deal .price,
     .block-deal .price,
     .product-style4 .price,
-    .option-14.block-static .price{
+    .option-14.block-static .price,
+    .woocommerce div.product form.cart .group_table .price{
         color: {$price_color}
     }
 CSS;

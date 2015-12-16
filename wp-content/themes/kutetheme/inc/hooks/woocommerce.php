@@ -809,7 +809,7 @@ if( ! function_exists( 'custom_woocommerce_page_title' ) ){
 
 // Product meta
 remove_action( 'woocommerce_single_product_summary','woocommerce_template_single_meta', 40 );
-
+add_filter( 'woocommerce_single_product_summary','woocommerce_template_single_meta', 11 );
 if( ! function_exists('kt_show_product_meta') ){
     function kt_show_product_meta(){
         global $product;
@@ -833,7 +833,7 @@ if( ! function_exists('kt_show_product_meta') ){
         <?php
     }
 }
-add_filter( 'woocommerce_single_product_summary','kt_show_product_meta', 11 );
+//add_filter( 'woocommerce_single_product_summary','kt_show_product_meta', 11 );
 
 //Available Options
 if( ! function_exists( 'kt_available_options' ) ){
