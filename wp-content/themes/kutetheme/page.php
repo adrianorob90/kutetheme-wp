@@ -40,33 +40,31 @@ if( $kt_sidebar_are == "left" || $kt_sidebar_are == "right" ){
 ?>
 <div id="primary" class="content-area <?php echo esc_attr( $sidebar_are_layout );?>">
 	<main id="main" class="site-main">
-        <div class="main-content">
-        	<?php
-        	if( $kt_show_page_breadcrumb == 'show' ) {
-        		breadcrumb_trail();
-        	}
-        	?>
-            <div class="row">
-                <div class="<?php echo esc_attr($col_class);?>">
-                    <?php
-					// Start the loop.
-					while ( have_posts() ) : the_post();
+    	<?php
+    	if( $kt_show_page_breadcrumb == 'show' ) {
+    		breadcrumb_trail();
+    	}
+    	?>
+        <div class="row">
+            <div class="<?php echo esc_attr($col_class);?>">
+                <?php
+				// Start the loop.
+				while ( have_posts() ) : the_post();
 
-						// Include the page content template.
-						get_template_part( 'content', 'page' );
+					// Include the page content template.
+					get_template_part( 'content', 'page' );
 
-					// End the loop.
-					endwhile;
-					?>
-                </div>
-                <?php if( $kt_sidebar_are != 'full' ){ ?>
-                    <div class="col-xs-12 col-sm-4 col-md-3">
-                        <div class="sidebar">
-                            <?php get_sidebar();?>
-                        </div>
-                    </div>
-                <?php } ?>
+				// End the loop.
+				endwhile;
+				?>
             </div>
+            <?php if( $kt_sidebar_are != 'full' ){ ?>
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="sidebar">
+                        <?php get_sidebar();?>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
 	</main><!-- .site-main -->
 </div><!-- .content-area -->

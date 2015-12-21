@@ -53,7 +53,7 @@
              <div class="row">
                  <div class="col-sm-6 col-md-3">
                      <div class="widget-container widget-contact-info">
-                         <h3 class="widget-title"><?php _e( 'Infomation', 'kutetheme' ) ?></h3>
+                         <h3 class="widget-title"><?php _e( 'Information', 'kutetheme' ) ?></h3>
                          <div class="widget-body">
                              <ul>
                                  <li><a class="location" href="#"><span class="address"><?php _e( 'Address:', 'kutetheme' ) ?></span><?php echo kt_get_html($address);?></a></li>
