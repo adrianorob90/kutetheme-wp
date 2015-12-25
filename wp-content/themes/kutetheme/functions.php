@@ -30,9 +30,13 @@
  *
  * @since Kute Theme 1.0
  */
- 
-define( 'THEME_DIR', trailingslashit(get_template_directory()));
-define( 'THEME_URL', trailingslashit(get_template_directory_uri()));
+if( ! defined( 'THEME_DIR' ) ) {
+    define( 'THEME_DIR', trailingslashit(get_template_directory()));
+}
+if( ! defined( 'THEME_URL' ) ) {
+    define( 'THEME_URL', trailingslashit(get_template_directory_uri()));
+}
+
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 1170;
