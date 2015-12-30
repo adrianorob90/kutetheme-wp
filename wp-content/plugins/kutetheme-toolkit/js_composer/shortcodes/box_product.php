@@ -42,6 +42,15 @@ vc_map( array(
         	),
         ),
         array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_204',
+            "description" => __( "Product size", 'kutetheme' ),
+            "admin_label" => true,
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_cat",
             "class"       => "",
@@ -257,10 +266,13 @@ vc_map( array(
 ));
 
 class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
+    public $product_size = 'kt_shop_catalog_204';
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'box_products', $atts ) : $atts;
         extract( shortcode_atts( array(
             'title'          => '',
+            'size'           => 'kt_shop_catalog_204',
             'per_page'       => 5,
             'type'           => 'hot-deals',
             'taxonomy'       => 0,
@@ -310,6 +322,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         $cate_ids = array();
         ob_start();
         $meta_query = WC()->query->get_meta_query();
+        
+        add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
         
         $args = array(
 			'post_type'			  => 'product',
@@ -447,6 +461,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     endforeach;
                     $banner_carousel = ob_get_clean();
                 endif;
+                
                 ?>
                 <div class="container-tab <?php if( $style == "style-1" ): ?> option3 <?php else: ?> option4 <?php endif; ?>">
                     <!-- box product -->
@@ -652,7 +667,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
         if( $type == 'most-review' ){
             remove_filter( 'posts_clauses', array( $this, 'order_by_rating_post_clauses' ) );
         }
-        
+        remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
         return ob_get_clean();
     }
     /**
@@ -702,4 +717,8 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             <label><?php _e( 'Empty product', 'kutetheme' ) ?></label>
         <?php
      }
+     
+    public function get_size_product( $size ){
+        return $this->product_size;
+    }
 }

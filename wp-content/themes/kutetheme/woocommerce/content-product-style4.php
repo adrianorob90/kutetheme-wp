@@ -19,18 +19,18 @@ if ( ! defined( 'ABSPATH' ) ) {
     $attachment_ids = $product->get_gallery_attachment_ids();
     
     $secondary_image = '';
-    
+    $size = apply_filters( 'kt_box_product_thumbnail_loop', 'kt_shop_catalog_270' );
     if( $attachment_ids ){
-        $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
+        $secondary_image = wp_get_attachment_image( $attachment_ids[0], $size );
     }
 
     if( has_post_thumbnail() ){
         ?>
-        <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
+        <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( $size );?></a>
         <?php
     }else{
         ?>
-        <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+        <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
         <?php
     }
     if( $secondary_image != "" ){
@@ -39,7 +39,7 @@ if ( ! defined( 'ABSPATH' ) ) {
         <?php
     }else{
         ?>
-        <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
+        <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
         <?php
     }
 

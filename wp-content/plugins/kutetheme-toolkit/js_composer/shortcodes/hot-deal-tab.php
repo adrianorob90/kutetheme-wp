@@ -18,6 +18,14 @@ vc_map( array(
             "admin_label" => true,
         ),
         array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_164',
+            "description" => __( "Product size", 'kutetheme' ),
+        ),
+        array(
             "type"        => "textfield",
             "heading"     => __( "Number Post", 'kutetheme' ),
             "param_name"  => "per_page",
@@ -242,10 +250,13 @@ vc_map( array(
     )
 ) );
 class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
+    public $product_size = 'kt_shop_catalog_164';
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'hot_deal', $atts ) : $atts;
         extract( shortcode_atts( array(
             'title'          => 'Tabs Name',
+            'size'           => 'kt_shop_catalog_164',
             'per_page'       => 5,
             'taxonomy'       => 0,
             'orderby'        => 'date',
@@ -272,7 +283,8 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'css_animation'  => '',
         ), $atts ) );
         
-         global $woocommerce_loop;
+        global $woocommerce_loop;
+        $this->product_size = $size;
         
         $elementClass = array(
             'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, ' box-tab-category ', $this->settings['base'], $atts ),
@@ -433,6 +445,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                                     add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                     remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                    add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                                     ?>
                                     <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
                                         <?php do_action( "woocommerce_shortcode_before_hot_deal_loop" ); ?>
@@ -457,6 +470,7 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                 remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                                 remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                 add_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);
+                                remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                                 ?>
                                 <?php else: ?>
                                     <div id="hotdeals-<?php echo $unique ?>-<?php echo $i; ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
@@ -492,5 +506,8 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
+    }
+    public function get_size_product( $size ){
+        return $this->product_size;
     }
 }

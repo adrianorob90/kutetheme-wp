@@ -23,6 +23,14 @@ vc_map( array(
         ),
         array(
             "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_270',
+            "description" => __( "Product size", 'kutetheme' ),
+        ),
+        array(
+            "type"        => "dropdown",
             "heading"     => __("Display  type", 'kutetheme'),
             "param_name"  => "display_type",
             "admin_label" => true,
@@ -180,11 +188,14 @@ vc_map( array(
 ));
 
 class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'kt_featured_products', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
             'title'         => __('Hot Categories', 'kutetheme'),
+            'size'           => 'kt_shop_catalog_270',
+            
             'display_type'  =>'1',
             'box_type'      => 'featured',
             'ids'           =>'',
@@ -263,15 +274,12 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
                 'post__in' => $ids
             );
         }
-         
-          
         $products = get_posts($args);
         $count = count( $products );
         $per_page = 2;
         $loop = false;
         if( $count >2 ) $loop = true;
         ?>
-
         <!-- Style 1 -->
         <?php if( $display_type == 1 ):?>
         <div class=" <?php echo esc_attr( $elementClass ); ?>">
@@ -301,12 +309,12 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
                                         <div class="product-container">
                                             <div class="product-image">
                                                 <a href="<?php echo get_permalink($p->ID); ?>">
-                                                   <?php  echo get_the_post_thumbnail($p->ID,'shop_thumbnai'); ?>
+                                                   <?php  echo get_the_post_thumbnail( $p->ID, $size ); ?>
                                                 </a>
                                             </div>
                                             <div class="product-info">
                                                 <h5 class="product-name">
-                                                    <a href="<?php echo get_permalink($p->ID); ?>"><?php echo esc_html($p->post_title);?></a>
+                                                    <a href="<?php echo get_permalink($p->ID); ?>"><?php echo esc_html( $p->post_title );?></a>
                                                 </h5>
                                                 <div class="product-price">
                                                     <?php echo $product->get_price_html(); ?>
@@ -324,7 +332,7 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
         </div>
         <?php endif;?>
         <!-- Style 2 -->
-        <?php if( $display_type == 2 ):?>
+        <?php if( $display_type == 2 ): ?>
             <?php $products = new WP_Query(  $args );?>
             <div class="section8 block-trending <?php echo esc_attr( $elementClass ); ?>">
             <h3 class="section-title"><?php echo esc_html( $title );?></h3>
@@ -337,34 +345,23 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
                 <li class="product autoHeight-item">
                     <div class="product-container">
                         <div class="product-thumb">
-                                <?php
+                            <?php
                                 $product = new WC_Product(  get_the_ID() );
                                 $attachment_ids = $product->get_gallery_attachment_ids();
                                 $secondary_image = '';
                                 if( $attachment_ids ){
-                                    $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
+                                    $secondary_image = wp_get_attachment_image( $attachment_ids[0], $size );
                                 }
-
-                                if( has_post_thumbnail() ){
-                                    ?>
-                                    <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
-                                    <?php
-                                }else{
-                                    ?>
-                                    <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
-                                    <?php
-                                }
-                                if( $secondary_image != "" ){
-                                    ?>
+                                if( has_post_thumbnail() ){ ?>
+                                    <a class="primary_image" href="<?php the_permalink();?>"><?php the_post_thumbnail( $size );?></a>
+                                <?php }else{ ?>
+                                    <a class="primary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
+                                <?php } 
+                                if( $secondary_image != "" ){ ?>
                                     <a class="secondary_image" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
-                                    <?php
-                                }else{
-                                    ?>
-                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
-                                    <?php
-                                }
-
-                                ?>
+                                <?php }else{ ?>
+                                    <a class="secondary_image" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
+                                <?php } ?>
                             <?php kt_get_tool_quickview();?>
                             <div class="product-label"><?php do_action( 'kt_loop_product_label' ); ?></div>
                         </div>

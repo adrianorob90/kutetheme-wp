@@ -18,6 +18,15 @@ vc_map( array(
             "admin_label" => true,
         ),
         array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_214',
+            "description" => __( "Product size", 'kutetheme' ),
+            "admin_label" => true,
+        ),
+        array(
             "type"        => "textfield",
             "heading"     => __( "Number Post", 'kutetheme' ),
             "param_name"  => "per_page",
@@ -349,10 +358,13 @@ vc_map( array(
     )
 ) );
 class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
+    public $product_size = 'kt_shop_catalog_214';
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'categories_tab', $atts ) : $atts;
         extract( shortcode_atts( array(
             'title'          => 'Tabs Name',
+            'size'           => 'kt_shop_catalog_214',
             'tabs_type'      => 'tab-1',
             'per_page'       => 10,
             'column'         => 4,
@@ -386,7 +398,7 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
         
          global $woocommerce_loop;
         $is_phone = false;
-        
+        $this->product_size = $size;
         if( function_exists( 'kt_is_phone' ) && kt_is_phone() ){
             $is_phone = true;
         }
@@ -438,7 +450,6 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                 if( ! $is_phone ){
                     $subcats = get_categories($args);
                 }
-                
                 if( $tabs_type == 'tab-1' ){
                     $elementClass .= ' option1 tab-1';
                 }elseif( $tabs_type == 'tab-2' ){
@@ -455,7 +466,9 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
                     $elementClass .= ' option12 tab-7';
                 }
                 ob_start();
+                add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                 @include( KUTETHEME_PLUGIN_PATH . 'js_composer/includes/'.$tabs_type.'.php' );
+                remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                 return ob_get_clean();
             }
         endif;
@@ -484,5 +497,11 @@ class WPBakeryShortCode_Categories_Tab extends WPBakeryShortCodesContainer {
     	$args['groupby'] = "$wpdb->posts.ID";
     
     	return $args;
+    }
+    public function get_size_product( $size ){
+        return $this->product_size;
+    }
+    public function get_size_product_option_3( $size ){
+        return 'kt_shop_catalog_131';
     }
 }

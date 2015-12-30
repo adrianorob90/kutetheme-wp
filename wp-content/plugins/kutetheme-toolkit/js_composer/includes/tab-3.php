@@ -70,9 +70,11 @@ if( ! $is_phone ):
         add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
         ob_start();
+        add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product_option_3' ) );
         while($deal_product->have_posts()): $deal_product->the_post();
             wc_get_template_part( 'content', 'tab-category-deal' );
         endwhile;
+        remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product_option_3' ) );
         $deal_product_tmp = ob_get_clean();
         //remove_filter( 'kt_template_loop_product_thumbnail_size', array( $this, 'kt_thumbnail_size_131x160' ) );
         remove_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);

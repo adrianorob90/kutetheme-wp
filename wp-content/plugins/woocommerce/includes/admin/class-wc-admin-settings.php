@@ -485,7 +485,7 @@ class WC_Admin_Settings {
 
 				// Image width settings
 				case 'image_width' :
-
+                
 					$image_size       = str_replace( '_image_size', '', $value[ 'id' ] );
 					$size             = wc_get_image_size( $image_size );
 					$width            = isset( $size[ 'width' ] ) ? $size[ 'width' ] : $value[ 'default' ][ 'width' ];

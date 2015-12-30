@@ -31,13 +31,6 @@ vc_map( array(
             'admin_label' => false,
         ),
         array(
-            "type"        => "textfield",
-            "heading"     => __("Countdown text", 'kutetheme'),
-            "param_name"  => "countdown_text",
-            "admin_label" => false,
-            "dependency"  => array( "element" => "enable_countdown", "value" => array( 'on')),
-        ),
-        array(
             'type'  => 'kt_datetimepicker',
             'heading'     => __( 'Time', 'kutetheme' ),
             'param_name'  => 'time',
@@ -71,7 +64,6 @@ class WPBakeryShortCode_kt_single_product extends WPBakeryShortCode {
             'style'       => '1',
             'product_id'       => '',
             'enable_countdown' => 'off',
-            'countdown_text'   =>'',
             'time'             => '',
             'el_class' => '',
             'css' => ''

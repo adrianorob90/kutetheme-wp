@@ -312,7 +312,7 @@ class WPBakeryShortCode_Kt_colection extends WPBakeryShortCode {
 		                                    <div class="author"><?php _e('Designed by','kutetheme');?>: <?php echo esc_html( $_kt_page_colection_design );?></div>
 		                                	<?php endif;?>
 		                                    <div class="collection-button">
-		                                        <a href="<?php the_permalink();?>"><?php _e('View Collection','kutetheme');?></a>
+		                                        <a href="<?php the_permalink();?>"><?php _e( 'View Collection', 'kutetheme' ) ; ?></a>
 		                                    </div>
 		                                </div>
 				        			</li>

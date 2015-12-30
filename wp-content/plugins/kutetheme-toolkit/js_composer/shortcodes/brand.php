@@ -23,6 +23,15 @@ vc_map( array(
             'description' => __( 'Show tittle when "show product" is not checked', 'kutetheme' )
         ),
         array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_270',
+            "description" => __( "Product size", 'kutetheme' ),
+            "admin_label" => true,
+        ),
+        array(
             "type"        => "kt_taxonomy",
             "taxonomy"    => "product_brand",
             "class"       => "",
@@ -371,11 +380,14 @@ vc_map( array(
     )
 ));
 class WPBakeryShortCode_Brand extends WPBakeryShortCode {
+    public $product_size = 'kt_shop_catalog_270';
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'brand', $atts ) : $atts;
                         
         $atts = shortcode_atts( array(
             'title'          => '',
+            'size'           => 'kt_shop_catalog_270',
             'taxonomy'      => 0,
             'line_brand'     => '1-line',
             'show_product'   => 'true',
@@ -418,6 +430,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             
         ), $atts );
         extract($atts);
+        
+        $this->product_size = $size;
         
         $elementClass = array(
             'base'             => apply_filters( VC_SHORTCODE_CUSTOM_CSS_FILTER_TAG, 'brand ', $this->settings['base'], $atts ),
@@ -491,7 +505,8 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         ob_start();
         //Set up the taxonomy object and get terms
-		
+		add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
+        
         if( taxonomy_exists( 'product_brand' ) ):
             $args_term = array( 
                 'hide_empty' => 0, 
@@ -582,7 +597,7 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                                         			 *
                                                         			 * @hooked woocommerce_template_loop_product_thumbnail - 10
                                                         			 */
-                                                        			echo woocommerce_get_product_thumbnail();
+                                                        			echo woocommerce_get_product_thumbnail( $size );
                                                         		?>
                                                             </a>
                                                         </div>
@@ -851,7 +866,12 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             endif;//if( ! is_wp_error($terms) && count( $terms ) > 0 ) :
         endif;//if( $tax ):
         $result = ob_get_contents();
+        remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
         ob_end_clean();
         return $result;
+    }
+    
+    public function get_size_product( $size ){
+        return $this->product_size;
     }
 }

@@ -45,13 +45,13 @@ if ( 0 == $woocommerce_loop['loop'] % $woocommerce_loop['columns'] ) {
 
 // Bootstrap Column
 $bootstrapColumn = round( 12 / $woocommerce_loop['columns'] );
-$classes[] = 'col-xs-12 col-lg-' . $bootstrapColumn;
+$classes[] = 'col-xs-12 col-md-' . $bootstrapColumn;
 
 $kt_woo_shop_sidebar_are = kt_option('kt_woo_shop_sidebar_are','left');
 if( $kt_woo_shop_sidebar_are =="full"){
-    $classes[] = 'col-sm-4 col-md-4';
+    $classes[] = 'col-sm-4';
 }else{
-    $classes[] = 'col-sm-6 col-md-4';
+    $classes[] = 'col-sm-6';
 }
 
 ?>

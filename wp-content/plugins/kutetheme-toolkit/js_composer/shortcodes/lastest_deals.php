@@ -35,6 +35,15 @@ vc_map( array(
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
         ),
         array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_204',
+            "description" => __( "Product size", 'kutetheme' ),
+            "admin_label" => true,
+        ),
+        array(
             "type"        => "textfield",
             "heading"     => __("Number Product", 'kutetheme'),
             "param_name"  => "number",
@@ -192,15 +201,17 @@ vc_map( array(
     )
 ));
 class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
+    public $product_size = 'kt_shop_catalog_204';
     
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'lastest_deal_products', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'title'          => '&nbsp;',
             'taxonomy'       => '',
+            'size'           => 'kt_shop_catalog_204',
             'number'         => 10,
             'product_column' => 5,
-            'orderby'        =>'date',
+            'orderby'        => 'date',
             'order'          => 'DESC',
             //Carousel            
             'autoplay'       => '', 
@@ -220,6 +231,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             'columns'        => 1,
         ), $atts );
         extract($atts);
+        $this->product_size = $size;
         // Get products on sale
 		$product_ids_on_sale = wc_get_product_ids_on_sale();
         
@@ -304,14 +316,13 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                      <?php
                         add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                        add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                         $max = 0;
                         while ( $query_product->have_posts() ) : $query_product->the_post(); $id = get_the_ID(); global $post;  ?>
-                            <?php
-                            $time = kt_get_max_date_sale( $id );
-                            if( $time > $max){
+                            <?php $time = kt_get_max_date_sale( $id );
+                            if( $time > $max ) {
                                 $max = $time;
-                            }
-                            ?>
+                            } ?>
                             <li>
         					   <?php wc_get_template_part( 'content', 'product-lastest-deal' );?>
                             </li>
@@ -319,6 +330,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
         				endwhile; // end of the loop.
                         remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                         remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                        remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
                      ?>
                 </ul>
                 <?php
@@ -335,9 +347,13 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
             </div>
         </div>
         <?php
-        endif; wp_reset_postdata();wp_reset_query();
+        endif; wp_reset_postdata();
+        wp_reset_query();
         $result = ob_get_contents();
         ob_end_clean();
         return $result;
+    }
+    public function get_size_product( $size ){
+        return $this->product_size;
     }
 }

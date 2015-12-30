@@ -1069,6 +1069,7 @@ if ( ! function_exists( 'kt_get_product_thumbnail' ) ) {
 	 */
 	function kt_get_product_thumbnail( $size = 'shop_catalog', $deprecated1 = 0, $deprecated2 = 0 ) {
 		global $post;
+        $size = apply_filters( 'kt_product_thumbnail_loop', $size );
         
         $dimensions = wc_get_image_size( $size );
         

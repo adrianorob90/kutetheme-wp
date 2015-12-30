@@ -7,7 +7,8 @@
 			 *
 			 * @hooked woocommerce_template_loop_product_thumbnail - 10
 			 */
-            do_action( 'woocommerce_template_loop_product_thumbnail' );
+            $size = apply_filters( 'kt_product_thumbnail_loop', 'kt_shop_catalog_164' );
+            echo woocommerce_get_product_thumbnail( $size );
 		?>
         </a>
         <div class="group-tool-button">

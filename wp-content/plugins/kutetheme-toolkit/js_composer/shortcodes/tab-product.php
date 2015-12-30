@@ -11,11 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
-
+    public $product_size = 'kt_shop_catalog_260';
+    
+    
     protected function content($atts, $content = null) {
         $atts = function_exists( 'vc_map_get_attributes' ) ? vc_map_get_attributes( 'tab_producs', $atts ) : $atts;
         $atts = shortcode_atts( array(
             'taxonomy'       => '',
+            
+            'size'           => 'kt_shop_catalog_260',
+            
             'style'          =>'1',
             'per_page'       => 12,
             'columns'        => 4,
@@ -41,7 +46,9 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
             
         ), $atts );
         extract($atts);
-
+        
+        $this->product_size = $size;
+        
         global $woocommerce_loop;
         $is_phone = false;
         
@@ -90,6 +97,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
             	)
             );
         }
+        add_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
         $uniqeID = uniqid();
         ob_start();
         ?>
@@ -168,6 +176,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     <?php if( $style == 1 ):?>
                     <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">
                         <ul class="product-list owl-carousel" <?php echo apply_filters( 'kt_shortcode_tab_product_carousel', $carousel ); ?>>
+                            
                             <?php while( $products->have_posts() ): $products->the_post(); ?>
                                 <?php wc_get_template_part( 'content', 'product-tab' ); ?>
                             <?php endwhile; ?>
@@ -191,27 +200,19 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                                                 $secondary_image = '';
                                                 
                                                 if( $attachment_ids ){
-                                                    $secondary_image = wp_get_attachment_image( $attachment_ids[0], 'shop_catalog');
+                                                    $secondary_image = wp_get_attachment_image( $attachment_ids[0], $size );
                                                 }
 
-                                                if( has_post_thumbnail() ){
-                                                    ?>
-                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php the_post_thumbnail( 'shop_catalog');?></a>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
-                                                    <?php
-                                                }
-                                                if( $secondary_image != "" ){
-                                                    ?>
+                                                if( has_post_thumbnail() ){ ?>
+                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php the_post_thumbnail( $size );?></a>
+                                                <?php }else{ ?>
+                                                    <a class="primary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
+                                                <?php }
+                                                if( $secondary_image != "" ){ ?>
                                                     <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo $secondary_image; ?></a>
-                                                    <?php
-                                                }else{
-                                                    ?>
-                                                    <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( 'shop_catalog' ); ?></a>
-                                                    <?php
-                                                }
+                                                <?php }else{ ?>
+                                                    <a class="secondary_image owl-lazy" href="<?php the_permalink();?>"><?php echo wc_placeholder_img( $size ); ?></a>
+                                                <?php }
 
                                             ?>
                                             <?php kt_get_tool_quickview();?>
@@ -260,7 +261,11 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
             </div>
         </div>
         <?php
+        remove_filter( 'kt_product_thumbnail_loop', array( &$this, 'get_size_product' ) );
         return ob_get_clean();
+    }
+    public function get_size_product( $size ){
+        return $this->product_size;
     }
 }
 
@@ -284,6 +289,15 @@ vc_map( array(
             'hide_empty'  => false,
             'placeholder' => __('Choose categoy', 'kutetheme'),
             "description" => __("Note: If you want to narrow output, select category(s) above. Only selected categories will be displayed.", 'kutetheme')
+        ),
+        array(
+            "type"        => "dropdown",
+            "heading"     => __("Product Size", 'kutetheme'),
+            "param_name"  => "size",
+            "value"       => $product_thumbnail,
+            'std'         => 'kt_shop_catalog_260',
+            "description" => __( "Product size", 'kutetheme' ),
+            'admin_label' => true,
         ),
         array(
            'type'        => 'dropdown',

@@ -1,12 +1,8 @@
 <div class="left-block">
     <a href="<?php the_permalink(); ?>">
         <?php
-			/**
-			 * woocommerce_template_loop_product_thumbnail hook
-			 *
-			 * @hooked woocommerce_template_loop_product_thumbnail - 10
-			 */
-            do_action( 'woocommerce_template_loop_product_thumbnail' );
+            $size = apply_filters( 'kt_product_thumbnail_loop', 'shop_catalog' );
+			echo woocommerce_get_product_thumbnail( $size );
 		?>
     </a>
     <div class="quick-view">

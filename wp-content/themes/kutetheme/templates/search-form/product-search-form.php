@@ -5,7 +5,7 @@ $args = array(
   'class'      => 'select-category',
   'hide_empty'  => 1,
   'orderby'     => 'name',
-  'order'       => "desc",
+  'order'       => "asc",
   'tab_index'   => true,
   'hierarchical' => true
 );

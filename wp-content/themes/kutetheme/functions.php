@@ -142,6 +142,38 @@ if ( ! function_exists( 'kutetheme_setup' ) ) :
         add_image_size ( 'testimonial-thumb', 140, 140, true );
         //Support woocommerce
         add_theme_support( 'woocommerce' );
+        
+        if( function_exists( 'is_woocommerce' ) ){
+            $product_size = array(
+                'kt_shop_catalog_131' => 131,
+                'kt_shop_catalog_142' => 142,
+                'kt_shop_catalog_164' => 164,
+                'kt_shop_catalog_175' => 175,
+                'kt_shop_catalog_193' => 193,
+                'kt_shop_catalog_200' => 200,
+                'kt_shop_catalog_204' => 204,
+                'kt_shop_catalog_214' => 213,
+                'kt_shop_catalog_248' => 248,
+                'kt_shop_catalog_260' => 260,
+                'kt_shop_catalog_270' => 270
+                
+            );
+            $width = 300;
+            $height = 300;
+            $crop = 1;
+            if( function_exists( 'wc_get_image_size' ) ){
+                $size = wc_get_image_size( 'shop_catalog' );
+                $width   = isset( $size[ 'width' ] ) ? $size[ 'width' ] : $width;
+    			$height  = isset( $size[ 'height' ] ) ? $size[ 'height' ] : $height;
+    			$crop    = isset( $size[ 'crop' ] ) ? $size[ 'crop' ] : $crop;
+            }
+            foreach( $product_size as $k => $w ){
+                $w = intval( $w ); 
+                $h = round( $height * $w / $width ) ;
+                
+                add_image_size ( $k, $w, $h, $crop );
+            }
+        }
     }
 endif; // kt_setup
 add_action( 'after_setup_theme', 'kt_setup' );
