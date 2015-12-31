@@ -1,4 +1,16 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.9
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+
+Update Revoslider 5.1.5
+Update VC 4.9.1
+Fix loop carousel.
+Resize all list product image.
+Fix rtl css page cart and checkout.
+Fix display SKU on Single product page.
+Fix main menu ontop header 13.
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.8
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 11/12/2015 Update shortcode mailchip
