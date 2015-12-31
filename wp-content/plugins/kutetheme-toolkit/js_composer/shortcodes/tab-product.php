@@ -126,28 +126,6 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     'autoplayTimeout'    => 1000,
                     'autoplayHoverPause' => 'true'
                 );
-                if( $use_responsive){
-                    $arr = array(
-                        '0' => array(
-                            "items" => $items_mobile
-                        ), 
-                        '768' => array(
-                            "items" => $items_tablet
-                        ), 
-                        '992' => array(
-                            "items" => $items_destop
-                        )
-                    );
-                    $data_responsive = json_encode($arr);
-                    $data_carousel["responsive"] = $data_responsive;
-                }else{
-                     if( $style == 3 ):
-                        $data_carousel['items'] =  4;
-                    else:
-                        $data_carousel['items'] =  3;
-                    endif;
-                }
-                $carousel = _data_carousel( $data_carousel );
                 $i = 0; 
                 ?>
                 <?php foreach( $tabs as $k => $v ): ?>
@@ -171,7 +149,49 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     
                     $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $newargs, $atts ) );
                     
-                    if ( $products->have_posts() ) : ?>
+                    if ( $products->have_posts() ) : 
+                    
+                    if( $use_responsive){
+                        $arr = array(
+                            '0' => array(
+                                "items" => $items_mobile
+                            ), 
+                            '768' => array(
+                                "items" => $items_tablet
+                            ), 
+                            '992' => array(
+                                "items" => $items_destop
+                            )
+                        );
+                        $data_responsive = json_encode($arr);
+                        $data_carousel["responsive"] = $data_responsive;
+                        
+                        if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                            $data_carousel['loop'] = 'false';
+                        }else{
+                            $data_carousel['loop'] = $loop;
+                        }
+                    }else{
+                         if( $style == 3 ):
+                            $data_carousel['items'] =  4;
+                            
+                            if( ( $products->post_count <  4 ) ){
+                                $data_carousel['loop'] = 'false';
+                            }else{
+                                $data_carousel['loop'] = $loop;
+                            }
+                        else:
+                            $data_carousel['items'] =  3;
+                            
+                            if( ( $products->post_count <  3 ) ){
+                                $data_carousel['loop'] = 'false';
+                            }else{
+                                $data_carousel['loop'] = $loop;
+                            }
+                        endif;
+                    }
+                    $carousel = _data_carousel( $data_carousel );
+                    ?>
                     <!-- Style 1 -->
                     <?php if( $style == 1 ):?>
                     <div id="tab-<?php echo esc_attr( $k ) . $uniqeID  ?>" class="tab-panel <?php echo ( $i == 0 ) ? 'active': '' ?>">

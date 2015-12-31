@@ -239,24 +239,8 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
-        if( $use_responsive){
-            $arr = array(
-                '0' => array(
-                    "items" => $items_mobile
-                ), 
-                '768' => array(
-                    "items" => $items_tablet
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            $data_carousel['items'] =  3;
-        }
         ob_start();
+        
         $args = array(  
             'post_type' => 'product',  
             'meta_key' => '_featured',  
@@ -334,14 +318,42 @@ class WPBakeryShortCode_Kt_Featured_Products extends WPBakeryShortCode {
         <!-- Style 2 -->
         <?php if( $display_type == 2 ): ?>
             <?php $products = new WP_Query(  $args );?>
+            <?php 
+            if( $use_responsive){
+                $arr = array(
+                    '0' => array(
+                        "items" => $items_mobile
+                    ), 
+                    '768' => array(
+                        "items" => $items_tablet
+                    ), 
+                    '992' => array(
+                        "items" => $items_destop
+                    )
+                );
+                $data_responsive = json_encode($arr);
+                $data_carousel["responsive"] = $data_responsive;
+                
+                if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
+            }else{
+                $data_carousel['items'] =  3;
+                
+                if( ( $products->post_count <  3 ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
+            }
+            ?>
             <div class="section8 block-trending <?php echo esc_attr( $elementClass ); ?>">
             <h3 class="section-title"><?php echo esc_html( $title );?></h3>
             <?php if( $products->have_posts() ):?>
             <ul class="products-style8 owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
-                <?php 
-                while ( $products->have_posts()):
-                $products->the_post();
-                ?>
+                <?php while ( $products->have_posts()): $products->the_post(); ?>
                 <li class="product autoHeight-item">
                     <div class="product-container">
                         <div class="product-thumb">

@@ -264,6 +264,8 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
 		);
         
         $product_categories = get_terms( 'product_cat', $args );
+        $count_product = count( $product_categories );
+        
         $banner_url = "";
         if( $banner_image ){
             $banner = wp_get_attachment_image_src( $banner_image , 'full' );  
@@ -272,7 +274,7 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
         ?>
         <div class="hot-cat-section11 option11 parallax" style="background-image: url('<?php echo apply_filters( 'kt_shortcode_category_carousel_bg_parallax', $banner_url ? $banner_url : '/images/paralax11.jpg' ) ; ?>');">
             <div class="overlay"></div>
-            <?php if( $product_categories ): ?>
+            <?php if( $product_categories && $count_product ): ?>
                 <?php 
                     $data_carousel = array(
                         "autoplay"      => $autoplay,
@@ -302,9 +304,21 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
                         );
                         $data_responsive = json_encode($arr);
                         $data_carousel["responsive"] = $data_responsive;
+                        
+                        if( ( $count_product <  $items_mobile ) || ( $count_product <  $items_tablet ) || ( $count_product <  $items_destop ) ){
+                            $data_carousel2['loop'] = 'false';
+                        }else{
+                            $data_carousel2['loop'] = $loop;
+                        }
                     }else{
                         if( $product_column > 0 )
                             $data_carousel['items'] =  $product_column;
+                        
+                        if( $count_product <  $product_column ){
+                            $data_carousel2['loop'] = 'false';
+                        }else{
+                            $data_carousel2['loop'] = $loop;
+                        }
                     } 
                     
                 ?>

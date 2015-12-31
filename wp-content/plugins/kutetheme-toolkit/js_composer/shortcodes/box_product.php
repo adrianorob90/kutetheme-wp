@@ -393,28 +393,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             'autoplayTimeout' => 1000,
             'autoplayHoverPause' => 'true'
         );
-        
-        if( $use_responsive ){
-            $arr = array(   
-                '0' => array(
-                    "items" => $items_mobile
-                ), 
-                '768' => array(
-                    "items" => $items_tablet
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            $data_carousel['items'] =  $items_destop;
-        }
         $unique_id = uniqid();
-        
-        $carousel = _data_carousel($data_carousel);
         
         if( $taxonomy ){
             $cate_ids = explode( ",", $taxonomy );
@@ -438,6 +417,36 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
             
             if( $products->have_posts() ): 
+                if( $use_responsive ) {
+                    $arr = array(   
+                        '0' => array(
+                            "items" => $items_mobile
+                        ), 
+                        '768' => array(
+                            "items" => $items_tablet
+                        ), 
+                        '992' => array(
+                            "items" => $items_destop
+                        )
+                    );
+                    
+                    $data_responsive = json_encode($arr);
+                    $data_carousel["responsive"] = $data_responsive;
+                    
+                    if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                        $data_carousel['loop'] = 'false';
+                    }else{
+                        $data_carousel['loop'] = $loop;
+                    }
+                }else{
+                    $data_carousel['items'] =  $items_destop;
+                    if( ( $products->post_count <  $items_destop ) ){
+                        $data_carousel['loop'] = 'false';
+                    }else{
+                        $data_carousel['loop'] = $loop;
+                    }
+                }
+                $carousel = _data_carousel($data_carousel);
                 $banner_i = 1;
                 
                 if( isset( $banner ) && $banner ): 
@@ -449,15 +458,13 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                     $list_banner = get_posts( $banner_args );
                     
                     ob_start();
-                    foreach($list_banner as $l):
-                        ?>
-                            <li>
-                                <a target="_blank" href="<?php echo  $banner_link ? esc_url( $banner_link ) : ''; ?>">
-                                    <?php echo wp_get_attachment_image( $l->ID, 'full' );?>
-                                </a>
-                            </li>
-                        <?php
-                        $banner_i ++ ;
+                    foreach( $list_banner as $l ): ?>
+                        <li>
+                            <a target="_blank" href="<?php echo  $banner_link ? esc_url( $banner_link ) : ''; ?>">
+                                <?php echo wp_get_attachment_image( $l->ID, 'full' );?>
+                            </a>
+                        </li>
+                    <?php $banner_i ++ ;
                     endforeach;
                     $banner_carousel = ob_get_clean();
                 endif;
@@ -576,7 +583,38 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                             );
                             $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
                             
+                            if( $use_responsive ){
+                                $arr = array(   
+                                    '0' => array(
+                                        "items" => $items_mobile
+                                    ), 
+                                    '768' => array(
+                                        "items" => $items_tablet
+                                    ), 
+                                    '992' => array(
+                                        "items" => $items_destop
+                                    )
+                                );
+                                
+                                $data_responsive = json_encode($arr);
+                                $data_carousel["responsive"] = $data_responsive;
+                                
+                                if( ( $term_products->post_count <  $items_mobile ) || ( $term_products->post_count <  $items_tablet ) || ( $term_products->post_count <  $items_destop ) ){
+                                    $data_carousel['loop'] = 'false';
+                                }else{
+                                    $data_carousel['loop'] = $loop;
+                                }
+                            }else{
+                                $data_carousel['items'] =  $items_destop;
+                                if( ( $term_products->post_count <  $items_destop ) ){
+                                    $data_carousel['loop'] = 'false';
+                                }else{
+                                    $data_carousel['loop'] = $loop;
+                                }
+                            }
+                            $carousel = _data_carousel($data_carousel);
                             if( $term_products->have_posts() ):?>
+                            
     						<div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php if( $i == 1 ): ?> active <?php endif; ?>">
                                 <ul class="tab-products owl-carousel" <?php echo apply_filters( 'kt_shortcode_box_product_carousel', $carousel ); ?>>
                                     <?php while( $term_products->have_posts() ): $term_products->the_post(); ?>
@@ -634,13 +672,45 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
                                 )
                             );
                             $term_products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
-                            
                             if( $term_products->have_posts() ):?>
+                            <?php 
+                            if( $use_responsive ){
+                                $arr = array(   
+                                    '0' => array(
+                                        "items" => $items_mobile
+                                    ), 
+                                    '768' => array(
+                                        "items" => $items_tablet
+                                    ), 
+                                    '992' => array(
+                                        "items" => $items_destop
+                                    )
+                                );
+                                
+                                $data_responsive = json_encode($arr);
+                                $data_carousel["responsive"] = $data_responsive;
+                                
+                                if( ( $term_products->post_count <  $items_mobile ) || ( $term_products->post_count <  $items_tablet ) || ( $term_products->post_count <  $items_destop ) ){
+                                    $data_carousel['loop'] = 'false';
+                                }else{
+                                    $data_carousel['loop'] = $loop;
+                                }
+                            }else{
+                                $data_carousel['items'] =  $items_destop;
+                                if( ( $term_products->post_count <  $items_destop ) ){
+                                    $data_carousel['loop'] = 'false';
+                                }else{
+                                    $data_carousel['loop'] = $loop;
+                                }
+                            }
+                            $carousel = _data_carousel($data_carousel);
+                            
+                            ?>
                             <div id="tab-<?php echo $term->term_id . '-' . $unique_id ?>" class="tab-panel <?php if( $i == 1 ): ?> active <?php endif; ?>">
                                 <div class="row">
-                                    <?php
-                                    remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
-                                    remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
+                                    <?php 
+                                        remove_filter( "woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
+                                        remove_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                     ?>
                                     <?php while( $term_products->have_posts() ): $term_products->the_post(); ?>
                                         <div class="col-sm-4 col-md-3">

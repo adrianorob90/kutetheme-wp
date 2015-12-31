@@ -452,23 +452,6 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'autoplayHoverPause' => 'true'
         );
         
-        if( $use_responsive){
-            $arr = array( 
-                '0'   => array( 
-                    "items" => $items_mobile 
-                ), 
-                '768' => array( 
-                    "items" => $items_tablet 
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            $data_carousel['items'] = 8;
-        }
         
         $data_carousel2 = array(
             "autoplay"           => $autoplay2,
@@ -482,25 +465,6 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
-        
-        if( $use_responsive2 ){
-            $arr = array( 
-                '0'   => array( 
-                    "items" => $items_mobile2 
-                ), 
-                '768' => array( 
-                    "items" => $items_tablet2 
-                ), 
-                '992' => array(
-                    "items" => $items_destop2
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel2["responsive"] = $data_responsive;
-        }else{
-            $data_carousel2['items'] = 4;
-        }
-        
         
         $elementClass = preg_replace( array( '/\s+/', '/^\s|\s$/' ), array( ' ', '' ), implode( ' ', $elementClass ) );
         ob_start();
@@ -517,7 +481,38 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                 $args_term[ 'include' ] = $taxonomy;
             }
     		$terms = get_terms( 'product_brand', $args_term);
-            if( ! is_wp_error($terms) && count( $terms ) > 0 ) :
+            $count_term = count( $terms );
+            if( ! is_wp_error($terms) && $count_term > 0 ) :
+                
+                if( $use_responsive ) {
+                    $arr = array( 
+                        '0'   => array( 
+                            "items" => $items_mobile
+                        ), 
+                        '768' => array( 
+                            "items" => $items_tablet
+                        ), 
+                        '992' => array(
+                            "items" => $items_destop
+                        )
+                    );
+                    $data_responsive = json_encode($arr);
+                    $data_carousel["responsive"] = $data_responsive;
+                    
+                    if( ( $count_term <  $items_mobile ) || ( $count_term <  $items_tablet ) || ( $count_term <  $items_destop ) ){
+                        $data_carousel['loop'] = 'false';
+                    }else{
+                        $data_carousel['loop'] = $loop;
+                    }
+                }else{
+                    $data_carousel['items'] = 8;
+                    if( $count_term < 8 ){
+                        $data_carousel['loop'] = 'false';
+                    }else{
+                        $data_carousel['loop'] = $loop;
+                    }
+                }
+                
                 if( $show_product == "true" ) :
                     ?>
                     <div class="brand-showcase <?php echo esc_attr( $elementClass ); ?>">
@@ -836,6 +831,36 @@ class WPBakeryShortCode_Brand extends WPBakeryShortCode {
                                     )
                         		);
                                 $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
+                                //
+                                if( $use_responsive2 ) {
+                                    $arr = array( 
+                                        '0'   => array( 
+                                            "items" => $items_mobile2 
+                                        ), 
+                                        '768' => array( 
+                                            "items" => $items_tablet2 
+                                        ), 
+                                        '992' => array(
+                                            "items" => $items_destop2
+                                        )
+                                    );
+                                    $data_responsive = json_encode($arr);
+                                    
+                                    $data_carousel2["responsive"] = $data_responsive;
+                                    
+                                    if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                                        $data_carousel2['loop'] = 'false';
+                                    }else{
+                                        $data_carousel2['loop'] = $loop2;
+                                    }
+                                } else {
+                                    $data_carousel2['items'] = 4;
+                                    if( $products->post_count < 4 ){
+                                        $data_carousel2['loop'] = 'false';
+                                    }else{
+                                        $data_carousel2['loop'] = $loop2;
+                                    }
+                                }
                                 if( $products->have_posts() ): ?>
                                     <div id="brand14-<?php echo esc_attr( $term->term_id ) ?>" class="tab-panel <?php if( $i ==1 ): ?>active<?php endif; ?>">
                                         <ul class="list-bran-product owl-carousel" <?php echo _data_carousel($data_carousel2); ?>>

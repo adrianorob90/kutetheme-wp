@@ -335,28 +335,6 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
             'autoplayHoverPause' => 'true'
         );
         
-        if( $use_responsive){
-            $arr = array(
-                '0' => array(
-                    "items" => $items_mobile
-                ), 
-                '768' => array(
-                    "items" => $items_tablet
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            if( $items_destop > 0 ){
-                $items_destop = 4;
-            }
-            $data_carousel['items'] =  $items_destop;
-                
-        }
-        $carousel = _data_carousel( $data_carousel );
         
         $tabs = kt_get_all_attributes( 'tab_sections', $content );
         if( count( $tabs ) >0 ) :
@@ -442,6 +420,42 @@ class WPBakeryShortCode_Hot_Deal extends WPBakeryShortCodesContainer {
                                     $products = new WP_Query( apply_filters( 'woocommerce_shortcode_products_query', $args, $atts ) );
                                     
                                     if( $products->have_posts() ):
+                                    
+                                    if( $use_responsive){
+                                        $arr = array(
+                                            '0' => array(
+                                                "items" => $items_mobile
+                                            ), 
+                                            '768' => array(
+                                                "items" => $items_tablet
+                                            ), 
+                                            '992' => array(
+                                                "items" => $items_destop
+                                            )
+                                        );
+                                        $data_responsive = json_encode($arr);
+                                        $data_carousel["responsive"] = $data_responsive;
+                                        
+                                        if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                                            $data_carousel['loop'] = 'false';
+                                        }else{
+                                            $data_carousel['loop'] = $loop;
+                                        }
+                                    }else{
+                                        if( $items_destop > 0 ){
+                                            $items_destop = 4;
+                                        }
+                                        $data_carousel['items'] =  $items_destop;
+                                        
+                                        if( ( $products->post_count <  $items_destop ) ){
+                                            $data_carousel['loop'] = 'false';
+                                        }else{
+                                            $data_carousel['loop'] = $loop;
+                                        }
+                                    }
+                                    
+                                    $carousel = _data_carousel( $data_carousel );
+                                    
                                     add_filter("woocommerce_get_price_html_from_to", "kt_get_price_html_from_to", 10 , 4);
                                     add_filter( 'woocommerce_sale_price_html', 'woocommerce_custom_sales_price', 10, 2 );
                                     remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);

@@ -276,7 +276,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 'nav'           => $navigation,
                 'dots'          => "false"
             );
-            if( $use_responsive ){
+            if( $use_responsive ) {
                 $arr = array(
                     '0' => array(
                         "items" => $items_mobile
@@ -290,9 +290,21 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 );
                 $data_responsive = json_encode($arr);
                 $data_carousel["responsive"] = $data_responsive;
+                
+                if( ( $query_product->post_count <  $items_mobile ) || ( $query_product->post_count <  $items_tablet ) || ( $query_product->post_count <  $items_destop ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
             }else{
                 if( $product_column > 0 )
                     $data_carousel['items'] =  $product_column;
+                
+                if( ( $query_product->post_count <  $product_column ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
             }
             
             $elementClass = array(

@@ -230,7 +230,7 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
             'dots'               => 'false',
-            'loop'               => ($loop == 1 ? "true" : "false"),
+            'loop'               => ( $loop == 1 ? "true" : "false" ),
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
@@ -248,8 +248,20 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             );
             $data_responsive = json_encode($arr);
             $data_carousel["responsive"] = $data_responsive;
+            
+            if( ( $look_book_query->post_count <  $items_mobile ) || ( $look_book_query->post_count <  $items_tablet ) || ( $look_book_query->post_count <  $items_destop ) ){
+                $data_carousel['loop'] = 'false';
+            }else{
+                $data_carousel['loop'] = $loop;
+            }
         }else{
             $data_carousel['items'] =  3;
+            
+            if( ( $look_book_query->post_count <  3 ) ){
+                $data_carousel['loop'] = 'false';
+            }else{
+                $data_carousel['loop'] = $loop;
+            }
         }
         ob_start();
         ?>

@@ -220,32 +220,15 @@ class WPBakeryShortCode_Kt_colection extends WPBakeryShortCode {
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
-        if( $use_responsive){
-            $arr = array(
-                '0' => array(
-                    "items" => $items_mobile
-                ), 
-                '768' => array(
-                    "items" => $items_tablet
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            $data_carousel['items'] =  3;
-        }
-
-        if( $taxonomy ==""){
+        
+        if( ! $taxonomy ){
 			$terms = get_terms( 'colection_cat' ,array('hide_empty' => false));
         }else{
         	$taxonomy = explode(',', $taxonomy);
+            
 			$terms = get_terms( 'colection_cat', array('hide_empty' => false,'include'=>$taxonomy) );
         }
-        ob_start();
-        ?>
+        ob_start(); ?>
         <!-- Style 1 -->
         <?php if( $display_type ==1 ): ?>
         <div class=" <?php echo esc_attr( $elementClass ); ?>">
@@ -289,8 +272,41 @@ class WPBakeryShortCode_Kt_colection extends WPBakeryShortCode {
 							),
 				        );
 				        $colections = new WP_Query(  $args );
-				        if( $colections->have_posts() ){
-				        	?>
+                        
+				        if( $colections->have_posts() ){  ?>
+                        <?php 
+                        
+                        if( $use_responsive){
+                            $arr = array(
+                                '0' => array(
+                                    "items" => $items_mobile
+                                ), 
+                                '768' => array(
+                                    "items" => $items_tablet
+                                ), 
+                                '992' => array(
+                                    "items" => $items_destop
+                                )
+                            );
+                            $data_responsive = json_encode($arr);
+                            $data_carousel["responsive"] = $data_responsive;
+                            
+                            if( ( $colections->post_count <  $items_mobile ) || ( $colections->post_count <  $items_tablet ) || ( $colections->post_count <  $items_destop ) ){
+                                $data_carousel['loop'] = 'false';
+                            }else{
+                                $data_carousel['loop'] = $loop;
+                            }
+                        }else{
+                            $data_carousel['items'] =  3;
+                            
+                            if( $colections->post_count <  3 ){
+                                $data_carousel['loop'] = 'false';
+                            }else{
+                                $data_carousel['loop'] = $loop;
+                            }
+                        }
+
+                        ?>
 				        	<ul class="collection-list owl-carousel" <?php echo _data_carousel( $data_carousel ); ?>>
 				        		<?php
 				        		$i = 1;

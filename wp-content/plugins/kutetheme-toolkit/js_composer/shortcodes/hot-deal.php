@@ -288,30 +288,6 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
             'autoplayTimeout'    => 1000,
             'autoplayHoverPause' => 'true'
         );
-        
-        if( $use_responsive ){
-            $arr = array(
-                '0' => array(
-                    "items" => $items_mobile
-                ), 
-                '768' => array(
-                    "items" => $items_tablet
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel[ "responsive" ] = $data_responsive;
-        }else {
-            if( $items_destop > 0 ){
-                $items_destop = 5;
-            }
-            $data_carousel['items'] =  $items_destop;
-                
-        }
-        $carousel = _data_carousel( $data_carousel );
-        
         $new_title = array( 
             __( 'hot' ),
             __( 'deals' )
@@ -324,6 +300,42 @@ class WPBakeryShortCode_Box_Hot_Deal extends WPBakeryShortCode {
         ob_start();                                
         if( $products->have_posts() ):
         
+            if( $use_responsive ){
+                $arr = array(
+                    '0' => array(
+                        "items" => $items_mobile
+                    ), 
+                    '768' => array(
+                        "items" => $items_tablet
+                    ), 
+                    '992' => array(
+                        "items" => $items_destop
+                    )
+                );
+                $data_responsive = json_encode($arr);
+                $data_carousel[ "responsive" ] = $data_responsive;
+                
+                if( ( $products->post_count <  $items_mobile ) || ( $products->post_count <  $items_tablet ) || ( $products->post_count <  $items_destop ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
+            }else {
+                if( $items_destop > 0 ) {
+                    $items_destop = 5;
+                }
+                
+                $data_carousel['items'] =  $items_destop;
+                
+                if( ( $products->post_count <  $items_destop ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
+                    
+            }
+        $carousel = _data_carousel( $data_carousel );
+            
         remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_price', 5);
 
         remove_action('kt_after_shop_loop_item_title', 'woocommerce_template_loop_rating', 10);

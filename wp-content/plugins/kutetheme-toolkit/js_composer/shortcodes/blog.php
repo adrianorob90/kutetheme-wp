@@ -242,23 +242,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             'autoplayHoverPause' => 'true'
         );
         
-        if( $use_responsive ){
-            $arr = array( 
-                '0'   => array( 
-                    "items" => $items_mobile 
-                ), 
-                '768' => array( 
-                    "items" => $items_tablet 
-                ), 
-                '992' => array(
-                    "items" => $items_destop
-                )
-            );
-            $data_responsive = json_encode($arr);
-            $data_carousel["responsive"] = $data_responsive;
-        }else{
-            $data_carousel['items'] = 4;
-        }
+        
         $args = array(
 			'post_type'				=> 'post',
 			'post_status'			=> 'publish',
@@ -273,7 +257,31 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
         
         ob_start();
         if( $posts->have_posts() ):
-            
+            if( $use_responsive ){
+                $arr = array( 
+                    '0'   => array( 
+                        "items" => $items_mobile 
+                    ), 
+                    '768' => array( 
+                        "items" => $items_tablet 
+                    ), 
+                    '992' => array(
+                        "items" => $items_destop
+                    )
+                );
+                $data_responsive = json_encode($arr);
+                $data_carousel["responsive"] = $data_responsive;
+                if( ( $posts->post_count <  $items_mobile ) || ( $posts->post_count <  $items_tablet ) || ( $posts->post_count <  $items_destop ) ){
+                    $data_carousel['loop'] = 'false';
+                }
+            }else{
+                $data_carousel['items'] = 4;
+                if( ( $posts->post_count <  4 ) ){
+                    $data_carousel['loop'] = 'false';
+                }else{
+                    $data_carousel['loop'] = $loop;
+                }
+            }
             if( $style == 'style-2' ):
             ?>
             <div class="option7">
