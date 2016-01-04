@@ -1,4 +1,13 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+Ver 1.4.9
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+31/12/2015 Update loop carousel
+30/12/2015 Update size product
+29/12/2015 Fix rtl css page cart and checkout
+21/12/2015 Fix infomation text in footer 3
+16/12/2015 Fix display SKU on single product page. Css group product
+
+=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.8
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 11/12/2015 Update shortcode mailchip
