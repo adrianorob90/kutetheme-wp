@@ -1,6 +1,8 @@
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
 Ver 1.4.9
 =*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+31/12/2015 Update Revoslider 5.1.5
+31/12/2015 Update VC 4.9.1
 31/12/2015 Update loop carousel
 30/12/2015 Update size product
 29/12/2015 Fix rtl css page cart and checkout
