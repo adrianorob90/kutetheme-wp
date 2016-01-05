@@ -1100,6 +1100,15 @@ Description: Adds support for languages written in a Right To Left (RTL) directi
 .woocommerce .woocommerce-message .button{
     margin-left: 15px;
 }
+.woocommerce td.product-name dl.variation dt {
+    clear: right;
+    float: right;
+}
+.woocommerce td.product-name dl.variation dd {
+    float: right;
+    margin-right: 10px;
+}
+
 body .breadcrumb .navigation-pipe {
    text-indent: inherit;
 }
