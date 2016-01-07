@@ -233,7 +233,7 @@ class WPBakeryShortCode_Blog_Carousel extends WPBakeryShortCode {
             "autoplay"           => $autoplay,
             "nav"                => $navigation,
             "margin"             => $margin,
-            "slidespeed"         => $slidespeed,
+            "smartSpeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
             'dots'               => 'false',

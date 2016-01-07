@@ -88,7 +88,7 @@ class WPBakeryShortCode_Product_Sidebar extends WPBakeryShortCode {
             "autoplay"           => $autoplay,
             "nav"                => $navigation,
             "margin"             => $margin,
-            "slidespeed"         => $slidespeed,
+            "smartSpeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
             'items'              => 1,

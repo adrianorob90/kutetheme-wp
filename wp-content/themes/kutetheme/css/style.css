@@ -5640,6 +5640,7 @@ span.notify-right{
 /** box-products**/
 .box-products{
   margin-top: 30px;
+  overflow: hidden;
 }
 .box-products .box-product-head{
   height: 30px;
@@ -10380,6 +10381,7 @@ body .block-header-top12 .box-vertical-megamenus .vertical-menu-list>li:hover>a:
     border-bottom: 1px solid #eee;
     border-top: 1px solid #eee;
     margin-top: 30px;
+    display: inline-block;
 }
 .footer4 .footer-bottom {
     padding: 30px 0;

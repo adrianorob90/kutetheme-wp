@@ -384,7 +384,7 @@ class WPBakeryShortCode_Box_Products extends WPBakeryShortCode {
             "autoplay"    => $autoplay,
             "navigation"  => $navigation,
             "margin"      => $margin,
-            "slidespeed"  => $slidespeed,
+            "smartSpeed"  => $slidespeed,
             "theme"       => 'style-navigation-top',
             "autoheight"  => 'false',
             'nav'         => $navigation,

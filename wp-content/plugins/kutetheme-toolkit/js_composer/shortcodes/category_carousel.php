@@ -280,7 +280,7 @@ class WPBakeryShortCode_Category_Carousel extends WPBakeryShortCode {
                         "autoplay"      => $autoplay,
                         "navigation"    => $navigation,
                         "margin"        => $margin,
-                        "slidespeed"    => $slidespeed,
+                        "smartSpeed"    => $slidespeed,
                         "theme"         => 'style-navigation-bottom',
                         "autoheight"    => 'false',
                         'nav'           => $navigation,

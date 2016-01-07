@@ -226,7 +226,7 @@ class WPBakeryShortCode_kt_look_books extends WPBakeryShortCode {
             "autoplay"           => ($autoplay == 1 ? "true" : "false"),
             "nav"                => ($navigation == 1 ? "true" : "false"),
             "margin"             => $margin,
-            "slidespeed"         => $slidespeed,
+            "smartSpeed"         => $slidespeed,
             "theme"              => 'style-navigation-bottom',
             "autoheight"         => 'false',
             'dots'               => 'false',

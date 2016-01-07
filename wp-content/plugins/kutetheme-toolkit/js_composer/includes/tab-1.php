@@ -242,7 +242,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                                 "autoplay"      => $autoplay,
                                 "navigation"    => $navigation,
                                 "margin"        => $margin,
-                                "slidespeed"    => $slidespeed,
+                                "smartSpeed"    => $slidespeed,
                                 "theme"         => 'style-navigation-bottom',
                                 "autoheight"    => 'false',
                                 'nav'           => $navigation,

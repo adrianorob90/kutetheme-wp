@@ -117,7 +117,7 @@ class WPBakeryShortCode_Tab_Producs extends WPBakeryShortCode {
                     "autoplay"           => $autoplay,
                     "navigation"         => $navigation,
                     "margin"             => $margin,
-                    "slidespeed"         => $slidespeed,
+                    "smartSpeed"         => $slidespeed,
                     "theme"              => 'style-navigation-bottom',
                     "autoheight"         => 'false',
                     'nav'                => $navigation,

@@ -269,7 +269,7 @@ class WPBakeryShortCode_Lastest_Deal_Products extends WPBakeryShortCode {
                 "autoplay"      => $autoplay,
                 "navigation"    => $navigation,
                 "margin"        => $margin,
-                "slidespeed"    => $slidespeed,
+                "smartSpeed"    => $slidespeed,
                 "loop"          => $loop,
                 "theme"         => 'style-navigation-bottom',
                 "autoheight"    => "false",

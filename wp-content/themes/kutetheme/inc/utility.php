@@ -364,7 +364,6 @@ function kt_is_wc(){
  */
 function kt_paging_nav() {
 	global $wp_query, $wp_rewrite;
-    
     // Don't print empty markup if there's only one page.
 	if ( $wp_query->max_num_pages < 2 ) {
 		return;

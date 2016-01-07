@@ -243,7 +243,7 @@ class WPBakeryShortCode_Lastest_Deals_Sidebar extends WPBakeryShortCode {
             $data_carousel = array(
                 "autoplay"           => $autoplay,
                 "navigation"         => $navigation,
-                "slidespeed"         => $slidespeed,
+                "smartSpeed"         => $slidespeed,
                 "autoheight"         => "false",
                 "loop"               => $loop,
                 "dots"               => "false",

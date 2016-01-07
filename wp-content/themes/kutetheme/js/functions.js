@@ -11,12 +11,16 @@
     function settingCarousel($this){
         var config = $this.data();
         config.navText = ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'];
-        config.smartSpeed="300";
+        if( config.smartspeed != 'undefined'){
+          config.smartSpeed = config.smartspeed;
+        }
+        
         config.lazyLoad = true;
         if( $this.hasClass('owl-style2') ){
             config.animateOut="fadeOut";
             config.animateIn="fadeIn";    
         }
+
         config.rtl = rtl;
         config.onInitialized = function( event ){
             var $item_active = $this.find( '.owl-item.active' );
