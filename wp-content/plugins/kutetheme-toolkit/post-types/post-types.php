@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined('ABSPATH')) exit;
+if ( ! defined('ABSPATH')) exit;
 
 function register_post_type_init() {
     
